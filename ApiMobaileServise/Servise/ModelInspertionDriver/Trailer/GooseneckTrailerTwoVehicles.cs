@@ -16,15 +16,15 @@ namespace ApiMobaileServise.Servise.ModelInspertionDriver.Trailer
         {
             NamePatern = new List<string>()
             {
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "7",
+                "8",
+                "9",
+                "10",
             };
         }
     }
