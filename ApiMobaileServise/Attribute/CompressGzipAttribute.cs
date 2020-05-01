@@ -52,7 +52,8 @@ namespace ApiMobaileServise.Attribute
             {
                 PropertyInfo propertyInfo = context.Result.GetType().GetProperty("Value");
                 propertyInfo.SetValue(context.Result, Compress(Encoding.UTF8.GetBytes((string)propertyInfo.GetValue(context.Result, null)), CompressionLevel.Optimal));
-                context.HttpContext.Response.Headers.Add("CompresRespons", "gzip; Compression Level=Optimal");
+                context.HttpContext.Response.Headers.Add("Compres Respons", "gzip");
+                context.HttpContext.Response.Headers.Add("Level Compression Respons", "Optimal");
             }
         }
 
