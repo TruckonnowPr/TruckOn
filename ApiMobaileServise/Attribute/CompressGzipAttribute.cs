@@ -29,14 +29,7 @@ namespace ApiMobaileServise.Attribute
                 foreach(string paramUnZip in paramsUnZip)
                 {
                     paramReqvest = context.ActionArguments[paramUnZip] = UnCompress(context.ActionArguments[paramUnZip].ToString());
-                    if (context.HttpContext.Response.Headers.ContainsKey("CompresReqvestParam"))
-                    {
-                        context.HttpContext.Response.Headers.Add("CompresReqvestParam", paramUnZip);
-                    }
-                    else
-                    {
-                        context.HttpContext.Response.Headers["CompresReqvestParam"] += $", {paramUnZip}";
-                    }
+                   
                 }
             }
             else
@@ -52,8 +45,8 @@ namespace ApiMobaileServise.Attribute
             {
                 PropertyInfo propertyInfo = context.Result.GetType().GetProperty("Value");
                 propertyInfo.SetValue(context.Result, Compress(Encoding.UTF8.GetBytes((string)propertyInfo.GetValue(context.Result, null)), CompressionLevel.Optimal));
-                context.HttpContext.Response.Headers.Add("Compres Respons", "gzip");
-                context.HttpContext.Response.Headers.Add("Level Compression Respons", "Optimal");
+                //context.HttpContext.Response.Headers.Add("Compres Respons", "gzip");
+               // context.HttpContext.Response.Headers.Add("Level Compression Respons", "Optimal");
             }
         }
 

@@ -102,7 +102,7 @@ namespace MDispatch.View.AskPhoto
         bool isAsk4 = false;
         private void RadioButton_Clicked(object sender, EventArgs e)
         {
-            askPageMV.Ask.Weather_conditions = ((RadioButton)sender).Text;
+            askPageMV.Ask.Weather_conditions = ((Plugin.InputKit.Shared.Controls.RadioButton)sender).Text;
             isAsk4 = true;
         }
         #endregion

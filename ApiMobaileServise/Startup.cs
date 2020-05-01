@@ -29,8 +29,7 @@ namespace ApiMobaileServise
                 options.ValueLengthLimit = 1024 * 1024 * 500; // 100MB max len form data
             });
             System.Net.ServicePointManager.DefaultConnectionLimit = 50;
-            services.AddMvc()
-           .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
             services.Configure<IISOptions>(options =>
             {
                 options.ForwardClientCertificate = false;
