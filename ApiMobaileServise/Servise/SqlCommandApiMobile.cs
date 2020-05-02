@@ -196,7 +196,7 @@ namespace ApiMobaileServise.Servise
                 .Include(d => d.InspectionDrivers)
                 .First(d => d.Token == token);
             InspectionDriver inspectionDriver = driver.InspectionDrivers.Count != 0 ? driver.InspectionDrivers.Last() : null;
-            if(inspectionDriver != null && inspectionDriver.IdITrailer != 0)
+            if(inspectionDriver != null && inspectionDriver.IdITrailer != 0 && Convert.ToDateTime(inspectionDriver.Date).Date == DateTime.Now.Date)
             {
                 plateTrailer = context.Trailers.FirstOrDefault(t => t.Id == inspectionDriver.IdITrailer) != null ? context.Trailers.FirstOrDefault(t => t.Id == inspectionDriver.IdITrailer).Plate : null;
             }
@@ -210,7 +210,7 @@ namespace ApiMobaileServise.Servise
                 .Include(d => d.InspectionDrivers)
                 .First(d => d.Token == token);
             InspectionDriver inspectionDriver = driver.InspectionDrivers.Count != 0 ? driver.InspectionDrivers.Last() : null;
-            if (inspectionDriver != null && inspectionDriver.IdITruck != 0)
+            if (inspectionDriver != null && inspectionDriver.IdITruck != 0 && Convert.ToDateTime(inspectionDriver.Date).Date == DateTime.Now.Date)
             {
                 plateTrailer = context.Trucks.FirstOrDefault(t => t.Id == inspectionDriver.IdITruck) != null ? context.Trucks.FirstOrDefault(t => t.Id == inspectionDriver.IdITruck).PlateTruk : null;
             }
@@ -948,7 +948,6 @@ namespace ApiMobaileServise.Servise
             }
             else if(Convert.ToDateTime(inspectionDriver.Date).Date != DateTime.Now.Date)
             {
-
                 if (DateTime.Now.Hour >= 12)
                 {
                     driver.IsInspectionDriver = false;
