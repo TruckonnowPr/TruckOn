@@ -93,7 +93,7 @@ namespace ApiMobaileServise.Servise
 
         public async Task SaveInspactionDriver(string idDriver, string photoJson, int indexPhoto, string typeTransportVehicle)
         {
-            photoJson = photoJson.Insert(photoJson.IndexOf(idDriver) + 2, $"{DateTime.Now.ToShortDateString()}/");
+            photoJson = photoJson.Insert(photoJson.IndexOf(idDriver) + 2, $"{DateTime.Now.ToShortDateString()}/{typeTransportVehicle}/");
             PhotoDriver photo = JsonConvert.DeserializeObject<PhotoDriver>(photoJson);
             await sqlCommandApiMobile.SaveInspectionDriverInDb(idDriver, photo, indexPhoto, typeTransportVehicle);
             //await Task.Run(() =>

@@ -245,11 +245,11 @@ namespace ApiMobaileServise.Servise
                         driver.InspectionDrivers.Add(inspectionDrivers);
                     }
                     await context.SaveChangesAsync();
-                    photo.IdInspaction = inspectionDrivers.Id;
-                    //To do добавить раздилитель индех фото по тракам трейлерам 
+                    photo.IdInspaction = inspectionDrivers.Id; 
                     photo.IndexPhoto = IndexPhoto;
                     inspectionDrivers.PhotosTruck = context.PhotoDrivers.Where(p => p.IdInspaction == inspectionDrivers.Id).ToList();
-                    if (inspectionDrivers.PhotosTruck.FirstOrDefault(p => p.IndexPhoto == IndexPhoto) == null)
+                    if ((typeTransportVehicle == "Truck" && inspectionDrivers.CountPhotoTruck == IndexPhoto - 1)
+                        || (typeTransportVehicle == "Trailer" && inspectionDrivers.CountPhotoTrailer == IndexPhoto - 1))
                     {
                         if (typeTransportVehicle == "Truck")
                         {

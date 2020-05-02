@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDispatch.Android", "MDispa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDispatch.iOS", "MDispatch\MDispatch.iOS\MDispatch.iOS.csproj", "{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDispatch", "MDispatch\MDispatch\MDispatch.csproj", "{D6CD94AD-B4AF-4C31-B29D-789E2FBD7D48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDispatch", "MDispatch\MDispatch\MDispatch.csproj", "{D6CD94AD-B4AF-4C31-B29D-789E2FBD7D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDispacher", "WebDispacher\WebDispacher.csproj", "{0333DA3D-9557-4996-B863-B8678B8965B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebDispacher", "WebDispacher\WebDispacher.csproj", "{0333DA3D-9557-4996-B863-B8678B8965B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaoModels", "DaoModels\DaoModels.csproj", "{18E78496-5EAC-4DC7-8BEE-21F39A38C8FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaoModels", "DaoModels\DaoModels.csproj", "{18E78496-5EAC-4DC7-8BEE-21F39A38C8FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiMobaileServise", "ApiMobaileServise\ApiMobaileServise.csproj", "{E138D5D7-0A0B-4745-8914-AB130FDBC8A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiMobaileServise", "ApiMobaileServise\ApiMobaileServise.csproj", "{E138D5D7-0A0B-4745-8914-AB130FDBC8A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{7755E01D-7F6F-46E6-99EF-0FBC73DEF5F9}"
 EndProject
@@ -104,8 +104,9 @@ Global
 		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhone.Build.0 = Debug|iPhone
-		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhone.Deploy.0 = Debug|iPhone
+		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhone
+		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|iPhoneSimulator.Build.0 = Debug|iPhone
 		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|x64.ActiveCfg = Debug|iPhoneSimulator
 		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Debug|x64.Build.0 = Debug|iPhoneSimulator
 		{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}.Release|Any CPU.ActiveCfg = Release|iPhone
