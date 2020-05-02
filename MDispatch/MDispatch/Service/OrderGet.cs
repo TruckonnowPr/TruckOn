@@ -21,13 +21,12 @@ namespace MDispatch.Service
                 RestClient client = new RestClient(Config.BaseReqvesteUrl);
                 RestRequest request = new RestRequest("Mobile/ActiveOreder", Method.POST);
                 client.Timeout = 60000;
+                
                 request.AddHeader("Accept", "application/json");
                 request.AddParameter("token", token);
                 response = client.Execute(request);
                 content = response.Content;
-                byte[] s = Encoding.UTF8.GetBytes(content);
-                
-            }
+            }   
             catch (Exception)
             {
                 return 4;

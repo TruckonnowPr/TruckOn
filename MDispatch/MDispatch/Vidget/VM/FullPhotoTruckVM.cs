@@ -375,7 +375,7 @@ namespace MDispatch.Vidget.VM
                     await PopupNavigation.PopAsync();
                     await PopupNavigation.PushAsync(new Errror(description, null));
                 }
-                else if (state == 3)
+                else if (state == 3) 
                 {
                     await PopupNavigation.PopAsync();
                     string plateTruck = plateTruckAndTrailer.Split(',')[0];
@@ -392,7 +392,7 @@ namespace MDispatch.Vidget.VM
                         {
                             await PopupNavigation.PushAsync(new PlateTruckWrite(this));
                         }
-                        else if (TruckCar.TypeTransportVehicle == "PlateTrailerWrite")
+                        else if (TruckCar.TypeTransportVehicle == "Trailer")
                         {
                             await PopupNavigation.PushAsync(new PlateTruckWrite(this));
                         }
