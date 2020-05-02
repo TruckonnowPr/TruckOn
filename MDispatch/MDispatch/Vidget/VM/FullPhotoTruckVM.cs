@@ -25,9 +25,6 @@ namespace MDispatch.Vidget.VM
         private ManagerDispatchMob managerDispatchMob = null;
         public INavigation Navigation = null;
         public DelegateCommand NextCommand { get; set; }
-
-       
-
         private InitDasbordDelegate initDasbordDelegate = null;
 
         [System.Obsolete]
@@ -144,7 +141,7 @@ namespace MDispatch.Vidget.VM
         private async Task NextPage()
         {
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
-            //bool isNavigationMany = false;
+            bool isNavigationMany = false;
             bool isEndInspection = false;
             string description = null;
             int state = 0;
