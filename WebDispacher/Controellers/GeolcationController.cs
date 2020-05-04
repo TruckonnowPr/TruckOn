@@ -15,6 +15,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> GeolocationPageGet()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;

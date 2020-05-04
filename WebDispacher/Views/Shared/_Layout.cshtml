@@ -6,19 +6,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <div style="background-color: rgba(45,45,45,0.9);display:flex;position:fixed; width:100%;top:0px;z-index:100;">
-        <img class="imgMirir" src="~/Icon/MirorR.png" height="40" asp-append-version="true"/>
-        <nav class="navst">
-            <span><a class="linkASt" href="http://truckonnow.com">Truckonnow</a></span>
-            <input class="btn" type="button" value="Order" @ViewData["hidden"] onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';" />
-            <input class="btn" type="button" value="GPS Traking" @ViewData["hidden"] onclick="window.location.href='@Url.Action("Map", "Geolcation")';" />
-            <input class="btn" type="button" value="Contacts" @ViewData["hidden"] onclick="window.location.href='@Url.Action("Contacts", "Contact")';" />
-            <input class="btn" type="button" value="Drivers" @ViewData["hidden"] onclick="window.location.href='@Url.Action("Drivers", "Driver")';" />
-            <input class="btn" type="button" value="Equipment" @ViewData["hidden"] onclick="window.location.href='@Url.Action("Trucks", "Equipment")';" />
-            <input class="btn" type="button" value="Report" @ViewData["hidden"] />
-        </nav>
-        <img class="imgMirir" src="~/Icon/MirorL.png" height="40" asp-append-version="true"/>
-    </div>
+    @if (ViewData["TypeNavBar"] == "AllUsers")
+    {
+        @await Html.PartialAsync("~/Views/PartView/NavAllUsers.cshtml");
+    }
+    else if (ViewData["TypeNavBar"] == "BaseCommpany")
+    {
+        @await Html.PartialAsync("~/Views/PartView/NavBaseCommpany.cshtml");
+    }
     <div style="width:99%;height:97vh;padding-top:30px">
         @RenderBody()
     </div>

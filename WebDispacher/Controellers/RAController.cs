@@ -15,7 +15,6 @@ namespace WebDispacher.Controellers
         public IActionResult Index()
         {
             IActionResult actionResult = null;
-            ViewData["hidden"] = "hidden";
             ViewData["TextError"] = "";
             ViewBag.BaseUrl = Config.BaseReqvesteUrl;
             if (Request.Cookies.ContainsKey("KeyAvtho"))
@@ -24,6 +23,7 @@ namespace WebDispacher.Controellers
             }
             else
             {
+                ViewData["TypeNavBar"] = "AllUsers";
                 actionResult = View("Avthorization");
             }
             return actionResult;
@@ -33,6 +33,7 @@ namespace WebDispacher.Controellers
         public IActionResult Avthorization(string Email, string Password)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 if (Email == null || Password == null)
@@ -68,6 +69,7 @@ namespace WebDispacher.Controellers
         public IActionResult RecoveryPassword(string idDriver, string token)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
@@ -89,6 +91,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> RestorePassword(string newPassword, string idDriver, string token)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;

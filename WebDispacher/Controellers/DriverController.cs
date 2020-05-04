@@ -18,6 +18,7 @@ namespace WebDispacher.Controellers
         public IActionResult Drivers(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -49,6 +50,7 @@ namespace WebDispacher.Controellers
         public IActionResult CheckDriver(string commpanyID, string nameDriver, string driversLicense, string comment)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -83,6 +85,7 @@ namespace WebDispacher.Controellers
         public IActionResult WelcomeDriverCheckReport(string commpanyID, string nameDriver, string driversLicense, string countDriverReports)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -134,6 +137,7 @@ namespace WebDispacher.Controellers
         public IActionResult AddReport()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -165,6 +169,7 @@ namespace WebDispacher.Controellers
         public IActionResult AddReport(string fullName, string driversLicenseNumber, string description)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -197,6 +202,7 @@ namespace WebDispacher.Controellers
         public IActionResult WelcomeAddReport()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -216,6 +222,7 @@ namespace WebDispacher.Controellers
         public IActionResult WelcomeAddReport(string fullName, string driversLicenseNumber, string description)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -236,6 +243,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -267,6 +275,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -307,6 +316,7 @@ namespace WebDispacher.Controellers
         public IActionResult RemoveDriver(int id, string comment)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -401,6 +411,7 @@ namespace WebDispacher.Controellers
         public IActionResult EditeDriver(int id)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -433,6 +444,7 @@ namespace WebDispacher.Controellers
         public IActionResult EditeDriver(int id, string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -465,6 +477,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> ViewAllInspactionDate(string idDriver, string idTruck, string idTrailer, string date)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -517,6 +530,7 @@ namespace WebDispacher.Controellers
         public IActionResult ViewInspaction(string idInspection, string idDriver, string date)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;

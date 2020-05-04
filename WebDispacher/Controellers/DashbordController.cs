@@ -43,6 +43,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> NewLoad(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -166,6 +167,7 @@ namespace WebDispacher.Controellers
         public IActionResult Solved(string id, string page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
@@ -198,6 +200,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Archived(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -259,6 +262,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Assigned(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -302,6 +306,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Billed(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -345,6 +350,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Deleted(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -406,6 +412,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Delivered(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -460,6 +467,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Paid(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -503,6 +511,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Pickedup(int page)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -546,6 +555,7 @@ namespace WebDispacher.Controellers
         public IActionResult DeletedOrder(string id)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -577,6 +587,7 @@ namespace WebDispacher.Controellers
         public IActionResult DeletedOrder(string id, string status)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -609,6 +620,7 @@ namespace WebDispacher.Controellers
         public IActionResult FullInfoOrder(string id, string stasus)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -653,6 +665,7 @@ namespace WebDispacher.Controellers
         public IActionResult EditOrder(string id, string stasus)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -692,6 +705,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> CreatOrderpage()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -725,6 +739,7 @@ namespace WebDispacher.Controellers
             string cityD, string stateD, string zipD, string phoneD, string emailD, string ScheduledPickupDateD, string paymentMethod, string price, string paymentTerms, string brokerFee)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;

@@ -18,6 +18,7 @@ namespace WebDispacher.Controellers
         public IActionResult Trucks()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -49,6 +50,7 @@ namespace WebDispacher.Controellers
         public IActionResult Index()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -80,6 +82,7 @@ namespace WebDispacher.Controellers
         public IActionResult RemoveTruck(string id)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -112,6 +115,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -144,6 +148,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver(string nameTruk, string yera, string make, string model , string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, List<IFormFile> registrationDoc, List<IFormFile> ensuresDoc, List<IFormFile> _3Doc)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -176,6 +181,7 @@ namespace WebDispacher.Controellers
         public IActionResult RemoveTrailer(string id)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -208,6 +214,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateTrailer()
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -240,6 +247,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, List<IFormFile> registrationDoc, List<IFormFile> ensuresDoc, List<IFormFile> _3Doc)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -328,6 +336,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> GoToViewTruckDoc(string id)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -360,6 +369,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> GoToViewTraileDoc(string id)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -452,6 +462,7 @@ namespace WebDispacher.Controellers
         public IActionResult RemoveDoc(string idDock, string id, string type)
         {
             IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
