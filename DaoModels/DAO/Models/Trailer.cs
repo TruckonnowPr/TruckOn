@@ -5,6 +5,7 @@ namespace DaoModels.DAO.Models
     public class Trailer
     {
         public int Id { get; set; }
+        public int CompanyId { get; set; }
         public string Name { get; set; }
         public string Year { get; set; }
         public string Make { get; set; }

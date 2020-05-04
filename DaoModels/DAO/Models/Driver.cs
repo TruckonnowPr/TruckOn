@@ -5,6 +5,7 @@ namespace DaoModels.DAO.Models
     public class Driver
     {
         public int Id { get; set; }
+        public int CompanyId { get; set; }
         public string EmailOrLogin { get; set; }
         public string FullName { get; set; }
         public string EmailAddress { get; set; }

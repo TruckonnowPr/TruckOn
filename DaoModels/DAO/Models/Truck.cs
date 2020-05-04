@@ -3,6 +3,7 @@
     public class Truck
     {
         public int Id { get; set; }
+        public int CompanyId { get; set; }
         public string NameTruk { get; set; }
         public string Yera { get; set; }
         public string Make { get; set; }

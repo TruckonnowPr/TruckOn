@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="DAO\DTO\" />
+    <Folder Include="DAO\Interface\" />
   </ItemGroup>
 
 </Project>

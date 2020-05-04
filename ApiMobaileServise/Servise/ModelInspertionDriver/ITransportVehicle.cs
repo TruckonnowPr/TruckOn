@@ -8,6 +8,7 @@ namespace ApiMobaileServise.Servise.ModelInspertionDriver
         string Type { get; set; }
         bool IsNextInspection { get; set; }
         List<string> NamePatern { get; set; }
+        List<string> Layouts { get; set; }
         string PlateTruck { get; set; }
         string PlateTraler { get; set; }
         string TypeTransportVehicle { get; set; }

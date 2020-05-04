@@ -1,4 +1,5 @@
 ﻿using DaoModels.DAO.Models;
+using DaoModels.DAO.Models.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System;
@@ -38,6 +39,10 @@ namespace DaoModels.DAO
         public DbSet<PasswordRecovery> PasswordRecoveries { get; set; }
         public DbSet<DriverReport> DriverReports { get; set; }
         public DbSet<HistoryOrder> HistoryOrders { get; set; }
+        public DbSet<Commpany> Commpanies { get; set; }
+        public DbSet<TransportVehicle> TransportVehicles { get; set; }
+        public DbSet<NamePatern> NamePaterns { get; set; }
+        public DbSet<Layouts> Layouts { get; set; }
 
         public Context()
         {
@@ -56,8 +61,8 @@ namespace DaoModels.DAO
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=WebDispatchDB;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Data Source=212.224.113.5;Initial Catalog=WebDispatch;Integrated Security=False;User ID=roma;Password=123;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=WebDispatchDB;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Data Source=212.224.113.5;Initial Catalog=WebDispatch;Integrated Security=False;User ID=roma;Password=123;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
                 //optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=WebDispatch;Integrated Security=False;User ID=roma;Password=123;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
             }
         }
