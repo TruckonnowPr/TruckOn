@@ -13,7 +13,7 @@ namespace WebDispacher.Controellers
         public IActionResult Contacts(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "NavBaseCommpany";
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -48,7 +48,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateContact()
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "NavBaseCommpany";
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -79,7 +79,7 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver(string fullName, string emailAddress, string phoneNumbe)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "NavBaseCommpany";
+            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;

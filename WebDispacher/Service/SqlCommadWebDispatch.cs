@@ -32,7 +32,8 @@ namespace WebDispacher.Dao
                     context.Commpanies.Add(new Commpany()
                     {
                         Name = "Truckonnow",
-                        Type = TypeCompany.BaseCommpany
+                        Type = TypeCompany.BaseCommpany,
+                        DateRegistration = DateTime.Now.ToString()
                     });
                     context.SaveChanges();
                 }
@@ -90,6 +91,11 @@ namespace WebDispacher.Dao
             {
 
             } 
+        }
+
+        internal List<Commpany> GetCompanies()
+        {
+            return context.Commpanies.ToList();
         }
 
         internal Commpany GetUserByKeyUser(int key)

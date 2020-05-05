@@ -1,8 +1,12 @@
-﻿using DaoModels.DAO.Models;
+﻿using DaoModels.DAO.DTO;
+using DaoModels.DAO.Enum;
+using DaoModels.DAO.Models;
+using iTextSharp.text;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using WebDispacher.Dao;
 using WebDispacher.Notify;
@@ -37,6 +41,19 @@ namespace WebDispacher.Service
         public void ArchvedOrder(string id)
         {
             _sqlEntityFramworke.RecurentOnArchived(id);
+        }
+
+        internal List<CompanyDTO> GetCompanies()
+        {
+            return _sqlEntityFramworke.GetCompanies()
+                .Select(z => new CompanyDTO()
+                {
+                    Id = z.Id,
+                    Active = z.Active,
+                    Name = z.Name,
+                    Type = z.Type == TypeCompany.BaseCommpany ? "Home Company" : z.Type == TypeCompany.NormalCompany ? "Regular company" : "Unknown",
+                    DateRegistration = z.DateRegistration
+                }).ToList();
         }
 
         internal async Task AddNewOrder(string urlPage)
