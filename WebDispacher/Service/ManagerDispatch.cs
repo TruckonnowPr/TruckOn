@@ -19,10 +19,15 @@ namespace WebDispacher.Service
             _sqlEntityFramworke = new SqlCommadWebDispatch();
         }
         
-        public async Task<List<Driver>> GetDrivers()
+        public async Task<List<Driver>> GetDrivers(string idCompany)
         {
-            return await _sqlEntityFramworke.GetDriversInDb();
+            return await _sqlEntityFramworke.GetDriversInDb(idCompany);
         }
+
+        //public async Task<List<Driver>> GetDrivers()
+        //{
+        //    return await _sqlEntityFramworke.GetDriversInDb();
+        //}
 
         public void DeletedOrder(string id)
         {
@@ -41,14 +46,14 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.AddOrder(shipping);
         }
 
-        public List<Truck> GetTrucks()
+        public List<Truck> GetTrucks(string idCompany)
         {
-            return _sqlEntityFramworke.GetTrucs();
+            return _sqlEntityFramworke.GetTrucs(idCompany);
         }
 
-        public List<Contact> GetContacts()
+        public List<Contact> GetContacts(string idCompany)
         {
-            return _sqlEntityFramworke.GetContactsDB();
+            return _sqlEntityFramworke.GetContactsDB(idCompany);
         }
 
         internal int[] GetIdTruckAdnTrailar(string idDriver)
@@ -59,6 +64,16 @@ namespace WebDispacher.Service
         internal async Task<Trailer> GetTrailer(string idDriver)
         {
             return await _sqlEntityFramworke.GetTrailerDb(idDriver);
+        }
+
+        internal Commpany GetUserByKeyUser(int key)
+        {
+            return _sqlEntityFramworke.GetUserByKeyUser(key);
+        }
+
+        internal int GetUserByKey(int key)
+        {
+            return _sqlEntityFramworke.GetUserByKey(key);
         }
 
         internal async Task<Truck> GetTruck(string idDriver)
@@ -269,9 +284,9 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.AddNewReportDriverDb(fullName, driversLicenseNumber, description);
         }
 
-        internal List<Trailer> GetTrailers()
+        internal List<Trailer> GetTrailers(string idCompany)
         {
-            return _sqlEntityFramworke.GetTrailersDb();
+            return _sqlEntityFramworke.GetTrailersDb(idCompany);
         }
 
         internal void RemoveTruck(string id)
@@ -309,9 +324,9 @@ namespace WebDispacher.Service
             return key != null && _sqlEntityFramworke.CheckKeyDb(key);
         }
 
-        public List<Driver> GetDrivers(int pag)
+        public List<Driver> GetDrivers(int pag, string idCompany)
         {
-            return _sqlEntityFramworke.GetDrivers(pag);
+            return _sqlEntityFramworke.GetDrivers(pag, idCompany);
         }
 
         public async void Assign(string idOrder, string idDriver)
@@ -339,9 +354,10 @@ namespace WebDispacher.Service
             });
         }
 
-        public void CreateTruk(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        public void CreateTruk(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, 
+            string color, string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
-            int id = _sqlEntityFramworke.CreateTrukDb(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color);
+            int id = _sqlEntityFramworke.CreateTrukDb(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany);
             Task.Run(() =>
             {
                 SaveDocTruck(registrationDoc, "Registration", id.ToString());
@@ -350,13 +366,14 @@ namespace WebDispacher.Service
             });
         }
 
-        public void CreateContact(string fullName, string emailAddress, string phoneNumbe)
+        public void CreateContact(string fullName, string emailAddress, string phoneNumbe, string idCompany)
         {
             Contact contact = new Contact();
             contact.Email = emailAddress;
             contact.Name = fullName;
             contact.Phone = phoneNumbe;
             contact.Phone = phoneNumbe;
+            contact.CompanyId = Convert.ToInt32(idCompany);
             _sqlEntityFramworke.SaveNewContact(contact);
         }
 
@@ -443,9 +460,10 @@ namespace WebDispacher.Service
                         price, paymentTerms, brokerFee);
         }
 
-        internal void CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        internal void CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns,
+           string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
-            int id = _sqlEntityFramworke.CreateTrailerDb(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns);
+            int id = _sqlEntityFramworke.CreateTrailerDb(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany);
             Task.Run(() =>
             {
                 SaveDocTrailer(registrationDoc, "Registration", id.ToString());
@@ -454,7 +472,7 @@ namespace WebDispacher.Service
             });
         }
 
-        public void CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
+        public void CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber, string idCompany)
         {
             Driver driver = new Driver();
             driver.FullName = fullName;
@@ -464,6 +482,7 @@ namespace WebDispacher.Service
             driver.TrailerCapacity = trailerCapacity;
             driver.DriversLicenseNumber = driversLicenseNumber;
             driver.DateRegistration = DateTime.Now.ToString();
+            driver.CompanyId = Convert.ToInt32(idCompany);
             _sqlEntityFramworke.AddDriver(driver);
         }
 

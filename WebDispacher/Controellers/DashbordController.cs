@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using DaoModels.DAO.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using WebDispacher.Service;
 
 namespace WebDispacher.Controellers
@@ -47,9 +43,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     await Task.WhenAll(
                     Task.Run(async() =>
@@ -58,7 +55,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async() =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }),
                     Task.Run(async() =>
                     {
@@ -204,10 +201,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 List<Shipping> shippings = null;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     await Task.WhenAll(
                     Task.Run(async() =>
@@ -237,7 +235,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async() =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }));
                     actionResult = View("Archived");
                 }
@@ -266,9 +264,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -277,7 +276,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async () =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }),
                     Task.Run(async () =>
                     {
@@ -310,9 +309,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -321,7 +321,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async () =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }),
                     Task.Run(async () =>
                     {
@@ -354,9 +354,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     List<Shipping> shippings = null;
                     await Task.WhenAll(
@@ -387,7 +388,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async() =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }));
                     actionResult = View("Deleted");
                 }
@@ -416,9 +417,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     List<Shipping> shippings = new List<Shipping>();
 
@@ -442,7 +444,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async() =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }));
                     actionResult = View("Delivered");
                 }
@@ -471,9 +473,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -482,7 +485,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async () =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }),
                     Task.Run(async () =>
                     {
@@ -515,9 +518,10 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -526,7 +530,7 @@ namespace WebDispacher.Controellers
                     }),
                     Task.Run(async () =>
                     {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers();
+                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }),
                     Task.Run(async () =>
                     {

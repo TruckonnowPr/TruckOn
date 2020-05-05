@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DaoModels.DAO.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebDispacher.Service;
 
@@ -44,7 +45,10 @@ namespace WebDispacher.Controellers
                     ViewData["hidden"] = "";
                     actionResult = Redirect("/Dashbord/Order/NewLoad");
                     int key = managerDispatch.Createkey(Email, Password);
+                    Commpany Commpany = managerDispatch.GetUserByKeyUser(key);
                     Response.Cookies.Append("KeyAvtho", key.ToString());
+                    Response.Cookies.Append("CommpanyId", Commpany.Id.ToString());
+                    Response.Cookies.Append("CommpanyName", Commpany.Name);
                 }
                 else
                 {

@@ -1,4 +1,5 @@
 ﻿using DaoModels.DAO;
+using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -18,42 +19,69 @@ namespace WebDispacher.Dao
         {
             context = new Context();
             if (Context._cache == null) { Context._cache = new MemoryCache(new MemoryCacheOptions()); }
+            InitCommpanyOne();
             InitUserOne();
+        }
+
+        private void InitCommpanyOne()
+        {
+            try
+            {
+                if (context.Commpanies.Count() == 0)
+                {
+                    context.Commpanies.Add(new Commpany()
+                    {
+                        Name = "Truckonnow",
+                        Type = TypeCompany.BaseCommpany
+                    });
+                    context.SaveChanges();
+                }
+            }
+            catch 
+            { }
         }
 
         private async void InitUserOne()
         {
             try
             {
-                if (context.User.Count() == 0)
+                if (context.User.Count() == 0 && context.Commpanies.Count() != 0)
                 {
+                    Commpany commpany = context.Commpanies.First();
                     Users users = new Users();
                     users.Login = "DevRoma";
                     users.Password = "polkilo123";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "ArtemManager";
                     users.Password = "truckon777";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Designer";
                     users.Password = "truckon777";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Truckonnow";
                     users.Password = "truckon777";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Truckonnow1";
                     users.Password = "truckon777";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Truckonnow2";
                     users.Password = "truckon777";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Truckonnow3";
                     users.Password = "truckon777";
+                    users.CompanyId = commpany.Id;
                     await context.User.AddAsync(users);
                     await context.SaveChangesAsync();
                 }
@@ -62,6 +90,19 @@ namespace WebDispacher.Dao
             {
 
             } 
+        }
+
+        internal Commpany GetUserByKeyUser(int key)
+        {
+            Commpany commpany = null;
+            Users users = context.User.First(u => u.KeyAuthorized == key.ToString());
+            commpany = context.Commpanies.First(c => c.Id == users.CompanyId);
+            return commpany;
+        }
+
+        internal int GetUserByKey(int key)
+        {
+            return context.User.First(u => u.KeyAuthorized == key.ToString()).CompanyId;
         }
 
         internal async Task<Truck> GetTruckDb(string idDriver)
@@ -231,9 +272,9 @@ namespace WebDispacher.Dao
             return idTruckAdnTrailar;
         }
 
-        internal List<Trailer> GetTrailersDb()
+        internal List<Trailer> GetTrailersDb(string idCompany)
         {
-            return context.Trailers.ToList();
+            return context.Trailers.Where(t => t.CompanyId.ToString() == idCompany).ToList();
         }
 
         internal void RemoveTruck(string id)
@@ -242,9 +283,9 @@ namespace WebDispacher.Dao
             context.SaveChanges();
         }
 
-        internal List<Truck> GetTrucs()
+        internal List<Truck> GetTrucs(string idCompany)
         {
-            return context.Trucks.ToList();
+            return context.Trucks.Where(t => t.CompanyId.ToString() == idCompany).ToList();
         }
 
         private void Init()
@@ -260,9 +301,9 @@ namespace WebDispacher.Dao
             await context.SaveChangesAsync();
         }
 
-        public List<Contact> GetContactsDB()
+        public List<Contact> GetContactsDB(string idCompany)
         {
-            return context.Contacts.ToList();
+            return context.Contacts.Where(c => c.CompanyId.ToString() == idCompany).ToList();
         }
 
         public async Task<List<Driver>> GetDriversInDb()
@@ -270,6 +311,17 @@ namespace WebDispacher.Dao
             List<Driver> drivers = null;
             drivers = await context.Drivers
                 .Where(d => !d.IsFired)
+                .Include(d => d.InspectionDrivers)
+                .Include(d => d.geolocations)
+                .ToListAsync();
+            return drivers;
+        }
+
+        public async Task<List<Driver>> GetDriversInDb(string idCommpany)
+        {
+            List<Driver> drivers = null;
+            drivers = await context.Drivers
+                .Where(d => !d.IsFired && d .CompanyId.ToString() == idCommpany)
                 .Include(d => d.InspectionDrivers)
                 .Include(d => d.geolocations)
                 .ToListAsync();
@@ -310,7 +362,7 @@ namespace WebDispacher.Dao
             }
         }
 
-        internal int CreateTrukDb(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color)
+        internal int CreateTrukDb(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, string idCompany)
         {
             Truck truck = new Truck()
             {
@@ -324,7 +376,8 @@ namespace WebDispacher.Dao
                 Satet = state,
                 Vin = vin,
                 Yera = yera,
-                TypeTruk = typeTruk
+                TypeTruk = typeTruk,
+                CompanyId = Convert.ToInt32(idCompany)
             };
             context.Trucks.Add(truck);
             context.SaveChanges();
@@ -399,7 +452,7 @@ namespace WebDispacher.Dao
             await context.SaveChangesAsync();
         }
 
-        internal int CreateTrailerDb(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns)
+        internal int CreateTrailerDb(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, string idCompany)
         {
             Trailer trailer = new Trailer()
             {
@@ -413,7 +466,8 @@ namespace WebDispacher.Dao
                 Plate = plate,
                 Vin = vin,
                 Year = year,
-                Type = typeTrailer
+                Type = typeTrailer,
+                CompanyId = Convert.ToInt32(idCompany)
             };
             context.Trailers.Add(trailer);
             context.SaveChanges();
@@ -695,10 +749,10 @@ namespace WebDispacher.Dao
             return driver.IsInspectionToDayDriver;
         }
 
-        public List<Driver> GetDrivers(int page)
+        public List<Driver> GetDrivers(int page, string idCompany)
         {
             List<Driver> drivers = null;
-            drivers = context.Drivers.Where(d => !d.IsFired).ToList();
+            drivers = context.Drivers.Where(d => !d.IsFired && d.CompanyId.ToString() == idCompany).ToList();
             if (page == -1)
             {
             }

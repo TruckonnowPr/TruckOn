@@ -22,11 +22,12 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    ViewBag.Drivers = managerDispatch.GetDrivers(page);
+                    ViewBag.Drivers = managerDispatch.GetDrivers(page, idCompany);
                     actionResult = View("FullAllDrivers");
                 }
                 else
@@ -279,14 +280,15 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     if ((fullName != null && fullName != "") && (emailAddress != null && emailAddress != "") && (emailAddress != null && emailAddress != "")
                         && (password != null && password != "") && (fullName != null && fullName != ""))
                     {
-                        managerDispatch.CreateDriver(fullName, emailAddress, password, phoneNumbe, trailerCapacity, driversLicenseNumber);
+                        managerDispatch.CreateDriver(fullName, emailAddress, password, phoneNumbe, trailerCapacity, driversLicenseNumber, idCompany);
                         actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
                     }
                     else
@@ -342,68 +344,6 @@ namespace WebDispacher.Controellers
             }
             return actionResult;
         }
-
-        //[HttpGet]
-        //[Route("Driver/Drivers/Restore")]
-        //public IActionResult RestoreDriver(int id)
-        //{
-        //    IActionResult actionResult = null;
-        //    try
-        //    {
-        //        string key = null;
-        //        ViewBag.BaseUrl = Config.BaseReqvesteUrl;
-        //        Request.Cookies.TryGetValue("KeyAvtho", out key);
-        //        if (managerDispatch.CheckKey(key))
-        //        {
-        //            managerDispatch.RestoreDrive(id);
-        //            actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
-        //        }
-        //        else
-        //        {
-        //            if (Request.Cookies.ContainsKey("KeyAvtho"))
-        //            {
-        //                Response.Cookies.Delete("KeyAvtho");
-        //            }
-        //            actionResult = Redirect(Config.BaseReqvesteUrl);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //    }
-        //    return actionResult;
-        //}
-
-        //[HttpGet]
-        //[Route("Driver/Drivers/Comment")]
-        //public IActionResult CommentDriver(int id, string Comment)
-        //{
-        //    IActionResult actionResult = null;
-        //    try
-        //    {
-        //        string key = null;
-        //        ViewBag.BaseUrl = Config.BaseReqvesteUrl;
-        //        Request.Cookies.TryGetValue("KeyAvtho", out key);
-        //        if (managerDispatch.CheckKey(key))
-        //        {
-        //            managerDispatch.CommentDriver(id, Comment);
-        //            actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
-        //        }
-        //        else
-        //        {
-        //            if (Request.Cookies.ContainsKey("KeyAvtho"))
-        //            {
-        //                Response.Cookies.Delete("KeyAvtho");
-        //            }
-        //            actionResult = Redirect(Config.BaseReqvesteUrl);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //    }
-        //    return actionResult;
-        //}
 
         [HttpGet]
         [Route("Driver/Drivers/Edit")]
@@ -481,13 +421,14 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    List<Driver> drivers = await managerDispatch.GetDrivers();
-                    List<Truck> trucks = managerDispatch.GetTrucks();
-                    List<Trailer> trailers = managerDispatch.GetTrailers();
+                    List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                    List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
+                    List<Trailer> trailers = managerDispatch.GetTrailers(idCompany);
                     ViewBag.InspectionTruck = managerDispatch.GetInspectionTrucks(idDriver, idTruck, idTrailer, date)
                         .Select(x => new InspectinView()
                         {
@@ -534,12 +475,13 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    List<Truck> trucks = managerDispatch.GetTrucks();
-                    List<Trailer> trailers = managerDispatch.GetTrailers();
+                    List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
+                    List<Trailer> trailers = managerDispatch.GetTrailers(idCompany);
                     InspectionDriver inspectionDriver = managerDispatch.GetInspectionTruck(idInspection);
                     Driver drivers = managerDispatch.GetDriver(inspectionDriver.Id.ToString());
                     ViewBag.InspectionTruck = inspectionDriver;

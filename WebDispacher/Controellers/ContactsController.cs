@@ -17,11 +17,12 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    ViewBag.Contacts = managerDispatch.GetContacts();
+                    ViewBag.Contacts = managerDispatch.GetContacts(idCompany);
                     actionResult = View("FullContacts");
                 }
                 else
@@ -82,14 +83,15 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     if ((fullName != null && fullName != "") && (emailAddress != null && emailAddress != "") && (emailAddress != null && emailAddress != "")
                        && (fullName != null && fullName != ""))
                     {
-                        managerDispatch.CreateContact(fullName, emailAddress, phoneNumbe);
+                        managerDispatch.CreateContact(fullName, emailAddress, phoneNumbe, idCompany);
                         actionResult = Redirect($"{Config.BaseReqvesteUrl}/Contact/Contacts");
                     }
                     else

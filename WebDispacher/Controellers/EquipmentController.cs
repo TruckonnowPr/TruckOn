@@ -22,11 +22,12 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    ViewBag.Trucks = managerDispatch.GetTrucks();
+                    ViewBag.Trucks = managerDispatch.GetTrucks(idCompany);
                     actionResult = View($"AllTruck");
                 }
                 else
@@ -54,11 +55,12 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    ViewBag.Trailers = managerDispatch.GetTrailers();
+                    ViewBag.Trailers = managerDispatch.GetTrailers(idCompany);
                     actionResult = View($"AllTrailer");
                 }
                 else
@@ -152,12 +154,13 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     
-                       managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, registrationDoc[0], ensuresDoc[0], _3Doc[0]);
+                       managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc[0], ensuresDoc[0], _3Doc[0]);
                         actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
                 }
                 else
@@ -251,12 +254,13 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
 
-                    managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, registrationDoc[0], ensuresDoc[0], _3Doc[0]);
+                    managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany, registrationDoc[0], ensuresDoc[0], _3Doc[0]);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trailers");
                 }
                 else
@@ -488,8 +492,6 @@ namespace WebDispacher.Controellers
             }
             return actionResult;
         }
-
-
 
         [Route("GetDock")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
