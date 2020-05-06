@@ -1,7 +1,7 @@
 ﻿using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
-using iTextSharp.text;
+using Google.Type;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -109,6 +109,42 @@ namespace WebDispacher.Service
             vehiclwInformation.Color = Color;
             vehiclwInformation.Lot = LotNumber;
             _sqlEntityFramworke.SavevechInDb(idVech, vehiclwInformation);
+        }
+
+        internal void AddCommpany(string nameCommpany, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
+        {
+            Commpany commpany = new Commpany()
+            {
+                Active = true,
+                DateRegistration = DateTime.Now.ToString(),
+                Name = nameCommpany,
+                Type = TypeCompany.NormalCompany
+            };
+            int id = _sqlEntityFramworke.AddCommpany(commpany);
+            _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
+            Task.Run(async() =>
+            {
+                await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
+                await SaveDocCpmmpany(IFTA, "IFTA (optional for 26000+)", id.ToString());
+                await SaveDocCpmmpany(KYU, "KYU", id.ToString());
+                await SaveDocCpmmpany(logbookPapers, "Logbook Papers (manual, certificate, malfunction letter)", id.ToString());
+                await SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
+                await SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
+            });
+        }
+
+        private string CreateToken(string login, string password)
+        {
+            string token = "";
+            for (int i = 0; i < login.Length; i++)
+            {
+                token += i * new Random().Next(1, 1000) + login[i];
+            }
+            for (int i = 0; i < password.Length; i++)
+            {
+                token += i * new Random().Next(1, 1000) + password[i];
+            }
+            return token;
         }
 
         internal async Task<Truck> GetTruckByPlate(string truckPlate)
@@ -375,11 +411,11 @@ namespace WebDispacher.Service
             string color, string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             int id = _sqlEntityFramworke.CreateTrukDb(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany);
-            Task.Run(() =>
+            Task.Run(async() =>
             {
-                SaveDocTruck(registrationDoc, "Registration", id.ToString());
-                SaveDocTruck(ensuresDoc, "Inshurance", id.ToString());
-                SaveDocTruck(_3Doc, "3", id.ToString());
+                await SaveDocTruck(registrationDoc, "Registration", id.ToString());
+                await SaveDocTruck(ensuresDoc, "Inshurance", id.ToString());
+                await SaveDocTruck(_3Doc, "3", id.ToString());
             });
         }
 
@@ -481,11 +517,11 @@ namespace WebDispacher.Service
            string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             int id = _sqlEntityFramworke.CreateTrailerDb(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany);
-            Task.Run(() =>
+            Task.Run(async() =>
             {
-                SaveDocTrailer(registrationDoc, "Registration", id.ToString());
-                SaveDocTrailer(ensuresDoc, "Inshurance", id.ToString());
-                SaveDocTrailer(_3Doc, "3", id.ToString());
+                await SaveDocTrailer(registrationDoc, "Registration", id.ToString());
+                await SaveDocTrailer(ensuresDoc, "Inshurance", id.ToString());
+                await SaveDocTrailer(_3Doc, "3", id.ToString());
             });
         }
 
@@ -546,7 +582,7 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetInspectionTruck(idInspection);
         }
 
-        internal void SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
+        internal async Task SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Truck/{id}/" + uploadedFile.FileName;
             if(!Directory.Exists("../Document/Truck"))
@@ -559,12 +595,12 @@ namespace WebDispacher.Service
             }
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                uploadedFile.CopyTo(fileStream);
+                await uploadedFile.CopyToAsync(fileStream);
             }
             _sqlEntityFramworke.SaveDocTruckDb(path, id, nameDoc);
         }
 
-        internal void SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
+        internal async Task SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Traile/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Traile"))
@@ -577,9 +613,27 @@ namespace WebDispacher.Service
             }
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                uploadedFile.CopyTo(fileStream);
+                await uploadedFile.CopyToAsync(fileStream);
             }
             _sqlEntityFramworke.SaveDocTrailekDb(path, id, nameDoc);
+        }
+
+        internal async Task SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
+        {
+            string path = $"../Document/Copmpany/{id}/" + uploadedFile.FileName;
+            if (!Directory.Exists("../Document/Copmpany"))
+            {
+                Directory.CreateDirectory($"../Document/Copmpany");
+            }
+            if (!Directory.Exists($"../Document/Copmpany/{id}"))
+            {
+                Directory.CreateDirectory($"../Document/Copmpany/{id}");
+            }
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+               await  uploadedFile.CopyToAsync(fileStream);
+            }
+            _sqlEntityFramworke.SaveDocCommpanyDb(path, id, nameDoc);
         }
 
         internal async Task<List<DocumentTruckAndTrailers>> GetTraileDoc(string id)

@@ -403,7 +403,7 @@ namespace WebDispacher.Controellers
 
         [Route("Truck/SaveDoc")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public void SaveDoc(IFormFile uploadedFile, string nameDoc, string id)
+        public async Task SaveDoc(IFormFile uploadedFile, string nameDoc, string id)
         {
             //IActionResult actionResult = null;
             try
@@ -413,7 +413,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 if (managerDispatch.CheckKey(key))
                 {
-                    managerDispatch.SaveDocTruck(uploadedFile, nameDoc, id);
+                    await managerDispatch.SaveDocTruck(uploadedFile, nameDoc, id);
                 }
                 else
                 {
@@ -433,7 +433,7 @@ namespace WebDispacher.Controellers
 
         [Route("Trailer/SaveDoc")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public void SaveDoc1(IFormFile uploadedFile, string nameDoc, string id)
+        public async Task SaveDoc1(IFormFile uploadedFile, string nameDoc, string id)
         {
             //IActionResult actionResult = null;
             try
@@ -443,7 +443,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 if (managerDispatch.CheckKey(key))
                 {
-                    managerDispatch.SaveDocTrailer(uploadedFile, nameDoc, id);
+                    await managerDispatch.SaveDocTrailer(uploadedFile, nameDoc, id);
                 }
                 else
                 {

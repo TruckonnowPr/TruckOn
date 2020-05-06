@@ -1,6 +1,9 @@
 ﻿using DaoModels.DAO.Enum;
+using iTextSharp.text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using WebDispacher.Service;
 
 namespace WebDispacher.Controellers
@@ -10,6 +13,7 @@ namespace WebDispacher.Controellers
     {
         ManagerDispatch managerDispatch = new ManagerDispatch();
 
+        [HttpGet]
         [Route("Companies")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult GetCompanies()
@@ -22,11 +26,78 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
-                if (managerDispatch.CheckKey(key) && idCompany == "1")
+                if (managerDispatch.CheckKey(key))
                 {
                     ViewBag.Companies = managerDispatch.GetCompanies();
                     actionResult = View("Companies");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("CreateCompany")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult CreateCompany()
+        {
+            IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                if (managerDispatch.CheckKey(key))
+                {
+                    actionResult = View("CreateCommpany");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("CreateCompany")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult CreateCompany(string nameCommpany, List<IFormFile> MCNumberConfirmation, List<IFormFile> IFTA, List<IFormFile> KYU, List<IFormFile> logbookPapers, List<IFormFile> COI, 
+            List<IFormFile> permits)
+        {
+            IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                if (managerDispatch.CheckKey(key))
+                {
+                    managerDispatch.AddCommpany(nameCommpany, MCNumberConfirmation[0], IFTA[0], KYU[0], logbookPapers[0], COI[0], permits[0]);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Companies");
                 }
                 else
                 {

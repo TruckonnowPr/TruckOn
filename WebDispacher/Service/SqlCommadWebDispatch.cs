@@ -123,6 +123,24 @@ namespace WebDispacher.Dao
             return truck; 
         }
 
+        internal void CreateUserForCompanyId(int id, string nameCommpany, string password)
+        {
+            context.User.Add(new Users()
+            {
+                CompanyId = id,
+                Login = nameCommpany + "Admin",
+                Password = password
+            });
+            context.SaveChanges();
+        }
+
+        internal int AddCommpany(Commpany commpany)
+        {
+            context.Commpanies.Add(commpany);
+            context.SaveChanges();
+            return commpany.Id;
+        }
+
         internal async Task<Trailer> GetTrailerDb(string idDriver)
         {
             Trailer trailer = null;
@@ -658,6 +676,19 @@ namespace WebDispacher.Dao
                 .Where(i => i.Id.ToString() == idInspection)
                 .Include(i => i.PhotosTruck)
                 .First();
+        }
+
+        internal void SaveDocCommpanyDb(string path, string id, string nameDoc)
+        {
+            string pref = path.Remove(0, path.LastIndexOf(".") + 1);
+            DucumentCompany ducumentCompany = new DucumentCompany()
+            {
+                DocPath = path,
+                NameDoc = nameDoc,
+                IdCommpany = Convert.ToInt32(id)
+            };
+            context.DucumentCompanies.Add(ducumentCompany);
+            context.SaveChanges();
         }
 
         public bool ExistsDataUser(string login, string password)
