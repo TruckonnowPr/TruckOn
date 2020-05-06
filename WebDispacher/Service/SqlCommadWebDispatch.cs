@@ -141,6 +141,11 @@ namespace WebDispacher.Dao
             return commpany.Id;
         }
 
+        internal List<Driver> GetDriversByIdCompany(string id)
+        {
+            return context.Drivers.Where(d => !d.IsFired && d.CompanyId.ToString() == id);
+        }
+
         internal void RemoveCompanyDb(string id)
         {
             context.User.RemoveRange(context.User.Where(u => u.CompanyId.ToString() == id));

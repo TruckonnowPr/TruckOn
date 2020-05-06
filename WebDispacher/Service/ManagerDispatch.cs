@@ -131,10 +131,17 @@ namespace WebDispacher.Service
 
         }
 
-        internal void RemoveCompany(string id)
+        internal void RemoveCompany(string idCompany)
         {
-            _sqlEntityFramworke.RemoveCompanyDb(id);
-            //List<Driver> drivers = _sqlEntityFramworke 
+            _sqlEntityFramworke.RemoveCompanyDb(idCompany);
+            Task.Run(() =>
+            {
+                List<Driver> drivers = _sqlEntityFramworke.GetDriversByIdCompany(idCompany);
+                foreach(Driver driver in drivers)
+                {
+                    RemoveDrive(driver.Id, "The site administration deleted the company in which this driver worked");
+                }
+            });
         }
 
         private string CreateToken(string login, string password)
