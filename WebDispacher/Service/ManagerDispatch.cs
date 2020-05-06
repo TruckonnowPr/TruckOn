@@ -131,6 +131,12 @@ namespace WebDispacher.Service
 
         }
 
+        internal void RemoveCompany(string id)
+        {
+            _sqlEntityFramworke.RemoveCompanyDb(id);
+            //List<Driver> drivers = _sqlEntityFramworke 
+        }
+
         private string CreateToken(string login, string password)
         {
             string token = "";
@@ -570,12 +576,17 @@ namespace WebDispacher.Service
             return await _sqlEntityFramworke.GetTruckDocDB(id);
         }
 
+        public async Task<List<DucumentCompany>> GetCompanyDoc(string id)
+        {
+            return await _sqlEntityFramworke.GetCompanyDocDB(id);
+        }
+
         public InspectionDriver GetInspectionTruck(string idInspection)
         {
             return _sqlEntityFramworke.GetInspectionTruck(idInspection);
         }
 
-        internal async void SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
+        internal void SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Truck/{id}/" + uploadedFile.FileName;
             if(!Directory.Exists("../Document/Truck"))
@@ -588,12 +599,12 @@ namespace WebDispacher.Service
             }
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                await uploadedFile.CopyToAsync(fileStream);
+                uploadedFile.CopyTo(fileStream);
             }
             _sqlEntityFramworke.SaveDocTruckDb(path, id, nameDoc);
         }
 
-        internal async void SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
+        internal void SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Traile/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Traile"))
@@ -606,12 +617,12 @@ namespace WebDispacher.Service
             }
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                await uploadedFile.CopyToAsync(fileStream);
+                uploadedFile.CopyTo(fileStream);
             }
             _sqlEntityFramworke.SaveDocTrailekDb(path, id, nameDoc);
         }
 
-        internal async void SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
+        internal  void SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Copmpany/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Copmpany"))
@@ -624,7 +635,7 @@ namespace WebDispacher.Service
             }
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-               await  uploadedFile.CopyToAsync(fileStream);
+                uploadedFile.CopyTo(fileStream);
             }
             _sqlEntityFramworke.SaveDocCommpanyDb(path, id, nameDoc);
         }
@@ -637,6 +648,11 @@ namespace WebDispacher.Service
         internal void RemoveDoc(string idDock)
         {
             _sqlEntityFramworke.RemoveDocDb(idDock);
+        }
+
+        internal void RemoveDocCompany(string idDock)
+        {
+            _sqlEntityFramworke.RemoveDocCompanyDb(idDock);
         }
 
         internal bool SendRemindInspection(int idDriver)

@@ -141,6 +141,13 @@ namespace WebDispacher.Dao
             return commpany.Id;
         }
 
+        internal void RemoveCompanyDb(string id)
+        {
+            context.User.RemoveRange(context.User.Where(u => u.CompanyId.ToString() == id));
+            context.Commpanies.Remove(context.Commpanies.First(dc => dc.Id.ToString() == id));
+            context.SaveChanges();
+        }
+
         internal async Task<Trailer> GetTrailerDb(string idDriver)
         {
             Trailer trailer = null;
@@ -549,6 +556,11 @@ namespace WebDispacher.Dao
             return await context.DocumentTruckAndTrailers.Where(d => d.TypeTr == "Truck" && d.IdTr.ToString() == id).ToListAsync();
         }
 
+        internal async Task<List<DucumentCompany>> GetCompanyDocDB(string id)
+        {
+            return await context.DucumentCompanies.Where(d => d.IdCommpany.ToString() == id).ToListAsync();
+        }
+
         internal async Task<List<DocumentTruckAndTrailers>> GetTrailerDocDB(string id)
         {
             return await context.DocumentTruckAndTrailers.Where(d => d.TypeTr == "Trailer" && d.IdTr.ToString() == id).ToListAsync();
@@ -580,6 +592,12 @@ namespace WebDispacher.Dao
         internal void RemoveDocDb(string idDock)
         {
             context.DocumentTruckAndTrailers.Remove(context.DocumentTruckAndTrailers.First(d => d.Id.ToString() == idDock));
+            context.SaveChanges();
+        }
+
+        internal void RemoveDocCompanyDb(string idDock)
+        {
+            context.DucumentCompanies.Remove(context.DucumentCompanies.First(d => d.Id.ToString() == idDock));
             context.SaveChanges();
         }
 

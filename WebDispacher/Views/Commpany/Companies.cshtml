@@ -19,6 +19,12 @@
                     <th>
                         Type of company
                     </th>
+                    <th>
+                        🖱
+                    </th>
+                    <th>
+                        🖱
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -34,12 +40,29 @@
                     <td>
                         @ViewBag.Companies[i].Type
                     </td>
+                    <td onclick="GoToCompanyDoc(@ViewBag.Companies[i].Id)">
+                        🖺
+                    </td>
+                    <td style="cursor:pointer;" onclick="Remove(@ViewBag.Companies[i].Id)">
+                        ✖
+                    </td>
                 </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+
+    function GoToCompanyDoc(id) {
+        document.location.href = "@ViewBag.BaseUrl/Company/Doc?id="+id;
+    }
+
+    function Remove(id) {
+        document.location.href = "@ViewBag.BaseUrl/Company/Remove?id="+id;
+    }
+</script>
 
 <style>
     * {

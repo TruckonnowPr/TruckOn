@@ -48,7 +48,7 @@ namespace WebDispacher.Controellers
 
         [Route("Trailers")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult Index()
+        public IActionResult Trailers()
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
@@ -80,7 +80,6 @@ namespace WebDispacher.Controellers
         }
 
         [Route("Truck/Remove")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult RemoveTruck(string id)
         {
             IActionResult actionResult = null;
@@ -146,8 +145,7 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("CreateTruck")]
         [DisableRequestSizeLimit]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult CreateDriver(string nameTruk, string yera, string make, string model , string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        public IActionResult CreateDriver(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
@@ -159,9 +157,8 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
-                    
-                       managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc, ensuresDoc, _3Doc);
-                        actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
+                    managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc, ensuresDoc, _3Doc);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
                 }
                 else
                 {
@@ -180,7 +177,6 @@ namespace WebDispacher.Controellers
         }
 
         [Route("Trailer/Remove")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult RemoveTrailer(string id)
         {
             IActionResult actionResult = null;
@@ -246,7 +242,6 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("CreateTrailer")]
         [DisableRequestSizeLimit]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             IActionResult actionResult = null;
@@ -281,7 +276,6 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("SaveFile")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public string AddFile(IFormFile uploadedFile, string id)
         {
             try
@@ -319,7 +313,6 @@ namespace WebDispacher.Controellers
 
         [HttpGet]
         [Route("Document")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public async Task<IActionResult> Get(string id)
         {
             FileStream stream = null;
@@ -432,7 +425,6 @@ namespace WebDispacher.Controellers
         }
 
         [Route("Trailer/SaveDoc")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public void SaveDoc1(IFormFile uploadedFile, string nameDoc, string id)
         {
             //IActionResult actionResult = null;
@@ -462,7 +454,6 @@ namespace WebDispacher.Controellers
         }
 
         [Route("RemoveDoc")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult RemoveDoc(string idDock, string id, string type)
         {
             IActionResult actionResult = null;
