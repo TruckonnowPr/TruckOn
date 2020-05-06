@@ -147,7 +147,7 @@ namespace WebDispacher.Controellers
         [Route("CreateTruck")]
         [DisableRequestSizeLimit]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult CreateDriver(string nameTruk, string yera, string make, string model , string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, List<IFormFile> registrationDoc, List<IFormFile> ensuresDoc, List<IFormFile> _3Doc)
+        public IActionResult CreateDriver(string nameTruk, string yera, string make, string model , string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
@@ -160,7 +160,7 @@ namespace WebDispacher.Controellers
                 if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
                     
-                       managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc[0], ensuresDoc[0], _3Doc[0]);
+                       managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc, ensuresDoc, _3Doc);
                         actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
                 }
                 else
@@ -247,7 +247,7 @@ namespace WebDispacher.Controellers
         [Route("CreateTrailer")]
         [DisableRequestSizeLimit]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, List<IFormFile> registrationDoc, List<IFormFile> ensuresDoc, List<IFormFile> _3Doc)
+        public IActionResult CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
@@ -260,7 +260,7 @@ namespace WebDispacher.Controellers
                 if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
                 {
 
-                    managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany, registrationDoc[0], ensuresDoc[0], _3Doc[0]);
+                    managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany, registrationDoc, ensuresDoc, _3Doc);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trailers");
                 }
                 else
@@ -403,7 +403,7 @@ namespace WebDispacher.Controellers
 
         [Route("Truck/SaveDoc")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public async Task SaveDoc(IFormFile uploadedFile, string nameDoc, string id)
+        public void SaveDoc(IFormFile uploadedFile, string nameDoc, string id)
         {
             //IActionResult actionResult = null;
             try
@@ -413,7 +413,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 if (managerDispatch.CheckKey(key))
                 {
-                    await managerDispatch.SaveDocTruck(uploadedFile, nameDoc, id);
+                    managerDispatch.SaveDocTruck(uploadedFile, nameDoc, id);
                 }
                 else
                 {
@@ -433,7 +433,7 @@ namespace WebDispacher.Controellers
 
         [Route("Trailer/SaveDoc")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public async Task SaveDoc1(IFormFile uploadedFile, string nameDoc, string id)
+        public void SaveDoc1(IFormFile uploadedFile, string nameDoc, string id)
         {
             //IActionResult actionResult = null;
             try
@@ -443,7 +443,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 if (managerDispatch.CheckKey(key))
                 {
-                    await managerDispatch.SaveDocTrailer(uploadedFile, nameDoc, id);
+                    managerDispatch.SaveDocTrailer(uploadedFile, nameDoc, id);
                 }
                 else
                 {

@@ -83,7 +83,7 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("CreateCompany")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult CreateCompany(string nameCommpany, List<IFormFile> MCNumberConfirmation, List<IFormFile> IFTA, List<IFormFile> KYU, List<IFormFile> logbookPapers, List<IFormFile> COI, 
+        public IActionResult CreateCompany(string nameCommpany, List<IFormFile> MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, 
             List<IFormFile> permits)
         {
             IActionResult actionResult = null;
@@ -96,7 +96,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 if (managerDispatch.CheckKey(key))
                 {
-                    managerDispatch.AddCommpany(nameCommpany, MCNumberConfirmation[0], IFTA[0], KYU[0], logbookPapers[0], COI[0], permits[0]);
+                    managerDispatch.AddCommpany(nameCommpany, MCNumberConfirmation[0], IFTA, KYU, logbookPapers, COI, permits);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Companies");
                 }
                 else

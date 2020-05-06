@@ -122,15 +122,13 @@ namespace WebDispacher.Service
             };
             int id = _sqlEntityFramworke.AddCommpany(commpany);
             _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
-            Task.Run(async() =>
-            {
-                await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
-                await SaveDocCpmmpany(IFTA, "IFTA (optional for 26000+)", id.ToString());
-                await SaveDocCpmmpany(KYU, "KYU", id.ToString());
-                await SaveDocCpmmpany(logbookPapers, "Logbook Papers (manual, certificate, malfunction letter)", id.ToString());
-                await SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
-                await SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
-            });
+            SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
+            SaveDocCpmmpany(IFTA, "IFTA (optional for 26000+)", id.ToString());
+            SaveDocCpmmpany(KYU, "KYU", id.ToString());
+            SaveDocCpmmpany(logbookPapers, "Logbook Papers (manual, certificate, malfunction letter)", id.ToString());
+            SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
+            SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
+
         }
 
         private string CreateToken(string login, string password)
@@ -407,16 +405,14 @@ namespace WebDispacher.Service
             });
         }
 
-        public void CreateTruk(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, 
+        public async void CreateTruk(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, 
             string color, string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             int id = _sqlEntityFramworke.CreateTrukDb(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany);
-            Task.Run(async() =>
-            {
-                await SaveDocTruck(registrationDoc, "Registration", id.ToString());
-                await SaveDocTruck(ensuresDoc, "Inshurance", id.ToString());
-                await SaveDocTruck(_3Doc, "3", id.ToString());
-            });
+                 SaveDocTruck(registrationDoc, "Registration", id.ToString());
+                 SaveDocTruck(ensuresDoc, "Inshurance", id.ToString());
+                 SaveDocTruck(_3Doc, "3", id.ToString());
+          
         }
 
         public void CreateContact(string fullName, string emailAddress, string phoneNumbe, string idCompany)
@@ -513,16 +509,13 @@ namespace WebDispacher.Service
                         price, paymentTerms, brokerFee);
         }
 
-        internal void CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns,
+        internal  void CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns,
            string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
         {
             int id = _sqlEntityFramworke.CreateTrailerDb(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany);
-            Task.Run(async() =>
-            {
-                await SaveDocTrailer(registrationDoc, "Registration", id.ToString());
-                await SaveDocTrailer(ensuresDoc, "Inshurance", id.ToString());
-                await SaveDocTrailer(_3Doc, "3", id.ToString());
-            });
+            SaveDocTrailer(registrationDoc, "Registration", id.ToString());
+            SaveDocTrailer(ensuresDoc, "Inshurance", id.ToString());
+            SaveDocTrailer(_3Doc, "3", id.ToString());
         }
 
         public void CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber, string idCompany)
@@ -582,7 +575,7 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetInspectionTruck(idInspection);
         }
 
-        internal async Task SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
+        internal async void SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Truck/{id}/" + uploadedFile.FileName;
             if(!Directory.Exists("../Document/Truck"))
@@ -600,7 +593,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SaveDocTruckDb(path, id, nameDoc);
         }
 
-        internal async Task SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
+        internal async void SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Traile/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Traile"))
@@ -618,7 +611,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SaveDocTrailekDb(path, id, nameDoc);
         }
 
-        internal async Task SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
+        internal async void SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Copmpany/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Copmpany"))
