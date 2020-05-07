@@ -46,7 +46,9 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord/Order/NewLoad"))
                 {
                     await Task.WhenAll(
                     Task.Run(async() =>

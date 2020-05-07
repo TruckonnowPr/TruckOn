@@ -56,6 +56,15 @@ namespace WebDispacher.Service
                 }).ToList();
         }
 
+        internal bool IsPermission(string key, string idCompany, string route)
+        {
+            bool isPermission = false;
+            Users users = _sqlEntityFramworke.GetUserByKey(key);
+            Commpany commpany = _sqlEntityFramworke.GetCompanyById(idCompany);
+
+            return isPermission;
+        }
+
         internal async Task AddNewOrder(string urlPage)
         {
             GetDataCentralDispatch getDataCentralDispatch = new GetDataCentralDispatch();
@@ -90,7 +99,7 @@ namespace WebDispacher.Service
 
         internal int GetUserByKey(int key)
         {
-            return _sqlEntityFramworke.GetUserByKey(key);
+            return _sqlEntityFramworke.GetComapnyIdByKeyUser(key);
         }
 
         internal async Task<Truck> GetTruck(string idDriver)

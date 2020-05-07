@@ -2,6 +2,7 @@
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json.Linq;
 using System;
@@ -93,6 +94,16 @@ namespace WebDispacher.Dao
             } 
         }
 
+        internal Commpany GetCompanyById(string idCompany)
+        {
+            return context.Commpanies.First(c => c.Id.ToString() == idCompany);
+        }
+
+        internal Users GetUserByKey(string key)
+        {
+            return context.User.First(c => c.KeyAuthorized == key);
+        }
+
         internal List<Commpany> GetCompanies()
         {
             return context.Commpanies.ToList();
@@ -106,7 +117,7 @@ namespace WebDispacher.Dao
             return commpany;
         }
 
-        internal int GetUserByKey(int key)
+        internal int GetComapnyIdByKeyUser(int key)
         {
             return context.User.First(u => u.KeyAuthorized == key.ToString()).CompanyId;
         }
@@ -143,7 +154,7 @@ namespace WebDispacher.Dao
 
         internal List<Driver> GetDriversByIdCompany(string id)
         {
-            return context.Drivers.Where(d => !d.IsFired && d.CompanyId.ToString() == id);
+            return context.Drivers.Where(d => !d.IsFired && d.CompanyId.ToString() == id).ToList();
         }
 
         internal void RemoveCompanyDb(string id)
