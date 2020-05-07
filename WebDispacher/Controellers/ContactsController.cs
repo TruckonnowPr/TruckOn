@@ -20,7 +20,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Contact"))
                 {
                     ViewBag.Contacts = managerDispatch.GetContacts(idCompany);
                     actionResult = View("FullContacts");
@@ -52,9 +53,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Contact"))
                 {
                     actionResult = View("CreateContact");
                 }
@@ -86,7 +89,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Contact"))
                 {
                     if ((fullName != null && fullName != "") && (emailAddress != null && emailAddress != "") && (emailAddress != null && emailAddress != "")
                        && (fullName != null && fullName != ""))

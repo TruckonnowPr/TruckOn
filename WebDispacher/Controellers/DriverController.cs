@@ -25,7 +25,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     ViewBag.Drivers = managerDispatch.GetDrivers(page, idCompany);
                     actionResult = View("FullAllDrivers");
@@ -55,9 +56,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     ViewBag.DriversLicense = driversLicense;
                     ViewBag.NameDriver = nameDriver;
@@ -142,9 +145,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     actionResult = View("ReportDriver");
                 }
@@ -174,9 +179,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     managerDispatch.AddNewReportDriver(fullName, driversLicenseNumber, description);
                     actionResult = Redirect("Check");
@@ -248,9 +255,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     actionResult = View("CreateDriver");
                 }
@@ -283,7 +292,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     if ((fullName != null && fullName != "") && (emailAddress != null && emailAddress != "") && (emailAddress != null && emailAddress != "")
                         && (password != null && password != "") && (fullName != null && fullName != ""))
@@ -322,9 +332,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     managerDispatch.RemoveDrive(id, comment);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
@@ -355,9 +367,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     ViewBag.Driver = managerDispatch.GetDriver(id);
                     actionResult = View("EditDriver");
@@ -388,9 +402,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     managerDispatch.EditDrive(id, fullName, emailAddress, password, phoneNumbe, trailerCapacity, driversLicenseNumber);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
@@ -424,7 +440,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
                     List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
@@ -478,7 +495,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
                     List<Trailer> trailers = managerDispatch.GetTrailers(idCompany);
@@ -515,9 +533,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = "";
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
                     bool isInspactionDriverToDay = managerDispatch.SendRemindInspection(idDriver);
                     if(isInspactionDriverToDay)

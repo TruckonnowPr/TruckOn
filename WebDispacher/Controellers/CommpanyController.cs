@@ -25,7 +25,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     ViewBag.Companies = managerDispatch.GetCompanies();
                     actionResult = View("Companies");
@@ -59,7 +60,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     actionResult = View("CreateCommpany");
                 }
@@ -92,7 +94,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     managerDispatch.AddCommpany(nameCommpany, MCNumberConfirmation[0], IFTA, KYU, logbookPapers, COI, permits);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Companies");
@@ -121,9 +124,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     managerDispatch.RemoveCompany(id);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Companies");
@@ -152,9 +157,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     ViewBag.CompanyDoc = await managerDispatch.GetCompanyDoc(id);
                     ViewBag.CompanyId = id;
@@ -182,9 +189,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     managerDispatch.SaveDocCpmmpany(uploadedFile, nameDoc, id);
                 }
@@ -210,9 +219,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     managerDispatch.RemoveDocCompany(idDock);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Doc?id={id}");

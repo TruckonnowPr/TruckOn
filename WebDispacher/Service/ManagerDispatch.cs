@@ -61,8 +61,28 @@ namespace WebDispacher.Service
             bool isPermission = false;
             Users users = _sqlEntityFramworke.GetUserByKey(key);
             Commpany commpany = _sqlEntityFramworke.GetCompanyById(idCompany);
-
+            if(users != null && commpany != null)
+            {
+                isPermission = ValidCompanyRoute(commpany.Type, route);
+            }
             return isPermission;
+        }
+
+        private bool ValidCompanyRoute(TypeCompany typeCompany, string route)
+        {
+            bool validCompany = false;
+            if(route == "Company")
+            {
+                if (typeCompany == TypeCompany.BaseCommpany)
+                {
+                    validCompany = true;
+                }
+            }
+            else
+            {
+                validCompany = true;
+            }
+            return validCompany;
         }
 
         internal async Task AddNewOrder(string urlPage)

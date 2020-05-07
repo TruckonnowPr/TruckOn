@@ -47,8 +47,7 @@ namespace WebDispacher.Controellers
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
-                
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord/Order/NewLoad"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     await Task.WhenAll(
                     Task.Run(async() =>
@@ -89,10 +88,12 @@ namespace WebDispacher.Controellers
             bool actionResult = false;
             try
             {
-                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     if((idDriver != null && idDriver != "") && (idOrder != null && idOrder != ""))
                     {
@@ -129,9 +130,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     if (idOrder != null && idOrder != "")
                     {
@@ -169,10 +172,12 @@ namespace WebDispacher.Controellers
             ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
-                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     managerDispatch.Solved(id);
                     Task.Run(() => managerDispatch.AddHistory(key, "0", id, "0", "0", "Solved"));
@@ -207,7 +212,8 @@ namespace WebDispacher.Controellers
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 List<Shipping> shippings = null;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     await Task.WhenAll(
                     Task.Run(async() =>
@@ -269,7 +275,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -314,7 +321,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -359,7 +367,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     List<Shipping> shippings = null;
                     await Task.WhenAll(
@@ -422,7 +431,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     List<Shipping> shippings = new List<Shipping>();
 
@@ -478,7 +488,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -523,7 +534,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -565,9 +577,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     managerDispatch.ArchvedOrder(id);
                     Task.Run(() => managerDispatch.AddHistory(key, "0", id, "0", "0", "ArchivedOrder"));
@@ -597,9 +611,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     managerDispatch.DeletedOrder(id);
                     Task.Run(() => managerDispatch.AddHistory(key, "0", id, "0", "0", "DeletedOrder"));
@@ -630,9 +646,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     if (id != "" && id != null)
                     {
@@ -675,9 +693,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     if (id != "" && id != null)
                     {
@@ -715,9 +735,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     Shipping shipping = await managerDispatch.CreateShiping();
                     Task.Run(() => managerDispatch.AddHistory(key, "0", shipping.Id, "0", "0", "Creat"));
@@ -749,9 +771,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     managerDispatch.Updateorder(idOrder, idLoad, internalLoadID, driver, status, instructions, nameP, contactP, addressP, cityP, stateP, zipP,
                         phoneP, emailP, scheduledPickupDateP, nameD, contactD, addressD, cityD, stateD, zipD, phoneD, emailD, ScheduledPickupDateD, paymentMethod,
@@ -782,9 +806,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     managerDispatch.SaveVechi(idVech, VIN, Year, Make, Model, Type,  Color, LotNumber);
                     Task.Run(() => managerDispatch.AddHistory(key, "0", "0", idVech, "0", "SavaVech"));
@@ -813,9 +839,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     managerDispatch.AddHistory(key, "0", "0", idVech, "0", "RemoveVech");
                     managerDispatch.RemoveVechi(idVech);
@@ -844,9 +872,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
                     VehiclwInformation vehiclwInformation = await managerDispatch.AddVechi(idOrder);
                     Task.Run(() => managerDispatch.AddHistory(key, "0", idOrder, vehiclwInformation.Id.ToString(), "0", "AddVech"));

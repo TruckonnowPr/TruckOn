@@ -25,7 +25,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     ViewBag.Trucks = managerDispatch.GetTrucks(idCompany);
                     actionResult = View($"AllTruck");
@@ -58,7 +59,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     ViewBag.Trailers = managerDispatch.GetTrailers(idCompany);
                     actionResult = View($"AllTrailer");
@@ -87,9 +89,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     managerDispatch.RemoveTruck(id);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
@@ -120,9 +124,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     actionResult = View("CreateTruck");
                 }
@@ -155,7 +161,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc, ensuresDoc, _3Doc);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
@@ -184,9 +191,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     managerDispatch.RemoveTrailer(id);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trailers");
@@ -217,9 +226,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     actionResult = View("CreateTraler");
                 }
@@ -252,7 +263,8 @@ namespace WebDispacher.Controellers
                 string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key) && Request.Cookies.TryGetValue("CommpanyId", out idCompany))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
 
                     managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany, registrationDoc, ensuresDoc, _3Doc);
@@ -281,9 +293,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvthoTaxi", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     if (uploadedFile != null)
                     {
@@ -337,9 +351,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     ViewBag.TruckDoc = await managerDispatch.GetTruckDoc(id);
                     ViewBag.TruckId = id;
@@ -370,9 +386,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     ViewBag.TrailerDoc = await managerDispatch.GetTraileDoc(id);
                     ViewBag.TrailerId = id;
@@ -402,9 +420,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     managerDispatch.SaveDocTruck(uploadedFile, nameDoc, id);
                 }
@@ -431,9 +451,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     managerDispatch.SaveDocTrailer(uploadedFile, nameDoc, id);
                 }
@@ -461,9 +483,11 @@ namespace WebDispacher.Controellers
             try
             {
                 string key = null;
+                string idCompany = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
-                if (managerDispatch.CheckKey(key))
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
                     managerDispatch.RemoveDoc(idDock);
                     actionResult = Redirect($"{type}/Doc?id={id}");

@@ -18,11 +18,14 @@ namespace WebDispacher.Controellers
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult GetPhotoInspection(int idVech)
         {
-            IActionResult actionResult = null; string key = null;
+            IActionResult actionResult = null; 
+            string key = null;
+            string idCompany = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
             ViewBag.BaseUrl = Config.BaseReqvesteUrl;
-            Request.Cookies.TryGetValue("KeyAvtho", out key); 
-            if (managerDispatch.CheckKey(key))
+            Request.Cookies.TryGetValue("KeyAvtho", out key);
+            Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+            if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "BOL"))
             {
                 Shipping shipping = managerDispatch.GetShipingCurrentVehiclwIn(idVech.ToString());
                 VehiclwInformation vehiclwInformation = shipping.VehiclwInformations.FirstOrDefault(v => v.Id == idVech);
