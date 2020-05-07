@@ -68,6 +68,25 @@ namespace WebDispacher.Service
             return isPermission;
         }
 
+        internal string GetTypeNavBar(string key, string idCompany)
+        {
+            string typeNavBar = "";
+            Users users = _sqlEntityFramworke.GetUserByKey(key);
+            Commpany commpany = _sqlEntityFramworke.GetCompanyById(idCompany);
+            if (users != null && commpany != null)
+            {
+                if (commpany.Type == TypeCompany.BaseCommpany)
+                {
+                    typeNavBar = "BaseCommpany";
+                }
+                else if (commpany.Type == TypeCompany.NormalCompany)
+                {
+                    typeNavBar = "NormaCommpany";
+                }
+            }
+            return typeNavBar;
+        }
+
         private bool ValidCompanyRoute(TypeCompany typeCompany, string route)
         {
             bool validCompany = false;

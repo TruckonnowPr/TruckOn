@@ -39,16 +39,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> NewLoad(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
                     Task.Run(async() =>
                     {
@@ -90,12 +93,16 @@ namespace WebDispacher.Controellers
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
-                    if((idDriver != null && idDriver != "") && (idOrder != null && idOrder != ""))
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    if ((idDriver != null && idDriver != "") && (idOrder != null && idOrder != ""))
                     {
                         managerDispatch.Assign(idOrder, idDriver);
                         Task.Run(() => managerDispatch.AddHistory(key, "0", idOrder, "0",  idDriver, "Assign"));
@@ -169,7 +176,6 @@ namespace WebDispacher.Controellers
         public IActionResult Solved(string id, string page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -204,17 +210,20 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Archived(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 List<Shipping> shippings = null;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
                     Task.Run(async() =>
                     {
@@ -268,16 +277,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Assigned(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
@@ -314,16 +326,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Billed(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
@@ -360,16 +375,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Deleted(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Shipping> shippings = null;
                     await Task.WhenAll(
                     Task.Run(async () =>
@@ -424,18 +442,20 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Delivered(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Shipping> shippings = new List<Shipping>();
-
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
@@ -481,16 +501,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Paid(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
@@ -527,16 +550,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> Pickedup(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
@@ -573,7 +599,6 @@ namespace WebDispacher.Controellers
         public IActionResult DeletedOrder(string id)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -607,7 +632,6 @@ namespace WebDispacher.Controellers
         public IActionResult DeletedOrder(string id, string status)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -642,16 +666,19 @@ namespace WebDispacher.Controellers
         public IActionResult FullInfoOrder(string id, string stasus)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     if (id != "" && id != null)
                     {
                         ViewBag.Order = managerDispatch.GetOrder(id);
@@ -689,16 +716,19 @@ namespace WebDispacher.Controellers
         public IActionResult EditOrder(string id, string stasus)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     if (id != "" && id != null)
                     {
                         ViewBag.Order = managerDispatch.GetOrder(id);
@@ -731,16 +761,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> CreatOrderpage()
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     Shipping shipping = await managerDispatch.CreateShiping();
                     Task.Run(() => managerDispatch.AddHistory(key, "0", shipping.Id, "0", "0", "Creat"));
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Dashbord/Order/Edit?id={shipping.Id}&stasus=NewLoad");

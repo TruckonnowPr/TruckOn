@@ -21,16 +21,19 @@ namespace WebDispacher.Controellers
             IActionResult actionResult = null; 
             string key = null;
             string idCompany = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
+            string companyName = null;
             ViewBag.BaseUrl = Config.BaseReqvesteUrl;
             Request.Cookies.TryGetValue("KeyAvtho", out key);
             Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+            Request.Cookies.TryGetValue("CommpanyName", out companyName);
             if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "BOL"))
             {
                 Shipping shipping = managerDispatch.GetShipingCurrentVehiclwIn(idVech.ToString());
                 VehiclwInformation vehiclwInformation = shipping.VehiclwInformations.FirstOrDefault(v => v.Id == idVech);
                 if (shipping != null)
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                     ViewBag.Shipp = shipping;
                     ViewBag.Vehiclw = vehiclwInformation;

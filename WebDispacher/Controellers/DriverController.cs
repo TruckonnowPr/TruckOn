@@ -18,16 +18,19 @@ namespace WebDispacher.Controellers
         public IActionResult Drivers(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.Drivers = managerDispatch.GetDrivers(page, idCompany);
                     actionResult = View("FullAllDrivers");
                 }
@@ -52,16 +55,19 @@ namespace WebDispacher.Controellers
         public IActionResult CheckDriver(string commpanyID, string nameDriver, string driversLicense, string comment)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.DriversLicense = driversLicense;
                     ViewBag.NameDriver = nameDriver;
                     ViewBag.DriverReports = managerDispatch.GetDriversReport(commpanyID, nameDriver, driversLicense);
@@ -89,7 +95,7 @@ namespace WebDispacher.Controellers
         public IActionResult WelcomeDriverCheckReport(string commpanyID, string nameDriver, string driversLicense, string countDriverReports)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -114,6 +120,7 @@ namespace WebDispacher.Controellers
         public string WelcomeAddReport(string fullName, string driversLicenseNumber)
         {
             string actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -141,16 +148,19 @@ namespace WebDispacher.Controellers
         public IActionResult AddReport()
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("ReportDriver");
                 }
                 else
@@ -251,16 +261,19 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver()
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("CreateDriver");
                 }
                 else
@@ -285,7 +298,6 @@ namespace WebDispacher.Controellers
         public IActionResult CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -328,7 +340,6 @@ namespace WebDispacher.Controellers
         public IActionResult RemoveDriver(int id, string comment)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
@@ -363,16 +374,19 @@ namespace WebDispacher.Controellers
         public IActionResult EditeDriver(int id)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.Driver = managerDispatch.GetDriver(id);
                     actionResult = View("EditDriver");
                 }
@@ -433,16 +447,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> ViewAllInspactionDate(string idDriver, string idTruck, string idTrailer, string date)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
                     List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
                     List<Trailer> trailers = managerDispatch.GetTrailers(idCompany);
@@ -488,16 +505,19 @@ namespace WebDispacher.Controellers
         public IActionResult ViewInspaction(string idInspection, string idDriver, string date)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
                     List<Trailer> trailers = managerDispatch.GetTrailers(idCompany);
                     InspectionDriver inspectionDriver = managerDispatch.GetInspectionTruck(idInspection);

@@ -15,16 +15,19 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> GeolocationPageGet()
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;
                 string idCompany = null;
+                string companyName = null;
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Geolcation"))
                 {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     actionResult = View("MapsGeoDriver");
                 }
