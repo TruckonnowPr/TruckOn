@@ -315,6 +315,22 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.AddHistory(historyOrder);
         }
 
+        internal List<UserDTO> GetUsers()
+        {
+            List<Commpany> commpanies = _sqlEntityFramworke.GetCompanies();
+            return _sqlEntityFramworke.GetUsers()
+                .Select(z => new UserDTO()
+                {
+                    CompanyName = commpanies.FirstOrDefault(c => c.Id == z.CompanyId) != null ? commpanies.FirstOrDefault(c => c.Id == z.CompanyId).Name : "", 
+                    Id = z.Id,
+                    Login = z.Login,
+                    Password = z.Password,
+                    CompanyId = z.CompanyId,
+                    Date = z.Date
+                })
+                .ToList();
+        }
+
         public string GetStrAction(string key, string idConmpany, string idOrder, string idVech, string idDriver, string action)
         {
             string strAction = "";

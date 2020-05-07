@@ -264,6 +264,43 @@ namespace WebDispacher.Controellers
             return actionResult;
         }
 
+        [HttpGet]
+        [Route("Users")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult GetUsers()
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
+                {
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.Users = managerDispatch.GetUsers();
+                    actionResult = View("AllUsers");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
         [Route("GetDockPDF")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult GetDockPDF(string docPath)

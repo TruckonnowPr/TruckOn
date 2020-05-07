@@ -54,36 +54,31 @@ namespace WebDispacher.Dao
                     users.Login = "DevRoma";
                     users.Password = "polkilo123";
                     users.CompanyId = commpany.Id;
+                    users.Date = DateTime.Now.ToString();
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "ArtemManager";
                     users.Password = "truckon777";
                     users.CompanyId = commpany.Id;
+                    users.Date = DateTime.Now.ToString();
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Designer";
                     users.Password = "truckon777";
                     users.CompanyId = commpany.Id;
+                    users.Date = DateTime.Now.ToString();
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Truckonnow";
                     users.Password = "truckon777";
                     users.CompanyId = commpany.Id;
+                    users.Date = DateTime.Now.ToString();
                     await context.User.AddAsync(users);
                     users = new Users();
                     users.Login = "Truckonnow1";
                     users.Password = "truckon777";
                     users.CompanyId = commpany.Id;
-                    await context.User.AddAsync(users);
-                    users = new Users();
-                    users.Login = "Truckonnow2";
-                    users.Password = "truckon777";
-                    users.CompanyId = commpany.Id;
-                    await context.User.AddAsync(users);
-                    users = new Users();
-                    users.Login = "Truckonnow3";
-                    users.Password = "truckon777";
-                    users.CompanyId = commpany.Id;
+                    users.Date = DateTime.Now.ToString();
                     await context.User.AddAsync(users);
                     await context.SaveChangesAsync();
                 }
@@ -140,7 +135,8 @@ namespace WebDispacher.Dao
             {
                 CompanyId = id,
                 Login = nameCommpany + "Admin",
-                Password = password
+                Password = password,
+                Date = DateTime.Now.ToString()
             });
             context.SaveChanges();
         }
@@ -362,6 +358,11 @@ namespace WebDispacher.Dao
                 .Include(d => d.geolocations)
                 .ToListAsync();
             return drivers;
+        }
+
+        internal List<Users> GetUsers()
+        {
+            return context.User.ToList();
         }
 
         public async Task<List<Driver>> GetDriversInDb(string idCommpany)
