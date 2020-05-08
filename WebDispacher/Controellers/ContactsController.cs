@@ -13,7 +13,6 @@ namespace WebDispacher.Controellers
         public IActionResult Contacts(int page)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "BaseCommpany";
             try
             {
                 string key = null;

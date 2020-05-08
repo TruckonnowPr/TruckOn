@@ -141,6 +141,12 @@ namespace WebDispacher.Dao
             context.SaveChanges();
         }
 
+        internal void AddUserDb(Users users)
+        {
+            context.User.Add(users);
+            context.SaveChanges();
+        }
+
         internal int AddCommpany(Commpany commpany)
         {
             context.Commpanies.Add(commpany);
@@ -188,6 +194,12 @@ namespace WebDispacher.Dao
             }
             context.SaveChanges();
             return isStateActual;
+        }
+
+        internal void RemoveUserByIdDb(string idUser)
+        {
+            context.User.Remove(context.User.First(u => u.Id.ToString() == idUser));
+            context.SaveChanges();
         }
 
         internal int GetUserIdByKey(string key)

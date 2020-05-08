@@ -136,6 +136,18 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetUserByKeyUser(key);
         }
 
+        internal void AddUser(string idCompany, string login, string password)
+        {
+            Users users = new Users()
+            {
+                CompanyId = Convert.ToInt32(idCompany),
+                Date = DateTime.Now.ToString(),
+                Login = login,
+                Password = password
+            };
+            _sqlEntityFramworke.AddUserDb(users);
+        }
+
         internal int GetUserByKey(int key)
         {
             return _sqlEntityFramworke.GetComapnyIdByKeyUser(key);
@@ -177,6 +189,11 @@ namespace WebDispacher.Service
             SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
             SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
 
+        }
+
+        internal void RemoveUserById(string idUser)
+        {
+            _sqlEntityFramworke.RemoveUserByIdDb(idUser);
         }
 
         internal void RemoveCompany(string idCompany)

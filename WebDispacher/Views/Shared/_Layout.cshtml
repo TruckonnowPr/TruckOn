@@ -18,6 +18,10 @@
     {
         @await Html.PartialAsync("~/Views/PartView/NavNormalCompany.cshtml");
     }
+    else if (ViewData["TypeNavBar"] == "Settings")
+    {
+        @await Html.PartialAsync("~/Views/PartView/NavSettingsAllCompanyAndUser.cshtml");
+    }
     <div style="width:99%;height:97vh;padding-top:30px">
         @RenderBody()
     </div>
