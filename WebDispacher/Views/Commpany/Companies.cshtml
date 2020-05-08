@@ -23,6 +23,9 @@
                         🖱
                     </th>
                     <th>
+                        Go to users
+                    </th>
+                    <th>
                         🖱
                     </th>
                 </tr>
@@ -42,6 +45,9 @@
                     </td>
                     <td onclick="GoToCompanyDoc(@ViewBag.Companies[i].Id)">
                         🖺
+                    </td>
+                    <td onclick="window.location.href='Users?idCompanySelect=@ViewBag.Companies[i].Id'">
+                        ⇥
                     </td>
                     <td style="cursor:pointer;" onclick="Remove(@ViewBag.Companies[i].Id)">
                         ✖
