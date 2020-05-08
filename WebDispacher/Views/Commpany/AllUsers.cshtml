@@ -1,5 +1,19 @@
 ﻿<div class="body">
     <div style="display:flex;">
+        <select class="inpContentInspection" onchange="window.location.href ='Users?idCompanySelect=' + this.options[this.selectedIndex].value">
+            <option selected value="0">All users</option>
+            @for (int i = 0; i < ViewBag.Companies.Count; i++)
+            {
+                @if (ViewBag.IdCompanySelect != 0 && ViewBag.Companies[i].Id == ViewBag.IdCompanySelect)
+                {
+                    <option selected value="@ViewBag.Companies[i].Id">@ViewBag.Companies[i].Name</option>
+                }
+                else
+                {
+                    <option value="@ViewBag.Companies[i].Id">@ViewBag.Companies[i].Name</option>
+                }
+            }
+        </select>
     </div>
     <nav>
         <input class="btnSt" type="button" value="Companies" onclick="window.location.href='@Url.Action("Companies", "Company")';" />
@@ -140,5 +154,23 @@
 
     tbody tr:nth-child(even) {
         background-color: rgba(105, 105, 105, 0.15); /* фон четных строк */
+    }
+
+    .inpContentInspection {
+        display: inline-block;
+        width: 200px;
+        padding: 5px 10px;
+        border: 1px solid;
+        border-radius: 10px;
+        border: 1px solid black;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .contentInspection:hover {
+        box-shadow: inset -35px 25px 35px 0px #323947;
+        -webkit-box-shadow: inset -35px 25px 35px 0px #323947;
+        -moz-box-shadow: inset -35px 25px 35px 0px #323947;
+        transition: 0.3s;
     }
 </style>

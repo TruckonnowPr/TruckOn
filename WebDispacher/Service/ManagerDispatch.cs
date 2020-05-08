@@ -331,6 +331,23 @@ namespace WebDispacher.Service
                 .ToList();
         }
 
+        internal List<UserDTO> GetUsers(int idCompanySelect)
+        {
+            List<Commpany> commpanies = _sqlEntityFramworke.GetCompanies();
+            return _sqlEntityFramworke.GetUsers()
+                .Where(u => idCompanySelect == 0 || u.CompanyId == idCompanySelect)
+                .Select(z => new UserDTO()
+                {
+                    CompanyName = commpanies.FirstOrDefault(c => c.Id == z.CompanyId) != null ? commpanies.FirstOrDefault(c => c.Id == z.CompanyId).Name : "",
+                    Id = z.Id,
+                    Login = z.Login,
+                    Password = z.Password,
+                    CompanyId = z.CompanyId,
+                    Date = z.Date
+                })
+                .ToList();
+        }
+
         public string GetStrAction(string key, string idConmpany, string idOrder, string idVech, string idDriver, string action)
         {
             string strAction = "";
@@ -402,9 +419,9 @@ namespace WebDispacher.Service
             return await _sqlEntityFramworke.GetTrailerByPlateDb(trailerPlate);
         }
 
-        internal List<DriverReport> GetDriversReport(string commpanyID, string nameDriver, string driversLicense)
+        internal List<DriverReport> GetDriversReport(string nameDriver, string driversLicense)
         {
-            return _sqlEntityFramworke.GetDriversReportsDb(commpanyID, nameDriver, driversLicense);
+            return _sqlEntityFramworke.GetDriversReportsDb(nameDriver, driversLicense);
         }
 
         internal void AddNewReportDriver(string fullName, string driversLicenseNumber, string description)

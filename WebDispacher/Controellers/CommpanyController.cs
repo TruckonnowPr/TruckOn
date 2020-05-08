@@ -267,7 +267,7 @@ namespace WebDispacher.Controellers
         [HttpGet]
         [Route("Users")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult GetUsers()
+        public IActionResult GetUsers(int idCompanySelect)
         {
             IActionResult actionResult = null;
             try
@@ -282,7 +282,9 @@ namespace WebDispacher.Controellers
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
-                    ViewBag.Users = managerDispatch.GetUsers();
+                    ViewBag.Users = managerDispatch.GetUsers(idCompanySelect);
+                    ViewBag.Companies = managerDispatch.GetCompanies();
+                    ViewBag.IdCompanySelect = idCompanySelect;
                     actionResult = View("AllUsers");
                 }
                 else

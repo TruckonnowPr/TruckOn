@@ -52,7 +52,7 @@ namespace WebDispacher.Controellers
 
         [Route("Driver/Check")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult CheckDriver(string commpanyID, string nameDriver, string driversLicense, string comment)
+        public IActionResult CheckDriver(string nameDriver, string driversLicense, string comment)
         {
             IActionResult actionResult = null;
             try
@@ -70,7 +70,7 @@ namespace WebDispacher.Controellers
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.DriversLicense = driversLicense;
                     ViewBag.NameDriver = nameDriver;
-                    ViewBag.DriverReports = managerDispatch.GetDriversReport(commpanyID, nameDriver, driversLicense);
+                    ViewBag.DriverReports = managerDispatch.GetDriversReport(nameDriver, driversLicense);
                     actionResult = View("DriverCheck");
                 }
                 else
@@ -92,7 +92,7 @@ namespace WebDispacher.Controellers
         [HttpGet]
         [Route("Welcome/Driver/Check")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult WelcomeDriverCheckReport(string commpanyID, string nameDriver, string driversLicense, string countDriverReports)
+        public IActionResult WelcomeDriverCheckReport(string nameDriver, string driversLicense, string countDriverReports)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "AllUsers";
@@ -103,7 +103,7 @@ namespace WebDispacher.Controellers
                 ViewBag.DriversLicense = driversLicense;
                 ViewBag.NameDriver = nameDriver;
                 ViewBag.CountDriverReports = countDriverReports;
-                ViewBag.DriverReports = managerDispatch.GetDriversReport(commpanyID, nameDriver, driversLicense);
+                ViewBag.DriverReports = managerDispatch.GetDriversReport(nameDriver, driversLicense);
                 actionResult = View("WelcomDriverCheck");
 
             }

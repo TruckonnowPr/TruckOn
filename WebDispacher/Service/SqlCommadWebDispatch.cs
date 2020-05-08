@@ -288,7 +288,7 @@ namespace WebDispacher.Dao
             return await context.Trailers.FirstOrDefaultAsync(t => t.Plate == trailerPlate);
         }
 
-        internal List<DriverReport> GetDriversReportsDb(string commpanyID, string nameDriver, string driversLicense)
+        internal List<DriverReport> GetDriversReportsDb(string nameDriver, string driversLicense)
         {
             List<DriverReport> driverReports = new List<DriverReport>();
             if (nameDriver != null || driversLicense != null)
