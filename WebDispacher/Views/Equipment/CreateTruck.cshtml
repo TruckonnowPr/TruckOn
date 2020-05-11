@@ -55,7 +55,7 @@
                 <input class="btnSave" value="Save" type="submit" />
             </form>
             <div style="width:45%;">
-                <div id="PickupFourWheel" style="display:flex;flex-wrap:wrap;justify-content:flex-start;visibility:hidden;">
+                <div id="PickupFourWheel" style="display:none;flex-wrap:wrap;justify-content:flex-start;">
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel1.png&type=png" />
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel6.png&type=png" />
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel8.png&type=png" />
@@ -68,8 +68,21 @@
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel19.png&type=png" />
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel20.png&type=png" />
                 </div>
-                <div id="FourDoorTruckChassisOpenFrame" style="display:flex;flex-wrap:wrap;justify-content:flex-start;visibility:hidden;">
-                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame.png&type=png" />
+                <div id="FourDoorTruckChassisOpenFrame" style="display:none;flex-wrap:wrap;justify-content:flex-start;">
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame2.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame3.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame4.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame5.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame7.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame8.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame9.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame11.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame12.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame14.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame15.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame16.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame17.png&type=png" />
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame19.png&type=png" />
                 </div>
             </div>
         </div>
@@ -96,11 +109,11 @@
 
     function SelectTruck(value) {
         if (curentSelectPattern || value == "") {
-            curentSelectPattern.style.visibility = "hidden";
+            curentSelectPattern.style.display = "none";
         }
         let selectTypeDiv = document.getElementById(value);
         if (selectTypeDiv) {
-            selectTypeDiv.style.visibility = "visible";
+            selectTypeDiv.style.display = "flex";
             curentSelectPattern = selectTypeDiv;
         }
     }

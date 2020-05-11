@@ -1332,4 +1332,43 @@
   <ItemGroup>
     <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame18.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles1.png" />
+  </ItemGroup>
 </Project>
