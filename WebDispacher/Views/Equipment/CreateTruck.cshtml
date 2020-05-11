@@ -10,6 +10,7 @@
                     <select name="typeTruk" class="inpText validation" type="text" onchange="SelectTruck(this.options[this.selectedIndex].value)" required>
                         <option value="">Choose a truck type</option>
                         <option value="PickupFourWheel">Four-wheel pickup dually</option>
+                        <option value="FourDoorTruckChassisOpenFrame">Four-door truck with double chassis and open frame</option>
                     </select>
                     <p class="inpLabe">Year</p>
                     <input name="yera" class="inpText" type="text" />
@@ -66,6 +67,9 @@
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel18.png&type=png" />
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel19.png&type=png" />
                     <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/PickupFourWheel/PickupFourWheel20.png&type=png" />
+                </div>
+                <div id="FourDoorTruckChassisOpenFrame" style="display:flex;flex-wrap:wrap;justify-content:flex-start;visibility:hidden;">
+                    <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TruckPattern/FourDoorTruckChassisOpenFrame/FourDoorTruckChassisOpenFrame.png&type=png" />
                 </div>
             </div>
         </div>

@@ -1275,4 +1275,61 @@
   <ItemGroup>
     <BundleResource Include="Resources\GooseneckTrailerTwoVehicles2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame18.png" />
+  </ItemGroup>
 </Project>
