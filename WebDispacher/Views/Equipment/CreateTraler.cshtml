@@ -2,62 +2,91 @@
 
 <div class="body">
     <input class="backBtn" type="button" value="← Back to Orders" onclick="history.back();" />
-    <form action="" method="post" enctype="multipart/form-data" asp-for="FileUpload.FormFiles">
-        <div class="content">
-            <h2 style="color: rgb(51, 51, 51);margin-bottom:2px;">Add New Trailer</h2>
-            <p class="inpLabe">Name Trailer</p>
-            <input name="name" class="inpText validation" type="text" required />
+    <div style="display:flex;justify-content:space-around;">
+        <form style="width:45%;" action="" method="post" enctype="multipart/form-data" asp-for="FileUpload.FormFiles">
+            <div class="content">
+                <h2 style="color: rgb(51, 51, 51);margin-bottom:2px;">Add New Trailer</h2>
+                <p class="inpLabe">Name Trailer</p>
+                <input name="name" class="inpText validation" type="text" required />
                 <p class="inpLabe">Type</p>
-                <select name="typeTrailer" class="inpText validation" type="text" required>
+                <select name="typeTrailer" class="inpText validation" type="text" onchange="SelectTrailer(this.options[this.selectedIndex].value)" required>
                     <option value="">Choose a trailer type</option>
                     <option value="GooseneckTrailerTwoVehicles">Gooseneck trailer for two vehicles</option>
                     <option value="EnclosedTrailerTwoVehicles">Enclosed trailer for two vehicles</option>
                 </select>
-            <p class="inpLabe">Year</p>
-            <input name="year" class="inpText" type="text" />
-            <p class="inpLabe">Make</p>
-            <input name="make" class="inpText" type="text" />
-            <p class="inpLabe">How Long</p>
-            <input name="howLong" class="inpText" type="text" />
-            <p class="inpLabe">Vin#</p>
-            <input name="vin" class="inpText" type="text" />
-            <p class="inpLabe">Owner</p>
-            <input name="owner" class="inpText" type="text" />
-            <p class="inpLabe">Color</p>
-            <input name="color" class="inpText" type="text" />
-            <p class="inpLabe">Plate</p>
-            <input name="plate" class="inpText validation" type="text" required />
-            <p class="inpLabe">Plate Exp Trailer</p>
-            <input name="exp" class="inpText" type="text" />
-            <p class="inpLabe">ANNUAL INS</p>
-            <input name="annualIns" class="inpText" type="text" />
-            <p class="inpLabe">Document Registration</p>
-            <div class="inpText">
-                <label for="docLoad1" class="btnModal" style="margin-left:5px;">Select document registration</label>
-                <input id="docLoad1" style="display: none;" type="file" name="registrationDoc" onchange="LoadFile(this, 1)" accept="application/pdf, image/jpeg, image/jpg" required>
-                <span id="nameNoLoadDoc1" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
-                <span id="nameLoadDoc1" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+                <p class="inpLabe">Year</p>
+                <input name="year" class="inpText" type="text" />
+                <p class="inpLabe">Make</p>
+                <input name="make" class="inpText" type="text" />
+                <p class="inpLabe">How Long</p>
+                <input name="howLong" class="inpText" type="text" />
+                <p class="inpLabe">Vin#</p>
+                <input name="vin" class="inpText" type="text" />
+                <p class="inpLabe">Owner</p>
+                <input name="owner" class="inpText" type="text" />
+                <p class="inpLabe">Color</p>
+                <input name="color" class="inpText" type="text" />
+                <p class="inpLabe">Plate</p>
+                <input name="plate" class="inpText validation" type="text" required />
+                <p class="inpLabe">Plate Exp Trailer</p>
+                <input name="exp" class="inpText" type="text" />
+                <p class="inpLabe">ANNUAL INS</p>
+                <input name="annualIns" class="inpText" type="text" />
+                <p class="inpLabe">Document Registration</p>
+                <div class="inpText">
+                    <label for="docLoad1" class="btnModal" style="margin-left:5px;">Select document registration</label>
+                    <input id="docLoad1" style="display: none;" type="file" name="registrationDoc" onchange="LoadFile(this, 1)" accept="application/pdf, image/jpeg, image/jpg" required>
+                    <span id="nameNoLoadDoc1" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
+                    <span id="nameLoadDoc1" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+                </div>
+                <p class="inpLabe">Document inshurance</p>
+                <div class="inpText">
+                    <label for="docLoad2" class="btnModal" style="margin-left:5px;">Select document ensures</label>
+                    <input id="docLoad2" style="display: none;" type="file" name="ensuresDoc" onchange="LoadFile(this, 2)" accept="application/pdf, image/jpeg, image/jpg" required>
+                    <span id="nameNoLoadDoc2" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
+                    <span id="nameLoadDoc2" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+                </div>
+                <p class="inpLabe">Document 3</p>
+                <div class="inpText">
+                    <label for="docLoad3" class="btnModal" style="margin-left:5px;">Select document 3</label>
+                    <input id="docLoad3" style="display: none;" type="file" name="_3Doc" onchange="LoadFile(this, 3)" accept="application/pdf, image/jpeg, image/jpg" required>
+                    <span id="nameNoLoadDoc3" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
+                    <span id="nameLoadDoc3" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+                </div>
             </div>
-            <p class="inpLabe">Document inshurance</p>
-            <div class="inpText">
-                <label for="docLoad2" class="btnModal" style="margin-left:5px;">Select document ensures</label>
-                <input id="docLoad2" style="display: none;" type="file" name="ensuresDoc" onchange="LoadFile(this, 2)" accept="application/pdf, image/jpeg, image/jpg" required>
-                <span id="nameNoLoadDoc2" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
-                <span id="nameLoadDoc2" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+            <input class="btnSave" value="Save" type="submit" />
+        </form>
+        <div style="width:45%;">
+            <div id="GooseneckTrailerTwoVehicles" style="display:none;flex-wrap:wrap;justify-content:flex-start;">
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles1.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles2.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles3.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles4.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles5.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles6.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles7.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles8.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/GooseneckTrailerTwoVehicles/GooseneckTrailerTwoVehicles9.png&type=png" />
             </div>
-            <p class="inpLabe">Document 3</p>
-            <div class="inpText">
-                <label for="docLoad3" class="btnModal" style="margin-left:5px;">Select document 3</label>
-                <input id="docLoad3" style="display: none;" type="file" name="_3Doc" onchange="LoadFile(this, 3)" accept="application/pdf, image/jpeg, image/jpg" required>
-                <span id="nameNoLoadDoc3" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
-                <span id="nameLoadDoc3" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+            <div id="EnclosedTrailerTwoVehicles" style="display:none;flex-wrap:wrap;justify-content:flex-start;">
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles1.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles2.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles3.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles4.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles5.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles9.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles10.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles11.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles12.png&type=png" />
+                <img class="img" src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/EnclosedTrailerTwoVehicles/EnclosedTrailerTwoVehicles13.png&type=png" />
             </div>
         </div>
-        <input class="btnSave" value="Save" type="submit" />
-    </form>
+    </div>
 </div>
 
 <script>
+    var curentSelectPattern;
+
     function LoadFile(fille, numDock) {
         let pref = fille.files[0].name.substr(fille.files[0].name.lastIndexOf(".") + 1);
         let nameLoadDocEl = document.getElementById("nameLoadDoc" + numDock);
@@ -73,12 +102,36 @@
             fille.value = "";
         }
     }
+
+    function SelectTrailer(value) {
+        if (curentSelectPattern || value == "") {
+            curentSelectPattern.style.display = "none";
+        }
+        let selectTypeDiv = document.getElementById(value);
+        if (selectTypeDiv) {
+            selectTypeDiv.style.display = "flex";
+            curentSelectPattern = selectTypeDiv;
+        }
+    }
 </script>
+
 
 <style>
     * {
         margin: 0px;
     }
+
+    .img {
+        margin: 5px;
+        padding: 5px;
+        image-rendering: optimizeSpeed;
+        width: 29%;
+    }
+
+        .img:hover {
+            opacity: 0.7;
+        }
+
 
     .validation:invalid {
         border-color: red;
@@ -138,7 +191,7 @@
     }
 
     .content {
-        width: 40%;
+        width: 100%;
     }
 
     .contentBody {
