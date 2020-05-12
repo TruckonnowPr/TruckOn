@@ -17,15 +17,15 @@ namespace BaceModel.ModelInspertionDriver.Trailer
         {
             NamePatern = new List<string>()
             {
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "7",
-                "8",
-                "9",
-                "10",
+                "Front left corner of the trailer",     //1
+                "The whole left side of the trailer",   //2
+                "The first left wheel of the trailer",  //3
+                "The second left wheel of the trailer", //4
+                "Back of trailer",                      //5
+                "The whole right side of the trailer",  //6
+                "The second right wheel of the trailer",//7
+                "The first right wheel of the trailer", //8
+                "Front right corner of the trailer",    //9
             };
         }
     }
