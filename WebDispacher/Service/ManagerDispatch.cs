@@ -1,4 +1,5 @@
-﻿using DaoModels.DAO.DTO;
+﻿using BaceModel.ModelInspertionDriver;
+using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
 using Google.Type;
@@ -54,6 +55,42 @@ namespace WebDispacher.Service
                     Type = z.Type == TypeCompany.BaseCommpany ? "Home Company" : z.Type == TypeCompany.NormalCompany ? "Regular company" : "Unknown",
                     DateRegistration = z.DateRegistration
                 }).ToList();
+        }
+
+        internal List<ProfileSettings> GetSetingsTruck(string idCompany, int idProfile)
+        {
+            List<ProfileSettings> profileSettings = new List<ProfileSettings>();
+            profileSettings.Add(new ProfileSettings()
+            {
+                Id = 0,
+                Name = "Standart",
+                TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
+                TypeTransportVehikle = "Truck",
+                IsChange = false,
+            });
+            if(idProfile != 0)
+            {
+
+            }
+            return profileSettings;
+        }
+
+        internal List<ProfileSettings> GetSetingsTrailer(string idCompany, int idProfile)
+        {
+            List<ProfileSettings> profileSettings = new List<ProfileSettings>();
+            profileSettings.Add(new ProfileSettings()
+            {
+                Id = 0,
+                Name = "Standart",
+                TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
+                TypeTransportVehikle = "Trailer",
+                IsChange = false,
+            });
+            if (idProfile != 0)
+            {
+
+            }
+            return profileSettings;
         }
 
         internal bool IsPermission(string key, string idCompany, string route)

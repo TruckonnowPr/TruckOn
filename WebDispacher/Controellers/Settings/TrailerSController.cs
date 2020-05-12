@@ -4,13 +4,12 @@ using WebDispacher.Service;
 
 namespace WebDispacher.Controellers.Settings
 {
-    [Route("Settings/Truck")]
-    public class TruckSController : Controller
+    [Route("Settings/Trailer")]
+    public class TrailerSController : Controller
     {
         ManagerDispatch managerDispatch = new ManagerDispatch();
 
         [Route("{idProfile}")]
-        //[ResponseCache(Location = ResponseCacheLocation.None, Duration = 300)]
         public IActionResult GetUsers(int idProfile)
         {
             IActionResult actionResult = null;
@@ -23,12 +22,12 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Trailer"))
                 {
                     ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
-                    ViewBag.ProfileSettings = managerDispatch.GetSetingsTruck(idCompany, idProfile);
-                    actionResult = View("~/Views/Settings/TruckSettings.cshtml");
+                    ViewBag.ProfileSettings = managerDispatch.GetSetingsTrailer(idCompany, idProfile);
+                    actionResult = View("~/Views/Settings/TrailerSettings.cshtml");
                 }
                 else
                 {
