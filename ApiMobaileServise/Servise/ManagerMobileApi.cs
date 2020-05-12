@@ -201,10 +201,12 @@ namespace ApiMobaileServise.Servise
             return transportVehicle;
         }
 
+
+
         private ITransportVehicle GetTransportVehicle(string typeTruk)
         {
             ITransportVehicle transportVehicle = null;
-            switch(typeTruk)
+            switch (typeTruk)
             {
                 case "PickupFourWheel": transportVehicle = new PickupFourWheel(); break;
                 case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
