@@ -39,6 +39,27 @@ namespace BaceModel.ModelInspertionDriver.Truck
                 "The front of the truck on the driver's side",
                 "Front wheel of the truck on the driver's side (Tread)",
             };
+            Layouts = new List<string>()
+            {
+                "1",
+                "2",
+                "3",
+                "4",
+                "6",
+                "7",
+                "8",
+                "9",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "19",
+                "20",
+                "21",
+            };
         }
     }
 }

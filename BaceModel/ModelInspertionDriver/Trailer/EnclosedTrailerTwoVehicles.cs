@@ -31,6 +31,21 @@ namespace BaceModel.ModelInspertionDriver.Trailer
                 "The first right wheel of the trailer", //12
                 "Front right corner of the trailer",    //13
             };
+            Layouts = new List<string>()
+            {
+                "1",
+                "2",
+                "3",
+                "4",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+            };
         }
     }
 }
