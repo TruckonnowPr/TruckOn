@@ -257,69 +257,45 @@ namespace WebDispacher.Service
             int idUser = _sqlEntityFramworke.GetUserIdByKey(key);
             if(action == "Assign")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //string fullNameDriver = _sqlEntityFramworke.GetFullNameDriverById(idDriver);
-                //historyOrder.Action = $"{fullNameUser} assign the driver ordered {fullNameDriver}";
                 historyOrder.TypeAction = "Assign";
             }
             else if(action == "Unassign")
             {
                 idDriver = _sqlEntityFramworke.GetDriverIdByIdOrder(idOrder);
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //string fullNameDriver = _sqlEntityFramworke.GetFullNameDriverById(idDriver);
-                //historyOrder.Action = $"{fullNameUser} withdrew an order from {fullNameDriver} driver";
                 historyOrder.TypeAction = "Unassign";
             }
             else if (action == "Solved")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //historyOrder.Action = $"{fullNameUser} clicked on the \"Solved\" button";
                 historyOrder.TypeAction = "Solved";
             }
             else if (action == "ArchivedOrder")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //historyOrder.Action = $"{fullNameUser} transferred the order to the archive";
                 historyOrder.TypeAction = "ArchivedOrder";
             }
             else if (action == "DeletedOrder")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //historyOrder.Action = $"{fullNameUser} transferred the order to deleted orders";
                 historyOrder.TypeAction = "DeletedOrder";
             }
             else if (action == "Creat")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //historyOrder.Action = $"{fullNameUser} created an order";
                 historyOrder.TypeAction = "Creat";
             }
             else if (action == "SavaOrder")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //historyOrder.Action = $"{fullNameUser} edited the order";
                 historyOrder.TypeAction = "SavaOrder";
             }
             else if (action == "SavaVech")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
                 idOrder = _sqlEntityFramworke.GetIdOrderByIdVech(idVech);
-                //VehiclwInformation vehiclwInformation = _sqlEntityFramworke.GetVechById(idVech);
-                //historyOrder.Action = $"{fullNameUser} edited the vehicle {vehiclwInformation.Year} {vehiclwInformation.Make} {vehiclwInformation.Make}";
                 historyOrder.TypeAction = "SavaVech";
             }
             else if (action == "RemoveVech")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
                 idOrder = _sqlEntityFramworke.GetIdOrderByIdVech(idVech);
-                //VehiclwInformation vehiclwInformation = _sqlEntityFramworke.GetVechById(idVech);
-                //historyOrder.Action = $"{fullNameUser} removed the vehicle {vehiclwInformation.Year} {vehiclwInformation.Make} {vehiclwInformation.Make}";
                 historyOrder.TypeAction = "RemoveVech";
             }
             else if (action == "AddVech")
             {
-                //string fullNameUser = _sqlEntityFramworke.GetFullNameUserByKey(key);
-                //historyOrder.Action = $"{fullNameUser} created a vehicle";
                 historyOrder.TypeAction = "AddVech";
             }
 

@@ -9,7 +9,6 @@ namespace DaoModels.DAO.Models.Settings
         public string Type { get; set; }
         public bool IsNextInspection { get; set; }
         public string TypeTransportVehicle { get; set; }
-        public List<NamePatern> NamePaterns { get; set; }
         public List<Layouts> Layouts { get; set; }
         public string PlateTruck { get; set; }
         public string PlateTraler { get; set; }
