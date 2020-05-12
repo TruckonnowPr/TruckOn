@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="DAO\Interface\" />
+    <Folder Include="ModelInspertionDriver\" />
   </ItemGroup>
 
 </Project>

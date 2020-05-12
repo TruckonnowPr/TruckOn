@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ApiMobaileServise.Servise.ModelInspertionDriver
+namespace BaceModel.ModelInspertionDriver
 {
     public interface ITransportVehicle
     {

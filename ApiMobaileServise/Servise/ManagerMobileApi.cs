@@ -3,9 +3,9 @@ using ApiMobaileServise.Models;
 using ApiMobaileServise.Notify;
 using ApiMobaileServise.Servise.AddDamage;
 using ApiMobaileServise.Servise.GoogleApi;
-using ApiMobaileServise.Servise.ModelInspertionDriver;
-using ApiMobaileServise.Servise.ModelInspertionDriver.Trailer;
-using ApiMobaileServise.Servise.ModelInspertionDriver.Truck;
+using BaceModel.ModelInspertionDriver;
+using BaceModel.ModelInspertionDriver.Trailer;
+using BaceModel.ModelInspertionDriver.Truck;
 using DaoModels.DAO.Models;
 using Newtonsoft.Json;
 using System;
@@ -208,7 +208,10 @@ namespace ApiMobaileServise.Servise
             switch(typeTruk)
             {
                 case "PickupFourWheel": transportVehicle = new PickupFourWheel(); break;
+                case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
+
                 case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
+                case "FourDoorTruckChassisOpenFrame": transportVehicle = new FourDoorTruckChassisOpenFrame(); break;
             }
             return transportVehicle;
         }

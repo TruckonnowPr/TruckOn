@@ -2,7 +2,7 @@
 using ApiMobaileServise.BackgraundService.Queue;
 using ApiMobaileServise.Models;
 using ApiMobaileServise.Servise;
-using ApiMobaileServise.Servise.ModelInspertionDriver;
+using BaceModel.ModelInspertionDriver;
 using DaoModels.DAO.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

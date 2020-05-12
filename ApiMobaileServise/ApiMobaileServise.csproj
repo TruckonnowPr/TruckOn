@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BaceModel\BaceModel.csproj" />
     <ProjectReference Include="..\DaoModels\DaoModels.csproj" />
     <ProjectReference Include="..\MDispatch\MDispatch\MDispatch.csproj" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ApiMobaileServise.Servise.ModelInspertionDriver.Truck
+namespace BaceModel.ModelInspertionDriver.Truck
 {
     public class PickupFourWheel : ITransportVehicle
     {
@@ -11,7 +11,7 @@ namespace ApiMobaileServise.Servise.ModelInspertionDriver.Truck
         public string PlateTruck { get; set; }
         public string PlateTraler { get; set; }
         public string TypeTransportVehicle { get; set; } = "Truck";
-        public List<string> Layouts { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public List<string> Layouts { get; set; }
 
         public PickupFourWheel()
         {
