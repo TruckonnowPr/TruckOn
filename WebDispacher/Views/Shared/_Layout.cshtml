@@ -79,7 +79,22 @@
             transition: 0.3s
         }
 
-    * {
-        outline: none !important
+    ::-webkit-scrollbar {
+        width: 7px;
     }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(175, 217, 238, 0.73);
+        border-radius: 30px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: silver;
+        border-radius: 30px;
+    }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 156, 228, 0.34);
+        }
 </style>

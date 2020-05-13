@@ -9,6 +9,7 @@ namespace DaoModels.DAO.DTO
         public string TypeTransportVehikle { get; set; }
         public string Name { get; set; }
         public bool IsChange { get; set; }
+        public bool IsSelect { get; set; }
         public List<TransportVehicle> TransportVehicles { get; set; }
 
     }

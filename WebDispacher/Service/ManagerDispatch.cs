@@ -62,16 +62,12 @@ namespace WebDispacher.Service
             List<ProfileSettings> profileSettings = new List<ProfileSettings>();
             profileSettings.Add(new ProfileSettings()
             {
-                Id = 0,
                 Name = "Standart",
-                TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
                 TypeTransportVehikle = "Truck",
-                IsChange = false,
+                Id = 0,
+                IsSelect = 0 == idProfile,
             });
-            if(idProfile != 0)
-            {
 
-            }
             return profileSettings;
         }
 
@@ -80,17 +76,55 @@ namespace WebDispacher.Service
             List<ProfileSettings> profileSettings = new List<ProfileSettings>();
             profileSettings.Add(new ProfileSettings()
             {
-                Id = 0,
                 Name = "Standart",
-                TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
                 TypeTransportVehikle = "Trailer",
-                IsChange = false,
+                Id = 0,
+                IsSelect = 0 == idProfile,
             });
+
+            return profileSettings;
+        }
+
+        internal ProfileSettings GetSelectSetingTruck(string idCompany, int idProfile)
+        {
+            ProfileSettings profileSetting = null;
+            if(idProfile != 0)
+            {
+
+            }
+            else
+            {
+                profileSetting = new ProfileSettings()
+                {
+                    Id = 0,
+                    Name = "Standart",
+                    TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
+                    TypeTransportVehikle = "Truck",
+                    IsChange = false,
+                };
+            }
+            return profileSetting;
+        }
+
+        internal ProfileSettings GetSelectSetingTrailer(string idCompany, int idProfile)
+        {
+            ProfileSettings profileSetting = null;
             if (idProfile != 0)
             {
 
             }
-            return profileSettings;
+            else
+            {
+                profileSetting = new ProfileSettings()
+                {
+                    Id = 0,
+                    Name = "Standart",
+                    TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
+                    TypeTransportVehikle = "Trailer",
+                    IsChange = false,
+                };
+            }
+            return profileSetting;
         }
 
         internal bool IsPermission(string key, string idCompany, string route)

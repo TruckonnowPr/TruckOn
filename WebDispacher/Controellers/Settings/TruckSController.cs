@@ -27,7 +27,8 @@ namespace WebDispacher.Controellers.Settings
                 {
                     ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
-                    ViewBag.ProfileSettings = managerDispatch.GetSetingsTruck(idCompany, idProfile);
+                    ViewBag.SelectSetingTruck = managerDispatch.GetSelectSetingTruck(idCompany, idProfile);
+                    ViewBag.SetingsTruck = managerDispatch.GetSetingsTruck(idCompany, idProfile);
                     actionResult = View("~/Views/Settings/TruckSettings.cshtml");
                 }
                 else
@@ -44,6 +45,21 @@ namespace WebDispacher.Controellers.Settings
 
             }
             return actionResult;
+        }
+
+
+
+        [HttpGet]
+        [Route("Image")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult GetShiping(string name, string type)
+        {
+            if(!name.Contains(type))
+            {
+                name += "." + type;
+            }
+            var imageFileStream = System.IO.File.OpenRead(name);
+            return File(imageFileStream, $"image/{type}");
         }
     }
 }

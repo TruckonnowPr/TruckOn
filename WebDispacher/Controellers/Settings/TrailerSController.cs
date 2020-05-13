@@ -26,7 +26,8 @@ namespace WebDispacher.Controellers.Settings
                 {
                     ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
-                    ViewBag.ProfileSettings = managerDispatch.GetSetingsTrailer(idCompany, idProfile);
+                    ViewBag.SelectSetingTrailer = managerDispatch.GetSelectSetingTrailer(idCompany, idProfile);
+                    ViewBag.SetingsTrailer = managerDispatch.GetSetingsTrailer(idCompany, idProfile);
                     actionResult = View("~/Views/Settings/TrailerSettings.cshtml");
                 }
                 else
