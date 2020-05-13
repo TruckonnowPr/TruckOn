@@ -45,5 +45,18 @@ namespace WebDispacher.Controellers.Settings
             }
             return actionResult;
         }
+
+        [HttpGet]
+        [Route("Image")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult GetShiping(string name, string type)
+        {
+            if (!name.Contains(type))
+            {
+                name += "." + type;
+            }
+            var imageFileStream = System.IO.File.OpenRead(name);
+            return File(imageFileStream, $"image/{type}");
+        }
     }
 }

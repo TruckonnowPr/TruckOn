@@ -47,8 +47,6 @@ namespace WebDispacher.Controellers.Settings
             return actionResult;
         }
 
-
-
         [HttpGet]
         [Route("Image")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
