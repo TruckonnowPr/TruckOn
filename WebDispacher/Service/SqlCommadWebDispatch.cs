@@ -1,6 +1,8 @@
 ﻿using DaoModels.DAO;
+using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
+using DaoModels.DAO.Models.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Caching.Memory;
@@ -89,6 +91,16 @@ namespace WebDispacher.Dao
             } 
         }
 
+        internal List<ProfileSetting> GetSetingsDb(string idCompany, TypeTransportVehikle typeTransportVehikle)
+        {
+            List<ProfileSetting> profileSettings = null;
+            profileSettings = context.ProfileSettings
+                .Where(p => p.IdCompany.ToString() == idCompany && p.TypeTransportVehikle == typeTransportVehikle.ToString())
+                .ToList();
+            return profileSettings;
+             
+        }
+
         internal Commpany GetCompanyById(string idCompany)
         {
             return context.Commpanies.First(c => c.Id.ToString() == idCompany);
@@ -110,6 +122,22 @@ namespace WebDispacher.Dao
             Users users = context.User.First(u => u.KeyAuthorized == key.ToString());
             commpany = context.Commpanies.First(c => c.Id == users.CompanyId);
             return commpany;
+        }
+
+        internal ProfileSetting GetSelectSeting(string idCompany, int idProfile)
+        {
+            return context.ProfileSettings
+                .Where(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile)
+                .Include(p => p.TransportVehicles)
+                .Include("TransportVehicles.Layouts")
+                .FirstOrDefault();
+        }
+
+        internal int AddProfileDb(ProfileSetting profileSetting)
+        {
+            context.ProfileSettings.Add(profileSetting);
+            context.SaveChanges();
+            return profileSetting.Id;
         }
 
         internal int GetComapnyIdByKeyUser(int key)

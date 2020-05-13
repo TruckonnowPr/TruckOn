@@ -3,18 +3,19 @@
     </div>
     <nav>
         @*<input class="btnSt activeBtn" type="button" value="Companies" onclick="window.location.href='@Url.Action("Companies", "Company")';" />
-            <input style="width:150px" class="btnSt" type="button" value="All Users" onclick="window.location.href='@Url.Action("Users", "Company")';" />*@
+        <input style="width:150px" class="btnSt" type="button" value="All Users" onclick="window.location.href='@Url.Action("Users", "Company")';" />*@
         @foreach (var SetingTrailer in ViewBag.SetingsTrailer)
         {
             if (SetingTrailer.IsSelect)
             {
-                <input class="btnSt activeBtn" type="button" value="@SetingTrailer.Name" />
+                <input class="btnSt activeBtn" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" />
             }
             else
             {
-                <input class="btnSt" type="button" value="@SetingTrailer.Name" />
+                <input class="btnSt" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" />
             }
         }
+        <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Trailer", "Settings")/AddProfile'" />
     </nav>
     <div class="contentBody">
         @foreach (var transportVehicle in ViewBag.SelectSetingTrailer.TransportVehicles)
@@ -25,7 +26,7 @@
                     {
                         <div class="cardLayout">
                             <span>@layout.Name</span>
-                            <img class="img" src="@ViewBag.BaseUrl/Settings/Trailer/Image?name=../TrailerPattern/@layout.TypeName/@layout.TypeName@layout.Index&type=png" />
+                            <img class="img" src="@ViewBag.BaseUrl/Settings/Trailer/Image?name=../TrailerPattern/@transportVehicle.Type/@transportVehicle.Type@layout.Index&type=png" />
                         </div>
                     }
                 </div>
@@ -87,6 +88,17 @@
         margin-left: 5px;
         border: none;
         width: 120px;
+        height: 40px;
+        background-color: white;
+        font-size: 20px;
+        color: rgb(51, 51, 51);
+        border-color: rgba(51, 51, 51, 1);
+    }
+
+    .btnAddSt {
+        margin-left: 5px;
+        border: none;
+        width: 20px;
         height: 40px;
         background-color: white;
         font-size: 20px;

@@ -54,7 +54,6 @@ namespace BaceModel.ModelInspertionDriver
                         Index = transportVehikle.Layouts[i],
                         IsUsed = true,
                         Name = transportVehikle.NamePatern[i],
-                        TypeName = transportVehikle.Type
                     });
                 }
                 index++;

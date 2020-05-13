@@ -2,6 +2,7 @@
 using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
+using DaoModels.DAO.Models.Settings;
 using Google.Type;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -67,7 +68,19 @@ namespace WebDispacher.Service
                 Id = 0,
                 IsSelect = 0 == idProfile,
             });
-
+            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Truck);
+            if(profileSettings1.Count != 0)
+            {
+                profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettings()
+                { 
+                    Id = z.Id,
+                    IsChange = true,
+                    IsSelect = z.Id == idProfile,
+                    Name = z.Name,
+                    TransportVehicles = z.TransportVehicles,
+                    TypeTransportVehikle = z.TypeTransportVehikle
+                }));
+            }
             return profileSettings;
         }
 
@@ -81,7 +94,19 @@ namespace WebDispacher.Service
                 Id = 0,
                 IsSelect = 0 == idProfile,
             });
-
+            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Trailer);
+            if (profileSettings1.Count != 0)
+            {
+                profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettings()
+                {
+                    Id = z.Id,
+                    IsChange = true,
+                    IsSelect = z.Id == idProfile,
+                    Name = z.Name,
+                    TransportVehicles = z.TransportVehicles,
+                    TypeTransportVehikle = z.TypeTransportVehikle
+                }));
+            }
             return profileSettings;
         }
 
@@ -90,7 +115,19 @@ namespace WebDispacher.Service
             ProfileSettings profileSetting = null;
             if(idProfile != 0)
             {
-
+                ProfileSetting profileSetting1 = _sqlEntityFramworke.GetSelectSeting(idCompany, idProfile);
+                if (profileSetting1 != null)
+                {
+                    profileSetting = new ProfileSettings()
+                    {
+                        Id = profileSetting1.Id,
+                        IsChange = true,
+                        IsSelect = idProfile == profileSetting1.Id,
+                        Name = profileSetting1.Name,
+                        TransportVehicles = profileSetting1.TransportVehicles,
+                        TypeTransportVehikle = profileSetting1.TypeTransportVehikle
+                    };
+                }
             }
             else
             {
@@ -106,12 +143,36 @@ namespace WebDispacher.Service
             return profileSetting;
         }
 
+        internal int AddProfile(string idCompany, TypeTransportVehikle typeTransportVehikle)
+        {
+            ProfileSetting profileSetting = new ProfileSetting()
+            {
+                TransportVehicles = new StandartProfileSettings(typeTransportVehikle).TransportVehicles,
+                IdCompany = Convert.ToInt32(idCompany),
+                Name = "Custom",
+                TypeTransportVehikle = typeTransportVehikle.ToString(),
+            };
+            return _sqlEntityFramworke.AddProfileDb(profileSetting);
+        }
+
         internal ProfileSettings GetSelectSetingTrailer(string idCompany, int idProfile)
         {
             ProfileSettings profileSetting = null;
             if (idProfile != 0)
             {
-
+                ProfileSetting profileSetting1 = _sqlEntityFramworke.GetSelectSeting(idCompany, idProfile);
+                if (profileSetting1 != null)
+                {
+                    profileSetting = new ProfileSettings()
+                    {
+                        Id = profileSetting1.Id,
+                        IsChange = true,
+                        IsSelect = idProfile == profileSetting1.Id,
+                        Name = profileSetting1.Name,
+                        TransportVehicles = profileSetting1.TransportVehicles,
+                        TypeTransportVehikle = profileSetting1.TypeTransportVehikle
+                    };
+                }
             }
             else
             {

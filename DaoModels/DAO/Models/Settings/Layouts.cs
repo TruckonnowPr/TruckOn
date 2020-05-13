@@ -8,7 +8,5 @@ namespace DaoModels.DAO.Models.Settings
         public string Index { get; set; }
         public string Name { get; set; }
         public bool IsUsed { get; set; }
-        [NotMapped]
-        public string TypeName { get; set; }
     }
 }

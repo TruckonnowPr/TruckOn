@@ -3,8 +3,8 @@
     <nav class="navst">
         <span><a class="linkASt" href="http://truckonnow.com">@ViewBag.NameCompany - Settings</a></span>
         <input class="btn" type="button" value="Users" onclick="window.location.href='@Url.Action("User", "Settings")'+'/Users';" />
-        <input class="btn" type="button" value="Truck" onclick="window.location.href='/Settings/Truck/0';" />
-        <input class="btn" type="button" value="Trailer" onclick="window.location.href='/Settings/Trailer/0';" />
+        <input class="btn" type="button" value="Truck" onclick="window.location.href='/Settings/Truck?idProfile=0';" />
+        <input class="btn" type="button" value="Trailer" onclick="window.location.href='/Settings/Trailer?idProfile=0';" />
     </nav>
     <img class="imgMirir" src="~/Icon/MirorL.png" height="40" asp-append-version="true" />
 </div>

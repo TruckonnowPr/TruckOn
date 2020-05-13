@@ -8,13 +8,14 @@
         {
             if (SetingTruck.IsSelect)
             {
-                <input class="btnSt activeBtn" type="button" value="@SetingTruck.Name" />
+                <input class="btnSt activeBtn" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" />
             }
             else
             {
-                <input class="btnSt" type="button" value="@SetingTruck.Name" />
+                <input class="btnSt" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" />
             }
         }
+        <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Truck", "Settings")/AddProfile'" />
     </nav>
     <div class="contentBody">
        @foreach(var transportVehicle in ViewBag.SelectSetingTruck.TransportVehicles)
@@ -25,7 +26,7 @@
                    {
                         <div class="cardLayout">
                             <span>@layout.Name</span>
-                            <img class="img" src="@ViewBag.BaseUrl/Settings/Truck/Image?name=../TruckPattern/@layout.TypeName/@layout.TypeName@layout.Index&type=png" />
+                            <img class="img" src="@ViewBag.BaseUrl/Settings/Truck/Image?name=../TruckPattern/@transportVehicle.Type/@transportVehicle.Type@layout.Index&type=png" />
                         </div>
                    }
                </div>
@@ -87,6 +88,17 @@
         margin-left: 5px;
         border: none;
         width: 120px;
+        height: 40px;
+        background-color: white;
+        font-size: 20px;
+        color: rgb(51, 51, 51);
+        border-color: rgba(51, 51, 51, 1);
+    }
+
+    .btnAddSt {
+        margin-left: 5px;
+        border: none;
+        width: 20px;
         height: 40px;
         background-color: white;
         font-size: 20px;

@@ -44,6 +44,7 @@ namespace DaoModels.DAO
         public DbSet<TransportVehicle> TransportVehicles { get; set; }
         public DbSet<NamePatern> NamePaterns { get; set; }
         public DbSet<Layouts> Layouts { get; set; }
+        public DbSet<ProfileSetting> ProfileSettings { get; set; }
 
         public Context()
         {
