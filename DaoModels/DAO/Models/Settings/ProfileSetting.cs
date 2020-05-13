@@ -9,6 +9,7 @@ namespace DaoModels.DAO.Models.Settings
 
         public string TypeTransportVehikle { get; set; }
         public string Name { get; set; }
+        public bool IsUsed { get; set; }
         public List<TransportVehicle> TransportVehicles { get; set; }
     }
 }

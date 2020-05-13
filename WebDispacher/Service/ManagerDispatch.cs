@@ -61,15 +61,16 @@ namespace WebDispacher.Service
         internal List<ProfileSettings> GetSetingsTruck(string idCompany, int idProfile)
         {
             List<ProfileSettings> profileSettings = new List<ProfileSettings>();
+            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Truck);
             profileSettings.Add(new ProfileSettings()
             {
                 Name = "Standart",
                 TypeTransportVehikle = "Truck",
                 Id = 0,
                 IsSelect = 0 == idProfile,
+                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null
             });
-            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Truck);
-            if(profileSettings1.Count != 0)
+            if (profileSettings1.Count != 0)
             {
                 profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettings()
                 { 
@@ -78,7 +79,8 @@ namespace WebDispacher.Service
                     IsSelect = z.Id == idProfile,
                     Name = z.Name,
                     TransportVehicles = z.TransportVehicles,
-                    TypeTransportVehikle = z.TypeTransportVehikle
+                    TypeTransportVehikle = z.TypeTransportVehikle,
+                    IsUsed = z.IsUsed
                 }));
             }
             return profileSettings;
@@ -87,14 +89,15 @@ namespace WebDispacher.Service
         internal List<ProfileSettings> GetSetingsTrailer(string idCompany, int idProfile)
         {
             List<ProfileSettings> profileSettings = new List<ProfileSettings>();
+            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Trailer);
             profileSettings.Add(new ProfileSettings()
             {
                 Name = "Standart",
                 TypeTransportVehikle = "Trailer",
                 Id = 0,
                 IsSelect = 0 == idProfile,
+                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null
             });
-            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Trailer);
             if (profileSettings1.Count != 0)
             {
                 profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettings()
@@ -104,7 +107,8 @@ namespace WebDispacher.Service
                     IsSelect = z.Id == idProfile,
                     Name = z.Name,
                     TransportVehicles = z.TransportVehicles,
-                    TypeTransportVehikle = z.TypeTransportVehikle
+                    TypeTransportVehikle = z.TypeTransportVehikle,
+                    IsUsed = z.IsUsed
                 }));
             }
             return profileSettings;
@@ -125,7 +129,8 @@ namespace WebDispacher.Service
                         IsSelect = idProfile == profileSetting1.Id,
                         Name = profileSetting1.Name,
                         TransportVehicles = profileSetting1.TransportVehicles,
-                        TypeTransportVehikle = profileSetting1.TypeTransportVehikle
+                        TypeTransportVehikle = profileSetting1.TypeTransportVehikle,
+                        IsUsed = profileSetting1.IsUsed
                     };
                 }
             }
@@ -138,6 +143,7 @@ namespace WebDispacher.Service
                     TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
                     TypeTransportVehikle = "Truck",
                     IsChange = false,
+                    IsUsed = false
                 };
             }
             return profileSetting;
@@ -170,7 +176,9 @@ namespace WebDispacher.Service
                         IsSelect = idProfile == profileSetting1.Id,
                         Name = profileSetting1.Name,
                         TransportVehicles = profileSetting1.TransportVehicles,
-                        TypeTransportVehikle = profileSetting1.TypeTransportVehikle
+                        TypeTransportVehikle = profileSetting1.TypeTransportVehikle,
+                        IsUsed = profileSetting1.IsUsed
+
                     };
                 }
             }
@@ -183,6 +191,7 @@ namespace WebDispacher.Service
                     TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
                     TypeTransportVehikle = "Trailer",
                     IsChange = false,
+                    IsUsed = true
                 };
             }
             return profileSetting;
