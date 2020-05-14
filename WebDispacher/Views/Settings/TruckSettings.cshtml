@@ -8,11 +8,11 @@
         {
             if (SetingTruck.IsSelect)
             {
-                <input class="btnSt activeBtn" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" />
+                <input class="btnSt activeBtn" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" ondblclick="window.location.href='@Url.Action("Truck", "Settings")/RemoveProfile?idProfile='+ @SetingTruck.Id;" />
             }
             else
             {
-                <input class="btnSt" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" />
+                <input class="btnSt" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" ondblclick="window.location.href='@Url.Action("Truck", "Settings")/RemoveProfile?idProfile='+ @SetingTruck.Id;" />
             }
         }
         <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Truck", "Settings")/AddProfile'" />

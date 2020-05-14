@@ -85,6 +85,43 @@ namespace WebDispacher.Controellers.Settings
         }
 
         [HttpGet]
+        [Route("RemoveProfile")]
+        public IActionResult RemoveProfile(int idProfile)
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                {
+                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.NameCompany = companyName;
+                    managerDispatch.RemoveProfile(idCompany, idProfile);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Truck?idProfile=0");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
         [Route("Image")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult GetShiping(string name, string type)

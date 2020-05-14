@@ -157,6 +157,25 @@ namespace WebDispacher.Dao
             return truck; 
         }
 
+        internal void RemoveProfiledb(string idCompany, int idProfile)
+        {
+            ProfileSetting profileSetting = context.ProfileSettings
+                .Where(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile)
+                .Include(p => p.TransportVehicles)
+                .Include("TransportVehicles.Layouts")
+                .FirstOrDefault();
+            if (profileSetting != null)
+            {
+                foreach (TransportVehicle transportVehicle in profileSetting.TransportVehicles)
+                {
+                    context.Layouts.RemoveRange(transportVehicle.Layouts);
+                }
+                context.TransportVehicles.RemoveRange(profileSetting.TransportVehicles);
+                context.ProfileSettings.Remove(context.ProfileSettings.First(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile));
+                context.SaveChanges();
+            }
+        }
+
         internal void CreateUserForCompanyId(int id, string nameCommpany, string password)
         {
             context.User.Add(new Users()

@@ -149,6 +149,11 @@ namespace WebDispacher.Service
             return profileSetting;
         }
 
+        internal void RemoveProfile(string idCompany, int idProfile)
+        {
+            _sqlEntityFramworke.RemoveProfiledb(idCompany, idProfile);
+        }
+
         internal int AddProfile(string idCompany, TypeTransportVehikle typeTransportVehikle)
         {
             ProfileSetting profileSetting = new ProfileSetting()

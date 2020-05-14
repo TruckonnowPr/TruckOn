@@ -8,14 +8,14 @@
         {
             if (SetingTrailer.IsSelect)
             {
-                <input class="btnSt activeBtn" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" />
+                <input class="btnSt activeBtn" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" ondblclick="window.location.href='@Url.Action("Trailer", "Settings")/RemoveProfile?idProfile='+ @SetingTrailer.Id;" />
             }
             else
             {
-                <input class="btnSt" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" />
+                <input class="btnSt" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" ondblclick="window.location.href='@Url.Action("Trailer", "Settings")/RemoveProfile?idProfile='+ @SetingTrailer.Id;"/>
             }
         }
-        <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Trailer", "Settings")/AddProfile'" />
+        <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Trailer", "Settings")/AddProfile'"  />
     </nav>
     <div class="contentBody">
         @foreach (var transportVehicle in ViewBag.SelectSetingTrailer.TransportVehicles)
