@@ -54,6 +54,7 @@ namespace BaceModel.ModelInspertionDriver
                         Index = transportVehikle.Layouts[i],
                         IsUsed = true,
                         Name = transportVehikle.NamePatern[i],
+                        OrdinalIndex = i+1,
                     });
                 }
                 index++;

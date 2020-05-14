@@ -3,7 +3,7 @@
     </div>
     <nav>
         @*<input class="btnSt activeBtn" type="button" value="Companies" onclick="window.location.href='@Url.Action("Companies", "Company")';" />
-        <input style="width:150px" class="btnSt" type="button" value="All Users" onclick="window.location.href='@Url.Action("Users", "Company")';" />*@
+            <input style="width:150px" class="btnSt" type="button" value="All Users" onclick="window.location.href='@Url.Action("Users", "Company")';" />*@
         @foreach (var SetingTrailer in ViewBag.SetingsTrailer)
         {
             if (SetingTrailer.IsSelect)
@@ -12,10 +12,10 @@
             }
             else
             {
-                <input class="btnSt" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" ondblclick="window.location.href='@Url.Action("Trailer", "Settings")/RemoveProfile?idProfile='+ @SetingTrailer.Id;"/>
+                <input class="btnSt" type="button" value="@SetingTrailer.Name" onclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" ondblclick="window.location.href='@Url.Action("Trailer", "Settings")?idProfile='+ @SetingTrailer.Id;" ondblclick="window.location.href='@Url.Action("Trailer", "Settings")/RemoveProfile?idProfile='+ @SetingTrailer.Id;" />
             }
         }
-        <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Trailer", "Settings")/AddProfile'"  />
+        <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Trailer", "Settings")/AddProfile'" />
     </nav>
     <div class="contentBody">
         @foreach (var transportVehicle in ViewBag.SelectSetingTrailer.TransportVehicles)
@@ -24,21 +24,65 @@
                 <div class="cardLayouts">
                     @foreach (var layout in transportVehicle.Layouts)
                     {
-                        <div class="cardLayout">
-                            <span>@layout.Name</span>
-                            <img class="img" src="@ViewBag.BaseUrl/Settings/Trailer/Image?name=../TrailerPattern/@transportVehicle.Type/@transportVehicle.Type@layout.Index&type=png" />
+                    <div style="display:flex;" class="cardLayout">
+                        <div>
+                            <span>@layout.Name</span> @if (layout.IsUsed)
+                            {
+                                <img class="img" id="img_@layout.Id" src="@ViewBag.BaseUrl/Settings/Trailer/Image?name=../TrailerPattern/@transportVehicle.Type/@transportVehicle.Type@layout.Index&type=png" />
+                            }
+                            else
+                            {
+                                <img class="img" id="img_@layout.Id" style="opacity:0.4" src="@ViewBag.BaseUrl/Settings/Trailer/Image?name=../TrailerPattern/@transportVehicle.Type/@transportVehicle.Type@layout.Index&type=png" />
+                            }
                         </div>
-                    }
-                </div>
-            </div>
+                        @if (ViewBag.SelectSetingTrailer.IsChange)
+                        {
+                            <div class="cardTool">
+                                @if (layout.OrdinalIndex != 1)
+                                {
+                                    <div class="arrow-4 arrow-up">
+                                        <span class="arrow-4-left arrow-left"></span>
+                                        <span class="arrow-4-right arrow-right"></span>
+                                    </div>
+                                }
+                                <label class="container">
+                                    <input type="checkbox" checked="@layout.IsUsed" onchange="CheckChange(this.checked, @layout.Id)">
+                                    <span class="checkmark"></span>
+                                </label>
+                                @if (layout.OrdinalIndex != transportVehicle.Layouts.Count)
+                                {
+                                    <div class="arrow-4 arrow-down">
+                                        <span class="arrow-4-left arrow-left"></span>
+                                        <span class="arrow-4-right arrow-right"></span>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                     }
+                        </div>
+                    </div>
         }
     </div>
 </div>
+
+<script>
+    function CheckChange(checked, idLayout) {
+        let imgElment = document.getElementById("img_" + idLayout);
+        if (checked) {
+            imgElment.style.opacity = "1";
+        }
+        else {
+            imgElment.style.opacity = "0.4";
+        }
+    }
+</script>
 
 <style>
     * {
         margin: 0px;
     }
+
 
     .contentBody {
         width: 100%;
@@ -76,6 +120,130 @@
         border-top: groove;
         border-left: groove;
         border-color: rgba(151, 252, 126, 0.72);
+    }
+
+    .cardTool {
+        padding: 15px;
+    }
+
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        cursor: pointer;
+        font-size: 17px;
+        user-select: none;
+    }
+
+        .container input {
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 12px;
+        width: 12px;
+        background-color: transparent;
+        border-radius: 5px;
+        border: solid rgba(60, 154, 37, 0.72);
+    }
+
+    .container input:checked ~ .checkmark {
+        background-color: transparent;
+        border: none;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .container .checkmark:after {
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 10px;
+        border: solid rgba(60, 154, 37, 0.72);
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .arrow-4 {
+        position: relative;
+        cursor: pointer;
+        height: 10px;
+    }
+
+    .arrow-4-left {
+        position: relative;
+        background-color: transparent;
+        width: 4px;
+        top: 4px;
+        height: 12px;
+        display: block;
+        border-radius: 4px;
+    }
+
+        .arrow-4-left:after {
+            content: "";
+            background-color: rgba(60, 154, 37, 0.80);
+            width: 4px;
+            height: 12px;
+            display: block;
+            border-radius: 6px 10px 10px 6px;
+            z-index: -1;
+        }
+
+    .arrow-4-right {
+        position: relative;
+        background-color: transparent;
+        width: 4px;
+        height: 12px;
+        display: block;
+        border-radius: 4px;
+    }
+
+        .arrow-4-right:after {
+            content: "";
+            background-color: rgba(60, 154, 37, 0.80);
+            width: 4px;
+            height: 12px;
+            display: block;
+            border-radius: 10px 6px 6px 10px;
+            z-index: -1;
+        }
+
+    .arrow-up {
+        top: 20px;
+        transform: rotate(90deg);
+    }
+
+    .arrow-down {
+        top: -20px;
+        left: -18px;
+        transform: rotate(-90deg);
+    }
+
+    .arrow-right {
+        transform: rotate(-40deg);
+    }
+
+    .arrow-left {
+        transform: rotate(40deg);
     }
 
     .img {

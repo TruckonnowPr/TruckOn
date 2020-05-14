@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using WebDispacher.Dao;
 using WebDispacher.Notify;
 using WebDispacher.Service.EmailSmtp;
+using Xamarin.Forms.Internals;
 
 namespace WebDispacher.Service
 {
@@ -143,9 +144,13 @@ namespace WebDispacher.Service
                     TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
                     TypeTransportVehikle = "Truck",
                     IsChange = false,
-                    IsUsed = false
+                    IsUsed = true
                 };
             }
+            profileSetting.TransportVehicles.ForEach((TransportVehicle) =>
+            {
+                TransportVehicle.Layouts = TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
+            });
             return profileSetting;
         }
 
@@ -199,6 +204,10 @@ namespace WebDispacher.Service
                     IsUsed = true
                 };
             }
+            profileSetting.TransportVehicles.ForEach((TransportVehicle) =>
+            {
+                TransportVehicle.Layouts = TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
+            });
             return profileSetting;
         }
 
