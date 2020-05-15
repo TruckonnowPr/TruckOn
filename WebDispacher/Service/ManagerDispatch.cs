@@ -69,7 +69,8 @@ namespace WebDispacher.Service
                 TypeTransportVehikle = "Truck",
                 Id = 0,
                 IsSelect = 0 == idProfile,
-                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null
+                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null,
+                IdCompany = 0
             });
             if (profileSettings1.Count != 0)
             {
@@ -81,7 +82,8 @@ namespace WebDispacher.Service
                     Name = z.Name,
                     TransportVehicles = z.TransportVehicles,
                     TypeTransportVehikle = z.TypeTransportVehikle,
-                    IsUsed = z.IsUsed
+                    IsUsed = z.IsUsed,
+                    IdCompany = z.IdCompany
                 }));
             }
             return profileSettings;
@@ -97,7 +99,8 @@ namespace WebDispacher.Service
                 TypeTransportVehikle = "Trailer",
                 Id = 0,
                 IsSelect = 0 == idProfile,
-                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null
+                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null,
+                IdCompany = 0
             });
             if (profileSettings1.Count != 0)
             {
@@ -109,7 +112,8 @@ namespace WebDispacher.Service
                     Name = z.Name,
                     TransportVehicles = z.TransportVehicles,
                     TypeTransportVehikle = z.TypeTransportVehikle,
-                    IsUsed = z.IsUsed
+                    IsUsed = z.IsUsed,
+                    IdCompany = z.IdCompany
                 }));
             }
             return profileSettings;
@@ -131,7 +135,8 @@ namespace WebDispacher.Service
                         Name = profileSetting1.Name,
                         TransportVehicles = profileSetting1.TransportVehicles,
                         TypeTransportVehikle = profileSetting1.TypeTransportVehikle,
-                        IsUsed = profileSetting1.IsUsed
+                        IsUsed = profileSetting1.IsUsed,
+                        IdCompany = profileSetting1.IdCompany
                     };
                 }
             }
@@ -144,7 +149,8 @@ namespace WebDispacher.Service
                     TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
                     TypeTransportVehikle = "Truck",
                     IsChange = false,
-                    IsUsed = true
+                    IsUsed = true,
+                    IdCompany = 0
                 };
             }
             profileSetting.TransportVehicles.ForEach((TransportVehicle) =>
@@ -192,8 +198,8 @@ namespace WebDispacher.Service
                         Name = profileSetting1.Name,
                         TransportVehicles = profileSetting1.TransportVehicles,
                         TypeTransportVehikle = profileSetting1.TypeTransportVehikle,
-                        IsUsed = profileSetting1.IsUsed
-
+                        IsUsed = profileSetting1.IsUsed,
+                        IdCompany = profileSetting1.IdCompany
                     };
                 }
             }
@@ -206,7 +212,8 @@ namespace WebDispacher.Service
                     TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
                     TypeTransportVehikle = "Trailer",
                     IsChange = false,
-                    IsUsed = true
+                    IsUsed = true,
+                    IdCompany = 0
                 };
             }
             profileSetting.TransportVehicles.ForEach((TransportVehicle) =>
@@ -214,6 +221,11 @@ namespace WebDispacher.Service
                 TransportVehicle.Layouts = TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             });
             return profileSetting;
+        }
+
+        internal void LayoutUP(int idLayout, int idTransported)
+        {
+            _sqlEntityFramworke.LayoutUPDb(idLayout, idTransported);
         }
 
         internal void UnSelectLayout(int idLayout)
@@ -250,6 +262,11 @@ namespace WebDispacher.Service
                 }
             }
             return typeNavBar;
+        }
+
+        internal void LayoutDown(int idLayout, int idTransported)
+        {
+            _sqlEntityFramworke.LayoutDownDb(idLayout, idTransported);
         }
 
         private bool ValidCompanyRoute(TypeCompany typeCompany, string route)

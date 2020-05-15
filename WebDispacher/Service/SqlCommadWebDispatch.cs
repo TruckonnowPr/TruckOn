@@ -235,6 +235,19 @@ namespace WebDispacher.Dao
             return trailer;
         }
 
+        internal void LayoutUPDb(int idLayout, int idTransported)
+        {
+            TransportVehicle transportVehicle = context.TransportVehicles
+                .Where(p => p.Id == idTransported)
+                .Include(p => p.Layouts)
+                .First(p => p.Id == idTransported);
+            Layouts layoutsCurrent = transportVehicle.Layouts.First(l => l.Id == idLayout);
+            Layouts layoutsUp = transportVehicle.Layouts.First(l => l.OrdinalIndex == layoutsCurrent.OrdinalIndex - 1);
+            layoutsCurrent.OrdinalIndex--;
+            layoutsUp.OrdinalIndex++;
+            context.SaveChanges();
+        }
+
         internal void UnSelectLayout(int idLayout)
         {
             Layouts layouts = context.Layouts.FirstOrDefault(l => l.Id == idLayout);
@@ -261,6 +274,19 @@ namespace WebDispacher.Dao
             }
             context.SaveChanges();
             return isStateActual;
+        }
+
+        internal void LayoutDownDb(int idLayout, int idTransported)
+        {
+            TransportVehicle transportVehicle = context.TransportVehicles
+                   .Where(p => p.Id == idTransported)
+                   .Include(p => p.Layouts)
+                   .First(p => p.Id == idTransported);
+            Layouts layoutsCurrent = transportVehicle.Layouts.First(l => l.Id == idLayout);
+            Layouts layoutsDown = transportVehicle.Layouts.First(l => l.OrdinalIndex == layoutsCurrent.OrdinalIndex + 1);
+            layoutsCurrent.OrdinalIndex++;
+            layoutsDown.OrdinalIndex--;
+            context.SaveChanges();
         }
 
         internal void RemoveUserByIdDb(string idUser)

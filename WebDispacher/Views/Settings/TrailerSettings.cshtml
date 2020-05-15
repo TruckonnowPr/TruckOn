@@ -46,7 +46,7 @@
                             <div class="cardTool">
                                 @if (layout.OrdinalIndex != 1)
                                 {
-                                    <div class="arrow-4 arrow-up">
+                                    <div class="arrow-4 arrow-up" onclick="MovingLayoutUP(@layout.Id, @transportVehicle.Id, this)">
                                         <span class="arrow-4-left arrow-left"></span>
                                         <span class="arrow-4-right arrow-right"></span>
                                     </div>
@@ -57,7 +57,7 @@
                                 </label>
                                 @if (layout.OrdinalIndex != transportVehicle.Layouts.Count)
                                 {
-                                    <div class="arrow-4 arrow-down">
+                                    <div class="arrow-4 arrow-down" onclick="MovingLayoutDown(@layout.Id, @transportVehicle.Id)">
                                         <span class="arrow-4-left arrow-left"></span>
                                         <span class="arrow-4-right arrow-right"></span>
                                     </div>
@@ -93,6 +93,42 @@
         xmlHttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status != 200) {
                 alert("Server error, try again later");
+            }
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(body);
+    }
+
+    function MovingLayoutUP(idLayout, idTransported, arrowElem) {
+        let url = "@ViewBag.BaseUrl/Settings/Trailer/LayoutUP";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idLayout=' + encodeURIComponent(idLayout) +
+            '&idTransported=' + encodeURIComponent(idTransported);
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Server error, try again later");
+            }
+            else if (this.readyState == 4 && this.status == 200) {
+                location.reload()
+            }
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(body);
+    }
+
+    function MovingLayoutDown(idLayout, idTransported) {
+        let url = "@ViewBag.BaseUrl/Settings/Trailer/LayoutDown";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idLayout=' + encodeURIComponent(idLayout) +
+            '&idTransported=' + encodeURIComponent(idTransported);
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Server error, try again later");
+            }
+            else if (this.readyState == 4 && this.status == 200) {
+                location.reload()
             }
         };
         xmlHttp.open("POST", url, true);
