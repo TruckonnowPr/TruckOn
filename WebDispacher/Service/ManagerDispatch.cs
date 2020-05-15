@@ -154,6 +154,11 @@ namespace WebDispacher.Service
             return profileSetting;
         }
 
+        internal void SelectLayout(int idLayout)
+        {
+            _sqlEntityFramworke.SelectLayout(idLayout);
+        }
+
         internal void RemoveProfile(string idCompany, int idProfile)
         {
             _sqlEntityFramworke.RemoveProfiledb(idCompany, idProfile);
@@ -209,6 +214,11 @@ namespace WebDispacher.Service
                 TransportVehicle.Layouts = TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             });
             return profileSetting;
+        }
+
+        internal void UnSelectLayout(int idLayout)
+        {
+            _sqlEntityFramworke.UnSelectLayout(idLayout);
         }
 
         internal bool IsPermission(string key, string idCompany, string route)

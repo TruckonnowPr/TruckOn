@@ -1,18 +1,24 @@
 ﻿<div class="body">
     <div style="display:flex;">
     </div>
-    <nav>
+    <nav style="display:flex;justify-content:flex-start">
         @*<input class="btnSt activeBtn" type="button" value="Companies" onclick="window.location.href='@Url.Action("Companies", "Company")';" />
         <input style="width:150px" class="btnSt" type="button" value="All Users" onclick="window.location.href='@Url.Action("Users", "Company")';" />*@
         @foreach (var SetingTruck in ViewBag.SetingsTruck)
         {
             if (SetingTruck.IsSelect)
             {
-                <input class="btnSt activeBtn" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" ondblclick="window.location.href='@Url.Action("Truck", "Settings")/RemoveProfile?idProfile='+ @SetingTruck.Id;" />
+                <div class="btnSt activeBtn">
+                    <span  onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" ondblclick="window.location.href='@Url.Action("Truck", "Settings")/RemoveProfile?idProfile='+ @SetingTruck.Id;">@SetingTruck.Name</span>
+                    <input style="margin-left:10px;" type="radio" name="tabSet" checked="@SetingTruck.IsUsed">
+                </div>
             }
             else
             {
-                <input class="btnSt" type="button" value="@SetingTruck.Name" onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" ondblclick="window.location.href='@Url.Action("Truck", "Settings")/RemoveProfile?idProfile='+ @SetingTruck.Id;" />
+                <div class="btnSt">
+                    <span  onclick="window.location.href='@Url.Action("Truck", "Settings")?idProfile='+ @SetingTruck.Id;" ondblclick="window.location.href='@Url.Action("Truck", "Settings")/RemoveProfile?idProfile='+ @SetingTruck.Id;">@SetingTruck.Name</span>    
+                    <input style="margin-left:10px;" type="radio" name="tabSet" checked="@SetingTruck.IsUsed">
+                </div>
             }
         }
         <input class="btnAddSt" type="button" value="+" onclick="window.location.href='@Url.Action("Truck", "Settings")/AddProfile'" />
@@ -76,6 +82,51 @@
         else {
             imgElment.style.opacity = "0.4";
         }
+        let url = "";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idLayout=' + encodeURIComponent(idLayout);
+        if (!checked) {
+            url = "@ViewBag.BaseUrl/Settings/Truck/UnSelectLayout";
+        }
+        else {
+            url = "@ViewBag.BaseUrl/Settings/Truck/SelectLayout";
+        }
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Server error, try again later");
+            }
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(body);
+    }
+
+    function MovingLayoutUP(idLayout) {
+        let url = "@ViewBag.BaseUrl/Settings/Truck/LayoutUP";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idLayout=' + encodeURIComponent(idLayout);
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Server error, try again later");
+            }
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(body);
+    }
+
+    function MovingLayoutDown(idLayout) {
+        let url = "@ViewBag.BaseUrl/Settings/Truck/LayoutU";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idLayout=' + encodeURIComponent(idLayout);
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Server error, try again later");
+            }
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(body);
     }
 </script>
 
@@ -262,6 +313,9 @@
         font-size: 20px;
         color: rgb(51, 51, 51);
         border-color: rgba(51, 51, 51, 1);
+        display: flex;
+        justify-content: center;
+        align-items:center;
     }
 
     .btnAddSt {

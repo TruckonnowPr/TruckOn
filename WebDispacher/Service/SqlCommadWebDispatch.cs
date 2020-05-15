@@ -176,6 +176,16 @@ namespace WebDispacher.Dao
             }
         }
 
+        internal void SelectLayout(int idLayout)
+        {
+            Layouts layouts = context.Layouts.FirstOrDefault(l => l.Id == idLayout);
+            if (layouts != null)
+            {
+                layouts.IsUsed = true;
+                context.SaveChanges();
+            }
+        }
+
         internal void CreateUserForCompanyId(int id, string nameCommpany, string password)
         {
             context.User.Add(new Users()
@@ -223,6 +233,16 @@ namespace WebDispacher.Dao
                 trailer = await context.Trailers.FirstOrDefaultAsync(t => t.Id == inspectionDriver.IdITrailer);
             }
             return trailer;
+        }
+
+        internal void UnSelectLayout(int idLayout)
+        {
+            Layouts layouts = context.Layouts.FirstOrDefault(l => l.Id == idLayout);
+            if(layouts != null)
+            {
+                layouts.IsUsed = false;
+                context.SaveChanges();
+            }
         }
 
         internal int ResetPasswordFoDriver(string newPassword, string idDriver, string token)

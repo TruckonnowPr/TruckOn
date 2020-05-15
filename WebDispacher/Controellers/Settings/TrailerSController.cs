@@ -121,6 +121,81 @@ namespace WebDispacher.Controellers.Settings
             return actionResult;
         }
 
+        [HttpPost]
+        [Route("SelectLayout")]
+        public string SelectLayout(int idLayout)
+        {
+            string actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Trailer"))
+                {
+                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.NameCompany = companyName;
+                    managerDispatch.SelectLayout(idLayout);
+                    actionResult = "";
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = null;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("UnSelectLayout")]
+        public string UnSelectLayout(int idLayout)
+        {
+            string actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Trailer"))
+                {
+                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.NameCompany = companyName;
+                    managerDispatch.UnSelectLayout(idLayout);
+                    actionResult = "";
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = null;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+
         [HttpGet]
         [Route("Image")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
