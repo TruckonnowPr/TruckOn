@@ -57,7 +57,7 @@
                                 </label>
                                 @if (layout.OrdinalIndex != transportVehicle.Layouts.Count)
                                 {
-                                    <div class="arrow-4 arrow-down" onclick="MovingLayoutDown(@layout.Id, @transportVehicle.Id)">
+                                    <div class="arrow-4 arrow-down" onclick="MovingLayoutDown(@layout.Id, @transportVehicle.Id, this)">
                                         <span class="arrow-4-left arrow-left"></span>
                                         <span class="arrow-4-right arrow-right"></span>
                                     </div>
@@ -110,7 +110,26 @@
                 alert("Server error, try again later");
             }
             else if (this.readyState == 4 && this.status == 200) {
-                location.reload()
+                let arrow = arrowElem.parentNode.parentNode.previousElementSibling;
+                let arrow1 = arrowElem.parentNode.parentNode;
+                let count = 0;
+                let timer = setInterval(function () {
+
+                    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
+
+                        clearInterval(timer);
+                        arrow1.style.bottom = "";
+                        arrow1.style.top = "";
+                        arrow.style.bottom = "";
+                        arrow.style.top = "";
+                        arrow.before(arrow1, arrow)
+                        return;
+                    }
+                    draw(arrow1, count, 0);
+                    draw(arrow, count, 1);
+
+                    count += 1.5;
+                }, .5);
             }
         };
         xmlHttp.open("POST", url, true);
@@ -118,7 +137,7 @@
         xmlHttp.send(body);
     }
 
-    function MovingLayoutDown(idLayout, idTransported) {
+    function MovingLayoutDown(idLayout, idTransported, arrowElem) {
         let url = "@ViewBag.BaseUrl/Settings/Trailer/LayoutDown";
         let xmlHttp = new XMLHttpRequest();
         var body = 'idLayout=' + encodeURIComponent(idLayout) +
@@ -128,13 +147,42 @@
                 alert("Server error, try again later");
             }
             else if (this.readyState == 4 && this.status == 200) {
-                location.reload()
+                let arrow = arrowElem.parentNode.parentNode.nextElementSibling;
+                let arrow1 = arrowElem.parentNode.parentNode;
+                let count = 0;
+                let timer = setInterval(function () {
+
+                    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
+
+                        clearInterval(timer);
+                        arrow1.style.bottom = "";
+                        arrow1.style.top = "";
+                        arrow.style.bottom = "";
+                        arrow.style.top = "";
+                        arrow.before(arrow, arrow1)
+                        return;
+                    }
+                    draw(arrow1, count, 1);
+                    draw(arrow, count, 0);
+
+                    count += 1.5;
+                }, 1);
             }
         };
         xmlHttp.open("POST", url, true);
         xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xmlHttp.send(body);
     }
+
+    function draw(elem, step, direction) {
+        if (direction == 0) {
+            elem.style.bottom = step + "px"
+        }
+        else {
+            elem.style.top = step + "px"
+        }
+    }
+
 </script>
 
 <style>
@@ -179,6 +227,7 @@
         border-top: groove;
         border-left: groove;
         border-color: rgba(151, 252, 126, 0.72);
+        position:relative;
     }
 
     .cardTool {

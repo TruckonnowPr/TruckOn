@@ -47,7 +47,7 @@
                                 <div class="cardTool">
                                     @if (layout.OrdinalIndex != 1)
                                     {
-                                        <div class="arrow-4 arrow-up" onclick="MovingLayoutUP(@layout.Id, @transportVehicle.Id)">
+                                        <div class="arrow-4 arrow-up" onclick="MovingLayoutUP(@layout.Id, @transportVehicle.Id, this)">
 	                                        <span class="arrow-4-left arrow-left"></span>
 	                                        <span class="arrow-4-right arrow-right"></span>
                                         </div>
@@ -58,7 +58,7 @@
                                     </label>
                                     @if (layout.OrdinalIndex != transportVehicle.Layouts.Count)
                                     {
-                                        <div class="arrow-4 arrow-down" onclick="MovingLayoutDown(@layout.Id, @transportVehicle.Id)">
+                                        <div class="arrow-4 arrow-down" onclick="MovingLayoutDown(@layout.Id, @transportVehicle.Id, this)">
 	                                        <span class="arrow-4-left arrow-left"></span>
 	                                        <span class="arrow-4-right arrow-right"></span>
                                         </div>
@@ -101,7 +101,7 @@
         xmlHttp.send(body);
     }
 
-    function MovingLayoutUP(idLayout, idTransported) {
+    function MovingLayoutUP(idLayout, idTransported, arrowElem) {
         let url = "@ViewBag.BaseUrl/Settings/Truck/LayoutUP";
         let xmlHttp = new XMLHttpRequest();
         var body = 'idLayout=' + encodeURIComponent(idLayout) +
@@ -111,7 +111,26 @@
                 alert("Server error, try again later");
             }
             else if (this.readyState == 4 && this.status == 200) {
-                location.reload()
+                let arrow = arrowElem.parentNode.parentNode.previousElementSibling;
+                let arrow1 = arrowElem.parentNode.parentNode;
+                let count = 0;
+                let timer = setInterval(function () {
+
+                    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
+
+                        clearInterval(timer);
+                        arrow1.style.bottom = "";
+                        arrow1.style.top = "";
+                        arrow.style.bottom = "";
+                        arrow.style.top = "";
+                        arrow.before(arrow1, arrow)
+                        return;
+                    }
+                        draw(arrow1, count, 0);
+                        draw(arrow, count, 1);
+                    
+                    count += 1.5;
+                }, 1);
             }
         };
         xmlHttp.open("POST", url, true);
@@ -119,7 +138,7 @@
         xmlHttp.send(body);
     }
 
-    function MovingLayoutDown(idLayout, idTransported) {
+    function MovingLayoutDown(idLayout, idTransported, arrowElem) {
         let url = "@ViewBag.BaseUrl/Settings/Truck/LayoutDown";
         let xmlHttp = new XMLHttpRequest();
         var body = 'idLayout=' + encodeURIComponent(idLayout) +
@@ -129,12 +148,40 @@
                 alert("Server error, try again later");
             }
             else if (this.readyState == 4 && this.status == 200) {
-                location.reload()
+                let arrow = arrowElem.parentNode.parentNode.nextElementSibling;
+                let arrow1 = arrowElem.parentNode.parentNode;
+                let count = 0;
+                let timer = setInterval(function () {
+
+                    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
+
+                        clearInterval(timer);
+                        arrow1.style.bottom = "";
+                        arrow1.style.top = "";
+                        arrow.style.bottom = "";
+                        arrow.style.top = "";
+                        arrow.before(arrow, arrow1)
+                        return;
+                    }
+                    draw(arrow1, count, 1);
+                    draw(arrow, count, 0);
+
+                    count += 1.5;
+                }, 1);
             }
         };
         xmlHttp.open("POST", url, true);
         xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xmlHttp.send(body);
+    }
+
+    function draw(elem, step, direction) {
+        if (direction == 0) {
+            elem.style.bottom = step + "px"
+        }
+        else {
+            elem.style.top = step + "px"
+        }
     }
 </script>
 
@@ -180,6 +227,7 @@
         border-top: groove;
         border-left: groove;
         border-color: rgba(151, 252, 126, 0.72);
+        position: relative;
     }
 
     .cardTool {
@@ -252,7 +300,7 @@
         position: relative;
         background-color: transparent;
         width: 4px;
-        top:4px;
+        top: 4px;
         height: 12px;
         display: block;
         border-radius: 4px;
@@ -293,7 +341,7 @@
     }
 
     .arrow-down {
-        top:-20px;
+        top: -20px;
         left: -18px;
         transform: rotate(-90deg);
     }
@@ -323,7 +371,7 @@
         border-color: rgba(51, 51, 51, 1);
         display: flex;
         justify-content: center;
-        align-items:center;
+        align-items: center;
     }
 
     .btnAddSt {
