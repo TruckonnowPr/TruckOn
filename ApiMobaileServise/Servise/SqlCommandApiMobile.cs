@@ -944,19 +944,19 @@ namespace ApiMobaileServise.Servise
             string statusAndTimeInInspection = null;
             Driver driver = context.Drivers.Include(d => d.InspectionDrivers).FirstOrDefault(d => d.Token == token);
             InspectionDriver inspectionDriver = driver.InspectionDrivers != null && driver.InspectionDrivers.Count != 0 ? driver.InspectionDrivers.Last() : null;
-            if(inspectionDriver == null)
+            if(inspectionDriver != null)
             {
                 driver.IsInspectionDriver = false;
                 driver.IsInspectionToDayDriver = false;
             }
-            else if(Convert.ToDateTime(inspectionDriver.Date).Date != DateTime.Now.Date)
+            else if(true || Convert.ToDateTime(inspectionDriver.Date).Date != DateTime.Now.Date)
             {
                 if (DateTime.Now.Hour >= 12)
                 {
                     driver.IsInspectionDriver = false;
                     driver.IsInspectionToDayDriver = false;
                 }
-                else if (DateTime.Now.Hour <= 12 && 6 >= DateTime.Now.Hour)
+                else if (DateTime.Now.Hour <= 12 && 6 <= DateTime.Now.Hour)
                 {
                     driver.IsInspectionDriver = true;
                     driver.IsInspectionToDayDriver = false;
