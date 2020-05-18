@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DaoModels.DAO.Interface;
 
 namespace DaoModels.DAO.Models
 {
-    public class Trailer
+    public class Trailer : ITr
     {
         public int Id { get; set; }
         public int CompanyId { get; set; }

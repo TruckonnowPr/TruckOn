@@ -5,12 +5,12 @@ using WebDispacher.Service;
 
 namespace WebDispacher.Controellers.Settings
 {
-    [Route("Settings/Truck")]
-    public class TruckSController : Controller
+    [Route("Settings")]
+    public class SettingController : Controller
     {
         ManagerDispatch managerDispatch = new ManagerDispatch();
 
-        public IActionResult GetUsers(int idProfile)
+        public IActionResult Get(int idTr, int idProfile, string typeTransport)
         {
             IActionResult actionResult = null;
             try
@@ -22,14 +22,91 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
                     ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
-                    ViewBag.SelectSetingTruck = managerDispatch.GetSelectSetingTruck(idCompany, idProfile);
-                    ViewBag.SetingsTruck = managerDispatch.GetSetingsTruck(idCompany, idProfile);
+                    ViewBag.SelectSetingTruck = managerDispatch.GetSelectSetingTruck(idCompany, idProfile, idTr, typeTransport);
+                    ViewBag.SetingsTruck = managerDispatch.GetSetingsTruck(idCompany, idProfile, idTr, typeTransport);
                     ViewBag.IdProfile = idProfile;
-                    actionResult = View("~/Views/Settings/TruckSettings.cshtml");
+                    ViewBag.IdTr = idTr;
+                    ViewBag.TypeTransport = typeTransport;
+                    ViewBag.Pattern = typeTransport+"Pattern";
+                    actionResult = View("~/Views/Settings/TrSettings.cshtml");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("Trucks")]
+        public IActionResult GetTrucks()
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
+                {
+                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.NameCompany = companyName;
+                    ViewBag.Trucks = managerDispatch.GetTrucks(idCompany);
+                    actionResult = View("~/Views/Settings/Trucks.cshtml");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("Trailers")]
+        public IActionResult GetTrailers()
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
+                {
+                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.NameCompany = companyName;
+                    ViewBag.Trailers = managerDispatch.GetTrailers(idCompany);
+                    actionResult = View("~/Views/Settings/Trailers.cshtml");
                 }
                 else
                 {
@@ -49,7 +126,7 @@ namespace WebDispacher.Controellers.Settings
 
         [HttpGet]
         [Route("AddProfile")]
-        public IActionResult AddProfile()
+        public IActionResult AddProfile(int idTr, string typeTransport)
         {
             IActionResult actionResult = null;
             try
@@ -61,12 +138,12 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
                     ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
-                    int id = managerDispatch.AddProfile(idCompany, TypeTransportVehikle.Truck);
-                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Truck?idProfile={id}");
+                    int id = managerDispatch.AddProfile(idCompany, idTr, typeTransport);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings?idTr={idTr}&page=s&idProfile={id}&typeTransport={typeTransport}");
                 }
                 else
                 {
@@ -86,7 +163,7 @@ namespace WebDispacher.Controellers.Settings
 
         [HttpGet]
         [Route("RemoveProfile")]
-        public IActionResult RemoveProfile(int idProfile)
+        public IActionResult RemoveProfile(int idProfile, string typeTransport)
         {
             IActionResult actionResult = null;
             try
@@ -98,12 +175,12 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = "Settings";// managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.RemoveProfile(idCompany, idProfile);
-                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Truck?idProfile=0");
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings?idTr={0}&idProfile={0}&typeTransport={typeTransport}");
                 }
                 else
                 {
@@ -135,9 +212,9 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.SelectLayout(idLayout);
                     actionResult = "";
@@ -172,9 +249,9 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.UnSelectLayout(idLayout);
                     actionResult = "";
@@ -209,9 +286,9 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.LayoutUP(idLayout, idTransported);
                     actionResult = "";
@@ -246,9 +323,9 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Truck"))
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.LayoutDown(idLayout, idTransported);
                     actionResult = "";

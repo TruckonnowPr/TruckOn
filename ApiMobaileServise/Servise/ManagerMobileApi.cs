@@ -197,7 +197,7 @@ namespace ApiMobaileServise.Servise
         {
             ITransportVehicle transportVehicle = null;
             Truck truck = sqlCommandApiMobile.GetTruck().FirstOrDefault(t => t.PlateTruk == plateTruck);
-            transportVehicle = GetTransportVehicle(truck.TypeTruk);
+            transportVehicle = GetTransportVehicle(truck.Type);
             return transportVehicle;
         }
 

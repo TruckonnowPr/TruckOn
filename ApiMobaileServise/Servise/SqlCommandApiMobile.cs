@@ -366,7 +366,7 @@ namespace ApiMobaileServise.Servise
                 DateTime dateTime = Convert.ToDateTime(inspectionDriver.Date);
                 Truck truck = context.Trucks.FirstOrDefault(t => t.Id == inspectionDriver.IdITruck);
                 Trailer trailer = context.Trailers.FirstOrDefault(t => t.Id == inspectionDriver.IdITruck);
-                int countImageTruck = truck != null ? GetTransportVehicle(truck.TypeTruk).CountPhoto : 0;
+                int countImageTruck = truck != null ? GetTransportVehicle(truck.Type).CountPhoto : 0;
                 int countImageTrailer = trailer != null ? GetTransportVehicle(trailer.Type).CountPhoto : 0;
                 if (dateTime.Date != DateTime.Now.Date || (inspectionDriver.CountPhotoTruck + inspectionDriver.CountPhotoTrailer <= countImageTruck + countImageTrailer))
                 {

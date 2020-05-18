@@ -1,6 +1,7 @@
 ﻿using DaoModels.DAO;
 using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
+using DaoModels.DAO.Interface;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
 using Microsoft.EntityFrameworkCore;
@@ -91,11 +92,19 @@ namespace WebDispacher.Dao
             } 
         }
 
-        internal List<ProfileSetting> GetSetingsDb(string idCompany, TypeTransportVehikle typeTransportVehikle)
+        internal ProfileSetting GetIdProfile(int idTr, string typeTransport)
+        {
+            return context.ProfileSettings
+                .Where(p => p.IdTr == idTr && p.TypeTransportVehikle == typeTransport)
+                .Include(p => p.TransportVehicle.Layouts)
+                .FirstOrDefault();
+        }
+
+        internal List<ProfileSetting> GetSetingsDb(string idCompany, TypeTransportVehikle typeTransportVehikle, int idTr)
         {
             List<ProfileSetting> profileSettings = null;
             profileSettings = context.ProfileSettings
-                .Where(p => p.IdCompany.ToString() == idCompany && p.TypeTransportVehikle == typeTransportVehikle.ToString())
+                .Where(p => p.IdCompany.ToString() == idCompany && p.TypeTransportVehikle == typeTransportVehikle.ToString() && p.IdTr == idTr)
                 .ToList();
             return profileSettings;
              
@@ -128,8 +137,7 @@ namespace WebDispacher.Dao
         {
             return context.ProfileSettings
                 .Where(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile)
-                .Include(p => p.TransportVehicles)
-                .Include("TransportVehicles.Layouts")
+                .Include(p => p.TransportVehicle.Layouts)
                 .FirstOrDefault();
         }
 
@@ -161,19 +169,25 @@ namespace WebDispacher.Dao
         {
             ProfileSetting profileSetting = context.ProfileSettings
                 .Where(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile)
-                .Include(p => p.TransportVehicles)
-                .Include("TransportVehicles.Layouts")
+                .Include(p => p.TransportVehicle.Layouts)
                 .FirstOrDefault();
             if (profileSetting != null)
             {
-                foreach (TransportVehicle transportVehicle in profileSetting.TransportVehicles)
-                {
-                    context.Layouts.RemoveRange(transportVehicle.Layouts);
-                }
-                context.TransportVehicles.RemoveRange(profileSetting.TransportVehicles);
+                context.Layouts.RemoveRange(profileSetting.TransportVehicle.Layouts);
+                context.TransportVehicles.RemoveRange(profileSetting.TransportVehicle);
                 context.ProfileSettings.Remove(context.ProfileSettings.First(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile));
                 context.SaveChanges();
             }
+        }
+
+        internal ITr GetTrailerById(int idTr)
+        {
+            return context.Trailers.FirstOrDefault(t => t.Id == idTr);
+        }
+
+        internal ITr GetTruckById(int idTr)
+        {
+            return context.Trucks.FirstOrDefault(t => t.Id == idTr);
         }
 
         internal void SelectLayout(int idLayout)
@@ -529,7 +543,7 @@ namespace WebDispacher.Dao
                 Satet = state,
                 Vin = vin,
                 Yera = yera,
-                TypeTruk = typeTruk,
+                Type = typeTruk,
                 CompanyId = Convert.ToInt32(idCompany)
             };
             context.Trucks.Add(truck);

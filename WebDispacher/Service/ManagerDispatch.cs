@@ -1,9 +1,11 @@
 ﻿using BaceModel.ModelInspertionDriver;
+using BaceModel.ModelInspertionDriver.Trailer;
+using BaceModel.ModelInspertionDriver.Truck;
 using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
+using DaoModels.DAO.Interface;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
-using Google.Type;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,6 @@ using System.Threading.Tasks;
 using WebDispacher.Dao;
 using WebDispacher.Notify;
 using WebDispacher.Service.EmailSmtp;
-using Xamarin.Forms.Internals;
 
 namespace WebDispacher.Service
 {
@@ -46,6 +47,25 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RecurentOnArchived(id);
         }
 
+        internal int GetIdProfile(int idTr, string typeTransport)
+        {
+            int idProfile = 0;
+            ITr tr = GetTr(idTr, typeTransport);
+            TypeTransportVehikle typeTransportVehikle = tr is Truck ? TypeTransportVehikle.Truck : TypeTransportVehikle.Trailer;
+            ProfileSetting profileSetting = _sqlEntityFramworke.GetIdProfile(idTr, typeTransportVehikle.ToString());
+            if(profileSetting != null)
+            {
+                idProfile = profileSetting.Id;
+            }
+            return idProfile;  
+        }
+
+        public string GetTypeTransport(int idTr, string typeTransport)
+        {
+            ITr tr = GetTr(idTr, typeTransport);
+            return tr is Truck ? TypeTransportVehikle.Truck.ToString() : TypeTransportVehikle.Trailer.ToString();
+        }
+
         internal List<CompanyDTO> GetCompanies()
         {
             return _sqlEntityFramworke.GetCompanies()
@@ -59,14 +79,16 @@ namespace WebDispacher.Service
                 }).ToList();
         }
 
-        internal List<ProfileSettings> GetSetingsTruck(string idCompany, int idProfile)
+        internal List<ProfileSettingsDTO> GetSetingsTruck(string idCompany, int idProfile, int idTr, string typeTransport)
         {
-            List<ProfileSettings> profileSettings = new List<ProfileSettings>();
-            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Truck);
-            profileSettings.Add(new ProfileSettings()
+            ITr tr = GetTr(idTr, typeTransport);
+            TypeTransportVehikle typeTransportVehikle = tr is Truck ? TypeTransportVehikle.Truck : TypeTransportVehikle.Trailer;
+            List <ProfileSettingsDTO> profileSettings = new List<ProfileSettingsDTO>();
+            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, typeTransportVehikle, idTr);
+            profileSettings.Add(new ProfileSettingsDTO()
             {
                 Name = "Standart",
-                TypeTransportVehikle = "Truck",
+                TypeTransportVehikle = typeTransportVehikle.ToString(),
                 Id = 0,
                 IsSelect = 0 == idProfile,
                 IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null,
@@ -74,66 +96,37 @@ namespace WebDispacher.Service
             });
             if (profileSettings1.Count != 0)
             {
-                profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettings()
+                profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettingsDTO()
                 { 
                     Id = z.Id,
                     IsChange = true,
                     IsSelect = z.Id == idProfile,
                     Name = z.Name,
-                    TransportVehicles = z.TransportVehicles,
+                    TransportVehicle = z.TransportVehicle,
                     TypeTransportVehikle = z.TypeTransportVehikle,
                     IsUsed = z.IsUsed,
-                    IdCompany = z.IdCompany
+                    IdCompany = z.IdCompany,
+                    IdTr = z.IdTr
                 }));
             }
             return profileSettings;
         }
 
-        internal List<ProfileSettings> GetSetingsTrailer(string idCompany, int idProfile)
+        internal ProfileSettingsDTO GetSelectSetingTruck(string idCompany, int idProfile, int idTr, string typeTransport)
         {
-            List<ProfileSettings> profileSettings = new List<ProfileSettings>();
-            List<ProfileSetting> profileSettings1 = _sqlEntityFramworke.GetSetingsDb(idCompany, TypeTransportVehikle.Trailer);
-            profileSettings.Add(new ProfileSettings()
-            {
-                Name = "Standart",
-                TypeTransportVehikle = "Trailer",
-                Id = 0,
-                IsSelect = 0 == idProfile,
-                IsUsed = profileSettings1.FirstOrDefault(p => p.IsUsed) == null,
-                IdCompany = 0
-            });
-            if (profileSettings1.Count != 0)
-            {
-                profileSettings.AddRange(profileSettings1.Select(z => new ProfileSettings()
-                {
-                    Id = z.Id,
-                    IsChange = true,
-                    IsSelect = z.Id == idProfile,
-                    Name = z.Name,
-                    TransportVehicles = z.TransportVehicles,
-                    TypeTransportVehikle = z.TypeTransportVehikle,
-                    IsUsed = z.IsUsed,
-                    IdCompany = z.IdCompany
-                }));
-            }
-            return profileSettings;
-        }
-
-        internal ProfileSettings GetSelectSetingTruck(string idCompany, int idProfile)
-        {
-            ProfileSettings profileSetting = null;
+            ProfileSettingsDTO profileSetting = null;
             if(idProfile != 0)
             {
                 ProfileSetting profileSetting1 = _sqlEntityFramworke.GetSelectSeting(idCompany, idProfile);
                 if (profileSetting1 != null)
                 {
-                    profileSetting = new ProfileSettings()
+                    profileSetting = new ProfileSettingsDTO()
                     {
                         Id = profileSetting1.Id,
                         IsChange = true,
                         IsSelect = idProfile == profileSetting1.Id,
                         Name = profileSetting1.Name,
-                        TransportVehicles = profileSetting1.TransportVehicles,
+                        TransportVehicle = profileSetting1.TransportVehicle,
                         TypeTransportVehikle = profileSetting1.TypeTransportVehikle,
                         IsUsed = profileSetting1.IsUsed,
                         IdCompany = profileSetting1.IdCompany
@@ -142,22 +135,60 @@ namespace WebDispacher.Service
             }
             else
             {
-                profileSetting = new ProfileSettings()
+                ITr tr = GetTr(idTr, typeTransport);
+                ITransportVehicle transportVehicle = GetTransportVehicle(tr.Type);
+                profileSetting = new ProfileSettingsDTO()
                 {
                     Id = 0,
                     Name = "Standart",
-                    TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Truck).TransportVehicles,
+                    TransportVehicle = new TransportVehicle()
+                    {
+                        CountPhoto = transportVehicle.CountPhoto,
+                        Id = 0,
+                        Layouts = GetLayoutsByTransportVehicle(transportVehicle),
+                        Type = transportVehicle.Type,
+                        TypeTransportVehicle = transportVehicle.TypeTransportVehicle
+                    },
                     TypeTransportVehikle = "Truck",
                     IsChange = false,
                     IsUsed = true,
                     IdCompany = 0
                 };
             }
-            profileSetting.TransportVehicles.ForEach((TransportVehicle) =>
-            {
-                TransportVehicle.Layouts = TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
-            });
+            profileSetting.TransportVehicle.Layouts = profileSetting.TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
+            
             return profileSetting;
+        }
+
+        private ITr GetTr(int idTr, string typeTransport)
+        {
+            ITr tr = null;
+            if (typeTransport == "Truck")
+            {
+                tr = _sqlEntityFramworke.GetTruckById(idTr);
+            }
+            else if (typeTransport == "Trailer")
+            {
+                tr = _sqlEntityFramworke.GetTrailerById(idTr);
+            }
+            return tr;
+        }
+
+        private List<Layouts> GetLayoutsByTransportVehicle(ITransportVehicle transportVehicle)
+        {
+            List<Layouts> layouts = new List<Layouts>();
+            for(int i = 0; i < transportVehicle.Layouts.Count; i++)
+            {
+                layouts.Add(new Layouts()
+                {
+                    Id = 0,
+                    Index = transportVehicle.Layouts[i],
+                    Name = transportVehicle.NamePatern[i],
+                    OrdinalIndex = i+1,
+                    IsUsed = false,
+                });
+            }
+            return layouts;
         }
 
         internal void SelectLayout(int idLayout)
@@ -170,33 +201,42 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RemoveProfiledb(idCompany, idProfile);
         }
 
-        internal int AddProfile(string idCompany, TypeTransportVehikle typeTransportVehikle)
+        internal int AddProfile(string idCompany, int idTr, string typeTransport)
         {
+            ITr tr = GetTr(idTr, typeTransport);
+            ITransportVehicle transportVehicle = GetTransportVehicle(tr.Type);
             ProfileSetting profileSetting = new ProfileSetting()
             {
-                TransportVehicles = new StandartProfileSettings(typeTransportVehikle).TransportVehicles,
+                TransportVehicle = new TransportVehicle()
+                {
+                    CountPhoto = transportVehicle.CountPhoto,
+                    Layouts = GetLayoutsByTransportVehicle(transportVehicle),
+                    Type = transportVehicle.Type,
+                    TypeTransportVehicle = transportVehicle.TypeTransportVehicle
+                },
                 IdCompany = Convert.ToInt32(idCompany),
                 Name = "Custom",
-                TypeTransportVehikle = typeTransportVehikle.ToString(),
+                TypeTransportVehikle = GetTypeTransport(idTr, typeTransport),
+                IdTr = idTr
             };
             return _sqlEntityFramworke.AddProfileDb(profileSetting);
         }
 
-        internal ProfileSettings GetSelectSetingTrailer(string idCompany, int idProfile)
+        internal ProfileSettingsDTO GetSelectSetingTrailer(string idCompany, int idProfile)
         {
-            ProfileSettings profileSetting = null;
+            ProfileSettingsDTO profileSetting = null;
             if (idProfile != 0)
             {
                 ProfileSetting profileSetting1 = _sqlEntityFramworke.GetSelectSeting(idCompany, idProfile);
                 if (profileSetting1 != null)
                 {
-                    profileSetting = new ProfileSettings()
+                    profileSetting = new ProfileSettingsDTO()
                     {
                         Id = profileSetting1.Id,
                         IsChange = true,
                         IsSelect = idProfile == profileSetting1.Id,
                         Name = profileSetting1.Name,
-                        TransportVehicles = profileSetting1.TransportVehicles,
+                        TransportVehicle = profileSetting1.TransportVehicle,
                         TypeTransportVehikle = profileSetting1.TypeTransportVehikle,
                         IsUsed = profileSetting1.IsUsed,
                         IdCompany = profileSetting1.IdCompany
@@ -205,21 +245,18 @@ namespace WebDispacher.Service
             }
             else
             {
-                profileSetting = new ProfileSettings()
+                profileSetting = new ProfileSettingsDTO()
                 {
                     Id = 0,
                     Name = "Standart",
-                    TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
+                    //TransportVehicles = new StandartProfileSettings(TypeTransportVehikle.Trailer).TransportVehicles,
                     TypeTransportVehikle = "Trailer",
                     IsChange = false,
                     IsUsed = true,
                     IdCompany = 0
                 };
             }
-            profileSetting.TransportVehicles.ForEach((TransportVehicle) =>
-            {
-                TransportVehicle.Layouts = TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
-            });
+            profileSetting.TransportVehicle.Layouts = profileSetting.TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             return profileSetting;
         }
 
@@ -933,6 +970,20 @@ namespace WebDispacher.Service
         internal List<HistoryOrder> GetHistoryOrder(string idOrder)
         {
             return _sqlEntityFramworke.GetHistoryOrderByIdOrder(idOrder);
+        }
+
+        private ITransportVehicle GetTransportVehicle(string typeTruk)
+        {
+            ITransportVehicle transportVehicle = null;
+            switch (typeTruk)
+            {
+                case "PickupFourWheel": transportVehicle = new PickupFourWheel(); break;
+                case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
+
+                case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
+                case "FourDoorTruckChassisOpenFrame": transportVehicle = new FourDoorTruckChassisOpenFrame(); break;
+            }
+            return transportVehicle;
         }
     }
 }

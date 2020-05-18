@@ -1,6 +1,8 @@
-﻿namespace DaoModels.DAO.Models
+﻿using DaoModels.DAO.Interface;
+
+namespace DaoModels.DAO.Models
 {
-    public class Truck
+    public class Truck : ITr
     {
         public int Id { get; set; }
         public int CompanyId { get; set; }
@@ -14,6 +16,6 @@
         public string Owner { get; set; }
         public string PlateTruk { get; set; }
         public string ColorTruk { get; set; }
-        public string TypeTruk { get; set; }
+        public string Type { get; set; }
     }
 }
