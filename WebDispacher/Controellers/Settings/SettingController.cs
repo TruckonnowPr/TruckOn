@@ -163,7 +163,7 @@ namespace WebDispacher.Controellers.Settings
 
         [HttpGet]
         [Route("RemoveProfile")]
-        public IActionResult RemoveProfile(int idProfile, string typeTransport)
+        public IActionResult RemoveProfile(int idProfile, string typeTransport, int idTr)
         {
             IActionResult actionResult = null;
             try
@@ -180,7 +180,7 @@ namespace WebDispacher.Controellers.Settings
                     ViewData["TypeNavBar"] = "Settings";// managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.RemoveProfile(idCompany, idProfile);
-                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings?idTr={0}&idProfile={0}&typeTransport={typeTransport}");
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings?idTr={idTr}&idProfile={0}&typeTransport={typeTransport}");
                 }
                 else
                 {
@@ -217,6 +217,43 @@ namespace WebDispacher.Controellers.Settings
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.NameCompany = companyName;
                     managerDispatch.SelectLayout(idLayout);
+                    actionResult = "";
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = null;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("SelectProfile")]
+        public string SelectProfile(int idProfile, string typeTransport, int idTr)
+        {
+            string actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
+                {
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.NameCompany = companyName;
+                    managerDispatch.SelectProfile(idProfile, typeTransport, idTr, idCompany);
                     actionResult = "";
                 }
                 else

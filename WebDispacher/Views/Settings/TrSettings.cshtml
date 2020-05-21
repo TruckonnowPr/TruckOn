@@ -9,15 +9,15 @@
             if (SetingTruck.IsSelect)
             {
                 <div class="btnSt activeBtn">
-                    <span  onclick="window.location.href='@Url.Action("", "Settings")?idTr=@ViewBag.IdTr&idProfile=@SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle';" ondblclick="window.location.href='@Url.Action("", "Settings")/RemoveProfile?idProfile=+ @SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle';">@SetingTruck.Name</span>
-                    <input style="margin-left:10px;" type="radio" name="tabSet" checked="@SetingTruck.IsUsed">
+                    <span  onclick="window.location.href='@Url.Action("", "Settings")?idTr=@ViewBag.IdTr&idProfile=@SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle';" ondblclick="window.location.href='@Url.Action("", "Settings")/RemoveProfile?idProfile=+ @SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle&idTr=@ViewBag.IdTr';">@SetingTruck.Name</span>
+                    <input style="margin-left:10px;" type="radio" name="tabSet" checked="@SetingTruck.IsUsed" onclick="SelectProfile(@SetingTruck.Id, '@SetingTruck.TypeTransportVehikle', @ViewBag.IdTr)">
                 </div>
             }
             else
             {
                 <div class="btnSt">
-                    <span  onclick="window.location.href='@Url.Action("", "Settings")?idTr=@ViewBag.IdTr&idProfile=@SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle';" ondblclick="window.location.href='@Url.Action("", "Settings")/RemoveProfile?idProfile=@SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle';">@SetingTruck.Name</span>    
-                    <input style="margin-left:10px;" type="radio" name="tabSet" checked="@SetingTruck.IsUsed">
+                    <span  onclick="window.location.href='@Url.Action("", "Settings")?idTr=@ViewBag.IdTr&idProfile=@SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle';" ondblclick="window.location.href='@Url.Action("", "Settings")/RemoveProfile?idProfile=@SetingTruck.Id&typeTransport=@SetingTruck.TypeTransportVehikle&idTr=@ViewBag.IdTr';">@SetingTruck.Name</span>    
+                    <input style="margin-left:10px;" type="radio" name="tabSet" checked="@SetingTruck.IsUsed" onclick="SelectProfile(@SetingTruck.Id, '@SetingTruck.TypeTransportVehikle', @ViewBag.IdTr)">
                 </div>
             }
         }
@@ -28,7 +28,7 @@
                <div class="cardLayouts">
                    @foreach (var layout in ViewBag.SelectSetingTruck.TransportVehicle.Layouts)
                    {
-                       <div style="display:flex;" class="cardLayout">
+                       <div class="cardLayout">
                             <div>
                                 <span>@layout.Name</span>
                                 @if (layout.IsUsed)
@@ -110,24 +110,26 @@
             else if (this.readyState == 4 && this.status == 200) {
                 let arrow = arrowElem.parentNode.parentNode.previousElementSibling;
                 let arrow1 = arrowElem.parentNode.parentNode;
-                let count = 0;
-                let timer = setInterval(function () {
+                //let count = 0;
+                //let timer = setInterval(function () {
 
-                    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
+                //    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
 
-                        clearInterval(timer);
-                        arrow1.style.bottom = "";
-                        arrow1.style.top = "";
-                        arrow.style.bottom = "";
-                        arrow.style.top = "";
-                        arrow.before(arrow1, arrow)
-                        return;
-                    }
-                        draw(arrow1, count, 0);
-                        draw(arrow, count, 1);
-                    
-                    count += 1.5;
-                }, 1);
+                //        clearInterval(timer);
+                //        arrow1.style.bottom = "";
+                //        arrow1.style.top = "";
+                //        arrow.style.bottom = "";
+                //        arrow.style.top = "";
+                //        arrow.before(arrow1, arrow)
+                //        return;
+                //    }
+                //        draw(arrow1, count, 0);
+                //        draw(arrow, count, 1);
+
+                //    count += 1.5;
+                //}, 1);
+
+                arrow.before(arrow1, arrow)
             }
         };
         xmlHttp.open("POST", url, true);
@@ -147,24 +149,26 @@
             else if (this.readyState == 4 && this.status == 200) {
                 let arrow = arrowElem.parentNode.parentNode.nextElementSibling;
                 let arrow1 = arrowElem.parentNode.parentNode;
-                let count = 0;
-                let timer = setInterval(function () {
+                //let count = 0;
+                //let timer = setInterval(function () {
 
-                    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
+                //    if (count >= arrow.clientHeight && count >= arrow1.clientHeight) {
 
-                        clearInterval(timer);
-                        arrow1.style.bottom = "";
-                        arrow1.style.top = "";
-                        arrow.style.bottom = "";
-                        arrow.style.top = "";
-                        arrow.before(arrow, arrow1)
-                        return;
-                    }
-                    draw(arrow1, count, 1);
-                    draw(arrow, count, 0);
+                //        clearInterval(timer);
+                //        arrow1.style.bottom = "";
+                //        arrow1.style.top = "";
+                //        arrow.style.bottom = "";
+                //        arrow.style.top = "";
+                //        arrow.before(arrow, arrow1)
+                //        return;
+                //    }
+                //    draw(arrow1, count, 1);
+                //    draw(arrow, count, 0);
 
-                    count += 1.5;
-                }, 1);
+                //    count += 1.5;
+                //}, 1);
+
+                arrow.before(arrow, arrow1)
             }
         };
         xmlHttp.open("POST", url, true);
@@ -180,6 +184,24 @@
             elem.style.top = step + "px"
         }
     }
+
+    function SelectProfile(idProfile, typeTransport, idTr) {
+        let url = "@ViewBag.BaseUrl/Settings/SelectProfile";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idProfile=' + encodeURIComponent(idProfile)
+            + "&typeTransport=" + encodeURIComponent(typeTransport)
+        + "&idTr=" + encodeURIComponent(idTr);
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Server error, try again later");
+            }
+            else if (this.readyState == 4 && this.status == 200) {
+
+            }
+        };
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttp.send(body);    }
 </script>
 
 <style>
@@ -227,6 +249,8 @@
 
     .cardTool {
         padding: 15px;
+        display:flex;
+        justify-content:space-around;
     }
 
     .container {
@@ -295,7 +319,6 @@
         position: relative;
         background-color: transparent;
         width: 4px;
-        top: 4px;
         height: 12px;
         display: block;
         border-radius: 4px;
@@ -331,17 +354,18 @@
         }
 
     .arrow-up {
-        top: 20px;
-        transform: rotate(90deg);
+        top: 8px;
+        /*transform: rotate(90deg);*/
     }
 
     .arrow-down {
-        top: -20px;
-        left: -18px;
-        transform: rotate(-90deg);
+        top:17px;
+        left: -16px;
+        transform: rotate(-180deg);
     }
 
     .arrow-right {
+        top:-4px;
         transform: rotate(-40deg);
     }
 

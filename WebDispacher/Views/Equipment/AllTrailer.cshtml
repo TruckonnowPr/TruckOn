@@ -56,6 +56,9 @@
                     <th>
                         🖱
                     </th>
+                    <th>
+                        🖱
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +106,9 @@
                     </td>
                     <td onclick="GoToTrailerDoc(@ViewBag.Trailers[i].Id)">
                         🖺
+                    </td>
+                    <td onclick="window.location.href='@ViewBag.BaseUrl/Settings?idTr=@ViewBag.Trailers[i].Id&page=s&idProfile=0&typeTransport=Trailer'">
+                        ⚙️
                     </td>
                     <td style="cursor:pointer" onclick="Remove(@ViewBag.Trailers[i].Id)">
                         ✖

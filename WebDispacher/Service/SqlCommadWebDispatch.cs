@@ -290,6 +290,13 @@ namespace WebDispacher.Dao
             return isStateActual;
         }
 
+        internal void SelectProfileDb(int idProfile, bool isUsed = true)
+        {
+            ProfileSetting profileSetting = context.ProfileSettings.FirstOrDefault(p => p.Id == idProfile);
+            profileSetting.IsUsed = isUsed;
+            context.SaveChanges();
+        }
+
         internal void LayoutDownDb(int idLayout, int idTransported)
         {
             TransportVehicle transportVehicle = context.TransportVehicles

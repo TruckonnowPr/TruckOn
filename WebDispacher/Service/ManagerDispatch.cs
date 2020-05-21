@@ -6,6 +6,7 @@ using DaoModels.DAO.Enum;
 using DaoModels.DAO.Interface;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
+using iTextSharp.text;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -263,6 +264,21 @@ namespace WebDispacher.Service
         internal void LayoutUP(int idLayout, int idTransported)
         {
             _sqlEntityFramworke.LayoutUPDb(idLayout, idTransported);
+        }
+
+        internal void SelectProfile(int idProfile, string typeTransport, int idTr, string idCompany)
+        {
+            TypeTransportVehikle typeTransportVehikle = typeTransport == "Truck" ? TypeTransportVehikle.Truck : TypeTransportVehikle.Trailer;
+            List<ProfileSetting> profileSettings = _sqlEntityFramworke.GetSetingsDb(idCompany, typeTransportVehikle, idTr);
+            ProfileSetting profileSetting = profileSettings.FirstOrDefault(p => p.IsUsed);
+            if (idProfile != 0)
+            {
+                _sqlEntityFramworke.SelectProfileDb(idProfile);
+            }
+            if (profileSetting != null)
+            {
+                _sqlEntityFramworke.SelectProfileDb(profileSetting.Id, false);
+            }
         }
 
         internal void UnSelectLayout(int idLayout)

@@ -56,6 +56,9 @@
                         <th>
                             🖱
                         </th>
+                        <th>
+                            🖱
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,6 +103,9 @@
                         </td>
                         <td style="cursor:pointer;">
                             ✎
+                        </td>
+                        <td onclick="window.location.href='@ViewBag.BaseUrl/Settings?idTr=@ViewBag.Trucks[i].Id&page=s&idProfile=0&typeTransport=Truck'">
+                            ⚙️
                         </td>
                         <td onclick="GoToTruckDoc(@ViewBag.Trucks[i].Id)">
                             🖺
