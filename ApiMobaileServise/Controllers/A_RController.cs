@@ -48,10 +48,6 @@ namespace ApiMobaileServise.Controllers
         public string Clear(string token)
         {
             string respons = null;
-            if (token == null || token == "")
-            {
-                return JsonConvert.SerializeObject(new ResponseAppS("failed", "1", null));
-            }
             try
             {
                 bool isToken = managerMobileApi.CheckToken(token);
@@ -62,7 +58,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "2", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception)

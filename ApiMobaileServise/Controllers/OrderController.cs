@@ -23,7 +23,7 @@ namespace ApiMobaileServise.Controllers
             string respons = null;
             if(token == null || token == "")
             {
-                return JsonConvert.SerializeObject(new ResponseAppS("failed", "1", null));
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
             }
             try
             {
@@ -35,7 +35,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "2", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch(Exception)
@@ -53,7 +53,7 @@ namespace ApiMobaileServise.Controllers
             string respons = null;
             if (token == null || token == "")
             {
-                return JsonConvert.SerializeObject(new ResponseAppS("failed", "1", null));
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not authorized", null));
             }
             try
             {
@@ -65,7 +65,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "2", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception)
@@ -83,7 +83,7 @@ namespace ApiMobaileServise.Controllers
             string respons = null;
             if (token == null || token == "")
             {
-                return JsonConvert.SerializeObject(new ResponseAppS("failed", "1", null));
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
             }
             try
             {
@@ -95,7 +95,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "2", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception)
@@ -112,7 +112,7 @@ namespace ApiMobaileServise.Controllers
             string respons = null;
             if (token == null || token == "")
             {
-                return JsonConvert.SerializeObject(new ResponseAppS("failed", "1", null));
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "1", null));
             }
             try
             {
@@ -125,7 +125,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "2", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception e)
@@ -141,6 +141,10 @@ namespace ApiMobaileServise.Controllers
             string address, string city, string state, string zip, string phone, string email, string typeSave)
         {
             string respons = null;
+            if (token == null || token == "")
+            {
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
+            }
             try
             {
                 bool isToken = ManagerMobileApi.CheckToken(token);
@@ -154,7 +158,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "Token does not Valid", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception)
@@ -169,6 +173,10 @@ namespace ApiMobaileServise.Controllers
         public string Save(string token, string id, string typeSave, string payment, string paymentTeams)
         {
             string respons = null;
+            if (token == null || token == "")
+            {
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
+            }
             try
             {
                 bool isToken = ManagerMobileApi.CheckToken(token);
@@ -182,7 +190,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "Token does not Valid", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception)

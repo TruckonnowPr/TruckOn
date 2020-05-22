@@ -20,7 +20,7 @@ namespace ApiMobaileServise.Controllers
             string respons = null;
             if (token == null || token == "")
             {
-                return JsonConvert.SerializeObject(new ResponseAppS("failed", "1", null));
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
             }
             try
             {
@@ -31,7 +31,7 @@ namespace ApiMobaileServise.Controllers
                 }
                 else
                 {
-                    respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "2", null));
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
                 }
             }
             catch (Exception)
