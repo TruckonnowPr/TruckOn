@@ -53,7 +53,8 @@ namespace MDispatch.ViewModels.PageAppMV
                 await Navigationn.PopAsync(true);
                 if (state == 1)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Not Network", Navigationn));
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 else if (state == 2)
                 {

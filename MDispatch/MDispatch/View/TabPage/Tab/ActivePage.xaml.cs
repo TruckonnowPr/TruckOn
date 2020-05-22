@@ -116,7 +116,7 @@ namespace MDispatch.View.TabPage.Tab
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            activeMV.OutAccount();
+            GlobalHelper.OutAccount();
         }
 
         [Obsolete]

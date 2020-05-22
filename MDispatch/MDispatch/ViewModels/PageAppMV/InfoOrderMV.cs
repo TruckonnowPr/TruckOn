@@ -164,6 +164,11 @@ namespace MDispatch.ViewModels.PageAppMV
                 {
                     state = managerDispatchMob.InspectionStatus(token, IdShipping, StatusInspection, ref description, ref shipping);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
@@ -363,6 +368,11 @@ namespace MDispatch.ViewModels.PageAppMV
                     state = managerDispatchMob.Recurent(token, Shipping.Id, "Picked up", ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
@@ -404,6 +414,11 @@ namespace MDispatch.ViewModels.PageAppMV
                     }
                     state = managerDispatchMob.Recurent(token, Shipping.Id, status, ref description);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PopAsync();

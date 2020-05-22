@@ -130,7 +130,8 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 await PopupNavigation.PopAsync();
                 if (state == 1)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 else if (state == 2)
                 {
@@ -165,6 +166,11 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 });
 
                 await PopupNavigation.PopAsync();
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror("Error", null));
@@ -201,7 +207,8 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror("Not Authorized", null));
                 }
                 else if (state == 3)
                 {

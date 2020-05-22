@@ -85,7 +85,12 @@ namespace MDispatch.ViewModels.TAbbMV
                 {
                     state = managerDispatchMob.OrderWork("OrderGet", token, ref description, ref shippings);
                 });
-                if (state == 2)
+                if(state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
+                else if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
                 }
@@ -128,6 +133,11 @@ namespace MDispatch.ViewModels.TAbbMV
                 {
                     state = managerDispatchMob.DriverWork("CheckInspeacktion", token, ref description, ref isInspection, ref indexPhoto, ref truckCar);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
@@ -143,38 +153,6 @@ namespace MDispatch.ViewModels.TAbbMV
                     {
                         await Navigation.PushAsync(new Vidget.View.CameraPage(managerDispatchMob, UnTimeOfInspection.IdDriver, indexPhoto, initDasbordDelegate, truckCar));
                     }
-                }
-                else if (state == 4)
-                {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                }
-            }
-            IsRefr = false;
-        }
-
-        public async void OutAccount()
-        {
-            string token = CrossSettings.Current.GetValueOrDefault("Token", "");
-            string description = null;
-            bool isInspection = false;
-            int state = 0;
-            await Task.Run(() => Utils.CheckNet());
-            if (App.isNetwork)
-            {
-                await Task.Run(() =>
-                {
-                    state = managerDispatchMob.A_RWork("Clear", null, null, ref description, ref token);
-                });
-                if (state == 2)
-                {
-                    await PopupNavigation.PushAsync(new Errror("Error", null));
-                }
-                else if (state == 3)
-                {
-                    CrossSettings.Current.Remove("Token");
-                    App.isAvtorization = false;
-                    App.Current.MainPage = new NavigationPage(new Avtorization());
-                    IsRefr = true;
                 }
                 else if (state == 4)
                 {

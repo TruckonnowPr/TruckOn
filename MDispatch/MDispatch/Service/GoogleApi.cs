@@ -54,6 +54,10 @@ namespace MDispatch.Service
                     .Value<string>("ResponseStr");
                 return 3;
             }
+            else if (status == "NotAuthorized")
+            {
+                return 1;
+            }
             else
             {
                 return 2;

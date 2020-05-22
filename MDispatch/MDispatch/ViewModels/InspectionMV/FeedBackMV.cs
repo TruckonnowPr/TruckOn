@@ -67,6 +67,11 @@ namespace MDispatch.ViewModels.InspectionMV
                     state = managerDispatchMob.AskWork("FeedBack", token, null, Feedback, ref description);
                 });
                 await PopupNavigation.PopAsync(true);
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));

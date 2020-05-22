@@ -81,6 +81,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     state = managerDispatchMob.AskWork("AskDelyvery", token, VehiclwInformation.Id, askDelyvery, ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (isNavigationMany)

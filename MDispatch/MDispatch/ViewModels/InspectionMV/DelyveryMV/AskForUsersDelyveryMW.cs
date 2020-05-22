@@ -69,6 +69,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     state = managerDispatchMob.CheckProblem(token, IdShip, ref isProplem);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
@@ -172,6 +177,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     state = managerDispatchMob.AskWork("AskForUserDelyvery", token, IdShip, AskForUserDelyveryM, ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (isNavigationMany)
@@ -282,6 +292,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     //state = 3;
                     //TaskManager.CommandToDo("SaveRecount", 1, token, IdShip, 2, VideoRecount);
                 }
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, Navigation));
@@ -320,6 +335,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 {
                     state = managerDispatchMob.SavePay("SaveSig", token, IdShip, 2, photo, ref description);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, Navigation));
@@ -399,6 +419,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     state = managerDispatchMob.SetProblem(token, IdShip);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));

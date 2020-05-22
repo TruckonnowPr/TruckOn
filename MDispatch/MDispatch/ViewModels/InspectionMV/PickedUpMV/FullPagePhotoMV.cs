@@ -321,6 +321,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[2]);
                 }
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (isNavigationMany)

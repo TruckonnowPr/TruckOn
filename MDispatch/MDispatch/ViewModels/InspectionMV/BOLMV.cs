@@ -76,6 +76,11 @@ namespace MDispatch.ViewModels.InspectionMV
                 {
                     state = managerDispatchMob.GetShippingPhoto(token, IdShip, ref description, ref shipping1);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (isNavigationMany)
@@ -122,6 +127,11 @@ namespace MDispatch.ViewModels.InspectionMV
                     state = managerDispatchMob.AskWork("SendBolMail", token, IdShip, Email, ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));

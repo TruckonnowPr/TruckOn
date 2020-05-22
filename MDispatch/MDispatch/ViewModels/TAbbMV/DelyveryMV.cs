@@ -72,7 +72,8 @@ namespace MDispatch.ViewModels.TAbbMV
                 });
                 if (state == 1)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 else if (state == 2)
                 {

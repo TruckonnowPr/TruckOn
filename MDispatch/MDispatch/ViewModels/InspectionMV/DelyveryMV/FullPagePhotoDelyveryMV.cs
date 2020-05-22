@@ -292,6 +292,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[2]);
                 }
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (isNavigationMany)
@@ -371,6 +376,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     }
                     state = managerDispatchMob.Recurent(token, IdShip, status, ref description);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));

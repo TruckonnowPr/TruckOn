@@ -777,6 +777,10 @@ namespace MDispatch.Service
             {
                 return 3;
             }
+            else if (status == "NotAuthorized")
+            {
+                return 1;
+            }
             else
             {
                 description = responseAppS
@@ -798,6 +802,10 @@ namespace MDispatch.Service
                 isProplem = JsonConvert.DeserializeObject<bool>(responseAppS.
                           SelectToken("ResponseStr").ToString().ToLower());
                 return 3;
+            }
+            else if (status == "NotAuthorized")
+            {
+                return 1;
             }
             else
             {
@@ -840,6 +848,12 @@ namespace MDispatch.Service
                 description = responseAppS
                     .Value<string>("Description");
                 return 3;
+            }
+            else if (status == "NotAuthorized")
+            {
+                description = responseAppS
+                    .Value<string>("Description");
+                return 1;
             }
             else
             {

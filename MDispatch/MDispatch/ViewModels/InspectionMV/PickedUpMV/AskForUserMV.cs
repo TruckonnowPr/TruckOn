@@ -70,6 +70,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     state = managerDispatchMob.AskWork("AskFromUser", token, IdShip, AskForUser, ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (isNavigationMany)

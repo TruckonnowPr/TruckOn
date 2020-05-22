@@ -99,6 +99,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 {
                     state = managerDispatchMob.GetShipping(token, IdShip, ref description, ref shipping1);
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     if (Navigation.NavigationStack.Count > 1)
@@ -143,6 +148,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     initDasbordDelegate.Invoke();
                 });
                 await PopupNavigation.Instance.PopAsync();
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, Navigation));
@@ -196,6 +206,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     state = managerDispatchMob.SavePay("SaveSig", token, IdShip, 1, photo, ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, Navigation));
@@ -233,6 +248,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     });
                     //state = 3;
                     //TaskManager.CommandToDo("SaveRecount", 1, token, IdShip, 1, VideoRecount);
+                }
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 if (state == 2)
                 {
@@ -274,6 +294,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     state = managerDispatchMob.AskWork("SendBolMail", token, IdShip, Email, ref description);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
@@ -313,6 +338,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     state = managerDispatchMob.CheckProblem(token, IdShip, ref isProplem);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
@@ -355,6 +385,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     state = managerDispatchMob.SetProblem(token, IdShip);
                     initDasbordDelegate.Invoke();
                 });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));

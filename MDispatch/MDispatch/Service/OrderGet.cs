@@ -209,8 +209,14 @@ namespace MDispatch.Service
                     description = responseAppS
                         .Value<string>("Description");
                     return 3;
-                }
-                else
+            }
+            else if (status == "NotAuthorized")
+            {
+                description = responseAppS
+                    .Value<string>("Description");
+                return 1;
+            }
+            else
                 {
                     description = responseAppS
                         .Value<string>("Description");
@@ -231,6 +237,12 @@ namespace MDispatch.Service
                         SelectToken("ResponseStr").ToString());
                 return 3;
             }
+            else if (status == "NotAuthorized")
+            {
+                description = responseAppS
+                    .Value<string>("Description");
+                return 1;
+            }
             else
             {
                 description = responseAppS
@@ -250,6 +262,12 @@ namespace MDispatch.Service
             if (status == "success")
             {
                 return 3;
+            }
+            else if (status == "NotAuthorized")
+            {
+                description = responseAppS
+                    .Value<string>("Description");
+                return 1;
             }
             else
             {

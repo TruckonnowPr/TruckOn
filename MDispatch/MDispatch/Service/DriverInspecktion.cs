@@ -265,6 +265,10 @@ namespace MDispatch.Service
                 }
                 return 3;
             }
+            else if (status == "NotAuthorized")
+            {
+                return 1;
+            }
             else
             {
                 return 2;
@@ -283,6 +287,10 @@ namespace MDispatch.Service
             {
                 plateTruckAndTrailer = responseAppS.Value<string>("ResponseStr").ToString();
                 return 3;
+            }
+            else if (status == "NotAuthorized")
+            {
+                return 1;
             }
             else
             {
@@ -322,6 +330,10 @@ namespace MDispatch.Service
                 indexPhoto = Convert.ToInt32(responseAppS.Value<int>("ResponseStr1"));
                 truckCar = JsonConvert.DeserializeObject<TruckCar>(responseAppS.SelectToken("ResponseStr2").ToString());
                 return 3;
+            }
+            else if (status == "NotAuthorized")
+            {
+                return 1;
             }
             else
             {

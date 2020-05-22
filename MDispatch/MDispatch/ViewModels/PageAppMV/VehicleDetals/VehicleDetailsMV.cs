@@ -50,6 +50,11 @@ namespace MDispatch.ViewModels.PageAppMV.VehicleDetals
                     state = managerDispatchMob.OrderWork("GetVechicleInffo", idVech, ref vehiclwInformation1, token, ref description);
                 });
                 await PopupNavigation.PopAsync(true);
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                }
                 if (state == 2)
                 {
                     await Navigationn.PopAsync(true);
