@@ -1,4 +1,5 @@
 ﻿using MDispatch.NewElement.ToastNotify;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Tasks;
 using MDispatch.View.GlobalDialogView;
 using Newtonsoft.Json;
@@ -31,53 +32,57 @@ namespace MDispatch.Service.Net
                 client.Timeout = 5000;
                 response = client.Execute(request);
                 content = response.Content;
-              
-                    if (content == "" || response.StatusCode == System.Net.HttpStatusCode.NotFound)
+
+                if (content == "" || response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    if (App.isNetwork)
                     {
-                        if (App.isNetwork)
-                        {
-                            TaskManager.isWorkTask = false;
-                            App.isNetwork = false;
-                            if (App.isStart)
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await PopupNavigation.PushAsync(new Errror("Not Network", null));
-                            });
-                            }
-                            else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                DependencyService.Get<IToast>().ShowMessage("Not Network");
-                            });
-                            }
-                        }
-                        else if (!isAlRedy)
-                        {
-                            isAlRedy = true;
+                        TaskManager.isWorkTask = false;
+                        App.isNetwork = false;
                         if (App.isStart)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                                //await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                                HelpersView.CallError("Not Network");
                             });
                         }
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                DependencyService.Get<IToast>().ShowMessage("Not Network");
+                                //DependencyService.Get<IToast>().ShowMessage("Not Network");
+                                HelpersView.CallError("Not Network");
                             });
                         }
-                            RefreshIsAlRed();
-                        }
                     }
-                    else
+                    else if (!isAlRedy)
                     {
-                        bool isCheck = false;
-                        string description = null;
-                        GetData(content, ref isCheck, ref description);
+                        isAlRedy = true;
+                        if (App.isStart)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                                HelpersView.CallError("Not Network");
+                            });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                //DependencyService.Get<IToast>().ShowMessage("Not Network");
+                                HelpersView.CallError("Not Network");
+                            });
+                        }
+                        RefreshIsAlRed();
+                    }
+                }
+                else
+                {
+                    bool isCheck = false;
+                    string description = null;
+                    GetData(content, ref isCheck, ref description);
                     if (!isCheck)
                     {
                         if (App.isNetwork)
@@ -88,14 +93,16 @@ namespace MDispatch.Service.Net
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await PopupNavigation.PushAsync(new Errror(description, null));
+                                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                                    HelpersView.CallError(description);
                                 });
                             }
                             else
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    DependencyService.Get<IToast>().ShowMessage(description);
+                                    //DependencyService.Get<IToast>().ShowMessage(description);
+                                    HelpersView.CallError(description);
                                 });
                             }
                         }
@@ -107,7 +114,8 @@ namespace MDispatch.Service.Net
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await PopupNavigation.PushAsync(new Errror(description, null));
+                                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                                    HelpersView.CallError(description);
                                 });
                             }
                             else
@@ -122,6 +130,10 @@ namespace MDispatch.Service.Net
                     }
                     else
                     {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            HelpersView.Hidden();
+                        });
                         if (!TaskManager.isWorkTask)
                         {
                             TaskManager.CommandToDo("CheckTask");
@@ -130,7 +142,7 @@ namespace MDispatch.Service.Net
                         TaskManager.isWorkTask = true;
                         App.isNetwork = true;
                     }
-                    }
+                }
             }
             catch (Exception e)
             {

@@ -113,5 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Service\TimeSync\" />
+    <Folder Include="Service\Helpers\" />
   </ItemGroup>
 </Project>

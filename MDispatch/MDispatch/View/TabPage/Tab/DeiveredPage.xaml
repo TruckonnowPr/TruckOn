@@ -4,7 +4,7 @@
              x:Class="MDispatch.View.TabPage.Tab.DeiveredPage"
              Title="Delivered">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="body">
             <ListView ItemsSource="{Binding Shippings}" IsRefreshing="{Binding IsRefr}" IsPullToRefreshEnabled="True"
                       HasUnevenRows="True" SeparatorVisibility="None" RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>

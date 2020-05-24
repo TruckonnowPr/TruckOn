@@ -1,5 +1,6 @@
 ﻿using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Vidget.VM;
 using MDispatch.View.A_R;
@@ -89,16 +90,19 @@ namespace MDispatch.ViewModels.TAbbMV
                 {
                     GlobalHelper.OutAccount();
                     await PopupNavigation.PushAsync(new Errror(description, null));
+                    //HelpersView.CallError(description);
                 }
                 else if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
                     Shippings = shippings;
                     await Task.Run(() =>
                     {
+                        HelpersView.Hidden();
                         UnTimeOfInspection = new UnTimeOfInspection(description);
                         if (!UnTimeOfInspection.ISMaybiInspection)
                         {
@@ -108,7 +112,8 @@ namespace MDispatch.ViewModels.TAbbMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
             IsRefr = false;
@@ -140,14 +145,17 @@ namespace MDispatch.ViewModels.TAbbMV
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
+                    HelpersView.Hidden();
                     if (isInspection)
                     {
                         Init();
                         await PopupNavigation.PushAsync(new Errror("You have already passed inspection today", null));
+                        //Add Commplet Alert
                     }
                     else
                     {
@@ -156,7 +164,8 @@ namespace MDispatch.ViewModels.TAbbMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
             IsRefr = false;

@@ -10,7 +10,7 @@
         <ToolbarItem  IconImageSource="settings.png" Clicked="ToolbarItem_Clicked_2"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="body">
             <Frame x:Name="blockInspactionTrack" Margin="0, 5, 0, 5" Padding="0" BackgroundColor="White" HasShadow="True" CornerRadius="2" OutlineColor="#C3CBCD" IsVisible="{Binding UnTimeOfInspection.IsInspection}">
                 <StackLayout Orientation="Horizontal" HeightRequest="120">
                     <StackLayout.GestureRecognizers>

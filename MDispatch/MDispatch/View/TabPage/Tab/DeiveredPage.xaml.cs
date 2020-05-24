@@ -1,4 +1,5 @@
 ﻿using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.PageApp;
 using MDispatch.ViewModels.TAbbMV;
 using System;
@@ -74,7 +75,14 @@ namespace MDispatch.View.TabPage.Tab
         [Obsolete]
         protected override void OnAppearing()
         {
+            HelpersView.InitAlert(body);
             delyveryMV.Init();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

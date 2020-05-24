@@ -1,4 +1,5 @@
 ﻿using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.PageApp;
 using MDispatch.View.PageApp.Settings;
 using MDispatch.ViewModels.TAbbMV;
@@ -122,6 +123,7 @@ namespace MDispatch.View.TabPage.Tab
         [Obsolete]
         protected override void OnAppearing()
         {
+            HelpersView.InitAlert(body);
             activeMV.Init();
             base.OnAppearing();
             timer = new Timer(new TimerCallback(ReminderTrackInspaction), null, 5000, 5000);
@@ -132,6 +134,7 @@ namespace MDispatch.View.TabPage.Tab
         {
             base.OnDisappearing();
             timer.Change(Timeout.Infinite, Timeout.Infinite);
+            HelpersView.Hidden();
         }
 
         private void ToolbarItem_Clicked_1(object sender, EventArgs e)
