@@ -63,7 +63,7 @@ namespace MDispatch.Vidget.VM
                 {
                     NameLayute = truckCar.NamePatern[IndexCurent - 1];
                 }
-                PhotoLayute = $"{truckCar.Type}{IndexCurent}.png";
+                PhotoLayute = $"{truckCar.Type}{truckCar.Layouts[IndexCurent - 1]}.png";
             }
         }
 
@@ -339,7 +339,7 @@ namespace MDispatch.Vidget.VM
                         {
                             NameLayute = TruckCar.NamePatern[IndexCurent - 1];
                         }
-                        PhotoLayute = $"{TruckCar.Type}{IndexCurent}.png";
+                        PhotoLayute = $"{truckCar.Type}{truckCar.Layouts[IndexCurent - 1]}.png";
                     }
                 }
                 else if (state == 4)
