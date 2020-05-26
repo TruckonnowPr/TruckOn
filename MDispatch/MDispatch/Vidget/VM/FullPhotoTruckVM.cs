@@ -62,8 +62,8 @@ namespace MDispatch.Vidget.VM
                 if (IndexCurent <= truckCar.CountPhoto)
                 {
                     NameLayute = truckCar.NamePatern[IndexCurent - 1];
+                    PhotoLayute = $"{truckCar.Type}{truckCar.Layouts[IndexCurent - 1]}.png";
                 }
-                PhotoLayute = $"{truckCar.Type}{truckCar.Layouts[IndexCurent - 1]}.png";
             }
         }
 
@@ -222,7 +222,7 @@ namespace MDispatch.Vidget.VM
                             Navigation.RemovePage(Navigation.NavigationStack[1]);
                         }
                     }
-                    DependencyService.Get<IToast>().ShowMessage($"Photo {truckCar.NamePatern[IndexCurent-1]} saved");
+                    //DependencyService.Get<IToast>().ShowMessage($"Photo {truckCar.NamePatern[IndexCurent-1]} saved");
                 }
                 else if (state == 4)
                 {
@@ -338,8 +338,8 @@ namespace MDispatch.Vidget.VM
                         if (IndexCurent <= TruckCar.CountPhoto)
                         {
                             NameLayute = TruckCar.NamePatern[IndexCurent - 1];
+                            PhotoLayute = $"{truckCar.Type}{truckCar.Layouts[IndexCurent - 1]}.png";
                         }
-                        PhotoLayute = $"{truckCar.Type}{truckCar.Layouts[IndexCurent - 1]}.png";
                     }
                 }
                 else if (state == 4)
@@ -394,7 +394,7 @@ namespace MDispatch.Vidget.VM
                         }
                         else if (TruckCar.TypeTransportVehicle == "Trailer")
                         {
-                            await PopupNavigation.PushAsync(new PlateTruckWrite(this));
+                            await PopupNavigation.PushAsync(new PlateTrailerWrite(this));
                         }
                     }
                     else if (TruckCar.IsNextInspection && TruckCar.CountPhoto + 1 == IndexCurent)
