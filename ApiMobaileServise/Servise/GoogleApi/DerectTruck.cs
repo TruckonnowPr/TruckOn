@@ -30,7 +30,7 @@ namespace ApiMobaileServise.Servise.GoogleApi
             {
                 byte[] photo = (byte[])parames[1];
                 string idDriver = (string)parames[0];
-                List<Truck> trucks = sqlCommandApiMobil.GetTruck();
+                List<Truck> trucks = sqlCommandApiMobil.GetTrucks();
                 var client = ImageAnnotatorClient.Create();
                 var image = Google.Cloud.Vision.V1.Image.FromBytes(photo);
                 var response = client.DetectText(image);

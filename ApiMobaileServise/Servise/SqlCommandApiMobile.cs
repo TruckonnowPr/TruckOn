@@ -3,7 +3,9 @@ using BaceModel.ModelInspertionDriver;
 using BaceModel.ModelInspertionDriver.Trailer;
 using BaceModel.ModelInspertionDriver.Truck;
 using DaoModels.DAO;
+using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
+using DaoModels.DAO.Models.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System;
@@ -52,7 +54,7 @@ namespace ApiMobaileServise.Servise
             return context.Trailers.ToList();
         }
 
-        internal List<Truck> GetTruck()
+        internal List<Truck> GetTrucks()
         {
             return context.Trucks.ToList();
         }
@@ -203,6 +205,14 @@ namespace ApiMobaileServise.Servise
             return plateTrailer;
         }
 
+        internal ProfileSetting GetProfileSetingsByIdTr(int idTr, TypeTransportVehikle typeTransportVehikle)
+        {
+            return context.ProfileSettings
+                .Where(p => p.IsUsed && p.TypeTransportVehikle == typeTransportVehikle.ToString() && p.IdTr == idTr)
+                .Include(p => p.TransportVehicle.Layouts)
+                .FirstOrDefault();
+        }
+
         internal string GetPlateTruckByTokenDriver(string token)
         {
             string plateTrailer = null;
@@ -351,10 +361,10 @@ namespace ApiMobaileServise.Servise
             inspectionDriver.Date = DateTime.Now.ToString();
             driver.IsInspectionDriver = true;
             driver.IsInspectionToDayDriver = true;
-            await context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
-        public async Task<bool> ChechToDayInspactionInDb(string token)
+        public async Task<bool> ChechToDayInspactionInDb(string token, int countImageTruck, int countImageTrailer)
         {
             bool isInspaction = false;
             Driver driver = await context.Drivers.Where(d => d.Token == token)
@@ -366,8 +376,6 @@ namespace ApiMobaileServise.Servise
                 DateTime dateTime = Convert.ToDateTime(inspectionDriver.Date);
                 Truck truck = context.Trucks.FirstOrDefault(t => t.Id == inspectionDriver.IdITruck);
                 Trailer trailer = context.Trailers.FirstOrDefault(t => t.Id == inspectionDriver.IdITruck);
-                int countImageTruck = truck != null ? GetTransportVehicle(truck.Type).CountPhoto : 0;
-                int countImageTrailer = trailer != null ? GetTransportVehicle(trailer.Type).CountPhoto : 0;
                 if (dateTime.Date != DateTime.Now.Date || (inspectionDriver.CountPhotoTruck + inspectionDriver.CountPhotoTrailer <= countImageTruck + countImageTrailer))
                 {
                     isInspaction = false;
@@ -383,7 +391,7 @@ namespace ApiMobaileServise.Servise
             {
                 isInspaction = false;
             }
-            await context.SaveChangesAsync();
+            context.SaveChanges();
             return isInspaction;
         }
 
@@ -944,12 +952,12 @@ namespace ApiMobaileServise.Servise
             string statusAndTimeInInspection = null;
             Driver driver = context.Drivers.Include(d => d.InspectionDrivers).FirstOrDefault(d => d.Token == token);
             InspectionDriver inspectionDriver = driver.InspectionDrivers != null && driver.InspectionDrivers.Count != 0 ? driver.InspectionDrivers.Last() : null;
-            if(inspectionDriver != null)
+            if(inspectionDriver == null)
             {
                 driver.IsInspectionDriver = false;
                 driver.IsInspectionToDayDriver = false;
             }
-            else if(true || Convert.ToDateTime(inspectionDriver.Date).Date != DateTime.Now.Date)
+            else if(Convert.ToDateTime(inspectionDriver.Date).Date != DateTime.Now.Date)
             {
                 if (DateTime.Now.Hour >= 12)
                 {

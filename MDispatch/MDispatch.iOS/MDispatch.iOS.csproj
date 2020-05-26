@@ -55,12 +55,12 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>MDispatch Development</CodesignProvision>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">

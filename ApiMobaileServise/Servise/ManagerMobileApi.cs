@@ -6,7 +6,9 @@ using ApiMobaileServise.Servise.GoogleApi;
 using BaceModel.ModelInspertionDriver;
 using BaceModel.ModelInspertionDriver.Trailer;
 using BaceModel.ModelInspertionDriver.Truck;
+using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
+using DaoModels.DAO.Models.Settings;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -70,7 +72,7 @@ namespace ApiMobaileServise.Servise
 
         internal List<Truck> GetTruck()
         {
-            return sqlCommandApiMobile.GetTruck();
+            return sqlCommandApiMobile.GetTrucks();
         }
 
         internal List<Trailer> GetTrailer()
@@ -134,7 +136,19 @@ namespace ApiMobaileServise.Servise
 
         public async Task<bool> ChechToDayInspaction(string token)
         {
-            return await sqlCommandApiMobile.ChechToDayInspactionInDb(token);
+            int countImageTruck = 0;
+            int countImageTrailer = 0;
+            string plateTrailer = sqlCommandApiMobile.GetPlateTrailerByTokenDriver(token);
+            if(plateTrailer != null)
+            {
+                countImageTrailer = GetPaternTrailerInspectionDriver(plateTrailer).CountPhoto;
+            }
+            string plateTruck = sqlCommandApiMobile.GetPlateTruckByTokenDriver(token);
+            if (plateTruck != null)
+            {
+                countImageTruck = GetPaternTruckInspectionDriver(plateTruck).CountPhoto;
+            }
+            return await sqlCommandApiMobile.ChechToDayInspactionInDb(token, countImageTruck, countImageTrailer);
         }
 
         public int GetIndexPhoto(string token)
@@ -188,19 +202,57 @@ namespace ApiMobaileServise.Servise
         internal ITransportVehicle GetPaternTrailerInspectionDriver(string plateTrailer)
         {
             ITransportVehicle transportVehicle = null;
-            Trailer truck = sqlCommandApiMobile.GetTrailers().FirstOrDefault(t => t.Plate == plateTrailer);
-            transportVehicle = GetTransportVehicle(truck.Type);
+            Trailer trailer = sqlCommandApiMobile.GetTrailers().FirstOrDefault(t => t.Plate == plateTrailer);
+            ProfileSetting profileSetting = sqlCommandApiMobile.GetProfileSetingsByIdTr(trailer.Id, TypeTransportVehikle.Trailer);
+            if (profileSetting != null)
+            {
+                transportVehicle = GetTransportVehicle(profileSetting.TransportVehicle);
+                transportVehicle.IsNextInspection = false;
+            }
+            else
+            {
+                transportVehicle = GetTransportVehicle(trailer.Type);
+            }
             return transportVehicle;
         }
 
         internal ITransportVehicle GetPaternTruckInspectionDriver(string plateTruck)
         {
             ITransportVehicle transportVehicle = null;
-            Truck truck = sqlCommandApiMobile.GetTruck().FirstOrDefault(t => t.PlateTruk == plateTruck);
-            transportVehicle = GetTransportVehicle(truck.Type);
+            Truck truck = sqlCommandApiMobile.GetTrucks().FirstOrDefault(t => t.PlateTruk == plateTruck);
+            ProfileSetting profileSetting = sqlCommandApiMobile.GetProfileSetingsByIdTr(truck.Id, TypeTransportVehikle.Truck);
+            if (profileSetting != null)
+            {
+                transportVehicle = GetTransportVehicle(profileSetting.TransportVehicle);
+                transportVehicle.IsNextInspection = true;
+            }
+            else
+            {
+                transportVehicle = GetTransportVehicle(truck.Type);
+            }
             return transportVehicle;
         }
 
+        private ITransportVehicle GetTransportVehicle(TransportVehicle transportVehicle)
+        {
+            ITransportVehicle transportVehicleRes = null;
+            transportVehicle.Layouts = transportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
+            transportVehicleRes = GetTransportVehicle("Deffalt");
+            transportVehicleRes.CountPhoto = transportVehicle.CountPhoto;
+            transportVehicleRes.Type = transportVehicle.Type;
+            transportVehicleRes.TypeTransportVehicle = transportVehicle.TypeTransportVehicle;
+            transportVehicleRes.Layouts = new List<string>();
+            transportVehicleRes.NamePatern = new List<string>();
+            for (int i = 0; i < transportVehicle.Layouts.Count; i++)
+            {
+                if (transportVehicle.Layouts[i].IsUsed)
+                {
+                    transportVehicleRes.Layouts.Add(transportVehicle.Layouts[i].Index.ToString());
+                    transportVehicleRes.NamePatern.Add(transportVehicle.Layouts[i].Name);
+                }
+            }
+            return transportVehicleRes;
+        }
 
 
         private ITransportVehicle GetTransportVehicle(string typeTruk)
@@ -213,6 +265,8 @@ namespace ApiMobaileServise.Servise
 
                 case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
                 case "FourDoorTruckChassisOpenFrame": transportVehicle = new FourDoorTruckChassisOpenFrame(); break;
+
+                case "Deffalt": transportVehicle = new DeffalteTransport(); break;
             }
             return transportVehicle;
         }
