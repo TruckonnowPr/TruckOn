@@ -1,6 +1,7 @@
 ﻿using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.View;
 using MDispatch.View.GlobalDialogView;
@@ -57,7 +58,8 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, Navigationn));
+                    //await PopupNavigation.PushAsync(new Errror(description, Navigationn));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -65,7 +67,8 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigationn));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigationn));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
         }

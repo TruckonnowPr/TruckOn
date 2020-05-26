@@ -10,6 +10,7 @@
         <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <StackLayout x:Name="body">
         <ScrollView>
             <StackLayout SizeChanged="StackLayout_SizeChanged" Padding="4" x:Name="bodyBlock">
                 <StackLayout Padding="10" IsVisible="True" x:Name="bloc1">
@@ -124,5 +125,6 @@
                 </FlexLayout>
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

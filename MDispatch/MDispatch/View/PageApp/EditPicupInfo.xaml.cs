@@ -1,6 +1,8 @@
 ﻿using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.ViewModels.PageAppMV;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -292,6 +294,19 @@ namespace MDispatch.View.PageApp
                     );
                 lEmail.TextColor = Color.FromHex("#b8babb");
             }
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

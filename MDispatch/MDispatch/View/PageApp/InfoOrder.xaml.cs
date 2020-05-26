@@ -1,6 +1,7 @@
 ﻿using FormsControls.Base;
 using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.ViewModels.PageAppMV;
 using Rg.Plugins.Popup.Services;
@@ -63,6 +64,19 @@ namespace MDispatch.View.PageApp
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.PushAsync(new ContactInfo());
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

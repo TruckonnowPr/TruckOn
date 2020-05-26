@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              x:Class="MDispatch.View.PageApp.Settings.Settings">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#dbf1fe" >
+        <StackLayout x:Name="body" BackgroundColor="#dbf1fe" >
             <FlexLayout BackgroundColor="White" JustifyContent="Center" >
                 <FlexLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />

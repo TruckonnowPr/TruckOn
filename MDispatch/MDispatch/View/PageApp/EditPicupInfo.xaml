@@ -7,6 +7,7 @@
         <ToolbarItem Text="Save" Command="{Binding SavePikedUpCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <StackLayout x:Name="body">
         <ScrollView>
             <StackLayout Padding="10" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, .5, 1, 1">
                 <Label x:Name="lLoadId" Text="Load Id" TextColor="#b8babb" Margin="4,0,0,0" FontSize="16" VerticalTextAlignment="Start"/>
@@ -37,5 +38,6 @@
                 <Entry TextColor="#4fd2c2" HeightRequest="40" FontSize="16" Text="{Binding Shipping.EmailP}" TextChanged="Entry_TextChanged_7"/>
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

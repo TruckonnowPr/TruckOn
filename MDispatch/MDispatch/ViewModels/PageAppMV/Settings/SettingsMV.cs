@@ -1,4 +1,5 @@
 ﻿using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.View;
 using MDispatch.View.A_R;
@@ -135,7 +136,8 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 }
                 else if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -145,8 +147,13 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
+            }
+            else
+            {
+                await PopupNavigation.PopAsync();
             }
         }
 
@@ -225,7 +232,8 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service scan", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service scan", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
         }

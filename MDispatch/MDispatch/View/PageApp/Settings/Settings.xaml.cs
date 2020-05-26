@@ -1,5 +1,6 @@
 ﻿using MDispatch.NewElement;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.ViewModels.PageAppMV.Settings;
 using Plugin.LatestVersion;
 using Plugin.Settings;
@@ -61,6 +62,19 @@ namespace MDispatch.View.PageApp.Settings
         {
             DependencyService.Get<IOrientationHandler>().ForceLandscape();
             await Navigation.PushModalAsync(new ScanPlateSettings(settingsMV, "trailer"));
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

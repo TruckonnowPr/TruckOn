@@ -20,6 +20,7 @@ using Plugin.Settings;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.Service.Net;
 using MDispatch.View;
+using MDispatch.Service.Helpers;
 
 namespace MDispatch.ViewModels.PageAppMV
 {
@@ -172,6 +173,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 if (state == 2)
                 {
                     await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -180,6 +182,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 4)
                 {
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
             await PopupNavigation.PopAsync();
