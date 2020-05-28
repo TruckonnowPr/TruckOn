@@ -11,8 +11,6 @@ namespace WebDispacher.Controellers
     public class RAController : Controller
     {
         ManagerDispatch managerDispatch = new ManagerDispatch();
-
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult Index()
         {
             IActionResult actionResult = null;

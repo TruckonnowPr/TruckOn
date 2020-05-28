@@ -186,7 +186,7 @@ namespace WebDispacher.Service
                     Index = transportVehicle.Layouts[i],
                     Name = transportVehicle.NamePatern[i],
                     OrdinalIndex = i+1,
-                    IsUsed = false,
+                    IsUsed = true,
                 });
             }
             return layouts;

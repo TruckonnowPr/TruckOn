@@ -192,6 +192,11 @@ namespace WebDispacher.Dao
 
         internal void SelectLayout(int idLayout)
         {
+            TransportVehicle transportVehicle = context.TransportVehicles
+                .Include(t => t.Layouts)
+                .First(t => t.Layouts.FirstOrDefault(l => l.Id == idLayout) != null);
+            transportVehicle.CountPhoto++;
+            context.SaveChanges();
             Layouts layouts = context.Layouts.FirstOrDefault(l => l.Id == idLayout);
             if (layouts != null)
             {
@@ -264,6 +269,11 @@ namespace WebDispacher.Dao
 
         internal void UnSelectLayout(int idLayout)
         {
+            TransportVehicle transportVehicle = context.TransportVehicles
+                   .Include(t => t.Layouts)
+                   .First(t => t.Layouts.FirstOrDefault(l => l.Id == idLayout) != null);
+            transportVehicle.CountPhoto--;
+            context.SaveChanges();
             Layouts layouts = context.Layouts.FirstOrDefault(l => l.Id == idLayout);
             if(layouts != null)
             {
