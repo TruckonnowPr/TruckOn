@@ -72,6 +72,10 @@ namespace MDispatch.ViewModels.PageAppMV
                     HelpersView.CallError("Technical work on the service");
                 }
             }
+            else
+            {
+                await PopupNavigation.PopAsync(true);
+            }
         }
     }
 }

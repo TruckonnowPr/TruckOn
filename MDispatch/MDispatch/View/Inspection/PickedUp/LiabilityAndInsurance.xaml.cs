@@ -1,6 +1,7 @@
 ﻿using MDispatch.Models;
 using MDispatch.NewElement.TouchCordinate;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.ViewModels.InspectionMV.PickedUpMV;
 using MDispatch.ViewModels.InspectionMV.Servise.Paymmant;
@@ -62,15 +63,6 @@ namespace MDispatch.View.Inspection.PickedUp
                 timer.Change(Timeout.Infinite, Timeout.Infinite);
             }
             return base.OnBackButtonPressed();
-        }
-
-        protected override void OnDisappearing()
-        {
-            if (timer != null)
-            {
-                timer.Change(Timeout.Infinite, Timeout.Infinite);
-            }
-            base.OnDisappearing();
         }
 
         [Obsolete]
@@ -497,6 +489,23 @@ namespace MDispatch.View.Inspection.PickedUp
         private void Button_Clicked_3(object sender, EventArgs e)
         { 
             PhoneDialer.Open("+17734305155");
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (timer != null)
+            {
+                timer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+            HelpersView.Hidden();
         }
     }
 }

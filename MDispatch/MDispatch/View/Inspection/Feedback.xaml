@@ -5,8 +5,9 @@
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              Title="Feedback">
     <ContentPage.Content>
+        <StackLayout>
         <ScrollView>
-            <StackLayout>
+            <StackLayout x:Name="body">
                 <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock1">
                     <StackLayout>
                         <Label Text="How are you satisfied with a service?" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
@@ -52,5 +53,6 @@
                 <Button Text="Continue" BackgroundColor="BlueViolet" TextColor="White" Margin="10" Clicked="ToolbarItem_Clicked"/>
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

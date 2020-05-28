@@ -112,17 +112,38 @@ namespace MDispatch.ViewModels.PageAppMV
 
         private void ToInstruction()
         {
-            Navigation.PushAsync(new Instruction(this));
+            if (Shipping != null)
+            {
+                Navigation.PushAsync(new Instruction(this));
+            }
+            else
+            {
+                HelpersView.CallError("Not Data");
+            }
         }
 
         private async void ToEditPikedUp()
         {
-            await Navigation.PushAsync(new EditPicupInfo(managerDispatchMob, Shipping), true);
+            if (Shipping != null)
+            {
+                await Navigation.PushAsync(new EditPicupInfo(managerDispatchMob, Shipping), true);
+            }
+            else
+            {
+                HelpersView.CallError("Not Data");
+            }
         }
 
         private async void ToEditDelivery()
         {
-            await Navigation.PushAsync(new EditDeliveryInformation(managerDispatchMob, Shipping), true);
+            if (Shipping != null)
+            {
+                await Navigation.PushAsync(new EditDeliveryInformation(managerDispatchMob, Shipping), true);
+            }
+            else
+            {
+                HelpersView.CallError("Not Data");
+            }
         }
 
         [System.Obsolete]
@@ -172,7 +193,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
                     HelpersView.CallError(description);
                 }
                 else if (state == 3)
@@ -181,7 +202,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                     HelpersView.CallError("Technical work on the service");
                 }
             }

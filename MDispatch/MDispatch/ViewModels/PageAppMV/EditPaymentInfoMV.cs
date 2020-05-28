@@ -71,8 +71,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 {
                     state = managerDispatchMob.OrderOneWork("Save", Shipping.Id, token, "Payment", Shipping.PriceListed, Shipping.TotalPaymentToCarrier, ref description);
                 });
-                await PopupNavigation.PopAsync(true);
-                await Navigationn.PopAsync(true);
+                await PopupNavigation.PopAllAsync(true);
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
@@ -90,6 +89,10 @@ namespace MDispatch.ViewModels.PageAppMV
                 {
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigationn));
                 }
+            }
+            else
+            {
+                await PopupNavigation.PopAsync(true);
             }
         }
     }

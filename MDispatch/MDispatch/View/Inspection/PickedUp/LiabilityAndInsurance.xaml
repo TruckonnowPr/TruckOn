@@ -9,6 +9,7 @@
         <ToolbarItem Text="BOL" Clicked="ToolbarItem_Clicked_1"/>
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
+        <StackLayout x:Name="body">
         <ScrollView>
             <StackLayout>
                 <ActivityIndicator IsRunning="{Binding Isloader}" IsVisible="{Binding Isloader}"/>
@@ -148,5 +149,6 @@
                 <!--<Button IsVisible="False" x:Name="btnConntinue" Text="Continue" BackgroundColor="BlueViolet" TextColor="White" Clicked="Button_Clicked" Margin="10"/>-->
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

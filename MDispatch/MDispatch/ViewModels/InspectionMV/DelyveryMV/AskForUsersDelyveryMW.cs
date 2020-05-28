@@ -1,6 +1,7 @@
 ﻿using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Service.Tasks;
 using MDispatch.View;
@@ -76,7 +77,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -84,7 +86,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
             return isProplem;
@@ -193,7 +196,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    //await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -219,7 +223,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
         }
@@ -299,8 +304,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
-
+                    //await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -312,7 +317,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    HelpersView.CallError("Technical work on the service");
                 }
                 await PopupNavigation.PopAsync();
             }
@@ -342,7 +348,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    //await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -354,7 +361,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
             await PopupNavigation.PopAsync();
@@ -426,7 +434,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -434,7 +443,8 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
         }

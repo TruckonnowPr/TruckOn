@@ -1,5 +1,6 @@
 ﻿using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.View.Inspection.PickedUp;
 using MDispatch.ViewModels.InspectionMV.DelyveryMV;
@@ -400,6 +401,19 @@ namespace MDispatch.View.Inspection.Delyvery
         private void Button_Clicked_3(object sender, EventArgs e)
         {
             PhoneDialer.Open("+17734305155");
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

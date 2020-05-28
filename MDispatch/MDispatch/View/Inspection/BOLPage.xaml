@@ -7,6 +7,7 @@
              x:Class="MDispatch.View.Inspection.BOLPage"
              Title="BOL">
     <ContentPage.Content>
+        <StackLayout x:Name="body">
         <ScrollView>
             <StackLayout>
                 <FlexLayout JustifyContent="Center" IsVisible="{Binding IsLoad}">
@@ -83,5 +84,6 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.ViewModels.InspectionMV;
 using Plugin.InputKit.Shared.Controls;
 using System;
@@ -75,6 +76,19 @@ namespace MDispatch.View.Inspection
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             feedBackMV.SaveAsk();
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

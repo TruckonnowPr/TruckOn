@@ -10,6 +10,7 @@
         <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked_2"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <StackLayout x:Name="body">
         <ScrollView>
             <StackLayout>
                 <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock1">
@@ -46,5 +47,6 @@
                 <Button Text="Continue" BackgroundColor="BlueViolet" TextColor="White" Clicked="ToolbarItem_Clicked" Margin="10"/>
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

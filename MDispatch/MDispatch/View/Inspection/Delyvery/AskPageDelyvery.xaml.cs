@@ -1,5 +1,6 @@
 ﻿using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.View.Inspection.Delyvery.CameraPage;
 using MDispatch.ViewModels.InspectionMV.DelyveryMV;
@@ -700,6 +701,19 @@ namespace MDispatch.View.Inspection.Delyvery
         private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
         {
             await PopupNavigation.PushAsync(new ContactInfo());
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }

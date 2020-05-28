@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using static MDispatch.Service.ManagerDispatchMob;
 using MDispatch.View;
+using MDispatch.Service.Helpers;
 
 namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
 {
@@ -86,7 +87,8 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    //await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -109,7 +111,8 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    HelpersView.CallError("Technical work on the service");
                 }
             }
             else

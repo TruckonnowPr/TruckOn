@@ -10,6 +10,7 @@
         <ToolbarItem Text="Next" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <StackLayout x:Name="body">
         <ScrollView>
             <StackLayout x:Name="stBody">
                 <!--1-->
@@ -286,5 +287,6 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

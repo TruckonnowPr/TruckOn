@@ -136,8 +136,8 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 }
                 else if (state == 2)
                 {
-                    //await PopupNavigation.PushAsync(new Errror(description, null));
-                    HelpersView.CallError(description);
+                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -147,8 +147,8 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 }
                 else if (state == 4)
                 {
-                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //HelpersView.CallError("Technical work on the service");
                 }
             }
             else

@@ -10,7 +10,7 @@
         <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="body">
             <Label Text="Thank you for using our company. Press the start button to continue!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"

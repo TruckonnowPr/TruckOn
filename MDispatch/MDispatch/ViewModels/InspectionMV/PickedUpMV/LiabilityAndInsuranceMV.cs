@@ -1,6 +1,7 @@
 using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Service.Tasks;
 using MDispatch.View;
@@ -110,7 +111,8 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
@@ -122,7 +124,8 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    HelpersView.CallError("Technical work on the service");
                 }
                 StataLoadShip = 1;
             }

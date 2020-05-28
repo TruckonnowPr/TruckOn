@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using MDispatch.Models;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.View.Inspection.PickedUp;
 using MDispatch.View.PageApp;
 using MDispatch.View.ServiceView.ResizeImage;
@@ -271,6 +272,19 @@ namespace MDispatch.View.Inspection
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await bOLMV.SendLiabilityAndInsuranceEmaile();
+        }
+
+        [Obsolete]
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HelpersView.InitAlert(body);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            HelpersView.Hidden();
         }
     }
 }
