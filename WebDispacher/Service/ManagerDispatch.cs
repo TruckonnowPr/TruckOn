@@ -406,7 +406,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SavevechInDb(idVech, vehiclwInformation);
         }
 
-        internal void AddCommpany(string nameCommpany, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
+        internal async void AddCommpany(string nameCommpany, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
         {
             Commpany commpany = new Commpany()
             {
@@ -417,12 +417,15 @@ namespace WebDispacher.Service
             };
             int id = _sqlEntityFramworke.AddCommpany(commpany);
             _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
-            SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
-            SaveDocCpmmpany(IFTA, "IFTA (optional for 26000+)", id.ToString());
-            SaveDocCpmmpany(KYU, "KYU", id.ToString());
-            SaveDocCpmmpany(logbookPapers, "Logbook Papers (manual, certificate, malfunction letter)", id.ToString());
-            SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
-            SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
+            await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
+            if (IFTA != null)
+            {
+                await SaveDocCpmmpany(IFTA, "IFTA (optional for 26000+)", id.ToString());
+            }
+            await SaveDocCpmmpany(KYU, "KYU", id.ToString());
+            await SaveDocCpmmpany(logbookPapers, "Logbook Papers (manual, certificate, malfunction letter)", id.ToString());
+            await SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
+            await SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
 
         }
 
@@ -637,6 +640,11 @@ namespace WebDispacher.Service
             return strAction;
         }
 
+        internal async Task<List<DucumentDriver>> GetDriverDoc(string id)
+        {
+            return await _sqlEntityFramworke.GetDriverDoc(id);
+        }
+
         internal int CheckReportDriver(string fullName, string driversLicenseNumber)
         {
             return _sqlEntityFramworke.CheckReportDriverDb(fullName, driversLicenseNumber);
@@ -700,6 +708,11 @@ namespace WebDispacher.Service
         public List<Driver> GetDrivers(int pag, string idCompany)
         {
             return _sqlEntityFramworke.GetDrivers(pag, idCompany);
+        }
+
+        internal void RemoveDocDriver(string idDock)
+        {
+            _sqlEntityFramworke.RemoveDocDriverDb(idDock);
         }
 
         public async void Assign(string idOrder, string idDriver)
@@ -850,7 +863,8 @@ namespace WebDispacher.Service
             }
         }
 
-        public void CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber, string idCompany)
+        public async void CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber, string idCompany,
+            IFormFile dLDoc, IFormFile medicalCardDoc, IFormFile sSNDoc, IFormFile proofOfWorkAuthorizationOrGCDoc, IFormFile dQLDoc, IFormFile contractDoc, IFormFile drugTestResultsDo)
         {
             Driver driver = new Driver();
             driver.FullName = fullName;
@@ -861,7 +875,17 @@ namespace WebDispacher.Service
             driver.DriversLicenseNumber = driversLicenseNumber;
             driver.DateRegistration = DateTime.Now.ToString();
             driver.CompanyId = Convert.ToInt32(idCompany);
-            _sqlEntityFramworke.AddDriver(driver);
+            int id = _sqlEntityFramworke.AddDriver(driver);
+            await SaveDocDriver(dLDoc, "DL", id.ToString());
+            await SaveDocDriver(medicalCardDoc, "Medical card", id.ToString());
+            await SaveDocDriver(sSNDoc, "SSN", id.ToString());
+            await SaveDocDriver(proofOfWorkAuthorizationOrGCDoc, "Proof of work Authorization or GC", id.ToString());
+            await SaveDocDriver(dQLDoc, "DQL (driver qualification file)", id.ToString());
+            await SaveDocDriver(contractDoc, "Contract (company and driver)", id.ToString());
+            if (drugTestResultsDo != null)
+            {
+                await SaveDocDriver(drugTestResultsDo, "Drug test results", id.ToString());
+            }
         }
 
         internal void SavePath(string id, string path)
@@ -948,7 +972,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SaveDocTrailekDb(path, id, nameDoc);
         }
 
-        internal  void SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
+        internal async Task SaveDocCpmmpany(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Copmpany/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Copmpany"))
@@ -964,6 +988,24 @@ namespace WebDispacher.Service
                 uploadedFile.CopyTo(fileStream);
             }
             _sqlEntityFramworke.SaveDocCommpanyDb(path, id, nameDoc);
+        }
+
+        internal async Task SaveDocDriver(IFormFile uploadedFile, string nameDoc, string id)
+        {
+            string path = $"../Document/Driver/{id}/" + uploadedFile.FileName;
+            if (!Directory.Exists("../Document/Driver"))
+            {
+                Directory.CreateDirectory($"../Document/Driver");
+            }
+            if (!Directory.Exists($"../Document/Driver/{id}"))
+            {
+                Directory.CreateDirectory($"../Document/Driver/{id}");
+            }
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                uploadedFile.CopyTo(fileStream);
+            }
+            _sqlEntityFramworke.SaveDocDriverDb(path, id, nameDoc);
         }
 
         internal async Task<List<DocumentTruckAndTrailers>> GetTraileDoc(string id)

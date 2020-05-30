@@ -45,6 +45,7 @@ namespace DaoModels.DAO
         public DbSet<NamePatern> NamePaterns { get; set; }
         public DbSet<Layouts> Layouts { get; set; }
         public DbSet<ProfileSetting> ProfileSettings { get; set; }
+        public DbSet<DucumentDriver> DucumentDrivers { get; set; }
 
         public Context()
         {

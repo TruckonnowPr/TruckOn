@@ -23,6 +23,7 @@
                     <input class="btnId" value="Remove" type="button" onclick="ShowAlert(@ViewBag.Drivers[i].Id)" />
                     <a class="btnId" href="~/Driver/InspactionTrucks?idDriver=@ViewBag.Drivers[i].Id&idTruck=0&idTrailer=0&date=0">Inspection</a>
                     <input class="btnId" value="Remind Inspection" type="button" onclick="SendRemindInspection(@ViewBag.Drivers[i].Id)" />
+                    <input class="btnId" value="Documents" type="button" onclick="window.location.href='Doc?id=@ViewBag.Drivers[i].Id'" />
                 </div>
             </div>
         }

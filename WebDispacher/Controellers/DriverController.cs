@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DaoModels.DAO.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebDispacher.Mosels.Driver;
 using WebDispacher.Service;
@@ -295,7 +296,8 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("Driver/Drivers/CreateDriver")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
+        public IActionResult CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber,
+            IFormFile dLDoc, IFormFile medicalCardDoc, IFormFile sSNDoc, IFormFile proofOfWorkAuthorizationOrGCDoc, IFormFile dQLDoc, IFormFile contractDoc, IFormFile drugTestResultsDoc)
         {
             IActionResult actionResult = null;
             try
@@ -310,7 +312,8 @@ namespace WebDispacher.Controellers
                     if ((fullName != null && fullName != "") && (emailAddress != null && emailAddress != "") && (emailAddress != null && emailAddress != "")
                         && (password != null && password != "") && (fullName != null && fullName != ""))
                     {
-                        managerDispatch.CreateDriver(fullName, emailAddress, password, phoneNumbe, trailerCapacity, driversLicenseNumber, idCompany);
+                        managerDispatch.CreateDriver(fullName, emailAddress, password, phoneNumbe, trailerCapacity, driversLicenseNumber, idCompany,
+                            dLDoc, medicalCardDoc, sSNDoc, proofOfWorkAuthorizationOrGCDoc, dQLDoc, contractDoc, drugTestResultsDoc);
                         actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
                     }
                     else
@@ -582,6 +585,115 @@ namespace WebDispacher.Controellers
             {
                 actionResult = "error";
             }
+            return actionResult;
+        }
+
+        [Route("Driver/Doc")]
+        public async Task<IActionResult> GoToViewCompanykDoc(string id)
+        {
+            IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
+                {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.DriverDoc = await managerDispatch.GetDriverDoc(id);
+                    ViewBag.DriverId = id;
+                    actionResult = View($"DriverDocument");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [Route("Driver/SaveDoc")]
+        public void SaveDoc(IFormFile uploadedFile, string nameDoc, string id)
+        {
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
+                {
+                    managerDispatch.SaveDocDriver(uploadedFile, nameDoc, id);
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        [Route("Driver/RemoveDoc")]
+        public IActionResult RemoveDoc(string idDock, string id)
+        {
+            IActionResult actionResult = null;
+            ViewData["TypeNavBar"] = "BaseCommpany";
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
+                {
+                    managerDispatch.RemoveDocDriver(idDock);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Doc?id={id}");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [Route("Driver/GetDock")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult GetDock(string docPath, string type)
+        {
+            IActionResult actionResult = null;
+            var imageFileStream = System.IO.File.OpenRead(docPath);
+            actionResult = File(imageFileStream, type);
             return actionResult;
         }
 

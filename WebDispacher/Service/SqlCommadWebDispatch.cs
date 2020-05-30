@@ -658,6 +658,11 @@ namespace WebDispacher.Dao
             return trailer.Id;
         }
 
+        internal async Task<List<DucumentDriver>> GetDriverDoc(string id)
+        {
+            return await context.DucumentDrivers.Where(d => d.IdDriver.ToString() == id).ToListAsync();
+        }
+
         internal void SavePathDb(string id, string path)
         {
             //Truck truck = context.Trucks.First(t => t.Id.ToString() == id);
@@ -717,6 +722,12 @@ namespace WebDispacher.Dao
         internal async Task<List<DocumentTruckAndTrailers>> GetTrailerDocDB(string id)
         {
             return await context.DocumentTruckAndTrailers.Where(d => d.TypeTr == "Trailer" && d.IdTr.ToString() == id).ToListAsync();
+        }
+
+        internal void RemoveDocDriverDb(string idDock)
+        {
+            context.DucumentDrivers.Remove(context.DucumentDrivers.FirstOrDefault(d => d.Id.ToString() == idDock));
+            context.SaveChanges();
         }
 
         internal string GetDocumentDb(string id)
@@ -1091,6 +1102,19 @@ namespace WebDispacher.Dao
             await context.SaveChangesAsync();
         }
 
+        internal void SaveDocDriverDb(string path, string id, string nameDoc)
+        {
+            string pref = path.Remove(0, path.LastIndexOf(".") + 1);
+            DucumentDriver ducumentCompany = new DucumentDriver()
+            {
+                DocPath = path,
+                NameDoc = nameDoc,
+                IdDriver = Convert.ToInt32(id)
+            };
+            context.DucumentDrivers.Add(ducumentCompany);
+            context.SaveChanges();
+        }
+
         public async void CreateOrderInDb(string idOrder, string idLoad, string internalLoadID, string driver, string status, string instructions, string nameP, string contactP,
             string addressP, string cityP, string stateP, string zipP, string phoneP, string emailP, string scheduledPickupDateP, string nameD, string contactD, string addressD,
             string cityD, string stateD, string zipD, string phoneD, string emailD, string ScheduledPickupDateD, string paymentMethod, string price, string paymentTerms, string brokerFee)
@@ -1127,10 +1151,11 @@ namespace WebDispacher.Dao
             await context.SaveChangesAsync();
         }
 
-        public async void AddDriver(Driver driver)
+        public int AddDriver(Driver driver)
         {
-            await context.Drivers.AddAsync(driver);
-            await context.SaveChangesAsync();
+            context.Drivers.Add(driver);
+            context.SaveChanges();
+            return driver.Id;
         }
 
 
