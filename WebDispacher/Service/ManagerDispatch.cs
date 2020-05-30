@@ -838,13 +838,16 @@ namespace WebDispacher.Service
                         price, paymentTerms, brokerFee);
         }
 
-        internal  void CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns,
-           string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        internal async void CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns,
+           string idCompany, IFormFile trailerRegistrationDoc, IFormFile trailerAnnualInspectionDoc, IFormFile leaseAgreementDoc)
         {
             int id = _sqlEntityFramworke.CreateTrailerDb(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany);
-            SaveDocTrailer(registrationDoc, "Registration", id.ToString());
-            SaveDocTrailer(ensuresDoc, "Inshurance", id.ToString());
-            SaveDocTrailer(_3Doc, "3", id.ToString());
+            await SaveDocTrailer(trailerRegistrationDoc, "Trailer registration", id.ToString());
+            await SaveDocTrailer(trailerAnnualInspectionDoc, "Trailer annual inspection", id.ToString());
+            if (leaseAgreementDoc != null)
+            {
+                await SaveDocTrailer(leaseAgreementDoc, "Lease agreement", id.ToString());
+            }
         }
 
         public void CreateDriver(string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber, string idCompany)
@@ -927,7 +930,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SaveDocTruckDb(path, id, nameDoc);
         }
 
-        internal void SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
+        internal async Task SaveDocTrailer(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Traile/{id}/" + uploadedFile.FileName;
             if (!Directory.Exists("../Document/Traile"))

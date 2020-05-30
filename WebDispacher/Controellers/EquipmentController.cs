@@ -263,7 +263,8 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("CreateTrailer")]
         [DisableRequestSizeLimit]
-        public IActionResult CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        public IActionResult CreateTrailer(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, 
+            IFormFile trailerRegistrationDoc, IFormFile trailerAnnualInspectionDoc, IFormFile leaseAgreementDoc)
         {
             IActionResult actionResult = null;
             try
@@ -276,7 +277,7 @@ namespace WebDispacher.Controellers
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
 
-                    managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany, registrationDoc, ensuresDoc, _3Doc);
+                    managerDispatch.CreateTrailer(name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns, idCompany, trailerRegistrationDoc, trailerAnnualInspectionDoc, leaseAgreementDoc);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trailers");
                 }
                 else
