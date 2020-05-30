@@ -159,7 +159,8 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("CreateTruck")]
         [DisableRequestSizeLimit]
-        public IActionResult CreateDriver(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        public IActionResult CreateDriver(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color, 
+            IFormFile truckRegistrationDoc, IFormFile truckLeaseAgreementDoc, IFormFile truckAnnualInspection, IFormFile bobTailPhysicalDamage, IFormFile nYHUTDoc)
         {
             IActionResult actionResult = null;
             try
@@ -171,7 +172,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
                 {
-                    managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, registrationDoc, ensuresDoc, _3Doc);
+                    managerDispatch.CreateTruk(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany, truckRegistrationDoc, truckLeaseAgreementDoc, truckAnnualInspection, bobTailPhysicalDamage, nYHUTDoc);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/Trucks");
                 }
                 else

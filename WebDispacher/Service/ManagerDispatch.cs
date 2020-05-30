@@ -727,14 +727,21 @@ namespace WebDispacher.Service
             });
         }
 
-        public async void CreateTruk(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, 
-            string color, string idCompany, IFormFile registrationDoc, IFormFile ensuresDoc, IFormFile _3Doc)
+        public async void CreateTruk(string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk,
+            string color, string idCompany, IFormFile truckRegistrationDoc, IFormFile truckLeaseAgreementDoc, IFormFile truckAnnualInspection, IFormFile bobTailPhysicalDamage, IFormFile nYHUTDoc)
         {
             int id = _sqlEntityFramworke.CreateTrukDb(nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color, idCompany);
-                 SaveDocTruck(registrationDoc, "Registration", id.ToString());
-                 SaveDocTruck(ensuresDoc, "Inshurance", id.ToString());
-                 SaveDocTruck(_3Doc, "3", id.ToString());
-          
+            await SaveDocTruck(truckRegistrationDoc, "Truck registration", id.ToString());
+            await SaveDocTruck(truckLeaseAgreementDoc, "Truck lease agreement", id.ToString());
+            await SaveDocTruck(truckAnnualInspection, "Truck annual inspection", id.ToString());
+            if (bobTailPhysicalDamage != null)
+            {
+                await SaveDocTruck(bobTailPhysicalDamage, "Bob tail physical damage", id.ToString());
+            }
+            if (bobTailPhysicalDamage != null)
+            {
+                await SaveDocTruck(bobTailPhysicalDamage, "NY HUT", id.ToString());
+            }
         }
 
         public void CreateContact(string fullName, string emailAddress, string phoneNumbe, string idCompany)
@@ -902,7 +909,7 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetInspectionTruck(idInspection);
         }
 
-        internal void SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
+        internal async Task SaveDocTruck(IFormFile uploadedFile, string nameDoc, string id)
         {
             string path = $"../Document/Truck/{id}/" + uploadedFile.FileName;
             if(!Directory.Exists("../Document/Truck"))

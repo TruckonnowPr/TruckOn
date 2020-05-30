@@ -30,26 +30,40 @@
                     <input name="plateTruk" class="inpText validation" type="text" required />
                     <p class="inpLabe">Color</p>
                     <input name="color" class="inpText" type="text" />
-                    <p class="inpLabe">Document Registration</p>
+                    <p class="inpLabe">Truck registration</p>
                     <div class="inpText">
-                        <label for="docLoad1" class="btnModal" style="margin-left:5px;">Select document registration</label>
-                        <input id="docLoad1" style="display: none;" type="file" name="registrationDoc" onchange="LoadFile(this, 1)" accept="application/pdf, image/jpeg, image/jpg" required>
+                        <label for="docLoad1" class="btnModal" style="margin-left:5px;">Select document Truck registration</label>
+                        <input id="docLoad1" style="display: none;" type="file" name="truckRegistrationDoc" onchange="LoadFile(this, 1)" accept="application/pdf, image/jpeg, image/jpg" required>
                         <span id="nameNoLoadDoc1" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
                         <span id="nameLoadDoc1" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
                     </div>
-                    <p class="inpLabe">Document inshurance</p>
+                    <p class="inpLabe">Truck lease agreement</p>
                     <div class="inpText">
-                        <label for="docLoad2" class="btnModal" style="margin-left:5px;">Select document ensures</label>
-                        <input id="docLoad2" style="display: none;" type="file" name="ensuresDoc" onchange="LoadFile(this, 2)" accept="application/pdf, image/jpeg, image/jpg" required>
+                        <label for="docLoad2" class="btnModal" style="margin-left:5px;">Select document Truck lease agreement</label>
+                        <input id="docLoad2" style="display: none;" type="file" name="truckLeaseAgreementDoc" onchange="LoadFile(this, 2)" accept="application/pdf, image/jpeg, image/jpg" required>
                         <span id="nameNoLoadDoc2" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
                         <span id="nameLoadDoc2" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
                     </div>
-                    <p class="inpLabe">Document 3</p>
+                    <p class="inpLabe">Truck annual inspection</p>
                     <div class="inpText">
-                        <label for="docLoad3" class="btnModal" style="margin-left:5px;">Select document 3</label>
-                        <input id="docLoad3" style="display: none;" type="file" name="_3Doc" onchange="LoadFile(this, 3)" accept="application/pdf, image/jpeg, image/jpg" required>
+                        <label for="docLoad3" class="btnModal" style="margin-left:5px;">Select document Truck annual inspection</label>
+                        <input id="docLoad3" style="display: none;" type="file" name="truckAnnualInspection" onchange="LoadFile(this, 3)" accept="application/pdf, image/jpeg, image/jpg" required>
                         <span id="nameNoLoadDoc3" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
                         <span id="nameLoadDoc3" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+                    </div>
+                    <p class="inpLabe">Bob tail physical damage (optional)</p>
+                    <div class="inpText">
+                        <label for="docLoad4" class="btnModal" style="margin-left:5px;">Select document Bob tail physical damage</label>
+                        <input id="docLoad4" style="display: none;" type="file" name="bobTailPhysicalDamage" onchange="LoadFile(this, 4)" accept="application/pdf, image/jpeg, image/jpg">
+                        <span id="nameNoLoadDoc4" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
+                        <span id="nameLoadDoc4" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
+                    </div>
+                    <p class="inpLabe">NY HUT (optional for NY rolling)</p>
+                    <div class="inpText">
+                        <label for="docLoad5" class="btnModal" style="margin-left:5px;">Select document NY HUT</label>
+                        <input id="docLoad5" style="display: none;" type="file" name="nYHUTDoc" onchange="LoadFile(this, 5)" accept="application/pdf, image/jpeg, image/jpg">
+                        <span id="nameNoLoadDoc5" class="spanModal" style="align-self:center;margin-left:5px;color:#ff4614;">You can upload files only in pdf, jpg and jepg</span>
+                        <span id="nameLoadDoc5" class="spanModal" style="align-self:center;margin-left:5px;color:#95f816;" hidden></span>
                     </div>
                 </div>
                 <input class="btnSave" value="Save" type="submit" />
