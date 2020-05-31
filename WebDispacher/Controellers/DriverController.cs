@@ -183,7 +183,8 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("Driver/AddReport")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult AddReport(string fullName, string driversLicenseNumber, string description)
+        public IActionResult AddReport(string fullName, string driversLicenseNumber, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
@@ -196,7 +197,19 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
-                    managerDispatch.AddNewReportDriver(fullName, driversLicenseNumber, description);
+                    if (terminated == "undefined")
+                    {
+                        terminated = "Yes";
+                    }
+                    if (experience == "undefined")
+                    {
+                        experience = "";
+                    }
+                    if (experience != null && experience != "" && experience != "undefined" && experience.LastIndexOf(',') == experience.Length - 2)
+                    {
+                        experience = experience.Remove(experience.Length - 2);
+                    }
+                    managerDispatch.AddNewReportDriver(fullName, driversLicenseNumber, numberOfAccidents, GetLevel(english), GetLevel(returnedEquipmen), GetLevel(workingEfficiency), GetLevel(eldKnowledge), GetLevel(drivingSkills), GetLevel(paymentHandling), GetLevel(alcoholTendency), GetLevel(drugTendency), terminated, experience, GetLevel(dotViolations), description);
                     actionResult = Redirect("Check");
                 }
                 else
@@ -238,7 +251,8 @@ namespace WebDispacher.Controellers
         [HttpPost]
         [Route("Welcome/AddReport")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult WelcomeAddReport(string fullName, string driversLicenseNumber, string description)
+        public IActionResult WelcomeAddReport(string fullName, string driversLicenseNumber, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling , string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "AllUsers";
@@ -246,7 +260,20 @@ namespace WebDispacher.Controellers
             {
                 ViewData["hidden"] = "hidden";
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
-                managerDispatch.AddNewReportDriver(fullName, driversLicenseNumber, description);
+                int s = experience.LastIndexOf(',');
+                if (terminated == "undefined")
+                {
+                    terminated = "";
+                }
+                if (experience == "undefined")
+                {
+                    experience = "";
+                }
+                if (experience != null && experience != "" && experience != "undefined" && experience.LastIndexOf(',') == experience.Length - 2)
+                {
+                    experience = experience.Remove(experience.Length - 2);
+                }
+                managerDispatch.AddNewReportDriver(fullName, driversLicenseNumber, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, terminated, experience, dotViolations, description);
                 actionResult = Redirect(Config.BaseReqvesteUrl);
             }
             catch (Exception)
@@ -340,7 +367,8 @@ namespace WebDispacher.Controellers
         [HttpGet]
         [Route("Driver/Drivers/Remove")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult RemoveDriver(int id, string comment)
+        public IActionResult RemoveDriver(int id, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
             IActionResult actionResult = null;
             try
@@ -352,7 +380,19 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
-                    managerDispatch.RemoveDrive(id, comment);
+                    if(terminated == "undefined")
+                    {
+                        terminated = "Yes";
+                    }
+                    if (experience == "undefined")
+                    {
+                        experience = "";
+                    }
+                    if (experience != null && experience != "" && experience != "undefined" && experience.LastIndexOf(',') == experience.Length - 2)
+                    {
+                        experience = experience.Remove(experience.Length - 2);
+                    }
+                    managerDispatch.RemoveDrive(id, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, terminated, experience, description, dotViolations);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
                 }
                 else
@@ -704,6 +744,28 @@ namespace WebDispacher.Controellers
         {
             var imageFileStream = System.IO.File.OpenRead(name);
             return File(imageFileStream, $"image/{type}");
+        }
+
+        private string GetLevel(string value)
+        {
+            string level = "Noen";
+            if (value == "0")
+            {
+                level = "None";
+            }
+            else if (value == "1")
+            {
+                level = "Poor";
+            }
+            else if (value == "2")
+            {
+                level = "Middle";
+            }
+            else if (value == "3")
+            {
+                level = "Good";
+            }
+            return level;
         }
     }
 }

@@ -4,14 +4,16 @@ using DaoModels.DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DaoModels.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200531132712_31.05.2020v1")]
+    partial class _31052020v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,8 +417,6 @@ namespace DaoModels.Migrations
 
                     b.Property<string>("DateRegistration");
 
-                    b.Property<string>("DotViolations");
-
                     b.Property<string>("DriversLicenseNumber");
 
                     b.Property<string>("DrivingSkills");
@@ -434,8 +434,6 @@ namespace DaoModels.Migrations
                     b.Property<int>("IdCompany");
 
                     b.Property<int>("IdDriver");
-
-                    b.Property<string>("NumberOfAccidents");
 
                     b.Property<string>("PaymentHandling");
 

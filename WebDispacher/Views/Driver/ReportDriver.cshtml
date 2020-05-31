@@ -10,17 +10,139 @@
             <div class="content">
                 <h2 style="color: rgb(51, 51, 51);margin:15px;">Add New Report Driver</h2>
                 <p class="inpLabe">Full Name</p>
-                <input name="fullName" class="inpText validation" type="text" required />
+                <input name="fullName" type="text" class="inpText validation" required />
                 <p class="inpLabe">Driver's License Number</p>
-                <input name="driversLicenseNumber" class="inpText validation" type="text" required />
-                <p class="inpLabe">Description</p>
-                <textarea name="description" class="textareaSt validation" required></textarea>
+                <input name="driversLicenseNumber" type="text" class="inpText validation" required />
+                <p class="inpLabe">Number Of Accidents</p>
+                <input name="numberOfAccidents" type="number" class="inpText validation" required />
+                <p class="inpLabe">Dot Violations</p><br />
+                <input id="dotViolationsInp" name="dotViolations" type="text" class="inpText validation" required />
+                <p  class="inpLabe">English <span  id="englishSpn">Poor</span></p><br />
+                <input id="englishInp" name="english" type="range" class="inpText validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Returned equipmen <span  id="returnedEquipmenSpn">Poor</span></p><br />
+                <input id="returnedEquipmenInp" type="range" name="returnedEquipmen" class="inpText validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Working efficiency <span  id="workingEfficiencySpn">Poor</span></p><br />
+                <input id="workingEfficiencyInp" name="workingEfficiency" type="range" class="inpText validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Eld knowledge <span  id="eldKnowledgeSpn">Poor</span></p><br />
+                <input id="eldKnowledgeInp" type="range" name="eldKnowledge" class="inpText validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Driving skills <span  id="drivingSkillsSpn">Poor</span></p><br />
+                <input id="drivingSkillsInp" type="range" name="drivingSkills" class="inpText validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Payment handling <span  id="paymentHandlingSpn">Poor</span></p><br />
+                <input id="paymentHandlingInp" type="range" name="paymentHandling" class="inpText validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Alcohol tendency <span  id="alcoholTendencySpn">None</span></p><br />
+                <input id="alcoholTendencyInp" type="range" name="alcoholTendency" class="inpText validation" value="0" min="0" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Drug tendency <span id="drugTendencySpn">None</span></p><br />
+                <input id="drugTendencyInp" type="range" name="drugTendency" class="inpText validation" value="0" min="0" max="3" step="1" list="range-list" required />
+                <p class="inpLabe">Terminated (boxes FIRED, Contract expiration, left truck without notice, disappeared)</p><br />
+                <div>
+                    <div>
+                        <input class="validation" value="Yes" checked required type="radio" name="terminated"  />
+                        <span style="text-align:center;">Yes</span>
+                    </div>
+                    <div>
+                        <input class="validation" value="No" required type="radio" name="terminated"  />
+                        <span style="text-align:center;">No</span>
+                    </div>
+                </div>
+                <p class="inpLabe">Experience with</p><br />
+                <input style="display:none;" name="experience" id="experienceInp"/><br />
+                <div style="display:flex;flex-wrap:wrap;">
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Boxes" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Boxes</span>
+                    </div>
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Enclosed car hauling" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Enclosed car hauling</span>
+                    </div>
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Open car hauling" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Open car hauling</span>
+                    </div>
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Flatbed" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Flatbed</span>
+                    </div>
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Towing" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Towing</span>
+                    </div>
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Van" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Van</span>
+                    </div>
+                    <div style="margin-right:5px;">
+                        <input class="validation" type="checkbox" value="Reefer" onclick="SelectExperience(this.value, this.checked)" />
+                        <span style="text-align:center;">Reefer</span>
+                    </div>
+                </div>
+                <p class="inpLabe">Description</p><br />
+                <textarea id="descriptionTA" type="text" class="textareaSt validation" name="description" placeholder="Enter description" style="margin-left:5px;" required></textarea><br />
             </div>
             <input class="btnSave" value="Add report driver" type="submit" />
         </form>
     </div>
 </div>
+<script>
+    englishInp.oninput = function () {
+        englishSpn.innerHTML = GetLevel(this.value);
+    }
 
+    returnedEquipmenInp.oninput = function () {
+        returnedEquipmenSpn.innerHTML = GetLevel(this.value);
+    }
+
+    workingEfficiencyInp.oninput = function () {
+        workingEfficiencySpn.innerHTML = GetLevel(this.value);
+    }
+
+    eldKnowledgeInp.oninput = function () {
+        eldKnowledgeSpn.innerHTML = GetLevel(this.value);
+    }
+
+    drivingSkillsInp.oninput = function () {
+        drivingSkillsSpn.innerHTML = GetLevel(this.value);
+    }
+
+    paymentHandlingInp.oninput = function () {
+        paymentHandlingSpn.innerHTML = GetLevel(this.value);
+    }
+
+    alcoholTendencyInp.oninput = function () {
+        alcoholTendencySpn.innerHTML = GetLevel(this.value);
+    }
+
+    drugTendencyInp.oninput = function () {
+        drugTendencySpn.innerHTML = GetLevel(this.value);
+    }
+
+    function GetLevel(value) {
+        if (value == "0") {
+            return "None";
+        }
+        else if (value == "1") {
+            return "Poor";
+        }
+        else if (value == "2") {
+            return "Middle";
+        }
+        else if (value == "3") {
+            return "Good";
+        }
+    }
+
+    function SelectExperience(value, Checked) {
+        if (Checked) {
+            if (experienceInp.value == undefined) {
+                experienceInp.value = "";
+            }
+            experienceInp.value += value + ", ";
+        }
+        else {
+            experienceInp.value = experienceInp.value.replace(value + ", ", "");
+        }
+    }
+</script>
 <style>
     * {
         margin: 0px;
@@ -90,6 +212,7 @@
         font-size: 18px;
         color: rgb(51, 51, 51);
         margin-top: 10px;
+        margin-bottom: 0px;
         margin-left: 5px;
     }
 

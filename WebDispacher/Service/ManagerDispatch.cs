@@ -442,7 +442,7 @@ namespace WebDispacher.Service
                 List<Driver> drivers = _sqlEntityFramworke.GetDriversByIdCompany(idCompany);
                 foreach(Driver driver in drivers)
                 {
-                    RemoveDrive(driver.Id, "The site administration deleted the company in which this driver worked");
+                    RemoveDrive(driver.Id, "", "", "", "", "", "", "", "", "", "", "", "The site administration deleted the company in which this driver worked", "");
                 }
             });
         }
@@ -660,9 +660,14 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetDriversReportsDb(nameDriver, driversLicense);
         }
 
-        internal void AddNewReportDriver(string fullName, string driversLicenseNumber, string description)
+        internal void AddNewReportDriver(string fullName, string driversLicenseNumber, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
-            _sqlEntityFramworke.AddNewReportDriverDb(fullName, driversLicenseNumber, description);
+            if (driversLicenseNumber != null && driversLicenseNumber != "")
+            {
+                _sqlEntityFramworke.AddNewReportDriverDb(fullName, driversLicenseNumber, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, 
+                    terminated, experience, dotViolations, description);
+            }
         }
 
         internal List<Trailer> GetTrailers(string idCompany)
@@ -898,9 +903,10 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetInspectionTrucksDb(idDriver, idTruck, idTrailer, date);
         }
 
-        public void RemoveDrive(int id, string comment)
+        public void RemoveDrive(int id, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string description, string dotViolations)
         {
-            _sqlEntityFramworke.RemoveDriveInDb(id, comment);
+            _sqlEntityFramworke.RemoveDriveInDb(id, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, terminated, experience, description, dotViolations);
         }
 
         internal async Task<string> GetDocument(string id)

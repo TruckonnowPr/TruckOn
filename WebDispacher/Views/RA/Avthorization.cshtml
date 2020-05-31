@@ -33,6 +33,70 @@
                             <input id="fullNameInp" type="text" class="modal-inp-text validation" required />
                             <p class="spanModal">Driver's License Number</p>
                             <input id="driversLicenseNumberInp" type="text" class="modal-inp-text validation" required />
+                            <p class="spanModal">Number Of Accidents</p>
+                            <input id="numberOfAccidentsInp" type="number" class="modal-inp-text validation" required />
+                            <p class="spanModal">Dot Violations</p><br />
+                            <input id="dotViolationsInp" type="text" class="modal-inp-text validation" required />
+                            <p class="spanModal">English <span id="englishSpn">Poor</span></p><br />
+                            <input id="englishInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Returned equipmen <span id="returnedEquipmenSpn">Poor</span></p><br />
+                            <input id="returnedEquipmenInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Working efficiency <span id="workingEfficiencySpn">Poor</span></p><br />
+                            <input id="workingEfficiencyInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Eld knowledge <span id="eldKnowledgeSpn">Poor</span></p><br />
+                            <input id="eldKnowledgeInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Driving skills <span id="drivingSkillsSpn">Poor</span></p><br />
+                            <input id="drivingSkillsInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Payment handling <span id="paymentHandlingSpn">Poor</span></p><br />
+                            <input id="paymentHandlingInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Alcohol tendency <span id="alcoholTendencySpn">None</span></p><br />
+                            <input id="alcoholTendencyInp" type="range" class="modal-inp-text validation" value="0" min="0" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Drug tendency <span id="drugTendencySpn">None</span></p><br />
+                            <input id="drugTendencyInp" type="range" class="modal-inp-text validation" value="0" min="0" max="3" step="1" list="range-list" required />
+                            <p class="spanModal">Terminated (boxes FIRED, Contract expiration, left truck without notice, disappeared)</p><br />
+                            <div>
+                                <label style="display:none;" value="Yes" id="terminatedInp"></label><br />
+                                <div>
+                                    <input class="validation" checked required type="radio" name="terminated" onclick="terminatedInp.value='Yes'" />
+                                    <span style="text-align:center;">Yes</span>
+                                </div>
+                                <div>
+                                    <input class="validation" required type="radio" name="terminated" onclick="terminatedInp.value='No'" />
+                                    <span style="text-align:center;">No</span>
+                                </div>
+                            </div>
+                            <p class="spanModal">Experience with</p><br />
+                            <label style="display:none;" id="experienceInp"></label><br />
+                            <div style="display:flex;flex-wrap:wrap;">
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Boxes" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Boxes</span>
+                                </div>
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Enclosed car hauling" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Enclosed car hauling</span>
+                                </div>
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Open car hauling" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Open car hauling</span>
+                                </div>
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Flatbed" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Flatbed</span>
+                                </div>
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Towing" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Towing</span>
+                                </div>
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Van" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Van</span>
+                                </div>
+                                <div style="margin-right:5px;">
+                                    <input class="validation" type="checkbox" value="Reefer" onclick="SelectExperience(this.value, this.checked)" />
+                                    <span style="text-align:center;">Reefer</span>
+                                </div>
+                            </div>
                             <p class="spanModal">Description</p><br />
                             <textarea id="descriptionTA" type="text" class="modal-texAr-text validation" name="nameDoc" placeholder="Enter description" style="margin-left:5px;" required></textarea><br />
                         </div>
@@ -74,6 +138,66 @@
 </div>
 
 <script>
+    englishInp.oninput = function () {
+        englishSpn.innerHTML = GetLevel(this.value);
+    }
+
+    returnedEquipmenInp.oninput = function () {
+        returnedEquipmenSpn.innerHTML = GetLevel(this.value);
+    }
+
+    workingEfficiencyInp.oninput = function () {
+        workingEfficiencySpn.innerHTML = GetLevel(this.value);
+    }
+
+    eldKnowledgeInp.oninput = function () {
+        eldKnowledgeSpn.innerHTML = GetLevel(this.value);
+    }
+
+    drivingSkillsInp.oninput = function () {
+        drivingSkillsSpn.innerHTML = GetLevel(this.value);
+    }
+
+    paymentHandlingInp.oninput = function () {
+        paymentHandlingSpn.innerHTML = GetLevel(this.value);
+    }
+
+    alcoholTendencyInp.oninput = function () {
+        alcoholTendencySpn.innerHTML = GetLevel(this.value);
+    }
+
+    drugTendencyInp.oninput = function () {
+        drugTendencySpn.innerHTML = GetLevel(this.value);
+    }
+
+    function GetLevel(value) {
+        if (value == "0") {
+            return "None";
+        }
+        else if (value == "1") {
+            return "Poor";
+        }
+        else if (value == "2") {
+            return "Middle";
+        }
+        else if (value == "3") {
+            return "Good";
+        }
+    }
+
+    function SelectExperience(value, Checked) {
+        if (Checked) {
+            if (experienceInp.value == undefined) {
+                experienceInp.value = "";
+            }
+            experienceInp.value +=  value + ", ";
+        }
+        else
+        {
+            experienceInp.value = experienceInp.value.replace(value + ", ", "");
+        }
+    }
+
     function SendReport() {
         let xhr = new XMLHttpRequest();
         let url = "@ViewBag.BaseUrl/Welcome/AddReport";
@@ -82,7 +206,19 @@
         let descriptionTA = document.getElementById("descriptionTA");
         if (descriptionTA.validity.valid && fullNameInp.validity.valid && driversLicenseNumberInp.validity.valid) {
             let body = "fullName=" + encodeURIComponent(fullNameInp.value)
+                + "&numberOfAccidents=" + encodeURIComponent(numberOfAccidentsInp.value)
                 + "&driversLicenseNumber=" + encodeURIComponent(driversLicenseNumberInp.value)
+                + "&dotViolations=" + encodeURIComponent(dotViolationsInp.value)
+                + "&english=" + encodeURIComponent(englishSpn.innerHTML)
+                + "&returnedEquipmen=" + encodeURIComponent(returnedEquipmenSpn.innerHTML)
+                + "&workingEfficiency=" + encodeURIComponent(workingEfficiencySpn.innerHTML)
+                + "&eldKnowledge=" + encodeURIComponent(eldKnowledgeSpn.innerHTML)
+                + "&drivingSkills=" + encodeURIComponent(drivingSkillsSpn.innerHTML)
+                + "&paymentHandling=" + encodeURIComponent(paymentHandlingSpn.innerHTML)
+                + "&alcoholTendency=" + encodeURIComponent(alcoholTendencySpn.innerHTML)
+                + "&drugTendency=" + encodeURIComponent(drugTendencySpn.innerHTML)
+                + "&terminated=" + encodeURIComponent(terminatedInp.value)
+                + "&experience=" + encodeURIComponent(experienceInp.value)
                 + "&description=" + encodeURIComponent(descriptionTA.value);
             xhr.open("POST", url, true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

@@ -379,13 +379,40 @@ namespace WebDispacher.Dao
             return emailDriver;
         }
 
-        internal void AddNewReportDriverDb(string fullName, string driversLicenseNumber, string description)
+        internal void AddNewReportDriverDb(string fullName, string driversLicenseNumber, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
+            int idDriver = 0;
+            int idCompany = 0;
+            string dateRegistration = "";
+            Driver driver = context.Drivers.LastOrDefault(d => d.DriversLicenseNumber == driversLicenseNumber);
+            if(driver != null)
+            {
+                idDriver = driver.Id;
+                dateRegistration = driver.DateRegistration;
+                idCompany = context.Commpanies.FirstOrDefault(c => c.Id == driver.CompanyId).Id;
+            }    
             context.DriverReports.Add(new DriverReport()
             {
                 Comment = description,
                 DriversLicenseNumber = driversLicenseNumber,
-                FullName = fullName
+                FullName = fullName,
+                AlcoholTendency = alcoholTendency,
+                DateFired = DateTime.Now.ToString(),
+                DateRegistration = dateRegistration,
+                IdDriver = idDriver,
+                DrivingSkills = drivingSkills,
+                DrugTendency = drugTendency,
+                EldKnowledge = eldKnowledge,
+                English = english,
+                Experience = experience,
+                PaymentHandling = paymentHandling,
+                ReturnedEquipmen = returnedEquipmen,
+                Terminated = terminated,
+                WorkingEfficiency = workingEfficiency,
+                IdCompany = idCompany,
+                DotViolations = dotViolations,
+                NumberOfAccidents = numberOfAccidents
             });
             context.SaveChanges();
         }
@@ -1166,19 +1193,33 @@ namespace WebDispacher.Dao
             await context.SaveChangesAsync();
         }
 
-        public void RemoveDriveInDb(int id, string comment)
+        public void RemoveDriveInDb(int id, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+            string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string description, string dotViolations)
         {
             Driver driver = context.Drivers
                 .FirstOrDefault(d => d.Id == id);
             driver.IsFired = true;
             DriverReport driverReport = new DriverReport()
             {
-                Comment = comment,
+                Comment = description,
                 DriversLicenseNumber = driver.DriversLicenseNumber,
                 FullName = driver.FullName,
                 IdDriver = driver.Id,
                 DateRegistration = driver.DateRegistration,
-                DateFired = DateTime.Now.ToString()
+                DateFired = DateTime.Now.ToString(),
+                AlcoholTendency = alcoholTendency,
+                DrivingSkills = drivingSkills,
+                DrugTendency = drugTendency,
+                EldKnowledge = eldKnowledge,
+                English = english,
+                Experience = experience,
+                IdCompany = driver.CompanyId,
+                PaymentHandling = paymentHandling,
+                ReturnedEquipmen = returnedEquipmen,
+                Terminated = terminated,
+                WorkingEfficiency = workingEfficiency,
+                DotViolations = dotViolations,
+                NumberOfAccidents = numberOfAccidents
             };
             context.DriverReports.Add(driverReport);
             context.SaveChanges();
