@@ -1,12 +1,9 @@
 ﻿using BaceModel.ModelInspertionDriver;
-using BaceModel.ModelInspertionDriver.Trailer;
-using BaceModel.ModelInspertionDriver.Truck;
 using DaoModels.DAO.DTO;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Interface;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
-using iTextSharp.text;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -137,7 +134,7 @@ namespace WebDispacher.Service
             else
             {
                 ITr tr = GetTr(idTr, typeTransport);
-                ITransportVehicle transportVehicle = GetTransportVehicle(tr.Type);
+                ITransportVehicle transportVehicle = HelperTransport.GetTransportVehicle(tr.Type);
                 profileSetting = new ProfileSettingsDTO()
                 {
                     Id = 0,
@@ -205,7 +202,7 @@ namespace WebDispacher.Service
         internal int AddProfile(string idCompany, int idTr, string typeTransport)
         {
             ITr tr = GetTr(idTr, typeTransport);
-            ITransportVehicle transportVehicle = GetTransportVehicle(tr.Type);
+            ITransportVehicle transportVehicle = HelperTransport.GetTransportVehicle(tr.Type);
             ProfileSetting profileSetting = new ProfileSetting()
             {
                 TransportVehicle = new TransportVehicle()
@@ -1044,20 +1041,6 @@ namespace WebDispacher.Service
         internal List<HistoryOrder> GetHistoryOrder(string idOrder)
         {
             return _sqlEntityFramworke.GetHistoryOrderByIdOrder(idOrder);
-        }
-
-        private ITransportVehicle GetTransportVehicle(string typeTruk)
-        {
-            ITransportVehicle transportVehicle = null;
-            switch (typeTruk)
-            {
-                case "PickupFourWheel": transportVehicle = new PickupFourWheel(); break;
-                case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
-
-                case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
-                case "FourDoorTruckChassisOpenFrame": transportVehicle = new FourDoorTruckChassisOpenFrame(); break;
-            }
-            return transportVehicle;
         }
     }
 }

@@ -4,8 +4,6 @@ using ApiMobaileServise.Notify;
 using ApiMobaileServise.Servise.AddDamage;
 using ApiMobaileServise.Servise.GoogleApi;
 using BaceModel.ModelInspertionDriver;
-using BaceModel.ModelInspertionDriver.Trailer;
-using BaceModel.ModelInspertionDriver.Truck;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
@@ -211,7 +209,7 @@ namespace ApiMobaileServise.Servise
             }
             else
             {
-                transportVehicle = GetTransportVehicle(trailer.Type);
+                transportVehicle = HelperTransport.GetTransportVehicle(trailer.Type);
             }
             return transportVehicle;
         }
@@ -228,7 +226,7 @@ namespace ApiMobaileServise.Servise
             }
             else
             {
-                transportVehicle = GetTransportVehicle(truck.Type);
+                transportVehicle = HelperTransport.GetTransportVehicle(truck.Type);
             }
             return transportVehicle;
         }
@@ -237,7 +235,7 @@ namespace ApiMobaileServise.Servise
         {
             ITransportVehicle transportVehicleRes = null;
             transportVehicle.Layouts = transportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
-            transportVehicleRes = GetTransportVehicle("Deffalt");
+            transportVehicleRes = HelperTransport.GetTransportVehicle("Deffalt");
             transportVehicleRes.CountPhoto = transportVehicle.CountPhoto;
             transportVehicleRes.Type = transportVehicle.Type;
             transportVehicleRes.TypeTransportVehicle = transportVehicle.TypeTransportVehicle;
@@ -252,23 +250,6 @@ namespace ApiMobaileServise.Servise
                 }
             }
             return transportVehicleRes;
-        }
-
-
-        private ITransportVehicle GetTransportVehicle(string typeTruk)
-        {
-            ITransportVehicle transportVehicle = null;
-            switch (typeTruk)
-            {
-                case "PickupFourWheel": transportVehicle = new PickupFourWheel(); break;
-                case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
-
-                case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
-                case "FourDoorTruckChassisOpenFrame": transportVehicle = new FourDoorTruckChassisOpenFrame(); break;
-
-                case "Deffalt": transportVehicle = new DeffalteTransport(); break;
-            }
-            return transportVehicle;
         }
 
         public async Task SaveSigPhoto(string idShip, string sig)

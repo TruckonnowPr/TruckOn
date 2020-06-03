@@ -1,7 +1,4 @@
 ﻿using ApiMobaileServise.Models;
-using BaceModel.ModelInspertionDriver;
-using BaceModel.ModelInspertionDriver.Trailer;
-using BaceModel.ModelInspertionDriver.Truck;
 using DaoModels.DAO;
 using DaoModels.DAO.Enum;
 using DaoModels.DAO.Models;
@@ -393,22 +390,6 @@ namespace ApiMobaileServise.Servise
             }
             context.SaveChanges();
             return isInspaction;
-        }
-
-
-
-        private ITransportVehicle GetTransportVehicle(string typeTruk)
-        {
-            ITransportVehicle transportVehicle = null;
-            switch (typeTruk)
-            {
-                case "PickupFourWheel": transportVehicle = new PickupFourWheel(); break;
-                case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
-
-                case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
-                case "FourDoorTruckChassisOpenFrame": transportVehicle = new FourDoorTruckChassisOpenFrame(); break;
-            }
-            return transportVehicle;
         }
 
         internal void SavePhotoStrapInDb(string id, List<Photo> photos)
