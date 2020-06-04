@@ -1,9 +1,11 @@
-﻿namespace BaceModel.ModelInspertionDriver.Truck
+﻿using System.Collections.Generic;
+
+namespace BaceModel.ModelInspertionDriver.Truck
 {
     public class PickUpDuallyChassisOpenFrameInTheBackMustHave2 : ITransportVehicle
     {
         public int CountPhoto { get; set; } = 23;
-        public string Type { get; set; } = "CargoVanMustHaveWithDually";
+        public string Type { get; set; } = "PickUpDuallyChassisOpenFrameInTheBackMustHave2";
         public bool IsNextInspection { get; set; } = true;
         public List<string> NamePatern { get; set; }
         public string PlateTruck { get; set; }
@@ -11,7 +13,7 @@
         public string TypeTransportVehicle { get; set; } = "Truck";
         public List<string> Layouts { get; set; }
 
-        public CargoVanMustHaveWithDually()
+        public PickUpDuallyChassisOpenFrameInTheBackMustHave2()
         {
             NamePatern = new List<string>()
             {
@@ -34,9 +36,6 @@
                 "17",
                 "18",
                 "19",
-                "21",
-                "22",
-                "23",
             };
             Layouts = new List<string>()
             {
@@ -59,9 +58,6 @@
                 "17",
                 "18",
                 "19",
-                "21",
-                "22",
-                "23",
             };
         }
     }
