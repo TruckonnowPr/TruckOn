@@ -3,6 +3,7 @@ using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Net;
+using MDispatch.Service.RequestQueue;
 using MDispatch.Service.Tasks;
 using MDispatch.View;
 using MDispatch.View.GlobalDialogView;
@@ -269,18 +270,10 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
         public async void SavePhoto(bool isNavigWthDamag = false)
         {
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
-            bool isNavigationMany = false;
-            bool isTask = false;
-            int navigationStack_Count = isNavigWthDamag ? Navigation.NavigationStack.Count - 1 : Navigation.NavigationStack.Count;
-            if (navigationStack_Count > 3)
-            {
-                //await PopupNavigation.PushAsync(new LoadPage());
-                //isNavigationMany = true;
-                isTask = true;
-                TaskManager.CommandToDo("SavePhoto", 1, token, VehiclwInformation.Id, PhotoInspection);
-            }
-            string description = null;
-            int state = 0;
+            //bool isNavigationMany = false;
+            //bool isTask = false;
+            //string description = null;
+            //int state = 0;
             if (InderxPhotoInspektion < Car.CountCarImg)
             {
                 Car.OrintableScreen(InderxPhotoInspektion);
@@ -290,95 +283,25 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
             }
             else
             {
-                //await PopupNavigation.PushAsync(new TempPageHint());
                 DependencyService.Get<IOrientationHandler>().ForceSensor();
                 await Navigation.PushAsync(new Ask1Page(managerDispatchMob, VehiclwInformation, IdShip, initDasbordDelegate, getVechicleDelegate, Car.TypeIndex.Replace(" ", ""), OnDeliveryToCarrier, TotalPaymentToCarrier), true);
             }
-            if(isTask)
-            {
-                if (Navigation.NavigationStack.Count > 2)
-                {
-                    Navigation.RemovePage(Navigation.NavigationStack[1]);
-                }
-                return;
-            }
+            Navigation.RemovePage(Navigation.NavigationStack[1]);
             await Task.Run(() => Utils.CheckNet(true));
             if (App.isNetwork)
             {
                 await Task.Run(() =>
                 {
-                    if (!isTask)
-                    {
-                        state = managerDispatchMob.AskWork("SavePhoto", token, VehiclwInformation.Id, PhotoInspection, ref description);
-                    }
-                    else
-                    {
-                        state = 3;
-                    }
+                    ManagerQueue.AddReqvest("SavePhoto", token, VehiclwInformation.Id, PhotoInspection);
                     initDasbordDelegate.Invoke();
                 });
                 if (isNavigWthDamag)
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[2]);
                 }
-                if (state == 1)
-                {
-                    GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
-                }
-                if (state == 2)
-                {
-                    if (isNavigationMany)
-                    {
-                        await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                        isNavigationMany = false;
-                    }
-                    if (Navigation.NavigationStack.Count > 1)
-                    {
-                        await Navigation.PopAsync();
-                    }
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
-                }
-                else if (state == 3)
-                {
-                    if (isNavigationMany)
-                    {
-                        await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                        isNavigationMany = false;
-                    }
-                    if (!isTask && Navigation.NavigationStack.Count > 2)
-                    {
-                        Navigation.RemovePage(Navigation.NavigationStack[1]);
-                    }
-                    DependencyService.Get<IToast>().ShowMessage($"Photo {Car.GetNameLayout(InderxPhotoInspektion + 1)} saved");
-                }
-                else if (state == 4)
-                {
-                    if (isNavigationMany)
-                    {
-                        await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                        isNavigationMany = false;
-                    }
-                    if (Navigation.NavigationStack.Count > 1)
-                    {
-                        await Navigation.PopAsync();
-                    }
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
-                }
             }
             else
             {
-                if (isNavigationMany)
-                {
-                    await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                    isNavigationMany = false;
-                }
-                if (Navigation.NavigationStack.Count > 1)
-                {
-                    Navigation.RemovePage(Navigation.NavigationStack[1]);
-                }
-                DependencyService.Get<IToast>().ShowMessage($"Photo {Car.GetNameLayout(InderxPhotoInspektion + 1)} saved");
-                TaskManager.CommandToDo("SavePhoto", 1, token, VehiclwInformation.Id, PhotoInspection);
             }
         }
     }

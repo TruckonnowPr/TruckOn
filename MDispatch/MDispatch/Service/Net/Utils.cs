@@ -1,13 +1,11 @@
 ﻿using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service.Helpers;
+using MDispatch.Service.RequestQueue;
 using MDispatch.Service.Tasks;
-using MDispatch.View.GlobalDialogView;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using Rg.Plugins.Popup.Services;
 using System;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -19,7 +17,7 @@ namespace MDispatch.Service.Net
         private static bool isAlRedy = false;
 
         [Obsolete]
-        public static async Task CheckNet(bool isInspection = false)
+        public static async Task CheckNet(bool isInspection = false, bool isQueue = false)
         {
             var sync = SynchronizationContext.Current;
             IRestResponse response = null;
@@ -43,7 +41,6 @@ namespace MDispatch.Service.Net
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                //await PopupNavigation.PushAsync(new Errror("Not Network", null));
                                 HelpersView.CallError("Not Network");
                             });
                         }
@@ -51,7 +48,6 @@ namespace MDispatch.Service.Net
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                //DependencyService.Get<IToast>().ShowMessage("Not Network");
                                 HelpersView.CallError("Not Network");
                             });
                         }
@@ -63,7 +59,6 @@ namespace MDispatch.Service.Net
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                //await PopupNavigation.PushAsync(new Errror("Not Network", null));
                                 HelpersView.CallError("Not Network");
                             });
                         }
@@ -71,7 +66,6 @@ namespace MDispatch.Service.Net
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                //DependencyService.Get<IToast>().ShowMessage("Not Network");
                                 HelpersView.CallError("Not Network");
                             });
                         }
@@ -93,7 +87,6 @@ namespace MDispatch.Service.Net
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    //await PopupNavigation.PushAsync(new Errror(description, null));
                                     HelpersView.CallError(description);
                                 });
                             }
@@ -101,7 +94,6 @@ namespace MDispatch.Service.Net
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    //DependencyService.Get<IToast>().ShowMessage(description);
                                     HelpersView.CallError(description);
                                 });
                             }
@@ -114,7 +106,6 @@ namespace MDispatch.Service.Net
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    //await PopupNavigation.PushAsync(new Errror(description, null));
                                     HelpersView.CallError(description);
                                 });
                             }
@@ -138,7 +129,10 @@ namespace MDispatch.Service.Net
                         {
                             TaskManager.CommandToDo("CheckTask");
                         }
-
+                        //if (!isQueue)
+                        //{
+                        //    await ManagerQueue.AddReqvest("", null);
+                        //}
                         TaskManager.isWorkTask = true;
                         App.isNetwork = true;
                     }
@@ -158,6 +152,8 @@ namespace MDispatch.Service.Net
                 isAlRedy = false;
             });
         }
+
+        
 
         private static void GetData(string respJsonStr, ref bool isCheck, ref string description)
         {
