@@ -144,7 +144,6 @@ namespace MDispatch.Vidget.VM
         private async Task NextPage()
         {
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
-            //bool isNavigationMany = false;
             bool isEndInspection = false;
             string description = null;
             int state = 0;
@@ -157,7 +156,6 @@ namespace MDispatch.Vidget.VM
             {
                 if(truckCar.IsNextInspection)
                 {
-                    //CheckPlate();
                     await Navigation.PushAsync(new View.CameraPage(managerDispatchMob, IdDriver, IndexCurent + 1, initDasbordDelegate, truckCar));
                     isEndInspection = true;
                 }
@@ -170,25 +168,12 @@ namespace MDispatch.Vidget.VM
             await Task.Run(() => Utils.CheckNet());
             if (App.isNetwork)
             {
-                //if (Navigation.NavigationStack.Count > 4)
-                //{
-                //    state = 3;
-                //    TaskManager.CommandToDo("SaveInspactionDriver", 1, token, IdDriver, Photo, IndexCurent);
-                //}
-                //else
-                //{
                     await Task.Run(() =>
                     {
                         state = managerDispatchMob.AskWork("SaveInspactionDriver", token, IdDriver, Photo, ref description, null, IndexCurent, truckCar.TypeTransportVehicle);
                     });
-                //}
                 if (state == 1)
                 {
-                    //if (isNavigationMany)
-                    //{
-                    //    await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                    //    isNavigationMany = false;
-                    //}
                     if (Navigation.NavigationStack.Count > 1)
                     {
                         await Navigation.PopAsync();
@@ -197,11 +182,6 @@ namespace MDispatch.Vidget.VM
                 }
                 else if (state == 2)
                 {
-                    //if (isNavigationMany)
-                    //{
-                    //    await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                    //    isNavigationMany = false;
-                    //}
                     if (Navigation.NavigationStack.Count > 1)
                     {
                         await Navigation.PopAsync();
@@ -210,11 +190,6 @@ namespace MDispatch.Vidget.VM
                 }
                 else if (state == 3)
                 {
-                    //if (isNavigationMany)
-                    //{
-                    //    await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                    //    isNavigationMany = false;
-                    //}
                     if (isEndInspection)
                     {
                         if (Navigation.NavigationStack.Count > 1)
@@ -222,15 +197,9 @@ namespace MDispatch.Vidget.VM
                             Navigation.RemovePage(Navigation.NavigationStack[1]);
                         }
                     }
-                    //DependencyService.Get<IToast>().ShowMessage($"Photo {truckCar.NamePatern[IndexCurent-1]} saved");
                 }
                 else if (state == 4)
                 {
-                    //if (isNavigationMany)
-                    //{
-                    //    await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                    //    isNavigationMany = false;
-                    //}
                     if (Navigation.NavigationStack.Count > 1)
                     {
                         await Navigation.PopAsync();
@@ -244,20 +213,7 @@ namespace MDispatch.Vidget.VM
             }
             else
             {
-                //if (isNavigationMany)
-                //{
-                //    await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
-                //    isNavigationMany = false;
-                //}
-                //if (isEndInspection)
-                //{
-                //    if (Navigation.NavigationStack.Count > 1)
-                //    {
-                //        Navigation.RemovePage(Navigation.NavigationStack[1]);
-                //    }
-                //}
-                //TaskManager.CommandToDo("SaveInspactionDriver", 1, token, IdDriver, Photo, IndexCurent);
-                //DependencyService.Get<IToast>().ShowMessage($"Photo {truckCar.NamePatern[IndexCurent]} saved");
+                await PopupNavigation.PopAsync(true);
             }
         }
 

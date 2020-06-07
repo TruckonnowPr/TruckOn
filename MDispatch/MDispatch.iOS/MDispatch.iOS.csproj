@@ -55,12 +55,12 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignProvision>Roma Dispatch</CodesignProvision>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -348,6 +348,105 @@
   <ItemGroup>
     <BundleResource Include="Resources\TakeArow.png" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel1.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel2.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel3.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel4.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel5.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel6.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel7.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel8.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel9.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel10.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel11.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel12.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel13.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel14.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel15.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel16.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel17.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel18.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel19.png" />
+    <BundleResource Include="Resources\BoxTruckSingleWheel20.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually1.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually2.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually3.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually4.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually5.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually6.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually7.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually8.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually9.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually10.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually11.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually12.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually13.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually14.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually15.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually16.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually17.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually18.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually19.png" />
+    <BundleResource Include="Resources\BoxTruckWheelDually20.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel1.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel2.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel3.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel4.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel5.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel6.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel7.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel8.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel9.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel10.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel11.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel12.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel13.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel14.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel15.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel16.png" />
+    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel17.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually1.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually2.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually3.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually4.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually5.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually6.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually7.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually8.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually9.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually10.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually11.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually12.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually13.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually14.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually15.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually16.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually17.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually18.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually19.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually20.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually21.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually22.png" />
+    <BundleResource Include="Resources\CargoVanMustHaveWithDually23.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave21.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave22.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave23.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave24.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave25.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave26.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave27.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave28.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave29.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave210.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave211.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave212.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave213.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave214.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave215.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave216.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave217.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave218.png" />
+    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave219.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pickedUpOrder1.png" />
