@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿
+using DaoModels.DAO.Models;
+using System.Collections.Generic;
 
-namespace DaoModels.DAO.Models
+namespace DaoModels.DAO.DTO
 {
-    public class Shipping
+    public class ShippingDTO
     {
         public string Id { get; set; }
         public string idOrder { get; set; }
@@ -71,6 +73,8 @@ namespace DaoModels.DAO.Models
         ///////////////////////////////////////////////
 
         public int IdDriver { get; set; }
+        public string PhoneDriver { get; set; }
+        public string NameDriver { get; set; }
 
         public string DataPaid { get; set; }
         public string DataCancelOrder { get; set; }

@@ -2,6 +2,9 @@
 {
     public static class Config
     {
-        public static string BaseReqvesteUrl { get; private set; } = "http://192.168.31.15"; //http://truckonnow.com http://192.168.31.44 192.168.31.15
+        // public static string BaseReqvesteUrl { get; private set; } = "http://192.168.31.15"; 
+        //public static string BaseReqvesteUrl { get; private set; } = "http://dev.truckonnow.com"; 
+        public static string BaseReqvesteUrl { get; private set; } = "http://truckonnow.com"; 
+        //public static string BaseReqvesteUrl { get; private set; } = "http://212.224.113.5";
     }
 }

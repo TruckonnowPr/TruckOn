@@ -807,9 +807,9 @@ namespace ApiMobaileServise.Servise
         public string GerShopTokenForShipping(string idOrder)
         {
             Shipping shipping = context.Shipping.Where(d => d.Id == idOrder)
-                .Include(s => s.Driverr)
                 .FirstOrDefault();
-            return shipping.Driverr.TokenShope;
+            Driver driver = context.Drivers.First(d => d.Id == shipping.IdDriver);
+            return driver.TokenShope;
         }
 
         public async void SaveSigPikedUpInDb(string idShip, Photo sig)
@@ -909,7 +909,7 @@ namespace ApiMobaileServise.Servise
 
         public string SaveToken(string email, string password, string token)
         {
-            Driver driver = context.Drivers.FirstOrDefault(d => d.EmailAddress == email && d.Password == password);
+            Driver driver = context.Drivers.FirstOrDefault(d => !d.IsFired && d.EmailAddress == email && d.Password == password);
             driver.Token = token;
             context.SaveChanges();
             return driver.Id.ToString();
@@ -1010,7 +1010,7 @@ namespace ApiMobaileServise.Servise
         {
             Driver driver = context.Drivers.FirstOrDefault(d => d.Token == token);
 
-            List<Shipping> shippings = context.Shipping.Where(s => s.Driverr != null && s.Driverr.Id == driver.Id)
+            List<Shipping> shippings = context.Shipping.Where(s => driver != null && s.IdDriver == driver.Id)
                 .Include("VehiclwInformations.Ask")
                 //.Include("VehiclwInformations.Ask1")
                 //.Include("VehiclwInformations.Ask1.App_will_force_driver_to_take_pictures_of_each_strap")
@@ -1040,7 +1040,7 @@ namespace ApiMobaileServise.Servise
         {
             List<Shipping> Shipping1 = new List<Shipping>();
             Driver driver = context.Drivers.FirstOrDefault(d => d.Token == token);
-            List<Shipping> shippings = context.Shipping.Where(s => s.Driverr != null && s.Driverr.Id == driver.Id)
+            List<Shipping> shippings = context.Shipping.Where(s => driver != null && s.IdDriver == driver.Id)
                  .Include("VehiclwInformations")
                  .ToList();
             if (shippings == null)
@@ -1060,7 +1060,7 @@ namespace ApiMobaileServise.Servise
         {
             List<Shipping> Shipping1 = new List<Shipping>();
             Driver driver = context.Drivers.FirstOrDefault(d => d.Token == token);
-            List<Shipping> shippings = context.Shipping.Where(s => s.Driverr != null && s.Driverr.Id == driver.Id)
+            List<Shipping> shippings = context.Shipping.Where(s => driver != null && s.IdDriver == driver.Id)
                  .Include("VehiclwInformations")
                  .ToList();
             if (shippings == null)

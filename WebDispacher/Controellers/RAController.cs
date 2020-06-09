@@ -56,7 +56,7 @@ namespace WebDispacher.Controellers
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 ViewData["hidden"] = "hidden";
                 ViewData["TextError"] = "Password or mail have been entered incorrectly";

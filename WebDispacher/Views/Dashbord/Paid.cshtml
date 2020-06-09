@@ -46,8 +46,8 @@
                         <a class="btnId" style="width:60px" href="/Dashbord/Order/Edit?id=@ViewBag.Orders[i].Id&stasus=Delivered">Edit</a>
                         <a class="btnId" style="width:60px" href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=Delivered">Deleted</a>
                         <div style="display:flex">
-                            <p class="stPData">Delivery to @ViewBag.Orders[i].Driverr.FullName</p>
-                            <p class="stPData">Phone: @ViewBag.Orders[i].Driverr.PhoneNumber</p>
+                            <p class="stPData">Assigned to @ViewBag.Orders[i].NameDriver</p>
+                            <p class="stPData">Phone: @ViewBag.Orders[i].PhoneDriver</p>
                         </div>
                         <p class="stPData">Paid</p> 
                     </div>

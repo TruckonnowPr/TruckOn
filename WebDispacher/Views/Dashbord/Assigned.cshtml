@@ -1,4 +1,6 @@
-﻿<div class="body">
+﻿@using System.Linq;
+
+<div class="body">
     <nav >
         <input class="btnSt" type="button" value="New load" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';"/>
         <input class="btnSt activeBtn" value="Assigned" type="button" onclick="window.location.href='@Url.Action("Assigned", "Dashbord")';"/>
@@ -54,8 +56,8 @@
                         </select>
                         <a class="btnId" style="width:60px" href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=Assigned">Deleted</a>
                         <div style="display:flex">
-                            <p class="stPData">Assigned to @ViewBag.Orders[i].Driverr.FullName</p>
-                            <p class="stPData">Phone: @ViewBag.Orders[i].Driverr.PhoneNumber</p>
+                            <p class="stPData">Assigned to @ViewBag.Orders[i].NameDriver</p>
+                            <p class="stPData">Phone: @ViewBag.Orders[i].PhoneDriver</p>
                         </div>
                         @if (ViewBag.Orders[i].IsProblem)
                         {

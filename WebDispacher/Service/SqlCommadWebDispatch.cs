@@ -125,8 +125,8 @@ namespace WebDispacher.Dao
         internal Commpany GetUserByKeyUser(int key)
         {
             Commpany commpany = null;
-            Users users = context.User.First(u => u.KeyAuthorized == key.ToString());
-            commpany = context.Commpanies.First(c => c.Id == users.CompanyId);
+            Users users = context.User.FirstOrDefault(u => u.KeyAuthorized == key.ToString());
+            commpany = context.Commpanies.FirstOrDefault(c => c.Id == users.CompanyId);
             return commpany;
         }
 
@@ -339,9 +339,8 @@ namespace WebDispacher.Dao
         internal string GetDriverIdByIdOrder(string idOrder)
         {
             Shipping shipping = context.Shipping
-                .Include(s => s.Driverr)
                 .First(s => s.Id.ToString() == idOrder);
-            return shipping.Driverr.Id.ToString();
+            return shipping.IdDriver.ToString();
         }
 
         internal string GetFullNameUserByKey(string key)
@@ -902,14 +901,14 @@ namespace WebDispacher.Dao
             return context.User.FirstOrDefault(u => u.Login == login && u.Password == password) != null;
         }
 
-        public async void SaveKeyDatabays(string login, string password, int key)
+        public void SaveKeyDatabays(string login, string password, int key)
         {
             Init();
             try
             {
                 Users users = context.User.FirstOrDefault(u => u.Login == login && u.Password == password);
                 users.KeyAuthorized = key.ToString();
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }
             catch (Exception)
             {
@@ -927,7 +926,6 @@ namespace WebDispacher.Dao
             List<Shipping> shipping = null;
             shipping = await context.Shipping
                 .Where(s => s.CurrentStatus == status)
-                .Include(s => s.Driverr)
                 .ToListAsync();
             
             if (page != 0)
@@ -1027,11 +1025,10 @@ namespace WebDispacher.Dao
         public async Task<List<VehiclwInformation>> AddDriversInOrder(string idOrder, string idDriver)
         {
             Shipping shipping = context.Shipping
-                .Include(s => s.Driverr)
                 .Include(s => s.VehiclwInformations)
                 .FirstOrDefault(s => s.Id == idOrder);
             Driver driver = context.Drivers.FirstOrDefault(d => d.Id == Convert.ToInt32(idDriver));
-            shipping.Driverr = driver;
+            shipping.IdDriver = driver.Id;
             shipping.CurrentStatus = "Assigned";
             await context.SaveChangesAsync();
             return shipping.VehiclwInformations;
@@ -1041,9 +1038,8 @@ namespace WebDispacher.Dao
         {
             bool isDriverAssign = false;
             Shipping shipping = context.Shipping
-                .Include(s => s.Driverr)
                 .FirstOrDefault(s => s.Id == idShipping);
-            if(shipping.Driverr != null)
+            if(context.Drivers.FirstOrDefault(d => d.Id == shipping.IdDriver) != null)
             {
                 isDriverAssign = true;
             }
@@ -1059,18 +1055,17 @@ namespace WebDispacher.Dao
         public string GerShopTokenForShipping(string idOrder)
         {
             Shipping shipping = context.Shipping
-                .Include(s => s.Driverr)
                 .FirstOrDefault(d => d.Id == idOrder);
-            return shipping.Driverr.TokenShope;
+            Driver driver = context.Drivers.First(d => d.Id == shipping.IdDriver);
+            return driver.TokenShope;
         }
 
         public async Task<List<VehiclwInformation>> RemoveDriversInOrder(string idOrder)
         {
             Shipping shipping = context.Shipping
-                .Include(s => s.Driverr)
                 .Include(s => s.VehiclwInformations)
                 .FirstOrDefault(s => s.Id == idOrder);
-            shipping.Driverr = null;
+            shipping.IdDriver = 0;
             shipping.CurrentStatus = "NewLoad";
             await context.SaveChangesAsync();
             return shipping.VehiclwInformations;

@@ -44,13 +44,11 @@
                     </div>
                     <div class="blockData" style="margin-left:auto;">
                         <a class="btnId" style="width:50px" href="/Dashbord/Order/Edit?id=@ViewBag.Orders[i].Id&stasus=Deleted">Edit</a>
-                        @if (@ViewBag.Orders[i].Driverr != null)
-                        {
-                            <div style="display:flex">
-                                <p class="stPData">Assigned to @ViewBag.Orders[i].Driverr.FullName</p>
-                                <p class="stPData">Phone: @ViewBag.Orders[i].Driverr.PhoneNumber</p>
-                            </div>
-                        }
+                    <div style="display:flex">
+                        <p class="stPData">Assigned to @ViewBag.Orders[i].NameDriver</p>
+                        <p class="stPData">Phone: @ViewBag.Orders[i].PhoneDriver</p>
+                    </div>
+                        
                     </div>
                 </div>
             </div>

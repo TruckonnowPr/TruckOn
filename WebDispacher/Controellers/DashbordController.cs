@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DaoModels.DAO.DTO;
 using DaoModels.DAO.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebDispacher.Service;
@@ -225,7 +226,7 @@ namespace WebDispacher.Controellers
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
-                    Task.Run(async() =>
+                    Task.Run(async () =>
                     {
                         shippings = await managerDispatch.GetOrders("Archived,Billed", page);
                         if (shippings.Count < 20)
@@ -236,23 +237,21 @@ namespace WebDispacher.Controellers
                         {
                             shippings.AddRange(await managerDispatch.GetOrders("Archived", page));
                         }
-                        ViewBag.Orders = shippings;
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Drivers = drivers;
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
                     }),
                     Task.Run(async () =>
                     {
                         ViewBag.count = await managerDispatch.GetCountPage("Archived");
                     }),
-                    Task.Run(async() =>
+                    Task.Run(async () =>
                     {
                         ViewBag.count = await managerDispatch.GetCountPage("Archived,Billed");
                     }),
-                    Task.Run(async() =>
+                    Task.Run(async () =>
                     {
                         ViewBag.count = await managerDispatch.GetCountPage("Archived,Paid");
-                    }),
-                    Task.Run(async() =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }));
                     actionResult = View("Archived");
                 }
@@ -293,11 +292,10 @@ namespace WebDispacher.Controellers
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
-                        ViewBag.Orders = await managerDispatch.GetOrders("Assigned", page);
-                    }),
-                    Task.Run(async () =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
+                        List<Shipping> shippings = await managerDispatch.GetOrders("Assigned", page);
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
+                        ViewBag.Drivers = drivers;
                     }),
                     Task.Run(async () =>
                     {
@@ -342,11 +340,10 @@ namespace WebDispacher.Controellers
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
-                        ViewBag.Orders = await managerDispatch.GetOrders("Delivered,Billed", page);
-                    }),
-                    Task.Run(async () =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
+                        List<Shipping> shippings = await managerDispatch.GetOrders("Delivered,Billed", page);
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
+                        ViewBag.Drivers = drivers;
                     }),
                     Task.Run(async () =>
                     {
@@ -401,7 +398,9 @@ namespace WebDispacher.Controellers
                         {
                             shippings.AddRange(await managerDispatch.GetOrders("Deleted", page));
                         }
-                        ViewBag.Orders = shippings;
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
+                        ViewBag.Drivers = drivers;
                     }),
                     Task.Run(async() =>
                     {
@@ -414,10 +413,6 @@ namespace WebDispacher.Controellers
                     Task.Run(async() =>
                     {
                         ViewBag.count = await managerDispatch.GetCountPage("Deleted,Paid");
-                    }),
-                    Task.Run(async() =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }));
                     actionResult = View("Deleted");
                 }
@@ -464,7 +459,9 @@ namespace WebDispacher.Controellers
                         {
                             shippings.AddRange(await managerDispatch.GetOrders("Delivered,Billed", page));
                         }
-                        ViewBag.Orders = shippings;
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
+                        ViewBag.Drivers = drivers;
                     }),
                     Task.Run(async() =>
                     {
@@ -473,10 +470,6 @@ namespace WebDispacher.Controellers
                     Task.Run(async() =>
                     {
                         ViewBag.count = await managerDispatch.GetCountPage("Delivered,Paid");
-                    }),
-                    Task.Run(async() =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
                     }));
                     actionResult = View("Delivered");
                 }
@@ -517,11 +510,10 @@ namespace WebDispacher.Controellers
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
-                        ViewBag.Orders = await managerDispatch.GetOrders("Delivered,Paid", page);
-                    }),
-                    Task.Run(async () =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
+                        List<Shipping> shippings = await managerDispatch.GetOrders("Delivered,Paid", page);
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
+                        ViewBag.Drivers = drivers;
                     }),
                     Task.Run(async () =>
                     {
@@ -566,11 +558,10 @@ namespace WebDispacher.Controellers
                     await Task.WhenAll(
                     Task.Run(async () =>
                     {
-                        ViewBag.Orders = await managerDispatch.GetOrders("Picked up", page);
-                    }),
-                    Task.Run(async () =>
-                    {
-                        ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);
+                        List<Shipping> shippings = await managerDispatch.GetOrders("Picked up", page);
+                        List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
+                        ViewBag.Orders = GetShippingDTOs(shippings, drivers);
+                        ViewBag.Drivers = drivers;
                     }),
                     Task.Run(async () =>
                     {
@@ -939,6 +930,64 @@ namespace WebDispacher.Controellers
         {
             var imageFileStream = System.IO.File.OpenRead(name);
             return File(imageFileStream, $"image/{type}");
+        }
+
+        private List<ShippingDTO> GetShippingDTOs(List<Shipping> shippings, List<Driver> drivers)
+        {
+            return shippings.Select(z => new ShippingDTO()
+            {
+                Id = z.Id,
+                AddresD = z.AddresD,
+                AddresP = z.AddresP,
+                Ask2 = z.Ask2,
+                askForUserDelyveryM = z.askForUserDelyveryM,
+                AskFromUser = z.AskFromUser,
+                BrokerFee = z.BrokerFee,
+                CDReference = z.CDReference,
+                CityD = z.CityD,
+                CityP = z.CityP,
+                CompanyOwesCarrier = z.CompanyOwesCarrier,
+                Condition = z.Condition,
+                ContactC = z.ContactC,
+                ContactNameD = z.ContactNameD,
+                ContactNameP = z.ContactNameP,
+                CurrentStatus = z.CurrentStatus,
+                DamageForUsers = z.DamageForUsers,
+                DataCancelOrder = z.DataCancelOrder,
+                DataFullArcive = z.DataFullArcive,
+                DataPaid = z.DataPaid,
+                DeliveryEstimated = z.DeliveryEstimated,
+                Description = z.Description,
+                DispatchDate = z.DispatchDate,
+                EmailD = z.EmailD,
+                EmailP = z.EmailP,
+                FaxC = z.FaxC,
+                IccmcC = z.IccmcC,
+                IdDriver = z.IdDriver,
+                idOrder = z.idOrder,
+                InternalLoadID = z.InternalLoadID,
+                IsProblem = z.IsProblem,
+                LastUpdated = z.LastUpdated,
+                NameD = z.NameD,
+                NameDriver = drivers.FirstOrDefault(d => d.Id == z.IdDriver) != null ? drivers.FirstOrDefault(d => d.Id == z.IdDriver).FullName : "",
+                NameP = z.NameP,
+                OnDeliveryToCarrier = z.OnDeliveryToCarrier,
+                PhoneC = z.PhoneC,
+                PhoneD = z.PhoneD,
+                PhoneDriver = drivers.FirstOrDefault(d => d.Id == z.IdDriver) != null ? drivers.FirstOrDefault(d => d.Id == z.IdDriver).PhoneNumber : "",
+                PhoneP = z.PhoneP,
+                PickupExactly = z.PickupExactly,
+                PriceListed = z.PriceListed,
+                ShipVia = z.ShipVia,
+                StateD = z.StateD,
+                StateP = z.StateP,
+                Titl1DI = z.Titl1DI,
+                TotalPaymentToCarrier = z.TotalPaymentToCarrier,
+                UrlReqvest = z.UrlReqvest,
+                VehiclwInformations = z.VehiclwInformations,
+                ZipD = z.ZipD,
+                ZipP = z.ZipP
+            }).ToList();
         }
     }
 }
