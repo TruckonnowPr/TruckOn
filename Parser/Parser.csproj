@@ -199,7 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DaoModels\DaoModels.csproj">
-      <Project>{18E78496-5EAC-4DC7-8BEE-21F39A38C8FE}</Project>
+      <Project>{8A3E62AD-3DFA-487B-B19C-6843419AD582}</Project>
       <Name>DaoModels</Name>
     </ProjectReference>
   </ItemGroup>
