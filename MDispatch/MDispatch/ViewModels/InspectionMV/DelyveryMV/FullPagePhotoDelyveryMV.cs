@@ -2,6 +2,7 @@
 using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Service.RequestQueue;
 using MDispatch.Service.Tasks;
@@ -258,7 +259,7 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 await Navigation.PushAsync(new CameraPagePhoto1($"{Car.TypeIndex.Replace(" ", "")}{InderxPhotoInspektion + 1}.png", fullPagePhotoDelyvery, "PhotoIspection"));
             }
             Navigation.RemovePage(Navigation.NavigationStack[1]);
-            await Task.Run(() => Utils.CheckNet());
+            await Task.Run(() => Utils.CheckNet(true, true));
             if (App.isNetwork)
             {
                 await Task.Run(() =>
@@ -270,10 +271,13 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[2]);
                 }
-              
+
             }
             else
             {
+                HelpersView.CallError("Not Network");
+                await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                BackToRootPage();
             }
         }
 
@@ -316,6 +320,12 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 {
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                 }
+            }
+            else
+            {
+                HelpersView.CallError("Not Network");
+                await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                BackToRootPage();
             }
         }
 
@@ -379,6 +389,12 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
             stream.CopyTo(ms);
             sourseImage = ms.ToArray();
             return sourseImage;
+        }
+
+        public async void BackToRootPage()
+        {
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
+            await Navigation.PopToRootAsync();
         }
     }
 }

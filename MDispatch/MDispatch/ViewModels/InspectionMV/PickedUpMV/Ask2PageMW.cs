@@ -39,7 +39,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
         {
             get => ask2;
             set => SetProperty(ref ask2, value);
-        }   
+        }
 
         [System.Obsolete]
         public async void Continue()
@@ -74,6 +74,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                     HelpersView.CallError("Technical work on the service");
+
                 }
             }
         }
@@ -113,5 +114,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
             }
         }
+
     }
 }
+    

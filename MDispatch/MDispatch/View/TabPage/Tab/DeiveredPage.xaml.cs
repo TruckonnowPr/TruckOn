@@ -73,13 +73,13 @@ namespace MDispatch.View.TabPage.Tab
         }
 
         [Obsolete]
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             HelpersView.InitAlert(body);
             delyveryMV.Init();
         }
 
-        protected override void OnDisappearing()
+        protected override async void OnDisappearing()
         {
             base.OnDisappearing();
             HelpersView.Hidden();

@@ -2,6 +2,7 @@
 using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Service.RequestQueue;
 using MDispatch.Service.Tasks;
@@ -286,23 +287,33 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 DependencyService.Get<IOrientationHandler>().ForceSensor();
                 await Navigation.PushAsync(new Ask1Page(managerDispatchMob, VehiclwInformation, IdShip, initDasbordDelegate, getVechicleDelegate, Car.TypeIndex.Replace(" ", ""), OnDeliveryToCarrier, TotalPaymentToCarrier), true);
             }
-            Navigation.RemovePage(Navigation.NavigationStack[1]);
-            await Task.Run(() => Utils.CheckNet(true));
+            await Task.Run(() => Utils.CheckNet(true, true));
             if (App.isNetwork)
             {
+                if (isNavigWthDamag)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[2]);
+                }
+                Navigation.RemovePage(Navigation.NavigationStack[1]);
                 await Task.Run(() =>
                 {
                     ManagerQueue.AddReqvest("SavePhoto", token, VehiclwInformation.Id, PhotoInspection);
                     initDasbordDelegate.Invoke();
                 });
-                if (isNavigWthDamag)
-                {
-                    Navigation.RemovePage(Navigation.NavigationStack[2]);
-                }
             }
             else
             {
+                HelpersView.Hidden();
+                HelpersView.CallError("Not Network");
+                //await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                BackToRootPage();
             }
+        }
+
+        public async void BackToRootPage()
+        {
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
+            await Navigation.PopToRootAsync();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MDispatch.Models;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.View.GlobalDialogView;
 using Rg.Plugins.Popup.Services;
@@ -78,7 +79,8 @@ namespace MDispatch.Service.RequestQueue
                     await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 else if (state == 2)
-                {
+                { 
+                    HelpersView.CallError(description);
                     await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 else if (state == 3)
@@ -89,6 +91,7 @@ namespace MDispatch.Service.RequestQueue
                 }
                 else if (state == 4)
                 {
+                    HelpersView.CallError("Technical work on the service");
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                 }
             });
@@ -113,6 +116,7 @@ namespace MDispatch.Service.RequestQueue
                 }
                 else if (state == 2)
                 {
+                    HelpersView.CallError(description);
                     await PopupNavigation.PushAsync(new Errror(description, null));
                 }
                 else if (state == 3)
@@ -123,6 +127,7 @@ namespace MDispatch.Service.RequestQueue
                 }
                 else if (state == 4)
                 {
+                    HelpersView.CallError("Technical work on the service");
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                 }
             });

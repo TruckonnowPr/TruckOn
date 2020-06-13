@@ -110,7 +110,7 @@ namespace MDispatch.ViewModels.PageAppMV
             set => SetProperty(ref isInspection, value);
         }
 
-        private void ToInstruction()
+        private async void ToInstruction()
         {
             if (Shipping != null)
             {

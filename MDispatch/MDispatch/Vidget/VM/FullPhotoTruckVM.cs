@@ -2,6 +2,7 @@
 using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
+using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Service.RequestQueue;
 using MDispatch.Service.Tasks;
@@ -166,15 +167,16 @@ namespace MDispatch.Vidget.VM
                     UpdateInspectionDriver();
                 }
             }
-            Navigation.RemovePage(Navigation.NavigationStack[1]);
-            await Task.Run(() => Utils.CheckNet());
+            await Task.Run(() => Utils.CheckNet(false, true));
             if (App.isNetwork)
             {
+                Navigation.RemovePage(Navigation.NavigationStack[1]);
                 Task.Run(() => ManagerQueue.AddReqvest("SaveInspactionDriver", token, IdDriver, Photo, IndexCurent, truckCar.TypeTransportVehicle));
             }
             else
             {
-
+                HelpersView.CallError("Not Network");
+                await Navigation.PopToRootAsync(true);
             }
         }
 
@@ -208,6 +210,11 @@ namespace MDispatch.Vidget.VM
                 {
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                 }
+            }
+            else
+            {
+                HelpersView.CallError("Not Network");
+                BackToRootPage();
             }
         }
 
@@ -264,6 +271,11 @@ namespace MDispatch.Vidget.VM
                     await PopupNavigation.PopAsync();
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                 }
+            }
+            else
+            {
+                HelpersView.CallError("Not Network");
+                BackToRootPage();
             }
         }
 
@@ -325,6 +337,11 @@ namespace MDispatch.Vidget.VM
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
                 }
             }
+            else
+            {
+                HelpersView.CallError("Not Network");
+                BackToRootPage();
+            }
         }
 
         [System.Obsolete]
@@ -354,8 +371,11 @@ namespace MDispatch.Vidget.VM
             {
                 await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
             }
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            else
+            {
+                 HelpersView.CallError("Not Network");
+                BackToRootPage();
+            }
         }
 
         [Obsolete]
@@ -396,6 +416,11 @@ namespace MDispatch.Vidget.VM
                     await PopupNavigation.PopAsync();
                     await PopupNavigation.PushAsync(new Errror("Technical work on the service scan", null));
                 }
+            }
+            else
+            {
+                HelpersView.CallError("Not Network");
+                BackToRootPage();
             }
         }
 

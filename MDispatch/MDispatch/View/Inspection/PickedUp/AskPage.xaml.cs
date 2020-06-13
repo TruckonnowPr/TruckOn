@@ -422,7 +422,7 @@ namespace MDispatch.View.AskPhoto
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            HelpersView.InitAlert(body);
+             HelpersView.InitAlert(body);
         }
 
         protected override void OnDisappearing()

@@ -52,15 +52,15 @@ namespace MDispatch.iOS.NewRender.CustomCamera
         {
             InvokeOnMainThread(() =>
             {
-                if (((CameraPage)Element).TypeCamera == null || ((CameraPage)Element).TypeCamera == "Photo")
+                if (Element != null && (((CameraPage)Element).TypeCamera == null || ((CameraPage)Element).TypeCamera == "Photo"))
                 {
                     View.Add(takePhotoButton);
                 }
-                else if(((CameraPage)Element).TypeCamera == "DetectText")
+                else if(Element != null && ((CameraPage)Element).TypeCamera == "DetectText")
                 {
                     View.Add(scanPhotoButton);
                 }
-                else if(((CameraPage)Element).TypeCamera == "PhotoIspection")
+                else if(Element != null && ((CameraPage)Element).TypeCamera == "PhotoIspection")
                 {
                     View.Add(takePhotoIspectionButton);
                     View.Add(takePhotoIspectionButton1);

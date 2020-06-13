@@ -39,14 +39,14 @@ namespace MDispatch.Service.Net
                         App.isNetwork = false;
                         if (App.isStart)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 HelpersView.CallError("Not Network");
                             });
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 HelpersView.CallError("Not Network");
                             });
@@ -57,19 +57,22 @@ namespace MDispatch.Service.Net
                         isAlRedy = true;
                         if (App.isStart)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 HelpersView.CallError("Not Network");
                             });
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
                                 HelpersView.CallError("Not Network");
                             });
                         }
-                        RefreshIsAlRed();
+                        if (!isQueue)
+                        {
+                            RefreshIsAlRed();
+                        }
                     }
                 }
                 else
@@ -85,14 +88,14 @@ namespace MDispatch.Service.Net
                             App.isNetwork = false;
                             if (App.isStart)
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                Device.BeginInvokeOnMainThread(() =>
                                 {
                                     HelpersView.CallError(description);
                                 });
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                Device.BeginInvokeOnMainThread(() =>
                                 {
                                     HelpersView.CallError(description);
                                 });
@@ -104,7 +107,7 @@ namespace MDispatch.Service.Net
                             isAlRedy = true;
                             if (App.isStart)
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                Device.BeginInvokeOnMainThread(() =>
                                 {
                                     HelpersView.CallError(description);
                                 });
@@ -116,12 +119,15 @@ namespace MDispatch.Service.Net
                                     DependencyService.Get<IToast>().ShowMessage(description);
                                 });
                             }
-                            RefreshIsAlRed();
+                            if (!isQueue)
+                            {
+                                RefreshIsAlRed();
+                            }
                         }
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
                             HelpersView.Hidden();
                         });
@@ -148,7 +154,7 @@ namespace MDispatch.Service.Net
         {
             Task.Run(() => 
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
                 isAlRedy = false;
             });
         }

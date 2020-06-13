@@ -46,19 +46,19 @@ namespace MDispatch.Service.Helpers
             }
         }
 
-        private static async void UnHidden(Layout layout)
+        private static void UnHidden(Layout layout)
         {
-            await layout.TranslateTo(0, 0);
+            layout.TranslateTo(0, 0);
         }
 
-        public static async void Hidden()
+        public static void Hidden()
         {
             if (StackLayout != null
                 && StackLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la") != null
                 && IsAddAlert)
             {
                 IsAddAlert = false;
-                await StackLayout.TranslateTo(0, -15);
+                StackLayout.TranslateTo(0, -15);
                 var el = StackLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la");
                 if (el != null)
                 {
@@ -71,7 +71,7 @@ namespace MDispatch.Service.Helpers
                 && IsAddAlert)
             {
                 IsAddAlert = false;
-                await FlexLayout.TranslateTo(0, -15);
+                FlexLayout.TranslateTo(0, -15);
                 var el = FlexLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la");
                 if (el != null)
                 {

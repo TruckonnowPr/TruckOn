@@ -100,9 +100,9 @@ namespace MDispatch.ViewModels.TAbbMV
                 else if (state == 3)
                 {
                     Shippings = shippings;
+                    HelpersView.Hidden();
                     await Task.Run(() =>
                     {
-                        HelpersView.Hidden();
                         UnTimeOfInspection = new UnTimeOfInspection(description);
                         if (!UnTimeOfInspection.ISMaybiInspection)
                         {
