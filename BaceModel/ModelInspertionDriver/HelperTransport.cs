@@ -16,7 +16,11 @@ namespace BaceModel.ModelInspertionDriver
                 case "BoxTruckWheelDually": transportVehicle = new BoxTruckWheelDually(); break;
                 case "CargiVanChasissDuallyOrSingleWheel": transportVehicle = new CargiVanChasissDuallyOrSingleWheel(); break;
                 case "CargoVanMustHaveWithDually": transportVehicle = new CargoVanMustHaveWithDually(); break;
-                case "PickUpDuallyChassisOpenFrameInTheBackMustHave2": transportVehicle = new CargoVanMustHaveWithDually(); break;
+                case "PickUpDuallyChassisOpenFrameInTheBackMustHave2": transportVehicle = new PickUpDuallyChassisOpenFrameInTheBackMustHave2(); break;
+                case "PickUpDuallyChassisMustHave2Door": transportVehicle = new PickUpDuallyChassisMustHave2Door(); break;
+                case "PickUpDuallyChassisMustHave4Door": transportVehicle = new PickUpDuallyChassisMustHave4Door(); break;
+                case "PickUpDuallyFlatbed4Door": transportVehicle = new PickUpDuallyFlatbed4Door(); break;
+                case "PickUpDuallyFlatbedMustHave2Door": transportVehicle = new PickUpDuallyFlatbedMustHave2Door(); break;
 
                 case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
                 case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
