@@ -183,9 +183,10 @@ namespace MDispatch.ViewModels.PageAppMV
             if (App.isNetwork)
             {
                 await Task.Run(() =>
-                {
+                { 
                     state = managerDispatchMob.InspectionStatus(token, IdShipping, StatusInspection, ref description, ref shipping);
                 });
+                await Task.Delay(100);
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();

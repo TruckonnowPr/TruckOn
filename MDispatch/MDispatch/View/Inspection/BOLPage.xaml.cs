@@ -281,10 +281,10 @@ namespace MDispatch.View.Inspection
             HelpersView.InitAlert(body);
         }
 
-        protected override void OnDisappearing()
+        protected override  void OnDisappearing()
         {
             base.OnDisappearing();
-            HelpersView.Hidden();
+             HelpersView.Hidden();
         }
     }
 }

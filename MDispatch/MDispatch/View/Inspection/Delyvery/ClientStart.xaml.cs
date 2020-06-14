@@ -41,7 +41,7 @@ namespace MDispatch.View.Inspection.Delyvery
             HelpersView.InitAlert(body);
         }
 
-        protected override async void OnDisappearing()
+        protected override void OnDisappearing()
         {
             base.OnDisappearing();
             HelpersView.Hidden();

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MDispatch.Service.Helpers
@@ -51,16 +53,16 @@ namespace MDispatch.Service.Helpers
             layout.TranslateTo(0, 0);
         }
 
-        public static void Hidden()
+        public static async void Hidden()
         {
             if (StackLayout != null
                 && StackLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la") != null
                 && IsAddAlert)
             {
                 IsAddAlert = false;
-                StackLayout.TranslateTo(0, -15);
+                await StackLayout.TranslateTo(0, -15);
                 var el = StackLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la");
-                if (el != null)
+                if (el != null && !IsAddAlert)
                 {
                     StackLayout.Children.Remove(el);
                 }
@@ -71,9 +73,9 @@ namespace MDispatch.Service.Helpers
                 && IsAddAlert)
             {
                 IsAddAlert = false;
-                FlexLayout.TranslateTo(0, -15);
+                await FlexLayout.TranslateTo(0, -15);
                 var el = FlexLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la");
-                if (el != null)
+                if (el != null && !IsAddAlert)
                 {
                     FlexLayout.Children.Remove(el);
                 }
@@ -93,6 +95,37 @@ namespace MDispatch.Service.Helpers
             StackLayout = null;
             FlexLayout = null;
             StackLayout = stackLayout;
+        }
+
+        internal static void ReSet()
+        {
+            if (StackLayout != null
+                && StackLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la") != null)
+            {
+                IsAddAlert = false;
+                StackLayout.TranslateTo(0, -15);
+                var el = StackLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la");
+                if (el != null)
+                {
+                    StackLayout.Children.Remove(el);
+                }
+                StackLayout.TranslationY = 0;
+            }
+            else if (FlexLayout != null
+                && FlexLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la") != null)
+            {
+                IsAddAlert = false;
+                FlexLayout.TranslateTo(0, -15);
+                var el = FlexLayout.Children.ToList().FirstOrDefault(l => l.AutomationId == "la");
+                if (el != null)
+                {
+                    FlexLayout.Children.Remove(el);
+                }
+                FlexLayout.TranslationY = 0;
+            }
+            StackLayout = null;
+            FlexLayout = null;
+            IsAddAlert = false;
         }
     }
 }

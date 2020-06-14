@@ -51,6 +51,12 @@ namespace MDispatch.View.PageApp
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
+            if(infoOrderMV.Shipping == null)
+            {
+                HelpersView.CallError("Not Data");
+                return;
+            }
+
             if(infoOrderMV.Shipping.CurrentStatus == "Assigned")
             {
                 infoOrderMV.ToStartInspection();

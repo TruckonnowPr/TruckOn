@@ -77,7 +77,7 @@ namespace MDispatch.View.TabPage.Tab
             archiveMV.Init();
         }
 
-        protected override void OnDisappearing()
+        protected override  void OnDisappearing()
         {
             base.OnDisappearing();
             HelpersView.Hidden();

@@ -303,7 +303,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
             }
             else
             {
-                HelpersView.Hidden();
+                HelpersView.ReSet();
                 HelpersView.CallError("Not Network");
                 //await PopupNavigation.PushAsync(new Errror("Not Network", null));
                 BackToRootPage();

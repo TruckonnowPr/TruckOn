@@ -258,25 +258,28 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 await Navigation.PushAsync(fullPagePhotoDelyvery);
                 await Navigation.PushAsync(new CameraPagePhoto1($"{Car.TypeIndex.Replace(" ", "")}{InderxPhotoInspektion + 1}.png", fullPagePhotoDelyvery, "PhotoIspection"));
             }
-            Navigation.RemovePage(Navigation.NavigationStack[1]);
             await Task.Run(() => Utils.CheckNet(true, true));
             if (App.isNetwork)
             {
+                if(isNavigWthDamag)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[2]);
+                }
+                if (Navigation.NavigationStack.Count > 1)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[1]);
+                }
                 await Task.Run(() =>
                 {
                     ManagerQueue.AddReqvest("SavePhoto", token, VehiclwInformation.Id, PhotoInspection);
                     initDasbordDelegate.Invoke();
                 });
-                if (isNavigWthDamag)
-                {
-                    Navigation.RemovePage(Navigation.NavigationStack[2]);
-                }
-
             }
             else
             {
+                HelpersView.ReSet();
                 HelpersView.CallError("Not Network");
-                await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                //await PopupNavigation.PushAsync(new Errror("Not Network", null));
                 BackToRootPage();
             }
         }

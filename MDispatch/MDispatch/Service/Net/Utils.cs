@@ -14,8 +14,6 @@ namespace MDispatch.Service.Net
 {
     public class Utils
     {
-        private static bool isAlRedy = false;
-
         [Obsolete]
         public static async Task CheckNet(bool isInspection = false, bool isQueue = false)
         {
@@ -27,7 +25,7 @@ namespace MDispatch.Service.Net
                 RestClient client = new RestClient(Config.BaseReqvesteUrl);
                 RestRequest request = new RestRequest("Mobile/Net", Method.GET);
                 request.AddHeader("Accept", "application/json");
-                client.Timeout = 5000;
+                client.Timeout = 3000;
                 response = client.Execute(request);
                 content = response.Content;
 
@@ -37,43 +35,11 @@ namespace MDispatch.Service.Net
                     {
                         TaskManager.isWorkTask = false;
                         App.isNetwork = false;
-                        if (App.isStart)
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                HelpersView.CallError("Not Network");
-                            });
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                HelpersView.CallError("Not Network");
-                            });
-                        }
                     }
-                    else if (!isAlRedy)
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        isAlRedy = true;
-                        if (App.isStart)
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                HelpersView.CallError("Not Network");
-                            });
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                HelpersView.CallError("Not Network");
-                            });
-                        }
-                        if (!isQueue)
-                        {
-                            RefreshIsAlRed();
-                        }
-                    }
+                        HelpersView.CallError("Not Network");
+                    });
                 }
                 else
                 {
@@ -86,44 +52,11 @@ namespace MDispatch.Service.Net
                         {
                             TaskManager.isWorkTask = false;
                             App.isNetwork = false;
-                            if (App.isStart)
-                            {
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    HelpersView.CallError(description);
-                                });
-                            }
-                            else
-                            {
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    HelpersView.CallError(description);
-                                });
-                            }
                         }
-                        else if (!isAlRedy)
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            TaskManager.isWorkTask = false;
-                            isAlRedy = true;
-                            if (App.isStart)
-                            {
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    HelpersView.CallError(description);
-                                });
-                            }
-                            else
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    DependencyService.Get<IToast>().ShowMessage(description);
-                                });
-                            }
-                            if (!isQueue)
-                            {
-                                RefreshIsAlRed();
-                            }
-                        }
+                            HelpersView.CallError(description);
+                        });
                     }
                     else
                     {
@@ -131,10 +64,10 @@ namespace MDispatch.Service.Net
                         {
                             HelpersView.Hidden();
                         });
-                        if (!TaskManager.isWorkTask)
-                        {
-                            TaskManager.CommandToDo("CheckTask");
-                        }
+                        //if (!TaskManager.isWorkTask)
+                        //{
+                        //    TaskManager.CommandToDo("CheckTask");
+                        //}
                         //if (!isQueue)
                         //{
                         //    await ManagerQueue.AddReqvest("", null);
@@ -149,17 +82,6 @@ namespace MDispatch.Service.Net
                 App.isNetwork = false;
             }
         }
-
-        private static void RefreshIsAlRed()
-        {
-            Task.Run(() => 
-            {
-                Thread.Sleep(2000);
-                isAlRedy = false;
-            });
-        }
-
-        
 
         private static void GetData(string respJsonStr, ref bool isCheck, ref string description)
         {

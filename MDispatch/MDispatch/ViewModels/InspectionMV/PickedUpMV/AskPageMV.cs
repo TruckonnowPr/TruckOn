@@ -116,10 +116,7 @@ namespace MDispatch.ViewModels.AskPhoto
                         await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
                         isNavigationMany = false;
                     }
-                    if (Navigation.NavigationStack.Count > 1)
-                    {
-                        await Navigation.PopAsync();
-                    }
+                    GoToABack();
                     //await PopupNavigation.PushAsync(new Errror(description, Navigation));
                     HelpersView.CallError(description);
                 }
@@ -140,21 +137,25 @@ namespace MDispatch.ViewModels.AskPhoto
                         await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
                         isNavigationMany = false;
                     }
-                    if (Navigation.NavigationStack.Count > 1)
-                    {
-                        await Navigation.PopAsync();
-                    }
+                    GoToABack();
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
                     HelpersView.CallError("Technical work on the service");
                 }
             }
             else
             {
-                if (Navigation.NavigationStack.Count > 1)
-                {
-                    await Navigation.PopAsync();
-                }
+                GoToABack();
             }
+        }
+
+        private async void GoToABack()
+        {
+            if (Navigation.NavigationStack.Count > 2)
+            {
+                await Navigation.PopAsync();
+                await Navigation.PopAsync();
+            }
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
         }
     }
 }

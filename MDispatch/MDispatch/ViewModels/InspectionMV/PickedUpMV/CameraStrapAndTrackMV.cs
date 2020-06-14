@@ -173,7 +173,10 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                         isNavigationMany = false;
                     }
                     DependencyService.Get<IToast>().ShowMessage("Answers to questions saved");
-                    Navigation.RemovePage(Navigation.NavigationStack[1]);
+                    if (Navigation.NavigationStack.Count > 1)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[1]);
+                    }
                 }
                 else if (state == 4)
                 {
