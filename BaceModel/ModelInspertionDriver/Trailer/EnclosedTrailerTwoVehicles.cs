@@ -17,19 +17,19 @@ namespace BaceModel.ModelInspertionDriver.Trailer
         {
             NamePatern = new List<string>()
             {
-                "Front left corner of the trailer",     //1
-                "The whole left side of the trailer",   //2
-                "The first left wheel of the trailer",  //3
-                "The second left wheel of the trailer", //4
-                "Rear left corner of the trailer",      //5
-                "Back of trailer",                      //6
-                "Trailer interior",                     //7
-                "Outdoor trailer with ramp",            //8
-                "Rear right corner of the trailer",     //9
-                "The whole right side of the trailer",  //10
-                "The second right wheel of the trailer",//11
-                "The first right wheel of the trailer", //12
-                "Front right corner of the trailer",    //13
+                "Front left corner of the trailer",     
+                "The whole left side of the trailer",   
+                "The first left wheel of the trailer",  
+                "The second left wheel of the trailer",
+                "Rear left corner of the trailer",     
+                "Back of trailer",                      
+                "Trailer interior",                    
+                "Outdoor trailer with ramp",          
+                "Rear right corner of the trailer",    
+                "The whole right side of the trailer",  
+                "The second right wheel of the trailer",
+                "The first right wheel of the trailer", 
+                "Front right corner of the trailer",    
             };
             Layouts = new List<string>()
             {

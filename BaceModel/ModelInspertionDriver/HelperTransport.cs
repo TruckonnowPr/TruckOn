@@ -24,6 +24,9 @@ namespace BaceModel.ModelInspertionDriver
 
                 case "EnclosedTrailerTwoVehicles": transportVehicle = new EnclosedTrailerTwoVehicles(); break;
                 case "GooseneckTrailerTwoVehicles": transportVehicle = new GooseneckTrailerTwoVehicles(); break;
+                case "a1CarGooseneckTrailer": transportVehicle = new A1CarGooseneckTrailer(); break;
+                case "A3CarEnclosedGooseneckTrailer": transportVehicle = new A3CarEnclosedGooseneckTrailer(); break;
+                case "Bumperpook24_34ftFlatbed": transportVehicle = new Bumperpook24_34ftFlatbed(); break;
 
                 case "Deffalt": transportVehicle = new DeffalteTransport(); break;
             }
