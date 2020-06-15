@@ -35,7 +35,7 @@ namespace MDispatch.Service.RequestQueue
             //await Task.Run(() => Utils.CheckNet(true));
             if (App.isNetwork)
             {
-                if (CountWorkRequest < 4 && RequvestAll.Count > 0)
+                if (CountWorkRequest < 2 && RequvestAll.Count > 0)
                 {
                     RequestModel request = RequvestAll.FirstOrDefault(r => !r.IsWork);
                     if (request != null && request.NameRequvest == "SaveInspactionDriver")
