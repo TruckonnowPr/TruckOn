@@ -5,6 +5,7 @@ using DaoModels.DAO.Interface;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
 using Microsoft.AspNetCore.Http;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,10 +20,12 @@ namespace WebDispacher.Service
     public class ManagerDispatch
     {
         public SqlCommadWebDispatch _sqlEntityFramworke = null;
+        public StripeApi stripeApi = null;
 
         public ManagerDispatch()
         {
             _sqlEntityFramworke = new SqlCommadWebDispatch();
+            stripeApi = new StripeApi();
         }
         
         public async Task<List<Driver>> GetDrivers(string idCompany)
@@ -156,6 +159,12 @@ namespace WebDispacher.Service
             profileSetting.TransportVehicle.Layouts = profileSetting.TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             
             return profileSetting;
+        }
+
+        internal async Task InitStripeForCompany(string nameCommpany, int idCompany)
+        {
+            Customer customer = await stripeApi.CreateCustomer(nameCommpany, idCompany);
+            await stripeApi.CreateSupsctibe(customer.Id);
         }
 
         private ITr GetTr(int idTr, string typeTransport)
@@ -339,7 +348,7 @@ namespace WebDispacher.Service
         internal async Task AddNewOrder(string urlPage)
         {
             GetDataCentralDispatch getDataCentralDispatch = new GetDataCentralDispatch();
-            Shipping shipping = await getDataCentralDispatch.GetShipping(urlPage);
+            DaoModels.DAO.Models.Shipping shipping = await getDataCentralDispatch.GetShipping(urlPage);
             _sqlEntityFramworke.AddOrder(shipping);
         }
 
@@ -413,6 +422,7 @@ namespace WebDispacher.Service
                 Type = TypeCompany.NormalCompany
             };
             int id = _sqlEntityFramworke.AddCommpany(commpany);
+            InitStripeForCompany(nameCommpany, id);
             _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
             await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
             if (IFTA != null)
@@ -687,12 +697,12 @@ namespace WebDispacher.Service
             return await _sqlEntityFramworke.AddVechInDb(idOrder);
         }
 
-        public async Task<Shipping> CreateShiping()
+        public async Task<DaoModels.DAO.Models.Shipping> CreateShiping()
         {
             return await _sqlEntityFramworke.CreateShipping();
         }
 
-        public Shipping GetShipingCurrentVehiclwIn(string id)
+        public DaoModels.DAO.Models.Shipping GetShipingCurrentVehiclwIn(string id)
         {
             return _sqlEntityFramworke.GetShipingCurrentVehiclwInDb(id);
         }
@@ -814,12 +824,12 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RemoveTrailerDb(id);
         }
 
-        public async Task<List<Shipping>> GetOrders(string status, int page)
+        public async Task<List<DaoModels.DAO.Models.Shipping>> GetOrders(string status, int page)
         {
             return await _sqlEntityFramworke.GetShippings(status, page);
         }
 
-        public Shipping GetOrder(string id)
+        public DaoModels.DAO.Models.Shipping GetOrder(string id)
         {
             return _sqlEntityFramworke.GetShipping(id);
         }
