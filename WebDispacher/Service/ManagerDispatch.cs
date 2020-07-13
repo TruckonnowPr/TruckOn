@@ -163,8 +163,23 @@ namespace WebDispacher.Service
 
         internal async Task InitStripeForCompany(string nameCommpany, int idCompany)
         {
+            Customer_ST customer_ST = new Customer_ST();
+            Subscribe_ST subscribe_ST = new Subscribe_ST();
             Customer customer = await stripeApi.CreateCustomer(nameCommpany, idCompany);
-            await stripeApi.CreateSupsctibe(customer.Id);
+            customer_ST.DateCreated = customer.Created;
+            customer_ST.IdCompany = idCompany;
+            customer_ST.IdCustomerST = customer.Id;
+            customer_ST.NameCompany = nameCommpany;
+            customer_ST.NameCompanyST = customer.Name;
+            Subscription subscription = await stripeApi.CreateSupsctibe(customer.Id);
+            subscribe_ST.CurrentPeriodEnd = subscription.CurrentPeriodEnd;
+            subscribe_ST.CurrentPeriodStart = subscription.CurrentPeriodStart;
+            subscribe_ST.DateCreated = subscription.Created;
+            subscribe_ST.IdCustomer = subscription.CustomerId;
+            subscribe_ST.IdSubscribe = subscription.Id;
+            subscribe_ST.Status = subscription.Status;
+            await _sqlEntityFramworke.SaveCustomerST(customer_ST);
+            await _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
         }
 
         private ITr GetTr(int idTr, string typeTransport)
@@ -441,9 +456,16 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RemoveUserByIdDb(idUser);
         }
 
-        internal void RemoveCompany(string idCompany)
+        internal async void RemoveCompany(string idCompany)
         {
             _sqlEntityFramworke.RemoveCompanyDb(idCompany);
+            Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
+            Customer customer = await stripeApi.RemoveCustomer(customer_ST);
+            if(customer != null)
+            {
+                _sqlEntityFramworke.RemoveCustomerST(customer_ST);
+                _sqlEntityFramworke.RemoveSubscribeST(customer_ST);
+            }
             Task.Run(() =>
             {
                 List<Driver> drivers = _sqlEntityFramworke.GetDriversByIdCompany(idCompany);

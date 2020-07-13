@@ -46,6 +46,8 @@ namespace DaoModels.DAO
         public DbSet<Layouts> Layouts { get; set; }
         public DbSet<ProfileSetting> ProfileSettings { get; set; }
         public DbSet<DucumentDriver> DucumentDrivers { get; set; }
+        public DbSet<Customer_ST> Customer_STs { get; set; }
+        public DbSet<Subscribe_ST> Subscribe_STs { get; set; }
 
         public Context()
         {

@@ -202,6 +202,18 @@ namespace WebDispacher.Dao
             }
         }
 
+        internal async Task SaveSubscribeST(Subscribe_ST subscribe_ST)
+        {
+            await context.Subscribe_STs.AddAsync(subscribe_ST);
+            await context.SaveChangesAsync();
+        }
+
+        internal async Task SaveCustomerST(Customer_ST customer_ST)
+        {
+            await context.Customer_STs.AddAsync(customer_ST);
+            await context.SaveChangesAsync();
+        }
+
         internal void CreateUserForCompanyId(int id, string nameCommpany, string password)
         {
             context.User.Add(new Users()
@@ -457,6 +469,29 @@ namespace WebDispacher.Dao
                 && (driversLicense == d.DriversLicenseNumber)));
             }
             return driverReports;
+        }
+
+        internal void RemoveCustomerST(Customer_ST customer_ST)
+        {
+            context.Customer_STs.Remove(customer_ST);
+            context.SaveChanges();
+        }
+
+        internal void RemoveSubscribeST(Customer_ST customer_ST)
+        {
+            Subscribe_ST subscribe_ST = context.Subscribe_STs.FirstOrDefault(s => s.IdCustomer == customer_ST.IdCustomerST);
+            if(subscribe_ST != null)
+            {
+                context.Subscribe_STs.Remove(subscribe_ST);
+                context.SaveChanges();
+            }
+        }
+
+        internal Customer_ST GetCustomer_STByIdCompany(string idCompany)
+        {
+            Customer_ST customer_ST = null;
+            customer_ST = context.Customer_STs.FirstOrDefault(c => c.IdCompany.ToString() == idCompany);
+            return customer_ST;
         }
 
         internal int[] GetIdTruckAdnTrailarDb(string idDriver)
