@@ -1,16 +1,51 @@
-﻿<div class="body">
+﻿
+<div class="body">
     <div style="display:flex;">
-        <input class="btnCreateoPaymentMethod" type="button" value="Add Payment Method" onclick="window.location.href='@Url.Action("", "")';" />
+        <input class="btnCreateoPaymentMethod" type="button" value="Add Payment Method" onclick="window.location.href='/Settings/Biling';" />
     </div>
     <nav>
-        <input class="btnSt activeBtn" type="button" value="Payment Method" onclick="window.location.href='@Url.Action("", "")';" />
+        <input class="btnSt activeBtn" style="width:165px;" type="button" value="Payment Method" onclick="window.location.href='/Settings/Biling/PaymentMethod';" />
     </nav>
     <div class="contentBody">
-       
-    </div>
-</div>
+            <div class="card-wrapper"></div>
 
+            <div class="form-container active">
+                <form action="">
+                    <input placeholder="Card number" type="tel" name="number">
+                    <input placeholder="Full name" type="text" name="name">
+                    <input placeholder="MM/YYYY" type="tel" name="expiry">
+                    <input placeholder="CVC" type="number" name="cvc">
+                </form>
+            </div>
+        </div>
+
+</div>
+<script src="~/dist/card.js"></script>
 <script>
+    new Card({
+        form: document.querySelector('form'),
+        container: '.card-wrapper',
+
+        
+        formatting: true, 
+
+        
+        messages: {
+            validDate: 'valid\ndate', 
+            monthYear: 'mm/yyyy', 
+        },
+
+        placeholders: {
+            number: '•••• •••• •••• ••••',
+            name: 'Full Name',
+            expiry: '••/••',
+            cvc: '••'
+        },
+
+        masks: {
+            cardNumber: '•'
+        }
+    });
 
     function GoToCompanyDoc(id) {
         document.location.href = "@ViewBag.BaseUrl/Company/Doc?id="+id;
@@ -25,6 +60,8 @@
     * {
         margin: 0px;
     }
+
+
 
     .contentBody {
         width: 100%;
