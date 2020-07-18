@@ -2,13 +2,12 @@
 using Stripe;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace WebDispacher.Service
 {
     public class StripeApi
     {
-        internal async Task<Customer> CreateCustomer(string nameCommpany, int idCompany)
+        internal Customer CreateCustomer(string nameCommpany, int idCompany)
         {
             Customer customer = null;
             try
@@ -23,7 +22,7 @@ namespace WebDispacher.Service
                     {"idCompany", idCompany.ToString() }
                 }
                 };
-                customer = await customerService.CreateAsync(customerOptions);
+                customer = customerService.Create(customerOptions);
             }
             catch
             {
@@ -32,7 +31,7 @@ namespace WebDispacher.Service
             return customer;
         }
 
-        internal async Task<Subscription> CreateSupsctibe(string customer)
+        internal Subscription CreateSupsctibe(string customer)
         {
             Subscription subscription = null;
             try
@@ -50,23 +49,69 @@ namespace WebDispacher.Service
                     TrialPeriodDays = 30
                 };
                 var subscriptionService = new Stripe.SubscriptionService();
-                subscription = await subscriptionService.CreateAsync(subscriptionOptions);
+                subscription = subscriptionService.Create(subscriptionOptions);
             }
             catch { }
             return subscription;
         }
 
-        internal async Task<Customer> RemoveCustomer(Customer_ST customer_ST)
+        internal Customer RemoveCustomer(Customer_ST customer_ST)
         {
             Customer customer = null;
             try
             {
                 var service = new CustomerService();
-                customer = await service.DeleteAsync(customer_ST.IdCustomerST);
+                customer =  service.Delete(customer_ST.IdCustomerST);
             }
             catch
             { }
             return customer;
+        }
+
+        internal PaymentMethod CreatePaymentMethod(string number, string name, string expiry, string cvc)
+        {
+            PaymentMethod paymentMethod = null;
+            int expMM = Convert.ToInt32(expiry.Remove(expiry.IndexOf("/")).Trim());
+            int expYYYY = Convert.ToInt32(expiry.Remove(0, expiry.IndexOf("/") + 1).Trim());
+            try
+            {
+                var options = new PaymentMethodCreateOptions
+                {
+                    Type = "card",
+                    Card = new PaymentMethodCardCreateOptions
+                    {
+                        Number = number,
+                        ExpMonth = expMM,
+                        ExpYear = expYYYY,
+                        Cvc = cvc
+                    },
+                };
+                var service = new PaymentMethodService();
+                paymentMethod = service.Create(options);
+            }
+            catch (Exception e)
+            {
+
+            }
+            return paymentMethod;
+        }
+
+        internal void AttachPayMethod(string idPaymentMethod, string idCustomerST)
+        {
+            try
+            {
+                var options = new PaymentMethodAttachOptions
+                {
+                    Customer = idCustomerST,
+                };
+                var service = new PaymentMethodService();
+                service.Attach(
+                  idPaymentMethod,
+                  options
+                );
+            }
+            catch
+            { }
         }
     }
 }

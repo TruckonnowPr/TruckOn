@@ -1,59 +1,18 @@
 ﻿
 <div class="body">
     <div style="display:flex;">
-        <input class="btnCreateoPaymentMethod" type="button" value="Add Payment Method" onclick="window.location.href='/Settings/Biling';" />
+        <input class="btnCreateoPaymentMethod" type="button" value="Add Payment Method" onclick="window.location.href='/Settings/Biling/AddPaymentMethod';" />
     </div>
     <nav>
         <input class="btnSt activeBtn" style="width:165px;" type="button" value="Payment Method" onclick="window.location.href='/Settings/Biling/PaymentMethod';" />
     </nav>
     <div class="contentBody">
-            <div class="card-wrapper"></div>
-
-            <div class="form-container active">
-                <form action="">
-                    <input placeholder="Card number" type="tel" name="number">
-                    <input placeholder="Full name" type="text" name="name">
-                    <input placeholder="MM/YYYY" type="tel" name="expiry">
-                    <input placeholder="CVC" type="number" name="cvc">
-                </form>
-            </div>
-        </div>
+           
+    </div>
 
 </div>
-<script src="~/dist/card.js"></script>
 <script>
-    new Card({
-        form: document.querySelector('form'),
-        container: '.card-wrapper',
-
-        
-        formatting: true, 
-
-        
-        messages: {
-            validDate: 'valid\ndate', 
-            monthYear: 'mm/yyyy', 
-        },
-
-        placeholders: {
-            number: '•••• •••• •••• ••••',
-            name: 'Full Name',
-            expiry: '••/••',
-            cvc: '••'
-        },
-
-        masks: {
-            cardNumber: '•'
-        }
-    });
-
-    function GoToCompanyDoc(id) {
-        document.location.href = "@ViewBag.BaseUrl/Company/Doc?id="+id;
-    }
-
-    function Remove(id) {
-        document.location.href = "@ViewBag.BaseUrl/Company/Remove?id="+id;
-    }
+   
 </script>
 
 <style>
@@ -95,7 +54,7 @@
         margin-left: 14px;
     }
 
-        .btnCreateoOrder:hover {
+        .btnCreateoPaymentMethod:hover {
             transition: 0.3s;
             background-color: rgb(51, 51, 51);
         }
@@ -120,33 +79,5 @@
         position: relative;
         top: 2px;
         border-color: rgba(51, 51, 51, 0.3);
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    th {
-        color: #878787;
-        background-color: rgba(105, 105, 105, 0.15);
-        font-size: 20px;
-        border-width: 1px;
-        border-bottom: 1px solid #878787;
-    }
-
-    td {
-        color: #a6a6a6;
-        font-size: 18px;
-        text-align: center;
-    }
-
-    tbody tr:nth-child(odd) {
-        background-color: #f9f9f9; /* фон нечетных строк */
-    }
-
-    tbody tr:nth-child(even) {
-        background-color: rgba(105, 105, 105, 0.15); /* фон четных строк */
     }
 </style>

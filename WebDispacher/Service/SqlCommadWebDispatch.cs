@@ -202,16 +202,16 @@ namespace WebDispacher.Dao
             }
         }
 
-        internal async Task SaveSubscribeST(Subscribe_ST subscribe_ST)
+        internal void SaveSubscribeST(Subscribe_ST subscribe_ST)
         {
-            await context.Subscribe_STs.AddAsync(subscribe_ST);
-            await context.SaveChangesAsync();
+            context.Subscribe_STs.Add(subscribe_ST);
+            context.SaveChanges();
         }
 
-        internal async Task SaveCustomerST(Customer_ST customer_ST)
+        internal void SaveCustomerST(Customer_ST customer_ST)
         {
-            await context.Customer_STs.AddAsync(customer_ST);
-            await context.SaveChangesAsync();
+            context.Customer_STs.Add(customer_ST);
+            context.SaveChanges();
         }
 
         internal void CreateUserForCompanyId(int id, string nameCommpany, string password)

@@ -161,25 +161,35 @@ namespace WebDispacher.Service
             return profileSetting;
         }
 
-        internal async Task InitStripeForCompany(string nameCommpany, int idCompany)
+        internal void AddPaymentCard(string idCompany, string number, string name, string expiry, string cvc)
+        {
+            PaymentMethod paymentMethod = stripeApi.CreatePaymentMethod(number.Replace(" ", ""), name, expiry, cvc);
+            if(paymentMethod != null)
+            {
+                Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
+                stripeApi.AttachPayMethod(paymentMethod.Id, customer_ST.IdCustomerST);
+            }
+        }
+
+        internal void InitStripeForCompany(string nameCommpany, int idCompany)
         {
             Customer_ST customer_ST = new Customer_ST();
             Subscribe_ST subscribe_ST = new Subscribe_ST();
-            Customer customer = await stripeApi.CreateCustomer(nameCommpany, idCompany);
+            Customer customer =  stripeApi.CreateCustomer(nameCommpany, idCompany);
             customer_ST.DateCreated = customer.Created;
             customer_ST.IdCompany = idCompany;
             customer_ST.IdCustomerST = customer.Id;
             customer_ST.NameCompany = nameCommpany;
             customer_ST.NameCompanyST = customer.Name;
-            Subscription subscription = await stripeApi.CreateSupsctibe(customer.Id);
+            Subscription subscription =  stripeApi.CreateSupsctibe(customer.Id);
             subscribe_ST.CurrentPeriodEnd = subscription.CurrentPeriodEnd;
             subscribe_ST.CurrentPeriodStart = subscription.CurrentPeriodStart;
             subscribe_ST.DateCreated = subscription.Created;
             subscribe_ST.IdCustomer = subscription.CustomerId;
             subscribe_ST.IdSubscribe = subscription.Id;
             subscribe_ST.Status = subscription.Status;
-            await _sqlEntityFramworke.SaveCustomerST(customer_ST);
-            await _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
+            _sqlEntityFramworke.SaveCustomerST(customer_ST);
+            _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
         }
 
         private ITr GetTr(int idTr, string typeTransport)
@@ -460,7 +470,7 @@ namespace WebDispacher.Service
         {
             _sqlEntityFramworke.RemoveCompanyDb(idCompany);
             Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
-            Customer customer = await stripeApi.RemoveCustomer(customer_ST);
+            Customer customer = stripeApi.RemoveCustomer(customer_ST);
             if(customer != null)
             {
                 _sqlEntityFramworke.RemoveCustomerST(customer_ST);
