@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
+using Stripe;
 using System.Collections.Generic;
 using System.IO.Compression;
 
@@ -15,6 +16,8 @@ namespace WebDispacher
 
         public void ConfigureServices(IServiceCollection services)
         {
+            StripeConfiguration.ApiKey = "sk_test_51GuYHUKfezfzRoxlAPF3ieVKcPe9Ost93jouMwF6nT0mFCh59qDBdUEN3E23nYx3gBUGmDpTo8NfJnw6unSie3NV00UcJWHAXu";
+
             services.Configure<FormOptions>(options =>
             {
                 options.ValueCountLimit = 200; // 200 items max

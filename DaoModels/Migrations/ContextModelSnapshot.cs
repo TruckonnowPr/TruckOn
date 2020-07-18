@@ -265,6 +265,27 @@ namespace DaoModels.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("DaoModels.DAO.Models.Customer_ST", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<int>("IdCompany");
+
+                    b.Property<string>("IdCustomerST");
+
+                    b.Property<string>("NameCompany");
+
+                    b.Property<string>("NameCompanyST");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customer_STs");
+                });
+
             modelBuilder.Entity("DaoModels.DAO.Models.Damage", b =>
                 {
                     b.Property<int>("ID")
@@ -879,6 +900,29 @@ namespace DaoModels.Migrations
                     b.HasIndex("askForUserDelyveryMID");
 
                     b.ToTable("Shipping");
+                });
+
+            modelBuilder.Entity("DaoModels.DAO.Models.Subscribe_ST", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CurrentPeriodEnd");
+
+                    b.Property<DateTime>("CurrentPeriodStart");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("IdCustomer");
+
+                    b.Property<string>("IdSubscribe");
+
+                    b.Property<string>("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribe_STs");
                 });
 
             modelBuilder.Entity("DaoModels.DAO.Models.TaskLoad", b =>

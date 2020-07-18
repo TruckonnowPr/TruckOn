@@ -5,6 +5,7 @@ using DaoModels.DAO.Interface;
 using DaoModels.DAO.Models;
 using DaoModels.DAO.Models.Settings;
 using Microsoft.AspNetCore.Http;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,10 +20,12 @@ namespace WebDispacher.Service
     public class ManagerDispatch
     {
         public SqlCommadWebDispatch _sqlEntityFramworke = null;
+        public StripeApi stripeApi = null;
 
         public ManagerDispatch()
         {
             _sqlEntityFramworke = new SqlCommadWebDispatch();
+            stripeApi = new StripeApi();
         }
         
         public async Task<List<Driver>> GetDrivers(string idCompany)
@@ -156,6 +159,27 @@ namespace WebDispacher.Service
             profileSetting.TransportVehicle.Layouts = profileSetting.TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             
             return profileSetting;
+        }
+
+        internal async Task InitStripeForCompany(string nameCommpany, int idCompany)
+        {
+            Customer_ST customer_ST = new Customer_ST();
+            Subscribe_ST subscribe_ST = new Subscribe_ST();
+            Customer customer = await stripeApi.CreateCustomer(nameCommpany, idCompany);
+            customer_ST.DateCreated = customer.Created;
+            customer_ST.IdCompany = idCompany;
+            customer_ST.IdCustomerST = customer.Id;
+            customer_ST.NameCompany = nameCommpany;
+            customer_ST.NameCompanyST = customer.Name;
+            Subscription subscription = await stripeApi.CreateSupsctibe(customer.Id);
+            subscribe_ST.CurrentPeriodEnd = subscription.CurrentPeriodEnd;
+            subscribe_ST.CurrentPeriodStart = subscription.CurrentPeriodStart;
+            subscribe_ST.DateCreated = subscription.Created;
+            subscribe_ST.IdCustomer = subscription.CustomerId;
+            subscribe_ST.IdSubscribe = subscription.Id;
+            subscribe_ST.Status = subscription.Status;
+            await _sqlEntityFramworke.SaveCustomerST(customer_ST);
+            await _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
         }
 
         private ITr GetTr(int idTr, string typeTransport)
@@ -339,7 +363,7 @@ namespace WebDispacher.Service
         internal async Task AddNewOrder(string urlPage)
         {
             GetDataCentralDispatch getDataCentralDispatch = new GetDataCentralDispatch();
-            Shipping shipping = await getDataCentralDispatch.GetShipping(urlPage);
+            DaoModels.DAO.Models.Shipping shipping = await getDataCentralDispatch.GetShipping(urlPage);
             _sqlEntityFramworke.AddOrder(shipping);
         }
 
@@ -413,6 +437,7 @@ namespace WebDispacher.Service
                 Type = TypeCompany.NormalCompany
             };
             int id = _sqlEntityFramworke.AddCommpany(commpany);
+            InitStripeForCompany(nameCommpany, id);
             _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
             await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
             if (IFTA != null)
@@ -431,9 +456,16 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RemoveUserByIdDb(idUser);
         }
 
-        internal void RemoveCompany(string idCompany)
+        internal async void RemoveCompany(string idCompany)
         {
             _sqlEntityFramworke.RemoveCompanyDb(idCompany);
+            Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
+            Customer customer = await stripeApi.RemoveCustomer(customer_ST);
+            if(customer != null)
+            {
+                _sqlEntityFramworke.RemoveCustomerST(customer_ST);
+                _sqlEntityFramworke.RemoveSubscribeST(customer_ST);
+            }
             Task.Run(() =>
             {
                 List<Driver> drivers = _sqlEntityFramworke.GetDriversByIdCompany(idCompany);
@@ -687,12 +719,12 @@ namespace WebDispacher.Service
             return await _sqlEntityFramworke.AddVechInDb(idOrder);
         }
 
-        public async Task<Shipping> CreateShiping()
+        public async Task<DaoModels.DAO.Models.Shipping> CreateShiping()
         {
             return await _sqlEntityFramworke.CreateShipping();
         }
 
-        public Shipping GetShipingCurrentVehiclwIn(string id)
+        public DaoModels.DAO.Models.Shipping GetShipingCurrentVehiclwIn(string id)
         {
             return _sqlEntityFramworke.GetShipingCurrentVehiclwInDb(id);
         }
@@ -814,12 +846,12 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RemoveTrailerDb(id);
         }
 
-        public async Task<List<Shipping>> GetOrders(string status, int page)
+        public async Task<List<DaoModels.DAO.Models.Shipping>> GetOrders(string status, int page)
         {
             return await _sqlEntityFramworke.GetShippings(status, page);
         }
 
-        public Shipping GetOrder(string id)
+        public DaoModels.DAO.Models.Shipping GetOrder(string id)
         {
             return _sqlEntityFramworke.GetShipping(id);
         }
