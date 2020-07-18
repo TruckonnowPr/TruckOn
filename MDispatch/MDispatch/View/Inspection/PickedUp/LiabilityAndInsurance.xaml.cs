@@ -404,7 +404,6 @@ namespace MDispatch.View.Inspection.PickedUp
                         if (liabilityAndInsuranceMV.What_form_of_payment_are_you_using_to_pay_for_transportation == "COD" || liabilityAndInsuranceMV.What_form_of_payment_are_you_using_to_pay_for_transportation == "COP" || liabilityAndInsuranceMV.What_form_of_payment_are_you_using_to_pay_for_transportation == "Biling")
                         {
                             liabilityAndInsuranceMV.GoToContinue();
-                            //await PopupNavigation.PopAllAsync(true);
                         }
                         else
                         {

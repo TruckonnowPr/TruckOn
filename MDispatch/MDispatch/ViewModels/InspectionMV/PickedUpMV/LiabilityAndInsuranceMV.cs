@@ -162,18 +162,18 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 3)
                 {
-                    if (What_form_of_payment_are_you_using_to_pay_for_transportation == "Cash")
-                    {
-                        await Navigation.PushAsync(new VideoCameraPage(this, ""));
-                    }
-                    else if (What_form_of_payment_are_you_using_to_pay_for_transportation == "Check")
-                    {
-                        await Navigation.PushAsync(new CameraPaymmant(this, "", "CheckPaymment.png"));
-                    }
-                    else
-                    {
-                        await Navigation.PushAsync(new Ask2Page(this.managerDispatchMob, this.IdVech, this.IdShip, this.initDasbordDelegate));
-                    }
+                    //if (What_form_of_payment_are_you_using_to_pay_for_transportation == "Cash")
+                    //{
+                    //    await Navigation.PushAsync(new VideoCameraPage(this, ""));
+                    //}
+                    //else if (What_form_of_payment_are_you_using_to_pay_for_transportation == "Check")
+                    //{
+                    //    await Navigation.PushAsync(new CameraPaymmant(this, "", "CheckPaymment.png"));
+                    //}
+                    //else
+                    //{
+                    //    await Navigation.PushAsync(new Ask2Page(this.managerDispatchMob, this.IdVech, this.IdShip, this.initDasbordDelegate));
+                    //}
                     if (Navigation.NavigationStack.Count > 2)
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[1]);

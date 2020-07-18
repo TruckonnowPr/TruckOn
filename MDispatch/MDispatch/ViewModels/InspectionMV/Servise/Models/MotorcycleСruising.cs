@@ -6,7 +6,7 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
 {
     public class MotorcycleСruising : IVehicle
     {
-        public string TypeIndex { get; set; } = "Сruisingmotorcycle";
+        public string TypeIndex { get; set; } = "Cruisemotorcycle";
         public int CountCarImg { get; set; } = 11;
         public string TypeVehicle { get; set; } = "motorcycle";
 
