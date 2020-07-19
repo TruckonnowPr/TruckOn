@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebDispacher.Dao;
+using WebDispacher.Mosels;
 using WebDispacher.Notify;
 using WebDispacher.Service.EmailSmtp;
 
@@ -46,6 +47,12 @@ namespace WebDispacher.Service
         public void ArchvedOrder(string id)
         {
             _sqlEntityFramworke.RecurentOnArchived(id);
+        }
+
+        internal List<PaymentMethod> GetpaymentMethod(string idCompany)
+        {
+            Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
+            return stripeApi.GetPaymentMethodsByCustomerST(customer_ST.IdCustomerST);
         }
 
         internal int GetIdProfile(int idTr, string typeTransport)
@@ -161,14 +168,16 @@ namespace WebDispacher.Service
             return profileSetting;
         }
 
-        internal void AddPaymentCard(string idCompany, string number, string name, string expiry, string cvc)
+        internal ResponseStripe AddPaymentCard(string idCompany, string number, string name, string expiry, string cvc)
         {
-            PaymentMethod paymentMethod = stripeApi.CreatePaymentMethod(number.Replace(" ", ""), name, expiry, cvc);
-            if(paymentMethod != null)
+            ResponseStripe responseStripe = stripeApi.CreatePaymentMethod(number.Replace(" ", ""), name, expiry, cvc);
+            if(responseStripe != null && !responseStripe.IsError)
             {
+                PaymentMethod paymentMethod = (PaymentMethod)responseStripe.Content;
                 Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
-                stripeApi.AttachPayMethod(paymentMethod.Id, customer_ST.IdCustomerST);
+                responseStripe = stripeApi.AttachPayMethod(paymentMethod.Id, customer_ST.IdCustomerST);
             }
+            return responseStripe;
         }
 
         internal void InitStripeForCompany(string nameCommpany, int idCompany)

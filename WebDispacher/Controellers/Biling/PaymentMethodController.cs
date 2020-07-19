@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc;
+using Stripe;
+using WebDispacher.Mosels;
 using WebDispacher.Service;
 
 namespace WebDispacher.Controellers.Biling
@@ -27,6 +31,8 @@ namespace WebDispacher.Controellers.Biling
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
                     ViewBag.NameCompany = companyName;
+                    List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
+                    ViewBag.PaymentMethods = paymentMethods;
                     ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
                 }
@@ -49,7 +55,7 @@ namespace WebDispacher.Controellers.Biling
         [HttpGet]
         [Route("AddPaymentMethod")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult AddPaymentMethod(string txtError, string number, string name, string expiry, string cvc)
+        public IActionResult AddPaymentMethod()
         {
             IActionResult actionResult = null;
             try
@@ -65,11 +71,11 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
-                    ViewBag.TxtError = txtError;
-                    ViewBag.Numbercard = number;
-                    ViewBag.FullName = name;
-                    ViewBag.Expire = expiry;
-                    ViewBag.Cvv = cvc;
+                    ViewBag.TxtError = "";
+                    ViewBag.Numbercard = "";
+                    ViewBag.FullName = "";
+                    ViewBag.Expire = "";
+                    ViewBag.Cvv = "";
                     actionResult = View("~/Views/Settings/Biling/AddPaymentMethod.cshtml");
                 }
                 else
@@ -107,8 +113,20 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
-                    managerDispatch.AddPaymentCard(idCompany, number, name, expiry, cvc);
-                    actionResult = View("~/Views/Settings/Biling/AddPaymentMethod.cshtml");
+                    ResponseStripe responseStripe =  managerDispatch.AddPaymentCard(idCompany, number, name, expiry, cvc);
+                    if(responseStripe.IsError)
+                    {
+                        ViewBag.TxtError = responseStripe.Message;
+                        ViewBag.Numbercard = number;
+                        ViewBag.FullName = name;
+                        ViewBag.Expire = expiry;
+                        ViewBag.Cvv = cvc;
+                        actionResult = View("~/Views/Settings/Biling/AddPaymentMethod.cshtml");
+                    }
+                    else
+                    {
+                        actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
+                    }
                 }
                 else
                 {

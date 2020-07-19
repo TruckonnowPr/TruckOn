@@ -2,6 +2,8 @@
 using Stripe;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using WebDispacher.Mosels;
 
 namespace WebDispacher.Service
 {
@@ -55,26 +57,54 @@ namespace WebDispacher.Service
             return subscription;
         }
 
+        internal List<PaymentMethod> GetPaymentMethodsByCustomerST(string idCustomerST)
+        {
+            List<PaymentMethod> paymentMethods = null;
+            try
+            {
+                var options = new PaymentMethodListOptions
+                {
+                    Customer = idCustomerST,
+                    Type = "card",
+                };
+                var service = new PaymentMethodService();
+                paymentMethods = service.List(
+                  options
+                ).ToList();
+            }
+            catch
+            {
+
+            }
+            return paymentMethods;
+        }
+
         internal Customer RemoveCustomer(Customer_ST customer_ST)
         {
             Customer customer = null;
             try
             {
                 var service = new CustomerService();
-                customer =  service.Delete(customer_ST.IdCustomerST);
+                customer = service.Delete(customer_ST.IdCustomerST);
             }
-            catch
-            { }
+            catch (Exception e)
+            {
+            }
             return customer;
         }
 
-        internal PaymentMethod CreatePaymentMethod(string number, string name, string expiry, string cvc)
+        internal ResponseStripe CreatePaymentMethod(string number, string name, string expiry, string cvc)
         {
-            PaymentMethod paymentMethod = null;
-            int expMM = Convert.ToInt32(expiry.Remove(expiry.IndexOf("/")).Trim());
-            int expYYYY = Convert.ToInt32(expiry.Remove(0, expiry.IndexOf("/") + 1).Trim());
+            ResponseStripe responseStripe = new ResponseStripe()
+            {
+                Content = null,
+                IsError = false,
+                Message = ""
+            };
             try
             {
+                int expMM = Convert.ToInt32(expiry.Remove(expiry.IndexOf("/")).Trim());
+                int expYYYY = Convert.ToInt32(expiry.Remove(0, expiry.IndexOf("/") + 1).Trim());
                 var options = new PaymentMethodCreateOptions
                 {
                     Type = "card",
@@ -87,17 +117,26 @@ namespace WebDispacher.Service
                     },
                 };
                 var service = new PaymentMethodService();
-                paymentMethod = service.Create(options);
+                PaymentMethod paymentMethod = service.Create(options);
+                responseStripe.Content = paymentMethod;
             }
             catch (Exception e)
             {
 
+                responseStripe.Message = e.Message;
+                responseStripe.IsError = true;
             }
-            return paymentMethod;
+            return responseStripe;
         }
 
-        internal void AttachPayMethod(string idPaymentMethod, string idCustomerST)
+        internal ResponseStripe AttachPayMethod(string idPaymentMethod, string idCustomerST)
         {
+            ResponseStripe responseStripe = new ResponseStripe()
+            {
+                Content = null,
+                IsError = false,
+                Message = ""
+            };
             try
             {
                 var options = new PaymentMethodAttachOptions
@@ -109,9 +148,17 @@ namespace WebDispacher.Service
                   idPaymentMethod,
                   options
                 );
+                responseStripe.Content = service.Attach(
+                  idPaymentMethod,
+                  options
+                ); 
             }
-            catch
-            { }
+            catch (Exception e)
+            {
+                responseStripe.Message = e.Message;
+                responseStripe.IsError = true;
+            }
+            return responseStripe;
         }
     }
 }

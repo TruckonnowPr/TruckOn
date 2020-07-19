@@ -7,12 +7,36 @@
         <input class="btnSt activeBtn" style="width:165px;" type="button" value="Payment Method" onclick="window.location.href='/Settings/Biling/PaymentMethod';" />
     </nav>
     <div class="contentBody">
-           
+           @if(ViewBag.PaymentMethods != null)
+           {
+               foreach(var paymentMethod in ViewBag.PaymentMethods)
+               {
+                   <div class="cardConteiner">
+                       <div class="infoCardConteiner" >
+                           <h3>@paymentMethod.Card.Country</h3>
+                           <h3>@paymentMethod.Card.Brand</h3>
+                       </div>
+                       <div class="numberCardConteiner">
+                           <h2 style=" letter-spacing: 2px;">•••• •••• •••• @paymentMethod.Card.Last4</h2>
+                       </div>
+                       <div class="infoCardConteiner">
+                           <h3>Full Name</h3>
+                           <div style="display:flex;">
+                               <h3>@paymentMethod.Card.ExpMonth</h3>
+                               <h3>/</h3>
+                               <h3>@paymentMethod.Card.ExpYear</h3>
+                           </div>
+                           <h3>cvv: @paymentMethod.Card.Checks.CvcCheck</h3>
+                       </div>
+                   </div>
+               }
+           }
     </div>
 
 </div>
 <script>
-   
+
+
 </script>
 
 <style>
@@ -21,6 +45,26 @@
     }
 
 
+    .cardConteiner {
+        border-width: 2px;
+        border-color: rgba(45,45,45,0.9);
+        border-style: groove;
+        width: 400px;
+        border-radius:15px;
+        height: 200px;
+        padding:20px;
+    }
+
+    .numberCardConteiner {
+        padding: 20px;
+        height:90px;
+    }
+
+    .infoCardConteiner {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 20px;
+    }
 
     .contentBody {
         width: 100%;
@@ -30,54 +74,55 @@
         border-color: rgba(51, 51, 51, 0.3);
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around
+        justify-content: space-around;
+        padding-top: 20px;
     }
 
     .body {
-        margin-top: 30px;
-        margin-left: 5px;
-        margin-right: 5px;
-        padding: 10px;
-    }
+               margin-top: 30px;
+               margin-left: 5px;
+               margin-right: 5px;
+           padding: 10px;
+           }
 
     .btnCreateoPaymentMethod {
-        color: white;
-        background-color: darkgray;
-        display: inline-block;
-        padding: 10px;
-        font-size: 14px;
-        font-weight: 400;
-        text-align: center;
-        border: 2px solid;
-        border-radius: 7px;
-        margin-bottom: 10px;
-        margin-left: 14px;
-    }
+           color: white;
+               background-color: darkgray;
+           display: inline-block;
+           padding: 10px;
+               font-size: 14px;
+               font-weight: 400;
+               text-align: center;
+           border: 2px solid;
+               border-radius: 7px;
+               margin-bottom: 10px;
+               margin-left: 14px;
+           }
 
         .btnCreateoPaymentMethod:hover {
-            transition: 0.3s;
-            background-color: rgb(51, 51, 51);
-        }
+           transition: 0.3s;
+               background-color: rgb(51, 51, 51);
+           }
 
     .btnSt {
-        margin-left: 5px;
-        border: none;
-        width: 120px;
-        height: 40px;
-        background-color: white;
-        font-size: 20px;
-        color: rgb(51, 51, 51);
-        border-color: rgba(51, 51, 51, 1);
-    }
+               margin-left: 5px;
+           border: none;
+           width: 120px;
+           height: 40px;
+               background-color: white;
+               font-size: 20px;
+           color: rgb(51, 51, 51);
+               border-color: rgba(51, 51, 51, 1);
+           }
 
     .activeBtn {
-        border-radius: 1px;
-        border-top: solid;
-        border-right: solid;
-        border-left: solid;
-        border-width: 1.3px;
-        position: relative;
-        top: 2px;
-        border-color: rgba(51, 51, 51, 0.3);
-    }
+               border-radius: 1px;
+               border-top: solid;
+               border-right: solid;
+               border-left: solid;
+               border-width: 1.3px;
+           position: relative;
+           top: 2px;
+               border-color: rgba(51, 51, 51, 0.3);
+           }
 </style>
