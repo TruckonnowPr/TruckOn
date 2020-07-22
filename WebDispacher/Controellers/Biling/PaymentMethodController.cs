@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
@@ -32,6 +34,18 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
+                    //if(PaymentMethodController.idPayment != null)
+                    //{
+                    //    try
+                    //    {
+                    //        paymentMethods.Remove(paymentMethods.First(p => p.Id == idPayment));
+                    //    }
+                    //    catch
+                    //    {
+                    //        PaymentMethodController.idPayment = null;
+                    //    }
+                    //    PaymentMethodController.idPayment = null;
+                    //}
                     ViewBag.PaymentMethods = paymentMethods;
                     ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
@@ -127,6 +141,83 @@ namespace WebDispacher.Controellers.Biling
                     {
                         actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
                     }
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("SelectDefauldPaymentMethod")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult SelectDefault(string idPayment)
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
+                {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    managerDispatch.SelectDefault(idPayment);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("DeletePaymentMethod")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult DeletePaymentMethod(string idPayment)
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                //PaymentMethodController.idPayment = idPayment;
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
+                {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    managerDispatch.DeletePaymentMethod(idPayment);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
                 }
                 else
                 {

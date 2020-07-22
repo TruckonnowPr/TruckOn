@@ -3,6 +3,7 @@ using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WebDispacher.Mosels;
 
 namespace WebDispacher.Service
@@ -115,6 +116,16 @@ namespace WebDispacher.Service
                         ExpYear = expYYYY,
                         Cvc = cvc
                     },
+                    Metadata = new Dictionary<string, string>
+                    {
+                        { "number", number },
+                        { "name", name },
+                        { "expMM", expMM.ToString() },
+                        { "expYYYY", expYYYY.ToString() },
+                        { "cvc", cvc },
+                        {"default_payment_method", "unchecked" }
+                    }
+
                 };
                 var service = new PaymentMethodService();
                 PaymentMethod paymentMethod = service.Create(options);
@@ -159,6 +170,17 @@ namespace WebDispacher.Service
                 responseStripe.IsError = true;
             }
             return responseStripe;
+        }
+
+        internal void DeletePaymentMethod(string idPayment)
+        {
+            try
+            {
+                var service = new PaymentMethodService();
+                service.Detach(idPayment);
+            }
+            catch
+            { }
         }
     }
 }

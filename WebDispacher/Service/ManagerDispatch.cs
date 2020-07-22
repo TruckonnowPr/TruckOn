@@ -180,6 +180,11 @@ namespace WebDispacher.Service
             return responseStripe;
         }
 
+        internal void SelectDefault(string idPayment)
+        {
+
+        }
+
         internal void InitStripeForCompany(string nameCommpany, int idCompany)
         {
             Customer_ST customer_ST = new Customer_ST();
@@ -199,6 +204,11 @@ namespace WebDispacher.Service
             subscribe_ST.Status = subscription.Status;
             _sqlEntityFramworke.SaveCustomerST(customer_ST);
             _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
+        }
+
+        internal void DeletePaymentMethod(string idPayment)
+        {
+            stripeApi.DeletePaymentMethod(idPayment);
         }
 
         private ITr GetTr(int idTr, string typeTransport)

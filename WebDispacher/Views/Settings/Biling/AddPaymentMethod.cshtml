@@ -9,7 +9,7 @@
                 <input class="expire validation inpText" value="@ViewBag.expire" placeholder="MM/YYYY" type="tel" name="expiry" required>
                 <input class="cvv validation inpText" placeholder="CVC" type="number" name="cvc" pattern="{3,4}" value="@ViewBag.cvv" required>
             </div>
-            <input class="btnSave"  type="submit" />
+            <input class="btnSave" type="submit" value="Add Card" />
         </form>
         <p style="color:red;">@ViewBag.TxtError</p>
     </div>
@@ -36,6 +36,8 @@
             cardNumber: '•'
         }
     });
+
+    
 </script>
 <style>
     * {
