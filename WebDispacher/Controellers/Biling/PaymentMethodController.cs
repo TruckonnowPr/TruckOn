@@ -35,7 +35,7 @@ namespace WebDispacher.Controellers.Biling
                     ViewBag.NameCompany = companyName;
                     List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
                     ViewBag.PaymentMethods = paymentMethods;
-                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
                 }
                 else
@@ -72,7 +72,7 @@ namespace WebDispacher.Controellers.Biling
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
                     ViewBag.NameCompany = companyName;
-                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.TxtError = "";
                     ViewBag.Numbercard = "";
                     ViewBag.FullName = "";
@@ -114,7 +114,7 @@ namespace WebDispacher.Controellers.Biling
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
                     ViewBag.NameCompany = companyName;
-                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ResponseStripe responseStripe =  managerDispatch.AddPaymentCard(idCompany, number, name, expiry, cvc);
                     if(responseStripe.IsError)
                     {
@@ -164,7 +164,7 @@ namespace WebDispacher.Controellers.Biling
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
                     ViewBag.NameCompany = companyName;
-                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     managerDispatch.SelectDefault(idPayment);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
                 }
@@ -202,7 +202,7 @@ namespace WebDispacher.Controellers.Biling
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
                     ViewBag.NameCompany = companyName;
-                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     managerDispatch.DeletePaymentMethod(idPayment);
                     List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
                     ViewBag.PaymentMethods = paymentMethods;
