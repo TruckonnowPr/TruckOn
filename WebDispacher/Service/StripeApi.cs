@@ -182,5 +182,33 @@ namespace WebDispacher.Service
             catch
             { }
         }
+
+        internal ResponseStripe SelectDefaultPaymentMethod(string idPayment, string idCustomerST)
+        {
+            ResponseStripe responseStripe = new ResponseStripe()
+            {
+                Content = null,
+                IsError = false,
+                Message = ""
+            };
+            try
+            {
+                var options = new CustomerUpdateOptions
+                {
+                    InvoiceSettings = new CustomerInvoiceSettingsOptions()
+                    {
+                        DefaultPaymentMethod = idPayment
+                    }
+                };
+                var service = new CustomerService();
+                service.Update(idCustomerST, options);
+            }
+            catch (Exception e)
+            {
+                responseStripe.Message = e.Message;
+                responseStripe.IsError = true;
+            }
+            return responseStripe;
+        }
     }
 }

@@ -226,6 +226,17 @@ namespace WebDispacher.Dao
             context.SaveChanges();
         }
 
+        internal void AddPaymentMethod_ST(PaymentMethod_ST paymentMethod_ST)
+        {
+            context.PaymentMethods.Add(paymentMethod_ST);
+            context.SaveChanges();
+        }
+
+        internal List<PaymentMethod_ST> GetPaymentMethod_STsByIdCompany(string idCompany)
+        {
+            return context.PaymentMethods.Where(pm => pm.IdCompany.ToString() == idCompany).ToList();
+        }
+
         internal void AddUserDb(Users users)
         {
             context.User.Add(users);
@@ -251,6 +262,26 @@ namespace WebDispacher.Dao
             context.SaveChanges();
         }
 
+        internal void UnSelectPaymentMethod_ST(string idCompany)
+        {
+            PaymentMethod_ST paymentMethod_ST = context.PaymentMethods.FirstOrDefault(pm => pm.IdCompany.ToString() == idCompany && pm.IsDefault);
+            if(paymentMethod_ST != null)
+            {
+                paymentMethod_ST.IsDefault = false;
+                context.SaveChanges();
+            }
+        }
+
+        internal void SelectPaymentMethod_ST(string idPayment, string idCompany)
+        {
+            PaymentMethod_ST paymentMethod_ST = context.PaymentMethods.FirstOrDefault(pm => pm.IdCompany.ToString() == idCompany && pm.IdPaymentMethod_ST == idPayment && !pm.IsDefault);
+            if (paymentMethod_ST == null)
+            {
+                paymentMethod_ST.IsDefault = true;
+                context.SaveChanges();
+            }
+        }
+
         internal async Task<Trailer> GetTrailerDb(string idDriver)
         {
             Trailer trailer = null;
@@ -261,6 +292,23 @@ namespace WebDispacher.Dao
                 trailer = await context.Trailers.FirstOrDefaultAsync(t => t.Id == inspectionDriver.IdITrailer);
             }
             return trailer;
+        }
+
+        internal string RemovePaymentMethod(string idCompany, string idPayment)
+        {
+            string idPaymentNewSelect = null;
+            PaymentMethod_ST paymentMethod_ST = context.PaymentMethods.FirstOrDefault(pm => pm.IdCompany.ToString() == idCompany && pm.IdPaymentMethod_ST == idPayment);
+            context.PaymentMethods.Remove(paymentMethod_ST);
+            context.SaveChanges();
+            if(paymentMethod_ST.IsDefault)
+            {
+                paymentMethod_ST = context.PaymentMethods.FirstOrDefault();
+                if(paymentMethod_ST != null)
+                {
+                    idPaymentNewSelect = paymentMethod_ST.IdPaymentMethod_ST;
+                }
+            }
+            return idPaymentNewSelect;
         }
 
         internal void LayoutUPDb(int idLayout, int idTransported)

@@ -55,6 +55,11 @@ namespace WebDispacher.Service
             return stripeApi.GetPaymentMethodsByCustomerST(customer_ST.IdCustomerST);
         }
 
+        internal List<PaymentMethod_ST> GetpaymentMethodsST(string idCompany)
+        {
+            return _sqlEntityFramworke.GetPaymentMethod_STsByIdCompany(idCompany);
+        }
+
         internal int GetIdProfile(int idTr, string typeTransport)
         {
             int idProfile = 0;
@@ -171,22 +176,51 @@ namespace WebDispacher.Service
         internal ResponseStripe AddPaymentCard(string idCompany, string number, string name, string expiry, string cvc)
         {
             ResponseStripe responseStripe = stripeApi.CreatePaymentMethod(number.Replace(" ", ""), name, expiry, cvc);
-            if(responseStripe != null && !responseStripe.IsError)
+            if (responseStripe != null && !responseStripe.IsError)
             {
                 PaymentMethod paymentMethod = (PaymentMethod)responseStripe.Content;
                 Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
                 responseStripe = stripeApi.AttachPayMethod(paymentMethod.Id, customer_ST.IdCustomerST);
-                if(responseStripe != null && !responseStripe.IsError)
+                if (responseStripe != null && !responseStripe.IsError)
                 {
-
+                    bool isFirstPaymentMethodInCompany = CheckFirstPaymentMethodInCompany(idCompany);
+                    PaymentMethod_ST paymentMethod_ST = new PaymentMethod_ST()
+                    {
+                        IdCompany = Convert.ToInt32(idCompany),
+                        IdCustomerAttachPaymentMethod = customer_ST.IdCustomerST,
+                        IdPaymentMethod_ST = paymentMethod.Id,
+                        IsDefault = !isFirstPaymentMethodInCompany
+                    };
+                    _sqlEntityFramworke.AddPaymentMethod_ST(paymentMethod_ST);
                 }
             }
             return responseStripe;
         }
 
-        internal void SelectDefault(string idPayment)
+        private bool CheckFirstPaymentMethodInCompany(string idCompany)
         {
+            bool isFirstPaymentMethodInCompany = false;
+            List<PaymentMethod_ST> paymentMethod_STs = _sqlEntityFramworke.GetPaymentMethod_STsByIdCompany(idCompany);
+            if(paymentMethod_STs != null && paymentMethod_STs.Count != 0)
+            {
+                isFirstPaymentMethodInCompany = true;
+            }
+            return isFirstPaymentMethodInCompany;
+        }
 
+        internal ResponseStripe SelectDefaultPaymentMethod(string idPayment, string idCompany = null, Customer_ST customer_ST = null)
+        {
+            if(customer_ST == null)
+            {
+                customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
+            }
+            ResponseStripe responseStripe = stripeApi.SelectDefaultPaymentMethod(idPayment, customer_ST.IdCustomerST);
+            if (responseStripe != null && !responseStripe.IsError)
+            {
+                _sqlEntityFramworke.UnSelectPaymentMethod_ST(idCompany);
+                _sqlEntityFramworke.SelectPaymentMethod_ST(idCompany, idPayment);
+            }
+            return responseStripe;
         }
 
         internal void InitStripeForCompany(string nameCommpany, int idCompany)
@@ -210,9 +244,14 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
         }
 
-        internal void DeletePaymentMethod(string idPayment)
+        internal void DeletePaymentMethod(string idPayment, string idCompany)
         {
             stripeApi.DeletePaymentMethod(idPayment);
+            string idPaymentNewSelect = _sqlEntityFramworke.RemovePaymentMethod(idCompany, idPayment);
+            if(idPaymentNewSelect != null)
+            {
+                SelectDefaultPaymentMethod(idPaymentNewSelect, idCompany);
+            }
         }
 
         private ITr GetTr(int idTr, string typeTransport)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DaoModels.DAO.DTO;
+using DaoModels.DAO.Models;
 using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
@@ -17,7 +19,6 @@ namespace WebDispacher.Controellers.Biling
 
         [HttpGet]
         [Route("PaymentMethod")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult PaymentMethod()
         {
             IActionResult actionResult = null;
@@ -34,7 +35,20 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
-                    ViewBag.PaymentMethods = paymentMethods;
+                    List<PaymentMethod_ST> paymentMethod_STs = managerDispatch.GetpaymentMethodsST(idCompany);
+                    List<PaymentMethodDTO> paymentMethodDTOs = paymentMethods.Select(z => new PaymentMethodDTO()
+                    {
+                        Id = z.Id,
+                        Brand = z.Card.Brand,
+                        Country = z.Card.Country,
+                        CvcCheck = z.Card.Checks.CvcCheck,
+                        ExpMonth = z.Card.ExpMonth.ToString(),
+                        ExpYear = z.Card.ExpYear.ToString(),
+                        Last4 = z.Card.Last4,
+                        Name = z.Metadata["name"],
+                        IsDefault = paymentMethod_STs.FirstOrDefault(pm => pm.IdPaymentMethod_ST == z.Id) != null ? paymentMethod_STs.FirstOrDefault(pm => pm.IdPaymentMethod_ST == z.Id).IsDefault : false
+                    }).ToList();
+                    ViewBag.PaymentMethods = paymentMethodDTOs;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
                 }
@@ -56,7 +70,6 @@ namespace WebDispacher.Controellers.Biling
 
         [HttpGet]
         [Route("AddPaymentMethod")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult AddPaymentMethod()
         {
             IActionResult actionResult = null;
@@ -98,7 +111,6 @@ namespace WebDispacher.Controellers.Biling
 
         [HttpPost]
         [Route("AddPaymentMethod")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult AddPaymentMethod(string number, string name, string expiry, string cvc)
         {
             IActionResult actionResult = null;
@@ -148,7 +160,6 @@ namespace WebDispacher.Controellers.Biling
 
         [HttpPost]
         [Route("SelectDefauldPaymentMethod")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult SelectDefault(string idPayment)
         {
             IActionResult actionResult = null;
@@ -165,7 +176,7 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
-                    managerDispatch.SelectDefault(idPayment);
+                   // managerDispatch.SelectDefault(idPayment);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
                 }
                 else
@@ -186,7 +197,6 @@ namespace WebDispacher.Controellers.Biling
 
         [HttpGet]
         [Route("DeletePaymentMethod")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult DeletePaymentMethod(string idPayment)
         {
             IActionResult actionResult = null;
@@ -203,10 +213,10 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
-                    managerDispatch.DeletePaymentMethod(idPayment);
-                    List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
-                    ViewBag.PaymentMethods = paymentMethods;
-                    actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
+                    managerDispatch.DeletePaymentMethod(idPayment, idCompany);
+                    //List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
+                    //ViewBag.PaymentMethods = paymentMethods;
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
                 }
                 else
                 {

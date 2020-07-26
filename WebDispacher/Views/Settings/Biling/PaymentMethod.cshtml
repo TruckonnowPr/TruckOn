@@ -13,24 +13,24 @@
                {
                    <div class="cardConteiner">
                        <div class="infoCardConteiner" >
-                           <h3>@paymentMethod.Card.Country</h3>
-                           <h3>@paymentMethod.Card.Brand</h3>
+                           <h3>@paymentMethod.Country</h3>
+                           <h3>@paymentMethod.Brand</h3>
                        </div>
                        <div class="numberCardConteiner">
-                           <p><h2 style=" letter-spacing: 2px;">•••• •••• •••• @paymentMethod.Card.Last4</h2></p>
+                           <p><h2 style=" letter-spacing: 2px;">•••• •••• •••• @paymentMethod.Last4</h2></p>
                            <div class="containerControl">
                                @*<input type="radio" onclick="SelectDefauldPaymentMethod('@paymentMethod.Id')" @paymentMethod.Metadata["default_payment_method"] name="card"/>*@
                                <input type="button" class="btnSave" value="Delete card" onclick="window.location.href='/Settings/Biling/DeletePaymentMethod?idPayment=@paymentMethod.Id'"/>
                            </div>
                        </div>
                        <div class="infoCardConteiner">
-                           <h3>@paymentMethod.Metadata["name"]</h3>
+                           <h3>@paymentMethod.Name</h3>
                            <div style="display:flex;">
-                               <h3>@paymentMethod.Card.ExpMonth</h3>
+                               <h3>@paymentMethod.ExpMonth</h3>
                                <h3>/</h3>
-                               <h3>@paymentMethod.Card.ExpYear</h3>
+                               <h3>@paymentMethod.ExpYear</h3>
                            </div>
-                           <h3>cvv: @paymentMethod.Card.Checks.CvcCheck</h3>
+                           <h3>cvv: @paymentMethod.CvcCheck</h3>
                        </div>
                    </div>
                }
