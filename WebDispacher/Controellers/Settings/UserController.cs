@@ -25,7 +25,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/User"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     ViewBag.Users = managerDispatch.GetUsers(Convert.ToInt32(idCompany));
                     actionResult = View("~/Views/Settings/CompanyUsers.cshtml");
@@ -63,7 +63,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/User"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     actionResult = View("~/Views/Settings/CreateUser.cshtml");
                 }
@@ -100,7 +100,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/User"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.AddUser(idCompany, login, password);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/User/Users");
@@ -137,7 +137,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/User"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.RemoveUserById(idUser);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/User/Users");

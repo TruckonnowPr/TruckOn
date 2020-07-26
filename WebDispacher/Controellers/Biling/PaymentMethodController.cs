@@ -34,18 +34,6 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
-                    //if(PaymentMethodController.idPayment != null)
-                    //{
-                    //    try
-                    //    {
-                    //        paymentMethods.Remove(paymentMethods.First(p => p.Id == idPayment));
-                    //    }
-                    //    catch
-                    //    {
-                    //        PaymentMethodController.idPayment = null;
-                    //    }
-                    //    PaymentMethodController.idPayment = null;
-                    //}
                     ViewBag.PaymentMethods = paymentMethods;
                     ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
@@ -211,13 +199,14 @@ namespace WebDispacher.Controellers.Biling
                 Request.Cookies.TryGetValue("KeyAvtho", out key);
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
-                //PaymentMethodController.idPayment = idPayment;
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
                     managerDispatch.DeletePaymentMethod(idPayment);
-                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
+                    List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
+                    ViewBag.PaymentMethods = paymentMethods;
+                    actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
                 }
                 else
                 {

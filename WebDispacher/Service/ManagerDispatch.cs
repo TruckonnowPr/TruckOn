@@ -176,6 +176,10 @@ namespace WebDispacher.Service
                 PaymentMethod paymentMethod = (PaymentMethod)responseStripe.Content;
                 Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
                 responseStripe = stripeApi.AttachPayMethod(paymentMethod.Id, customer_ST.IdCustomerST);
+                if(responseStripe != null && !responseStripe.IsError)
+                {
+
+                }
             }
             return responseStripe;
         }
@@ -348,20 +352,34 @@ namespace WebDispacher.Service
             return isPermission;
         }
 
-        internal string GetTypeNavBar(string key, string idCompany)
+        internal string GetTypeNavBar(string key, string idCompany, string typeNav = "Work")
         {
             string typeNavBar = "";
             Users users = _sqlEntityFramworke.GetUserByKey(key);
             Commpany commpany = _sqlEntityFramworke.GetCompanyById(idCompany);
             if (users != null && commpany != null)
             {
-                if (commpany.Type == TypeCompany.BaseCommpany)
+                if (typeNav == "Work")
                 {
-                    typeNavBar = "BaseCommpany";
+                    if (commpany.Type == TypeCompany.BaseCommpany)
+                    {
+                        typeNavBar = "BaseCommpany";
+                    }
+                    else if (commpany.Type == TypeCompany.NormalCompany)
+                    {
+                        typeNavBar = "NormaCommpany";
+                    }
                 }
-                else if (commpany.Type == TypeCompany.NormalCompany)
+                else if(typeNav == "Settings")
                 {
-                    typeNavBar = "NormaCommpany";
+                    if (commpany.Type == TypeCompany.BaseCommpany)
+                    {
+                        typeNavBar = "BaseCommpanySettings";
+                    }
+                    else if (commpany.Type == TypeCompany.NormalCompany)
+                    {
+                        typeNavBar = "NormaCommpanySettings";
+                    }
                 }
             }
             return typeNavBar;

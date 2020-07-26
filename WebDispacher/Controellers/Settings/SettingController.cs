@@ -23,7 +23,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings"; //managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"]  = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     ViewBag.SelectSetingTruck = managerDispatch.GetSelectSetingTruck(idCompany, idProfile, idTr, typeTransport);
                     ViewBag.SetingsTruck = managerDispatch.GetSetingsTruck(idCompany, idProfile, idTr, typeTransport);
@@ -65,7 +65,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     ViewBag.Trucks = managerDispatch.GetTrucks(idCompany);
                     actionResult = View("~/Views/Settings/Trucks.cshtml");
@@ -102,7 +102,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     ViewBag.Trailers = managerDispatch.GetTrailers(idCompany);
                     actionResult = View("~/Views/Settings/Trailers.cshtml");
@@ -139,7 +139,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";//managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     int id = managerDispatch.AddProfile(idCompany, idTr, typeTransport);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings?idTr={idTr}&page=s&idProfile={id}&typeTransport={typeTransport}");
@@ -176,7 +176,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = "Settings";// managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.RemoveProfile(idCompany, idProfile);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings?idTr={idTr}&idProfile={0}&typeTransport={typeTransport}");
@@ -213,7 +213,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.SelectLayout(idLayout);
                     actionResult = "";
@@ -250,7 +250,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.SelectProfile(idProfile, typeTransport, idTr, idCompany);
                     actionResult = "";
@@ -287,7 +287,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.UnSelectLayout(idLayout);
                     actionResult = "";
@@ -324,7 +324,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.LayoutUP(idLayout, idTransported);
                     actionResult = "";
@@ -361,7 +361,7 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings"))
                 {
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     managerDispatch.LayoutDown(idLayout, idTransported);
                     actionResult = "";

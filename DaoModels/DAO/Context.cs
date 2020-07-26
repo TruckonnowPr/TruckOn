@@ -48,6 +48,7 @@ namespace DaoModels.DAO
         public DbSet<DucumentDriver> DucumentDrivers { get; set; }
         public DbSet<Customer_ST> Customer_STs { get; set; }
         public DbSet<Subscribe_ST> Subscribe_STs { get; set; }
+        public DbSet<PaymentMethod_ST> PaymentMethods { get; set; }
 
         public Context()
         {
