@@ -176,7 +176,7 @@ namespace WebDispacher.Controellers.Biling
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
-                   // managerDispatch.SelectDefault(idPayment);
+                    managerDispatch.SelectDefaultPaymentMethod(idPayment, idCompany);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Settings/Biling/PaymentMethod");
                 }
                 else

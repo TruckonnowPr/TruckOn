@@ -19,8 +19,17 @@
                        <div class="numberCardConteiner">
                            <p><h2 style=" letter-spacing: 2px;">•••• •••• •••• @paymentMethod.Last4</h2></p>
                            <div class="containerControl">
-                               @*<input type="radio" onclick="SelectDefauldPaymentMethod('@paymentMethod.Id')" @paymentMethod.Metadata["default_payment_method"] name="card"/>*@
-                               <input type="button" class="btnSave" value="Delete card" onclick="window.location.href='/Settings/Biling/DeletePaymentMethod?idPayment=@paymentMethod.Id'"/>
+                               <div style="margin-top:15px;display:flex;">
+                                   @if (paymentMethod.IsDefault)
+                                   {
+                                       <input type="radio" style="margin-top:4px;" onclick="SelectDefauldPaymentMethod('@paymentMethod.Id')" checked name="card" />
+                                   }
+                                   else
+                                   {
+                                       <input type="radio" style="margin-top:4px;" onclick="SelectDefauldPaymentMethod('@paymentMethod.Id')" name="card" />
+                                   }
+                               </div>
+                               <input type="button" style="margin-top:8px;"  class="btnSave" value="Delete card" onclick="window.location.href='/Settings/Biling/DeletePaymentMethod?idPayment=@paymentMethod.Id'" />
                            </div>
                        </div>
                        <div class="infoCardConteiner">
@@ -64,7 +73,7 @@
 
     .containerControl {
         display:flex;
-        justify-content: end;
+        justify-content:  space-between;
         padding-top:10px;
     }
 

@@ -272,10 +272,10 @@ namespace WebDispacher.Dao
             }
         }
 
-        internal void SelectPaymentMethod_ST(string idPayment, string idCompany)
+        internal void SelectPaymentMethod_ST(string idCompany, string idPayment)
         {
-            PaymentMethod_ST paymentMethod_ST = context.PaymentMethods.FirstOrDefault(pm => pm.IdCompany.ToString() == idCompany && pm.IdPaymentMethod_ST == idPayment && !pm.IsDefault);
-            if (paymentMethod_ST == null)
+            PaymentMethod_ST paymentMethod_ST = context.PaymentMethods.FirstOrDefault(pm => pm.IdCompany.ToString() == idCompany && pm.IdPaymentMethod_ST == idPayment);
+            if (paymentMethod_ST != null)
             {
                 paymentMethod_ST.IsDefault = true;
                 context.SaveChanges();
