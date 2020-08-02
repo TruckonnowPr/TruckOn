@@ -3,10 +3,8 @@ using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
-using MDispatch.Service.Tasks;
 using MDispatch.View;
 using MDispatch.View.GlobalDialogView;
-using MDispatch.View.Inspection;
 using MDispatch.View.Inspection.PickedUp;
 using Plugin.Settings;
 using Prism.Commands;
@@ -150,7 +148,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     state = managerDispatchMob.SaveMethodPay(token, IdShip, What_form_of_payment_are_you_using_to_pay_for_transportation, CountPay, ref description);
                     initDasbordDelegate.Invoke();
                 });
-                await PopupNavigation.Instance.PopAsync();
+                await PopupNavigation.PopAsync();
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();

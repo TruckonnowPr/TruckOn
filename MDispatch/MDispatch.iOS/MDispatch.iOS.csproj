@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">iPhone</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FFE941D5-E279-4090-AEEA-9A32BE01D3D7}</ProjectGuid>
@@ -16,22 +16,6 @@
     </NuGetPackageImportStamp>
     <ProvisioningType>automatic</ProvisioningType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>None</MtouchLink>
-    <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <LangVersion>8.0</LangVersion>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
@@ -41,9 +25,10 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <LangVersion>8.0</LangVersion>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,12 +40,12 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>Roma Dev</CodesignProvision>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -71,9 +56,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>Dispatch</CodesignProvision>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
@@ -87,8 +72,8 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>Dispatch</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Artsiom Buniashyn (3K8963GCF8)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -103,8 +88,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>Dispatch</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Artsiom Buniashyn (3K8963GCF8)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -125,11 +110,12 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodesignProvision>Roma</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <LangVersion>8.0</LangVersion>
     <IntermediateOutputPath>
     </IntermediateOutputPath>
+    <MtouchArch>ARM64</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -139,8 +125,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <LangVersion>8.0</LangVersion>
     <IOSDebugOverWiFi>
     </IOSDebugOverWiFi>
@@ -148,6 +134,8 @@
     </MtouchExtraArgs>
     <IOSDebuggerPort>
     </IOSDebuggerPort>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchArch>ARM64</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|x64'">
     <OutputPath>bin\x64\Ad-Hoc\</OutputPath>
@@ -157,8 +145,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <LangVersion>8.0</LangVersion>
     <OnDemandResourcesInitialInstallTags>
     </OnDemandResourcesInitialInstallTags>
@@ -174,14 +162,14 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator'">
     <LangVersion>8.0</LangVersion>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <OnDemandResourcesInitialInstallTags>
@@ -191,8 +179,24 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AppStore|iPhoneSimulator'">
     <LangVersion>8.0</LangVersion>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants></DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchVerbosity></MtouchVerbosity>
+    <IOSDebuggerPort>40708</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <LangVersion>8.0</LangVersion>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -292,13 +296,10 @@
       <Version>2.0.11</Version>
     </PackageReference>
     <PackageReference Include="Plugin.Badge">
-      <Version>2.2.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Plugin.Permissions">
       <Version>6.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Rg.Plugins.Popup">
-      <Version>1.2.0.223</Version>
     </PackageReference>
     <PackageReference Include="System.Drawing.Common">
       <Version>4.7.0</Version>
@@ -319,11 +320,11 @@
       <Version>3.0.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
-      <Version>1.5.3.1</Version>
+      <Version>1.5.3.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
     <PackageReference Include="Xamarin.Forms.InputKit">
-      <Version>3.3.0</Version>
+      <Version>3.3.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Tesseract">
       <Version>0.3.4</Version>
@@ -336,6 +337,9 @@
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup.Gmo">
       <Version>1.1.5.3</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.2.0.223</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -447,6 +451,10 @@
     <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave217.png" />
     <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave218.png" />
     <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave219.png" />
+    <BundleResource Include="Resources\Coupe40.png" />
+    <BundleResource Include="Resources\Coupe41.png" />
+    <BundleResource Include="Resources\Coupe42.png" />
+    <BundleResource Include="Resources\Coupe43.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pickedUpOrder1.png" />
