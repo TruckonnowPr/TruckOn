@@ -455,6 +455,10 @@
     <BundleResource Include="Resources\Coupe41.png" />
     <BundleResource Include="Resources\Coupe42.png" />
     <BundleResource Include="Resources\Coupe43.png" />
+    <BundleResource Include="Resources\PickUp36.png" />
+    <BundleResource Include="Resources\PickUp37.png" />
+    <BundleResource Include="Resources\PickUp38.png" />
+    <BundleResource Include="Resources\PickUp39.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pickedUpOrder1.png" />
