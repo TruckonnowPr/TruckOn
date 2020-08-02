@@ -729,9 +729,9 @@ namespace WebDispacher.Dao
                 .First(d => d.InspectionDrivers.FirstOrDefault(ii => ii.Id == inspectionDriver.Id) != null);
         }
 
-        public async void SavevechInDb(string idVech, VehiclwInformation vehiclwInformation)
+        public void SavevechInDb(string idVech, VehiclwInformation vehiclwInformation)
         {
-            VehiclwInformation vehiclwInformationDb = await context.VehiclwInformation.FirstOrDefaultAsync(v => v.Id.ToString() == idVech);
+            VehiclwInformation vehiclwInformationDb = context.VehiclwInformation.FirstOrDefault(v => v.Id.ToString() == idVech);
             vehiclwInformationDb.VIN = vehiclwInformation.VIN;
             vehiclwInformationDb.Year = vehiclwInformation.Year;
             vehiclwInformationDb.Make = vehiclwInformation.Make;
@@ -739,7 +739,7 @@ namespace WebDispacher.Dao
             vehiclwInformationDb.Type = vehiclwInformation.Type;
             vehiclwInformationDb.Color = vehiclwInformation.Color;
             vehiclwInformationDb.Lot = vehiclwInformation.Lot;
-            await context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
         internal int CreateTrailerDb(string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns, string idCompany)
