@@ -313,7 +313,7 @@ namespace MDispatch.ViewModels.PageAppMV
         [System.Obsolete]
         public async void ToStartInspectionDelyvery()
         {
-            Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b));
+            Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
             foreach (var vehiclwInformation in Shipping.VehiclwInformations)
             {
                 if (vehiclwInformation.AskDelyvery == null)

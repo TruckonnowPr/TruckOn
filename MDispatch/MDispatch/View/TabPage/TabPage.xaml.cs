@@ -1,4 +1,5 @@
 ﻿using FormsControls.Base;
+using MDispatch.NewElement;
 using MDispatch.NewElement.Tabs;
 using MDispatch.Service;
 using MDispatch.View.TabPage.Tab;
@@ -28,6 +29,12 @@ namespace MDispatch.View.TabPage
             InitActivePage(managerDispatchMob);
             InitDeiveredPage(managerDispatchMob);
             InitArchivedPage(managerDispatchMob);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
         }
 
         private void InitActivePage(ManagerDispatchMob managerDispatchMob)

@@ -30,6 +30,12 @@ namespace MDispatch.View.PageApp
             BindingContext = this.infoOrderMV;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
+        }
+
         private void StackLayout_SizeChanged(object sender, EventArgs e)
         {
             if(infoOrderMV.Shipping != null && infoOrderMV.Shipping.VehiclwInformations != null && infoOrderMV.Shipping.VehiclwInformations.Count != 0)

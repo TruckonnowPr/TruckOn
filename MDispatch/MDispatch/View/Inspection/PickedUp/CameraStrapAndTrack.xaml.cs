@@ -34,6 +34,12 @@ namespace MDispatch.View.Inspection.PickedUp
             titlePhoto.Text = cameraStrapAndTrackMV.Car.GetNameLayout(cameraStrapAndTrackMV.Car.GetIndexCar(countPhoto));
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceLandscape();
+        }
+
         private async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             await Navigation.PopAsync();
