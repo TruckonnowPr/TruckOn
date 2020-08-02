@@ -213,6 +213,7 @@ namespace MDispatch.ViewModels.PageAppMV
         [System.Obsolete]
         public async void ToStartInspection()
         {
+            Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
             VehiclwInformation vehiclwInformation1 = Shipping.VehiclwInformations[0];
             foreach (var vehiclwInformation in Shipping.VehiclwInformations)
             {
@@ -312,6 +313,7 @@ namespace MDispatch.ViewModels.PageAppMV
         [System.Obsolete]
         public async void ToStartInspectionDelyvery()
         {
+            Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b));
             foreach (var vehiclwInformation in Shipping.VehiclwInformations)
             {
                 if (vehiclwInformation.AskDelyvery == null)
