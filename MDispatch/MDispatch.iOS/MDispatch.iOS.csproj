@@ -459,6 +459,30 @@
     <BundleResource Include="Resources\PickUp37.png" />
     <BundleResource Include="Resources\PickUp38.png" />
     <BundleResource Include="Resources\PickUp39.png" />
+    <BundleResource Include="Resources\Sedan34.png" />
+    <BundleResource Include="Resources\Sedan35.png" />
+    <BundleResource Include="Resources\Sedan36.png" />
+    <BundleResource Include="Resources\Sedan37.png" />
+    <BundleResource Include="Resources\Suv37.png" />
+    <BundleResource Include="Resources\Suv38.png" />
+    <BundleResource Include="Resources\Suv39.png" />
+    <BundleResource Include="Resources\Suv40.png" />
+    <BundleResource Include="Resources\Sportbike20.png" />
+    <BundleResource Include="Resources\Sportbike21.png" />
+    <BundleResource Include="Resources\Sportbike22.png" />
+    <BundleResource Include="Resources\Sportbike23.png" />
+    <BundleResource Include="Resources\Touringmotorcycle15.png" />
+    <BundleResource Include="Resources\Touringmotorcycle16.png" />
+    <BundleResource Include="Resources\Touringmotorcycle17.png" />
+    <BundleResource Include="Resources\Touringmotorcycle18.png" />
+    <BundleResource Include="Resources\Tricycle24.png" />
+    <BundleResource Include="Resources\Tricycle25.png" />
+    <BundleResource Include="Resources\Tricycle26.png" />
+    <BundleResource Include="Resources\Tricycle27.png" />
+    <BundleResource Include="Resources\Cruisemotorcycle12.png" />
+    <BundleResource Include="Resources\Cruisemotorcycle13.png" />
+    <BundleResource Include="Resources\Cruisemotorcycle14.png" />
+    <BundleResource Include="Resources\Cruisemotorcycle15.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pickedUpOrder1.png" />

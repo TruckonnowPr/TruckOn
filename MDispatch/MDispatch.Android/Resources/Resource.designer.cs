@@ -491,8 +491,8 @@ namespace MDispatch.Droid
 			// aapt resource value: 0x7F02008B
 			public const int Cruisemotorcycle9 = 2130837643;
 			
-			// aapt resource value: 0x7F0201AD
-			public const int custom_progressbar_style = 2130837933;
+			// aapt resource value: 0x7F0201C1
+			public const int custom_progressbar_style = 2130837953;
 			
 			// aapt resource value: 0x7F02008C
 			public const int DamageD0 = 2130837644;
@@ -614,8 +614,8 @@ namespace MDispatch.Droid
 			// aapt resource value: 0x7F0200B3
 			public const int DamageP9 = 2130837683;
 			
-			// aapt resource value: 0x7F0201AE
-			public const int deliveredViewOrder = 2130837934;
+			// aapt resource value: 0x7F0201C2
+			public const int deliveredViewOrder = 2130837954;
 			
 			// aapt resource value: 0x7F0200B4
 			public const int Delivery = 2130837684;
@@ -743,23 +743,23 @@ namespace MDispatch.Droid
 			// aapt resource value: 0x7F0200DD
 			public const int GooseneckTrailerTwoVehicles9 = 2130837725;
 			
-			// aapt resource value: 0x7F0201AF
-			public const int inScan = 2130837935;
+			// aapt resource value: 0x7F0201C3
+			public const int inScan = 2130837955;
 			
-			// aapt resource value: 0x7F0201B0
-			public const int newOrder = 2130837936;
+			// aapt resource value: 0x7F0201C4
+			public const int newOrder = 2130837956;
 			
-			// aapt resource value: 0x7F0201B1
-			public const int newViewOrder = 2130837937;
+			// aapt resource value: 0x7F0201C5
+			public const int newViewOrder = 2130837957;
 			
 			// aapt resource value: 0x7F0200DE
 			public const int NotDamage = 2130837726;
 			
-			// aapt resource value: 0x7F0201B2
-			public const int pickedUpOrder1 = 2130837938;
+			// aapt resource value: 0x7F0201C6
+			public const int pickedUpOrder1 = 2130837958;
 			
-			// aapt resource value: 0x7F0201B3
-			public const int pickedUpViewOrder = 2130837939;
+			// aapt resource value: 0x7F0201C7
+			public const int pickedUpViewOrder = 2130837959;
 			
 			// aapt resource value: 0x7F0200DF
 			public const int PickUp1 = 2130837727;
@@ -998,32 +998,32 @@ namespace MDispatch.Droid
 			// aapt resource value: 0x7F02012D
 			public const int PickupFourWheel9 = 2130837805;
 			
-			// aapt resource value: 0x7F0201B4
-			public const int scanCoupe = 2130837940;
+			// aapt resource value: 0x7F0201C8
+			public const int scanCoupe = 2130837960;
 			
-			// aapt resource value: 0x7F0201B5
-			public const int scanCruisemotorcycle = 2130837941;
+			// aapt resource value: 0x7F0201C9
+			public const int scanCruisemotorcycle = 2130837961;
 			
-			// aapt resource value: 0x7F0201B6
-			public const int scanPickUp = 2130837942;
+			// aapt resource value: 0x7F0201CA
+			public const int scanPickUp = 2130837962;
 			
-			// aapt resource value: 0x7F0201B7
-			public const int scanPlate = 2130837943;
+			// aapt resource value: 0x7F0201CB
+			public const int scanPlate = 2130837963;
 			
-			// aapt resource value: 0x7F0201B8
-			public const int scanSedan = 2130837944;
+			// aapt resource value: 0x7F0201CC
+			public const int scanSedan = 2130837964;
 			
-			// aapt resource value: 0x7F0201B9
-			public const int scanSportbike = 2130837945;
+			// aapt resource value: 0x7F0201CD
+			public const int scanSportbike = 2130837965;
 			
-			// aapt resource value: 0x7F0201BA
-			public const int scanSuv = 2130837946;
+			// aapt resource value: 0x7F0201CE
+			public const int scanSuv = 2130837966;
 			
-			// aapt resource value: 0x7F0201BB
-			public const int scanTouringmotorcycle = 2130837947;
+			// aapt resource value: 0x7F0201CF
+			public const int scanTouringmotorcycle = 2130837967;
 			
-			// aapt resource value: 0x7F0201BC
-			public const int scanTricycle = 2130837948;
+			// aapt resource value: 0x7F0201D0
+			public const int scanTricycle = 2130837968;
 			
 			// aapt resource value: 0x7F02012E
 			public const int Sedan1 = 2130837806;
@@ -1107,313 +1107,373 @@ namespace MDispatch.Droid
 			public const int Sedan33 = 2130837832;
 			
 			// aapt resource value: 0x7F020149
-			public const int Sedan4 = 2130837833;
+			public const int Sedan34 = 2130837833;
 			
 			// aapt resource value: 0x7F02014A
-			public const int Sedan5 = 2130837834;
+			public const int Sedan35 = 2130837834;
 			
 			// aapt resource value: 0x7F02014B
-			public const int Sedan6 = 2130837835;
+			public const int Sedan36 = 2130837835;
 			
 			// aapt resource value: 0x7F02014C
-			public const int Sedan7 = 2130837836;
+			public const int Sedan37 = 2130837836;
 			
 			// aapt resource value: 0x7F02014D
-			public const int Sedan8 = 2130837837;
+			public const int Sedan4 = 2130837837;
 			
 			// aapt resource value: 0x7F02014E
-			public const int Sedan9 = 2130837838;
+			public const int Sedan5 = 2130837838;
 			
 			// aapt resource value: 0x7F02014F
-			public const int Sportbike1 = 2130837839;
+			public const int Sedan6 = 2130837839;
 			
 			// aapt resource value: 0x7F020150
-			public const int Sportbike10 = 2130837840;
+			public const int Sedan7 = 2130837840;
 			
 			// aapt resource value: 0x7F020151
-			public const int Sportbike11 = 2130837841;
+			public const int Sedan8 = 2130837841;
 			
 			// aapt resource value: 0x7F020152
-			public const int Sportbike12 = 2130837842;
+			public const int Sedan9 = 2130837842;
 			
 			// aapt resource value: 0x7F020153
-			public const int Sportbike13 = 2130837843;
+			public const int Sportbike1 = 2130837843;
 			
 			// aapt resource value: 0x7F020154
-			public const int Sportbike14 = 2130837844;
+			public const int Sportbike10 = 2130837844;
 			
 			// aapt resource value: 0x7F020155
-			public const int Sportbike15 = 2130837845;
+			public const int Sportbike11 = 2130837845;
 			
 			// aapt resource value: 0x7F020156
-			public const int Sportbike16 = 2130837846;
+			public const int Sportbike12 = 2130837846;
 			
 			// aapt resource value: 0x7F020157
-			public const int Sportbike17 = 2130837847;
+			public const int Sportbike13 = 2130837847;
 			
 			// aapt resource value: 0x7F020158
-			public const int Sportbike18 = 2130837848;
+			public const int Sportbike14 = 2130837848;
 			
 			// aapt resource value: 0x7F020159
-			public const int Sportbike19 = 2130837849;
+			public const int Sportbike15 = 2130837849;
 			
 			// aapt resource value: 0x7F02015A
-			public const int Sportbike2 = 2130837850;
+			public const int Sportbike16 = 2130837850;
 			
 			// aapt resource value: 0x7F02015B
-			public const int Sportbike3 = 2130837851;
+			public const int Sportbike17 = 2130837851;
 			
 			// aapt resource value: 0x7F02015C
-			public const int Sportbike4 = 2130837852;
+			public const int Sportbike18 = 2130837852;
 			
 			// aapt resource value: 0x7F02015D
-			public const int Sportbike5 = 2130837853;
+			public const int Sportbike19 = 2130837853;
 			
 			// aapt resource value: 0x7F02015E
-			public const int Sportbike6 = 2130837854;
+			public const int Sportbike2 = 2130837854;
 			
 			// aapt resource value: 0x7F02015F
-			public const int Sportbike7 = 2130837855;
+			public const int Sportbike20 = 2130837855;
 			
 			// aapt resource value: 0x7F020160
-			public const int Sportbike8 = 2130837856;
+			public const int Sportbike21 = 2130837856;
 			
 			// aapt resource value: 0x7F020161
-			public const int Sportbike9 = 2130837857;
-			
-			// aapt resource value: 0x7F0201BD
-			public const int startVideo = 2130837949;
-			
-			// aapt resource value: 0x7F0201BE
-			public const int stopVideo = 2130837950;
+			public const int Sportbike22 = 2130837857;
 			
 			// aapt resource value: 0x7F020162
-			public const int Suv1 = 2130837858;
+			public const int Sportbike23 = 2130837858;
 			
 			// aapt resource value: 0x7F020163
-			public const int Suv10 = 2130837859;
+			public const int Sportbike3 = 2130837859;
 			
 			// aapt resource value: 0x7F020164
-			public const int Suv11 = 2130837860;
+			public const int Sportbike4 = 2130837860;
 			
 			// aapt resource value: 0x7F020165
-			public const int Suv12 = 2130837861;
+			public const int Sportbike5 = 2130837861;
 			
 			// aapt resource value: 0x7F020166
-			public const int Suv13 = 2130837862;
+			public const int Sportbike6 = 2130837862;
 			
 			// aapt resource value: 0x7F020167
-			public const int Suv14 = 2130837863;
+			public const int Sportbike7 = 2130837863;
 			
 			// aapt resource value: 0x7F020168
-			public const int Suv15 = 2130837864;
+			public const int Sportbike8 = 2130837864;
 			
 			// aapt resource value: 0x7F020169
-			public const int Suv16 = 2130837865;
+			public const int Sportbike9 = 2130837865;
+			
+			// aapt resource value: 0x7F0201D1
+			public const int startVideo = 2130837969;
+			
+			// aapt resource value: 0x7F0201D2
+			public const int stopVideo = 2130837970;
 			
 			// aapt resource value: 0x7F02016A
-			public const int Suv17 = 2130837866;
+			public const int Suv1 = 2130837866;
 			
 			// aapt resource value: 0x7F02016B
-			public const int Suv18 = 2130837867;
+			public const int Suv10 = 2130837867;
 			
 			// aapt resource value: 0x7F02016C
-			public const int Suv19 = 2130837868;
+			public const int Suv11 = 2130837868;
 			
 			// aapt resource value: 0x7F02016D
-			public const int Suv2 = 2130837869;
+			public const int Suv12 = 2130837869;
 			
 			// aapt resource value: 0x7F02016E
-			public const int Suv20 = 2130837870;
+			public const int Suv13 = 2130837870;
 			
 			// aapt resource value: 0x7F02016F
-			public const int Suv21 = 2130837871;
+			public const int Suv14 = 2130837871;
 			
 			// aapt resource value: 0x7F020170
-			public const int Suv22 = 2130837872;
+			public const int Suv15 = 2130837872;
 			
 			// aapt resource value: 0x7F020171
-			public const int Suv23 = 2130837873;
+			public const int Suv16 = 2130837873;
 			
 			// aapt resource value: 0x7F020172
-			public const int Suv24 = 2130837874;
+			public const int Suv17 = 2130837874;
 			
 			// aapt resource value: 0x7F020173
-			public const int Suv25 = 2130837875;
+			public const int Suv18 = 2130837875;
 			
 			// aapt resource value: 0x7F020174
-			public const int Suv26 = 2130837876;
+			public const int Suv19 = 2130837876;
 			
 			// aapt resource value: 0x7F020175
-			public const int Suv27 = 2130837877;
+			public const int Suv2 = 2130837877;
 			
 			// aapt resource value: 0x7F020176
-			public const int Suv28 = 2130837878;
+			public const int Suv20 = 2130837878;
 			
 			// aapt resource value: 0x7F020177
-			public const int Suv29 = 2130837879;
+			public const int Suv21 = 2130837879;
 			
 			// aapt resource value: 0x7F020178
-			public const int Suv3 = 2130837880;
+			public const int Suv22 = 2130837880;
 			
 			// aapt resource value: 0x7F020179
-			public const int Suv30 = 2130837881;
+			public const int Suv23 = 2130837881;
 			
 			// aapt resource value: 0x7F02017A
-			public const int Suv31 = 2130837882;
+			public const int Suv24 = 2130837882;
 			
 			// aapt resource value: 0x7F02017B
-			public const int Suv32 = 2130837883;
+			public const int Suv25 = 2130837883;
 			
 			// aapt resource value: 0x7F02017C
-			public const int Suv33 = 2130837884;
+			public const int Suv26 = 2130837884;
 			
 			// aapt resource value: 0x7F02017D
-			public const int Suv34 = 2130837885;
+			public const int Suv27 = 2130837885;
 			
 			// aapt resource value: 0x7F02017E
-			public const int Suv35 = 2130837886;
+			public const int Suv28 = 2130837886;
 			
 			// aapt resource value: 0x7F02017F
-			public const int Suv36 = 2130837887;
+			public const int Suv29 = 2130837887;
 			
 			// aapt resource value: 0x7F020180
-			public const int Suv4 = 2130837888;
+			public const int Suv3 = 2130837888;
 			
 			// aapt resource value: 0x7F020181
-			public const int Suv5 = 2130837889;
+			public const int Suv30 = 2130837889;
 			
 			// aapt resource value: 0x7F020182
-			public const int Suv6 = 2130837890;
+			public const int Suv31 = 2130837890;
 			
 			// aapt resource value: 0x7F020183
-			public const int Suv7 = 2130837891;
+			public const int Suv32 = 2130837891;
 			
 			// aapt resource value: 0x7F020184
-			public const int Suv8 = 2130837892;
+			public const int Suv33 = 2130837892;
 			
 			// aapt resource value: 0x7F020185
-			public const int Suv9 = 2130837893;
+			public const int Suv34 = 2130837893;
 			
 			// aapt resource value: 0x7F020186
-			public const int Take = 2130837894;
+			public const int Suv35 = 2130837894;
 			
 			// aapt resource value: 0x7F020187
-			public const int TakeArow = 2130837895;
+			public const int Suv36 = 2130837895;
 			
 			// aapt resource value: 0x7F020188
-			public const int Touringmotorcycle1 = 2130837896;
+			public const int Suv37 = 2130837896;
 			
 			// aapt resource value: 0x7F020189
-			public const int Touringmotorcycle10 = 2130837897;
+			public const int Suv38 = 2130837897;
 			
 			// aapt resource value: 0x7F02018A
-			public const int Touringmotorcycle11 = 2130837898;
+			public const int Suv39 = 2130837898;
 			
 			// aapt resource value: 0x7F02018B
-			public const int Touringmotorcycle12 = 2130837899;
+			public const int Suv4 = 2130837899;
 			
 			// aapt resource value: 0x7F02018C
-			public const int Touringmotorcycle13 = 2130837900;
+			public const int Suv40 = 2130837900;
 			
 			// aapt resource value: 0x7F02018D
-			public const int Touringmotorcycle14 = 2130837901;
+			public const int Suv5 = 2130837901;
 			
 			// aapt resource value: 0x7F02018E
-			public const int Touringmotorcycle2 = 2130837902;
+			public const int Suv6 = 2130837902;
 			
 			// aapt resource value: 0x7F02018F
-			public const int Touringmotorcycle3 = 2130837903;
+			public const int Suv7 = 2130837903;
 			
 			// aapt resource value: 0x7F020190
-			public const int Touringmotorcycle4 = 2130837904;
+			public const int Suv8 = 2130837904;
 			
 			// aapt resource value: 0x7F020191
-			public const int Touringmotorcycle5 = 2130837905;
+			public const int Suv9 = 2130837905;
 			
 			// aapt resource value: 0x7F020192
-			public const int Touringmotorcycle6 = 2130837906;
+			public const int Take = 2130837906;
 			
 			// aapt resource value: 0x7F020193
-			public const int Touringmotorcycle7 = 2130837907;
+			public const int TakeArow = 2130837907;
 			
 			// aapt resource value: 0x7F020194
-			public const int Touringmotorcycle8 = 2130837908;
+			public const int Touringmotorcycle1 = 2130837908;
 			
 			// aapt resource value: 0x7F020195
-			public const int Touringmotorcycle9 = 2130837909;
+			public const int Touringmotorcycle10 = 2130837909;
 			
 			// aapt resource value: 0x7F020196
-			public const int Tricycle1 = 2130837910;
+			public const int Touringmotorcycle11 = 2130837910;
 			
 			// aapt resource value: 0x7F020197
-			public const int Tricycle10 = 2130837911;
+			public const int Touringmotorcycle12 = 2130837911;
 			
 			// aapt resource value: 0x7F020198
-			public const int Tricycle11 = 2130837912;
+			public const int Touringmotorcycle13 = 2130837912;
 			
 			// aapt resource value: 0x7F020199
-			public const int Tricycle12 = 2130837913;
+			public const int Touringmotorcycle14 = 2130837913;
 			
 			// aapt resource value: 0x7F02019A
-			public const int Tricycle13 = 2130837914;
+			public const int Touringmotorcycle15 = 2130837914;
 			
 			// aapt resource value: 0x7F02019B
-			public const int Tricycle14 = 2130837915;
+			public const int Touringmotorcycle16 = 2130837915;
 			
 			// aapt resource value: 0x7F02019C
-			public const int Tricycle15 = 2130837916;
+			public const int Touringmotorcycle17 = 2130837916;
 			
 			// aapt resource value: 0x7F02019D
-			public const int Tricycle16 = 2130837917;
+			public const int Touringmotorcycle18 = 2130837917;
 			
 			// aapt resource value: 0x7F02019E
-			public const int Tricycle17 = 2130837918;
+			public const int Touringmotorcycle2 = 2130837918;
 			
 			// aapt resource value: 0x7F02019F
-			public const int Tricycle18 = 2130837919;
+			public const int Touringmotorcycle3 = 2130837919;
 			
 			// aapt resource value: 0x7F0201A0
-			public const int Tricycle19 = 2130837920;
+			public const int Touringmotorcycle4 = 2130837920;
 			
 			// aapt resource value: 0x7F0201A1
-			public const int Tricycle2 = 2130837921;
+			public const int Touringmotorcycle5 = 2130837921;
 			
 			// aapt resource value: 0x7F0201A2
-			public const int Tricycle20 = 2130837922;
+			public const int Touringmotorcycle6 = 2130837922;
 			
 			// aapt resource value: 0x7F0201A3
-			public const int Tricycle21 = 2130837923;
+			public const int Touringmotorcycle7 = 2130837923;
 			
 			// aapt resource value: 0x7F0201A4
-			public const int Tricycle22 = 2130837924;
+			public const int Touringmotorcycle8 = 2130837924;
 			
 			// aapt resource value: 0x7F0201A5
-			public const int Tricycle23 = 2130837925;
+			public const int Touringmotorcycle9 = 2130837925;
 			
 			// aapt resource value: 0x7F0201A6
-			public const int Tricycle3 = 2130837926;
+			public const int Tricycle1 = 2130837926;
 			
 			// aapt resource value: 0x7F0201A7
-			public const int Tricycle4 = 2130837927;
+			public const int Tricycle10 = 2130837927;
 			
 			// aapt resource value: 0x7F0201A8
-			public const int Tricycle5 = 2130837928;
+			public const int Tricycle11 = 2130837928;
 			
 			// aapt resource value: 0x7F0201A9
-			public const int Tricycle6 = 2130837929;
+			public const int Tricycle12 = 2130837929;
 			
 			// aapt resource value: 0x7F0201AA
-			public const int Tricycle7 = 2130837930;
+			public const int Tricycle13 = 2130837930;
 			
 			// aapt resource value: 0x7F0201AB
-			public const int Tricycle8 = 2130837931;
+			public const int Tricycle14 = 2130837931;
 			
 			// aapt resource value: 0x7F0201AC
-			public const int Tricycle9 = 2130837932;
+			public const int Tricycle15 = 2130837932;
+			
+			// aapt resource value: 0x7F0201AD
+			public const int Tricycle16 = 2130837933;
+			
+			// aapt resource value: 0x7F0201AE
+			public const int Tricycle17 = 2130837934;
+			
+			// aapt resource value: 0x7F0201AF
+			public const int Tricycle18 = 2130837935;
+			
+			// aapt resource value: 0x7F0201B0
+			public const int Tricycle19 = 2130837936;
+			
+			// aapt resource value: 0x7F0201B1
+			public const int Tricycle2 = 2130837937;
+			
+			// aapt resource value: 0x7F0201B2
+			public const int Tricycle20 = 2130837938;
+			
+			// aapt resource value: 0x7F0201B3
+			public const int Tricycle21 = 2130837939;
+			
+			// aapt resource value: 0x7F0201B4
+			public const int Tricycle22 = 2130837940;
+			
+			// aapt resource value: 0x7F0201B5
+			public const int Tricycle23 = 2130837941;
+			
+			// aapt resource value: 0x7F0201B6
+			public const int Tricycle24 = 2130837942;
+			
+			// aapt resource value: 0x7F0201B7
+			public const int Tricycle25 = 2130837943;
+			
+			// aapt resource value: 0x7F0201B8
+			public const int Tricycle26 = 2130837944;
+			
+			// aapt resource value: 0x7F0201B9
+			public const int Tricycle27 = 2130837945;
+			
+			// aapt resource value: 0x7F0201BA
+			public const int Tricycle3 = 2130837946;
+			
+			// aapt resource value: 0x7F0201BB
+			public const int Tricycle4 = 2130837947;
+			
+			// aapt resource value: 0x7F0201BC
+			public const int Tricycle5 = 2130837948;
+			
+			// aapt resource value: 0x7F0201BD
+			public const int Tricycle6 = 2130837949;
+			
+			// aapt resource value: 0x7F0201BE
+			public const int Tricycle7 = 2130837950;
 			
 			// aapt resource value: 0x7F0201BF
-			public const int trup = 2130837951;
+			public const int Tricycle8 = 2130837951;
+			
+			// aapt resource value: 0x7F0201C0
+			public const int Tricycle9 = 2130837952;
+			
+			// aapt resource value: 0x7F0201D3
+			public const int trup = 2130837971;
 			
 			static Drawable()
 			{
