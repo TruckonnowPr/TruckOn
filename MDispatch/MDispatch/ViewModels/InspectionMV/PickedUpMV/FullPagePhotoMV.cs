@@ -294,7 +294,10 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[2]);
                 }
-                Navigation.RemovePage(Navigation.NavigationStack[1]);
+                if (Navigation.NavigationStack.Count > 1)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[1]);
+                }
                 await Task.Run(() =>
                 {
                     ManagerQueue.AddReqvest("SavePhoto", token, VehiclwInformation.Id, PhotoInspection);

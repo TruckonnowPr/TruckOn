@@ -1,4 +1,5 @@
 ﻿using MDispatch.Models;
+using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.View.AskPhoto.CameraPageFolder;
@@ -422,7 +423,8 @@ namespace MDispatch.View.AskPhoto
         protected override void OnAppearing()
         {
             base.OnAppearing();
-             HelpersView.InitAlert(body);
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
+            HelpersView.InitAlert(body);
         }
 
         protected override void OnDisappearing()

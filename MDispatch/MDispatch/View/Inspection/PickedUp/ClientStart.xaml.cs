@@ -1,4 +1,5 @@
 ﻿using MDispatch.Models;
+using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
@@ -37,8 +38,9 @@ namespace MDispatch.View.Inspection.PickedUp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
             HelpersView.InitAlert(body);
-        }
+        } 
 
         protected override void OnDisappearing()
         {

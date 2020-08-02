@@ -370,7 +370,10 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
         public async void GoToContinue()
         {
             await Navigation.PushAsync(new Ask2Page(managerDispatchMob, IdVech, IdShip, initDasbordDelegate));
-            Navigation.RemovePage(Navigation.NavigationStack[1]);
+            if (Navigation.NavigationStack.Count > 1)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[1]);
+            }
         }
 
         public async void SetProblem()
