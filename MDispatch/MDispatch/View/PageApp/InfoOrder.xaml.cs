@@ -1,5 +1,6 @@
 ﻿using FormsControls.Base;
 using MDispatch.Models;
+using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
@@ -28,12 +29,6 @@ namespace MDispatch.View.PageApp
             this.infoOrderMV = new InfoOrderMV(managerDispatchMob, initDasbordDelegate, statusInspection, idShipping) { Navigation = this.Navigation} ;
             InitializeComponent();
             BindingContext = this.infoOrderMV;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            DependencyService.Get<IOrientationHandler>().ForceSensor();
         }
 
         private void StackLayout_SizeChanged(object sender, EventArgs e)
@@ -82,6 +77,7 @@ namespace MDispatch.View.PageApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceSensor();
             HelpersView.InitAlert(body);
         }
 
