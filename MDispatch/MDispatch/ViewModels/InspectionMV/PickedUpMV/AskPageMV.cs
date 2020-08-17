@@ -44,7 +44,7 @@ namespace MDispatch.ViewModels.AskPhoto
 
         private void Init()
         {
-            if(vehiclwInformation.Type == "Coupe" || vehiclwInformation.Type == "Suv" || vehiclwInformation.Type == "Pickup" || vehiclwInformation.Type == "Sedan" || vehiclwInformation.Type == "Tricycle"
+            if(vehiclwInformation.Type == "Coupe" || vehiclwInformation.Type == "Suv" || vehiclwInformation.Type == "PickUp" || vehiclwInformation.Type == "Sedan" || vehiclwInformation.Type == "Tricycle"
                 || vehiclwInformation.Type == "Sport bike" || vehiclwInformation.Type == "Touring motorcycle" || vehiclwInformation.Type == "Cruise motorcycle")
             {
                 Ask.TypeVehicle = VehiclwInformation.Type;
