@@ -222,8 +222,38 @@ namespace ApiMobaileServise.Controllers
                 bool isToken = managerMobileApi.CheckToken(token);
                 if (isToken)
                 {
-                    Shipping shipping = managerMobileApi.GetShippingPhot(idShip);
+                    Shipping shipping = managerMobileApi.GetShippingPhoto(idShip);
                     respons = JsonConvert.SerializeObject(new ResponseAppS("success", "", shipping));
+                }
+                else
+                {
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
+                }
+            }
+            catch (Exception)
+            {
+                respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "Technical work on the service", null));
+            }
+            return respons;
+        }
+
+        [HttpPost]
+        [Route("VehiclwPhoto")]
+        [CompressGzip(IsCompresRespons = true)]
+        public string GetVehiclwlPhoto(string token, string idVehiclw)
+        {
+            string respons = null;
+            if (token == null || token == "")
+            {
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
+            }
+            try
+            {
+                bool isToken = managerMobileApi.CheckToken(token);
+                if (isToken)
+                {
+                    VehiclwInformation vehiclwInformation = managerMobileApi.GetVehiclwPhoto(idVehiclw);
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("success", "", vehiclwInformation));
                 }
                 else
                 {

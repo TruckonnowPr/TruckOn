@@ -252,6 +252,11 @@ namespace ApiMobaileServise.Servise
             return transportVehicleRes;
         }
 
+        internal VehiclwInformation GetVehiclwPhoto(string idVehiclw)
+        {
+            return sqlCommandApiMobile.GetVehiclwPhotoDb(idVehiclw);
+        }
+
         public async Task SaveSigPhoto(string idShip, string sig)
         {
             Photo photoSig = JsonConvert.DeserializeObject<Photo>(sig);
@@ -268,7 +273,7 @@ namespace ApiMobaileServise.Servise
             return sqlCommandApiMobile.GetShippingInDb(idShip);
         }
 
-        public Shipping GetShippingPhot(string idShip)
+        public Shipping GetShippingPhoto(string idShip)
         {
             return sqlCommandApiMobile.GetShippingPhotInDb(idShip);
         }

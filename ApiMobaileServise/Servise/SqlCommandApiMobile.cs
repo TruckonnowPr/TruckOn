@@ -298,6 +298,16 @@ namespace ApiMobaileServise.Servise
             }
         }
 
+        internal VehiclwInformation GetVehiclwPhotoDb(string idVehiclw)
+        {
+            VehiclwInformation vehiclwInformation = context.VehiclwInformation
+                .Where(v => v.Id.ToString() == idVehiclw)
+                .Include(v => v.Scan)
+                .Include(v => v.PhotoInspections)
+                .FirstOrDefault();
+            return vehiclwInformation;
+        }
+
         internal string CheckTralerAndTruckDb(string token)
         {
             string plates = null;
