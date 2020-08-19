@@ -45,13 +45,60 @@ namespace MDispatch.View.Inspection
         [Obsolete]
         private void AddBlocInspectionPhoto(VehiclwInformation vehiclwInformation)
         {
-            if (vehiclwInformation.PhotoInspections != null && vehiclwInformation.PhotoInspections.FirstOrDefault(p => p.CurrentStatusPhoto == "PikedUp") != null)
+            if (vehiclwInformation.PhotoInspections != null && vehiclwInformation.PhotoInspections.Count != 0)
             {
-                foreach (var item in vehiclwInformation.PhotoInspections)
+                FlexLayout flexLayout = new FlexLayout()
                 {
-                    if (item.CurrentStatusPhoto == "PikedUp")
+                    Wrap = FlexWrap.Wrap,
+                };
+                blockPhotoInspection.Children.Add(new Label()
+                {
+                    Text = $"{vehiclwInformation.Year} {vehiclwInformation.Make} {vehiclwInformation.Model} {vehiclwInformation.Type}",
+                    FontSize = 18,
+                    Margin = new Thickness(5, 5, 0, 0),
+                });
+                if (vehiclwInformation.PhotoInspections.FirstOrDefault(p => p.CurrentStatusPhoto == "PikedUp") != null)
+                {
+                    blockPhotoInspection.Children.Add(new Label()
                     {
-                        foreach (var photo in item.Photos)
+                        Text = "Photo inspection Picked Up",
+                        Margin = new Thickness(10, 5, 0, 0),
+                        FontSize = 15
+                    });
+                    foreach (var photoInspection in vehiclwInformation.PhotoInspections.Where(p => p.CurrentStatusPhoto == "PikedUp"))
+                    {
+                        foreach (var photo in photoInspection.Photos)
+                        {
+                            Image image = new Image()
+                            {
+                                Source = ImageSource.FromStream(() => new MemoryStream(ResizeImage(photo.Base64))),
+                                HeightRequest = 70,
+                                WidthRequest = 70,
+                                Margin = new Thickness(6, 0, 0, 0)
+                            };
+                            //image.GestureRecognizers.Add(new TapGestureRecognizer(VievFull));
+                            flexLayout.Children.Add(image);
+                        }
+                        blockPhotoInspection.Children.Add(flexLayout);
+                    }
+                }
+                //blockPhotoInspection.Children.Add(new BoxView()
+                //{
+                //    Color = Color.BlueViolet,
+                //    HeightRequest = 1,
+                //    Margin = new Thickness(5, 0, 5, 0)
+                //});
+                if (vehiclwInformation.PhotoInspections.FirstOrDefault(p => p.CurrentStatusPhoto == "Delivery") != null)
+                {
+                    blockPhotoInspection.Children.Add(new Label()
+                    {
+                        Text = "Photo inspection Delivery",
+                        Margin = new Thickness(10, 5, 0, 0),
+                        FontSize = 15
+                    });
+                    foreach (var photoInspection in vehiclwInformation.PhotoInspections.Where(p => p.CurrentStatusPhoto == "Delivery"))
+                    {
+                        foreach (var photo in photoInspection.Photos)
                         {
                             Image image = new Image()
                             {
@@ -61,17 +108,16 @@ namespace MDispatch.View.Inspection
                                 Margin = 3
                             };
                             //image.GestureRecognizers.Add(new TapGestureRecognizer(VievFull));
-                            blockPhotoInspection.Children.Add(image);
+                            flexLayout.Children.Add(image);
                         }
+                        blockPhotoInspection.Children.Add(flexLayout);
                     }
                 }
                 blockPhotoInspection.IsVisible = true;
-                textPhotoInspection.IsVisible = true;
             }
             else
             {
                 blockPhotoInspection.IsVisible = false;
-                textPhotoInspection.IsVisible = false;
             }
         }
 
@@ -226,7 +272,7 @@ namespace MDispatch.View.Inspection
                             {
                                 HorizontalTextAlignment = TextAlignment.Center,
                                 TextColor = Color.Blue,
-                                Text = $"{Config.BaseReqvesteUrl}/Photo/BOL/{VehiclwInformation.Id}",
+                                Text = $"{Config.BaseReqvesteUrl}Photo/BOL/{VehiclwInformation.Id}",
                                 FontSize = 16
                             }
                         }
