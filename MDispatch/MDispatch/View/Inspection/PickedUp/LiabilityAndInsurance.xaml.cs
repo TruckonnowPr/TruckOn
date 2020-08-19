@@ -182,12 +182,12 @@ namespace MDispatch.View.Inspection.PickedUp
                         }
                     });
 
-                    VechInfoSt3.Children.Add(new Image()
+                    VechInfoSt.Children.Add(new Image()
                     {
                         Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(VehiclwInformation.Scan.Base64)))
                     });
 
-                    VechInfoSt1.Children.Add(new StackLayout()
+                    VechInfoSt.Children.Add(new StackLayout()
                     {
                         Orientation = StackOrientation.Horizontal,
                         Children =
@@ -245,7 +245,7 @@ namespace MDispatch.View.Inspection.PickedUp
                         }
                     };
                     flexLayout.GestureRecognizers.Add(new TapGestureRecognizer(flexLayout_Clicked));
-                    VechInfoSt1.Children.Add(flexLayout);
+                    VechInfoSt.Children.Add(flexLayout);
                 }
             }
             liabilityAndInsuranceMV.StataLoadShip = 0;

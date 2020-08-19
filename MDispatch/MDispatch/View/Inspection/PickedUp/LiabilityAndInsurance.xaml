@@ -61,12 +61,6 @@
                                     <StackLayout x:Name="VechInfoSt">
 
                                     </StackLayout>
-                                    <StackLayout x:Name="VechInfoSt3">
-
-                                    </StackLayout>
-                                    <StackLayout x:Name="VechInfoSt1">
-
-                                    </StackLayout>
                                     <BoxView HeightRequest="1" BackgroundColor="Silver"/>
                                 </StackLayout>
                             </StackLayout>

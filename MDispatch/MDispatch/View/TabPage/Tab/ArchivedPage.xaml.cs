@@ -26,7 +26,6 @@ namespace MDispatch.View.TabPage.Tab
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-
             StackLayout stackLayout = ((StackLayout)sender).FindByName<StackLayout>("st");
 
             if (SelectStackLayout != null)
