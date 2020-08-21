@@ -64,10 +64,9 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                <Label IsVisible="False" x:Name="textPhotoInspection" Text="Photo inspection Picked Up" FontSize="18"  />
-                <FlexLayout IsVisible="False" x:Name="blockPhotoInspection" Wrap="Wrap" Padding="3">
+                <StackLayout IsVisible="False" x:Name="blockPhotoInspection" Padding="3">
 
-                </FlexLayout>
+                </StackLayout>
                 <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock14">
                     <StackLayout>
                         <Label Text="Send BOL on Email" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
