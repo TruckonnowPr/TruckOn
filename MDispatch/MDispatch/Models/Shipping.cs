@@ -70,7 +70,12 @@ namespace MDispatch.Models
 
         /////////////////////////DISPATCH INSTRUCTIONS
 
-        public string Titl1DI { get; set; }
+        private string titl1DI = "";
+        public string Titl1DI
+        {
+            get { return titl1DI; }
+            set { titl1DI = value == null || value == "" ? "Not instructions" : value; }
+        }
         public List<VehiclwInformation> VehiclwInformations { get; set; }
 
         ////////////////////////////////////////////////
