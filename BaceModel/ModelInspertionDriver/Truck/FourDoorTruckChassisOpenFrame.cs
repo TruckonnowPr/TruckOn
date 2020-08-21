@@ -18,9 +18,9 @@ namespace BaceModel.ModelInspertionDriver.Truck
             NamePatern = new List<string>()
             {
                 "Truck windshield",
-                "Right front headlight of a truck",
+                "The driver's side front headlight of a truck",
                 "Truck engine radiator",
-                "Left front headlight of a truck",
+                "The passenger side front headlight of a truck",
                 "The front of the truck on the passenger side",
                 "Front wheel of the truck on the passenger side",
                 "Front wheel of the truck on the passenger side (Tread)",
