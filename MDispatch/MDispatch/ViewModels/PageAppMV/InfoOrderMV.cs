@@ -21,6 +21,7 @@ using MDispatch.View.GlobalDialogView;
 using MDispatch.Service.Net;
 using MDispatch.View;
 using MDispatch.Service.Helpers;
+using System;
 
 namespace MDispatch.ViewModels.PageAppMV
 {
@@ -73,10 +74,6 @@ namespace MDispatch.ViewModels.PageAppMV
             set => SetProperty(ref count, value);
         }
 
-        private List<VehiclwInformation> GetVehiclwInformations()
-        {
-            return Shipping.VehiclwInformations;
-        }
         private Shipping GetShipings()
         {
             return Shipping;
@@ -108,6 +105,11 @@ namespace MDispatch.ViewModels.PageAppMV
         {
             get => isInspection;
             set => SetProperty(ref isInspection, value);
+        }
+
+        private List<VehiclwInformation> GetVehiclwInformations()
+        {
+            return Shipping.VehiclwInformations;
         }
 
         private async void ToInstruction()
@@ -165,18 +167,18 @@ namespace MDispatch.ViewModels.PageAppMV
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
             if (StatusInspection == "Assigned")
             {
-                StatusInspectionView = "Vehicle inspection: Piked Up";
                 IsInspection = true;
+                StatusInspectionView = "Vehicle inspection: Piked Up";
             }
             else if (StatusInspection == "Picked up")
             {
-                StatusInspectionView = "Vehicle inspection: Delivery";
                 IsInspection = true;
+                StatusInspectionView = "Vehicle inspection: Delivery";
             }
             else
             {
-                StatusInspection = "Delivered";
                 IsInspection = false;
+                StatusInspection = "Delivered";
             }
             await PopupNavigation.PushAsync(new LoadPage());
             await Task.Run(() => Utils.CheckNet());
@@ -200,6 +202,11 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 3)
                 {
                     Shipping = shipping;
+                    //if (Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
+                    //{
+                    //    IsInspection = true;
+                    //    StatusInspectionView = "There are no vehicles in this order";
+                    //}
                 }
                 else if (state == 4)
                 {
@@ -213,6 +220,11 @@ namespace MDispatch.ViewModels.PageAppMV
         [System.Obsolete]
         public async void ToStartInspection()
         {
+            if(Shipping == null || Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
+            {
+                await PopupNavigation.PushAsync(new PopUp("It is not possible to pass the inspection", "There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle."), true);
+                return;
+            }
             Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
             VehiclwInformation vehiclwInformation1 = Shipping.VehiclwInformations[0];
             foreach (var vehiclwInformation in Shipping.VehiclwInformations)
@@ -313,6 +325,11 @@ namespace MDispatch.ViewModels.PageAppMV
         [System.Obsolete]
         public async void ToStartInspectionDelyvery()
         {
+            if (Shipping == null || Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
+            {
+                await PopupNavigation.PushAsync(new PopUp("It is not possible to pass the inspection", "There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle."), true);
+                return;
+            }
             Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
             foreach (var vehiclwInformation in Shipping.VehiclwInformations)
             {
