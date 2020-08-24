@@ -202,11 +202,11 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 3)
                 {
                     Shipping = shipping;
-                    //if (Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
-                    //{
-                    //    IsInspection = true;
-                    //    StatusInspectionView = "There are no vehicles in this order";
-                    //}
+                    if (Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
+                    {
+                        IsInspection = true;
+                        StatusInspectionView = "There are no vehicles in this order";
+                    }
                 }
                 else if (state == 4)
                 {

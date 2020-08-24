@@ -16,6 +16,10 @@ namespace MDispatch.Service
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
             string description = null;
             int state = 0;
+            if(PopupNavigation.PopupStack.Count != 0)
+            {
+                await PopupNavigation.PopAllAsync();
+            }
             await Task.Run(() => Utils.CheckNet());
             if (App.isNetwork)
             {

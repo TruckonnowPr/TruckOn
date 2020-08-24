@@ -1,7 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using FormsControls.Base;
+using MDispatch.NewElement.AuntificationID;
 using MDispatch.Service.GeloctionGPS;
 using MDispatch.Service.Tasks;
+using MDispatch.StoreNotify;
 using MDispatch.View.A_R;
 using MDispatch.View.TabPage;
 using Plugin.Settings;
@@ -34,43 +37,18 @@ namespace MDispatch
 
         }
 
-        //private async void SelecterPage(bool isNotify)
-        //{
-        //    if(isNotify)
-        //    {
-        //        TabPage tabPage = new TabPage(new Service.ManagerDispatchMob());
-        //        NavigationPage navigation = (NavigationPage)tabPage.Children.ToList()[0];
-        //        ActivePage activePage = (ActivePage)navigation.Navigation.NavigationStack[0];
-        //        MainPage = new NavigationPage(tabPage);
-        //       // await MainPage.Navigation.PushAsync(new FullPhotoTruck(activePage.activeMV.managerDispatchMob, activePage.activeMV.UnTimeOfInspection.IdDriver, 1, activePage.activeMV.initDasbordDelegate));
-        //    }
-        //    else
-        //    {
-        //        string token = CrossSettings.Current.GetValueOrDefault("Token", "");
-        //        if (token == "")
-        //        {
-        //            isAvtorization = false;
-        //            MainPage = new NavigationPage(new Avtorization());
-        //        }
-        //        else
-        //        {
-        //            isAvtorization = true;
-        //            MainPage = new NavigationPage(new TabPage(new Service.ManagerDispatchMob()));
-        //        }
-        //    }
-        //}
-
         [Obsolete]
         protected override async void OnStart()
         {
-            
+
             if (isAvtorization)
-            {   
+            {
+                AuthenticationID.AvtorizatiionID();
                 TaskManager.isWorkTask = true;
-                //Task.Run(async () =>
-                //{
-                //    DependencyService.Get<IStore>().OnTokenRefresh();
-                //});
+                Task.Run(() =>
+                {
+                    DependencyService.Get<IStore>().OnTokenRefresh();
+                });
                 isStart = true;
                 MDispatch.Service.TimeSync.Untils.Start();
                 await Utils.StartListening();
@@ -92,6 +70,10 @@ namespace MDispatch
         {
             if (isAvtorization)
             {
+                if (DependencyService.Get<IAuntificationID>().IsCanceleUI)
+                {
+                    AuthenticationID.AvtorizatiionID();
+                }
                 isStart = true;
                 MDispatch.Service.TimeSync.Untils.Start();
                 await Utils.StartListening();

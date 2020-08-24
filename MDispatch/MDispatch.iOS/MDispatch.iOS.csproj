@@ -221,6 +221,7 @@
     <Compile Include="NewRender\RebderVideoCamera\VideoRecorderRenderer.cs" />
     <Compile Include="NewRender\RebderVideoCamera\UIPaintCodeButton.cs" />
     <Compile Include="StoreService1\FirebaseIIDService.cs" />
+    <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -1506,5 +1507,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\EnclosedTrailerTwoVehicles1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewRender\AuntificationID\" />
   </ItemGroup>
 </Project>

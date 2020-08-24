@@ -116,5 +116,6 @@
     <Folder Include="Service\TimeSync\" />
     <Folder Include="Service\Helpers\" />
     <Folder Include="Service\RequestQueue\" />
+    <Folder Include="NewElement\AuntificationID\" />
   </ItemGroup>
 </Project>
