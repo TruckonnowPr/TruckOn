@@ -89,6 +89,13 @@ namespace WebDispacher.Dao
             } 
         }
 
+        internal List<Dispatcher> GetDispatchersDB(int idCompany)
+        {
+            return context.Dispatchers
+                .Where(d => d.IdCompany == idCompany)
+                .ToList();
+        }
+
         internal ProfileSetting GetIdProfile(int idTr, string typeTransport)
         {
             return context.ProfileSettings
@@ -143,6 +150,12 @@ namespace WebDispacher.Dao
             context.ProfileSettings.Add(profileSetting);
             context.SaveChanges();
             return profileSetting.Id;
+        }
+
+        internal void CreateDispatchDB(Dispatcher dispatcher)
+        {
+            context.Dispatchers.Add(dispatcher);
+            context.SaveChanges();
         }
 
         internal int GetComapnyIdByKeyUser(int key)
@@ -200,6 +213,29 @@ namespace WebDispacher.Dao
                 layouts.IsUsed = true;
                 context.SaveChanges();
             }
+        }
+
+        internal void EditDispatchById(int idDispatch, string typeDispatcher, string login, string password)
+        {
+            Dispatcher dispatcher = context.Dispatchers.FirstOrDefault(d => d.Id == idDispatch);
+            if(dispatcher != null)
+            {
+                dispatcher.Login = login;
+                dispatcher.Password = password;
+                dispatcher.Type = typeDispatcher;
+                context.SaveChanges();
+            }
+        }
+
+        internal Dispatcher GetDispatcherById(int idDispatch)
+        {
+            return context.Dispatchers.FirstOrDefault(d => d.Id == idDispatch);
+        }
+
+        internal void RemoveByIdDispatcher(int idDispatch)
+        {
+            context.Dispatchers.Remove(context.Dispatchers.First(d => d.Id == idDispatch));
+            context.SaveChanges();
         }
 
         internal void SaveSubscribeST(Subscribe_ST subscribe_ST)

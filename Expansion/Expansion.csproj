@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tools\central.js" />
-    <Content Include="Tools\Icon\logo.png" />
     <Content Include="Tools\Init.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tools\Icon\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

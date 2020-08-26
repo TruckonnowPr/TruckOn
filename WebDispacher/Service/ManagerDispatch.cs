@@ -15,6 +15,7 @@ using WebDispacher.Dao;
 using WebDispacher.Mosels;
 using WebDispacher.Notify;
 using WebDispacher.Service.EmailSmtp;
+using WebDispacher.Service.TransportationManager;
 
 namespace WebDispacher.Service
 {
@@ -42,6 +43,11 @@ namespace WebDispacher.Service
         public void DeletedOrder(string id)
         {
             _sqlEntityFramworke.RecurentOnDeleted(id);
+        }
+
+        internal List<Dispatcher> GetDispatchers(int idCompany)
+        {
+            return _sqlEntityFramworke.GetDispatchersDB(idCompany);
         }
 
         public void ArchvedOrder(string id)
@@ -125,6 +131,18 @@ namespace WebDispacher.Service
             return profileSettings;
         }
 
+        internal void CreateDispatch(string typeDispatcher, string login, string password, int idCompany)
+        {
+            Dispatcher dispatcher = new Dispatcher()
+            {
+                Login = login,
+                Password = password,
+                Type = typeDispatcher,
+                IdCompany = idCompany
+            };
+            _sqlEntityFramworke.CreateDispatchDB(dispatcher);
+        }
+
         internal ProfileSettingsDTO GetSelectSetingTruck(string idCompany, int idProfile, int idTr, string typeTransport)
         {
             ProfileSettingsDTO profileSetting = null;
@@ -171,6 +189,21 @@ namespace WebDispacher.Service
             profileSetting.TransportVehicle.Layouts = profileSetting.TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             
             return profileSetting;
+        }
+
+        internal void EditDispatch(int idDispatch, string typeDispatcher, string login, string password)
+        {
+            _sqlEntityFramworke.EditDispatchById(idDispatch, typeDispatcher, login, password);
+        }
+
+        internal Dispatcher GetDispatcher(int idDispatch)
+        {
+            return _sqlEntityFramworke.GetDispatcherById(idDispatch);
+        }
+
+        internal void RemoveDispatch(int idDispatch)
+        {
+            _sqlEntityFramworke.RemoveByIdDispatcher(idDispatch);
         }
 
         internal ResponseStripe AddPaymentCard(string idCompany, string number, string name, string expiry, string cvc)
@@ -446,11 +479,21 @@ namespace WebDispacher.Service
             return validCompany;
         }
 
-        internal async Task AddNewOrder(string urlPage)
+        internal async void AddNewOrder(string urlPage)
         {
-            GetDataCentralDispatch getDataCentralDispatch = new GetDataCentralDispatch();
-            DaoModels.DAO.Models.Shipping shipping = await getDataCentralDispatch.GetShipping(urlPage);
+            ITransportationDispatch transportationDispatch = GetTransportationDispatch("Central Dispatch");
+            DaoModels.DAO.Models.Shipping shipping = await transportationDispatch.GetShipping(urlPage);
             _sqlEntityFramworke.AddOrder(shipping);
+        }
+
+        private ITransportationDispatch GetTransportationDispatch(string typeDispatch)
+        {
+            ITransportationDispatch transportationDispatch = null;
+            switch (typeDispatch)
+            {
+                case "Central Dispatch": transportationDispatch = new GetDataCentralDispatch(); break;
+            }
+            return transportationDispatch;
         }
 
         public List<Truck> GetTrucks(string idCompany)

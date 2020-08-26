@@ -10,7 +10,6 @@
       ],
       "js": [ "central.js", "Init.js" ],
       "run_at": "document_end"
-
     }
   ],
   "permissions": [

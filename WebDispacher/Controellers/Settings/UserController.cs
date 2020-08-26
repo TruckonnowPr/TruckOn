@@ -10,7 +10,6 @@ namespace WebDispacher.Controellers.Settings
         ManagerDispatch managerDispatch = new ManagerDispatch();
 
         [Route("Users")]
-        //[ResponseCache(Location = ResponseCacheLocation.None, Duration = 300)]
         public IActionResult GetUsers()
         {
             IActionResult actionResult = null;

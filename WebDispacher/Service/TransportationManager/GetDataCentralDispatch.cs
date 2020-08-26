@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using xNet;
 //using xNet;
 
-namespace WebDispacher.Service
+namespace WebDispacher.Service.TransportationManager
 {
-    public class GetDataCentralDispatch
+    public class GetDataCentralDispatch : ITransportationDispatch
     {
         private List<string> proxyCloction = null;
         private List<string> pages = null;
