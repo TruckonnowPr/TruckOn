@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DaoModels.DAO.DTO;
 using DaoModels.DAO.Models;
+using MDispatch.View.GlobalDialogView;
 using Microsoft.AspNetCore.Mvc;
 using WebDispacher.Service;
 
@@ -16,7 +17,7 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("New")]
-        public IActionResult New(string linck)
+        public async Task<IActionResult> New(string linck)
         {
             string urlPage = linck.Remove(0, linck.IndexOf("'") + 1);
             urlPage = urlPage.Remove(urlPage.IndexOf("'"));
@@ -24,8 +25,18 @@ namespace WebDispacher.Controellers
             IActionResult actionResult = null;
             try
             {
-                managerDispatch.AddNewOrder(urlPage);
-                actionResult = Ok();
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                Shipping shipping = await managerDispatch.AddNewOrder(urlPage);
+                if(shipping != null)
+                {
+                    actionResult = Ok();
+                }
+                else
+                {
+                    actionResult = NoContent();
+                }
             }
             catch (Exception)
             {

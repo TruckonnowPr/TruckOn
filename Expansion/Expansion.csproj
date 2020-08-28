@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tools\central.js" />
+    <Content Include="Tools\popup.html" />
     <Content Include="Tools\Init.js" />
   </ItemGroup>
   <ItemGroup>

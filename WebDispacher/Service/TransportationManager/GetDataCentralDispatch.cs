@@ -13,25 +13,20 @@ namespace WebDispacher.Service.TransportationManager
     public class GetDataCentralDispatch : ITransportationDispatch
     {
         private List<string> proxyCloction = null;
-        private List<string> pages = null;
         public string Tokene { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
         private HttpRequest httpRequest = null;
         private CookieDictionary cooks;
         HtmlParser htmlParser = new HtmlParser();
 
+
         public GetDataCentralDispatch()
         {
-            pages = new List<string>()
-            {
-                "Dispatched",
-                "Picked-Up",
-                "Delivered",
-                "Cancelled",
-                "Archived"
-            };
             proxyCloction = new List<string>()
             {
-                "54.37.131.252:3128",
+                "95.174.67.50:18080",
+                //"159.8.114.37:80",
             };
         }
 
@@ -54,8 +49,9 @@ namespace WebDispacher.Service.TransportationManager
             }
         }
 
-        private void Avthorization(bool isProxt)
+        private string Avthorization(bool isProxt)
         {
+            string response = "";
             try
             {
                 Init(isProxt);
@@ -69,19 +65,18 @@ namespace WebDispacher.Service.TransportationManager
                 cooks = httpRequest.Cookies;
                 if (res.Cookies.Count >= 5)
                 {
+                    response = "Yes";
                 }
                 else
                 {
+                    response = "No";
                 }
             }
-            catch (HttpException e)
+            catch(Exception e)
             {
-                string ipProxy = httpRequest.Proxy != null ? httpRequest.Proxy.Host : "CurrentIp";
-                Avthorization(true);
+                response = "No";
             }
-            catch
-            {
-            }
+            return response;
         }
 
         private void GetToken()
@@ -109,16 +104,14 @@ namespace WebDispacher.Service.TransportationManager
 
         public async Task<Shipping> GetShipping(string urlPage)
         {
-            if (new Random().Next(1, 5) == 3)
+            Shipping shipping = null;
+            string status = Avthorization(true);
+            if(status == "Yes")
             {
-                Avthorization(false);
+                string sourseUrl = httpRequest.Get(urlPage).ToString();
+                shipping = await ParseDataInUrl(sourseUrl, sourseUrl);
             }
-            else
-            {
-                Avthorization(true);
-            }
-            string sourseUrl = httpRequest.Get(urlPage).ToString();
-            return await ParseDataInUrl(sourseUrl, sourseUrl);
+            return shipping;
         }
 
         private async Task<Shipping> ParseDataInUrl(string sourse, string sourseUrl2)

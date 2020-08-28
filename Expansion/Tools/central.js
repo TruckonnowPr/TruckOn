@@ -26,9 +26,10 @@ function AddButon() {
 function GetOreder1(event) {
     let link = location.href.replace("https://www.centraldispatch.com", "");
     let body = "linck=" + "('" + link + "')";
-    fetch('https://truckonnow.com/New', {
+    fetch('https://172.20.10.4/New', {
         method: 'post',
         body: body,
+        //mode: 'no-cors',
         headers: {
             'Content-type': 'application/x-www-form-urlencoded',
             'Access-Control-Allow-Origin': '*',

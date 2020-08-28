@@ -19,10 +19,15 @@
     "http://212.224.113.5/",
     "http://192.168.0.100/",
     "https://192.168.0.100/",
+    "http://172.20.10.4/",
+    "https://172.20.10.4/",
     "http://truckonnow.com/",
     "https://truckonnow.com/",
     "storage",
     "cookies",
     "notifications"
-  ]
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
 }

@@ -479,11 +479,15 @@ namespace WebDispacher.Service
             return validCompany;
         }
 
-        internal async void AddNewOrder(string urlPage)
+        internal async Task<DaoModels.DAO.Models.Shipping> AddNewOrder(string urlPage)
         {
             ITransportationDispatch transportationDispatch = GetTransportationDispatch("Central Dispatch");
             DaoModels.DAO.Models.Shipping shipping = await transportationDispatch.GetShipping(urlPage);
-            _sqlEntityFramworke.AddOrder(shipping);
+            if (shipping != null)
+            {
+                _sqlEntityFramworke.AddOrder(shipping);
+            }
+            return shipping;
         }
 
         private ITransportationDispatch GetTransportationDispatch(string typeDispatch)
