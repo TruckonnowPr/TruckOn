@@ -43,6 +43,13 @@ namespace WebDispacher.Dao
             { }
         }
 
+        internal Dispatcher GetDispatcherByKeyUsers(string key)
+        {
+            return context.Dispatchers
+                .Include(d => d.Users)
+                .FirstOrDefault(d => d.Users != null && d.Users.FirstOrDefault(u => u.KeyAuthorized == key) != null);
+        }
+
         private async void InitUserOne()
         {
             try
@@ -102,6 +109,25 @@ namespace WebDispacher.Dao
                 .Where(p => p.IdTr == idTr && p.TypeTransportVehikle == typeTransport)
                 .Include(p => p.TransportVehicle.Layouts)
                 .FirstOrDefault();
+        }
+
+        internal Users GetUserByEmailAndPasswrodDB(string email, string password)
+        {
+            return context.User.FirstOrDefault(u => u.Login == email && u.Password == password);
+        }
+
+        internal void AddUserToDispatchDB(Users users)
+        {
+            Dispatcher dispatcher = context.Dispatchers.FirstOrDefault(d => d.IdCompany == users.CompanyId);
+            if(dispatcher != null)
+            {
+                if(dispatcher.Users == null)
+                {
+                    dispatcher.Users = new List<Users>();
+                }
+                dispatcher.Users.Add(users);
+                context.SaveChanges();
+            }
         }
 
         internal List<ProfileSetting> GetSetingsDb(string idCompany, TypeTransportVehikle typeTransportVehikle, int idTr)

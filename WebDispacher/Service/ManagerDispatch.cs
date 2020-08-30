@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using WebDispacher.Dao;
 using WebDispacher.Mosels;
@@ -29,7 +31,18 @@ namespace WebDispacher.Service
             _sqlEntityFramworke = new SqlCommadWebDispatch();
             stripeApi = new StripeApi();
         }
-        
+
+        internal bool CheckKeyDispatcher(string key)
+        {
+            bool isCheck = false;
+            Dispatcher dispatcher = _sqlEntityFramworke.GetDispatcherByKeyUsers(key);
+            if (dispatcher != null)
+            {
+                isCheck = true;
+            }
+            return isCheck;
+        }
+
         public async Task<List<Driver>> GetDrivers(string idCompany)
         {
             return await _sqlEntityFramworke.GetDriversInDb(idCompany);
@@ -98,6 +111,21 @@ namespace WebDispacher.Service
                 }).ToList();
         }
 
+        internal Users GetUserByEmailAndPasswrod(string email, string password)
+        {
+            Users users = _sqlEntityFramworke.GetUserByEmailAndPasswrodDB(email, password);
+            if(users != null)
+            {
+                AddUserToDispatch(users);
+            }
+            return users;
+        }
+
+        internal void AddUserToDispatch(Users users)
+        {
+            _sqlEntityFramworke.AddUserToDispatchDB(users);
+        }
+
         internal List<ProfileSettingsDTO> GetSetingsTruck(string idCompany, int idProfile, int idTr, string typeTransport)
         {
             ITr tr = GetTr(idTr, typeTransport);
@@ -138,9 +166,28 @@ namespace WebDispacher.Service
                 Login = login,
                 Password = password,
                 Type = typeDispatcher,
-                IdCompany = idCompany
+                IdCompany = idCompany,
             };
             _sqlEntityFramworke.CreateDispatchDB(dispatcher);
+
+           
+        }
+
+        private string CreateTokenHashSha256(string token)
+        {
+            string tokenHashSha256 = null;
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(token));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                tokenHashSha256 = builder.ToString();
+            }
+            return tokenHashSha256;
         }
 
         internal ProfileSettingsDTO GetSelectSetingTruck(string idCompany, int idProfile, int idTr, string typeTransport)

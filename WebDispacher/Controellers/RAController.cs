@@ -66,6 +66,41 @@ namespace WebDispacher.Controellers
         }
 
         [HttpGet]
+        [Route("Avthorization/Exst")]
+        public string AvthorizationExst(string Email, string Password)
+        {
+            string actionResult = null;
+            ViewData["TypeNavBar"] = "AllUsers";
+            try
+            {
+                if (Email == null || Password == null)
+                    throw new Exception();
+                if (managerDispatch.Avthorization(Email, Password))
+                {
+                    Users users = managerDispatch.GetUserByEmailAndPasswrod(Email, Password);
+                    if(users != null && users.KeyAuthorized != null && users.KeyAuthorized != "")
+                    {
+                        actionResult = users.KeyAuthorized;
+                    }
+                    else
+                    {
+                        actionResult = "";
+                    }
+                }
+                else
+                {
+                    actionResult = "";
+                }
+
+            }
+            catch (Exception e)
+            {
+                actionResult = "";
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
         [Route("Recovery/Password")]
         [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult RecoveryPassword(string idDriver, string token)

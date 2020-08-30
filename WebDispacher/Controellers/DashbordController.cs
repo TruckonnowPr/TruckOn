@@ -17,32 +17,31 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("New")]
-        public async Task<IActionResult> New(string linck)
+        public async Task<string> New(string linck, string key)
         {
             string urlPage = linck.Remove(0, linck.IndexOf("'") + 1);
             urlPage = urlPage.Remove(urlPage.IndexOf("'"));
             urlPage = $"https://www.centraldispatch.com/{urlPage}";
-            IActionResult actionResult = null;
+            string actionResult = null;
             try
             {
-                string key = null;
-                string idCompany = null;
-                string companyName = null;
-                Shipping shipping = await managerDispatch.AddNewOrder(urlPage);
-                if(shipping != null)
+                if (managerDispatch.CheckKeyDispatcher(key))
                 {
-                    actionResult = Ok();
-                }
-                else
-                {
-                    actionResult = NoContent();
+                    Shipping shipping = await managerDispatch.AddNewOrder(urlPage);
+                    if (shipping != null)
+                    {
+                        actionResult = "Yes";
+                    }
+                    else
+                    {
+                        actionResult = "No";
+                    }
                 }
             }
             catch (Exception)
             {
-                actionResult = null;
+                actionResult = "No";
             }
-
             return actionResult;
         }
 

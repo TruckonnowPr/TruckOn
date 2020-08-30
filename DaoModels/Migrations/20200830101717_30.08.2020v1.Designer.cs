@@ -4,14 +4,16 @@ using DaoModels.DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DaoModels.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200830101717_30.08.2020v1")]
+    partial class _30082020v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -361,6 +363,8 @@ namespace DaoModels.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("IdCompany");
+
+                    b.Property<string>("Key");
 
                     b.Property<string>("Login");
 
@@ -1066,8 +1070,6 @@ namespace DaoModels.Migrations
 
                     b.Property<string>("Date");
 
-                    b.Property<int?>("DispatcherId");
-
                     b.Property<string>("KeyAuthorized");
 
                     b.Property<string>("Login");
@@ -1075,8 +1077,6 @@ namespace DaoModels.Migrations
                     b.Property<string>("Password");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DispatcherId");
 
                     b.ToTable("User");
                 });
@@ -1286,13 +1286,6 @@ namespace DaoModels.Migrations
                     b.HasOne("DaoModels.DAO.Models.LogTask")
                         .WithMany("TaskLoads")
                         .HasForeignKey("LogTaskId");
-                });
-
-            modelBuilder.Entity("DaoModels.DAO.Models.Users", b =>
-                {
-                    b.HasOne("DaoModels.DAO.Models.Dispatcher")
-                        .WithMany("Users")
-                        .HasForeignKey("DispatcherId");
                 });
 
             modelBuilder.Entity("DaoModels.DAO.Models.VehiclwInformation", b =>

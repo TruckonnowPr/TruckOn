@@ -48,6 +48,7 @@
     <Content Include="Tools\central.js" />
     <Content Include="Tools\popup.html" />
     <Content Include="Tools\Init.js" />
+    <Content Include="Tools\popup.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tools\Icon\" />
