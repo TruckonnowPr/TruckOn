@@ -6,9 +6,9 @@
              Title="Info"
              BackgroundColor="White"
              x:Name="ctp">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <StackLayout x:Name="body">
         <ScrollView>
