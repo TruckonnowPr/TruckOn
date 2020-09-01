@@ -126,6 +126,40 @@ namespace WebDispacher.Controellers
             return actionResult;
         }
 
+        [HttpGet]
+        [Route(".well-known/acme-challenge/{file}")]
+        public string GetWellKnownFile(string file)
+        {
+            string actionResult = null;
+            if (System.IO.File.Exists($"../Root/{file}"))
+            {
+                var imageFileStream = System.IO.File.OpenRead($"../Root/{file}");
+                actionResult = System.IO.File.ReadAllText($"../Root/{file}");
+            }
+            else
+            {
+                actionResult = "No such file exists";
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("Root/{file}")]
+        public string GetRootFile(string file)
+        {
+            string actionResult = null;
+            if (System.IO.File.Exists($"../Root/{file}"))
+            {
+                var imageFileStream = System.IO.File.OpenRead($"../Root/{file}");
+                actionResult = System.IO.File.ReadAllText($"../Root/{file}");
+            }
+            else
+            {
+                actionResult = "No such file exists";
+            }
+            return actionResult;
+        }
+
         private List<Photo> SortPhotoInspections(List<Photo> photos)
         {
             List<Photo> photos1 = new List<Photo>();
