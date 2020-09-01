@@ -130,11 +130,20 @@ namespace WebDispacher.Controellers
         [Route(".well-known/acme-challenge/{file}")]
         public string GetWellKnownFile(string file)
         {
-            string actionResult = null;
+            string actionResult = "";
             if (System.IO.File.Exists($"../Root/{file}"))
             {
                 var imageFileStream = System.IO.File.OpenRead($"../Root/{file}");
                 actionResult = System.IO.File.ReadAllText($"../Root/{file}");
+            }
+            else if (System.IO.Directory.Exists($"../Root/{file}"))
+            {
+                List<string> files = System.IO.Directory.GetFiles($"../Root/{file}").ToList();
+                files.AddRange(System.IO.Directory.GetDirectories($"../Root/{file}").ToList());
+                foreach (string file1 in files)
+                {
+                    actionResult += file1.Remove(0, file1.LastIndexOf(@"\") + 1) + "\n";
+                }
             }
             else
             {
@@ -144,18 +153,55 @@ namespace WebDispacher.Controellers
         }
 
         [HttpGet]
+        [Route(".well-known/acme-challenge")]
+        public string GetWellKnownOnlyFile()
+        {
+            string actionResult = "";
+            List<string> files = System.IO.Directory.GetFiles(@"..\Root").ToList();
+            files.AddRange(System.IO.Directory.GetDirectories(@"..\Root").ToList());
+            foreach (string file1 in files)
+            {
+                actionResult += file1.Remove(0, file1.LastIndexOf(@"\")+1) + "\n";
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
         [Route("Root/{file}")]
         public string GetRootFile(string file)
         {
-            string actionResult = null;
+            string actionResult = "";
             if (System.IO.File.Exists($"../Root/{file}"))
             {
                 var imageFileStream = System.IO.File.OpenRead($"../Root/{file}");
                 actionResult = System.IO.File.ReadAllText($"../Root/{file}");
             }
+            else if(System.IO.Directory.Exists($"../Root/{file}"))
+            {
+                List<string> files = System.IO.Directory.GetFiles($"../Root/{file}").ToList();
+                files.AddRange(System.IO.Directory.GetDirectories($"../Root/{file}").ToList());
+                foreach(string file1 in files)
+                {
+                    actionResult += file1.Remove(0, file1.LastIndexOf(@"\") + 1) + "\n";
+                }
+            }
             else
             {
                 actionResult = "No such file exists";
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("Root")]
+        public string GetRootOnlyFile()
+        {
+            string actionResult = "";
+            List<string> files = System.IO.Directory.GetFiles(@"..\Root").ToList();
+            files.AddRange(System.IO.Directory.GetDirectories(@"..\Root").ToList());
+            foreach (string file1 in files)
+            {
+                actionResult += file1.Remove(0, file1.LastIndexOf(@"\") + 1) + "\n";
             }
             return actionResult;
         }
