@@ -5,7 +5,7 @@
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              Title="Question inspection">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked_2"/>
+        <!--<ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked_2"/>-->
         <ToolbarItem Text="Next" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

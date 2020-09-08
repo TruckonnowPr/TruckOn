@@ -6,9 +6,9 @@
              mc:Ignorable="d"
              Title="Hello customer"
              x:Class="MDispatch.View.Inspection.PickedUp.ClientStart">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <StackLayout x:Name="body">
             <Label Text="Thank you for using our company. Press the start button to continue!"
