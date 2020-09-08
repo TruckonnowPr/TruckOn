@@ -28,6 +28,13 @@
     "notifications"
   ],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+
+    "default_icon": {
+      "16": "Icon/icon16.png",
+      "24": "Icon/icon24.png",
+      "32": "Icon/icon32.png"
+    },
+    "default_title": "Truckonnow"
   }
 }
