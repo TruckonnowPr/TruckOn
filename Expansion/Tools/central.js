@@ -28,7 +28,7 @@ function GetOreder1(event) {
     let key = localStorage.getItem("key");
     if (key != undefined && key != "" && key != null) {
         let body = "linck=" + "('" + link + "')" + "&key=" + key;
-        fetch('https://172.20.10.4/New', {
+        fetch('https://truckonnow.com//New', {
             method: 'post',
             body: body,
             //mode: 'no-cors',
