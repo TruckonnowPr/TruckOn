@@ -45,8 +45,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -88,8 +88,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
-    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignProvision>Dist AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Artsiom Buniashyn (3K8963GCF8)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
@@ -484,6 +484,7 @@
     <BundleResource Include="Resources\Cruisemotorcycle13.png" />
     <BundleResource Include="Resources\Cruisemotorcycle14.png" />
     <BundleResource Include="Resources\Cruisemotorcycle15.png" />
+    <BundleResource Include="Resources\Icon-App-83.5x83.5%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pickedUpOrder1.png" />
