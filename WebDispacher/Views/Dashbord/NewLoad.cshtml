@@ -1,6 +1,14 @@
 ﻿<div class="body">
     <div style="display:flex;">
         <input class="btnCreateoOrder" type="button" value="Create Order" onClick='location.href="/Dashbord/Order/Creat"' />
+        <form method="post" action="" style="margin-left:50px;">
+            <input class="inpContentInspection" type="text" placeholder="Name" name="name" value="@ViewBag.Name" />
+            <input class="inpContentInspection" type="text" placeholder="Address" name="address" value="@ViewBag.Address" />
+            <input class="inpContentInspection" type="text" placeholder="Phone number" name="phone" value="@ViewBag.Phone" />
+            <input class="inpContentInspection" type="text" placeholder="Email - @@" name="email" value="@ViewBag.Email" />
+            <input class="inpContentInspection" type="text" placeholder="Price - $" name="price" value="@ViewBag.Price" />
+            <input class="btnCreateoOrder" type="submit" value="Search" />
+        </form>
     </div>
     <nav>
         <input class="btnSt activeBtn" type="button" value="New load" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';" />
@@ -109,19 +117,21 @@
         display: inline-block;
     }
 
-.pagination a {
-  color: #d97e2b;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: none;
-  margin: 0 4px;
-}
-.pagination a:hover:not(.active) {background-color: #ddd;}
+        .pagination a {
+            color: #d97e2b;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: none;
+            margin: 0 4px;
+        }
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
 
     .bodyBlock {
-        display:flex;
+        display: flex;
     }
 
     .blockData {
@@ -152,6 +162,19 @@
             transition: 0.3s;
             background-color: rgb(51, 51, 51);
         }
+
+
+
+    .inpContentInspection {
+        display: inline-block;
+        width: 150px;
+        padding: 5px 10px;
+        border: 1px solid;
+        border-radius: 7px;
+        border: 1px solid black;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 
         .btnId {
             color: rgba(45,45,45,0.88);

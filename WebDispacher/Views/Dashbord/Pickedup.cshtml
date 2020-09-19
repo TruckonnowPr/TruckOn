@@ -1,13 +1,23 @@
 ﻿<div class="body">
-    <nav >
-        <input class="btnSt" type="button" value="New load" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';"/>
-        <input class="btnSt" type="button" value="Assigned" onclick="window.location.href='@Url.Action("Assigned", "Dashbord")';"/>
-        <input class="btnSt activeBtn" type="button" value="Picked up" onclick="window.location.href='@Url.Action("Pickedup", "Dashbord")';"/>
-        <input class="btnSt" type="button" value="Delivered" onclick="window.location.href='@Url.Action("Delivered", "Dashbord")';"/>
-        <input class="btnSt" type="button" value="Billed" onclick="window.location.href='@Url.Action("Billed", "Dashbord")';"/>
-        <input class="btnSt" type="button" value="Paid" onclick="window.location.href='@Url.Action("Paid", "Dashbord")';"/>
-        <input class="btnSt" type="button" value="Archived" onclick="window.location.href='@Url.Action("Archived", "Dashbord")';"/>
-        <input class="btnSt" type="button" value="Deleted" onclick="window.location.href='@Url.Action("Deleted", "Dashbord")';"/>
+    <div style="display:flex;">
+        <form method="post" action="" style="margin-left:50px;">
+            <input class="inpContentInspection" type="text" placeholder="Name" name="name" value="@ViewBag.Name" />
+            <input class="inpContentInspection" type="text" placeholder="Address" name="address" value="@ViewBag.Address" />
+            <input class="inpContentInspection" type="text" placeholder="Phone number" name="phone" value="@ViewBag.Phone" />
+            <input class="inpContentInspection" type="text" placeholder="Email - @@" name="email" value="@ViewBag.Email" />
+            <input class="inpContentInspection" type="text" placeholder="Price - $" name="price" value="@ViewBag.Price" />
+            <input class="btnCreateoOrder" type="submit" value="Search" />
+        </form>
+    </div>
+    <nav>
+        <input class="btnSt" type="button" value="New load" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';" />
+        <input class="btnSt" type="button" value="Assigned" onclick="window.location.href='@Url.Action("Assigned", "Dashbord")';" />
+        <input class="btnSt activeBtn" type="button" value="Picked up" onclick="window.location.href='@Url.Action("Pickedup", "Dashbord")';" />
+        <input class="btnSt" type="button" value="Delivered" onclick="window.location.href='@Url.Action("Delivered", "Dashbord")';" />
+        <input class="btnSt" type="button" value="Billed" onclick="window.location.href='@Url.Action("Billed", "Dashbord")';" />
+        <input class="btnSt" type="button" value="Paid" onclick="window.location.href='@Url.Action("Paid", "Dashbord")';" />
+        <input class="btnSt" type="button" value="Archived" onclick="window.location.href='@Url.Action("Archived", "Dashbord")';" />
+        <input class="btnSt" type="button" value="Deleted" onclick="window.location.href='@Url.Action("Deleted", "Dashbord")';" />
     </nav>
     <div class="filling">
         @for (int i = 0; i < ViewBag.Orders.Count; i++)
@@ -139,6 +149,17 @@
             transition: 0.3s;
             background-color: rgb(51, 51, 51);
         }
+
+    .inpContentInspection {
+        display: inline-block;
+        width: 150px;
+        padding: 5px 10px;
+        border: 1px solid;
+        border-radius: 7px;
+        border: 1px solid black;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 
         .btnId {
             color: rgba(45,45,45,0.88);

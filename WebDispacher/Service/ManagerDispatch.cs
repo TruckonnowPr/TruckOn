@@ -1016,9 +1016,9 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RestoreDriveInDb(id);
         }
 
-        public async Task<int> GetCountPage(string status)
+        public async Task<int> GetCountPage(string status, string name, string address, string phone, string email, string price)
         {
-            return await _sqlEntityFramworke.GetCountPageInDb(status);
+            return await _sqlEntityFramworke.GetCountPageInDb(status, name, address, phone, email, price);
         }
 
         internal void RemoveTrailer(string id)
@@ -1026,9 +1026,9 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.RemoveTrailerDb(id);
         }
 
-        public async Task<List<DaoModels.DAO.Models.Shipping>> GetOrders(string status, int page)
+        public async Task<List<DaoModels.DAO.Models.Shipping>> GetOrders(string status, int page, string name, string address, string phone, string email, string price)
         {
-            return await _sqlEntityFramworke.GetShippings(status, page);
+            return await _sqlEntityFramworke.GetShippings(status, page, name, address, phone, email, price);
         }
 
         public DaoModels.DAO.Models.Shipping GetOrder(string id)

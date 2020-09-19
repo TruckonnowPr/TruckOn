@@ -1066,11 +1066,16 @@ namespace WebDispacher.Dao
             return context.User.FirstOrDefault(u => u.KeyAuthorized == key) != null;
         }
 
-        public async Task<List<Shipping>> GetShippings(string status, int page)
+        public async Task<List<Shipping>> GetShippings(string status, int page, string name, string address, string phone, string email, string price)
         {
             List<Shipping> shipping = null;
             shipping = await context.Shipping
-                .Where(s => s.CurrentStatus == status)
+                .Where(s => s.CurrentStatus == status
+                && (name == null || s.NameD.Contains(name) || s.NameP.Contains(name) || s.ContactNameP.Contains(name) || s.ContactNameD.Contains(name))
+                && (address == null || s.AddresP.Contains(address) || s.AddresD.Contains(address) || s.CityP.Contains(address) || s.CityD.Contains(address) || s.StateP.Contains(address.ToUpper()) || s.StateD.Contains(address.ToUpper()) || s.ZipP.Contains(address) || s.ZipD.Contains(address))
+                && (phone == null || s.PhoneP.Contains(phone) || s.PhoneD.Contains(phone) || s.PhoneC.Contains(phone))
+                && (email == null || s.EmailP.Contains(email) || s.EmailD.Contains(email))
+                && (price == null || s.PriceListed.Contains(price)))
                 .ToListAsync();
             
             if (page != 0)
@@ -1098,10 +1103,17 @@ namespace WebDispacher.Dao
             return shipping;
         }
 
-        public async Task<int> GetCountPageInDb(string status)
+        public async Task<int> GetCountPageInDb(string status, string name, string address, string phone, string email, string price)
         {
             int countPage = 0;
-            List<Shipping> shipping = await context.Shipping.Where(s => s.CurrentStatus == status).ToListAsync();
+            List<Shipping> shipping = await context.Shipping
+                .Where(s => s.CurrentStatus == status
+                 && (name == null || s.NameD.Contains(name) || s.NameP.Contains(name) || s.ContactNameP.Contains(name) || s.ContactNameD.Contains(name))
+                && (address == null || s.AddresP.Contains(address) || s.AddresD.Contains(address) || s.CityP.Contains(address) || s.CityD.Contains(address) || s.StateP.Contains(address.ToUpper()) || s.StateD.Contains(address.ToUpper()) || s.ZipP.Contains(address) || s.ZipD.Contains(address))
+                && (phone == null || s.PhoneP.Contains(phone) || s.PhoneD.Contains(phone) || s.PhoneC.Contains(phone))
+                && (email == null || s.EmailP.Contains(email) || s.EmailD.Contains(email))
+                && (price == null || s.PriceListed.Contains(price)))
+                .ToListAsync();
             countPage = shipping.Count / 20;
             int remainderPage = shipping.Count % 20;
             countPage = remainderPage > 0 ? countPage + 1 : countPage;
