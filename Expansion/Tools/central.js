@@ -28,7 +28,7 @@ function GetOreder1(event) {
     let key = localStorage.getItem("key");
     if (key != undefined && key != "" && key != null) {
         let body = "linck=" + "('" + link + "')" + "&key=" + key;
-        fetch('https://truckonnow.com//New', {
+        fetch('https://truckonnow.com/New', {
             method: 'post',
             body: body,
             //mode: 'no-cors',
@@ -54,23 +54,24 @@ function GetOreder1(event) {
 
 chrome.runtime.onMessage.addListener(
     function (req, sender, response) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText != "") {
-                    alert("Authorization was successful");
-                    localStorage.setItem("key", this.responseText);
-                }
-                else {
-
-                    alert("Authorization was not successful");
-                }
+        fetch('https://truckonnow.com/Avthorization/Exst?' + req.body, {
+            method: 'get',
+            //mode: 'no-cors',
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            withCredentials: true
+        }).then(function (response) {
+            if (response.status == 0 && response.responseText != "") {
+                alert("Authorization was successful");
+                localStorage.setItem("key", this.responseText);
             }
-            else if (this.readyState == 4 && this.status != 200) {
+            else {
 
+                alert("Authorization was not successful");
             }
-        };
-        xhttp.open("GET", "https://172.20.10.4/Avthorization/Exst?" + req.body, true);
-        xhttp.send();
+        });
     }
 );
