@@ -13,12 +13,12 @@
     }
   ],
   "permissions": [
-    "http://192.168.0.100/",
-    "https://192.168.0.100/",
+    "http://localhost/",
+    "https://localhost/",
+    "https://212.224.113.5/",
+    "http://212.224.113.5/",
     "http://truckonnow.com/",
     "https://truckonnow.com/",
-    "http://212.224.113.5:443/",
-    "https://212.224.113.5:443/",
     "storage",
     "cookies",
     "notifications"

@@ -57,6 +57,7 @@ chrome.runtime.onMessage.addListener(
         fetch('https://truckonnow.com/Avthorization/Exst?' + req.body, {
             method: 'get',
             //mode: 'no-cors',
+
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded',
                 'Access-Control-Allow-Origin': '*',
@@ -64,7 +65,7 @@ chrome.runtime.onMessage.addListener(
             },
             withCredentials: true
         }).then(function (response) {
-            if (response.status == 0 && response.responseText != "") {
+            if (response.status == 200 && response.responseText != "") {
                 alert("Authorization was successful");
                 localStorage.setItem("key", this.responseText);
             }
