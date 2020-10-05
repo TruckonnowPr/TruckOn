@@ -159,6 +159,13 @@ namespace WebDispacher.Service
             return profileSettings;
         }
 
+        internal string RefreshTokenDispatch(string idDispatch)
+        {
+            string token = GetHash();
+            _sqlEntityFramworke.RefreshTokenDispatchDB(idDispatch, token);
+            return token;
+        }
+
         internal void CreateDispatch(string typeDispatcher, string login, string password, int idCompany)
         {
             Dispatcher dispatcher = new Dispatcher()
@@ -167,10 +174,22 @@ namespace WebDispacher.Service
                 Password = password,
                 Type = typeDispatcher,
                 IdCompany = idCompany,
+                key = GetHash(),
             };
             _sqlEntityFramworke.CreateDispatchDB(dispatcher);
 
-           
+
+        }
+
+        public string GetHash()
+        {
+            var bytes = new byte[32];
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(bytes);
+            }
+            string hash = BitConverter.ToString(bytes).Replace("-", "").ToLower();
+            return hash;
         }
 
         private string CreateTokenHashSha256(string token)
@@ -748,7 +767,7 @@ namespace WebDispacher.Service
 
             historyOrder.IdConmpany = Convert.ToInt32(idConmpany);
             historyOrder.IdDriver = Convert.ToInt32(idDriver);
-            historyOrder.IdOreder = Convert.ToInt32(idOrder);
+            historyOrder.IdOreder = idOrder;
             historyOrder.IdVech = Convert.ToInt32(idVech);
             historyOrder.IdUser = idUser;
             historyOrder.DateAction = DateTime.Now.ToString();

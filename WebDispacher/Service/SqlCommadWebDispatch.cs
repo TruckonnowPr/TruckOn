@@ -45,9 +45,7 @@ namespace WebDispacher.Dao
 
         internal Dispatcher GetDispatcherByKeyUsers(string key)
         {
-            return context.Dispatchers
-                .Include(d => d.Users)
-                .FirstOrDefault(d => d.Users != null && d.Users.FirstOrDefault(u => u.KeyAuthorized == key) != null);
+            return context.Dispatchers.FirstOrDefault(d => d.key != null && d.key == key);
         }
 
         private async void InitUserOne()
@@ -119,15 +117,15 @@ namespace WebDispacher.Dao
         internal void AddUserToDispatchDB(Users users)
         {
             Dispatcher dispatcher = context.Dispatchers.FirstOrDefault(d => d.IdCompany == users.CompanyId);
-            if(dispatcher != null)
-            {
-                if(dispatcher.Users == null)
-                {
-                    dispatcher.Users = new List<Users>();
-                }
-                dispatcher.Users.Add(users);
-                context.SaveChanges();
-            }
+            //if(dispatcher != null)
+            //{
+            //    if(dispatcher.Users == null)
+            //    {
+            //        dispatcher.Users = new List<Users>();
+            //    }
+            //    dispatcher.Users.Add(users);
+            //    context.SaveChanges();
+            //}
         }
 
         internal List<ProfileSetting> GetSetingsDb(string idCompany, TypeTransportVehikle typeTransportVehikle, int idTr)
@@ -169,6 +167,16 @@ namespace WebDispacher.Dao
                 .Where(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile)
                 .Include(p => p.TransportVehicle.Layouts)
                 .FirstOrDefault();
+        }
+
+        internal void RefreshTokenDispatchDB(string idDispatch, string token)
+        {
+            Dispatcher dispatcher = context.Dispatchers.FirstOrDefault(d => d.Id.ToString() == idDispatch);
+            if(dispatcher != null)
+            {
+                dispatcher.key = token;
+                context.SaveChanges();
+            }
         }
 
         internal int AddProfileDb(ProfileSetting profileSetting)

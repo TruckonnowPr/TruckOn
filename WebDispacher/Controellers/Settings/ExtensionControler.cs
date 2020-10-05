@@ -86,6 +86,41 @@ namespace WebDispacher.Controellers.Settings
         }
 
         [HttpPost]
+        [Route("RefreshToken")]
+        public string RefreshTokenDispatch(string idDispatch)
+        {
+            string actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Extension"))
+                {
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
+                    ViewBag.NameCompany = companyName;
+                    actionResult = managerDispatch.RefreshTokenDispatch(idDispatch);
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
         [Route("CreateDispatch")]
         public IActionResult AddDicpatch(string typeDispatcher, string login, string password)
         {

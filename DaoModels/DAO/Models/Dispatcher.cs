@@ -9,6 +9,6 @@ namespace DaoModels.DAO.Models
         public string Type { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public List<Users> Users { get; set; }
+        public string key { get; set; }
     }
 }

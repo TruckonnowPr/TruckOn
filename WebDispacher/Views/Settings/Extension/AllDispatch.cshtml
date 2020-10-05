@@ -16,6 +16,9 @@
                         Type Dispatchers
                     </th>
                     <th>
+                        Key
+                    </th>
+                    <th>
                         🖱
                     </th>
                     <th>
@@ -26,23 +29,26 @@
             <tbody>
                 @for (int i = 0; i < ViewBag.Dispatchers.Count; i++)
                 {
-                    <tr>
-                        <td>
-                            @ViewBag.Dispatchers[i].Login
-                        </td>
-                        <td>
-                            @ViewBag.Dispatchers[i].Password
-                        </td>
-                        <td>
-                            @ViewBag.Dispatchers[i].Type
-                        </td>
-                        <td style="cursor:pointer" onclick="Edit(@ViewBag.Dispatchers[i].Id)">
-                            ✎
-                        </td>
-                        <td style="cursor:pointer" onclick="Remove(@ViewBag.Dispatchers[i].Id)">
-                            ✖
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @ViewBag.Dispatchers[i].Login
+                    </td>
+                    <td>
+                        @ViewBag.Dispatchers[i].Password
+                    </td>
+                    <td>
+                        @ViewBag.Dispatchers[i].Type
+                    </td>
+                    <td ondblclick="RefreshToken(@ViewBag.Dispatchers[i].Id, this)">
+                        @ViewBag.Dispatchers[i].key
+                    </td>
+                    <td style="cursor:pointer" onclick="Edit(@ViewBag.Dispatchers[i].Id)">
+                        ✎
+                    </td>
+                    <td style="cursor:pointer" onclick="Remove(@ViewBag.Dispatchers[i].Id)">
+                        ✖
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
@@ -56,6 +62,23 @@
 
     function Edit(idDispatch) {
         document.location.href = "@ViewBag.BaseUrl/Settings/Extension/EditDicpatch?idDispatch=" + idDispatch;
+    }
+
+    function RefreshToken(idDispatch, s) {
+        let body = "idDispatch=" + encodeURIComponent(idDispatch);
+        fetch('@ViewBag.BaseUrl/Settings/Extension/RefreshToken', {
+            method: 'post',
+            body: body,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Origin': '*',
+            },
+            withCredentials: true
+        }).then(async function (response) {
+            if (response.status == 200) {
+                s.innerText = await response.text();
+            }
+        });
     }
 </script>
 

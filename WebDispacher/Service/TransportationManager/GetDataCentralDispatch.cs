@@ -25,8 +25,7 @@ namespace WebDispacher.Service.TransportationManager
         {
             proxyCloction = new List<string>()
             {
-                "95.174.67.50:18080",
-                //"159.8.114.37:80",
+                "137.74.64.246:1082",
             };
         }
 
@@ -65,7 +64,7 @@ namespace WebDispacher.Service.TransportationManager
                 cooks = httpRequest.Cookies;
                 if (res.Cookies.Count >= 5)
                 {
-                    response = "Yes";
+                    response = "Yes";   
                 }
                 else
                 {
@@ -105,7 +104,7 @@ namespace WebDispacher.Service.TransportationManager
         public async Task<Shipping> GetShipping(string urlPage)
         {
             Shipping shipping = null;
-            string status = Avthorization(true);
+            string status = Avthorization(false);
             if(status == "Yes")
             {
                 string sourseUrl = httpRequest.Get(urlPage).ToString();

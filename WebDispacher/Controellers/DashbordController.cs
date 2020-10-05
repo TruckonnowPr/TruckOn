@@ -28,19 +28,10 @@ namespace WebDispacher.Controellers
                 if (managerDispatch.CheckKeyDispatcher(key))
                 {
                     Shipping shipping = await managerDispatch.AddNewOrder(urlPage);
-                    if (shipping != null)
-                    {
-                        actionResult = "Yes";
-                    }
-                    else
-                    {
-                        actionResult = "No";
-                    }
                 }
             }
             catch (Exception)
             {
-                actionResult = "No";
             }
             return actionResult;
         }

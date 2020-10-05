@@ -26,12 +26,13 @@ function AddButon() {
 function GetOreder1(event) {
     let link = location.href.replace("https://www.centraldispatch.com", "");
     let key = localStorage.getItem("key");
-    if (key != undefined && key != "" && key != null) {
+    if (key && key != "") {
         let body = "linck=" + "('" + link + "')" + "&key=" + key;
+        //fetch('https://192.168.31.15/New', {
         fetch('https://truckonnow.com/New', {
             method: 'post',
             body: body,
-            //mode: 'no-cors',
+            mode: 'no-cors',
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded',
                 'Access-Control-Allow-Origin': '*',
@@ -39,40 +40,17 @@ function GetOreder1(event) {
             },
             withCredentials: true
         }).then(function (response) {
-            if (response.status === 200) {
-                alert("Successfully");
-            }
-            else {
-                alert("Unsuccessfully");
-            }
+            alert("Order has been sent for processing");
         });
     }
     else {
-        alert("You are not logged in");
+        alert("You are not key");
     }
 }
 
 chrome.runtime.onMessage.addListener(
     function (req, sender, response) {
-        fetch('https://truckonnow.com/Avthorization/Exst?' + req.body, {
-            method: 'get',
-            //mode: 'no-cors',
-
-            headers: {
-                'Content-type': 'application/x-www-form-urlencoded',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': 'true'
-            },
-            withCredentials: true
-        }).then(function (response) {
-            if (response.status == 200 && response.responseText != "") {
-                alert("Authorization was successful");
-                localStorage.setItem("key", this.responseText);
-            }
-            else {
-
-                alert("Authorization was not successful");
-            }
-        });
+        localStorage.setItem("key", req.body);
+        alert("Order has been sent for processing");
     }
 );
