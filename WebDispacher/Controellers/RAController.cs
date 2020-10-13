@@ -22,8 +22,8 @@ namespace WebDispacher.Controellers
             }
             else
             {
-                ViewData["TypeNavBar"] = "AllUsers";
-                actionResult = View("Avthorization");
+                ViewData["TypeNavBar"] = "NavAllUsers1";
+                actionResult = View("index");
             }
             return actionResult;
         }

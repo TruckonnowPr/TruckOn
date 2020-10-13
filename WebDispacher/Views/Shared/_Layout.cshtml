@@ -4,6 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/main.min.css">
+    <script src="js/scripts.min.js"></script>
+    <script>
+        if (window.screen.width < 767) {
+            document.write('<script src="js/dop-768.js"><\/script>');
+        }
+    </script>
+    
 </head>
 <body>
     @if (ViewData["TypeNavBar"] == "AllUsers")
@@ -26,7 +37,11 @@
     {
         @await Html.PartialAsync("~/Views/PartView/NavSettingsNormalCompany.cshtml");
     }
-    <div style="width:99%;height:97vh;padding-top:30px">
+    else if (ViewData["TypeNavBar"] == "NavAllUsers1")
+    {
+        @await Html.PartialAsync("~/Views/PartView/NavAllUsers1.cshtml");
+    }
+    <div class="home">
         @RenderBody()
     </div>
 </body>
