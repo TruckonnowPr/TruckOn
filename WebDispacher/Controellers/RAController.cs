@@ -49,7 +49,7 @@ namespace WebDispacher.Controellers
 
         [HttpGet]
         [Route("carrier-login")]
-        public IActionResult CarrierLogin()
+        public IActionResult CarrierLogin(string error)
         {
             IActionResult actionResult = null;
             ViewData["TextError"] = "";
@@ -61,6 +61,7 @@ namespace WebDispacher.Controellers
             else
             {
                 ViewData["TypeNavBar"] = "NavTry_for_free";
+                ViewData["TextError"] = error;
                 actionResult = View("carrier-login");
             }
             return actionResult;
@@ -68,7 +69,7 @@ namespace WebDispacher.Controellers
 
         [HttpGet]
         [Route("shipper-login")]
-        public IActionResult ShipperLogin()
+        public IActionResult ShipperLogin(string error)
         {
             IActionResult actionResult = null;
             ViewData["TextError"] = "";
@@ -80,6 +81,7 @@ namespace WebDispacher.Controellers
             else
             {
                 ViewData["TypeNavBar"] = "NavTry_for_free";
+                ViewData["TextError"] = error;
                 actionResult = View("shipper-login");
             }
             return actionResult;
@@ -89,7 +91,7 @@ namespace WebDispacher.Controellers
         public IActionResult Avthorization(string Email, string Password, string accept)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "NavTry_for_free";
             try
             {
                 if (Email == null || Password == null)
@@ -109,15 +111,16 @@ namespace WebDispacher.Controellers
                 {
                     ViewData["hidden"] = "hidden";
                     ViewData["TextError"] = "Password or mail have been entered incorrectly";
-                    actionResult = View("Avthorization");
+                    string error = "Password or mail have been entered incorrectly";
+                    actionResult = Redirect($"/carrier-login?error={error}");
                 }
 
             }
             catch (Exception e)
             {
                 ViewData["hidden"] = "hidden";
-                ViewData["TextError"] = "Password or mail have been entered incorrectly";
-                actionResult = View("Avthorization");
+                string error = "Password or mail have been entered incorrectly";
+                actionResult = Redirect($"/carrier-login?error={error}");
             }
             return actionResult;
         }
