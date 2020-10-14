@@ -41,6 +41,10 @@
     {
         @await Html.PartialAsync("~/Views/PartView/NavAllUsers1.cshtml");
     }
+    else if (ViewData["TypeNavBar"] == "NavTry_for_free")
+    {
+        @await Html.PartialAsync("~/Views/PartView/NavTry_for_free.cshtml");
+    }
     <div class="home">
         @RenderBody()
     </div>

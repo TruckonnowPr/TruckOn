@@ -13,7 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\RA\carrier-login.cshtml" />
     <Content Remove="Views\RA\index.cshtml" />
+    <Content Remove="Views\RA\shipper-login.cshtml" />
+    <Content Remove="Views\RA\try_for_free.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\RA\carrier-login.cshtml" />
     <None Include="Views\RA\index.cshtml" />
+    <None Include="Views\RA\shipper-login.cshtml" />
+    <None Include="Views\RA\try_for_free.cshtml" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

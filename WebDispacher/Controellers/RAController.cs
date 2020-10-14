@@ -28,8 +28,65 @@ namespace WebDispacher.Controellers
             return actionResult;
         }
 
+        [HttpGet]
+        [Route("try_for_free")]
+        public IActionResult TryForFree()
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            if (Request.Cookies.ContainsKey("KeyAvtho"))
+            {
+                actionResult = Redirect("/Dashbord/Order/NewLoad");
+            }
+            else
+            {
+                ViewData["TypeNavBar"] = "NavTry_for_free";
+                actionResult = View("try_for_free");
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("carrier-login")]
+        public IActionResult CarrierLogin()
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            if (Request.Cookies.ContainsKey("KeyAvtho"))
+            {
+                actionResult = Redirect("/Dashbord/Order/NewLoad");
+            }
+            else
+            {
+                ViewData["TypeNavBar"] = "NavTry_for_free";
+                actionResult = View("carrier-login");
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("shipper-login")]
+        public IActionResult ShipperLogin()
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            if (Request.Cookies.ContainsKey("KeyAvtho"))
+            {
+                actionResult = Redirect("/Dashbord/Order/NewLoad");
+            }
+            else
+            {
+                ViewData["TypeNavBar"] = "NavTry_for_free";
+                actionResult = View("shipper-login");
+            }
+            return actionResult;
+        }
+
         [HttpPost]
-        public IActionResult Avthorization(string Email, string Password)
+        public IActionResult Avthorization(string Email, string Password, string accept)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "AllUsers";
