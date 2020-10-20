@@ -23,7 +23,7 @@ namespace WebDispacher.Controellers
             else
             {
                 ViewData["TypeNavBar"] = "NavAllUsers1";
-                actionResult = View("index");
+                actionResult = View("Index");
             }
             return actionResult;
         }
