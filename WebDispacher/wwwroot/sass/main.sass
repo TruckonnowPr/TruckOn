@@ -1,0 +1,615 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+.btn:focus
+	box-shadow: none
+button 
+	cursor: pointer
+	outline: none
+button:focus
+	outline: none
+body
+	font-size: 16px
+	min-width: 320px
+	min-height: 95vh
+	position: relative
+	line-height: 1
+	font-family: $default-font!important
+	overflow-x: hidden
+	background-color: #FEFEFE
+	color: $dark
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus
+			outline: none
+			box-shadow: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+	button 
+		cursor: pointer
+		outline: none
+	button:focus
+		outline: none
+a 
+	text-decoration: none
+	color: $accent
+a:hover
+	text-decoration: none
+	color: $accent
+button:hover, button:focus, button:active, .slick-slide:hover, .slick-slide:active, .slick-slide:focus
+	outline: none
+h1, h2, h3, h4, h5, h6, p 
+	padding: 0
+	margin: 0
+h1
+	font-style: normal
+	font-weight: 700
+	font-size: 36px
+	line-height: 1.4
+	color: $black
+p 
+	font-style: normal
+	font-weight: 500
+	font-size: 20px
+	line-height: 1.7
+	color: $gray
+h3  
+	font-style: normal
+	font-weight: 700
+	font-size: 20px
+	color: $black
+	line-height: 1.4
+.btn1
+	background: $accent 
+	color: $white 
+	font-style: normal
+	font-weight: 700
+	font-size: 16px
+	line-height: 1.25
+	border-radius: 10px
+	padding: 16px 29px
+	display: inline-block
+.btn2-big
+	background: $black
+	color: $white 
+	font-style: normal
+	font-weight: 700
+	padding: 20px 40px
+	font-size: 24px
+	line-height: 1.25
+	border-radius: 10px
+	display: inline-block
+.btn1-big
+	background: $accent 
+	color: $white 
+	font-style: normal
+	font-weight: 700
+	padding: 20px 40px
+	font-size: 24px
+	line-height: 1.25
+	border-radius: 10px
+	display: inline-block
+header 
+	padding-top: 15px
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	z-index: 100
+	.logo 
+		width: 212px
+		img 
+			width: 100%
+			height: auto
+	.info
+		display: flex
+		align-items: center
+		justify-content: flex-end
+	a.tel 
+		font-style: normal
+		font-weight: 700
+		font-size: 20px
+		line-height: 1.2
+		color: $black
+	a.tel:hover 
+		color: $accent
+	.login 
+		position: relative
+		padding: 16px 0
+		margin-left: 30px
+		margin-right: 40px
+		transition: 0.3s all
+		a#login
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 1.25
+			color: $black
+			position: relative
+			transition: 0.3s all
+		a#login:after
+			content: ''
+			position: absolute
+			top: 6px
+			right: -10px
+			width: 5px
+			height: 5px
+			border-top: 1px solid $black
+			border-right: 1px solid $black
+			transition: 0.3s all
+			transform: rotate(135deg)
+		a#login:hover:after
+			border-top: 1px solid $accent
+			border-right: 1px solid $accent
+			transition: 0.3s all
+		.sub-login 
+			position: absolute
+			top: 100%
+			left: 0
+			padding: 0
+			margin: 0
+			width: 203px
+			background: $white
+			border-radius: 10px
+			overflow: hidden
+			z-index: 10
+			height: 0
+			overflow: hidden
+			transition: 0.3s all
+			li 
+				border-bottom: 1px solid $gray
+				padding: 17px 25px
+				a 
+					color: #000000
+					font-family: Montserrat
+					font-style: normal
+					font-weight: 500
+					font-size: 20px
+					line-height: 1.2
+			li:hover 
+				a 
+					color: $accent
+			li:last-child 
+				border-bottom: none
+	.login:hover 
+		transition: 0.3s all
+		a#login 
+			color: $accent
+			transition: 0.3s all
+		.sub-login
+			height: auto 
+			transition: 0.3s all
+
+			
+.bl-1 
+	background: $background1
+	padding-top: 55px
+	padding-bottom: 40px
+	img 
+		width: 168%
+		height: auto
+		margin: auto
+		margin-left: -55%
+		margin-right: 0
+	.text 
+		.btn1-big 
+			margin-top: 43px
+.text 
+	margin-left: 70px
+	h1 
+		margin-bottom: 25px
+.bl-2
+	padding: 82px 0 95px
+	.advantages
+		display: flex
+		width: 107%
+		margin-left: -7%
+		.one 
+			text-align: center
+			width: 25%
+			.img 
+				background: $accent 
+				border-radius: 20px
+				width: 100px
+				height: 100px
+				margin: auto
+				display: flex
+				align-items: center
+				justify-content: center
+				img
+					width: auto 
+					height: 62px
+.bl-3 
+	background: $background1
+	padding: 25px 0
+	img 
+		width: 100%
+		height: auto 
+	.text 
+		h6 
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 1.25
+			color: $gray
+		a 
+			width: 50%
+			display: inline-block
+			img 
+				width: 93%
+				margin-top: 40px
+				margin-bottom: 17px
+.bl-4
+	padding-top: 90px
+	padding-bottom: 140px
+	.row:first-child 
+		margin-bottom: 165px
+		.text
+			margin-left: 0
+			width: 90%
+		img 
+			width: 175%
+	.row:last-child 
+		img 
+			margin-left: -50%
+			width: 150%
+.bl-5
+	background: $accent
+	padding: 100px 0
+	h1 
+		color: $white
+.bl-5.dop 
+	padding: 75px 0
+ul.plus 
+	margin: 0
+	margin-top: 17px
+	padding: 0
+	li 
+		color: $white 
+		font-style: normal
+		font-weight: 500
+		font-size: 20px
+		line-height: 1.2
+		margin-bottom: 12px
+		list-style: none 
+		position: relative
+		padding-left: 35px
+	li:before 
+		content: '+'
+		color: #08112B
+		font-size: 20px
+		line-height: 1
+		position: absolute
+		top: 8px
+		font-weight: 700
+		left: 10px
+.bl-6 
+	padding: 110px 0
+	.text 
+		margin-left: 0
+	img 
+		width: 133%
+		height: auto
+.bl-7 
+	background: $background1
+	padding: 45px 0
+	img 
+		width: 100%
+		height: auto
+	ul.plus 
+		li 
+			color: $gray 
+			line-height: 1.7
+		li:before 
+			color: $accent
+			left: 0
+.bl-8 
+	padding: 140px 0 120px
+	img 
+		width: 100%
+		height: auto
+	img.mob 
+		display: none
+	h1 
+		margin-bottom: 5px
+.bl-9 
+	padding: 75px 0 85px
+	background: $background1
+	h1  
+		margin-top: 90px
+	.img 
+		background: $accent 
+		border-radius: 20px
+		width: 100px
+		height: 100px
+		margin: 0
+		margin-bottom: 5px
+		display: flex
+		align-items: center
+		justify-content: center
+		img
+			width: auto 
+			height: 62px
+	h3
+		margin-bottom: 15px
+	p 
+		width: 90%
+.bl-10
+	text-align: center
+	padding: 105px 0 95px
+	h1 
+		margin-bottom: 3rem
+.one-price 
+	text-align: left
+	border-radius: 30px
+	overflow: hidden
+	margin-bottom: 30px
+	.top
+		background: $accent 
+		padding: 30px 30px 30px 40px
+		h3
+			color: $white
+			margin-bottom: 10px
+		p 
+			color: $white
+	.middle
+		background: $white
+		padding: 30px 25px
+		min-height: 405px
+		ul 
+			margin: 0
+			padding: 0
+			li 
+				color: $gray
+				list-style: none
+				font-size: 16px
+				font-weight: 500
+				line-height: 1.7
+				margin-bottom: 15px
+				position: relative
+				padding-left: 40px
+			li:before 
+				content: '+'
+				color: $accent 
+				font-size: 23px
+				font-weight: 500
+				position: absolute 
+				top: 2px
+				left: 14px
+				line-height: 1
+			li:last-child 
+				margin-bottom: 0
+	.bottom	
+		background: $accent
+		text-align: center
+		padding: 15px 0
+		h1 
+			color: $white
+			margin-bottom: 0
+footer 
+	background: $black
+	padding: 50px 0
+	.logo 
+		width: 212px
+		margin-bottom: 13px
+		img 
+			width: 100%
+			height: auto
+	p 
+		max-width: 240px
+		color: $white 
+		font-family: Montserrat
+		font-style: normal
+		font-weight: 500
+		font-size: 16px
+		line-height: 1.7
+		a 
+			font-weight: 700
+			color: #ffffff
+	form 
+		display: flex
+		align-items: center
+		input 
+			margin: 0
+			padding: 0
+			color: #ffffff
+			font-family: Montserrat
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 20px
+			margin-left: 35px
+			height: 32px
+			width: 205px
+			background: transparent
+			border: none
+			border-bottom: 1px solid $gray
+		input::placeholder 
+			color: $white
+			opacity: 1
+		input[type=submit]
+			color: $white
+			background: $blue
+			border-radius: 10px
+			border: 1px solid $blue
+			cursor: pointer
+			margin-left: 50px
+			padding: 15px 30px
+			height: auto
+			width: auto
+.try_for_free
+	width: 100%
+	height: 100vh
+	display: flex
+	align-items: center
+	background: $background1
+	padding-top: 70px
+	overflow: hidden
+	.tab 
+		text-align: center
+		margin-bottom: 10px
+		a 
+			font-family: Montserrat
+			font-style: normal
+			font-weight: 700
+			font-size: 20px
+			line-height: 1.7
+			color: $gray
+			margin: 0px 10px
+		a.active
+			color: $accent
+	.try_block
+		width: 87%
+		margin-left: 13%
+		position: relative
+		.white_block
+			position: relative
+			z-index: 1
+			background: $white
+			border-radius: 30px
+			padding: 35px 55px 55px 55px
+			h1 
+				margin-bottom: 1.75rem
+			p 
+				margin-bottom: 2.5rem
+		ul 
+			margin-top: 30px
+			margin-left: -10px
+			li 
+				color: $gray
+			li:before 
+				color: $accent
+				top: 2px
+	.try_block:after 
+		content: ''
+		position: absolute
+		top: 0
+		right: 0
+		width: 440px
+		height: 440px
+		top: -120px
+		left: -183px
+		background-size: contain
+		background-position: center
+		background-repeat: no-repeat
+		background-image: url(../img/fon_s1.svg)
+	.col-md-6:last-child 
+		.try_block
+			margin-left: 0
+		.try_block:after 
+			top: auto 
+			bottom: -45px
+			right: -235px
+			left: auto
+			background-image: url(../img/fon_s2.svg)
+			transform: rotate(45deg)
+.mob 
+	display: none
+.login-page
+	width: 100%
+	height: 100vh
+	display: flex
+	align-items: center
+	background: $background1
+	padding-top: 10px
+	overflow: hidden
+form.form-login
+	.white
+		z-index: 1
+		background: $white
+		border-radius: 30px
+		padding: 35px 50px 50px
+		text-align: center
+		margin-bottom: 10px
+		position: relative
+		h1  
+			margin-bottom: 10px
+		label 
+			font-family: Montserrat
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 1.7
+			color: $gray
+			text-align: left
+			margin-top: 15px
+			width: 100%
+			margin-bottom: 0
+			input 
+				width: 100%
+				height: 73px
+				background: #FFFFFF
+				border-radius: 10px
+				padding: 0px 20px
+				font-family: Montserrat
+				font-style: normal
+				font-weight: 400
+				font-size: 20px
+				line-height: 1.2
+				color: $gray
+				margin-top: 5px
+				border: none
+			input:placeholder 
+				color: $light_gray
+		input.btn1-big
+			width: 100%
+			margin-bottom: 22px
+		a 
+			font-family: Montserrat
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 1.7
+			color: $gray
+		.password
+			position: relative
+			margin-bottom: 30px
+			input 
+				padding-right: 50px
+		.password-control
+			position: absolute
+			top: 58px
+			right: 25px
+			display: inline-block
+			width: 24px
+			height: 24px
+			background: url(../img/view.svg) 0 0 no-repeat
+		.password-control.view
+			background: url(../img/no-view.svg) 0 0 no-repeat
+	label.accept
+		width: 80%
+		margin-left: 10%
+		display: flex
+		align-items: center
+		p 
+			font-family: Montserrat
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 1.7
+			color: #000000
+			margin-left: 20px
+			a
+				color: $accent
+form.form-login:after 
+	content: ''
+	position: absolute
+	width: 440px
+	height: 440px
+	top: -88px
+	right: -185px
+	background-size: contain
+	background-position: center
+	background-repeat: no-repeat
+	background-image: url(../img/fon_s3.svg)
+@import "media" // Always at the end
