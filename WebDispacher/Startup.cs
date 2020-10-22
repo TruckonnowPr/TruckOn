@@ -33,40 +33,40 @@ namespace WebDispacher
             {
                 options.ForwardClientCertificate = false;
             });
-            services.AddResponseCompression(options => 
-            {
-                IEnumerable<string> MimeTypes = new[]
-                {
-                    "text/plain",
-                    "text/css",
-                    "application/javascript",
-                    "text/html",
-                    "application/xml",
-                    "text/xml",
-                    "application/json",
-                    "text/json",
-                    "image/png",
-                    "image/jpg"
-                };
-                options.EnableForHttps = true;
-                options.MimeTypes = MimeTypes;
-                options.Providers.Add<GzipCompressionProvider>();
-                options.Providers.Add<BrotliCompressionProvider>();
-            });
-            services.Configure<BrotliCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Optimal;
-            });
-            services.Configure<GzipCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Optimal;
-            });
-            services.AddMemoryCache();
+            //services.AddResponseCompression(options => 
+            //{
+            //    IEnumerable<string> MimeTypes = new[]
+            //    {
+            //        "text/plain",
+            //        "text/css",
+            //        "application/javascript",
+            //        "text/html",
+            //        "application/xml",
+            //        "text/xml",
+            //        "application/json",
+            //        "text/json",
+            //        "image/png",
+            //        "image/jpg"
+            //    };
+            //    options.EnableForHttps = true;
+            //    options.MimeTypes = MimeTypes;
+            //    options.Providers.Add<GzipCompressionProvider>();
+            //    options.Providers.Add<BrotliCompressionProvider>();
+            //});
+            //services.Configure<BrotliCompressionProviderOptions>(options =>
+            //{
+            //    options.Level = CompressionLevel.Optimal;
+            //});
+            //services.Configure<GzipCompressionProviderOptions>(options =>
+            //{
+            //    options.Level = CompressionLevel.Optimal;
+            //});
+            //services.AddMemoryCache();
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseResponseCompression();
+           // app.UseResponseCompression();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
