@@ -87,6 +87,47 @@ namespace WebDispacher.Controellers
             return actionResult;
         }
 
+        [HttpGet]
+        [Route("carrier-reg")]
+        public IActionResult CarrierReg(string error)
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            if (Request.Cookies.ContainsKey("KeyAvtho"))
+            {
+                actionResult = Redirect("/Dashbord/Order/NewLoad");
+            }
+            else
+            {
+                ViewData["TypeNavBar"] = "NavTry_for_free";
+                ViewData["TextError"] = error;
+                actionResult = View("carrier-reg");
+            }
+            return actionResult;
+        }
+
+        [HttpGet]
+        [Route("shipper-reg")]
+        public IActionResult ShipperReg(string error)
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            if (Request.Cookies.ContainsKey("KeyAvtho"))
+            {
+                actionResult = Redirect("/Dashbord/Order/NewLoad");
+            }
+            else
+            {
+                ViewData["TypeNavBar"] = "NavTry_for_free";
+                ViewData["TextError"] = error;
+                actionResult = View("shipper-reg");
+            }
+            return actionResult;
+        }
+
+
         [HttpPost]
         public IActionResult Avthorization(string Email, string Password, string accept)
         {
