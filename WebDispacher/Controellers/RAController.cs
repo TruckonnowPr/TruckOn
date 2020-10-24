@@ -22,7 +22,7 @@ namespace WebDispacher.Controellers
             }
             else
             {
-                ViewData["TypeNavBar"] = "NavAllUsers1";
+                ViewData["TypeNavBar"] = "AllUsers";
                 actionResult = View("Index");
             }
             return actionResult;
@@ -62,6 +62,7 @@ namespace WebDispacher.Controellers
             {
                 ViewData["TypeNavBar"] = "NavTry_for_free";
                 ViewData["TextError"] = error;
+                ViewData["reg"] = "/carrier-reg";
                 actionResult = View("carrier-login");
             }
             return actionResult;
@@ -82,6 +83,7 @@ namespace WebDispacher.Controellers
             {
                 ViewData["TypeNavBar"] = "NavTry_for_free";
                 ViewData["TextError"] = error;
+                ViewData["reg"] = "/shipper-reg";
                 actionResult = View("shipper-login");
             }
             return actionResult;

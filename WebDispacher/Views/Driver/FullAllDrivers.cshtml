@@ -28,7 +28,7 @@
             </div>
         }
     </div>
-    <dialog @*onclick="HiddenDialog()"*@>
+    <dialog @*onclick="HiddenDialog()"*@ hidden="hidden">
         <content class="ng-modal-wrapper">
             <div class="modal-dialog">
                 <div class="modal-dialog-content ng-scope multiple">
@@ -154,6 +154,7 @@
         drugTendencySpn.innerHTML = GetLevel(this.value);
     }
 
+
     function GetLevel(value) {
         if (value == "0") {
             return "None";
@@ -185,12 +186,13 @@
     function ShowAlert(idDriver) {
         IdDriver = idDriver;
         let dialog = document.querySelector('dialog');
-        dialog.show();
+        dialog.hidden = '';
     }
 
     function HiddenDialog() {
         let dialog = document.querySelector('dialog');
-        dialog.close();
+        console.log('hidden')
+        dialog.hidden = 'hidden';
     }
 
     function Remove() {

@@ -1,13 +1,29 @@
-﻿<div style="background-color: rgba(45,45,45,0.9);display:flex;position:fixed; width:100%;top:0px;z-index:100;">
-    <img class="imgMirir" src="~/Icon/MirorR.png" height="40" asp-append-version="true" />
-    <nav class="navst">
-        <span><a class="linkASt" href="http://truckonnow.com">@ViewBag.NameCompany</a></span>
-        <input class="btn" type="button" value="Order" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';" />
-        <input class="btn" type="button" value="GPS Traking" onclick="window.location.href='@Url.Action("Map", "Geolcation")';" />
-        <input class="btn" type="button" value="Contacts" onclick="window.location.href='@Url.Action("Contacts", "Contact")';" />
-        <input class="btn" type="button" value="Drivers" onclick="window.location.href='@Url.Action("Drivers", "Driver")';" />
-        <input class="btn" type="button" value="Equipment" onclick="window.location.href='@Url.Action("Trucks", "Equipment")';" />
-        <input class="btn" type="button" value="Setiings" onclick="window.location.href='@Url.Action("User", "Settings")'+'/Users';" />
-    </nav>
-    <img class="imgMirir" src="~/Icon/MirorL.png" height="40" asp-append-version="true" />
-</div>
+﻿<header class="line">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md-auto">
+                <div class="logo">
+                    <img src="~/img/logo.svg" alt="" onclick="document.location.href='http://truckonnow.com/'">
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <ul class="menu top-nav_menu">
+                    <li><a href="/Dashbord/Order/NewLoad">Orders</a></li>
+                    <li><a href="/Geolcation/Map">GPS Tracking</a></li>
+                    <li><a href="/Contact/Contacts">Contacts</a></li>
+                    <li><a href="/Driver/Drivers">Drivers</a></li>
+                    <li><a href="/Equipment/Trucks">Equipment</a></li>
+                    <li><a href="/Settings/User/Users">Settings</a></li>
+                    <li><a href="">Exit</a></li>
+                </ul>
+                <div class="burger">
+                    <button class="top-nav_btn hamburger hamburger--3dy">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

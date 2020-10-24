@@ -1,11 +1,27 @@
-﻿<div style="background-color: rgba(45,45,45,0.9);display:flex;position:fixed; width:100%;top:0px;z-index:100;">
-    <img class="imgMirir" src="~/Icon/MirorR.png" height="40" asp-append-version="true" />
-    <nav class="navst">
-        <span><a class="linkASt" href="http://truckonnow.com">@ViewBag.NameCompany - Settings</a></span>
-        <input class="btn" type="button" value="Users" onclick="window.location.href='@Url.Action("User", "Settings")'+'/Users';" />
-        <input class="btn" type="button" value="Trucks and Trailers" onclick="window.location.href='/Settings/Trucks';" />
-        <input class="btn" type="button" value="Biling" onclick="window.location.href='/Settings/Biling/PaymentMethod';" />
-        <input class="btn" type="button" value="Extension connection" onclick="window.location.href='/Settings/Extension/Dicpatchs';" />
-    </nav>
-    <img class="imgMirir" src="~/Icon/MirorL.png" height="40" asp-append-version="true" />
-</div>
+﻿<header class="line">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md-auto">
+                <div class="logo">
+                    <img src="~/img/logo.svg" alt="" onclick="document.location.href='http://truckonnow.com/'">
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <ul class="menu top-nav_menu">
+                    <li><a href="/Settings/User/Users">Users</a></li>
+                    <li><a href="/Settings/Trucks">Trucks and Trailers</a></li>
+                    <li><a href="/Settings/Biling/PaymentMethod">Biling</a></li>
+                    <li><a href="/Settings/Extension/Dicpatchs">Extension connection</a></li>
+                    <li><a href="/Dashbord/Order/NewLoad">Back To Order</a></li>
+                </ul>
+                <div class="burger">
+                    <button class="top-nav_btn hamburger hamburger--3dy">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
