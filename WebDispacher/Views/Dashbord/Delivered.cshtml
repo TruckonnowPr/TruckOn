@@ -4,17 +4,16 @@
             <div class="col-md-12">
                 <div class="title">
                     <h1>Orders</h1>
-                    <button class="btn1" onClick='location.href="/Dashbord/Order/Creat"'>Create Order</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div id="tabs">
-                    <div class="tab whiteborder" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';">New load</div>
+                    <div class="tab" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';">New load</div>
                     <div class="tab" onclick="window.location.href='@Url.Action("Assigned", "Dashbord")';">Assigned</div>
                     <div class="tab" onclick="window.location.href = '@Url.Action("Pickedup", "Dashbord")';">Picked up</div>
-                    <div class="tab" onclick="window.location.href='@Url.Action("Delivered", "Dashbord")';">Delivered</div>
+                    <div class="tab whiteborder" onclick="window.location.href='@Url.Action("Delivered", "Dashbord")';">Delivered</div>
                     <div class="tab" onclick="window.location.href='@Url.Action("Billed", "Dashbord")';">Billed</div>
                     <div class="tab" onclick="window.location.href='@Url.Action("Paid", "Dashbord")';">Paid</div>
                     <div class="tab" onclick="window.location.href='@Url.Action("Archived", "Dashbord")';">Archived</div>
@@ -28,17 +27,18 @@
                                         <button class="btn3" onClick='location.href="/Dashbord/Order/FullInfoOrder?id=@ViewBag.Orders[i].Id&stasus=NewLoad"'>Load ID: @ViewBag.Orders[i].idOrder</button>
                                         <div class="text"><img src="~/img/dolar.svg" alt=""> @ViewBag.Orders[i].PriceListed</div>
                                         <div class="text"><img src="~/img/clock.svg" alt=""> @ViewBag.Orders[i].TotalPaymentToCarrier</div>
+                                        @if (ViewBag.Orders[i].CurrentStatus == "Delivered,Paid")
+                                        {
+                                            <div class="text" style="color: #007bff">Shipping paid</div>
+                                        }
                                     </div>
                                     <div class="right">
                                         <a class="btn3" href="/Dashbord/Order/Edit?id=@ViewBag.Orders[i].Id&stasus=NewLoad">Edit</a>
-                                        <select onchange="SelectAssining(this.options[this.selectedIndex].value, '@ViewBag.BaseUrl')" class="btn3">
-                                            <option value="">Assign</option>
-                                            @for (int j = 0; j < ViewBag.Drivers.Count; j++)
-                                            {
-                                                <option value="@ViewBag.Orders[i].Id,@ViewBag.Drivers[j].Id">@ViewBag.Drivers[j].FullName</option>
-                                            }
-                                        </select>
                                         <a class="btn3" href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=NewLoad">Deleted</a>
+                                        @if (ViewBag.Orders[i].CurrentStatus == "Delivered,Billed")
+                                        {
+                                            <a class="btn3" @*href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=Delivered"*@>Pay shipping</a>
+                                        }
                                     </div>
                                 </div>
                                 <div class="info-line">
@@ -55,6 +55,24 @@
                                         <p>Phone: @ViewBag.Orders[i].PhoneD</p>
                                     </div>
                                     <div class="info-block">
+                                        @if (ViewBag.Orders[i].CurrentStatus == "Delivered,Paid")
+                                        {
+                                                    <p class="stPData">Assigned to @ViewBag.Orders[i].NameDriver</p>
+                                                    <p class="stPData">Phone: @ViewBag.Orders[i].PhoneDriver</p>
+                                        }
+                                        else if (ViewBag.Orders[i].CurrentStatus == "Delivered,Billed")
+                                        {
+                                                    <p>Assigned to @ViewBag.Orders[i].NameDriver</p>
+                                                    <p>Phone: @ViewBag.Orders[i].PhoneDriver</p>
+                                                    @if (ViewBag.Orders[i].DataPaid != null && DateTime.Parse(ViewBag.Orders[i].DataPaid) >= DateTime.Now)
+                                                    {
+                                                        <p >Customer must pay shipping to @ViewBag.Orders[i].DataPaid</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="color:red;" class="stPData">Customer must pay shipping to @ViewBag.Orders[i].DataPaid</p>
+                                                    }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -78,3 +96,4 @@
 
     <script src="~/js/orders.js"></script>
 </div>
+

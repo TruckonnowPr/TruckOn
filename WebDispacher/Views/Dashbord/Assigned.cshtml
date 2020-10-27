@@ -4,15 +4,14 @@
             <div class="col-md-12">
                 <div class="title">
                     <h1>Orders</h1>
-                    <button class="btn1" onClick='location.href="/Dashbord/Order/Creat"'>Create Order</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div id="tabs">
-                    <div class="tab whiteborder" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';">New load</div>
-                    <div class="tab" onclick="window.location.href='@Url.Action("Assigned", "Dashbord")';">Assigned</div>
+                    <div class="tab" onclick="window.location.href='@Url.Action("NewLoad", "Dashbord")';">New load</div>
+                    <div class="tab whiteborder" onclick="window.location.href='@Url.Action("Assigned", "Dashbord")';">Assigned</div>
                     <div class="tab" onclick="window.location.href = '@Url.Action("Pickedup", "Dashbord")';">Picked up</div>
                     <div class="tab" onclick="window.location.href='@Url.Action("Delivered", "Dashbord")';">Delivered</div>
                     <div class="tab" onclick="window.location.href='@Url.Action("Billed", "Dashbord")';">Billed</div>
@@ -25,20 +24,21 @@
                             <div class="one-line">
                                 <div class="top-line">
                                     <div class="left">
-                                        <button class="btn3" onClick='location.href="/Dashbord/Order/FullInfoOrder?id=@ViewBag.Orders[i].Id&stasus=NewLoad"'>Load ID: @ViewBag.Orders[i].idOrder</button>
+                                        <button class="btn3" onClick='location.href="/Dashbord/Order/FullInfoOrder?id=@ViewBag.Orders[i].Id&stasus=Assigned"'>Load ID: @ViewBag.Orders[i].idOrder</button>
                                         <div class="text"><img src="~/img/dolar.svg" alt=""> @ViewBag.Orders[i].PriceListed</div>
                                         <div class="text"><img src="~/img/clock.svg" alt=""> @ViewBag.Orders[i].TotalPaymentToCarrier</div>
                                     </div>
                                     <div class="right">
-                                        <a class="btn3" href="/Dashbord/Order/Edit?id=@ViewBag.Orders[i].Id&stasus=NewLoad">Edit</a>
-                                        <select onchange="SelectAssining(this.options[this.selectedIndex].value, '@ViewBag.BaseUrl')" class="btn3">
-                                            <option value="">Assign</option>
+                                        <a class="btn3" href="/Dashbord/Order/Edit?id=@ViewBag.Orders[i].Id&stasus=Assigned">Edit</a>
+                                        <select onchange="SelectAssining1(this.options[this.selectedIndex].value, '@ViewBag.BaseUrl')" class="btn3">
+                                            <option value="">Reassang</option>
+                                            <option value="@ViewBag.Orders[i].Id,Unassign">Unassign</option>
                                             @for (int j = 0; j < ViewBag.Drivers.Count; j++)
                                             {
                                                 <option value="@ViewBag.Orders[i].Id,@ViewBag.Drivers[j].Id">@ViewBag.Drivers[j].FullName</option>
                                             }
                                         </select>
-                                        <a class="btn3" href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=NewLoad">Deleted</a>
+                                        <a class="btn3" href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=Assigned">Deleted</a>
                                     </div>
                                 </div>
                                 <div class="info-line">
@@ -55,6 +55,8 @@
                                         <p>Phone: @ViewBag.Orders[i].PhoneD</p>
                                     </div>
                                     <div class="info-block">
+                                        <p>Assigned to @ViewBag.Orders[i].NameDriver</p>
+                                        <p>Phone: @ViewBag.Orders[i].PhoneDriver</p>
                                     </div>
                                 </div>
                             </div>
