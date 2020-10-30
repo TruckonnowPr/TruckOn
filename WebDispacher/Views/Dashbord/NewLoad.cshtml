@@ -35,7 +35,7 @@
                                             <option value="">Assign</option>
                                             @for (int j = 0; j < ViewBag.Drivers.Count; j++)
                                             {
-                                                <option value="@ViewBag.Orders[i].Id,@ViewBag.Drivers[j].Id">@ViewBag.Drivers[j].FullName</option>
+                                                <option class="btn3" value="@ViewBag.Orders[i].Id,@ViewBag.Drivers[j].Id">@ViewBag.Drivers[j].FullName</option>
                                             }
                                         </select>
                                         <a class="btn3" href="DeletedOrder?id=@ViewBag.Orders[i].Id&status=NewLoad">Deleted</a>
@@ -76,5 +76,4 @@
         </div>
     </div>
 
-    <script src="~/js/orders.js"></script>
 </div>

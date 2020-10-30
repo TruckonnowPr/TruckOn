@@ -1,545 +1,63 @@
-﻿<div class="body">
-    <div style="display:flex;">
-        <input class="btnCreateoOrder" type="button" value="Add Driver" onclick="window.location.href='@Url.Action("CreateDriver", "Driver")';" />
-    </div>
-    <nav>
-        <input class="btnSt activeBtn" type="button" value="Drivers" onclick="window.location.href='@Url.Action("Drivers", "Driver")';" />
-        <input style="width:150px" class="btnSt" type="button" value="Driver check" onclick="window.location.href='@Url.Action("Check", "Driver")';" />
-        <input style="width:150px" class="btnSt" type="button" value="Report driver" onclick="window.location.href='@Url.Action("AddReport", "Driver")';" />
-    </nav>
-    <div class="contentBody">
-        @for (int i = 0; i < ViewBag.Drivers.Count; i++)
-        {
-            <div class="contentDriver">
-                <div>
-
-                    <p class="inpData">@ViewBag.Drivers[i].FullName</p>
-                    <span class="inpData">Trailer capacity: @ViewBag.Drivers[i].TrailerCapacity,</span>
-                    <span class="inpData">Email: @ViewBag.Drivers[i].EmailAddress,</span>
-                    <span class="inpData">Last inspection: @ViewBag.Drivers[i].LastDateInspaction</span><br /> <br />
-                    <span class="inpData">Phone: @ViewBag.Drivers[i].PhoneNumber,</span>
-                    <span class="inpData">Registration: @ViewBag.Drivers[i].DateRegistration</span><br /> <br />
-                    <a href="@ViewBag.BaseUrl/Driver/Drivers/Edit?id=@ViewBag.Drivers[i].Id" class="btnId">Edit</a>
-                    <input class="btnId" value="Remove" type="button" onclick="ShowAlert(@ViewBag.Drivers[i].Id)" />
-                    <a class="btnId" href="~/Driver/InspactionTrucks?idDriver=@ViewBag.Drivers[i].Id&idTruck=0&idTrailer=0&date=0">Inspection</a>
-                    <input class="btnId" value="Remind Inspection" type="button" onclick="SendRemindInspection(@ViewBag.Drivers[i].Id)" />
-                    <input class="btnId" value="Documents" type="button" onclick="window.location.href='Doc?id=@ViewBag.Drivers[i].Id'" />
+﻿<body>
+    <div class="admin">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h1>Drivers</h1>
+                        <button class="btn1" onclick="window.location.href='@Url.Action("CreateDriver", "Driver")';">Add Driver</button>
+                    </div>
                 </div>
             </div>
-        }
-    </div>
-    <dialog @*onclick="HiddenDialog()"*@ hidden="hidden">
-        <content class="ng-modal-wrapper">
-            <div class="modal-dialog">
-                <div class="modal-dialog-content ng-scope multiple">
-                    <h1 class="ng-binding">Describe the reason for the dismissal of the driver</h1>
-                    <div class="modal-dialog-content">
-                        <div class="modal-dialog-content">
-                            <div>
-                                <p class="spanModal">Number Of Accidents</p>
-                                <input id="numberOfAccidentsInp" type="number" class="modal-inp-text validation" required />
-                                <p class="spanModal">Dot Violations</p><br />
-                                <input id="dotViolationsInp" type="text" class="modal-inp-text validation" required />
-                                <p class="spanModal">English <span id="englishSpn">Poor</span></p><br />
-                                <input id="englishInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Returned equipmen <span id="returnedEquipmenSpn">Poor</span></p><br />
-                                <input id="returnedEquipmenInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Working efficiency <span id="workingEfficiencySpn">Poor</span></p><br />
-                                <input id="workingEfficiencyInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Eld knowledge <span id="eldKnowledgeSpn">Poor</span></p><br />
-                                <input id="eldKnowledgeInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Driving skills <span id="drivingSkillsSpn">Poor</span></p><br />
-                                <input id="drivingSkillsInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Payment handling <span id="paymentHandlingSpn">Poor</span></p><br />
-                                <input id="paymentHandlingInp" type="range" class="modal-inp-text validation" value="1" min="1" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Alcohol tendency <span id="alcoholTendencySpn">None</span></p><br />
-                                <input id="alcoholTendencyInp" type="range" class="modal-inp-text validation" value="0" min="0" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Drug tendency <span id="drugTendencySpn">None</span></p><br />
-                                <input id="drugTendencyInp" type="range" class="modal-inp-text validation" value="0" min="0" max="3" step="1" list="range-list" required />
-                                <p class="spanModal">Terminated (boxes FIRED, Contract expiration, left truck without notice, disappeared)</p><br />
-                                <div>
-                                    <label style="display:none;" value="Yes" id="terminatedInp">Yes</label><br />
-                                    <div>
-                                        <input class="validation" checked required type="radio" name="terminated" onclick="terminatedInp.value='Yes'" />
-                                        <span style="text-align:center;">Yes</span>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="tabs">
+                        <div class="tab whiteborder" onclick="window.location.href='@Url.Action("Drivers", "Driver")';">Drivers</div>
+                        <div class="tab" onclick="window.location.href='@Url.Action("Check", "Driver")';">Driver check</div>
+                        <div class="tab" onclick="window.location.href='@Url.Action("AddReport", "Driver")';">Report driver</div>
+                        <div class="tabContent">
+                            @for (int i = 0; i < ViewBag.Drivers.Count; i++)
+                            {
+                                <div class="one-line">
+                                    <div class="top-line">
+                                        <div class="left">
+                                            <div class="contact">
+                                                <p><strong>@ViewBag.Drivers[i].FullName</strong></p>
+                                                <p>Trailer capacity:  @ViewBag.Drivers[i].TrailerCapacity</p>
+                                                <p>Last inspection: @ViewBag.Drivers[i].LastDateInspaction</p>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <a href="@ViewBag.BaseUrl/Driver/Drivers/Edit?id=@ViewBag.Drivers[i].Id" class="btn3">Edit</a>
+                                            <input class="btn3" value="Deleted" type="button" onclick="ShowAlert(@ViewBag.Drivers[i].Id)" />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <input class="validation" required type="radio" name="terminated" onclick="terminatedInp.value='No'" />
-                                        <span style="text-align:center;">No</span>
+                                    <div class="top-line">
+                                        <div class="left">
+                                            <div class="contact">
+                                                <p>Email: <a href="@ViewBag.Drivers[i].EmailAddress">@ViewBag.Drivers[i].EmailAddress</a></p>
+                                                <p>Phone: <a href="tel:@ViewBag.Drivers[i].PhoneNumber">@ViewBag.Drivers[i].PhoneNumber</a></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <p class="spanModal">Experience with</p><br />
-                                <label style="display:none;" id="experienceInp" value=""> </label><br />
-                                <div style="display:flex;flex-wrap:wrap;">
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Boxes" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Boxes</span>
-                                    </div>
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Enclosed car hauling" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Enclosed car hauling</span>
-                                    </div>
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Open car hauling" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Open car hauling</span>
-                                    </div>
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Flatbed" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Flatbed</span>
-                                    </div>
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Towing" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Towing</span>
-                                    </div>
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Van" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Van</span>
-                                    </div>
-                                    <div style="margin-right:5px;">
-                                        <input class="validation" type="checkbox" value="Reefer" onclick="SelectExperience(this.value, this.checked)" />
-                                        <span style="text-align:center;">Reefer</span>
+                                    <div class="top-line">
+                                        <div class="left">
+                                            <div class="contact">
+                                                <p>Registration:  @ViewBag.Drivers[i].DateRegistration</p>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <a class="btn3" href="~/Driver/InspactionTrucks?idDriver=@ViewBag.Drivers[i].Id&idTruck=0&idTrailer=0&date=0">Inspection</a>
+                                            <input class="btn3" value="Remind Inspection" type="button" onclick="SendRemindInspection(@ViewBag.Drivers[i].Id, '@ViewBag.BaseUrl')" />
+                                            <input class="btn3" value="Documents" type="button" onclick="window.location.href='Doc?id=@ViewBag.Drivers[i].Id'" />
+                                        </div>
                                     </div>
                                 </div>
-                                <p class="spanModal">Description</p><br />
-                                <textarea id="descriptionTA" type="text" class="modal-texAr-text validation" name="nameDoc" placeholder="Enter description" style="margin-left:5px;" required></textarea><br />
-                            </div>
-                        </div>
-                            
-                    </div>
-                    <div class="modal-buttons flush ng-scope">
-                        <div class="right-buttons">
-                            <button class="btnModal red" onclick="HiddenDialog()">Close</button>
-                            <input class="btnModal green" type="button" value="Apply" onclick="Remove()" />
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-        </content>
-    </dialog>
-</div>
-
-<script>
-
-    var IdDriver;
-
-    englishInp.oninput = function () {
-        englishSpn.innerHTML = GetLevel(this.value);
-    }
-
-    returnedEquipmenInp.oninput = function () {
-        returnedEquipmenSpn.innerHTML = GetLevel(this.value);
-    }
-
-    workingEfficiencyInp.oninput = function () {
-        workingEfficiencySpn.innerHTML = GetLevel(this.value);
-    }
-
-    eldKnowledgeInp.oninput = function () {
-        eldKnowledgeSpn.innerHTML = GetLevel(this.value);
-    }
-
-    drivingSkillsInp.oninput = function () {
-        drivingSkillsSpn.innerHTML = GetLevel(this.value);
-    }
-
-    paymentHandlingInp.oninput = function () {
-        paymentHandlingSpn.innerHTML = GetLevel(this.value);
-    }
-
-    alcoholTendencyInp.oninput = function () {
-        alcoholTendencySpn.innerHTML = GetLevel(this.value);
-    }
-
-    drugTendencyInp.oninput = function () {
-        drugTendencySpn.innerHTML = GetLevel(this.value);
-    }
-
-
-    function GetLevel(value) {
-        if (value == "0") {
-            return "None";
-        }
-        else if (value == "1") {
-            return "Poor";
-        }
-        else if (value == "2") {
-            return "Middle";
-        }
-        else if (value == "3") {
-            return "Good";
-        }
-    }
-
-    function SelectExperience(value, Checked) {
-        if (Checked) {
-            if (experienceInp.value == undefined) {
-                experienceInp.value = "";
-            }
-            experienceInp.value +=  value + ", ";
-        }
-        else
-        {
-            experienceInp.value = experienceInp.value.replace(value + ", ", "");
-        }
-    }
-
-    function ShowAlert(idDriver) {
-        IdDriver = idDriver;
-        let dialog = document.querySelector('dialog');
-        dialog.hidden = '';
-    }
-
-    function HiddenDialog() {
-        let dialog = document.querySelector('dialog');
-        console.log('hidden')
-        dialog.hidden = 'hidden';
-    }
-
-    function Remove() {
-        let descriptionTA = document.getElementById("descriptionTA");
-        descriptionTA.validity.valid
-        if (descriptionTA.validity.valid) {
-            let body = "id=" + encodeURIComponent(IdDriver)
-                + "&numberOfAccidents=" + encodeURIComponent(numberOfAccidentsInp.value)
-                + "&english=" + encodeURIComponent(englishSpn.innerHTML)
-                + "&returnedEquipmen=" + encodeURIComponent(returnedEquipmenSpn.innerHTML)
-                + "&workingEfficiency=" + encodeURIComponent(workingEfficiencySpn.innerHTML)
-                + "&eldKnowledge=" + encodeURIComponent(eldKnowledgeSpn.innerHTML)
-                + "&drivingSkills=" + encodeURIComponent(drivingSkillsSpn.innerHTML)
-                + "&paymentHandling=" + encodeURIComponent(paymentHandlingSpn.innerHTML)
-                + "&alcoholTendency=" + encodeURIComponent(alcoholTendencySpn.innerHTML)
-                + "&drugTendency=" + encodeURIComponent(drugTendencySpn.innerHTML)
-                + "&terminated=" + encodeURIComponent(terminatedInp.value)
-                + "&experience=" + encodeURIComponent(experienceInp.value)
-                + "&dotViolations=" + encodeURIComponent(dotViolationsInp.value)
-                + "&description=" + encodeURIComponent(descriptionTA.value);
-            document.location.href = "@ViewBag.BaseUrl/Driver/Drivers/Remove?" + body;
-        }
-    }
-
-    function SendRemindInspection(idDriver) {
-        let url = "@ViewBag.BaseUrl/Driver/Remind/Inspection";
-        let xmlHttp = new XMLHttpRequest();
-        var body = 'idDriver=' + encodeURIComponent(idDriver);
-        xmlHttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText == "true") {
-                    alert("Reminder sent");
-                }
-                else if (this.responseText == "false") {
-                    alert("Today's inspection was already passed");
-                }
-                else if (this.responseText == "notlogin") {
-
-                }
-                else if (this.responseText == "error") {
-                    alert("Server error, try again later");
-                }
-                else {
-                    alert("Server error, try again later");
-                }
-            }
-            else if (this.readyState == 4 && this.status != 200) {
-                alert("Server error, try again later");
-            }
-        };
-        xmlHttp.open("POST", url, true);
-        xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xmlHttp.send(body);
-    }
-</script>
-
-<style>
-    * {
-        margin: 0px;
-    }
-
-    .validation:invalid {
-        border-color: red;
-    }
-
-    .validation:valid {
-        border-color: #4ad73b;
-    }
-
-    .modal-dialog .modal-dialog-content.multiple {
-        padding-bottom: 0;
-    }
-
-    .modal-dialog .modal-dialog-content {
-        padding: 10px 10px 10px 10px;
-        font-size: 15px;
-    }
-
-    .modal-dialog .modal-dialog-content {
-        transition: height 0.25s linear;
-    }
-
-    dialog {
-        position: fixed;
-        z-index: 9500;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.1);
-        overflow-y: auto;
-        font-size: 0;
-        text-align: center;
-    }
-
-    .modal-dialog {
-        position: absolute;
-        left: 30%;
-        top: 80px;
-        width: 700px;
-        text-align: left;
-        background-color: #fff;
-        -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15), 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
-        -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15), 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15), 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        transition: height 0.25s linear;
-    }
-
-        .modal-dialog .modal-dialog-content h1 {
-            font-size: 19px;
-            line-height: 22px;
-            letter-spacing: -.026em;
-            font-family: 'SF UI Text Medium', 'SF UI Text Light', 'Helvetica Neue', 'HelveticaNeue', Helvetica, Arial, Verdana, sans-serif;
-            font-weight: 500;
-            margin-bottom: 14px;
-        }
-
-    .ng-modal-wrapper {
-        display: inline-block;
-        vertical-align: middle;
-        padding: 50px 0;
-        width: 100%;
-        position: relative;
-    }
-
-    .modal-dialog .modal-dialog-content h1 {
-        font-size: 19px;
-        line-height: 22px;
-        letter-spacing: -.026em;
-        font-family: 'SF UI Text Medium', 'SF UI Text Light', 'Helvetica Neue', 'HelveticaNeue', Helvetica, Arial, Verdana, sans-serif;
-        font-weight: 500;
-        margin-bottom: 14px;
-    }
-
-    .modal-dialog .modal-dialog-content + .modal-dialog-content {
-        padding-top: 0;
-    }
-
-    .modal-dialog .modal-dialog-content {
-        padding: 20px 30px 20px 10px;
-        font-size: 15px;
-    }
-
-    .modal-dialog .modal-dialog-content {
-        transition: height 0.25s linear;
-    }
-
-    .tb-modal__body {
-        box-sizing: border-box;
-        padding: 18px 30px 31px;
-    }
-
-    .modal-buttons {
-        border-top: 1px solid #e5e5e5;
-        padding: 15px;
-        display: inline-block;
-        width: 100%;
-        zoom: 1;
-    }
-
-        .modal-buttons button, input {
-            margin-top: 0;
-        }
-
-        button.btnModal, a.btn.btnModal, .modal-buttons > ul li a.btnModal {
-            font-family: 'SF UI Text Medium', 'SF UI Text Light', 'Helvetica Neue', 'HelveticaNeue', Helvetica, Arial, Verdana, sans-serif;
-            font-weight: 500;
-        }
-
-        .modal-dialog button, .modal-dialog input, .modal-dialog label, a.btn, .modal-buttons > ul li a {
-            position: relative;
-            display: inline-block;
-            vertical-align: middle;
-            cursor: pointer;
-            padding: 3px 10px 4px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-            margin-top: 2px;
-            background: none;
-            font-size: 15px;
-            line-height: 19px;
-            letter-spacing: -.016em;
-            -moz-transition-property: all;
-            -o-transition-property: all;
-            -webkit-transition-property: all;
-            transition-property: all;
-            -moz-transition-duration: 300ms;
-            -o-transition-duration: 300ms;
-            -webkit-transition-duration: 300ms;
-            transition-duration: 300ms;
-        }
-
-        .modal-buttons .right-buttons {
-            float: right;
-        }
-
-    .spanModal {
-        float: left;
-        font-family: 'SF UI Text Medium', 'SF UI Text Light', 'Helvetica Neue', 'HelveticaNeue', Helvetica, Arial, Verdana, sans-serif;
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 16px;
-        letter-spacing: -.006em;
-        margin-right: 4px;
-        clear: right;
-        margin-top: 15px;
-    }
-
-    .modal-texAr-text {
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        border: 1px solid #d9d9d9;
-        padding: 5px 8px;
-        width: 630px;
-        max-width: 630px;
-        min-width: 630px;
-        height: 200px;
-        max-height: 400px;
-        min-height: 150px;
-        line-height: 22px;
-    }
-
-    .modal-inp-text {
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        border: 1px solid #d9d9d9;
-        padding: 5px 8px;
-        width: 630px;
-        max-width: 630px;
-        min-width: 630px;
-    }
-
-    .green {
-        border: 1px solid #95f816;
-        outline: none;
-        color: #95f816;
-    }
-
-    .red {
-        border: 1px solid #ff4614;
-        outline: none;
-        color: #ff4614;
-    }
-
-    .blue {
-        border: 1px solid #3df;
-        outline: none;
-        btnCreateoOrder color: #3df;
-    }
-
-    .btnSt {
-        margin-left: 5px;
-        border: none;
-        width: 120px;
-        height: 40px;
-        background-color: white;
-        font-size: 20px;
-        color: rgb(51, 51, 51);
-        border-color: rgba(51, 51, 51, 1);
-    }
-
-    .activeBtn {
-        border-radius: 1px;
-        border-top: solid;
-        border-right: solid;
-        border-left: solid;
-        border-width: 1.3px;
-        position: relative;
-        top: 2px;
-        border-color: rgba(51, 51, 51, 0.3);
-    }
-
-    .btnCreateoOrder {
-        color: white;
-        background-color: darkgray;
-        display: inline-block;
-        padding: 10px;
-        font-size: 14px;
-        font-weight: 400;
-        text-align: center;
-        border: 2px solid;
-        border-radius: 7px;
-        margin-bottom: 10px;
-        margin-left: 14px;
-    }
-
-        .btnCreateoOrder:hover {
-            transition: 0.3s;
-            background-color: rgb(51, 51, 51);
-        }
-
-    .btnId:hover {
-        background-color: rgba(45,45,45,0.98);
-        color: white;
-        transition: 0.5s;
-    }
-
-    .btnId {
-        color: rgba(45,45,45,0.88);
-        background: none;
-        display: inline-block;
-        padding: 6px;
-        font-size: 13px;
-        font-weight: 400;
-        text-align: center;
-        border: 1px solid;
-        border-radius: 4px;
-        margin: 2px;
-    }
-
-    .inpData {
-        font-size: 18px;
-        color: rgb(51, 51, 51);
-    }
-
-    .contentDriver {
-        padding: 20px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: rgba(45, 45, 45, 0.38);
-        max-width: 800px;
-        min-width: 600px;
-        margin: 10px;
-        display: flex;
-    }
-
-    .contentBody {
-        width: 100%;
-        height: 100px;
-        border-top: solid;
-        border-width: 1px;
-        border-color: rgba(51, 51, 51, 0.3);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around
-    }
-
-    .body {
-        margin-top: 30px;
-        margin-left: 5px;
-        margin-right: 5px;
-        padding: 10px;
-    }
-</style>
+        </div>
+    </div>
+</body>

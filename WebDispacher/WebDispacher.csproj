@@ -43,6 +43,13 @@
     <Folder Include="Attribute\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Contacts\FullContacts.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
