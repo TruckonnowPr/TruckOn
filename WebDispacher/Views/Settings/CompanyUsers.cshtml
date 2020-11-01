@@ -1,168 +1,48 @@
-﻿<div class="body">
-    <div style="display:flex;">
-        <input class="btnCreateoOrder" type="button" value="Add User" onclick="window.location.href='@Url.Action("User", "Settings")' + '/CreateUser';" />
+﻿<body>
+    <div class="admin">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h1>Users</h1>
+                        <button class="btn1" onclick="window.location.href='@Url.Action("User", "Settings")' + '/CreateUser';">Add user</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="tabs">
+                        <div class="tabContent">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Login</th>
+                                        <th>Password</th>
+                                        <th>Company Name</th>
+                                        <th>Registration</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < ViewBag.Users.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@ViewBag.Users[i].Login</td>
+                                            <td>@ViewBag.Users[i].Password</td>
+                                            <td>@ViewBag.Users[i].CompanyName</td>
+                                            <td>@ViewBag.Users[i].Date</td>
+                                            <td>
+                                                <img src="~/img/pen.svg" alt="" >
+                                                <img src="~/img/delet.svg" alt="" onclick="document.location.href = '@ViewBag.BaseUrl/Settings/User/Remove?idUser=@ViewBag.Users[i].Id'">
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="contentBody">
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Login
-                    </th>
-                    <th>
-                        Password
-                    </th>
-                    <th>
-                        CompanyName
-                    </th>
-                    <th>
-                        Registration
-                    </th>
-                    <th>
-                        🖱
-                    </th>
-                    <th>
-                        🖱
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < ViewBag.Users.Count; i++)
-                {
-                <tr>
-                    <td>
-                        @ViewBag.Users[i].Login
-                    </td>
-                    <td>
-                        @ViewBag.Users[i].Password
-                    </td>
-                    <td>
-                        @ViewBag.Users[i].CompanyName
-                    </td>
-                    <td>
-                        @ViewBag.Users[i].Date
-                    </td>
-                    <td style="cursor:pointer;">
-                        ✎
-                    </td>
-                    <td style="cursor:pointer;" onclick="document.location.href = '@ViewBag.BaseUrl/Settings/User/Remove?idUser=@ViewBag.Users[i].Id'">
-                        ✖
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<script>
-
-</script>
-
-<style>
-    * {
-        margin: 0px;
-    }
-
-    .contentBody {
-        width: 100%;
-        height: 100px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around
-    }
-
-    .body {
-        margin-top: 30px;
-        margin-left: 5px;
-        margin-right: 5px;
-        padding: 10px;
-    }
-
-    .btnCreateoOrder {
-        color: white;
-        background-color: darkgray;
-        display: inline-block;
-        padding: 10px;
-        font-size: 14px;
-        font-weight: 400;
-        text-align: center;
-        border: 2px solid;
-        border-radius: 7px;
-        margin-bottom: 10px;
-        margin-left: 14px;
-    }
-
-        .btnCreateoOrder:hover {
-            transition: 0.3s;
-            background-color: rgb(51, 51, 51);
-        }
-
-    .btnSt {
-        margin-left: 5px;
-        border: none;
-        width: 120px;
-        height: 40px;
-        background-color: white;
-        font-size: 20px;
-        color: rgb(51, 51, 51);
-        border-color: rgba(51, 51, 51, 1);
-    }
-
-    .activeBtn {
-        border-radius: 1px;
-        border-top: solid;
-        border-right: solid;
-        border-left: solid;
-        border-width: 1.3px;
-        position: relative;
-        top: 2px;
-        border-color: rgba(51, 51, 51, 0.3);
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    th {
-        color: #878787;
-        background-color: rgba(105, 105, 105, 0.15);
-        font-size: 20px;
-        border-width: 1px;
-        border-bottom: 1px solid #878787;
-    }
-
-    td {
-        color: #a6a6a6;
-        font-size: 18px;
-        text-align: center;
-    }
-
-    tbody tr:nth-child(odd) {
-        background-color: #f9f9f9; /* фон нечетных строк */
-    }
-
-    tbody tr:nth-child(even) {
-        background-color: rgba(105, 105, 105, 0.15); /* фон четных строк */
-    }
-
-    .inpContentInspection {
-        display: inline-block;
-        width: 200px;
-        padding: 5px 10px;
-        border: 1px solid;
-        border-radius: 10px;
-        border: 1px solid black;
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    .contentInspection:hover {
-        box-shadow: inset -35px 25px 35px 0px #323947;
-        -webkit-box-shadow: inset -35px 25px 35px 0px #323947;
-        -moz-box-shadow: inset -35px 25px 35px 0px #323947;
-        transition: 0.3s;
-    }
-</style>
+</body>

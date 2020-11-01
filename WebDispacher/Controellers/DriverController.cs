@@ -535,7 +535,7 @@ namespace WebDispacher.Controellers
                     actionResult = Redirect(Config.BaseReqvesteUrl);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
             }

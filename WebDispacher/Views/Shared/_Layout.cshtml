@@ -11,6 +11,8 @@
     <script src="~/js/scripts.min.js"></script>
     <script src="~/js/orders.js"></script>
     <script src="~/js/driver.js"></script>
+    <script src="~/js/equipment.js"></script>
+    <script src="~/js/dispatch.js"></script>
     <script>
         if (window.screen.width < 767) {
             document.write('<script src="js/dop-768.js"><\/script>');
@@ -46,13 +48,28 @@
     <div class="home">
         @RenderBody()
     </div>
+    <script>
+        $(document).ready(function () {
+            //$("body").fadeIn(1000);
+            window.onbeforeunload = function () { $("body").fadeOut(200); }
+        });
+    </script>
 </body>
 </html>
 <style>
     body {
-        padding:0px;
+        padding: 0px;
         margin: 0px;
+        animation-name: open;
+        animation-duration: 1s;
     }
+
+    @@keyframes open {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+}
+
 
     .navst {
         width: 99%;
@@ -78,14 +95,14 @@
     a {
         text-decoration: none;
         margin: 0px;
-    } 
-        
+    }
+
     .linkASt {
         font-size: 25px;
         color: #ffffff;
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
-    
+
     .btn {
         background-color:rgba(0, 0, 0, 0.00);
         border:none;

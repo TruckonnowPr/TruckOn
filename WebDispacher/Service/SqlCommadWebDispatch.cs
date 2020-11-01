@@ -28,7 +28,7 @@ namespace WebDispacher.Dao
         {
             try
             {
-                if (context.Commpanies.Count() == 0)
+                if (context.Commpanies.FirstOrDefault(c => c.Type == TypeCompany.BaseCommpany) == null)
                 {
                     context.Commpanies.Add(new Commpany()
                     {
@@ -52,9 +52,9 @@ namespace WebDispacher.Dao
         {
             try
             {
-                if (context.User.Count() == 0 && context.Commpanies.Count() != 0)
+                Commpany commpany = context.Commpanies.First(c => c.Type == TypeCompany.BaseCommpany);
+                if (context.User.Count(u => u.CompanyId == commpany.Id) == 0)
                 {
-                    Commpany commpany = context.Commpanies.First();
                     Users users = new Users();
                     users.Login = "DevRoma";
                     users.Password = "polkilo123";
@@ -87,6 +87,7 @@ namespace WebDispacher.Dao
                     await context.User.AddAsync(users);
                     await context.SaveChangesAsync();
                 }
+
             }
             catch
             {

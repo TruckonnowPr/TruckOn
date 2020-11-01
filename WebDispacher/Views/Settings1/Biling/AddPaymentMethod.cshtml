@@ -1,0 +1,191 @@
+﻿<div class="body">
+    <input class="backBtn" type="button" value="← Back to Orders" onclick="history.back();" />
+    <div class="body-card">
+        <div class="card-wrapper"></div>
+        <form method="post">
+            <input class="numberCard validation inpText" value="@ViewBag.Numbercard" placeholder="•••• •••• •••• ••••" type="tel" pattern="[0-9\s]{13,19}" name="number" required>
+            <div style="display:flex;">
+                <input class="fullname validation inpText" value="@ViewBag.fullName" placeholder="Full name" type="text" name="name" maxlength="15" required>
+                <input class="expire validation inpText" value="@ViewBag.expire" placeholder="MM/YYYY" type="tel" name="expiry" required>
+                <input class="cvv validation inpText" placeholder="CVC" type="number" name="cvc" pattern="{3,4}" value="@ViewBag.cvv" required>
+            </div>
+            <input class="btnSave" type="submit" value="Add Card" />
+        </form>
+        <p style="color:red;">@ViewBag.TxtError</p>
+    </div>
+</div>
+
+<script src="~/dist/card.js"></script>
+<script>
+    var card = new Card({
+        form: document.querySelector('form'),
+        container: '.card-wrapper',
+        formatting: true,
+        width: 380,
+        messages: {
+            validDate: 'valid\ndate',
+            monthYear: 'mm/yyyy',
+        },
+        placeholders: {
+            number: '•••• •••• •••• ••••',
+            name: 'Full Name',
+            expiry: '••/••',
+            cvc: '••'
+        },
+        masks: {
+            cardNumber: '•'
+        }
+    });
+
+    
+</script>
+<style>
+    * {
+        margin: 0px;
+    }
+
+    .btnSave {
+        color: rgba(45,45,45,0.88);
+        background: none;
+        display: inline-block;
+        padding: 7px;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 4px;
+        width: 130px;
+    }
+
+    .validation:invalid {
+        border-color: red;
+    }
+
+    .validation:valid {
+        border-color: #4ad73b;
+    }
+
+    .body-card {
+        position:absolute;
+        width: 400px;
+        left:38%;
+    }
+
+    form {
+        border-spacing:10px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px;
+        justify-content: center;
+    }
+
+    .inpText {
+        height: 25px;
+        border-width: 1px;
+        border-style: double;
+        border-radius: 4px;
+        padding: 2px;
+        font-size: 16px;
+        color: rgb(51, 51, 51);
+        border-color: rgba(51, 51, 51, 0.24);
+        margin-bottom: 15px;
+        margin-right:10px;
+    }
+
+    .numberCard {
+        width: 100%;
+    }
+
+    .fullname {
+        width: 55% !important;
+    }
+
+    .expire {
+        width: 30%!important;
+    }
+
+    .cvv {
+        width: 17%!important;
+    }
+
+    .validation:invalid {
+        border-color: red;
+    }
+
+    .validation:valid {
+        border-color: #4ad73b;
+    }
+
+    .btnSave {
+        color: rgba(45,45,45,0.88);
+        background: none;
+        display: inline-block;
+        padding: 7px;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 4px;
+        width: 130px;
+    }
+
+    btnSave:hover {
+        background-color: rgba(45,45,45,0.98);
+        transition: 0.5s;
+    }
+
+    .btnD:hover {
+        background: rgba(243, 167, 76, 0.29);
+    }
+
+    .inpTextTr {
+        border: none;
+        width: 97%;
+        background-color: rgba(243, 167, 76, 0.09);
+        color: #f3a74c;
+    }
+
+    .inpLabe {
+        font-size: 18px;
+        color: rgb(51, 51, 51);
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    .inpText {
+        width: 100%;
+        height: 25px;
+        border-width: 1px;
+        border-style: double;
+        border-radius: 4px;
+        padding: 2px;
+        font-size: 16px;
+        color: rgb(51, 51, 51);
+        border-color: rgba(51, 51, 51, 0.24);
+        margin-bottom: 15px;
+    }
+
+    .content {
+        width: 40%;
+    }
+
+    .contentBody {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .backBtn {
+        background: none;
+        border: none;
+        font-size: 17px;
+        color: #ffd7a6;
+        margin-bottom: 20px;
+    }
+
+    .body {
+        margin-top: 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 10px;
+    }
+</style>
