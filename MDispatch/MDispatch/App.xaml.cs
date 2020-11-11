@@ -43,7 +43,7 @@ namespace MDispatch
 
             if (isAvtorization)
             {
-                AuthenticationID.AvtorizatiionID();
+                //AuthenticationID.AvtorizatiionID();
                 TaskManager.isWorkTask = true;
                 Task.Run(() =>
                 {
@@ -70,10 +70,10 @@ namespace MDispatch
         {
             if (isAvtorization)
             {
-                if (DependencyService.Get<IAuntificationID>().IsCanceleUI)
-                {
-                    AuthenticationID.AvtorizatiionID();
-                }
+                //if (DependencyService.Get<IAuntificationID>().IsCanceleUI)
+                //{
+                //    AuthenticationID.AvtorizatiionID();
+                //}
                 isStart = true;
                 MDispatch.Service.TimeSync.Untils.Start();
                 await Utils.StartListening();

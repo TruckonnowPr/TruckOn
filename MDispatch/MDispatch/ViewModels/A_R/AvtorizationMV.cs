@@ -1,5 +1,4 @@
 ﻿using FormsControls.Base;
-using MDispatch.NewElement.AuntificationID;
 using MDispatch.Service;
 using MDispatch.Service.GeloctionGPS;
 using MDispatch.Service.Tasks;
@@ -107,7 +106,7 @@ namespace MDispatch.ViewModels
             }
             else if(state == 3)
             {
-                AuthenticationID.AvtorizatiionID();
+                //AuthenticationID.AvtorizatiionID();
                 App.isAvtorization = true;
                 CrossSettings.Current.AddOrUpdateValue("Token", token.Split(',')[0]);
                 CrossSettings.Current.AddOrUpdateValue("IdDriver", token.Split(',')[1]);

@@ -43,7 +43,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app need to access your calendar events</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8</string>
+	<string>0.8.1</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict/>
 	<key>XSAppIconAssets</key>
