@@ -17,65 +17,24 @@ namespace MDispatch.View.A_R
             avtorizationMV = new AvtorizationMV();
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = avtorizationMV;
-            Init();
-        }
-
-        private async void Init()
-        {
-            await Task.WhenAll(
-                    lUsName.TranslateTo(0, 33, 0),
-                    lUsName.FadeTo(0.5, 0),
-                    lPassword.TranslateTo(0, 33, 0),
-                    lPassword.FadeTo(0.5, 0)
-                    );
-        }
-
-        private async void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (e.NewTextValue.Length != 0)
-            {
-                await Task.WhenAll(
-                    lPassword.TranslateTo(0, 13, 150),
-                    lPassword.FadeTo(1, 150)
-                    );
-            }
-            else
-            {
-                await Task.WhenAll(
-                    lPassword.TranslateTo(0, 33, 150),
-                    lPassword.FadeTo(0.5, 150)
-                    );
-            }
         }
 
         private async void Entry_TextChanged_1(object sender, TextChangedEventArgs e)
         {
             ValidationInpEmail(e.NewTextValue);
-            if (e.NewTextValue.Length != 0)
-            {
-                await Task.WhenAll(
-                    lUsName.TranslateTo(0, 13, 150),
-                    lUsName.FadeTo(1, 150)
-                    );
-            }
-            else
-            {
-                await Task.WhenAll(
-                    lUsName.TranslateTo(0, 33, 150),
-                    lUsName.FadeTo(0.5, 150)
-                    );
-            }
         }
 
         private void ValidationInpEmail(string email)
         {
-            if(IsValidEmail(email))
+            if (IsValidEmail(email))
             {
-                eUsName.TextColor = Color.Default;
+                doneImg.IsVisible = true;
+                unDoneImg.IsVisible = false;
             }
             else
             {
-                eUsName.TextColor = Color.Red;
+                doneImg.IsVisible = false;
+                unDoneImg.IsVisible = true;
             }
         }
 
@@ -96,6 +55,20 @@ namespace MDispatch.View.A_R
         private async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             await PopupNavigation.PushAsync(new ForgotPassword(avtorizationMV));
+        }
+
+        void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            hdPswImg.IsVisible = false;
+            unhdPswImg.IsVisible = true;
+            passwordEnt.IsVisible = false;
+        }
+
+        void TapGestureRecognizer_Tapped_2(System.Object sender, System.EventArgs e)
+        {
+            hdPswImg.IsVisible = true;
+            unhdPswImg.IsVisible = false;
+            passwordEnt.IsVisible = true;
         }
     }
 }

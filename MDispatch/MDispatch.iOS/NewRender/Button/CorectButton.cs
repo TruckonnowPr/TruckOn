@@ -20,17 +20,6 @@ namespace MDispatch.iOS.NewRender.Button
 
         private void UpdatePadding()
         {
-            var element = this.Element as Xamarin.Forms.Button;
-            if (element != null)
-            {
-                if (element.Text != null)
-                {
-                    this.Element.Text = this.Element.Text.ToUpper();
-                }
-                this.Element.FontAttributes = FontAttributes.Bold;
-                this.Element.Padding = new Thickness(6, 4, 6, 4);
-                
-            }
         }
     
     }

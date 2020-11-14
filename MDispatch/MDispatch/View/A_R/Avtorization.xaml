@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MDispatch.View.A_R.Avtorization">
+             x:Class="MDispatch.View.A_R.Avtorization"
+             xmlns:labal="clr-namespace:MDispatch.NewElement.Labal"
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="25" BackgroundColor="White">
-                <Image Source="" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center"/>
+            <FlexLayout Padding="25" BackgroundColor="White" JustifyContent="Center" Direction="Column">
+                <!--<Image Source="" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center"/>
                 <StackLayout Margin="10">
                     <Label x:Name="lUsName" Text="USERNAME" TextColor="#b8babb" Margin="4,0,0,0" FontSize="14" VerticalTextAlignment="Start"/>
                     <Entry x:Name="eUsName" TextColor="#4fd2c2" HeightRequest="40" FontSize="14" TextChanged="Entry_TextChanged_1" Text="{Binding Username}"/>
@@ -18,8 +20,125 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <Label Text="{Binding FeedBack}" TextColor="Red" FontSize="11" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-            </StackLayout>
+                </StackLayout>-->
+                <Image FlexLayout.AlignSelf="Center"
+                       Source="logo.png" HeightRequest="100"
+                       WidthRequest="100" />
+                <labal:LabalStandart Margin="0, 15, 0, 0"
+                                     Text="Welcome Back"
+                                     TextColor="#2C5DEB"
+                                     FontSize="22"
+                                     FontAttributes="Bold"
+                                     FontFamily="Open Sans"
+                                     FlexLayout.AlignSelf="Center"/>
+                <labal:LabalStandart Margin="0, 3, 0, 0"
+                                     Text="Log in to continue"
+                                     TextColor="#C1C1C1"
+                                     FontSize="14"
+                                     FontAttributes="Bold"
+                                     FontFamily="Open Sans"
+                                     FlexLayout.AlignSelf="Center" />
+                <Grid FlexLayout.AlignSelf="Center"
+                      Margin="0, 40, 0, 0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="54"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <FlexLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" JustifyContent="Center" AlignItems="Center">
+                        <xfx:XfxEntry TextChanged="Entry_TextChanged_1"
+                                      FlexLayout.Grow="1"
+                                      Placeholder="Email"
+                                      TextColor="Black"
+                                      PlaceholderColor="#C1C1C1"
+                                      ActivePlaceholderColor="#C1C1C1"
+                                      FontFamily="Open Sans"
+                                      FontSize="16"
+                                      Margin="11, 0, 11, 0"
+                                      Text="{Binding Username}"/>
+                    </FlexLayout>
+                     <Image x:Name="doneImg"
+                            Source="done.png"
+                            WidthRequest="24"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0, 0, 20, 0"
+                            IsVisible="false" />
+                     <Image x:Name="unDoneImg"
+                            Source="unDone.png"
+                            WidthRequest="24"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0, 0, 25, 6"
+                            IsVisible="false" />
+                </Grid>
+                <Grid FlexLayout.AlignSelf="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="54"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <FlexLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" JustifyContent="Center" AlignItems="Center">
+                        <xfx:XfxEntry x:Name="passwordEnt"
+                                      FlexLayout.Grow="1"
+                                      Placeholder="Password"
+                                      TextColor="Black"
+                                      PlaceholderColor="#C1C1C1"
+                                      ActivePlaceholderColor="#C1C1C1"
+                                      FontFamily="Open Sans"
+                                      FontSize="16"
+                                      Margin="11, 0, 11, 0"
+                                      IsPassword="True"
+                                      Text="{Binding Password}"/>
+                    </FlexLayout>
+                     <Image x:Name="hdPswImg"
+                            Source="hdPswImg.png"
+                            WidthRequest="24"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0, 0, 20, 0"  
+                            IsVisible="false">
+                         <Image.GestureRecognizers>
+                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                         </Image.GestureRecognizers>
+                     </Image>
+                     <Image x:Name="unhdPswImg"
+                            Source="unHiddenPsw.png"
+                            WidthRequest="24"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0, 0, 20, 0">
+                         <Image.GestureRecognizers>
+                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                         </Image.GestureRecognizers>
+                     </Image>
+                </Grid>
+                 <Button Margin="0, 41, 0, 0"
+                         FontSize="16"
+                         FontAttributes="Bold"
+                         FontFamily="Open Sans"
+                         Text="Log in"
+                         TextColor="White"
+                         BackgroundColor="#2C5DEB"
+                         HeightRequest="46"
+                         Command="{Binding AvtorizationCommand}"
+                         CornerRadius="26"
+                         Padding="0, 12, 0, 12"/>
+                 <Label Text="Forgot password?"
+                        FontSize="14"
+                        FlexLayout.AlignSelf="Center"
+                        Margin="0, 15, 0, 0"
+                        FontAttributes="Bold"
+                        TextColor="#2C5DEB">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                     </Label.GestureRecognizers>
+                 </Label>
+            </FlexLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

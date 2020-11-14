@@ -9,7 +9,7 @@ using UIKit;
 using UserNotifications;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-
+using Xfx;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AppDelegate))]
 namespace MDispatch.iOS
@@ -21,6 +21,7 @@ namespace MDispatch.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Rg.Plugins.Popup.Popup.Init();
+            XfxControls.Init();
             Forms.Init();
             FormsControls.Touch.Main.Init();
             UIApplication.SharedApplication.StatusBarHidden = true;

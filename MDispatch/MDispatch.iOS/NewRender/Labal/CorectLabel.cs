@@ -12,22 +12,6 @@ namespace MDispatch.iOS.NewRender.Labal
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Label> e)
         {
             base.OnElementChanged(e);
-            UpdatePadding();
-        }
-
-        private void UpdatePadding()
-        {
-            try
-            {
-                var element = this.Element as Xamarin.Forms.Label;
-                if (element != null && this.Element.Text != null)
-                {
-                    this.Element.Text = this.Element.Text.ToUpper();
-                }
-            }
-            catch(Exception e)
-            {
-            }
         }
     }
 }
