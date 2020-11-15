@@ -98,7 +98,7 @@
                          FlexLayout.AlignSelf="Center"
                          Margin="0, 15, 0, 0"
                          FontAttributes="Bold"/>
-                 <Button Margin="0, 41, 0, 0"
+                 <Button Margin="11, 41, 11, 0"
                          FontSize="16"
                          FontAttributes="Bold"
                          FontFamily="Open Sans"

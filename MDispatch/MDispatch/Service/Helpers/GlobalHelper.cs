@@ -35,7 +35,7 @@ namespace MDispatch.Service
                 {
                     CrossSettings.Current.Remove("Token");
                     App.isAvtorization = false;
-                    App.Current.MainPage = new NavigationPage(new Avtorization());
+                    Application.Current.MainPage = new NavigationPage(new Avtorization());
                 }
                 else if (state == 4)
                 {

@@ -48,7 +48,7 @@ namespace MDispatch.View.TabPage
         private void InitDeiveredPage(ManagerDispatchMob managerDispatchMob)
         {
             AnimationNavigationPage navigationPage = new AnimationNavigationPage(new DeiveredPage(managerDispatchMob, Navigation));
-            navigationPage.Title = "Deiveredge";
+            navigationPage.Title = "Delivery";
             navigationPage.IconImageSource = "Delivery.png";
             Children.Add(navigationPage);
         }
