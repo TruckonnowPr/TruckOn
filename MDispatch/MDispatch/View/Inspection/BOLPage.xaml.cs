@@ -290,17 +290,6 @@ namespace MDispatch.View.Inspection
             await Navigation.PushAsync(new PhotoInspectionWeb(label.Text));
         }
 
-        //private async Task Wait()
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        while (bOLMV.StataLoadShip == 0)
-        //        {
-
-        //        }
-        //    });
-        //}
-
         protected byte[] ResizeImage(string base64)
         {
             var assembly = typeof(BOLPage).GetTypeInfo().Assembly;

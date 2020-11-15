@@ -7,20 +7,6 @@
     <ContentPage.Content>
         <ScrollView>
             <FlexLayout Padding="25" BackgroundColor="White" JustifyContent="Center" Direction="Column">
-                <!--<Image Source="" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center"/>
-                <StackLayout Margin="10">
-                    <Label x:Name="lUsName" Text="USERNAME" TextColor="#b8babb" Margin="4,0,0,0" FontSize="14" VerticalTextAlignment="Start"/>
-                    <Entry x:Name="eUsName" TextColor="#4fd2c2" HeightRequest="40" FontSize="14" TextChanged="Entry_TextChanged_1" Text="{Binding Username}"/>
-                    <Label x:Name="lPassword" Text="PASSWORD" TextColor="#b8babb" Margin="4,0,0,0" FontSize="14" VerticalTextAlignment="Start"/>
-                    <Entry TextColor="#4fd2c2" HeightRequest="40" FontSize="14" TextChanged="Entry_TextChanged" IsPassword="True" Text="{Binding Password}"/>
-                    <Button Text="Log in" TextColor="White" BackgroundColor="#4fd2c2" Command="{Binding AvtorizationCommand}"/>
-                    <Label Text="Forgot password?" HorizontalTextAlignment="End" FontSize="12">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <Label Text="{Binding FeedBack}" TextColor="Red" FontSize="11" HorizontalTextAlignment="Center"/>
-                </StackLayout>-->
                 <Image FlexLayout.AlignSelf="Center"
                        Source="logo.png" HeightRequest="100"
                        WidthRequest="100" />
@@ -96,27 +82,22 @@
                                       Text="{Binding Password}"/>
                     </FlexLayout>
                      <Image x:Name="hdPswImg"
-                            Source="hdPswImg.png"
+                            Source="hiddenPsw.png"
                             WidthRequest="24"
                             Grid.Row="0"
                             Grid.Column="1"
-                            Margin="0, 0, 20, 0"  
-                            IsVisible="false">
+                            Margin="0, 0, 20, 6" >
                          <Image.GestureRecognizers>
                              <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                          </Image.GestureRecognizers>
                      </Image>
-                     <Image x:Name="unhdPswImg"
-                            Source="unHiddenPsw.png"
-                            WidthRequest="24"
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Margin="0, 0, 20, 0">
-                         <Image.GestureRecognizers>
-                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
-                         </Image.GestureRecognizers>
-                     </Image>
                 </Grid>
+                  <Label Text="{Binding FeedBack}"
+                         TextColor="Red"
+                         FontSize="14"
+                         FlexLayout.AlignSelf="Center"
+                         Margin="0, 15, 0, 0"
+                         FontAttributes="Bold"/>
                  <Button Margin="0, 41, 0, 0"
                          FontSize="16"
                          FontAttributes="Bold"

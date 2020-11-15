@@ -15,11 +15,6 @@ namespace MDispatch.iOS.NewRender.Button
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
         {
             base.OnElementChanged(e);
-            UpdatePadding();
-        }
-
-        private void UpdatePadding()
-        {
         }
     
     }

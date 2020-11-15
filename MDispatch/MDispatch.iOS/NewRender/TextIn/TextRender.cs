@@ -15,8 +15,6 @@ namespace MDispatch.iOS.NewRender.TextIn
 
             if (Control != null)
             {
-                Control.BorderStyle = UITextBorderStyle.None;
-
                 var view = (Element as Entry);
 
                 if (view != null)
@@ -28,13 +26,13 @@ namespace MDispatch.iOS.NewRender.TextIn
 
         void DrawBorder(Entry view)
         {
-            //var borderLayer = new CALayer();
-            //borderLayer.MasksToBounds = true;
-            //borderLayer.Frame = new CoreGraphics.CGRect(0f, view.Height - 2, view.Width, 1f);
-            //borderLayer.BorderColor = Color.FromHex("#000000").ToCGColor();
-            //borderLayer.BorderWidth = 1.0f;
-            //Control.Layer.AddSublayer(borderLayer);
-            //Control.BorderStyle = UITextBorderStyle.None;
+            var borderLayer = new CALayer();
+            borderLayer.MasksToBounds = true;
+            borderLayer.Frame = new CoreGraphics.CGRect(0f, view.Height - 2, view.Width, 1f);
+            borderLayer.BorderColor = Element.TextColor.ToCGColor();
+            borderLayer.BorderWidth = 1.0f;
+            Control.Layer.AddSublayer(borderLayer);
+            Control.BorderStyle = UITextBorderStyle.None;
         }
 
         void Element_SizeChanged(object sender, System.EventArgs e)

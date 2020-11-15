@@ -59,16 +59,16 @@ namespace MDispatch.View.A_R
 
         void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {
-            hdPswImg.IsVisible = false;
-            unhdPswImg.IsVisible = true;
-            passwordEnt.IsVisible = false;
-        }
-
-        void TapGestureRecognizer_Tapped_2(System.Object sender, System.EventArgs e)
-        {
-            hdPswImg.IsVisible = true;
-            unhdPswImg.IsVisible = false;
-            passwordEnt.IsVisible = true;
+            if(passwordEnt.IsPassword)
+            {
+                hdPswImg.Source = ImageSource.FromFile("hiddenPsw.png");
+                passwordEnt.IsPassword = false;
+            }
+            else
+            {
+                hdPswImg.Source = ImageSource.FromFile("unHiddenPsw.png");
+                passwordEnt.IsPassword = true;
+            }
         }
     }
 }
