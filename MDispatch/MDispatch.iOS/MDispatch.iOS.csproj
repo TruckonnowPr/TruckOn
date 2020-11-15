@@ -215,13 +215,14 @@
     <Compile Include="NewRender\CustomCamera\CameraPageRender.cs" />
     <Compile Include="NewRender\CustomCamera\UIPaintCodeButton.cs" />
     <Compile Include="NewRender\Orientation\OrientationHandler.cs" />
-    <Compile Include="NewRender\ContextPage\RenderContextPage.cs" />
+    <Compile Include="NewRender\ContextPage\RenderPageNavigation.cs" />
     <Compile Include="NewRender\ImageRender\RezizeImgRender.cs" />
     <Compile Include="NewRender\TouchCordinateRender\TouchImageRender.cs" />
     <Compile Include="NewRender\RebderVideoCamera\VideoRecorderRenderer.cs" />
     <Compile Include="NewRender\RebderVideoCamera\UIPaintCodeButton.cs" />
     <Compile Include="StoreService1\FirebaseIIDService.cs" />
     <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
+    <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
