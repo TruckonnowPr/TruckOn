@@ -494,6 +494,7 @@
     <BundleResource Include="Resources\unDone.png" />
     <BundleResource Include="Resources\hiddenPsw.png" />
     <BundleResource Include="Resources\unHiddenPsw.png" />
+    <BundleResource Include="Resources\Aktiv.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pickedUpOrder1.png" />
@@ -653,9 +654,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\BackIconpage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Aktiv.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Archive.png" />

@@ -25,10 +25,19 @@ namespace MDispatch.iOS
             Forms.Init();
             FormsControls.Touch.Main.Init();
             UIApplication.SharedApplication.StatusBarHidden = true;
-            UINavigationBar.Appearance.TintColor = Color.FromHex("7f2ed2").ToUIColor();
-            UITabBar.Appearance.BarTintColor = Color.FromHex("95e3da").ToUIColor();
-            UITabBar.Appearance.TintColor = Color.FromHex("7f2ed2").ToUIColor();
-            LoadApplication(new App());
+            UITabBar.Appearance.BarTintColor = Color.FromHex("fff").ToUIColor();
+            UITabBar.Appearance.TintColor = Color.FromHex("A1A1A1").ToUIColor();
+            UITabBar.Appearance.SelectedImageTintColor = Color.FromHex("2C5DEB").ToUIColor();
+            UITabBarItem.Appearance.SetTitleTextAttributes(new UITextAttributes()
+            {
+                Font = UIFont.FromName("OpenSans-Bold", 12)
+            }, UIControlState.Normal);
+            UITabBarItem.Appearance.SetTitleTextAttributes(new UITextAttributes()
+            {
+                Font = UIFont.FromName("OpenSans-Bold", 12),
+                TextColor = UIColor.Black,
+            }, UIControlState.Selected);
+
 
             Firebase.Core.App.Configure();
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
@@ -52,6 +61,8 @@ namespace MDispatch.iOS
             Messaging.SharedInstance.Delegate = this;
             Messaging.SharedInstance.AutoInitEnabled = true;
             UIApplication.SharedApplication.RegisterForRemoteNotifications();
+
+            LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }
 

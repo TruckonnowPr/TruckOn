@@ -7,12 +7,7 @@ using MDispatch.ViewModels.TAbbMV.DialogAsk;
 using Plugin.Settings;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.ComponentModel;
-using System.Threading;
-using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using static MDispatch.Service.ManagerDispatchMob;
 
@@ -24,42 +19,12 @@ namespace MDispatch.View.TabPage.Tab
         public ActiveMV activeMV = null;
         private StackLayout SelectStackLayout = null;
         private InitDasbordDelegate initDasbordDelegate = null;
-        private Timer timer = null;
 
         public ActivePage (ManagerDispatchMob managerDispatchMob, INavigation navigation)
 		{
             this.activeMV = new ActiveMV(managerDispatchMob, navigation);
 			InitializeComponent ();
             BindingContext = this.activeMV;
-        }
-
-        private async void ReminderTrackInspaction(object s)
-        {
-            if (activeMV.UnTimeOfInspection.IsInspection)
-            {
-                await blockInspactionTrack.RotateTo(3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(-3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(-3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(-3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(-3, 50);
-                Vibration.Vibrate(30);
-                await blockInspactionTrack.RotateTo(0, 50);
-                Vibration.Vibrate(30);
-            }
-            else
-            {
-                timer.Change(Timeout.Infinite, Timeout.Infinite);
-            }
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -121,19 +86,9 @@ namespace MDispatch.View.TabPage.Tab
         }
 
         [Obsolete]
-        protected override void OnAppearing()
-        {
-            HelpersView.InitAlert(body);
-            activeMV.Init();
-            base.OnAppearing();
-            timer = new Timer(new TimerCallback(ReminderTrackInspaction), null, 5000, 5000);
-        }
-
-        [Obsolete]
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
             HelpersView.Hidden();
         }
 
