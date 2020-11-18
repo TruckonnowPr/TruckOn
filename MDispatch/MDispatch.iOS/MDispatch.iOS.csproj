@@ -223,6 +223,7 @@
     <Compile Include="StoreService1\FirebaseIIDService.cs" />
     <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
     <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
+    <Compile Include="NewRender\Effect\CornerRadius.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -1518,5 +1519,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NewRender\AuntificationID\" />
+    <Folder Include="NewRender\Effect\" />
   </ItemGroup>
 </Project>

@@ -98,15 +98,36 @@ namespace MDispatch.Models
                 string color = null;
                 if (CurrentStatus == "Assigned")
                 {
-                    color = "#65CAE1";
+                    color = "#2C5DEB";
                 }
                 else if (CurrentStatus == "Picked up")
                 {
-                    color = "#FFBF00";
+                    color = "#FF9314";
                 }
                 else if (CurrentStatus == "Delivered,Billed" || CurrentStatus == "Delivered,Paid")
                 {
-                    color = "#088A08";
+                    color = "#69EB2C";
+                }
+                return color;
+            }
+        }
+
+        public string ColorOpacityCurrentStatus
+        {
+            get
+            {
+                string color = null;
+                if (CurrentStatus == "Assigned")
+                {
+                    color = "#eef2fd";
+                }
+                else if (CurrentStatus == "Picked up")
+                {
+                    color = "#fff6ec";
+                }
+                else if (CurrentStatus == "Delivered,Billed" || CurrentStatus == "Delivered,Paid")
+                {
+                    color = "#f3fdee";
                 }
                 return color;
             }

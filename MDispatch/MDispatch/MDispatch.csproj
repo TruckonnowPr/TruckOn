@@ -118,5 +118,6 @@
     <Folder Include="Service\Helpers\" />
     <Folder Include="Service\RequestQueue\" />
     <Folder Include="NewElement\AuntificationID\" />
+    <Folder Include="NewElement\Effect\" />
   </ItemGroup>
 </Project>

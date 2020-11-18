@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.TabPage.Tab.ActivePage"
+             xmlns:effect="clr-namespace:MDispatch.NewElement.Effect"
              Title="Active"
              x:Name="ctp">
     <ContentPage.ToolbarItems>
@@ -9,21 +10,15 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout x:Name="body">
-            <Frame x:Name="blockInspactionTrack" Margin="0, 5, 0, 5" Padding="0" BackgroundColor="White" HasShadow="True" CornerRadius="2" OutlineColor="#C3CBCD" IsVisible="{Binding UnTimeOfInspection.IsInspection}">
-                <StackLayout Orientation="Horizontal" HeightRequest="120">
-                    <StackLayout.GestureRecognizers>
+                <FlexLayout Direction="Row" x:Name="blockInspactionTrack" HeightRequest="120"  Margin="24, 20, 24, 20" IsVisible="{Binding UnTimeOfInspection.IsInspection}">
+                    <FlexLayout.Effects>
+                        <effect:CornerRadius Radius="6" />
+                    </FlexLayout.Effects>
+                    <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToInspectionDriveCommand}"/>
-                    </StackLayout.GestureRecognizers>
-                    <FlexLayout Direction="Column">
-                        <BoxView WidthRequest="8" BackgroundColor="#74DF00" Color="{Binding UnTimeOfInspection.BoxColor6}"/>
-                        <BoxView WidthRequest="8" BackgroundColor="#74DF00" Color="{Binding UnTimeOfInspection.BoxColor5}"/>
-                        <BoxView WidthRequest="8" BackgroundColor="#ff5a00" Color="{Binding UnTimeOfInspection.BoxColor4}"/>
-                        <BoxView WidthRequest="8" BackgroundColor="#fb2e2e" Color="{Binding UnTimeOfInspection.BoxColor3}"/>
-                        <BoxView WidthRequest="8" BackgroundColor="#fb2e2e" Color="{Binding UnTimeOfInspection.BoxColor2}"/>
-                        <BoxView WidthRequest="8" BackgroundColor="#fb2e2e" Color="{Binding UnTimeOfInspection.BoxColor1}"/>
-                        <BoxView WidthRequest="8" BackgroundColor="#fb2e2e" Color="{Binding UnTimeOfInspection.BoxColor}"/>
-                    </FlexLayout>
-                    <StackLayout Padding="10">
+                    </FlexLayout.GestureRecognizers>
+                    <BoxView BackgroundColor="{Binding UnTimeOfInspection.GetColorBlock}" WidthRequest="8" />
+                    <StackLayout Padding="10" BackgroundColor="{Binding UnTimeOfInspection.GetColorBlockOpacity}" FlexLayout.Grow="1">
                         <Label Text="Inspection Driver" FontSize="17"/>
                         <StackLayout>
                             <StackLayout FlexLayout.AlignSelf="Center" Margin="3" Orientation="Horizontal">
@@ -36,22 +31,22 @@
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
-                </StackLayout>
-            </Frame>
+                </FlexLayout>
             <ListView ItemsSource="{Binding Shippings}" IsRefreshing="{Binding IsRefr}" IsPullToRefreshEnabled="True"
                       HasUnevenRows="True" SeparatorVisibility="None" RefreshCommand="{Binding RefreshCommand}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <Frame Margin="0, 5, 0, 5" CornerRadius="2" Padding="0" BackgroundColor="White" HasShadow="True" OutlineColor="#C3CBCD">
-                                    <StackLayout Orientation="Horizontal" x:Name="st">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="2" />
+                                    <FlexLayout Direction="Row" x:Name="st" Margin="24, 5, 24, 5">
+                                        <FlexLayout.Effects>
+                                            <effect:CornerRadius Radius="6" />
+                                        </FlexLayout.Effects>
+                                        <FlexLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1"/>
-                                        </StackLayout.GestureRecognizers>
-                                        <BoxView BackgroundColor="{Binding ColorCurrentStatus}" WidthRequest="8" />
-                                        <StackLayout Padding="10">
+                                        </FlexLayout.GestureRecognizers>
+                                        <BoxView BackgroundColor="{Binding ColorCurrentStatus}" WidthRequest="16" />
+                                        <StackLayout Padding="10" BackgroundColor="{Binding ColorOpacityCurrentStatus}" FlexLayout.Grow="1">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="Load Id:" FontSize="17"/>
                                                 <Label Text="{Binding idOrder}" FontSize="17"/>
@@ -93,8 +88,7 @@
                                                 <Label Text="Please complete inspection" FontSize="15" TextColor="{Binding ColorCurrentStatus}"/>
                                             </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                </Frame>
+                                    </FlexLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

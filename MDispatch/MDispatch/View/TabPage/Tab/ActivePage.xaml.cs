@@ -86,12 +86,18 @@ namespace MDispatch.View.TabPage.Tab
         }
 
         [Obsolete]
+        protected override void OnAppearing()
+        {
+            HelpersView.InitAlert(body);
+            activeMV.Init();
+        }
+
+        [Obsolete]
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             HelpersView.Hidden();
         }
-
 
         private void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {

@@ -41,159 +41,80 @@ namespace MDispatch.Models
             }
         }
 
-        public string BoxColor
+        public string GetColorBlock
         {
             get
             {
-                return "#fb2e2e";
-            }
-        }
-
-        public string BoxColor1
-        {
-            get
-            {
-                string color = "#FFFFFF";
-                if(TimeOfInspection == "1 Hours" || TimeOfInspection == "2 Hours" || TimeOfInspection == "3 Hours" || TimeOfInspection == "4 Hours" || TimeOfInspection == "5 Hours")
+                string color = "";
+                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "0 Hours")
                 {
-                    color = "#fb2e2e";
-                }
-                else if(TimeOfInspection == "6 Hours")
-                {
-                    color = "#ff5a00";
-                }
-                else if (TimeOfInspection == "7 Hours")
-                {
-                    color = "#74DF00";
-                }
-                else if (TimeOfInspection == "0 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                return color;
-            }
-        }
-
-        public string BoxColor2
-        {
-            get
-            {
-                string color = "#FFFFFF";
-                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "2 Hours" || TimeOfInspection == "3 Hours" || TimeOfInspection == "4 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                else if (TimeOfInspection == "5 Hours")
-                {
-                    color = "#ff5a00";
-                }
-                else if(TimeOfInspection == "7 Hours" || TimeOfInspection == "6 Hours")
-                {
-                    color = "#74DF00";
-                }
-                else if (TimeOfInspection == "0 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                return color;
-            }
-        }
-
-        public string BoxColor3
-        {
-            get
-            {
-                string color = "#FFFFFF";
-                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "2 Hours" || TimeOfInspection == "3 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                else if (TimeOfInspection == "4 Hours")
-                {
-                    color = "#ff5a00";
-                }
-                else if (TimeOfInspection == "7 Hours" || TimeOfInspection == "6 Hours" || TimeOfInspection == "5 Hours")
-                {
-                    color = "#74DF00";
-                }
-                else if(TimeOfInspection == "0 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                return color;
-            }
-        }
-
-        public string BoxColor4
-        {
-            get
-            {
-                string color = "#FFFFFF";
-                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "2 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                else if (TimeOfInspection == "3 Hours")
-                {
-                    color = "#ff5a00";
-                }
-                else if (TimeOfInspection == "7 Hours" || TimeOfInspection == "6 Hours" || TimeOfInspection == "5 Hours" || TimeOfInspection == "4 Hours")
-                {
-                    color = "#74DF00";
-                }
-                else if (TimeOfInspection == "0 Hours")
-                {
-                    color = "#fb2e2e";
-                }
-                return color;
-            }
-        }
-
-        public string BoxColor5
-        {
-            get
-            {
-                string color = "#FFFFFF";
-                if (TimeOfInspection == "1 Hours")
-                {
-                    color = "#fb2e2e";
+                    color = "#FF2C2C";
                 }
                 else if (TimeOfInspection == "2 Hours")
                 {
-                    color = "#ff5a00";
+                    color = "#FF5C00";
                 }
-                else if (TimeOfInspection == "7 Hours" || TimeOfInspection == "6 Hours" || TimeOfInspection == "5 Hours" || TimeOfInspection == "4 Hours" || TimeOfInspection == "2 Hours")
+                else if (TimeOfInspection == "3 Hours")
                 {
-                    color = "#74DF00";
+                    color = "#FF9314";
                 }
-                else if (TimeOfInspection == "0 Hours")
+                else if (TimeOfInspection == "4 Hours")
                 {
-                    color = "#fb2e2e";
+                    color = "#FFE600";
+                }
+                else if (TimeOfInspection == "5 Hours")
+                {
+                    color = "#BDFF00";
+                }
+                else if (TimeOfInspection == "6 Hours")
+                {
+                    color = "#69EB2C";
+                }
+                else if (TimeOfInspection == "7 Hours")
+                {
+                    color = "#2C5DEB";
                 }
                 return color;
             }
         }
 
-        public string BoxColor6
+        public string GetColorBlockOpacity
         {
             get
             {
-                string color = "#FFFFFF";
-                if (TimeOfInspection == "0 Hours" )
+                string color = "";
+                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "0 Hours")
                 {
-                    color = "#fb2e2e";
+                    color = "#ffeeee";
                 }
-                else if (TimeOfInspection == "1 Hours")
+                else if (TimeOfInspection == "2 Hours")
                 {
-                    color = "#ff5a00";
+                    color = "#fff2eb";
                 }
-                else if (TimeOfInspection == "2 Hours" || TimeOfInspection == "3 Hours" || TimeOfInspection == "4 Hours" || TimeOfInspection == "5 Hours" || TimeOfInspection == "6 Hours" || TimeOfInspection == "7 Hours")
+                else if (TimeOfInspection == "3 Hours")
                 {
-                    color = "#74DF00";
+                    color = "#fff6ec";
+                }
+                else if (TimeOfInspection == "4 Hours")
+                {
+                    color = "#fffdeb";
+                }
+                else if (TimeOfInspection == "5 Hours")
+                {
+                    color = "#faffeb";
+                }
+                else if (TimeOfInspection == "6 Hours")
+                {
+                    color = "#f3fdee";
+                }
+                else if (TimeOfInspection == "7 Hours")
+                {
+                    color = "#eef2fd";
                 }
                 return color;
             }
         }
+
 
         public string TimeOfStatus
         {
