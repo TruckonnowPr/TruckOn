@@ -33,14 +33,5 @@ namespace MDispatch.iOS.NewRender.ContextPage
 
             }
         }
-
-        public override void ViewDidAppear(bool animated)
-        {
-            base.ViewDidAppear(animated);
-            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
-            {
-                Font = UIFont.FromName("OpenSans-Bold", 20),
-            });
-        }
     }
 }

@@ -30,7 +30,7 @@ namespace MDispatch.iOS
             UITabBar.Appearance.SelectedImageTintColor = Color.FromHex("2C5DEB").ToUIColor();
             UITabBarItem.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
-                Font = UIFont.FromName("OpenSans-Bold", 12)
+                Font = UIFont.FromName("OpenSans-SemiBold", 12)
             }, UIControlState.Normal);
             UITabBarItem.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
@@ -38,6 +38,11 @@ namespace MDispatch.iOS
                 TextColor = UIColor.Black,
             }, UIControlState.Selected);
 
+
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
+            {
+                Font = UIFont.FromName("OpenSans-Bold", 20),
+            });
 
             Firebase.Core.App.Configure();
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))

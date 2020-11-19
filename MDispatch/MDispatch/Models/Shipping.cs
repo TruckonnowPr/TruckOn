@@ -198,24 +198,24 @@ namespace MDispatch.Models
             }
         }
 
-        public string IcoStatus
+        public string TextStatus
         {
             get
             {
-                string ico = "";
-                if(CurrentStatus == "Assigned")
+                string text = "";
+                if (CurrentStatus == "Assigned")
                 {
-                    ico = "newOrder.png";
+                    text = "New";
                 }
-                else if(CurrentStatus == "Picked up")
+                else if (CurrentStatus == "Picked up")
                 {
-                    ico = "pickedUpOrder1.png";
+                    text = "Picked up";
                 }
-                else if(CurrentStatus == "Delivered,Billed" || CurrentStatus == "Delivered,Paid")
+                else if (CurrentStatus == "Delivered,Billed" || CurrentStatus == "Delivered,Paid")
                 {
-                    ico = "deliveredOrder.png";
+                    text = "Incomplete";
                 }
-                return ico;
+                return text;
             }
         }
 
@@ -226,15 +226,15 @@ namespace MDispatch.Models
                 string ico = "";
                 if (CurrentStatus == "Assigned")
                 {
-                    ico = "newViewOrder.png";
+                    ico = "";
                 }
                 else if (CurrentStatus == "Picked up")
                 {
-                    ico = "pickedUpViewOrder.png";
+                    ico = "";
                 }
                 else if (CurrentStatus == "Delivered,Billed" || CurrentStatus == "Delivered,Paid")
                 {
-                    ico = "deliveredViewOrder.png";
+                    ico = "";
                 }
                 return ico;
             }

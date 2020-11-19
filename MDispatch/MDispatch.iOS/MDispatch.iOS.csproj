@@ -204,7 +204,6 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="NewRender\Labal\CorectLabel.cs" />
-    <Compile Include="NewRender\Labal\LabalStandartRender.cs" />
     <Compile Include="NewRender\ORC\ORCReader.cs" />
     <Compile Include="NewRender\ResizerImgIOS.cs" />
     <Compile Include="NewRender\TextIn\TextRender.cs" />
@@ -224,6 +223,8 @@
     <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
     <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
     <Compile Include="NewRender\Effect\CornerRadius.cs" />
+    <None Include="Info %28копировать%29.plist" />
+    <None Include="Info %28другая копия%29.plist" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -496,24 +497,24 @@
     <BundleResource Include="Resources\hiddenPsw.png" />
     <BundleResource Include="Resources\unHiddenPsw.png" />
     <BundleResource Include="Resources\Aktiv.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pickedUpOrder1.png" />
+    <BundleResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-BoldItalic.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-ExtraBold.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-ExtraBoldItalic.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-Italic.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-Light.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-LightItalic.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-Regular.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-SemiBold.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSans-SemiBoldItalic.ttf" />
+    <BundleResource Include="Resources\timeInspection.png" />
+    <BundleResource Include="Resources\descInspection.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deliveredOrder.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\newOrder.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\deliveredViewOrder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\newViewOrder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pickedUpViewOrder.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Close.png" />
@@ -1520,5 +1521,6 @@
   <ItemGroup>
     <Folder Include="NewRender\AuntificationID\" />
     <Folder Include="NewRender\Effect\" />
+    <Folder Include="Resources\Fonts\" />
   </ItemGroup>
 </Project>
