@@ -10,19 +10,19 @@
                 <Image FlexLayout.AlignSelf="Center"
                        Source="logo.png" HeightRequest="100"
                        WidthRequest="100" />
-                <labal:LabalStandart Margin="0, 15, 0, 0"
+                <Label Margin="0, 15, 0, 0"
                                      Text="Welcome Back"
                                      TextColor="#2C5DEB"
                                      FontSize="22"
                                      FontAttributes="Bold"
-                                     FontFamily="Open Sans"
+                                     FontFamily="{StaticResource OpenSans-Bold}"
                                      FlexLayout.AlignSelf="Center"/>
-                <labal:LabalStandart Margin="0, 3, 0, 0"
+                <Label Margin="0, 3, 0, 0"
                                      Text="Log in to continue"
                                      TextColor="#C1C1C1"
                                      FontSize="14"
                                      FontAttributes="Bold"
-                                     FontFamily="Open Sans"
+                                     FontFamily="{StaticResource OpenSans-Bold}"
                                      FlexLayout.AlignSelf="Center" />
                 <Grid FlexLayout.AlignSelf="Center"
                       Margin="0, 40, 0, 0" >
@@ -40,7 +40,7 @@
                                       TextColor="Black"
                                       PlaceholderColor="#C1C1C1"
                                       ActivePlaceholderColor="#C1C1C1"
-                                      FontFamily="Open Sans"
+                                      FontFamily="{StaticResource OpenSans-Regular}"
                                       FontSize="16"
                                       Margin="11, 0, 11, 0"
                                       Text="{Binding Username}"/>
@@ -75,7 +75,7 @@
                                       TextColor="Black"
                                       PlaceholderColor="#C1C1C1"
                                       ActivePlaceholderColor="#C1C1C1"
-                                      FontFamily="Open Sans"
+                                      FontFamily="{StaticResource OpenSans-Regular}"
                                       FontSize="16"
                                       Margin="11, 0, 11, 0"
                                       IsPassword="True"
@@ -97,11 +97,10 @@
                          FontSize="14"
                          FlexLayout.AlignSelf="Center"
                          Margin="0, 15, 0, 0"
-                         FontAttributes="Bold"/>
+                         FontFamily="{StaticResource OpenSans-Bold}"/>
                  <Button Margin="11, 41, 11, 0"
                          FontSize="16"
-                         FontAttributes="Bold"
-                         FontFamily="Open Sans"
+                         FontFamily="{StaticResource OpenSans-Bold}"
                          Text="Log in"
                          TextColor="White"
                          BackgroundColor="#2C5DEB"
@@ -113,7 +112,7 @@
                         FontSize="14"
                         FlexLayout.AlignSelf="Center"
                         Margin="0, 15, 0, 0"
-                        FontAttributes="Bold"
+                        FontFamily="{StaticResource OpenSans-Bold}"
                         TextColor="#2C5DEB">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>

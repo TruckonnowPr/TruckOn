@@ -223,8 +223,6 @@
     <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
     <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
     <Compile Include="NewRender\Effect\CornerRadius.cs" />
-    <None Include="Info %28копировать%29.plist" />
-    <None Include="Info %28другая копия%29.plist" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

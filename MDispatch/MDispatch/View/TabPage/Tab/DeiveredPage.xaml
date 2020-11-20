@@ -2,63 +2,112 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.TabPage.Tab.DeiveredPage"
+             xmlns:effect="clr-namespace:MDispatch.NewElement.Effect"
              Title="Delivered">
     <ContentPage.Content>
-        <StackLayout x:Name="body">
+        <StackLayout x:Name="body" Padding="0, 20, 0, 20">
             <ListView ItemsSource="{Binding Shippings}" IsRefreshing="{Binding IsRefr}" IsPullToRefreshEnabled="True"
                       HasUnevenRows="True" SeparatorVisibility="None" RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <Frame Margin="1, 5, 1, 5" CornerRadius="2" Padding="0" BackgroundColor="White" HasShadow="True"  OutlineColor="#C3CBCD">
-                                    <StackLayout Orientation="Horizontal" x:Name="st">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="2" />
+                                    <FlexLayout Direction="Row" x:Name="st" Margin="24, 5, 24, 5">
+                                        <FlexLayout.Effects>
+                                            <effect:CornerRadius Radius="6" />
+                                        </FlexLayout.Effects>
+                                        <FlexLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1"/>
-                                        </StackLayout.GestureRecognizers>
-                                        <BoxView BackgroundColor="{Binding ColorCurrentStatus}" WidthRequest="8" />
-                                        <StackLayout Padding="10">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="Load Id:" FontSize="17"/>
-                                                <Label Text="{Binding idOrder}" FontSize="17"/>
-                                                <Image Source="{Binding IcoStatus}" HeightRequest="8" Margin="50, 0, 0, 0"/>
-                                                <Label x:Name="idOrder" Text="{Binding Id}" IsVisible="False" FontSize="17"/>
-                                            </StackLayout>
-                                            <FlexLayout Direction="Column">
-                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding IsVehiclw1}">
-                                                    <Label Text="{Binding VehiclwInformation1.Year}"/>
-                                                    <Label Text="{Binding VehiclwInformation1.Make}"/>
-                                                    <Label Text="{Binding VehiclwInformation1.Model}"/>
+                                        </FlexLayout.GestureRecognizers>
+                                        <BoxView BackgroundColor="{Binding ColorCurrentStatus}" WidthRequest="16" />
+                                        <StackLayout Padding="10" BackgroundColor="{Binding ColorOpacityCurrentStatus}" FlexLayout.Grow="1">
+                                            <StackLayout Spacing="0">
+                                                <StackLayout>
+                                                    <Label x:Name="idOrder" Text="{Binding Id}" IsVisible="False" FontSize="17"/>
                                                 </StackLayout>
-                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding IsVehiclw2}">
-                                                    <Label Text="{Binding VehiclwInformation2.Year}"/>
-                                                    <Label Text="{Binding VehiclwInformation2.Make}"/>
-                                                    <Label Text="{Binding VehiclwInformation2.Model}"/>
-                                                </StackLayout>
-                                                <StackLayout IsVisible="{Binding IsVehiclw3}" Orientation="Horizontal">
+                                                <FlexLayout IsVisible="{Binding IsVehiclw1}" JustifyContent="SpaceBetween">
+                                                    <Label FontSize="16" TextColor="Black"
+                                                           FontFamily="{StaticResource OpenSans-Bold}" >
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding VehiclwInformation1.Year}"/>
+                                                                <Span Text=" "/>
+                                                                <Span Text="{Binding VehiclwInformation1.Make}"/>
+                                                                <Span Text=" "/>
+                                                                <Span Text="{Binding VehiclwInformation1.Model}"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label Text="{Binding idOrder}"
+                                                           FontSize="14"
+                                                           FontFamily="{StaticResource OpenSans-SemiBold}"
+                                                           TextColor="LightGray"/>
+                                                </FlexLayout>
+                                                <FlexLayout IsVisible="{Binding IsVehiclw2}">
+                                                    <Label FontSize="16" TextColor="Black"
+                                                           FontFamily="{StaticResource OpenSans-SemiBold}" >
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding VehiclwInformation2.Year}"/>
+                                                                <Span Text=" "/>
+                                                                <Span Text="{Binding VehiclwInformation2.Make}"/>
+                                                                <Span Text=" "/>
+                                                                <Span Text="{Binding VehiclwInformation2.Model}"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </FlexLayout>
+                                                <!--<StackLayout IsVisible="{Binding IsVehiclw3}" Orientation="Horizontal">
                                                     <Label Text="And further"/>
                                                     <Label Text="{Binding CountVehiclw}"/>
+                                                </StackLayout>-->
+                                            </StackLayout>
+                                            <FlexLayout HeightRequest="42">
+                                                <Image Source="{Binding IcoViewStatus}" WidthRequest="13" Margin="0, 0, 9, 0"/>
+                                                <StackLayout>
+                                                    <FlexLayout>
+                                                        <Label FontSize="14" TextColor="Black"
+                                                               FontFamily="{StaticResource OpenSans-Regular}" >
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding CityP}"/>
+                                                                    <Span Text=" "/>
+                                                                    <Span Text="{Binding StateP}"/>
+                                                                    <Span Text=" "/>
+                                                                    <Span Text="{Binding PickupExactly}"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </FlexLayout>
+                                                    <FlexLayout JustifyContent="SpaceBetween">
+                                                        <Label FontSize="14" TextColor="Black"
+                                                               FontFamily="{StaticResource OpenSans-Regular}" >
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding CityD}"/>
+                                                                    <Span Text=" "/>
+                                                                    <Span Text="{Binding StateD}"/>
+                                                                    <Span Text=" "/>
+                                                                    <Span Text="{Binding DeliveryEstimated}"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                        <Label Text="{Binding TextStatus}"
+                                                               FontSize="14"
+                                                               FontFamily="{StaticResource OpenSans-SemiBold}"
+                                                               TextColor="{Binding ColorCurrentStatus}" />
+                                                    </FlexLayout>
                                                 </StackLayout>
                                             </FlexLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Image Source="{Binding IcoViewStatus}" WidthRequest="7"/>
-                                                <StackLayout>
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{Binding CityP}"/>
-                                                        <Label Text="{Binding StateP}"/>
-                                                        <Label Text="{Binding PickupExactly}"/>
-                                                    </StackLayout>
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{Binding CityD}"/>
-                                                        <Label Text="{Binding StateD}"/>
-                                                        <Label Text="{Binding DeliveryEstimated}"/>
-                                                    </StackLayout>
-                                                </StackLayout>
+                                            <StackLayout Orientation="Horizontal"
+                                                         IsVisible="{Binding IsStartInspection}"
+                                                         Margin="0, 5, 0 , 0">
+                                                <Label Text="Please complete inspection"
+                                                       FontSize="14" TextColor="{Binding ColorCurrentStatus}"
+                                                       FontFamily="{StaticResource OpenSans-SemiBold}"/>
                                             </StackLayout>
                                         </StackLayout>
-                                    </StackLayout>
-                                </Frame>
+                                    </FlexLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

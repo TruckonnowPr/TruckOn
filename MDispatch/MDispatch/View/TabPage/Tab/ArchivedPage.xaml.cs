@@ -45,7 +45,7 @@ namespace MDispatch.View.TabPage.Tab
                 SelectStackLayout = null;
             }
             string idOrder = null;
-            StackLayout stackLayout = (StackLayout)sender;
+            FlexLayout stackLayout = (FlexLayout)sender;
             Label idorderL = stackLayout.FindByName<Label>("idOrder");
             if (idorderL != null)
             {

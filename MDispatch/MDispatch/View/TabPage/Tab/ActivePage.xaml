@@ -9,28 +9,48 @@
         <ToolbarItem  IconImageSource="settings.png" Clicked="ToolbarItem_Clicked_2"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout x:Name="body">
-                <FlexLayout Direction="Row" x:Name="blockInspactionTrack" HeightRequest="120"  Margin="24, 20, 24, 20" IsVisible="{Binding UnTimeOfInspection.IsInspection}">
+        <StackLayout x:Name="body" Padding="0, 20, 0, 20">
+                <FlexLayout Direction="Row" x:Name="blockInspactionTrack" HeightRequest="120"  Margin="24, 0, 24, 20" IsVisible="{Binding UnTimeOfInspection.IsInspection}">
                     <FlexLayout.Effects>
                         <effect:CornerRadius Radius="6" />
                     </FlexLayout.Effects>
                     <FlexLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToInspectionDriveCommand}"/>
                     </FlexLayout.GestureRecognizers>
-                    <BoxView BackgroundColor="{Binding UnTimeOfInspection.GetColorBlock}" WidthRequest="8" />
+                    <BoxView BackgroundColor="{Binding UnTimeOfInspection.GetColorBlock}" WidthRequest="16" />
                     <StackLayout Padding="10" BackgroundColor="{Binding UnTimeOfInspection.GetColorBlockOpacity}" FlexLayout.Grow="1">
                         <Label Text="Inspection Driver" FontSize="16" FontFamily="{StaticResource OpenSans-Bold}" />
                         <StackLayout>
-                            <StackLayout FlexLayout.AlignSelf="Center" Margin="3" Orientation="Horizontal">
-                                <Image Source="timeInspection.png" HeightRequest="13" WidthRequest="13"/>
-                                <Label Text="Time to inspection:" FontSize="14" TextColor="Black" FontFamily="{StaticResource OpenSans-Regular}" />
-                                <Label Text="{Binding UnTimeOfInspection.TimeOfInspection}" TextColor="Black" FontSize="14" FontFamily="{StaticResource OpenSans-Regular}" />
-                            </StackLayout>
-                            <StackLayout Margin="5" Orientation="Horizontal">
-                                <Image Source="descInspection.png" HeightRequest="13" WidthRequest="13"/>
-                                <Label Text="Need for inspection:" FontSize="14" TextColor="Black" FontFamily="{StaticResource OpenSans-Regular}" />
-                                <Label Text="{Binding UnTimeOfInspection.TimeOfStatus}" TextColor="Black" FontSize="14" FontFamily="{StaticResource OpenSans-Regular}" />
-                            </StackLayout>
+                            <FlexLayout FlexLayout.AlignSelf="Center" Margin="3" >
+                                <Image Source="timeInspection.png" HeightRequest="13" WidthRequest="13" Margin="0,  4, 0, 0"/>
+                                <Label FontSize="14"
+                                       TextColor="Black"
+                                       FontFamily="{StaticResource OpenSans-Regular}" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text=" "/>
+                                            <Span Text="Time to inspection: "/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding UnTimeOfInspection.TimeOfInspection}"/>
+                                         </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </FlexLayout>
+                            <FlexLayout Margin="5">
+                                <Image Source="descInspection.png" HeightRequest="13" WidthRequest="13" Margin="0,  4, 0, 0"/>
+                                <Label FontSize="14"
+                                       TextColor="Black"
+                                       FontFamily="{StaticResource OpenSans-Regular}" >
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text=" "/>
+                                            <Span Text="Need for inspection:"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding UnTimeOfInspection.TimeOfStatus}"/>
+                                         </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </FlexLayout>
                         </StackLayout>
                     </StackLayout>
                 </FlexLayout>
