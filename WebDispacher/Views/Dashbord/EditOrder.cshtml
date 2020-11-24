@@ -1,147 +1,170 @@
-﻿<div class="body">
-    <input class="backBtn" type="button" value="← Back to Orders" onclick="history.back();" />
-    <form action="SavaOrder" method="post">
-        <input type="text" name="idOrder" style="display:none;" value="@ViewBag.Order.Id" />
-        <div class="contentBody">
-            <div class="content">
-                <p class="inpLabe">Load Id</p>
-                <input name="idLoad" class="inpText" type="text" value="@ViewBag.Order.idOrder" />
-                <p class="inpLabe">Instructions</p>
-                <textarea name="instructions" class="inpText" style="height:92px;">@ViewBag.Order.Titl1DI</textarea>
-            </div>
-            <div class="content">
-                <p class="inpLabe">Status</p>
-                <select name="status" class="dropDown">
-                    <option value="">------------------------------------</option>
-                    <option value="NewLoad">NewLoad</option>
-                    <option value="Picked up">Picked up</option>
-                    <option value="Delivered">Delivered</option>
-                </select>
-            </div>
-        </div>
-        <div class="contentBody">
-            <div class="content">
-                <h2 style="color:rgb(51, 51, 51);margin-bottom:2px;">Pickup Information</h2>
-                <p class="inpLabe">Name</p>
-                <input name="nameP" class="inpText" type="text" value="@ViewBag.Order.NameP" placeholder="Name"/>
-                <p class="inpLabe">Contact</p>
-                <input name="contactP" class="inpText" type="text" value="@ViewBag.Order.ContactNameP" placeholder="Contact name"/>
-                <p class="inpLabe">Address*</p>
-                <input name="addressP" class="inpText validation" type="text" value="@ViewBag.Order.AddresP" placeholder="Address" required/>
-                <p class="inpLabe">City*</p>
-                <input name="cityP" class="inpText validation" type="text" value="@ViewBag.Order.CityP" placeholder="City" required/>
-                <p class="inpLabe">State*</p>
-                <input name="stateP" class="inpText validation" type="text" value="@ViewBag.Order.StateP" pattern="[A-Z]{2}" placeholder="XX - State" required/>
-                <p class="inpLabe">Zip*</p>
-                <input name="zipP" class="inpText validation" type="text" value="@ViewBag.Order.ZipP" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required/>
-                <p class="inpLabe">Phone*</p>
-                <input name="phoneP" class="inpText validation" type="tel" placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}"  value="@ViewBag.Order.PhoneP" required/>
-                <p class="inpLabe">Email*</p>
-                <input name="emailP" class="inpText validation" type="email" value="@ViewBag.Order.EmailP" placeholder="Email" required/>
-                <p class="inpLabe">Scheduled Pickup Date</p>
-                <input name="scheduledPickupDateP" class="inpText" type="text" value="@ViewBag.Order.PickupExactly" />
-            </div>
-            <div class="content">
-                <h2 style="color:rgb(51, 51, 51);margin-bottom:2px;">Delivery Information</h2>
-                <p class="inpLabe">Name</p>
-                <input name="nameD" class="inpText" type="text" value="@ViewBag.Order.NameD" placeholder="Name" />
-                <p class="inpLabe">Contact</p>
-                <input name="contactD" class="inpText" type="text" value="@ViewBag.Order.ContactNameD" placeholder="Contact name" />
-                <p class="inpLabe">Address*</p>
-                <input name="addressD" class="inpText validation" type="text" value="@ViewBag.Order.AddresD" placeholder="Address" required/>
-                <p class="inpLabe">City*</p>
-                <input name="cityD" class="inpText validation" type="text" value="@ViewBag.Order.CityD" placeholder="City" required/>
-                <p class="inpLabe">State*</p>
-                <input name="stateD" class="inpText validation" pattern="[A-Z]{2}" type="text" value="@ViewBag.Order.StateD" placeholder="XX - State" required/>
-                <p class="inpLabe">Zip*</p>
-                <input name="zipD" class="inpText validation" type="text" value="@ViewBag.Order.ZipD" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required/>
-                <p class="inpLabe">Phone*</p>
-                <input name="phoneD" class="inpText validation" placeholder="XXXXXXXXXX - Phone number" type="tel" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneD" required/>
-                <p class="inpLabe">Email*</p>
-                <input name="emailD" class="inpText validation" type="email" value="@ViewBag.Order.EmailD" placeholder="Email" required/>
-            </div>
-        </div>
-        <div class="bodyTable">
-            <input type="text" name="idOrder" style="display:none;" value="@ViewBag.Order.Id" />
-            <h4 class="headTabe">Vehicles</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>VIN</th>
-                        <th>Year</th>
-                        <th>Make</th>
-                        <th>Model</th>
-                        <th>Type</th>
-                        <th>Color</th>
-                        <th>Lot Number</th>
-                    </tr>
-                </thead>
-                <tbody id="tbVecl">
-                    @if (ViewBag.Order.VehiclwInformations != null)
-                    {
-                        @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
+﻿<body>
+    <div class="admin Billing">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tabContente">
+                        <h2>Create Order</h2>
+                        <form action="SavaOrder" method="post">
+                            <label for="">
+                                Load ID
+                                <input type="text" name="idLoad" value="@ViewBag.Order.idOrder">
+                            </label>
+                            <label for="">
+                                Status
+                                <input type="text" name="status" value="@ViewBag.Order.CurrentStatus">
+                            </label>
+                            <h2>Pickup Information</h2>
+                            <label for="">
+                                Name
+                                <input type="text" value="@ViewBag.Order.NameP" name="nameP" placeholder="Name">
+                            </label>
+                            <label for="">
+                                Contact
+                                <input type="text"  name="contactP" value="@ViewBag.Order.ContactNameP" placeholder="Contact name">
+                            </label>
+                            <label for="">
+                                Address
+                                <input type="text"  name="addressP" value="@ViewBag.Order.AddresP" placeholder="Address" required>
+                            </label>
+                            <label for="">
+                                City
+                                <input type="text" name="cityP"  value="@ViewBag.Order.CityP" placeholder="City" required>
+                            </label>
+                            <label for="">
+                                State
+                                <input type="text" name="stateP" value="@ViewBag.Order.StateP" pattern="[A-Z]{2}" placeholder="XX - State" required>
+                            </label>
+                            <label for="">
+                                Zip
+                                <input type="text" name="zipP" value="@ViewBag.Order.ZipP" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
+                            </label>
+                            <label for="">
+                                Phone
+                                <input type="text" name="phoneP"  placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}"  value="@ViewBag.Order.PhoneP" required>
+                            </label>
+                            <label for="">
+                                Email
+                                <input name="emailP" type="email" value="@ViewBag.Order.EmailP" placeholder="Email" required>
+                            </label>
+                            <label for="">
+                                Scheduled pickup date
+                                <input type="text" name="scheduledPickupDateP"" value="@ViewBag.Order.PickupExactly">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="tabContente">
+                        <form  action="SavaOrder" method="post">
+                            <label for="">
+                                Instructions
+                                <textarea type="text" name="instructions">@ViewBag.Order.Titl1DI</textarea>
+                            </label>
+                            <h2>Delivery Information</h2>
+                            <label for="">
+                                Name
+                                <input type="text" name="nameD" value="@ViewBag.Order.NameD" placeholder="Name">
+                            </label>
+                            <label for="">
+                                Contact
+                                <input type="text" name="contactD" value="@ViewBag.Order.ContactNameD" placeholder="Contact name">
+                            </label>
+                            <label for="">
+                                Address
+                                <input type="text" name="addressD" value="@ViewBag.Order.AddresD" placeholder="Address" required>
+                            </label>
+                            <label for="">
+                                City
+                                <input type="text" name="cityD" value="@ViewBag.Order.CityD" placeholder="City" required>
+                            </label>
+                            <label for="">
+                                State
+                                <input type="text" name="stateD"  pattern="[A-Z]{2}" value="@ViewBag.Order.StateD" placeholder="XX - State" required>
+                            </label>
+                            <label for="">
+                                Zip
+                                <input type="text" name="zipD" value="@ViewBag.Order.ZipD" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
+                            </label>
+                            <label for="">
+                                Phone
+                                <input type="text" name="phoneD" placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneD" required>
+                            </label>
+                            <label for="">
+                                Email
+                                <input name="emailD" type="email" value="@ViewBag.Order.EmailD" placeholder="Email" required>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="title">
+                        <h1>Vehicles</h1>
+                        <button class="btn1" onclick="AddVech(this)">Add Vehicle</button>
+                    </div>
+                    <table>
+                        <tr class="blue">
+                            <td>№</td>
+                            <td>VIN</td>
+                            <td>Year</td>
+                            <td>Make</td>
+                            <td>Model</td>
+                            <td>Type</td>
+                            <td>Color</td>
+                            <td>Lot number</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><img src="~/img/delete.svg" alt=""/></td>
+                        </tr>
+                        @if (ViewBag.Order.VehiclwInformations != null)
                         {
-                    <tr id="@ViewBag.Order.VehiclwInformations[i].Id">
-                        <td>@i</td>
-                        <td><input class="inpTextTr" type="text" value="@ViewBag.Order.VehiclwInformations[i].VIN" /></td>
-                        <td><input class="inpTextTr" type="text" value="@ViewBag.Order.VehiclwInformations[i].Year" /></td>
-                        <td><input class="inpTextTr" type="text" value="@ViewBag.Order.VehiclwInformations[i].Make" /></td>
-                        <td><input class="inpTextTr" type="text" value="@ViewBag.Order.VehiclwInformations[i].Model" /></td>
-                        <td>
-                            <select>
-                                <option>@ViewBag.Order.VehiclwInformations[i].Type</option>
-                                <option>Sedan</option>
-                                <option>Suv</option>
-                                <option>Coupe</option>
-                                <option>PickUp</option>
-                                <option>Tricycle</option>
-                                <option>Sport bike</option>
-                                <option>Touring motorcycle</option>
-                                <option>Cruise motorcycle</option>
-                            </select>
-                        </td>
-                        <td><input class="inpTextTr" type="text" value="@ViewBag.Order.VehiclwInformations[i].Color" /></td>
-                        <td><input class="inpTextTr" type="text" value="@ViewBag.Order.VehiclwInformations[i].Lot" /></td>
-                        <td><input class="inpTextTr btnD" type="button" value="-" onclick="RemoveVech(this)" /></td>
-                        <td><input class="inpTextTr btnD" type="button" value="S" onclick="SaveVech(this)" /></td>
-                    </tr>
+                            @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
+                            {
+                                <tr id="@ViewBag.Order.VehiclwInformations[i].Id">
+                                    <td>@i</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].VIN</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].Year</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].Make</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].Model</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].Type</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].Color</td>
+                                    <td>@ViewBag.Order.VehiclwInformations[i].Lot</td>
+                                    <td  onclick="RemoveVech(this)"><img src="~/img/delete.svg" alt=""/></td>
+                                    <td onclick="SaveVech(this)">Save</td>
+                                </tr>
+                            }
                         }
-                    }
-                </tbody>
-            </table>
-            <input class="btnAddandRevoveVech btnD" type="button" value="+" onclick="AddVech(this)" />
-        </div>
-        <hr style="border-color:rgba(228, 228, 228, 0.40);margin:10px;" />
-        <div class="contentBody">
-            <div class="content">
-                <h2 style="color:rgb(51, 51, 51);margin-bottom:2px;">Payment Information</h2>
-                <p class="inpLabe">Payment method</p>
-                <select name="paymentMethod" class="dropDown" required>
-                    <option value="">------------------------------------</option>
-                    <option value="COP">COP</option>
-                    <option value="COD">COD</option>
-                    <option value="1 days">1 days</option>
-                    <option value="2 days">2 days</option>
-                    <option value="5 days">5 days</option>
-                    <option value="10 days">10 days</option>
-                    <option value="15 days">15 days</option>
-                </select>
-                <p class="inpLabe">Price</p>
-                <input name="price" class="inpText validation" type="text" value="@ViewBag.Order.PriceListed" required/>
-            </div>
-            <div class="content">
-                <p class="inpLabe">Broker Fee</p>
-                <input name="brokerFee" class="inpText" type="text" value="@ViewBag.Order.BrokerFee" />
-                <div style="display:flex;">
-                    <input class="btnSave" value="Save" type="submit" />
-                    <a class="btnArchived" href="Config.BaseReqvesteUrl/Dashbord/Order/ArchivedOrder?id=@ViewBag.Order.Id">Archive</a>
-                    <a class="btnDeleted" href="Config.BaseReqvesteUrl/Dashbord/Order/DeletedOrder?id=@ViewBag.Order.Id&status=NewLoad">Deleted</a>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="tabContente">
+                        <h2>Payment Information</h2>
+                        <form action="SavaOrder" method="post">
+                            <label for="">
+                                Payment method
+                                <input type="text" name="paymentMethod" required>
+                            </label>
+                            <label for="">
+                                Price
+                                <input type="text" name="price" value="@ViewBag.Order.PriceListed" required>
+                            </label>
+                            <label for="">
+                                Broker fee
+                                <input type="text" name="brokerFee" value="@ViewBag.Order.BrokerFee">
+                            </label>
+                            <input class="btn1" value="Save Order" type="submit" />
+                            <a class="btn2"  href="@ViewBag.BaseUrl/Dashbord/Order/ArchivedOrder?id=@ViewBag.Order.Id" >Archive Order</a>
+                            <button class="btn3" href="@ViewBag.BaseUrl/Dashbord/Order/DeletedOrder?id=@ViewBag.Order.Id&status=NewLoad">Delete Order</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</body>
+
 <script>
     function SaveVech(btnE) {
         let idVech = btnE.parentElement.parentElement.id;
@@ -152,7 +175,7 @@
         let Type = btnE.parentElement.parentElement.children[5].children[0].value;
         let Color = btnE.parentElement.parentElement.children[6].children[0].value;
         let LotNumber = btnE.parentElement.parentElement.children[7].children[0].value;
-        let Req = "idVech=" + idVech + "&VIN=" + VIN + "&Year=" + Year + "&Make=" + Make + "&Model=" + Model + "&Type=" + Type + "&Color=" + Color + "&LotNumber=" + LotNumber; 
+        let Req = "idVech=" + idVech + "&VIN=" + VIN + "&Year=" + Year + "&Make=" + Make + "&Model=" + Model + "&Type=" + Type + "&Color=" + Color + "&LotNumber=" + LotNumber;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function (e) {
             if (this.readyState == 4 && this.status == 200) {
@@ -209,167 +232,3 @@
         xhttp.send(Req);
     }
 </script>
-        <style>
-            * {
-                margin: 0px;
-            }
-
-            .validation:invalid {
-                border-color: red;
-            }
-
-            .validation:valid {
-                border-color: #4ad73b;
-            }
-
-            .btnAddandRevoveVech {
-                border: none;
-                width: 30px;
-                background-color: #f9a038;
-                color: #000000;
-            }
-
-            .btnSave {
-                margin:2px;
-                background-color: #323b85;
-                border-style: double;
-                border-color: #8faac3;
-                border-radius: 10px;
-                color: white;
-                width: 100px;
-                height: 40px;
-                border-style: double;
-            }
-
-            .btnArchived {
-                margin: 2px;
-                background-color: #329703;
-                border-color: #33db26;
-                border-radius: 10px;
-                color: white;
-                padding: 7px;
-                font-size: 17px;
-                border-style: double;
-            }
-
-            .btnDeleted {
-                margin: 2px;
-                background-color: #b51616;
-                border-color: #893030;
-                border-radius: 10px;
-                color: white;
-                padding: 7px;
-                font-size: 17px;
-                text-align: center;
-                border-style: double;
-            }
-
-            btnSave:hover {
-                background-color: #8c8ac2;
-            }
-
-
-            .btnD:hover {
-                background: rgba(243, 167, 76, 0.29);
-            }
-
-            .dropDown {
-                width: 100%;
-                height: 30px;
-                border-width: 1px;
-                border-style: solid;
-                border-radius: 4px;
-                padding: 2px;
-                font-size: 18px;
-                color: rgb(51, 51, 51);
-                border-color: rgba(51, 51, 51, 0.4);
-                margin-bottom: 15px;
-            }
-
-            .inpTextTr {
-                border: none;
-                width: 97%;
-                background-color: rgba(228, 228, 228, 0.40);
-                color: rgb(51, 51, 51);
-                padding: 5px;
-            }
-
-            tr {
-                display: table-row;
-                vertical-align: inherit;
-                border-color: inherit;
-            }
-
-            td, th {
-                text-align: center;
-                color: rgb(51, 51, 51);
-            }
-
-            td {
-                background-color: rgba(228, 228, 228, 0.40);
-
-            }
-
-            .table {
-                width: 100%;
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .headTabe {
-                font-size: 21px;
-                margin-left: 10px;
-                color: rgb(51, 51, 51);
-            }
-
-                .bodyTable {
-                margin: 15px;
-            }
-
-            .inpLabe {
-                font-size: 18px;
-                color: rgb(51, 51, 51);
-                margin-top:10px;
-            }
-
-            .inpText {
-                width: 100%;
-                height: 25px;
-                border-width: 1px;
-                border-style: solid;
-                border-radius: 4px;
-                padding: 2px;
-                font-size: 16px;
-                color: rgb(51, 51, 51);
-                border-color: rgba(51, 51, 51, 0.24);
-                margin-bottom: 15px;
-            }
-
-            .content {
-                width: 40%;
-            }
-            
-            .contentCenrer {
-                width: 90%;
-            }
-
-            .contentBody {
-                display:flex;
-                justify-content:space-around;
-            }
-
-            .backBtn {
-                background: none;
-                border: none;
-                font-size: 17px;
-                color: #ffd7a6;
-                margin-bottom: 20px;
-            }
-
-            .body {
-                margin-top: 30px;
-                margin-left: 5px;
-                margin-right: 5px;
-                padding: 10px;
-            }
-        </style>
