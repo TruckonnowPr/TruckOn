@@ -316,6 +316,7 @@ namespace WebDispacher.Dao
 
         internal int AddCommpany(Commpany commpany)
         {
+            ;
             context.Commpanies.Add(commpany);
             context.SaveChanges();
             return commpany.Id;
