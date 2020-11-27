@@ -5,64 +5,76 @@
                 <div class="col-md-6">
                     <div class="tabContent">
                         <h2>Add truck</h2>
-                        <form action="">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <label for="">
-                                Full name
-                                <input type="text">
+                                Name Truck
+                                <input type="text" name="nameTruk" required>
                             </label>
                             <label for="">
-                                Email address
-                                <input type="text">
+                                Type Truck
+                                <input type="text" name="typeTruk" required>
                             </label>
                             <label for="">
-                                Password
-                                <input type="text">
+                                Year
+                                <input type="text" name="yera">
                             </label>
                             <label for="">
-                                Phone number
-                                <input type="text">
+                                Make
+                                <input type="text" name="make">
                             </label>
                             <label for="">
-                                Trailer capacity
-                                <input type="text">
+                                Model
+                                <input type="text" name="model">
                             </label>
                             <label for="">
-                                Driver's license number
-                                <input type="text">
+                                State
+                                <input type="text" name="state">
                             </label>
                             <label for="">
-                                Document DL
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Plate Exp
+                                <input type="text" name="exp">
                             </label>
                             <label for="">
-                                Document medical card
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Vin#
+                                <input type="text" name="vin">
                             </label>
                             <label for="">
-                                Document SSN
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Owner
+                                <input type="text" name="owner">
                             </label>
                             <label for="">
-                                Document proof of work authorization or GC
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Plate Truck
+                                <input type="text" name="plateTruk" required>
                             </label>
                             <label for="">
-                                Document DQL (driver qualification file)
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Color
+                                <input type="text" name="color">
                             </label>
                             <label for="">
-                                Document contract (company and driver)
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Truck registration
+                                <input type="file" name="truckRegistrationDoc" accept="application/pdf, image/jpeg, image/jpg" required><p>You can upload files only in pdf, jpg and jepg</p>
                             </label>
                             <label for="">
-                                Document Drug test results (optional for 26000+)
-                                <input type="file"><p>You can upload files only in pdf, jpg and jepg</p>
+                                Truck lease agreement
+                                <input type="file" name="truckLeaseAgreementDoc" accept="application/pdf, image/jpeg, image/jpg" required><p>You can upload files only in pdf, jpg and jepg</p>
+                            </label>
+                            <label for="">
+                                Truck annual inspection
+                                <input type="file" name="truckAnnualInspection" accept="application/pdf, image/jpeg, image/jpg" required><p>You can upload files only in pdf, jpg and jepg</p>
+                            </label>
+                            <label for="">
+                                Bob tail physical damage (optional)
+                                <input type="file" name="bobTailPhysicalDamage" accept="application/pdf, image/jpeg, image/jpg"><p>You can upload files only in pdf, jpg and jepg</p>
+                            </label>
+                            <label for="">
+                                NY HUT (optional for NY rolling)
+                                <input type="file" accept="application/pdf, image/jpeg, image/jpg" name="nYHUTDoc"><p>You can upload files only in pdf, jpg and jepg</p>
                             </label>
                             <button class="btn1">Save Info</button>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6">
+                @*<div class="col-md-6">
                     <div class="row">
                         <div class="col-md-auto">
                             <img src="img/15.svg" alt="">
@@ -95,7 +107,7 @@
                         <div class="col-md-auto">
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>

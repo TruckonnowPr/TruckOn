@@ -506,17 +506,24 @@ namespace WebDispacher.Controellers
                     List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
                     List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
                     List<Trailer> trailers = managerDispatch.GetTrailers(idCompany);
-                    ViewBag.InspectionTruck = managerDispatch.GetInspectionTrucks(idDriver, idTruck, idTrailer, date)
+                    List<InspectinView> InspectionTruck = managerDispatch.GetInspectionTrucks(idDriver, idTruck, idTrailer, date)
                         .Select(x => new InspectinView()
                         {
                             Id = x.Id,
                             Date = x.Date,
                             Trailer = trailers.FirstOrDefault(t => t.Id == x.IdITrailer) != null ? $"{trailers.FirstOrDefault(t => t.Id == x.IdITrailer).Make}, Plate: {trailers.FirstOrDefault(t => t.Id == x.IdITrailer).Plate}" : "---------------",
                             Truck = trucks.FirstOrDefault(t => t.Id == x.IdITruck) != null ? $"{trucks.FirstOrDefault(t => t.Id == x.IdITruck).Make} {trucks.FirstOrDefault(t => t.Id == x.IdITruck).Model}, Plate: {trucks.FirstOrDefault(t => t.Id == x.IdITruck).PlateTruk}" : "---------------",
-                            NameDriver = drivers.First(d => d.InspectionDrivers.FirstOrDefault(i => i.Id == x.Id) != null).FullName,
+                            NameDriver = drivers.FirstOrDefault(d => d.InspectionDrivers.FirstOrDefault(i => i.Id == x.Id) != null) == null ? "N/D" : drivers.FirstOrDefault(d => d.InspectionDrivers.FirstOrDefault(i => i.Id == x.Id) != null).FullName,
                         })
-                        .OrderBy(x => Convert.ToDateTime(x.Date))
                         .ToList();
+                    try
+                    {
+                        ViewBag.InspectionTruck = InspectionTruck.OrderBy(x => Convert.ToDateTime(x.Date)).ToList();
+                    }
+                    catch
+                    {
+                        ViewBag.InspectionTruck = InspectionTruck;
+                    }
                     ViewBag.Drivers = drivers;
                     ViewBag.Trucks = trucks;
                     ViewBag.Trailers = trailers;
