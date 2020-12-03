@@ -38,7 +38,7 @@
                 </ListView>
             </StackLayout>
             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" BackgroundColor="Transparent"
-                         AbsoluteLayout.LayoutBounds="1, 0.95, 1, 43" Opacity="0.85">
+                         AbsoluteLayout.LayoutBounds="1, 0.95, 1, 43">
                 <Button x:Name="btnRetake"
                         IsVisible="False"
                         Text="Retake"
