@@ -23,10 +23,15 @@ namespace MDispatch.Vidget.View
             fullPhotoTruckVM = new FullPhotoTruckVM(managerDispatchMob, idDriver, indexCurrent, Navigation, truckCar, initDasbordDelegate);
             InitializeComponent();
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-            On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.True)
+            On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.False) 
                 .SetPreferredStatusBarUpdateAnimation(UIStatusBarAnimation.Fade);
             BindingContext = fullPhotoTruckVM;
             InitElement();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         private  void InitElement()

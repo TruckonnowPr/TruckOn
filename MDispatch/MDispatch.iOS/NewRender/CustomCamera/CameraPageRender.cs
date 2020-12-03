@@ -94,10 +94,11 @@ namespace MDispatch.iOS.NewRender.CustomCamera
             captureSession = new AVCaptureSession();
             videoPreviewLayer = new AVCaptureVideoPreviewLayer(captureSession)
             {
-                Frame = liveCameraStream.Bounds,
+                Frame = UIScreen.MainScreen.Bounds,
                 Orientation = GetCameraForOrientation()
             };
             liveCameraStream.Layer.AddSublayer(videoPreviewLayer);
+            videoPreviewLayer.VideoGravity = AVLayerVideoGravity.ResizeAspectFill;
             var captureDevice = AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
             ConfigureCameraForDevice(captureDevice);
             captureDeviceInput = AVCaptureDeviceInput.FromDevice(captureDevice);
@@ -328,7 +329,7 @@ namespace MDispatch.iOS.NewRender.CustomCamera
             var buttonHeight = 70;
             liveCameraStream = new UIView()
             {
-                Frame = new CGRect(0f, 0f, View.Bounds.Width, View.Bounds.Height)
+                Frame = UIScreen.MainScreen.Bounds
             };
             takePhotoButton = new UIButton(UIButtonType.Custom)
             {
