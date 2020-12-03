@@ -186,8 +186,7 @@ namespace MDispatch.iOS.NewRender.CustomCamera
                     if (data != null)
                     {
                         UIImage originalImage = ImageFromByteArray(data.ToArray());
-                        //byte[] res = ResizeImageIOS(originalImage, width, height);
-                        (Element as CameraPage).SetPhotoResult(originalImage.AsJPEG(.7f).ToArray(), (int)originalImage.Size.Width, (int)originalImage.Size.Height);
+                        (Element as CameraPage).SetPhotoResult(originalImage.AsJPEG(.6f).ToArray(), (int)originalImage.Size.Width, (int)originalImage.Size.Height);
                     }
                     isTake = false;
                     takePhotoButton.Enabled = true;
@@ -213,8 +212,7 @@ namespace MDispatch.iOS.NewRender.CustomCamera
                     if (data != null)
                     {
                         UIImage originalImage = ImageFromByteArray(data.ToArray());
-                        //byte[] res = ResizeImageIOS(originalImage, width, height);
-                        (Element as CameraPage).SetPhotoResult(originalImage.AsJPEG(.7f).ToArray(), (int)originalImage.Size.Width, (int)originalImage.Size.Height);
+                        (Element as CameraPage).SetPhotoResult(originalImage.AsJPEG(.6f).ToArray(), (int)originalImage.Size.Width, (int)originalImage.Size.Height);
                     }
                     isTake = false;
                     takePhotoIspectionButton1.Enabled = true;
@@ -240,8 +238,7 @@ namespace MDispatch.iOS.NewRender.CustomCamera
                     if (data != null)
                     {
                         UIImage originalImage = ImageFromByteArray(data.ToArray());
-                        //byte[] res = ResizeImageIOS(originalImage, width, height);
-                        (Element as CameraPage).SetPhotoinspectionResult(originalImage.AsJPEG(.7f).ToArray(), (int)originalImage.Size.Width, (int)originalImage.Size.Height);
+                        (Element as CameraPage).SetPhotoinspectionResult(originalImage.AsJPEG(.6f).ToArray(), (int)originalImage.Size.Width, (int)originalImage.Size.Height);
                     }
                     isTake = false;
                     takePhotoButton.Enabled = true;
@@ -310,13 +307,11 @@ namespace MDispatch.iOS.NewRender.CustomCamera
 
         private void ReSetOrientation(UIInterfaceOrientation toInterfaceOrientation)
         {
-            var rightButtonX = View.Bounds.Right - 85;
-            var bottomButtonY = View.Bounds.Bottom - 85;
             liveCameraStream.Frame = new CGRect(0f, 0f, View.Bounds.Width, View.Bounds.Height);
-            videoPreviewLayer.Frame = liveCameraStream.Bounds;
+            videoPreviewLayer.Frame = UIScreen.MainScreen.Bounds;
             videoPreviewLayer.Connection.VideoOrientation = GetCameraForOrientation();
             videoPreviewLayer.Orientation = GetCameraForOrientation(toInterfaceOrientation);
-            takePhotoButton.Frame = new CGRect(rightButtonX, bottomButtonY, 70, 70);
+            takePhotoButton.Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100);
             stillImageOutput.ConnectionFromMediaType(AVMediaType.Video).VideoOrientation = GetCameraForOrientation();
         }
 
@@ -334,15 +329,16 @@ namespace MDispatch.iOS.NewRender.CustomCamera
 
             takePhotoIspectionButton1 = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100)
+                 Frame = new CGRect(View.Bounds.Right - 104, View.Bounds.Bottom - 84, 60, 60)
             };
-            takePhotoIspectionButton1.SetBackgroundImage(UIImage.FromBundle("Take.png"), UIControlState.Normal);
+            takePhotoIspectionButton1.SetBackgroundImage(UIImage.FromBundle("NotDamage.png"), UIControlState.Normal);
 
             takePhotoIspectionButton = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(View.Bounds.Right - 104, View.Bounds.Bottom - 84, 60, 60)
+                Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100)
             };
-            takePhotoIspectionButton.SetBackgroundImage(UIImage.FromBundle("NotDamage.png"), UIControlState.Normal);
+            takePhotoIspectionButton.SetBackgroundImage(UIImage.FromBundle("Take.png"), UIControlState.Normal);
+
             scanPhotoButton = new UIButton()
             {
                 Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100),

@@ -50,6 +50,7 @@ namespace MDispatch.iOS.NewRender.ContextPage
                 }
 
             }
+            View.Frame = UIScreen.MainScreen.Bounds;
         }
     }
 }
