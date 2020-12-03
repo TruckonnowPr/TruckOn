@@ -322,33 +322,30 @@ namespace MDispatch.iOS.NewRender.CustomCamera
 
         private void SetupUserInterface()
         {
-            var rightButtonX = View.Bounds.Right - 85;
-            var bottomButtonY = View.Bounds.Bottom - 85;
-            var bottomButton1Y = 20;
-            var buttonWidth = 70;
-            var buttonHeight = 70;
             liveCameraStream = new UIView()
             {
                 Frame = UIScreen.MainScreen.Bounds
             };
             takePhotoButton = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(rightButtonX, bottomButtonY, buttonWidth, buttonHeight)
+                Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100)
             };
             takePhotoButton.SetBackgroundImage(UIImage.FromBundle("Take.png"), UIControlState.Normal);
+
             takePhotoIspectionButton1 = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(rightButtonX, bottomButtonY, buttonWidth, buttonHeight)
+                Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100)
             };
-            takePhotoIspectionButton1.SetBackgroundImage(UIImage.FromBundle("AddDamege.png"), UIControlState.Normal);
+            takePhotoIspectionButton1.SetBackgroundImage(UIImage.FromBundle("Take.png"), UIControlState.Normal);
+
             takePhotoIspectionButton = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(rightButtonX, bottomButton1Y, buttonWidth, buttonHeight)
+                Frame = new CGRect(View.Bounds.Right - 104, View.Bounds.Bottom - 84, 60, 60)
             };
             takePhotoIspectionButton.SetBackgroundImage(UIImage.FromBundle("NotDamage.png"), UIControlState.Normal);
             scanPhotoButton = new UIButton()
             {
-                Frame = new CGRect(rightButtonX, bottomButtonY, buttonWidth, buttonHeight),
+                Frame = new CGRect(View.Bounds.Right - 124, (View.Bounds.Bottom / 2) - 50, 100, 100),
             };
             scanPhotoButton.SetBackgroundImage(UIImage.FromBundle("scanPlate.png"), UIControlState.Normal);
             View.InsertSubview(liveCameraStream, 0);
