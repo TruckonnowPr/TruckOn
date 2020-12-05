@@ -19,7 +19,7 @@
                             <td>Type</td>
                             <td>Color</td>
                             <td>Lot number</td>
-                        </tr>   
+                        </tr>
                         @if (ViewBag.Order.VehiclwInformations != null)
                         {
                             @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
@@ -93,6 +93,18 @@
                                 <button class="btn1" onclick="history.back();">Back to Orders</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="right-bar-about">
+                        <h3>Action history</h3>
+                        @for (int i = 0; i < ViewBag.Historys.Count; i++)
+                        {
+                            <div class="one">
+                                <p>@ViewBag.Historys[i].Action</p>
+                                <p>Date Action: @ViewBag.Historys[i].DateAction</p>
+                            </div>  
+                        }
                     </div>
                 </div>
             </div>

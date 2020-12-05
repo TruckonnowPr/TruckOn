@@ -706,12 +706,12 @@ namespace WebDispacher.Controellers
                     if (id != "" && id != null)
                     {
                         ViewBag.Order = managerDispatch.GetOrder(id);
-                        //ViewBag.Historys = managerDispatch.GetHistoryOrder(id).Select(x => new HistoryOrder()
-                        //{
-                        //    Action = managerDispatch.GetStrAction(key, x.IdConmpany.ToString(), x.IdOreder.ToString(), x.IdVech.ToString(), x.IdDriver.ToString(), x.TypeAction),
-                        //    DateAction = x.DateAction
-                        //})
-                        //.ToList();
+                        ViewBag.Historys = managerDispatch.GetHistoryOrder(id).Select(x => new HistoryOrder()
+                        {
+                            Action = managerDispatch.GetStrAction(key, x.IdConmpany.ToString(), x.IdOreder.ToString(), x.IdVech.ToString(), x.IdDriver.ToString(), x.TypeAction),
+                            DateAction = x.DateAction
+                        })
+                        .ToList();
                         actionResult = View("FullInfoOrder");
                     }
                     else

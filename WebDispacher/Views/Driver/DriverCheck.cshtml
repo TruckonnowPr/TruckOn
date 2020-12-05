@@ -15,10 +15,26 @@
                                 </label>
                                 <label for="" class="w50">
                                     Driver's License
-                                    <input  name="driversLicense" type="text" required>
+                                    <input name="driversLicense" type="text" required>
                                 </label>
                                 <input type="submit" value="Search" class="btn1">
                             </form>
+                            @for (int i = 0; i < ViewBag.DriverReports.Count; i++)
+                            {
+                                <div class="one-line">
+                                    <div class="top-line">
+                                        <div class="left">
+                                            <div class="contact">
+                                                <p><strong>@ViewBag.DriverReports[i].FullName</strong></p>
+                                                <p><strong>Driver’s License:</strong> @ViewBag.DriverReports[i].DriversLicenseNumber</p>
+                                                <p><strong>Registration:</strong> @ViewBag.DriverReports[i].DateRegistration</p>
+                                                <p><strong>Fired:</strong> @ViewBag.DriverReports[i].DateFired</p>
+                                                <p>@ViewBag.DriverReports[i].Comment</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

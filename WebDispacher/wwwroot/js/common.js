@@ -1,4 +1,4 @@
-function show_hide_password(target){
+function show_hide_password(target) {
     var input = document.getElementById('password-input');
     if (input.getAttribute('type') == 'password') {
         target.classList.add('view');
@@ -8,7 +8,7 @@ function show_hide_password(target){
         input.setAttribute('type', 'password');
     }
     return false;
-  
+
 };
 $(function() {
     $("#phone").intlTelInput({
@@ -26,30 +26,32 @@ $(function() {
 $(function() {
     var tab; // заголовок вкладки
     var tabContent; // блок содержащий контент вкладки
-    window.onload=function() {
-        tabContent=document.getElementsByClassName('tabContent');
-        tab=document.getElementsByClassName('tab');
+    window.onload = function() {
+        tabContent = document.getElementsByClassName('tabContent');
+        tab = document.getElementsByClassName('tab');
         hideTabsContent(1);
     };
-    document.getElementById('tabs').onclick= function (event) {
-        var target=event.target;
-        if (target.className=='tab') {
-        for (var i=0; i<tab.length; i++) {
-            if (target == tab[i]) {
-                showTabsContent(i);
-                break;
+    document.getElementById('tabs').onclick = function(event) {
+        var target = event.target;
+        if (target.className == 'tab') {
+            for (var i = 0; i < tab.length; i++) {
+                if (target == tab[i]) {
+                    showTabsContent(i);
+                    break;
+                }
             }
         }
-        }
     };
+
     function hideTabsContent(a) {
-        for (var i=a; i<tabContent.length; i++) {
+        for (var i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add("hide");
             tab[i].classList.remove('whiteborder');
         }
     };
-    function showTabsContent(b){
+
+    function showTabsContent(b) {
         if (tabContent[b].classList.contains('hide')) {
             hideTabsContent(0);
             tab[b].classList.add('whiteborder');
@@ -85,5 +87,12 @@ $(function() {
     $('.top-nav_menu #navigation').on('click', function() {
         $('.top-nav_menu').toggleClass("top-nav_menu__active");
         $('.hamburger').toggleClass("is-active");
+    });
+    $('.cust-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        infinite: true,
     });
 });

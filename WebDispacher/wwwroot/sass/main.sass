@@ -969,6 +969,7 @@ form.form-login:after
 				line-height: 1.2
 				color: $black
 				margin-left: 20px
+				padding: 0
 				img 
 					height: 24px
 					width: auto 
@@ -1290,12 +1291,24 @@ form
 		font-size: 36px
 		line-height: 44px
 		color: #000000
+	h3
+		font-weight: bold
+		font-size: 24px
+		line-height: 1.2
+		color: #000000
+		margin-top: 32px
+		margin-bottom: 15px
 	form.search 
 		display: flex
 		align-items: flex-end
 		justify-content: start
 	form 
 		margin-top: 40px
+		display: flex
+		align-items: start
+		justify-content: space-between
+		.w1
+			width: 48.5%
 		label 
 			font-family: Montserrat
 			font-style: normal
@@ -1305,12 +1318,12 @@ form
 			color: $black
 			text-align: left
 			margin-top: 0px
-			width: 500px
+			width: 100%
 			display: block
 			margin-bottom: 15px
-			input, textarea 
+			input, textarea, select
 				width: 100%
-				height: auto
+				height: 72px
 				background: #FFFFFF
 				border: 1px solid $light_gray
 				border-radius: 10px
@@ -1325,7 +1338,7 @@ form
 			input:placeholder 
 				color: $light_gray
 			textarea 
-				height: 135px
+				height: 185px
 				padding-top: 10px
 			.value 
 				display: flex
@@ -1363,8 +1376,14 @@ form
 				height: 18px
 				display: inline-block
 				vertical-align: middle
-	.btn1
-		width: 500px
+	.btn1, .btn2, .btn3
+		width: 100%
+		font-size: 24px
+		margin-top: 15px
+		height: auto
+		padding: 21px 29px
+	.btn1 
+		margin-top: 19px
 	.w100
 		width: 100%
 		label
@@ -1444,8 +1463,11 @@ select
 	.img
 		text-align: center
 		margin-top: 30px
+	.img.not 
+		opacity: 0.5
 	.btn1
 		margin-top: 30px
+		width: 100%
 .doc
 	p
 		margin-top: 30px
@@ -1493,4 +1515,47 @@ select
 		margin-top: 30px
 	img
 		margin-bottom: 20px
+.right-bar-about
+	margin-top: 43px
+	width: 95%
+	h3 
+		font-family: Montserrat
+		font-style: normal
+		font-weight: bold
+		font-size: 24px
+		line-height: 1.2
+		color: #000000
+	.one
+		width: 100%
+		border-bottom: 1px solid #F0F4FA
+		margin-bottom: 5px
+		padding: 15px 0
+		p 
+			font-family: Montserrat
+			font-style: normal
+			font-weight: 500
+			font-size: 16px
+			line-height: 170%
+			color: #08112B
+			padding: 0
+			margin: 0
+		p:first-child 
+			margin-bottom: 28px
+.cust-slider
+	.slick-arrow
+		top: auto 
+		bottom: -28px
+		width: 9px
+		height: 18px
+		background-position: center 
+		background-size: contain
+		background-repeat: no-repeat
+	.slick-prev
+		background-image: url(../img/prev.svg)
+		left: 30%
+	.slick-next
+		background-image: url(../img/next.svg)
+		right: 30%
+	.slick-prev:before, .slick-next:before 
+		display: none!important
 @import "media" // Always at the end
