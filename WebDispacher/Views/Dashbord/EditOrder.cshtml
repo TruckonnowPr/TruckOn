@@ -2,105 +2,113 @@
     <div class="admin Billing">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="tabContente">
                         <h2>Create Order</h2>
-                        <form action="SavaOrder" method="post">
-                            <label for="">
-                                Load ID
-                                <input type="text" name="idLoad" value="@ViewBag.Order.idOrder">
-                            </label>
-                            <label for="">
-                                Status
-                                <input type="text" name="status" value="@ViewBag.Order.CurrentStatus">
-                            </label>
-                            <h2>Pickup Information</h2>
-                            <label for="">
-                                Name
-                                <input type="text" value="@ViewBag.Order.NameP" name="nameP" placeholder="Name">
-                            </label>
-                            <label for="">
-                                Contact
-                                <input type="text"  name="contactP" value="@ViewBag.Order.ContactNameP" placeholder="Contact name">
-                            </label>
-                            <label for="">
-                                Address
-                                <input type="text"  name="addressP" value="@ViewBag.Order.AddresP" placeholder="Address" required>
-                            </label>
-                            <label for="">
-                                City
-                                <input type="text" name="cityP"  value="@ViewBag.Order.CityP" placeholder="City" required>
-                            </label>
-                            <label for="">
-                                State
-                                <input type="text" name="stateP" value="@ViewBag.Order.StateP" pattern="[A-Z]{2}" placeholder="XX - State" required>
-                            </label>
-                            <label for="">
-                                Zip
-                                <input type="text" name="zipP" value="@ViewBag.Order.ZipP" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
-                            </label>
-                            <label for="">
-                                Phone
-                                <input type="text" name="phoneP"  placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}"  value="@ViewBag.Order.PhoneP" required>
-                            </label>
-                            <label for="">
-                                Email
-                                <input name="emailP" type="email" value="@ViewBag.Order.EmailP" placeholder="Email" required>
-                            </label>
-                            <label for="">
-                                Scheduled pickup date
-                                <input type="text" name="scheduledPickupDateP"" value="@ViewBag.Order.PickupExactly">
-                            </label>
-                        </form>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="tabContente">
-                        <form  action="SavaOrder" method="post">
-                            <label for="">
-                                Instructions
-                                <textarea type="text" name="instructions">@ViewBag.Order.Titl1DI</textarea>
-                            </label>
-                            <h2>Delivery Information</h2>
-                            <label for="">
-                                Name
-                                <input type="text" name="nameD" value="@ViewBag.Order.NameD" placeholder="Name">
-                            </label>
-                            <label for="">
-                                Contact
-                                <input type="text" name="contactD" value="@ViewBag.Order.ContactNameD" placeholder="Contact name">
-                            </label>
-                            <label for="">
-                                Address
-                                <input type="text" name="addressD" value="@ViewBag.Order.AddresD" placeholder="Address" required>
-                            </label>
-                            <label for="">
-                                City
-                                <input type="text" name="cityD" value="@ViewBag.Order.CityD" placeholder="City" required>
-                            </label>
-                            <label for="">
-                                State
-                                <input type="text" name="stateD"  pattern="[A-Z]{2}" value="@ViewBag.Order.StateD" placeholder="XX - State" required>
-                            </label>
-                            <label for="">
-                                Zip
-                                <input type="text" name="zipD" value="@ViewBag.Order.ZipD" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
-                            </label>
-                            <label for="">
-                                Phone
-                                <input type="text" name="phoneD" placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneD" required>
-                            </label>
-                            <label for="">
-                                Email
-                                <input name="emailD" type="email" value="@ViewBag.Order.EmailD" placeholder="Email" required>
-                            </label>
+                        <form action="SavaOrder" method="post">
+                            <input type="text" name="idOrder" style="display:none;" value="@ViewBag.Order.Id" />
+                            <div class="w1">
+                                <label for="">
+                                    Load ID
+                                    <input name="idLoad" type="text" value="@ViewBag.Order.idOrder">
+                                </label>
+                                <label for="">
+                                    Status
+                                    <select name="status">
+                                        <option value="">-----------</option>
+                                        <option value="">NewLoad</option>
+                                        <option value="">Picked up</option>
+                                        <option value="">Delivered</option>
+                                    </select>
+                                </label>
+                                <h3>Pickup Information</h3>
+                                <label for="">
+                                    Name
+                                    <input name="nameP" type="text" value="@ViewBag.Order.NameP" placeholder="Name">
+                                </label>
+                                <label for="">
+                                    Contact
+                                    <input name="contactP" type="text" value="@ViewBag.Order.ContactNameP" placeholder="Contact name">
+                                </label>
+                                <label for="">
+                                    Address
+                                    <input name="addressP" type="text" value="@ViewBag.Order.AddresP" placeholder="Address" required>
+                                </label>
+                                <label for="">
+                                    City
+                                    <input name="cityP" type="text" value="@ViewBag.Order.CityP" placeholder="City" required>
+                                </label>
+                                <label for="">
+                                    State
+                                    <input name="stateP" type="text" value="@ViewBag.Order.StateP" pattern="[A-Z]{2}" placeholder="XX - State" required>
+                                </label>
+                                <label for="">
+                                    Zip
+                                    <input name="zipP" type="text" value="@ViewBag.Order.ZipP" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
+                                </label>
+                                <label for="">
+                                    Phone
+                                    <input name="phoneP" type="tel" placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneP" required>
+                                </label>
+                                <label for="">
+                                    Email
+                                    <input name="emailP" type="email" value="@ViewBag.Order.EmailP" placeholder="Email" required>
+                                </label>
+                                <label for="">
+                                    Scheduled pickup date
+                                    <input name="scheduledPickupDateP" type="text" value="@ViewBag.Order.PickupExactly">
+                                </label>
+                            </div>
+                            <div class="w1">
+                                <label for="">
+                                    Instructions
+                                    <textarea type="text" name="instructions">@ViewBag.Order.Titl1DI</textarea>
+                                </label>
+                                <h3>Delivery Information</h3>
+                                <label for="">
+                                    Name
+                                    <input type="text"  name="nameD" value="@ViewBag.Order.NameD" placeholder="Name">
+                                </label>
+                                <label for="">
+                                    Contact
+                                    <input type="text" name="contactD" value="@ViewBag.Order.ContactNameD" placeholder="Contact name">
+                                </label>
+                                <label for="">
+                                    Address
+                                    <input type="text" name="addressD" value="@ViewBag.Order.AddresD" placeholder="Address" required>
+                                </label>
+                                <label for="">
+                                    City
+                                    <input type="text" name="cityD" value="@ViewBag.Order.CityD" placeholder="City" required>
+                                </label>
+                                <label for="">
+                                    State
+                                    <input type="text" name="stateD" pattern="[A-Z]{2}" value="@ViewBag.Order.StateD" placeholder="XX - State" required>
+                                </label>
+                                <label for="">
+                                    Zip
+                                    <input type="text" name="zipD" value="@ViewBag.Order.ZipD" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
+                                </label>
+                                <label for="">
+                                    Phone
+                                    <input name="phoneD" placeholder="XXXXXXXXXX - Phone number" type="tel" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneD" required>
+                                </label>
+                                <label for="">
+                                    Email
+                                    <input name="emailD" type="email" value="@ViewBag.Order.EmailD" placeholder="Email" required>
+                                </label>
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="title">
                         <h1>Vehicles</h1>
-                        <button class="btn1" onclick="AddVech(this)">Add Vehicle</button>
+                        <button onclick="AddVech(this)"  class="btn1">Add Vehicle</button>
                     </div>
                     <table>
                         <tr class="blue">
@@ -116,47 +124,69 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td><img src="~/img/delete.svg" alt=""/></td>
+                            <td>01</td>
+                            <td>3C63RRHL9KG667936</td>
+                            <td>2015</td>
+                            <td>RAM</td>
+                            <td>PickupFourWheel</td>
+                            <td>Pick up</td>
+                            <td>Black</td>
+                            <td>1563143613</td>
+                            <td><img src="~/img/delete.svg" alt=""></td>
+                            <td>Save</td>
                         </tr>
-                        @if (ViewBag.Order.VehiclwInformations != null)
-                        {
-                            @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
+                        <tbody id="tbVecl">
+                            @if (ViewBag.Order.VehiclwInformations != null)
                             {
-                                <tr id="@ViewBag.Order.VehiclwInformations[i].Id">
-                                    <td>@i</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].VIN</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].Year</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].Make</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].Model</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].Type</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].Color</td>
-                                    <td>@ViewBag.Order.VehiclwInformations[i].Lot</td>
-                                    <td  onclick="RemoveVech(this)"><img src="~/img/delete.svg" alt=""/></td>
-                                    <td onclick="SaveVech(this)">Save</td>
-                                </tr>
+                                @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
+                                {
+                                    <tr id="@ViewBag.Order.VehiclwInformations[i].Id">
+                                        <td>@i</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].VIN</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].Year</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].Make</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].Model</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].Type</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].Color</td>
+                                        <td>@ViewBag.Order.VehiclwInformations[i].Lot</td>
+                                        <td><img src="~/img/delete.svg" alt="" onclick="RemoveVech(this)"></td>
+                                        <td onclick="SaveVech(this)">Save</td>
+                                    </tr>
+                                }
                             }
-                        }
+                        </tbody>
                     </table>
                 </div>
                 <div class="col-md-6">
                     <div class="tabContente">
-                        <h2>Payment Information</h2>
-                        <form action="SavaOrder" method="post">
-                            <label for="">
-                                Payment method
-                                <input type="text" name="paymentMethod" required>
-                            </label>
-                            <label for="">
-                                Price
-                                <input type="text" name="price" value="@ViewBag.Order.PriceListed" required>
-                            </label>
-                            <label for="">
-                                Broker fee
-                                <input type="text" name="brokerFee" value="@ViewBag.Order.BrokerFee">
-                            </label>
-                            <input class="btn1" value="Save Order" type="submit" />
-                            <a class="btn2"  href="@ViewBag.BaseUrl/Dashbord/Order/ArchivedOrder?id=@ViewBag.Order.Id" >Archive Order</a>
-                            <button class="btn3" href="@ViewBag.BaseUrl/Dashbord/Order/DeletedOrder?id=@ViewBag.Order.Id&status=NewLoad">Delete Order</button>
+                        <h3>Payment Information</h3>
+                        <form action="">
+                            <div class="w2">
+                                <label for="">
+                                    Payment method
+                                    <select name="paymentMethod" required>
+                                        <option value="">-----</option>
+                                        <option value="">COP</option>
+                                        <option value="">COD</option>
+                                        <option value="">1 days</option>
+                                        <option value="">2 days</option>
+                                        <option value="">5 days</option>
+                                        <option value="">10 days</option>
+                                        <option value="">15 days</option>
+                                    </select>
+                                </label>
+                                <label for="">
+                                    Price
+                                    <input type="text" name="price" value="@ViewBag.Order.PriceListed" required>
+                                </label>
+                                <label for="">
+                                    Broker fee
+                                    <input type="text" name="brokerFee" value="@ViewBag.Order.BrokerFee">
+                                </label>
+                                <input class="btn1" type="button" value="Save" />
+                                <button onclick="window.location.href='@ViewBag.BaseUrl/Dashbord/Order/ArchivedOrder?id=@ViewBag.Order.Id'" class="btn2">Archive Order</button>
+                                <button onclick="window.location.href='@ViewBag.BaseUrl/Dashbord/Order/DeletedOrder?id=@ViewBag.Order.Id&status=NewLoad'" class="btn3">Delete Order</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -217,7 +247,7 @@
     }
 
     function AddVech(btnE) {
-        let idOrder = btnE.parentElement.children[0].value;
+        let idOrder = btnE.parentElement.parentElement.children[0].value;
         var xhttp = new XMLHttpRequest();
         let Req = "idOrder=" + idOrder;
         xhttp.onreadystatechange = function (e) {

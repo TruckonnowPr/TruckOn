@@ -11,8 +11,25 @@
                                 <input type="text" name="name" required>
                             </label>
                             <label for="">
-                                Type Trailer
-                                <input type="text" name="typeTrailer" required>
+                                Type Trailer <br />
+                                <select name="typeTrailer" onchange="SelectTrailer(this.options[this.selectedIndex].value)" required style="width:500px;">
+                                    <option value="">Choose a trailer type</option>
+                                    <option value="GooseneckTrailerTwoVehicles">Gooseneck trailer for two vehicles</option>
+                                    <option value="EnclosedTrailerTwoVehicles">Enclosed trailer for two vehicles</option>
+                                    <option value="a1CarGooseneckTrailer">1 Car Gooseneck Trailer</option>
+                                    <option value="A3CarEnclosedGooseneckTrailer">3 Car Enclosed Gooseneck Trailer</option>
+                                    <option value="Bumperpook24_34ftFlatbed">Bumperpook 24_34ft Flatbed</option>
+                                    <option value="Bumperpool1CarEnclosedTrailer">Bumperpool 1 Car Enclosed Trailer</option>
+                                    <option value="Bumperpool2CarEnclosedTraile">Bumperpool 2 Car Enclosed Traile</option>
+                                    <option value="Bumperpool16_20FtFlatbed">Bumperpool 16_20Ft Flatbed</option>
+                                    <option value="CarEnclosedTrailer">Car Enclosed Trailer</option>
+                                    <option value="Gooseneck3CarLowTrailer">Gooseneck 3 Car Low Trailer</option>
+                                    <option value="Gooseneck24-34FtFlatbed">Gooseneck 24_34 Ft Flatbed</option>
+                                    <option value="Gooseneck3CarWedgeTrailer">Gooseneck 3 Car Wedge Trailer</option>
+                                    <option value="Gooseneck5CarOpenTrailer">Gooseneck 5 Car Open Trailer</option>
+                                    <option value="Gooseneck6CarOpenTrailer">Gooseneck 6 Car Open Trailer</option>
+                                    <option value="BumperPool2CarTrailer">Bumper Pool 2 Car Trailer</option>
+                                </select>
                             </label>
                             <label for="">
                                 Year
@@ -108,3 +125,16 @@
         </div>
     </div>
 </body>
+
+<script>
+    function SelectTrailer(value) {
+        if (curentSelectPattern || value == "") {
+            curentSelectPattern.style.display = "none";
+        }
+        let selectTypeDiv = document.getElementById(value);
+        if (selectTypeDiv) {
+            selectTypeDiv.style.display = "flex";
+            curentSelectPattern = selectTypeDiv;
+        }
+    }
+</script>
