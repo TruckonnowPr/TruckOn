@@ -20,13 +20,36 @@
     <StackLayout VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Margin="5">
-        <Frame CornerRadius="6" Padding="15" Margin="4" BorderColor="BlueViolet">
-            <StackLayout>
-                <Label TextColor="Black" FontSize="17" Text="To take an order, you need to pass the inspection of the truck and the trailer, pass the inspection of the truck?" VerticalOptions="Center"/>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="No" BackgroundColor="BlueViolet" TextColor="White" Clicked="Button_Clicked"/>
-                    <Button Text="Yes" BackgroundColor="BlueViolet" TextColor="White" Clicked="Button_Clicked_1"/>
-                </StackLayout>
+        <Frame CornerRadius="6" Padding="25, 10, 25, 0" Margin="24" HasShadow="False">
+            <StackLayout Spacing="0">
+                <Label TextColor="#101010"
+                       FontSize="14"
+                       Text="To take an order, you need to pass the inspection of the truck and the trailer, pass the inspection of the truck?"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       FontFamily="{StaticResource OpenSans-Regular}"
+                       Margin="20, 0, 20, 20"/>
+                <BoxView HeightRequest="1"
+                         BackgroundColor="#E6E6E6"
+                         Margin="10, 0, 10, 0"/>
+                <FlexLayout JustifyContent="SpaceEvenly">
+                    <Button Text="No"
+                            BackgroundColor="White"
+                            TextColor="#2C5DEB"
+                            Clicked="Button_Clicked"
+                            FontFamily="{StaticResource OpenSans-Bold}"
+                            FontSize="16"/>
+                    <BoxView WidthRequest="1"
+                             BackgroundColor="#E6E6E6"
+                             Margin="0, 10, 0, 0"
+                             HorizontalOptions="Center"/>
+                    <Button Text="Yes"
+                            BackgroundColor="White"
+                            TextColor="#2C5DEB"
+                            Clicked="Button_Clicked_1"
+                            FontFamily="{StaticResource OpenSans-Bold}"
+                            FontSize="16"/>
+                </FlexLayout>
             </StackLayout>
         </Frame>
     </StackLayout>
