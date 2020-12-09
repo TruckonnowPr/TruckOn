@@ -16,8 +16,13 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <StackLayout VerticalOptions="Center" Padding="10" Margin="50" Orientation="Horizontal">
-        <ActivityIndicator IsRunning="True" HeightRequest="40" WidthRequest="40"/>
-        <Label Text="Loading ..." TextColor="#4fd2c2" FontSize="17"/>
+    <StackLayout VerticalOptions="Center" Padding="10" Margin="50">
+        <StackLayout x:Name="loaderImg">
+            <Image Source="logo.png"
+                HeightRequest="70"
+                WidthRequest="70"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </StackLayout>
     </StackLayout>
 </pages:PopupPage>
