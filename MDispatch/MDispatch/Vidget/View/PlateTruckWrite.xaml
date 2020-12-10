@@ -17,7 +17,6 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-
     <StackLayout VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Margin="5">

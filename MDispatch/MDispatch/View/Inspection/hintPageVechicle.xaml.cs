@@ -14,8 +14,8 @@ namespace MDispatch.View.Inspection
             lHint.Text = hintText;
             if (vehiclwInformation != null)
             {
-                lMake.Text = vehiclwInformation.Make;
-                lModel.Text = vehiclwInformation.Model;
+                lMake.Text = vehiclwInformation.Make + " ";
+                lModel.Text = vehiclwInformation.Model + " ";
                 lYear.Text = vehiclwInformation.Year;
             }
         }
