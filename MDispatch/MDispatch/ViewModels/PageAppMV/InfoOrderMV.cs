@@ -36,11 +36,13 @@ namespace MDispatch.ViewModels.PageAppMV
         private InitDasbordDelegate initDasbordDelegate = null;
         private GetVechicleDelegate getVechicleDelegate = null;
         private GetShiping GetShiping = null;
+        private Action callBackVehiclwInformation = null;
 
-        public InfoOrderMV(ManagerDispatchMob managerDispatchMob, InitDasbordDelegate initDasbordDelegate, string statusInspection, string idShipping)
+        public InfoOrderMV(ManagerDispatchMob managerDispatchMob, InitDasbordDelegate initDasbordDelegate, string statusInspection, string idShipping, Action callBackVehiclwInformation)
         {
             this.initDasbordDelegate = initDasbordDelegate;
             this.managerDispatchMob = managerDispatchMob;
+            this.callBackVehiclwInformation = callBackVehiclwInformation;
             Shipping = shipping;
             getVechicleDelegate = GetVehiclwInformations;
             GetShiping = GetShipings;
@@ -196,12 +198,12 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 if (state == 2)
                 {
-                    //await PopupNavigation.PushAsync(new Errror(description, null));
                     HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
                     Shipping = shipping;
+                    callBackVehiclwInformation();
                     if (Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
                     {
                         IsInspection = true;

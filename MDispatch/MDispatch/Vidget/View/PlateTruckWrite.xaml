@@ -35,7 +35,7 @@
                     <Entry Placeholder="Enter № plate truck"
                            FontSize="14"
                            FontFamily="{StaticResource OpenSans-Regular}"
-                           Text="{Binding PlateTrailer}"/>
+                           Text="{Binding PlateTruck}"/>
                     <Image Source="inScan.png" HeightRequest="25" WidthRequest="25">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Button_Clicked_1"/>

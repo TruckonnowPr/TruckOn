@@ -4,15 +4,15 @@
              x:Class="MDispatch.App">
 	<Application.Resources>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-Bold">
-            <On Platform="UWP" Value="/Assets/OpenSans-Bold.ttf#Open Sans" />
+            <On Platform="Android" Value="/Assets/OpenSans-Bold.ttf#Open Sans" />
             <On Platform="iOS" Value="OpenSans-Bold" />
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-SemiBold">
-            <On Platform="UWP" Value="/Assets/OpenSans-SemiBold.ttf#Open Sans" />
+            <On Platform="Android" Value="/Assets/OpenSans-SemiBold.ttf#Open Sans" />
             <On Platform="iOS" Value="OpenSans-SemiBold" />
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-Regular">
-            <On Platform="UWP" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
+            <On Platform="Android" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
             <On Platform="iOS" Value="OpenSans-Regular" />
         </OnPlatform>
 	</Application.Resources>

@@ -7,6 +7,7 @@ using MDispatch.View.GlobalDialogView;
 using MDispatch.ViewModels.PageAppMV;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -26,20 +27,54 @@ namespace MDispatch.View.PageApp
 
         public InfoOrder(ManagerDispatchMob managerDispatchMob, InitDasbordDelegate initDasbordDelegate, string statusInspection, string idShipping)
         {
-            this.infoOrderMV = new InfoOrderMV(managerDispatchMob, initDasbordDelegate, statusInspection, idShipping) { Navigation = this.Navigation} ;
+            this.infoOrderMV = new InfoOrderMV(managerDispatchMob, initDasbordDelegate, statusInspection, idShipping, CallBackVehiclwInformation) { Navigation = this.Navigation };
             InitializeComponent();
             BindingContext = this.infoOrderMV;
+            SetupView();
         }
 
-        private void StackLayout_SizeChanged(object sender, EventArgs e)
+        private void SetupView()
         {
-            if(infoOrderMV.Shipping != null && infoOrderMV.Shipping.VehiclwInformations != null && infoOrderMV.Shipping.VehiclwInformations.Count != 0)
+        }
+
+        private void CallBackVehiclwInformation()
+        {
+            int i = 0;
+            countVeclLbl.Text = $"Vehicle ({infoOrderMV.Shipping.VehiclwInformations.Count})";
+            foreach (VehiclwInformation vehiclwInformations in infoOrderMV.Shipping.VehiclwInformations)
             {
-                listVehic.HeightRequest = Convert.ToInt32(infoOrderMV.Shipping.VehiclwInformations.Count * 120);
-            }
-            else
-            {
-                listVehic.HeightRequest = 0;
+                StackLayout stackLayout = new StackLayout();
+                stackLayout.Spacing = 4;
+                string font = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Regular"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
+                stackLayout.Children.Add(new Label()
+                {
+                    Text = $"{vehiclwInformations.Year} {vehiclwInformations.Make} {vehiclwInformations.Make}",
+                    FontSize = 14,
+                    FontFamily = font,
+                    TextColor = Color.FromHex("#101010")
+                });;
+                stackLayout.Children.Add(new Label()
+                {
+                    Text = $"VIN: {vehiclwInformations.VIN}",
+                    FontSize = 14,
+                    FontFamily = font,
+                    TextColor = Color.FromHex("#101010")
+                });
+                bloc1.Children.Add(stackLayout);
+                if (i != infoOrderMV.Shipping.VehiclwInformations.Count - 1)
+                {
+                    stackLayout.Padding = new Thickness(0, 4, 0, 7);
+                    bloc1.Children.Add(new BoxView()
+                    {
+                        HeightRequest = 1,
+                        BackgroundColor = Color.FromHex("#E5E5E5")
+                    });
+                }
+                else
+                {
+                    stackLayout.Padding = new Thickness(0, 4, 0, 0);
+                }
+                i++;
             }
         }
 
@@ -85,6 +120,10 @@ namespace MDispatch.View.PageApp
         {
             base.OnDisappearing();
             HelpersView.Hidden();
+        }
+
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }
