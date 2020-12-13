@@ -86,7 +86,7 @@
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="askBlock5"
-                                         Style="{StaticResource Key=labelTitleAsk}">
+                                         Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
                         <Label Text="Keys location"
                                Style="{StaticResource Key=labelTitleAsk}"/>
@@ -104,7 +104,7 @@
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="askBlock6"
-                                         Style="{StaticResource Key=labelTitleAsk}">
+                                         Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
                         <Label Text="Rate a customer"
                                Style="{StaticResource Key=labelTitleAsk}"/>
