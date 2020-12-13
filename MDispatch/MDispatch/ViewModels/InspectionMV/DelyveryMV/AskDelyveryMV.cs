@@ -145,7 +145,7 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
             int indexCurrentVechecle = vehiclwInformation1s.FindIndex(v => v == VehiclwInformation);
             if (vehiclwInformation1s.Count - 1 == indexCurrentVechecle)
             {
-                await PopupNavigation.PushAsync(new TempDialogPage());
+                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client", null));
                 await Navigation.PushAsync(new ClientStart(managerDispatchMob, IdShip, initDasbordDelegate, OnDeliveryToCarrier, TotalPaymentToCarrier, vehiclwInformation1s[0], getShiping, getVechicleDelegate, false));
             }
             else

@@ -32,5 +32,11 @@ namespace MDispatch.View.Inspection.Delyvery.CameraPage
         {
             await Navigation.PopAsync();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceLandscape();
+        }
     }
 }

@@ -152,6 +152,7 @@
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="blockPsw"
+                                         IsVisible="False"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
                         <Label Text="Enter your account password to continue"

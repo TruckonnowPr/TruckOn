@@ -14,7 +14,7 @@
                          AbsoluteLayout.LayoutBounds="1, 0, 1, 86"
                          Opacity="0.5"
                          Padding="7">
-                <Image HeightRequest="36" WidthRequest="18" Margin="25, 0">
+                <Image Source="BackIconpage.png" HeightRequest="36" WidthRequest="18" Margin="25, 0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                     </Image.GestureRecognizers>

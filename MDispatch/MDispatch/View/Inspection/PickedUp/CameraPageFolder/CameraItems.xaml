@@ -17,7 +17,8 @@
                    TextColor="White"
                    FontSize="14" AbsoluteLayout.LayoutFlags="PositionProportional"
                    AbsoluteLayout.LayoutBounds=".5, .9, Autosize, Autosize"
-                   FontFamily="{StaticResource OpenSans-Bold}"/>
+                   FontFamily="{StaticResource OpenSans-Bold}"
+                   HorizontalTextAlignment="Center"/>
         </AbsoluteLayout>
     </ContentPage.Content>
 </camera:CameraPage>

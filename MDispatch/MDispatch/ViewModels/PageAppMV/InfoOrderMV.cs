@@ -346,7 +346,7 @@ namespace MDispatch.ViewModels.PageAppMV
             if (Shipping.askForUserDelyveryM == null)
             {
                 await Navigation.PushAsync(new View.Inspection.Delyvery.ClientStart(managerDispatchMob, Shipping.Id, initDasbordDelegate, Shipping.OnDeliveryToCarrier, Shipping.TotalPaymentToCarrier, Shipping.VehiclwInformations[0], GetShiping, getVechicleDelegate, shipping.IsProblem), true);
-                await PopupNavigation.PushAsync(new TempPageHint1());
+                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client", null));
                 Navigation.RemovePage(Navigation.NavigationStack[1]);
                 return;
             }
