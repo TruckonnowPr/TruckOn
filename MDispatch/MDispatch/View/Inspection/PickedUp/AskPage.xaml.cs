@@ -362,7 +362,7 @@ namespace MDispatch.View.AskPhoto
                 HeightRequest = 50,
                 WidthRequest = 50,
             };
-            image.GestureRecognizers.Add(new TapGestureRecognizer(ViewPhotoForRetacke1));
+            //image.GestureRecognizers.Add(new TapGestureRecognizer(ViewPhotoForRetacke1));
             blockAskPhotoItem.Children.Add(image);
             GC.Collect();
             GC.WaitForPendingFinalizers();

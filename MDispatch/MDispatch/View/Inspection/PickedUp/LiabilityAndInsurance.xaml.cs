@@ -9,6 +9,7 @@ using Plugin.Settings;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -100,30 +101,36 @@ namespace MDispatch.View.Inspection.PickedUp
             await Wait();
             if (liabilityAndInsuranceMV.Shipping != null && liabilityAndInsuranceMV.Shipping.VehiclwInformations != null)
             {
+                string fontBold = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Bold"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
+                string fontRegular = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Regular"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
                 foreach (var VehiclwInformation in liabilityAndInsuranceMV.Shipping.VehiclwInformations)
                 {
                     VechInfoSt.Children.Add(new StackLayout()
                     {
                         Orientation = StackOrientation.Horizontal,
+                        Margin = new Thickness(0, 0, 0, 6),
                         Children =
                         {
                             new Label()
                             {
                                 Text = VehiclwInformation.Year,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 16,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontBold
                             },
                             new Label()
                             {
                                 Text = VehiclwInformation.Make,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 16,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontBold
                             },
                             new Label()
                             {
                                 Text = VehiclwInformation.Model,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 16,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontBold
                             },
                         }
                     });
@@ -135,13 +142,16 @@ namespace MDispatch.View.Inspection.PickedUp
                             new Label()
                                     {
                                         Text = "VIN#",
-                                        FontSize = 18,
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
                                     new Label()
                                     {
                                         Text = VehiclwInformation.VIN,
-                                        FontSize = 18,
-                                        TextColor = Color.Black
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     }
                         }
                     });
@@ -153,13 +163,16 @@ namespace MDispatch.View.Inspection.PickedUp
                             new Label()
                                     {
                                         Text = "Type:",
-                                        FontSize = 18,
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
                                     new Label()
                                     {
                                         Text = VehiclwInformation.Type,
-                                        FontSize = 18,
-                                        TextColor = Color.Black
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     }
                         }
                     });
@@ -171,76 +184,90 @@ namespace MDispatch.View.Inspection.PickedUp
                             new Label()
                             {
                                 Text = "Color:",
-                                FontSize = 18,
+                                FontSize = 14,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontRegular
                             },
                             new Label()
                             {
                                 Text = VehiclwInformation.Color,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 14,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontRegular
                             }
                         }
                     });
 
                     VechInfoSt.Children.Add(new Image()
                     {
+                        HeightRequest = 300,
                         Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(VehiclwInformation.Scan.Base64)))
                     });
 
-                    VechInfoSt.Children.Add(new StackLayout()
+                    VechInfoSt.Children.Add(new FlexLayout()
                     {
-                        Orientation = StackOrientation.Horizontal,
+                        JustifyContent = FlexJustify.SpaceAround,
+                        HeightRequest = 40,
                         Children =
                         {
+                            new StackLayout(){
+                                Orientation = StackOrientation.Horizontal,
+                                Spacing = 0,
+                                Children =
+                                {
                                     new Image()
                                     {
                                         Source = "DamageP1.png",
-                                        HeightRequest = 18,
-                                        WidthRequest = 18
+                                        HeightRequest = 25,
+                                        WidthRequest = 25
                                     },
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
                                         Text = "Circles Yellow — pickup damages;",
-                                        FontSize = 13
+                                        FontSize = 12,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
+                                }
+                            },
+                            new StackLayout(){
+                                Orientation = StackOrientation.Horizontal,
+                                Spacing = 0,
+                                Children =
+                                {
                                     new Image()
                                     {
                                         Source = "DamageD1.png",
-                                        HeightRequest = 18,
-                                        WidthRequest = 18
+                                        HeightRequest = 25,
+                                        WidthRequest = 25
                                     },
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
                                         Text = "Circles Green — delivery damages;",
-                                        FontSize = 13
+                                        FontSize = 12,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
+                                }
+                            },
                         }
                     });
 
                     FlexLayout flexLayout = new FlexLayout()
                     {
-                        Wrap = FlexWrap.Wrap,
-                        AlignContent = FlexAlignContent.Center,
-                        AlignItems = FlexAlignItems.Center,
-                        Opacity = 0.7,
-                        BackgroundColor = Color.FromHex("#F3F781"),
+                        JustifyContent = FlexJustify.Center,
                         Children =
                         {
                             new Label()
                             {
-                                TextColor = Color.BlueViolet,
-                                Text = "Click ",
-                                FontSize = 16,
-                                VerticalOptions = LayoutOptions.Center,
-                            },
-                            new Label()
-                            {
                                 HorizontalTextAlignment = TextAlignment.Center,
-                                Text = "See inspection photo",
+                                Text = "Click to see inpection photo",
                                 FontSize = 16,
-                                VerticalTextAlignment = TextAlignment.Center
+                                VerticalTextAlignment = TextAlignment.Center,
+                                FontFamily = fontBold,
+                                TextColor = Color.FromHex("#2C5DEB"),
                             }
                         }
                     };
@@ -368,9 +395,9 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             liabilityAndInsuranceMV.What_form_of_payment_are_you_using_to_pay_for_transportation = (string)((Picker)sender).SelectedItem;
             Paymmant = GetPaymmant((string)((Picker)sender).SelectedItem);
-            if (payBlockSelectPatment.Children.Count == 4)
+            if (payBlockSelectPatment.Children.Count == 3)
             {
-                payBlockSelectPatment.Children.RemoveAt(3);
+                payBlockSelectPatment.Children.RemoveAt(2);
             }
             payBlockSelectPatment.Children.Add(Paymmant.GetStackLayout());
             isAsk2 = false;

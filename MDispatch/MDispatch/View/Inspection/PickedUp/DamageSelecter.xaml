@@ -17,18 +17,40 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <StackLayout VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"
-                 Margin="5">
-        <Frame CornerRadius="6" Padding="15" Margin="4" BorderColor="BlueViolet">
-            <StackLayout>
-                <Image Source="Close.png" HorizontalOptions="End" WidthRequest="20" HeightRequest="20">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
-                <ListView x:Name="damageCollection" SeparatorVisibility="None" ItemSelected="ListView_ItemSelected"/>
+        <Frame CornerRadius="6" Padding="28, 24" Margin="50">
+            <StackLayout Spacing="20">
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Text="Select the type of damage"
+                           Style="{StaticResource labelTitleAsk}"/>
+                    <Image Source="Close.png"
+                           HorizontalOptions="End"
+                           WidthRequest="14"
+                           HeightRequest="14"
+                           Margin="0, 5, 0, 0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </FlexLayout>
+                <ListView x:Name="damageCollection"
+                          SeparatorVisibility="Default"
+                          ItemSelected="ListView_ItemSelected"
+                          Margin="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Padding="0" Margin="0, 12, 0, 15">
+                                        <Label Text="{Binding}"
+                                               TextColor="#A1A1A1"
+                                               FontSize="16"
+                                               FontFamily="{StaticResource OpenSans-Regular}"/>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </Frame>
-    </StackLayout>
 </pages:PopupPage>

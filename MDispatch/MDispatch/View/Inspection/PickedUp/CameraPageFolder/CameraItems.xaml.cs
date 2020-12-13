@@ -1,4 +1,5 @@
 ﻿using MDispatch.NewElement;
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -18,6 +19,12 @@ namespace MDispatch.View.AskPhoto.CameraPageFolder
             On<iOS>().SetPrefersStatusBarHidden(StatusBarHiddenMode.True)
                 .SetPreferredStatusBarUpdateAnimation(UIStatusBarAnimation.Fade);
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DependencyService.Get<IOrientationHandler>().ForceLandscape();
         }
 
         private async void CameraPage_OnPhotoResult(PhotoResultEventArgs result)

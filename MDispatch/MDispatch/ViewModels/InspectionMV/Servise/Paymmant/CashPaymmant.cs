@@ -4,6 +4,7 @@ using MDispatch.View.Inspection.Delyvery;
 using MDispatch.View.Inspection.PickedUp;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace MDispatch.ViewModels.InspectionMV.Servise.Paymmant
@@ -15,24 +16,36 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Paymmant
         public LiabilityAndInsurance LiabilityAndInsurance { get; set; }
         StackLayout stackLayout = null;
 
-        [Obsolete]
         public StackLayout GetStackLayout()
         {
+            string fontBold = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Bold"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
+            string fontRegular = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Regular"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
             Entry entry = new Entry();
             Button button = new Button();
             FlexLayout flexLayout = new FlexLayout();
+
             entry.Keyboard = Keyboard.Numeric;
             entry.Placeholder = "$";
             entry.TextChanged += EntryTextChange;
+            entry.FontSize = 14;
+            entry.PlaceholderColor = Color.FromHex("#101010");
+            entry.FontFamily = fontRegular;
+            entry.HeightRequest = 19;
+
             button.Text = "I am paid";
-            button.BackgroundColor = Color.BlueViolet;
-            button.TextColor = Color.White;
+            button.BackgroundColor = Color.White;
+            button.TextColor = Color.FromHex("#2C5DEB"); ;
             button.Clicked += ClickBtn;
+            button.FontSize = 16;
+            button.FontFamily = fontBold;
+            button.HeightRequest = 19;
+
             stackLayout = new StackLayout();
+            stackLayout.Spacing = 10;
             stackLayout.Children.Add(entry);
             flexLayout.Children.Add(button);
             stackLayout.Children.Add(flexLayout);
-            return stackLayout; 
+            return stackLayout;
         }
 
         bool isReCount = false;

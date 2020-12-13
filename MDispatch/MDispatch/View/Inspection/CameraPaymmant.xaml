@@ -7,15 +7,20 @@
                    NavigationPage.HasBackButton ="True">
     <ContentPage.Content>
         <AbsoluteLayout>
-            <Image Margin="5" Source="BackIconpage.png"  HorizontalOptions="Start" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".02, .02, 40, 40">
+            <Image Source="BackIconpage.png"
+                   HorizontalOptions="Start"
+                   AbsoluteLayout.LayoutBounds="25, 25, 18, 36">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
             <Image x:Name="paternPayment" AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional" 
                    AbsoluteLayout.LayoutBounds=".5, .5, 1, 1" />
-            <Label TextColor="#4fd2c2" x:Name="NamaPayment" AbsoluteLayout.LayoutFlags="PositionProportional" 
-                   AbsoluteLayout.LayoutBounds=".5, .02, Autosize, Autosize" FontSize="18"/>
+            <Label x:Name="NamaPayment"
+                   TextColor="White"
+                   FontSize="14" AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds=".5, .9, Autosize, Autosize"
+                   FontFamily="{StaticResource OpenSans-Bold}"/>
         </AbsoluteLayout>
     </ContentPage.Content>
 </camera:CameraPage>

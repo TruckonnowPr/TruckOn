@@ -47,6 +47,8 @@ namespace MDispatch.View.Inspection
         {
             if (vehiclwInformation.PhotoInspections != null && vehiclwInformation.PhotoInspections.Count != 0)
             {
+                string fontBold = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Bold"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
+                string fontRegular = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Regular"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
                 FlexLayout flexLayout = new FlexLayout()
                 {
                     Wrap = FlexWrap.Wrap,
@@ -54,16 +56,18 @@ namespace MDispatch.View.Inspection
                 blockPhotoInspection.Children.Add(new Label()
                 {
                     Text = $"{vehiclwInformation.Year} {vehiclwInformation.Make} {vehiclwInformation.Model} {vehiclwInformation.Type}",
-                    FontSize = 18,
-                    Margin = new Thickness(5, 5, 0, 0),
+                    FontSize = 16,
+                    Margin = new Thickness(0, 20, 0, 5),
+                    FontFamily = fontBold,
                 });
                 if (vehiclwInformation.PhotoInspections.FirstOrDefault(p => p.CurrentStatusPhoto == "PikedUp") != null)
                 {
                     blockPhotoInspection.Children.Add(new Label()
                     {
                         Text = "Photo inspection Picked Up",
-                        Margin = new Thickness(10, 5, 0, 0),
-                        FontSize = 15
+                        FontSize = 14,
+                        FontFamily = fontBold,
+                        Margin = new Thickness(0, 0, 0, 15),
                     });
                     foreach (var photoInspection in vehiclwInformation.PhotoInspections.Where(p => p.CurrentStatusPhoto == "PikedUp"))
                     {
@@ -72,9 +76,9 @@ namespace MDispatch.View.Inspection
                             Image image = new Image()
                             {
                                 Source = ImageSource.FromStream(() => new MemoryStream(ResizeImage(photo.Base64))),
-                                HeightRequest = 70,
-                                WidthRequest = 70,
-                                Margin = new Thickness(6, 0, 0, 0)
+                                HeightRequest = 50,
+                                WidthRequest = 106,
+                                Margin = new Thickness(0, 0, 5, 5)
                             };
                             //image.GestureRecognizers.Add(new TapGestureRecognizer(VievFull));
                             flexLayout.Children.Add(image);
@@ -82,19 +86,14 @@ namespace MDispatch.View.Inspection
                         blockPhotoInspection.Children.Add(flexLayout);
                     }
                 }
-                //blockPhotoInspection.Children.Add(new BoxView()
-                //{
-                //    Color = Color.BlueViolet,
-                //    HeightRequest = 1,
-                //    Margin = new Thickness(5, 0, 5, 0)
-                //});
                 if (vehiclwInformation.PhotoInspections.FirstOrDefault(p => p.CurrentStatusPhoto == "Delivery") != null)
                 {
                     blockPhotoInspection.Children.Add(new Label()
                     {
                         Text = "Photo inspection Delivery",
-                        Margin = new Thickness(10, 5, 0, 0),
-                        FontSize = 15
+                        FontSize = 14,
+                        FontFamily = fontBold,
+                        Margin = new Thickness(0, 5, 0, 15),
                     });
                     foreach (var photoInspection in vehiclwInformation.PhotoInspections.Where(p => p.CurrentStatusPhoto == "Delivery"))
                     {
@@ -103,9 +102,9 @@ namespace MDispatch.View.Inspection
                             Image image = new Image()
                             {
                                 Source = ImageSource.FromStream(() => new MemoryStream(ResizeImage(photo.Base64))),
-                                HeightRequest = 70,
-                                WidthRequest = 70,
-                                Margin = 3
+                                HeightRequest = 50,
+                                WidthRequest = 106,
+                                Margin = new Thickness(0, 0, 5, 5)
                             };
                             //image.GestureRecognizers.Add(new TapGestureRecognizer(VievFull));
                             flexLayout.Children.Add(image);
@@ -136,30 +135,36 @@ namespace MDispatch.View.Inspection
         {
             if (bOLMV.Shipping != null && bOLMV.Shipping.VehiclwInformations != null)
             {
+                string fontBold = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Bold"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
+                string fontRegular = ((OnPlatform<string>)Application.Current.Resources["OpenSans-Regular"]).Platforms.ToList().First(p => p.Platform.FirstOrDefault(pp => pp == Device.RuntimePlatform) != null).Value.ToString();
                 foreach (var VehiclwInformation in bOLMV.Shipping.VehiclwInformations)
                 {
                     VechInfoSt.Children.Add(new StackLayout()
                     {
                         Orientation = StackOrientation.Horizontal,
+                        Margin = new Thickness(0, 0, 0, 6),
                         Children =
                         {
                             new Label()
                             {
                                 Text = VehiclwInformation.Year,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 16,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontBold
                             },
                             new Label()
                             {
                                 Text = VehiclwInformation.Make,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 16,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontBold
                             },
                             new Label()
                             {
                                 Text = VehiclwInformation.Model,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                FontSize = 16,
+                                TextColor = Color.FromHex("#101010"),
+                                FontFamily = fontBold
                             },
                         }
                     });
@@ -171,13 +176,16 @@ namespace MDispatch.View.Inspection
                             new Label()
                                     {
                                         Text = "VIN#",
-                                        FontSize = 18,
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
                                     new Label()
                                     {
                                         Text = VehiclwInformation.VIN,
-                                        FontSize = 18,
-                                        TextColor = Color.Black
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     }
                         }
                     });
@@ -189,13 +197,16 @@ namespace MDispatch.View.Inspection
                             new Label()
                                     {
                                         Text = "Type:",
-                                        FontSize = 18,
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
                                     new Label()
                                     {
                                         Text = VehiclwInformation.Type,
-                                        FontSize = 18,
-                                        TextColor = Color.Black
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     }
                         }
                     });
@@ -207,78 +218,76 @@ namespace MDispatch.View.Inspection
                             new Label()
                             {
                                 Text = "Color:",
-                                FontSize = 18,
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                             },
                             new Label()
                             {
                                 Text = VehiclwInformation.Color,
-                                FontSize = 18,
-                                TextColor = Color.Black
+                                        FontSize = 14,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                             }
                         }
                     });
 
                     VechInfoSt.Children.Add(new Image()
                     {
+                        HeightRequest = 300,
                         Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(VehiclwInformation.Scan.Base64)))
                     });
 
-                    VechInfoSt.Children.Add(new StackLayout()
+                    VechInfoSt.Children.Add(new FlexLayout()
                     {
-                        Orientation = StackOrientation.Horizontal,
+                        JustifyContent = FlexJustify.SpaceAround,
+                        HeightRequest = 40,
                         Children =
                         {
+                            new StackLayout(){
+                                Orientation = StackOrientation.Horizontal,
+                                Spacing = 0,
+                                Children =
+                                {
                                     new Image()
                                     {
                                         Source = "DamageP1.png",
-                                        HeightRequest = 18,
-                                        WidthRequest = 18
+                                        HeightRequest = 25,
+                                        WidthRequest = 25
                                     },
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
                                         Text = "Circles Yellow — pickup damages;",
-                                        FontSize = 13
+                                        FontSize = 12,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
+                                }
+                            },
+                            new StackLayout(){
+                                Orientation = StackOrientation.Horizontal,
+                                Spacing = 0,
+                                Children =
+                                {
                                     new Image()
                                     {
                                         Source = "DamageD1.png",
-                                        HeightRequest = 18,
-                                        WidthRequest = 18
+                                        HeightRequest = 25,
+                                        WidthRequest = 25
                                     },
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
                                         Text = "Circles Green — delivery damages;",
-                                        FontSize = 13
+                                        FontSize = 12,
+                                        TextColor = Color.FromHex("#101010"),
+                                        FontFamily = fontRegular
                                     },
+                                }
+                            },
                         }
                     });
-
-                    FlexLayout flexLayout = new FlexLayout()
-                    {
-                        Wrap = FlexWrap.Wrap,
-                        Opacity = 0.7,
-                        BackgroundColor = Color.FromHex("#F3F781"),
-                        Children =
-                        {
-                            new Label()
-                            {
-                                HorizontalTextAlignment = TextAlignment.Center,
-                                Text = "See inspection photo:",
-                                FontSize = 16
-                            },
-                            new Label()
-                            {
-                                HorizontalTextAlignment = TextAlignment.Center,
-                                TextColor = Color.Blue,
-                                Text = $"{Config.BaseReqvesteUrl}Photo/BOL/{VehiclwInformation.Id}",
-                                FontSize = 16
-                            }
-                        }
-                    };
-                    flexLayout.GestureRecognizers.Add(new TapGestureRecognizer(GetPagePhotoInspection));
-                    VechInfoSt.Children.Add(flexLayout);
                 }
             }
             //bOLMV.StataLoadShip = 0;
@@ -296,7 +305,7 @@ namespace MDispatch.View.Inspection
             byte[] imageData;
             using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64)))
             {
-                imageData = ms.ToArray(); ;
+                imageData = ms.ToArray();
             }
             int width = DependencyService.Get<IResizeImage>().GetWidthImage(imageData);
             int heigth = DependencyService.Get<IResizeImage>().GetHeigthImage(imageData);
