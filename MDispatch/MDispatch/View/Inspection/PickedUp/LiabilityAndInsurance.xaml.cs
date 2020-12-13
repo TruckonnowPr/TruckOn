@@ -316,20 +316,20 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             if (!isSignatureAsk)
             {
-                askBlock3.BorderColor = Color.Red;
+                askBlock3.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock3.BorderColor = Color.BlueViolet;
+                askBlock3.BorderColor = Color.White;
             }
 
             if (!isAsk2)
             {
-                askBlock2.BorderColor = Color.Red;
+                askBlock2.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock2.BorderColor = Color.BlueViolet;
+                askBlock2.BorderColor = Color.White;
             }
         }
 
@@ -440,7 +440,7 @@ namespace MDispatch.View.Inspection.PickedUp
             }
             else
             {
-                ((Entry)sender).TextColor = Color.Red;
+                ((Entry)sender).TextColor = Color.FromHex("#FF2C2C");
                 //btnConntinue.IsVisible = false;
                 blockAskPay.IsVisible = false;
             }

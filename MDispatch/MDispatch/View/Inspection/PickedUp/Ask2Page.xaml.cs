@@ -51,10 +51,10 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             isAsk2 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button2 != null)
             {
-                button2.TextColor = Color.Silver;
+                button2.TextColor = Color.FromHex("#C1C1C1");
             }
             button2 = button;
         }
@@ -62,10 +62,10 @@ namespace MDispatch.View.Inspection.PickedUp
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button2 != null)
             {
-                button2.TextColor = Color.Silver;
+                button2.TextColor = Color.FromHex("#C1C1C1");
             }
             button2 = button;
             await Navigation.PushAsync(new CameraDocumment(this));
@@ -99,10 +99,10 @@ namespace MDispatch.View.Inspection.PickedUp
         private async void Button_Clicked_3(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button3 != null)
             {
-                button3.TextColor = Color.Silver;
+                button3.TextColor = Color.FromHex("#C1C1C1");
             }
             button3 = button;
             await Navigation.PushAsync(new CameraPartsBeen(this));
@@ -113,10 +113,10 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             isAsk3 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button3 != null)
             {
-                button3.TextColor = Color.Silver;
+                button3.TextColor = Color.FromHex("#C1C1C1");
             }
             button3 = button;
         }
@@ -150,11 +150,11 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             isAsk4 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             ask2PageMW.Ask2.Car_locked = button.Text;
             if (button4 != null)
             {
-                button4.TextColor = Color.Silver;
+                button4.TextColor = Color.FromHex("#C1C1C1");
             }
             button4 = button;
         }
@@ -167,11 +167,11 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             isAsk5 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             ask2PageMW.Ask2.Car_locked = button.Text;
             if (button5 != null)
             {
-                button5.TextColor = Color.Silver;
+                button5.TextColor = Color.FromHex("#C1C1C1");
             }
             button5 = button;
         }
@@ -208,43 +208,43 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             if (!isAsk1)
             {
-                askBlock1.BorderColor = Color.Red;
+                askBlock1.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock1.BorderColor = Color.BlueViolet;
+                askBlock1.BorderColor = Color.White;
             }
             if (!isAsk3)
             {
-                askBlock3.BorderColor = Color.Red;
+                askBlock3.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock3.BorderColor = Color.BlueViolet;
+                askBlock3.BorderColor = Color.White;
             }
             if (!isAsk4)
             {
-                askBlock4.BorderColor = Color.Red;
+                askBlock4.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock4.BorderColor = Color.BlueViolet;
+                askBlock4.BorderColor = Color.White;
             }
             if (!isAsk5)
             {
-                askBlock5.BorderColor = Color.Red;
+                askBlock5.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock5.BorderColor = Color.BlueViolet;
+                askBlock5.BorderColor = Color.White;
             }
             if (!isAsk6)
             {
-                askBlock6.BorderColor = Color.Red;
+                askBlock6.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock6.BorderColor = Color.BlueViolet;
+                askBlock6.BorderColor = Color.White;
             }
         }
 

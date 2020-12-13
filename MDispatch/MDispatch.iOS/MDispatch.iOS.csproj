@@ -227,6 +227,7 @@
     <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
     <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
     <Compile Include="NewRender\Effect\CornerRadius.cs" />
+    <Compile Include="NewRender\Freme\ShadowFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -1524,5 +1525,6 @@
     <Folder Include="NewRender\AuntificationID\" />
     <Folder Include="NewRender\Effect\" />
     <Folder Include="Resources\Fonts\" />
+    <Folder Include="NewRender\Freme\" />
   </ItemGroup>
 </Project>

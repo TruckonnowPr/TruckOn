@@ -80,11 +80,11 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             isAsk4 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askForUserMV.AskForUser.Any_titles_been_given_to_driver = button.Text;
             if (button4 != null)
             {
-                button4.TextColor = Color.Silver;
+                button4.TextColor = Color.FromHex("#C1C1C1");
             }
             button4 = button;
         }
@@ -108,35 +108,35 @@ namespace MDispatch.View.Inspection.PickedUp
         {
             if (!isAsk1)
             {
-                askBlock1.BorderColor = Color.Red;
+                askBlock1.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock1.BorderColor = Color.BlueViolet;
+                askBlock1.BorderColor = Color.White;
             }
             if (!isAsk2)
             {
-                askBlock2.BorderColor = Color.Red;
+                askBlock2.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock2.BorderColor = Color.BlueViolet;
+                askBlock2.BorderColor = Color.White;
             }
             if (!isAsk3)
             {
-                askBlock3.BorderColor = Color.Red;
+                askBlock3.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock3.BorderColor = Color.BlueViolet;
+                askBlock3.BorderColor = Color.White;
             }
             if (!isAsk4)
             {
-                askBlock4.BorderColor = Color.Red;
+                askBlock4.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock4.BorderColor = Color.BlueViolet;
+                askBlock4.BorderColor = Color.White;
             }
         }
 

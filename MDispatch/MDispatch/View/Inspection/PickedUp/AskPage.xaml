@@ -3,163 +3,202 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.AskPhoto.AskPage"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             Title="Question inspection">
+             Title="Question inspection"
+             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Next" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout x:Name="body">
         <ScrollView>
-            <StackLayout x:Name="stBody">
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock4">
-                    <StackLayout>
-                        <Label Text="Weather conditions" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
+            <StackLayout x:Name="stBody"
+                         Spacing="12"
+                         Padding="24, 20, 24, 20">
+                <shadowFrame:ShadowFrame x:Name="askBlock4" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Weather conditions" Style="{StaticResource Key=labelTitleAsk}" />
                         <StackLayout Orientation="Horizontal">
-                            <input:RadioButtonGroupView x:Name="radioBtnWeather" Orientation="Horizontal">
-                                <input:RadioButton Text="Clear" Clicked="RadioButton_Clicked" TextFontSize="13"/>
-                                <input:RadioButton Text="Rain" Clicked="RadioButton_Clicked" TextFontSize="13"/>
-                                <input:RadioButton Text="Snow" Clicked="RadioButton_Clicked" TextFontSize="13"/>
-                                <input:RadioButton Text="Dust" Clicked="RadioButton_Clicked" TextFontSize="13"/>
+                            <input:RadioButtonGroupView x:Name="radioBtnWeather" Orientation="Horizontal" Spacing="13">
+                                <input:RadioButton Text="Clear"
+                                                   Clicked="RadioButton_Clicked"
+                                                   TextFontSize="14"
+                                                   FontFamily="{StaticResource OpenSans-Regular}"
+                                                   TextColor="#101010"
+                                                   HeightRequest="19"
+                                                   Spacing="6"/>
+                                <input:RadioButton Text="Rain"
+                                                   Clicked="RadioButton_Clicked"
+                                                   TextFontSize="14"
+                                                   FontFamily="{StaticResource OpenSans-Regular}"
+                                                   TextColor="#101010"
+                                                   HeightRequest="19"
+                                                   Spacing="6"/>
+                                <input:RadioButton Text="Snow"
+                                                   Clicked="RadioButton_Clicked"
+                                                   TextFontSize="14"
+                                                   FontFamily="{StaticResource OpenSans-Regular}"
+                                                   TextColor="#101010"
+                                                   HeightRequest="19"
+                                                   Spacing="6"/>
+                                <input:RadioButton Text="Dust"
+                                                   Clicked="RadioButton_Clicked"
+                                                   TextFontSize="14"
+                                                   FontFamily="{StaticResource OpenSans-Regular}"
+                                                   TextColor="#101010"
+                                                   HeightRequest="19"
+                                                   Spacing="6"/>
                             </input:RadioButtonGroupView>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock1">
-                    <StackLayout>
-                        <Label Text="Light brightness" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="High" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked"/>
-                            <Button Text="Low" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock1" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Light brightness" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="13">
+                            <Button Text="High"
+                                    Clicked="Button_Clicked"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="Low"
+                                    Clicked="Button_Clicked"
+                                    Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock12">
-                    <StackLayout>
-                        <Label Text="Safe delivery location" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_7"/>
-                            <Button Text="No" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_7"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock12" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10"> 
+                        <Label Text="Safe delivery location" Style="{StaticResource Key=labelTitleAsk}" />
+                        <StackLayout Orientation="Horizontal" Spacing="13">
+                            <Button Text="Yes"
+                                    Clicked="Button_Clicked_7"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="No"
+                                    Clicked="Button_Clicked_7"
+                                    Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock13">
-                    <StackLayout>
-                        <Label Text="How far from trailer?" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <Entry Placeholder="Please enter how far are you from the trailer" TextChanged="Entry_TextChanged_4" Keyboard="Numeric"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock13" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="How far from trailer?" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <Entry Placeholder="Please enter how far are you from the trailer"
+                               TextChanged="Entry_TextChanged_4"
+                               Keyboard="Numeric"
+                               Style="{StaticResource entryAsk}"/>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock14">
-                    <StackLayout>
-                        <Label Text="Enter the name of the person who gave you the keys to the car" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <Entry Placeholder="Enter full name" TextChanged="Entry_TextChanged_5" />
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock14" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Enter the name of the person who gave you the keys to the car" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <Entry Placeholder="Enter full name"
+                               TextChanged="Entry_TextChanged_5"
+                               Style="{StaticResource entryAsk}" />
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock15">
-                    <StackLayout>
-                        <Label Text="Enough space to take pictures?" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_8"/>
-                            <Button Text="No" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_8"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock15" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Enough space to take pictures?" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="13">
+                            <Button Text="Yes"
+                                    Clicked="Button_Clicked_8"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="No"
+                                    Clicked="Button_Clicked_8"
+                                    Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock7">
-                    <StackLayout>
-                        <Label Text="Anyone Rushing you to perform the inspection?" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_2"/>
-                            <Button Text="No" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_2"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock7" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Anyone Rushing you to perform the inspection?" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="13">
+                            <Button Text="Yes"
+                                    Clicked="Button_Clicked_2"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="No"
+                                    Clicked="Button_Clicked_2"
+                                    Style="{StaticResource btnAsk}"/>
                         </StackLayout>
-                        <StackLayout IsVisible="False" x:Name="askBlock7v2">
-                            <Label Text="Enter the name of the person" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                            <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                            <Entry Placeholder="Enter full name" TextChanged="Entry_TextChanged" />
+                        <StackLayout IsVisible="False" x:Name="askBlock7v2" Spacing="10">
+                            <Label Text="Enter the name of the person" Style="{StaticResource Key=labelTitleAsk}"/>
+                            <Entry Placeholder="Enter full name"
+                                   TextChanged="Entry_TextChanged"
+                                   Style="{StaticResource entryAsk}" />
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock11">
-                    <StackLayout>
-                        <Label Text="Type car" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <OnPlatform x:TypeArguments="View">
-                            <On Platform="Android">
-                                <input:Dropdown CornerRadius="6" BorderColor="#4fd2c2" Placeholder="Select type car" SelectedItemChanged="Dropdown_SelectedItemChanged_1" SelectedItem="{Binding Ask.TypeVehicle}">
-                                    <input:Dropdown.ItemsSource>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock11" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Type car" Style="{StaticResource Key=labelTitleAsk}" />
+                       <Frame Padding="3"
+                              CornerRadius="6"
+                              BorderColor="#2C5DEB"
+                              HasShadow="False"
+                              HeightRequest="19">
+                                <Picker SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                        SelectedItem="{Binding Ask.TypeVehicle}">
+                                    <Picker.ItemsSource>
                                         <x:Array Type="{x:Type x:String}">
-                                            <x:String>Sedan</x:String>
-                                            <x:String>Suv</x:String>
-                                            <x:String>Coupe</x:String>
-                                            <x:String>PickUp</x:String>
-                                            <x:String>Tricycle</x:String>
-                                            <x:String>Sport bike</x:String>
-                                            <x:String>Touring motorcycle</x:String>
-                                            <x:String>Cruise motorcycle</x:String>
-                                        </x:Array>
-                                    </input:Dropdown.ItemsSource>
-                                </input:Dropdown>
-                            </On>
-                            <On Platform="iOS">
-                                <Frame Padding="5" CornerRadius="5" BorderColor="#4fd2c2">
-                                    <Picker SelectedIndexChanged="Picker_SelectedIndexChanged" SelectedItem="{Binding Ask.TypeVehicle}">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Sedan</x:String>
-                                                <x:String>Suv</x:String>
-                                                <x:String>Coupe</x:String>
-                                                <x:String>PickUp</x:String>
-                                                <x:String>Tricycle</x:String>
-                                                <x:String>Sport bike</x:String>
-                                                <x:String>Touring motorcycle</x:String>
-                                                <x:String>Cruise motorcycle</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                </Frame>
-                            </On>
-                        </OnPlatform>
+                                        <x:String>Sedan</x:String>
+                                        <x:String>Suv</x:String>
+                                        <x:String>Coupe</x:String>
+                                        <x:String>PickUp</x:String>
+                                        <x:String>Tricycle</x:String>
+                                        <x:String>Sport bike</x:String>
+                                        <x:String>Touring motorcycle</x:String>
+                                        <x:String>Cruise motorcycle</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </Frame>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock9">
-                    <StackLayout>
-                        <Label Text="Plate #" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <Entry Placeholder="#" TextChanged="Entry_TextChanged_3"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock9" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Plate #" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <Entry Placeholder="Enter plate #"
+                               TextChanged="Entry_TextChanged_3"
+                               Style="{StaticResource entryAsk}"/>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock2">
-                    <StackLayout>
-                        <Label Text="Condition of the vehicle" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <FlexLayout Wrap="Wrap">
-                            <Button Text="Clean" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_1"/>
-                            <Button Text="Dirty" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_1"/>
-                            <Button Text="Wet" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_1"/>
-                            <Button Text="Snow" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_1"/>
-                            <Button Text="Extra dirty" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_1"/>
-                        </FlexLayout>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock2" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Condition of the vehicle" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="13">
+                            <Button Text="Clean"
+                                    Clicked="Button_Clicked_1"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="Dirty"
+                                    Clicked="Button_Clicked_1"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="Wet"
+                                    Clicked="Button_Clicked_1"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="Snow"
+                                    Clicked="Button_Clicked_1"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="Extra dirty"
+                                    Clicked="Button_Clicked_1"
+                                    Style="{StaticResource btnAsk}"/>
+                        </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock10">
-                    <StackLayout> 
-                        <Label Text="Any personal or additional  items with or in vehicle" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_6"/>
-                            <Button Text="No" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked_6v1"/>
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock10" Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10"> 
+                        <Label Text="Any personal or additional  items with or in vehicle" Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="13">
+                            <Button Text="Yes"
+                                    Clicked="Button_Clicked_6"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="No"
+                                    Clicked="Button_Clicked_6v1"
+                                    Style="{StaticResource btnAsk}"/>
                             <ScrollView Orientation="Horizontal">
-                                <StackLayout x:Name="blockAskPhotoItem" Orientation="Horizontal">
+                                <StackLayout x:Name="blockAskPhotoItem" Orientation="Horizontal" Spacing="10">
                                 </StackLayout>
                             </ScrollView>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
+                </shadowFrame:ShadowFrame>
             </StackLayout>
         </ScrollView>
         </StackLayout>

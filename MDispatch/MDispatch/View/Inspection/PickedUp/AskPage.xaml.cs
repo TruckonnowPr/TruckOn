@@ -39,11 +39,11 @@ namespace MDispatch.View.AskPhoto
         {
             isAsk1 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askPageMV.Ask.Lightbrightness = button.Text;
             if (button1 != null)
             {
-                button1.TextColor = Color.Silver;
+                button1.TextColor = Color.FromHex("#C1C1C1");
             }
             button1 = button;
         }
@@ -56,11 +56,11 @@ namespace MDispatch.View.AskPhoto
         {
             isAsk2 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askPageMV.Ask.Vehicle = button.Text;
             if (button2 != null)
             {
-                button2.TextColor = Color.Silver;
+                button2.TextColor = Color.FromHex("#C1C1C1");
             }
             button2 = button;
         }
@@ -73,11 +73,11 @@ namespace MDispatch.View.AskPhoto
         {
             isAsk12 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askPageMV.Ask.Safe_delivery_location = button.Text;
             if (button12 != null)
             {
-                button12.TextColor = Color.Silver;
+                button12.TextColor = Color.FromHex("#C1C1C1");
             }
             button12 = button;
         }
@@ -90,11 +90,11 @@ namespace MDispatch.View.AskPhoto
         {
             isAsk15 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askPageMV.Ask.Enough_space_to_take_pictures = button.Text;
             if (button15 != null)
             {
-                button15.TextColor = Color.Silver;
+                button15.TextColor = Color.FromHex("#C1C1C1");
             }
             button15 = button;
         }
@@ -125,12 +125,12 @@ namespace MDispatch.View.AskPhoto
         {
             isAsk1 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnAnswer7 = button.Text;
             askPageMV.Ask.Anyone_Rushing_you_to_perform_the_inspection = $"{btnAnswer7} {txtAnswer7}";
             if (button7 != null)
             {
-                button7.TextColor = Color.Silver;
+                button7.TextColor = Color.FromHex("#C1C1C1");
             }
             button7 = button;
             if(button.Text == "Yes" || button.Text == "YES")
@@ -229,91 +229,91 @@ namespace MDispatch.View.AskPhoto
         {
             if (!isAsk1)
             {
-                askBlock1.BorderColor = Color.Red;
+                askBlock1.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock1.BorderColor = Color.BlueViolet;
+                askBlock1.BorderColor = Color.White;
             }
             if (!isAsk2)
             {
-                askBlock2.BorderColor = Color.Red;
+                askBlock2.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock2.BorderColor = Color.BlueViolet;
+                askBlock2.BorderColor = Color.White;
             }
             if (!isAsk12)
             {
-                askBlock12.BorderColor = Color.Red;
+                askBlock12.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock12.BorderColor = Color.BlueViolet;
+                askBlock12.BorderColor = Color.White;
             }
             if (!isAsk4)
             {
-                askBlock4.BorderColor = Color.Red;
+                askBlock4.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock4.BorderColor = Color.BlueViolet;
+                askBlock4.BorderColor = Color.White;
             }
             if (!isAsk13)
             {
-                askBlock13.BorderColor = Color.Red;
+                askBlock13.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock13.BorderColor = Color.BlueViolet;
+                askBlock13.BorderColor = Color.White;
             }
             if (!isAsk14)
             {
-                askBlock14.BorderColor = Color.Red;
+                askBlock14.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock14.BorderColor = Color.BlueViolet;
+                askBlock14.BorderColor = Color.White;
             }
             if (!isAsk7)
             {
-                askBlock7.BorderColor = Color.Red;
+                askBlock7.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock7.BorderColor = Color.BlueViolet;
+                askBlock7.BorderColor = Color.White;
             }
             if (!isAsk15)
             {
-                askBlock15.BorderColor = Color.Red;
+                askBlock15.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock15.BorderColor = Color.BlueViolet;
+                askBlock15.BorderColor = Color.White;
             }
             if (!isAsk9)
             {
-                askBlock9.BorderColor = Color.Red;
+                askBlock9.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock9.BorderColor = Color.BlueViolet;
+                askBlock9.BorderColor = Color.White;
             }
             if (!isAsk10)
             {
-                askBlock10.BorderColor = Color.Red;
+                askBlock10.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock10.BorderColor = Color.BlueViolet;
+                askBlock10.BorderColor = Color.White;
             }
             if (!isAsk11)
             {
-                askBlock11.BorderColor = Color.Red;
+                askBlock11.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock11.BorderColor = Color.BlueViolet;
+                askBlock11.BorderColor = Color.White;
             }
         }
 
@@ -325,10 +325,10 @@ namespace MDispatch.View.AskPhoto
             isAsk10 = true;
             await Navigation.PushAsync(new CameraItems(this));
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button10 != null)
             {
-                button10.TextColor = Color.Silver;
+                button10.TextColor = Color.FromHex("#C1C1C1");
             }
             button10 = button;
         }
@@ -337,10 +337,10 @@ namespace MDispatch.View.AskPhoto
         {
             isAsk10 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button10 != null)
             {
-                button1.TextColor = Color.Silver;
+                button1.TextColor = Color.FromHex("#C1C1C1");
             }
             button10 = button;
         }

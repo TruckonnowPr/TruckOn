@@ -119,5 +119,6 @@
     <Folder Include="Service\RequestQueue\" />
     <Folder Include="NewElement\AuntificationID\" />
     <Folder Include="NewElement\Effect\" />
+    <Folder Include="NewElement\FrameCusstomise\" />
   </ItemGroup>
 </Project>

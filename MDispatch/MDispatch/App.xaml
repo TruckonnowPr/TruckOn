@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MDispatch.App">
+             x:Class="MDispatch.App"
+             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
 	<Application.Resources>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-Bold">
             <On Platform="Android" Value="/Assets/OpenSans-Bold.ttf#Open Sans" />
@@ -15,5 +16,33 @@
             <On Platform="Android" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
             <On Platform="iOS" Value="OpenSans-Regular" />
         </OnPlatform>
+        <Style TargetType="shadowFrame:ShadowFrame" x:Key="frameAsk">
+            <Setter Property="Padding" Value="14, 8, 40, 15" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderColor" Value="White" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="ColorShadow" Value="#e9f6ff" />
+            <Setter Property="ShadowRadius" Value="10" />
+            <Setter Property="OpacityShadow" Value="1" />
+        </Style>
+        <Style TargetType="Label" x:Key="labelTitleAsk">
+            <Setter Property="TextColor" Value="#101010" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="{StaticResource OpenSans-Bold}" />
+        </Style>
+        <Style TargetType="Button" x:Key="btnAsk">
+            <Setter Property="TextColor" Value="#C1C1C1" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="{StaticResource OpenSans-Regular}" />
+            <Setter Property="HeightRequest" Value="19" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+        <Style TargetType="Entry" x:Key="entryAsk">
+            <Setter Property="PlaceholderColor" Value="#C1C1C1" />
+            <Setter Property="TextColor" Value="#101010" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="{StaticResource OpenSans-Regular}" />
+            <Setter Property="HeightRequest" Value="19" />
+        </Style>
 	</Application.Resources>
 </Application>

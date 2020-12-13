@@ -10,12 +10,30 @@
         <ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
-        <StackLayout x:Name="body">
-            <Label Text="Thank you for using our company. Press the start button to continue!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                Margin="10" FontSize="20"/>
-            <Button Text="Start" BackgroundColor="BlueViolet" TextColor="White" Clicked="Button_Clicked" Margin="10"/>
+        <StackLayout x:Name="body"
+                     Padding="24, 20, 24, 40">
+            
+            <StackLayout VerticalOptions="CenterAndExpand" 
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="Thank you for using our company."
+                       HorizontalTextAlignment="Center"
+                       FontSize="22"
+                       TextColor="#2C5DEB"
+                       FontFamily="{StaticResource OpenSans-Bold}"/>
+                <Label Text="Press the “Start” button to continue!"
+                       HorizontalTextAlignment="Center"
+                       FontSize="22"
+                       TextColor="#2C5DEB"
+                       FontFamily="{StaticResource OpenSans-Bold}"/>
+            </StackLayout>
+            <Button Text="Start"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#2C5DEB"
+                    TextColor="White"
+                    CornerRadius="23"
+                    FontSize="16"
+                    FontFamily="{StaticResource OpenSans-Bold}"
+                    HeightRequest="46"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

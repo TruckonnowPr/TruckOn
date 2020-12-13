@@ -48,11 +48,11 @@ namespace MDispatch.View.Inspection
         {
             isAsk3 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             ask1PageMV.Ask1.Did_someone_help_you_load_it = button.Text;
             if (button3 != null)
             {
-                button3.TextColor = Color.Silver;
+                button3.TextColor = Color.FromHex("#C1C1C1");
             }
             button3 = button;
             if(button.Text == "Yes" || button.Text == "YES")
@@ -116,11 +116,11 @@ namespace MDispatch.View.Inspection
         private void Button_Clicked_1(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnText = button.Text;
             if (button5 != null)
             {
-                button5.TextColor = Color.Silver;
+                button5.TextColor = Color.FromHex("#C1C1C1");
             }
             if (button.Text == "Yes" || button.Text == "YES")
             {
@@ -161,11 +161,11 @@ namespace MDispatch.View.Inspection
         {
             isAsk7 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             ask1PageMV.Ask1.Did_you_jumped_the_vehicle_to_start = button.Text;
             if (button1 != null)
             {
-                button1.TextColor = Color.Silver;
+                button1.TextColor = Color.FromHex("#C1C1C1");
             }
             button1 = button;
         }
@@ -178,11 +178,11 @@ namespace MDispatch.View.Inspection
         {
             isAsk8 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             ask1PageMV.Ask1.Have_you_used_winch = button.Text;
             if (button2 != null)
             {
-                button2.TextColor = Color.Silver;
+                button2.TextColor = Color.FromHex("#C1C1C1");
             }
             button2 = button;
         }
@@ -206,67 +206,67 @@ namespace MDispatch.View.Inspection
         {
             if (!isAsk1)
             {
-                askBlock1.BorderColor = Color.Red;
+                askBlock1.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock1.BorderColor = Color.BlueViolet;
+                askBlock1.BorderColor = Color.White;
             }
             if (!isAsk14)
             {
-                askBlock14.BorderColor = Color.Red;
+                askBlock14.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock14.BorderColor = Color.BlueViolet;
+                askBlock14.BorderColor = Color.White;
             }
             if (!isAsk3)
             {
-                askBlock3.BorderColor = Color.Red;
+                askBlock3.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock3.BorderColor = Color.BlueViolet;
+                askBlock3.BorderColor = Color.White;
             }
             if (!isAsk4)
             {
-                askBlock4.BorderColor = Color.Red;
+                askText4.TextColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock4.BorderColor = Color.BlueViolet;
+                askText4.TextColor = Color.FromHex("#101010");
             }
             if (!isAsk5)
             {
-                askBlock5.BorderColor = Color.Red;
+                askBlock5.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock5.BorderColor = Color.BlueViolet;
+                askBlock5.BorderColor = Color.White;
             }
             if (!isAsk6)
             {
-                askBlock6.BorderColor = Color.Red;
+                askBlock6.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock6.BorderColor = Color.BlueViolet;
+                askBlock6.BorderColor = Color.White;
             }
             if (!isAsk7)
             {
-                askBlock7.BorderColor = Color.Red;
+                askBlock7.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock7.BorderColor = Color.BlueViolet;
+                askBlock7.BorderColor = Color.White;
             }
             if (!isAsk8)
             {
-                askBlock8.BorderColor = Color.Red;
+                askBlock8.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock8.BorderColor = Color.BlueViolet;
+                askBlock8.BorderColor = Color.White;
             }
         }
 
@@ -315,11 +315,11 @@ namespace MDispatch.View.Inspection
         private void Button_Clicked_5(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnText = button.Text;
             if (button14 != null)
             {
-                button14.TextColor = Color.Silver;
+                button14.TextColor = Color.FromHex("#C1C1C1");
             }
             if(button.Text == "Yes" || button.Text == "YES")
             {
