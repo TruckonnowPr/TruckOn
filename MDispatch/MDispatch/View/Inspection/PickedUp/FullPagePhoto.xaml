@@ -7,8 +7,12 @@
             <Image x:Name="SelectPhoto" Source="{Binding SourseImage}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
             <Image x:Name="paternPhoto" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" />
             <AbsoluteLayout x:Name="dmla" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Opacity="0.5"/>
-            <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" BackgroundColor="#101010"
-                         AbsoluteLayout.LayoutBounds="1, 0, 1, 86" Opacity="0.5" Padding="7">
+            <StackLayout Orientation="Horizontal"
+                         AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                         BackgroundColor="#101010"
+                         AbsoluteLayout.LayoutBounds="1, 0, 1, 86"
+                         Opacity="0.5"
+                         Padding="7">
                 <Image Source="BackIconpage.png" HeightRequest="36" WidthRequest="18" Margin="25, 0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />

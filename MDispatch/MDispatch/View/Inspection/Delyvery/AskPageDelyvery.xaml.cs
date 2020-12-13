@@ -53,11 +53,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk2 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Lightbrightness = button.Text;
             if (button2 != null)
             {
-                button2.TextColor = Color.Silver;
+                button2.TextColor = Color.FromHex("#C1C1C1");
             }
             button2 = button;
         }
@@ -70,11 +70,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk10 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Vehicle_Condition_on_delivery = button.Text;
             if (button10 != null)
             {
-                button10.TextColor = Color.Silver;
+                button10.TextColor = Color.FromHex("#C1C1C1");
             }
             button10 = button;
         }
@@ -87,11 +87,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk3 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Vehicle_Condition_on_delivery = button.Text;
             if (button3 != null)
             {
-                button3.TextColor = Color.Silver;
+                button3.TextColor = Color.FromHex("#C1C1C1");
             }
             button3 = button;
         }
@@ -104,11 +104,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk4 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Did_you_meet_the_client = button.Text;
             if (button4 != null)
             {
-                button4.TextColor = Color.Silver;
+                button4.TextColor = Color.FromHex("#C1C1C1");
             }
             button4 = button;
         }
@@ -121,11 +121,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk5 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Truck_on_emergency_brake = button.Text;
             if (button5 != null)
             {
-                button5.TextColor = Color.Silver;
+                button5.TextColor = Color.FromHex("#C1C1C1");
             }
             button5 = button;
         }
@@ -138,11 +138,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk6 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Truck_locked = button.Text;
             if (button6 != null)
             {
-                button6.TextColor = Color.Silver;
+                button6.TextColor = Color.FromHex("#C1C1C1");
             }
             button6 = button;
         }
@@ -187,11 +187,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk8 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Truck_on_emergency_brake = button.Text;
             if (button8 != null)
             {
-                button8.TextColor = Color.Silver;
+                button8.TextColor = Color.FromHex("#C1C1C1");
             }
             button8 = button;
         }
@@ -204,11 +204,11 @@ namespace MDispatch.View.Inspection.Delyvery
         private void Button_Clicked_11(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnAnswer = button.Text;
             if (button9 != null)
             {
-                button9.TextColor = Color.Silver;
+                button9.TextColor = Color.FromHex("#C1C1C1");
             }
             button9 = button;
             if (button.Text == "Yes" || button.Text == "YES")
@@ -265,11 +265,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk1 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Weather_Conditions = button.Text;
             if (button1 != null)
             {
-                button1.TextColor = Color.Silver;
+                button1.TextColor = Color.FromHex("#C1C1C1");
             }
             button1 = button;
         }
@@ -282,10 +282,10 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk13 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             if (button13 != null)
             {
-                button13.TextColor = Color.Silver;
+                button13.TextColor = Color.FromHex("#C1C1C1");
             }
             button13 = button;
             askDelyveryMV.AskDelyvery.Does_the_vehicle_Drives = button.Text;
@@ -300,11 +300,11 @@ namespace MDispatch.View.Inspection.Delyvery
         private void Button_Clicked_7(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             answer = button.Text;
             if (button14 != null)
             {
-                button14.TextColor = Color.Silver;
+                button14.TextColor = Color.FromHex("#C1C1C1");
             }
             button14 = button;
             if (button.Text == "Yes" || button.Text == "YES")
@@ -333,11 +333,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk14 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             answerStr = button.Text;
             if (button14V2 != null)
             {
-                button14V2.TextColor = Color.Silver;
+                button14V2.TextColor = Color.FromHex("#C1C1C1");
             }
             button14V2 = button;
             answerStr = button.Text;
@@ -352,11 +352,11 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             isAsk18 = true;
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askDelyveryMV.AskDelyvery.Does_the_vehicle_Drives = button.Text;
             if (button18 != null)
             {
-                button18.TextColor = Color.Silver;
+                button18.TextColor = Color.FromHex("#C1C1C1");
             }
             button18 = button;
         }
@@ -405,11 +405,11 @@ namespace MDispatch.View.Inspection.Delyvery
         private void Button_Clicked_13(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnAnswer16 = button.Text;
             if (button16 != null)
             {
-                button16.TextColor = Color.Silver;
+                button16.TextColor = Color.FromHex("#C1C1C1");
             }
             button16 = button;
             if (button.Text == "Yes" || button.Text == "YES")
@@ -449,11 +449,11 @@ namespace MDispatch.View.Inspection.Delyvery
         private void Button_Clicked_14(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnAnswer17 = button.Text;
             if (button17 != null)
             {
-                button17.TextColor = Color.Silver;
+                button17.TextColor = Color.FromHex("#C1C1C1");
             }
             button17 = button;
             if (button.Text == "Yes" || button.Text == "YES")
@@ -493,11 +493,11 @@ namespace MDispatch.View.Inspection.Delyvery
         private void Button_Clicked_15(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             btnAnswer12 = button.Text;
             if (button12 != null)
             {
-                button12.TextColor = Color.Silver;
+                button12.TextColor = Color.FromHex("#C1C1C1");
             }
             button12 = button;
             if (button.Text == "Yes" || button.Text == "YES")
@@ -541,155 +541,155 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             if (!isAsk1)
             {
-                askBlock1.BorderColor = Color.Red;
+                askBlock1.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock1.BorderColor = Color.BlueViolet;
+                askBlock1.BorderColor = Color.White;
             }
             if (!isAsk2)
             {
-                askBlock2.BorderColor = Color.Red;
+                askBlock2.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock2.BorderColor = Color.BlueViolet;
+                askBlock2.BorderColor = Color.White;
             }
             if (!isAsk3)
             {
-                askBlock3.BorderColor = Color.Red;
+                askBlock3.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock3.BorderColor = Color.BlueViolet;
+                askBlock3.BorderColor = Color.White;
             }
             if (!isAsk4)
             {
-                askBlock4.BorderColor = Color.Red;
+                askBlock4.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock4.BorderColor = Color.BlueViolet;
+                askBlock4.BorderColor = Color.White;
             }
             if (!isAsk5)
             {
-                askBlock5.BorderColor = Color.Red;
+                askBlock5.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock5.BorderColor = Color.BlueViolet;
+                askBlock5.BorderColor = Color.White;
             }
             if (!isAsk6)
             {
-                askBlock6.BorderColor = Color.Red;
+                askBlock6.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock6.BorderColor = Color.BlueViolet;
+                askBlock6.BorderColor = Color.White;
             }
             if (!isAsk7)
             {
-                askBlock7.BorderColor = Color.Red;
+                askBlock7.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock7.BorderColor = Color.BlueViolet;
+                askBlock7.BorderColor = Color.White;
             }
             if (!isAsk8)
             {
-                askBlock8.BorderColor = Color.Red;
+                askBlock8.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock8.BorderColor = Color.BlueViolet;
+                askBlock8.BorderColor = Color.White;
             }
             if (!isAsk9)
             {
-                askBlock9.BorderColor = Color.Red;
+                askBlock9.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock9.BorderColor = Color.BlueViolet;
+                askBlock9.BorderColor = Color.White;
             }
             if (!isAsk10)
             {
-                askBlock10.BorderColor = Color.Red;
+                askBlock10.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock10.BorderColor = Color.BlueViolet;
+                askBlock10.BorderColor = Color.White;
             }
             if (!isAsk11)
             {
-                askBlock11.BorderColor = Color.Red;
+                askBlock11.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock11.BorderColor = Color.BlueViolet;
+                askBlock11.BorderColor = Color.White;
             }
             if (!isAsk12)
             {
-                askBlock12.BorderColor = Color.Red;
+                askBlock12.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock12.BorderColor = Color.BlueViolet;
+                askBlock12.BorderColor = Color.White;
             }
             if (!isAsk13)
             {
-                askBlock13.BorderColor = Color.Red;
+                askBlock13.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock13.BorderColor = Color.BlueViolet;
+                askBlock13.BorderColor = Color.White;
             }
             if (!isAsk14)
             {
-                askBlock14.BorderColor = Color.Red;
+                askBlock14.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock14.BorderColor = Color.BlueViolet;
+                askBlock14.BorderColor = Color.White;
             }
             if (!isAsk15)
             {
-                askBlock15.BorderColor = Color.Red;
+                askBlock15.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock15.BorderColor = Color.BlueViolet;
+                askBlock15.BorderColor = Color.White;
             }
             if (!isAsk16)
             {
-                askBlock16.BorderColor = Color.Red;
+                askBlock16.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock16.BorderColor = Color.BlueViolet;
+                askBlock16.BorderColor = Color.White;
             }
             if (!isAsk17)
             {
-                askBlock17.BorderColor = Color.Red;
+                askBlock17.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock17.BorderColor = Color.BlueViolet;
+                askBlock17.BorderColor = Color.White;
             }
             if (!isAsk18)
             {
-                askBlock18.BorderColor = Color.Red;
+                askBlock18.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock18.BorderColor = Color.BlueViolet;
+                askBlock18.BorderColor = Color.White;
             }
             if (!isAsk20)
             {
-                askBlock20.BorderColor = Color.Red;
+                askBlock20.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock20.BorderColor = Color.BlueViolet;
+                askBlock20.BorderColor = Color.White;
             }
         }
 

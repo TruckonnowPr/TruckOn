@@ -103,10 +103,10 @@ namespace MDispatch.View.Inspection.Delyvery
             isAsk1 = true;
             if (button1 != null)
             {
-                button1.TextColor = Color.Silver;
+                button1.TextColor = Color.FromHex("#C1C1C1");
             }
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             askForUsersDelyveryMW.AskForUserDelyveryM.Have_you_inspected_the_vehicle_For_any_additional_imperfections_other_than_listed_at_the_pick_up = button.Text;
             button1 = button;
             if (button1.Text == "Found an issue" || button1.Text == "FOUND AN ISSUE")
@@ -221,10 +221,10 @@ namespace MDispatch.View.Inspection.Delyvery
             isAsk4 = true;
             if (button4 != null)
             {
-                button4.TextColor = Color.Silver;
+                button4.TextColor = Color.FromHex("#C1C1C1");
             }
             Button button = (Button)sender;
-            button.TextColor = Color.FromHex("#4fd2c2");
+            button.TextColor = Color.FromHex("#2C5DEB");
             button4 = button;
             if(button.Text == "Yes" || button.Text == "YES")
             {
@@ -267,43 +267,43 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             if (!isAsk1)
             {
-                askBlock1.BorderColor = Color.Red;
+                askBlock1.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock1.BorderColor = Color.BlueViolet;
+                askBlock1.BorderColor = Color.White;
             }
             if (!isAsk2)
             {
-                askBlock2.BorderColor = Color.Red;
+                askBlock2.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock2.BorderColor = Color.BlueViolet;
+                askBlock2.BorderColor = Color.White;
             }
             if (!GetIsAsk3())
             {
-                askBlock3.BorderColor = Color.Red;
+                askBlock3.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock3.BorderColor = Color.BlueViolet;
+                askBlock3.BorderColor = Color.White;
             }
             if (!isAsk4)
             {
-                askBlock4.BorderColor = Color.Red;
+                askBlock4.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock4.BorderColor = Color.BlueViolet;
+                askBlock4.BorderColor = Color.White;
             }
             if (!isAsk5)
             {
-                askBlock5.BorderColor = Color.Red;
+                askBlock5.BorderColor = Color.FromHex("#FF2C2C");
             }
             else
             {
-                askBlock5.BorderColor = Color.BlueViolet;
+                askBlock5.BorderColor = Color.White;
             }
         }
 
@@ -359,7 +359,7 @@ namespace MDispatch.View.Inspection.Delyvery
             }
             else
             {
-                ((Entry)sender).TextColor = Color.Red;
+                ((Entry)sender).TextColor = Color.FromHex("#FF2C2C");
                 //btnConntinue.IsVisible = false;
                 blockAskPay.IsVisible = false;
             }

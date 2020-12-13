@@ -153,7 +153,7 @@
                                                       StrokeColor="Black"
                                                       StrokeWidth="3"
                                                       BackgroundColor="White"
-                                                      HeightRequest="100"
+                                                      HeightRequest="150"
                                                       StrokeCompleted="Sign_StrokeCompleted"
                                                       Cleared="Sign_Cleared"
                                                       ClearFontSize="12"
