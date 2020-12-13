@@ -64,12 +64,12 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Paymmant
             {
                 isIamPay = true;
                 stackLayout.IsEnabled = false;
-                await PopupNavigation.PushAsync(new Errror($"Give money for delivery to the driver {((Entry)stackLayout.Children[0]).Text}", null));
+                await PopupNavigation.PushAsync(new Alert($"Give money for delivery to the driver {((Entry)stackLayout.Children[0]).Text}", null));
             }
             else
             {
                 isIamPay = false;
-                await PopupNavigation.PushAsync(new Errror("You must enter the amount of payment for delivery", null));
+                await PopupNavigation.PushAsync(new Alert("You must enter the amount of payment for delivery", null));
             }
             CheckIsAskPaymmant();
         }

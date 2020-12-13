@@ -194,7 +194,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
@@ -417,11 +417,11 @@ namespace MDispatch.ViewModels.PageAppMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -430,7 +430,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             await PopupNavigation.PopAsync();
@@ -463,12 +463,12 @@ namespace MDispatch.ViewModels.PageAppMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -479,7 +479,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
         }

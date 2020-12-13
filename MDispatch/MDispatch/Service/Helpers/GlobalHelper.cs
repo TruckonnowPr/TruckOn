@@ -29,7 +29,7 @@ namespace MDispatch.Service
                 });
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Error", null));
+                    await PopupNavigation.PushAsync(new Alert("Error", null));
                 }
                 else if (state == 3)
                 {
@@ -39,7 +39,7 @@ namespace MDispatch.Service
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
         }

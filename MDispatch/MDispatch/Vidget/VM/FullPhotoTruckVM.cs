@@ -195,11 +195,11 @@ namespace MDispatch.Vidget.VM
                 });
                 if (state == 1)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
                 }
                 else if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -208,7 +208,7 @@ namespace MDispatch.Vidget.VM
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             else
@@ -237,12 +237,12 @@ namespace MDispatch.Vidget.VM
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
                 }
                 else if (state == 2)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -269,7 +269,7 @@ namespace MDispatch.Vidget.VM
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             else
@@ -297,12 +297,12 @@ namespace MDispatch.Vidget.VM
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
                 }
                 else if (state == 2)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3) 
                 {
@@ -334,7 +334,7 @@ namespace MDispatch.Vidget.VM
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             else
@@ -357,11 +357,11 @@ namespace MDispatch.Vidget.VM
             await PopupNavigation.PopAsync(true);
             if (state == 1)
             {
-                await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                await PopupNavigation.PushAsync(new Alert("Not Network", null));
             }
             else if (state == 2)
             {
-                await PopupNavigation.PushAsync(new Errror(description, null));
+                await PopupNavigation.PushAsync(new Alert(description, null));
             }
             else if (state == 3)
             {
@@ -369,7 +369,7 @@ namespace MDispatch.Vidget.VM
             }
             else if (state == 4)
             {
-                await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
             }
             else
             {
@@ -395,7 +395,7 @@ namespace MDispatch.Vidget.VM
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
                 }
                 else if (state == 3)
                 {
@@ -414,7 +414,7 @@ namespace MDispatch.Vidget.VM
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service scan", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service scan", null));
                 }
             }
             else

@@ -80,7 +80,7 @@ namespace MDispatch.ViewModels.InspectionMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
@@ -133,11 +133,11 @@ namespace MDispatch.ViewModels.InspectionMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                     HelpersView.CallError(description);
                 }
                 else if (state == 3)

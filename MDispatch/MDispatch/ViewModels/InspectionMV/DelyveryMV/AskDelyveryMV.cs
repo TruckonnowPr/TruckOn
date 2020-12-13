@@ -85,7 +85,7 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {

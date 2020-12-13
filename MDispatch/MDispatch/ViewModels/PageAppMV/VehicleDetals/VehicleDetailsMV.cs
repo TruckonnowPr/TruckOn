@@ -53,12 +53,12 @@ namespace MDispatch.ViewModels.PageAppMV.VehicleDetals
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
                     await Navigationn.PopAsync(true);
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -68,7 +68,7 @@ namespace MDispatch.ViewModels.PageAppMV.VehicleDetals
                 else if (state == 4)
                 {
                     await Navigationn.PopAsync(true);
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             else

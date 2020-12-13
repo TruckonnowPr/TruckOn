@@ -89,7 +89,7 @@ namespace MDispatch.ViewModels.TAbbMV
                 if(state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                     //HelpersView.CallError(description);
                 }
                 else if (state == 2)
@@ -141,11 +141,11 @@ namespace MDispatch.ViewModels.TAbbMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    //PopupNavigation.PushAsync(new Errror(description, null));
+                    //PopupNavigation.PushAsync(new Alert(description, null));
                     HelpersView.CallError(description);
                 }
                 else if (state == 3)
@@ -154,7 +154,7 @@ namespace MDispatch.ViewModels.TAbbMV
                     if (isInspection)
                     {
                         Init();
-                        await PopupNavigation.PushAsync(new Errror("You have already passed inspection today", null));
+                        await PopupNavigation.PushAsync(new Alert("You have already passed inspection today", null));
                         //Add Commplet Alert
                     }
                     else

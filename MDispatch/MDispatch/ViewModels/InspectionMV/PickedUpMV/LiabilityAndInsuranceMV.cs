@@ -101,7 +101,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
@@ -152,11 +152,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    await PopupNavigation.PushAsync(new Alert(description, Navigation));
                 }
                 else if (state == 3)
                 {
@@ -180,7 +180,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
                 }
             }
             else
@@ -210,11 +210,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    await PopupNavigation.PushAsync(new Alert(description, Navigation));
                 }
                 else if (state == 3)
                 {
@@ -226,7 +226,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
                 }
             }
         }
@@ -253,11 +253,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, Navigation));
+                    await PopupNavigation.PushAsync(new Alert(description, Navigation));
                 }
                 else if (state == 3)
                 {
@@ -270,7 +270,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
                 }
                 await PopupNavigation.PopAsync();
             }
@@ -298,11 +298,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -310,7 +310,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
         }
@@ -342,11 +342,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -354,7 +354,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             return isProplem;
@@ -392,11 +392,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -404,7 +404,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
         }

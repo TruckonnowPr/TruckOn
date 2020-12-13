@@ -309,11 +309,11 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -321,13 +321,13 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }
             else
             {
                 HelpersView.CallError("Not Network");
-                await PopupNavigation.PushAsync(new Errror("Not Network", null));
+                await PopupNavigation.PushAsync(new Alert("Not Network", null));
                 BackToRootPage();
             }
         }

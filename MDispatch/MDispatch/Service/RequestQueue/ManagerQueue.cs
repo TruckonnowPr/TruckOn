@@ -76,12 +76,12 @@ namespace MDispatch.Service.RequestQueue
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 2)
                 { 
                     HelpersView.CallError(description);
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -92,7 +92,7 @@ namespace MDispatch.Service.RequestQueue
                 else if (state == 4)
                 {
                     HelpersView.CallError("Technical work on the service");
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             });
         }
@@ -112,12 +112,12 @@ namespace MDispatch.Service.RequestQueue
                 if (state == 1)
                 {
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 2)
                 {
                     HelpersView.CallError(description);
-                    await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 else if (state == 3)
                 {
@@ -128,7 +128,7 @@ namespace MDispatch.Service.RequestQueue
                 else if (state == 4)
                 {
                     HelpersView.CallError("Technical work on the service");
-                    await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             });
         }
