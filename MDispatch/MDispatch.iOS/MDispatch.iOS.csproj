@@ -512,6 +512,7 @@
     <BundleResource Include="Resources\Fonts\OpenSans-SemiBoldItalic.ttf" />
     <BundleResource Include="Resources\timeInspection.png" />
     <BundleResource Include="Resources\descInspection.png" />
+    <BundleResource Include="Resources\BackPage.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deliveredOrder.png" />

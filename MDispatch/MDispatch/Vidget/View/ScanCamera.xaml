@@ -8,13 +8,19 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Image x:Name="paternPhoto" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"/>
-            <Image Source="BackIconpage.png"  HorizontalOptions="Start" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".02, .02, 40, 40">
+            <Image Source="BackIconpage.png"
+                   AbsoluteLayout.LayoutBounds="25, 25, 18, 36">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label TextColor="Red" Text="Scan Plate number" FontSize="20" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5, .08, Autosize, Autosize"/>
-            <Label TextColor="#4fd2c2" Text="" FontSize="15" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5, .98, Autosize, Autosize"/>
+            <Label Text="Scan Plate number"
+                   TextColor="White"
+                   FontSize="21"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds=".5, .08, Autosize, Autosize"
+                   FontFamily="{StaticResource OpenSans-Bold}"
+                   HorizontalTextAlignment="Center"/>
         </AbsoluteLayout>
     </ContentPage.Content>
 </camera:CameraPage>
