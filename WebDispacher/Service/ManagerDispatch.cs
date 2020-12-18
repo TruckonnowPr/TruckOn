@@ -32,15 +32,9 @@ namespace WebDispacher.Service
             stripeApi = new StripeApi();
         }
 
-        internal bool CheckKeyDispatcher(string key)
+        internal Dispatcher CheckKeyDispatcher(string key)
         {
-            bool isCheck = false;
-            Dispatcher dispatcher = _sqlEntityFramworke.GetDispatcherByKeyUsers(key);
-            if (dispatcher != null)
-            {
-                isCheck = true;
-            }
-            return isCheck;
+            return _sqlEntityFramworke.GetDispatcherByKeyUsers(key);
         }
 
         public async Task<List<Driver>> GetDrivers(string idCompany)
@@ -560,10 +554,10 @@ namespace WebDispacher.Service
             return validCompany;
         }
 
-        internal async Task<DaoModels.DAO.Models.Shipping> AddNewOrder(string urlPage)
+        internal async Task<DaoModels.DAO.Models.Shipping> AddNewOrder(string urlPage, Dispatcher dispatcher)
         {
-            ITransportationDispatch transportationDispatch = GetTransportationDispatch("Central Dispatch");
-            DaoModels.DAO.Models.Shipping shipping = await transportationDispatch.GetShipping(urlPage);
+            ITransportationDispatch transportationDispatch = GetTransportationDispatch(dispatcher.Type);
+            DaoModels.DAO.Models.Shipping shipping = await transportationDispatch.GetShipping(urlPage, dispatcher);
             if (shipping != null)
             {
                 _sqlEntityFramworke.AddOrder(shipping);

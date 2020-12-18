@@ -9,7 +9,10 @@
                             <input hidden name="idDispatch" value="@ViewBag.Dispatcher.Id" class="inpText validation" type="text" required />
                             <label for="">
                                 Type Dispatcher
-                                <input type="text" name="typeDispatcher">
+                                <select name="typeDispatcher" required style="width:500px;">
+                                    <option value="">Choose a dispatcher type</option>
+                                    <option value="Central Dispatch">Central Dispatch</option>
+                                </select>
                             </label>
                             <label for="">
                                 Login Dispatch

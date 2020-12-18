@@ -25,9 +25,10 @@ namespace WebDispacher.Controellers
             string actionResult = null;
             try
             {
-                if (managerDispatch.CheckKeyDispatcher(key))
+                Dispatcher dispatcher = managerDispatch.CheckKeyDispatcher(key);
+                if (dispatcher != null)
                 {
-                    Shipping shipping = await managerDispatch.AddNewOrder(urlPage);
+                    Shipping shipping = await managerDispatch.AddNewOrder(urlPage, dispatcher);
                 }
             }
             catch (Exception)
