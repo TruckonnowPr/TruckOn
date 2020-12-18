@@ -857,9 +857,9 @@ namespace WebDispacher.Controellers
         }
 
         [Route("Dashbord/Order/SavaVech")]
-        public string SavaVech(string idVech, string VIN, string Year, string Make, string Model, string Type, string Color, string LotNumber)
+        public IActionResult SavaVech(string idOrder, string idVech, string VIN, string Year, string Make, string Model, string Type, string Color, string LotNumber)
         {
-            string actionResult = null;
+            IActionResult actionResult = null;
             try
             {
                 string key = null;
@@ -871,7 +871,7 @@ namespace WebDispacher.Controellers
                 {
                     managerDispatch.SaveVechi(idVech, VIN, Year, Make, Model, Type,  Color, LotNumber);
                     Task.Run(() => managerDispatch.AddHistory(key, "0", "0", idVech, "0", "SavaVech"));
-                    actionResult = "Vehicle information saved successfully";
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Dashbord/Order/Edit?id={idOrder}&stasus=NewLoad");
                 }
                 else
                 {
@@ -879,12 +879,12 @@ namespace WebDispacher.Controellers
                     {
                         Response.Cookies.Delete("KeyAvtho");
                     }
-                    actionResult = "Unauthorized user cannot change order";
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Dashbord/Order/Edit?id={idOrder}&stasus=NewLoad");
                 }
             }
             catch (Exception)
             {
-                actionResult = "Vehicle information not saved (ERROR)";
+                actionResult = null;
             }
             return actionResult;
         }

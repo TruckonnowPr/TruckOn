@@ -23,8 +23,8 @@
                                     </div>
                                 </div>
                                 <div class="right">
-                                    <button class="btn3">Edit</button>
-                                    <button class="btn3">Deleted</button>
+                                    <a class="btn3" href="@ViewBag.BaseUrl/Contact/Edit?id=@ViewBag.Contacts[i].ID">Edit</a>
+                                    <a class="btn3" href="@ViewBag.BaseUrl/Contact/Delete?id=@ViewBag.Contacts[i].ID">Delete</a>
                                 </div>
                             </div>
                         </div> 

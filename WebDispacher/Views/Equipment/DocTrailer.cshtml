@@ -16,14 +16,14 @@
                     </div>
                     if (pref == "pdf")
                     {
-                        <div class="col-md-12">
+                        <div class="col-md-12" >
                             <embed src="@ViewBag.BaseUrl/Equipment/GetDockPDF?docPath=@ViewBag.TrailerDoc[i].DocPath" width="900" height="1200" />
                         </div>
                     }
                     else
                     {
-                        <div class="col-md-12">
-                            <img src="@ViewBag.BaseUrl/Equipment/GetDock?docPath=@ViewBag.TrailerDoc[i].DocPath&type=image/@pref" alt="">
+                        <div class="col-md-12" style="width: 900px">
+                            <img src="@ViewBag.BaseUrl/Equipment/GetDock?docPath=@ViewBag.TrailerDoc[i].DocPath&type=image/@pref" width="900" alt="">
                         </div>
                     }
                     <hr />

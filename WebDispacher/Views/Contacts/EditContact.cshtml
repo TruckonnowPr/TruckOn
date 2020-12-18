@@ -4,21 +4,22 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="tabContent">
-                        <h2>Info About the Conatact</h2>
+                        <h2>Info About the Contact</h2>
                         <form action="" method="post">
                             <label for="">
                                 Contact Name
-                                <input type="text" name="fullName" required>
+                                <input type="text" name="fullName" value="@ViewBag.Contact.Name" required>
                             </label>
                             <label for="">
                                 Email address
-                                <input type="email" name="emailAddress" required>
+                                <input type="email" name="emailAddress" value="@ViewBag.Contact.Email" required>
                             </label>
                             <label for="">
                                 Phone number
-                                <input type="text" name="phoneNumbe" placeholder="XXXXXXXXXX" pattern="[0-9]{4,12}" required>
+                                <input type="text" name="phoneNumbe" placeholder="XXXXXXXXXX" pattern="[0-9]{4,12}" value="@ViewBag.Contact.Phone" required>
                             </label>
-                            <input class="btn1" type="submit" value="Save" />
+                            <input name="id" value="@ViewBag.Contact.ID" style="display:none" />
+                            <input class="btn1" type="submit" value="Save Info" />
                         </form>
                     </div>
                 </div>

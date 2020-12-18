@@ -753,6 +753,16 @@ namespace WebDispacher.Controellers
             return File(imageFileStream, $"image/{type}");
         }
 
+        [Route("Driver/GetDockPDF")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult GetDockPDF(string docPath)
+        {
+            IActionResult actionResult = null;
+            var imageFileStream = System.IO.File.OpenRead(docPath);
+            actionResult = File(imageFileStream, "application/pdf");
+            return actionResult;
+        }
+
         private string GetLevel(string value)
         {
             string level = "Noen";

@@ -1,29 +1,35 @@
-﻿<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
-<div id="map"></div>
-<div id="dataDriverGPS" style="display:none">
-    @foreach (var driver in ViewBag.Drivers)
-    {
-        @if (driver.geolocations != null)
-        {
-    <div>
-        <input type="text" value=@driver.geolocations.Longitude />
-        <input type="text" value=@driver.geolocations.Latitude />
-        <input type="text" value=@driver.FullName />
+﻿<body>
+    <div class="admin">
+        <div class="container">
+            <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
+            <div id="map"></div>
+            <div id="dataDriverGPS" style="display:none">
+                @foreach (var driver in ViewBag.Drivers)
+                {
+                    @if (driver.geolocations != null)
+                    {
+                        <div>
+                            <input type="text" value=@driver.geolocations.Longitude />
+                            <input type="text" value=@driver.geolocations.Latitude />
+                            <input type="text" value=@driver.FullName />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
     </div>
-            }
-        }
-</div>
+</body>
 <script>
     var map;
     function initMap() {
         var features = [];
-        let elmDataGps = dataDriverGPS.children;
+        let elmDataGps = document.getElementById("dataDriverGPS").children;
         for (let i = 0; i < elmDataGps.length; i++) {
             features.push(
-                {
-                    position: new google.maps.LatLng(parseFloat(elmDataGps[i].children[1].value.replace(',', '.')), parseFloat(elmDataGps[i].children[0].value.replace(',', '.'))),
-                    name: elmDataGps[i].children[2].value,
-                });
+            {
+                position: new google.maps.LatLng(parseFloat(elmDataGps[i].children[1].value.replace(',', '.')), parseFloat(elmDataGps[i].children[0].value.replace(',', '.'))),
+                name: elmDataGps[i].children[2].value,
+            });
         }
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,

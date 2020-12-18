@@ -1,4 +1,5 @@
-﻿<body>
+﻿
+<body>
     <div class="admin Billing">
         <div class="container">
             <div class="row">
@@ -10,16 +11,16 @@
                 <div class="col-md-12">
                     <div class="tabContente">
                         <form action="SavaOrder" method="post">
-                            <input type="text" name="idOrder" style="display:none;" value="@ViewBag.Order.Id" />
+                            <input id="idOrder" type="text" name="idOrder" style="display:none;" value="@ViewBag.Order.Id" />
                             <div class="w1">
                                 <label for="">
                                     Load ID
-                                    <input name="idLoad" type="text" value="@ViewBag.Order.idOrder">
+                                    <input type="text" name="idLoad" value="@ViewBag.Order.idOrder">
                                 </label>
                                 <label for="">
                                     Status
-                                    <select name="status">
-                                        <option value="">-----------</option>
+                                    <select name="status" id="">
+                                        <option value="@ViewBag.Order.CurrentStatus">@ViewBag.Order.CurrentStatus</option>
                                         <option value="">NewLoad</option>
                                         <option value="">Picked up</option>
                                         <option value="">Delivered</option>
@@ -28,50 +29,50 @@
                                 <h3>Pickup Information</h3>
                                 <label for="">
                                     Name
-                                    <input name="nameP" type="text" value="@ViewBag.Order.NameP" placeholder="Name">
+                                    <input type="text" value="@ViewBag.Order.NameP" placeholder="Name" name="nameP">
                                 </label>
                                 <label for="">
                                     Contact
-                                    <input name="contactP" type="text" value="@ViewBag.Order.ContactNameP" placeholder="Contact name">
+                                    <input type="text" name="contactP" value="@ViewBag.Order.ContactNameP" placeholder="Contact name">
                                 </label>
                                 <label for="">
                                     Address
-                                    <input name="addressP" type="text" value="@ViewBag.Order.AddresP" placeholder="Address" required>
+                                    <input type="text" name="addressP" value="@ViewBag.Order.AddresP" placeholder="Address" required>
                                 </label>
                                 <label for="">
                                     City
-                                    <input name="cityP" type="text" value="@ViewBag.Order.CityP" placeholder="City" required>
+                                    <input type="text" name="cityP" value="@ViewBag.Order.CityP" placeholder="City" required>
                                 </label>
                                 <label for="">
                                     State
-                                    <input name="stateP" type="text" value="@ViewBag.Order.StateP" pattern="[A-Z]{2}" placeholder="XX - State" required>
+                                    <input type="text" name="stateP" value="@ViewBag.Order.StateP" pattern="[A-Z]{2}" placeholder="XX - State" required>
                                 </label>
                                 <label for="">
                                     Zip
-                                    <input name="zipP" type="text" value="@ViewBag.Order.ZipP" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
+                                    <input type="text" name="zipP" value="@ViewBag.Order.ZipP" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
                                 </label>
                                 <label for="">
                                     Phone
-                                    <input name="phoneP" type="tel" placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneP" required>
+                                    <input type="tel" name="phoneP" placeholder="XXXXXXXXXX - Phone number" pattern="[0-9]{4,12}" value="@ViewBag.Order.PhoneP" required>
                                 </label>
                                 <label for="">
                                     Email
-                                    <input name="emailP" type="email" value="@ViewBag.Order.EmailP" placeholder="Email" required>
+                                    <input type="text" name="emailP" type="email" value="@ViewBag.Order.EmailP" placeholder="Email" required>
                                 </label>
                                 <label for="">
                                     Scheduled pickup date
-                                    <input name="scheduledPickupDateP" type="text" value="@ViewBag.Order.PickupExactly">
+                                    <input type="text" name="scheduledPickupDateP" value="@ViewBag.Order.PickupExactly">
                                 </label>
                             </div>
                             <div class="w1">
                                 <label for="">
                                     Instructions
-                                    <textarea type="text" name="instructions">@ViewBag.Order.Titl1DI</textarea>
+                                    <textarea type="text" name="instructions" style="height:92px;">@ViewBag.Order.Titl1DI</textarea>
                                 </label>
                                 <h3>Delivery Information</h3>
                                 <label for="">
                                     Name
-                                    <input type="text"  name="nameD" value="@ViewBag.Order.NameD" placeholder="Name">
+                                    <input type="text" name="nameD" value="@ViewBag.Order.NameD" placeholder="Name">
                                 </label>
                                 <label for="">
                                     Contact
@@ -83,15 +84,15 @@
                                 </label>
                                 <label for="">
                                     City
-                                    <input type="text" name="cityD" value="@ViewBag.Order.CityD" placeholder="City" required>
+                                    <input type="text" name="cityD" type="text" value="@ViewBag.Order.CityD" placeholder="City" required>
                                 </label>
                                 <label for="">
                                     State
-                                    <input type="text" name="stateD" pattern="[A-Z]{2}" value="@ViewBag.Order.StateD" placeholder="XX - State" required>
+                                    <input type="text" name="stateD" pattern="[A-Z]{2}" type="text" value="@ViewBag.Order.StateD" placeholder="XX - State" required>
                                 </label>
                                 <label for="">
                                     Zip
-                                    <input type="text" name="zipD" value="@ViewBag.Order.ZipD" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
+                                    <input type="text" name="zipD" type="text" value="@ViewBag.Order.ZipD" pattern="[0-9]{5}" placeholder="XXXXX - Zip code" required>
                                 </label>
                                 <label for="">
                                     Phone
@@ -102,77 +103,19 @@
                                     <input name="emailD" type="email" value="@ViewBag.Order.EmailD" placeholder="Email" required>
                                 </label>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="title">
-                        <h1>Vehicles</h1>
-                        <button onclick="AddVech(this)"  class="btn1">Add Vehicle</button>
-                    </div>
-                    <table>
-                        <tr class="blue">
-                            <td>№</td>
-                            <td>VIN</td>
-                            <td>Year</td>
-                            <td>Make</td>
-                            <td>Model</td>
-                            <td>Type</td>
-                            <td>Color</td>
-                            <td>Lot number</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>3C63RRHL9KG667936</td>
-                            <td>2015</td>
-                            <td>RAM</td>
-                            <td>PickupFourWheel</td>
-                            <td>Pick up</td>
-                            <td>Black</td>
-                            <td>1563143613</td>
-                            <td><img src="~/img/delete.svg" alt=""></td>
-                            <td>Save</td>
-                        </tr>
-                        <tbody id="tbVecl">
-                            @if (ViewBag.Order.VehiclwInformations != null)
-                            {
-                                @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
-                                {
-                                    <tr id="@ViewBag.Order.VehiclwInformations[i].Id">
-                                        <td>@i</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].VIN</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].Year</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].Make</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].Model</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].Type</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].Color</td>
-                                        <td>@ViewBag.Order.VehiclwInformations[i].Lot</td>
-                                        <td><img src="~/img/delete.svg" alt="" onclick="RemoveVech(this)"></td>
-                                        <td onclick="SaveVech(this)">Save</td>
-                                    </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-6">
-                    <div class="tabContente">
-                        <h3>Payment Information</h3>
-                        <form action="">
-                            <div class="w2">
+                            <div class="w1">
+                                <h3>Payment Information</h3>
                                 <label for="">
                                     Payment method
                                     <select name="paymentMethod" required>
-                                        <option value="">-----</option>
-                                        <option value="">COP</option>
-                                        <option value="">COD</option>
-                                        <option value="">1 days</option>
-                                        <option value="">2 days</option>
-                                        <option value="">5 days</option>
-                                        <option value="">10 days</option>
-                                        <option value="">15 days</option>
+                                        <option value="@ViewBag.Order.TotalPaymentToCarrier">@ViewBag.Order.TotalPaymentToCarrier</option>
+                                        <option value="COP">COP</option>
+                                        <option value="COD">COD</option>
+                                        <option value="1 days">1 days</option>
+                                        <option value="2 days">2 days</option>
+                                        <option value="5 days">5 days</option>
+                                        <option value="10 days">10 days</option>
+                                        <option value="15 days">15 days</option>
                                     </select>
                                 </label>
                                 <label for="">
@@ -183,11 +126,65 @@
                                     Broker fee
                                     <input type="text" name="brokerFee" value="@ViewBag.Order.BrokerFee">
                                 </label>
-                                <input class="btn1" type="button" value="Save" />
-                                <button onclick="window.location.href='@ViewBag.BaseUrl/Dashbord/Order/ArchivedOrder?id=@ViewBag.Order.Id'" class="btn2">Archive Order</button>
-                                <button onclick="window.location.href='@ViewBag.BaseUrl/Dashbord/Order/DeletedOrder?id=@ViewBag.Order.Id&status=NewLoad'" class="btn3">Delete Order</button>
+                                <input class="btn1" type="submit" value="Save Order" />
+                                <button class="btn2">Archive Order</button>
+                                <button class="btn3">Delete Order</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding-bottom: 20px">
+                    <div class="title">
+                        <h1>Vehicles</h1>
+                        <button class="btn1" onclick="AddVech(this)">Add Vehicle</button>
+                    </div>
+                    <div class="table">
+                        <div class="tr blue">
+                            <div class="td">№</div>
+                            <div class="td">VIN</div>
+                            <div class="td">Year</div>
+                            <div class="td">Make</div>
+                            <div class="td">Model</div>
+                            <div class="td">Type</div>
+                            <div class="td">Color</div>
+                            <div class="td">Lot number</div>
+                            <div class="td">&nbsp;</div>
+                            <div class="td">&nbsp;</div>
+                            <div class="td">&nbsp;</div>
+                            <div class="td">&nbsp;</div>
+                        </div>
+                        @if (ViewBag.Order.VehiclwInformations != null)
+                        {
+                            @for (int i = 0; i < ViewBag.Order.VehiclwInformations.Count; i++)
+                            {
+                                <form action="SavaVech" method="POST" class="tr" id="@ViewBag.Order.VehiclwInformations[i].Id">
+                                    <div class="td">@i</div>
+                                    <div class="td"><input type='text' name="VIN" value="@ViewBag.Order.VehiclwInformations[i].VIN" /></div>
+                                    <div class="td"><input type='text' name="Year" value="@ViewBag.Order.VehiclwInformations[i].Year" /></div>
+                                    <div class="td"><input type='text' name="Make" value="@ViewBag.Order.VehiclwInformations[i].Make" /></div>
+                                    <div class="td"><input type='text' name="Model" value="@ViewBag.Order.VehiclwInformations[i].Model" /></div>
+                                    <div class="td">
+                                        <select name="Type">
+                                            <option>@ViewBag.Order.VehiclwInformations[i].Type</option>
+                                            <option>Sedan</option>
+                                            <option>Suv</option>
+                                            <option>Coupe</option>
+                                            <option>PickUp</option>
+                                            <option>Tricycle</option>
+                                            <option>Sport bike</option>
+                                            <option>Touring motorcycle</option>
+                                            <option>Cruise motorcycle</option>
+                                        </select>
+                                    </div>
+                                    <div class="td"><input type='text' name="Color" value="@ViewBag.Order.VehiclwInformations[i].Color" /></div>
+                                    <div class="td"><input type='text' name="LotNumber" value="@ViewBag.Order.VehiclwInformations[i].Lot" /></div>
+                                    <div class="td"><input type='text' class="delete" /></div>
+                                    <div class="td"><input type='submit' value="Save" /></div>
+                                    <input type="text" name="idVech" style="display:none;" value="@ViewBag.Order.VehiclwInformations[i].Id" />
+                                    <input type="text" name="idOrder" style="display:none;" value="@ViewBag.Order.Id" />
+                                </form>
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -196,58 +193,8 @@
 </body>
 
 <script>
-    function SaveVech(btnE) {
-        let idVech = btnE.parentElement.parentElement.id;
-        let VIN = btnE.parentElement.parentElement.children[1].children[0].value;
-        let Year = btnE.parentElement.parentElement.children[2].children[0].value;
-        let Make = btnE.parentElement.parentElement.children[3].children[0].value;
-        let Model = btnE.parentElement.parentElement.children[4].children[0].value;
-        let Type = btnE.parentElement.parentElement.children[5].children[0].value;
-        let Color = btnE.parentElement.parentElement.children[6].children[0].value;
-        let LotNumber = btnE.parentElement.parentElement.children[7].children[0].value;
-        let Req = "idVech=" + idVech + "&VIN=" + VIN + "&Year=" + Year + "&Make=" + Make + "&Model=" + Model + "&Type=" + Type + "&Color=" + Color + "&LotNumber=" + LotNumber;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function (e) {
-            if (this.readyState == 4 && this.status == 200) {
-                alert(this.responseText);
-            }
-        };
-        xhttp.open("POST", "@ViewBag.BaseUrl/Dashbord/Order/SavaVech", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.setRequestHeader('Accept-Encoding', 'br');
-        xhttp.send(Req);
-    }
-
-    function RemoveVech(btnE) {
-        let idVech = btnE.parentElement.parentElement.id;
-        let Req = "idVech=" + idVech;
-        let tdElms = btnE.parentElement.parentElement.parentElement;
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function (e) {
-            if (this.readyState == 4 && this.status == 200) {
-                alert(this.responseText);
-            }
-        };
-        xhttp.open("POST", "@ViewBag.BaseUrl/Dashbord/Order/RemoveVech", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.setRequestHeader('Accept-Encoding', 'br');
-        xhttp.send(Req);
-        tdElms.removeChild(FindId(tdElms.children, idVech));
-    }
-
-    function FindId(elms, idVech) {
-        let tdElm;
-        for (let i = 0; i < elms.length; i++) {
-            if (elms[i].id == idVech) {
-                tdElm = elms[i];
-                break;
-            }
-        }
-        return tdElm;
-    }
-
     function AddVech(btnE) {
-        let idOrder = btnE.parentElement.parentElement.children[0].value;
+        let idOrder = document.getElementById('idOrder').value;
         var xhttp = new XMLHttpRequest();
         let Req = "idOrder=" + idOrder;
         xhttp.onreadystatechange = function (e) {

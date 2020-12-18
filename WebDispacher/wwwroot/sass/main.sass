@@ -1093,7 +1093,6 @@ form
 		width: 100%
 		.blue
 			background: #F0F4FA
-			
 			font-weight: bold
 			font-size: 16px
 			line-height: 20px
@@ -1104,7 +1103,55 @@ form
 			padding: 13px 0 13px 0
 		tr
 			border-radius: 9px
-			
+	.table
+		width: 100%
+		margin-top: 30px
+		.tr 
+			display: flex
+			align-items: center
+			justify-content: space-between
+		.tr.blue
+			background: #F0F4FA
+			font-weight: bold
+			font-size: 16px
+			line-height: 20px
+			color: #08112B
+		.td 
+			text-align: center
+			padding: 7px 0 7px 0
+			input, select 
+				text-align: center
+				width: 95%
+				padding: 6px 0
+				border: 1px solid transparent
+				border-radius: 0px!important
+				background: #ffffff
+				margin: 0
+				font-weight: 400
+				color: #343a40
+				font-size: 16px
+			input:focus, select:focus 
+				border: 1px solid $accent
+			input.delete
+				background-image: url('../img/delete.svg')
+				background-size: 25%
+				background-position: center
+				background-repeat: no-repeat
+			input:placeholder 
+				opacity: 1
+				color: #343a40
+		.td:nth-child(1), .td:nth-child(9)
+			width: 6.5%
+		.td:nth-child(4), .td:nth-child(6), .td:nth-child(7)
+			width: 8.5%
+		.td:nth-child(3), .td:nth-child(10)
+			width: 8%
+		.td:nth-child(2)
+			width: 19.5%
+		.td:nth-child(5)
+			width: 16%
+		.td:nth-child(8)
+			width: 10%
 .text
 	padding-top: 120px
 	h2
@@ -1305,6 +1352,7 @@ form
 	form 
 		margin-top: 40px
 		display: flex
+		flex-wrap: wrap
 		align-items: start
 		justify-content: space-between
 		.w1

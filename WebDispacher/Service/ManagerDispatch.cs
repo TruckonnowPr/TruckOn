@@ -166,6 +166,11 @@ namespace WebDispacher.Service
             return token;
         }
 
+        internal Contact GetContact(int id)
+        {
+            return _sqlEntityFramworke.GetContactById(id);
+        }
+
         internal void CreateDispatch(string typeDispatcher, string login, string password, int idCompany)
         {
             Dispatcher dispatcher = new Dispatcher()
@@ -207,6 +212,11 @@ namespace WebDispacher.Service
                 tokenHashSha256 = builder.ToString();
             }
             return tokenHashSha256;
+        }
+
+        internal void EditContact(int id, string fullName, string emailAddress, string phoneNumbe)
+        {
+            _sqlEntityFramworke.EditContact(id, fullName, emailAddress, phoneNumbe);
         }
 
         internal ProfileSettingsDTO GetSelectSetingTruck(string idCompany, int idProfile, int idTr, string typeTransport)
@@ -255,6 +265,11 @@ namespace WebDispacher.Service
             profileSetting.TransportVehicle.Layouts = profileSetting.TransportVehicle.Layouts.OrderBy(l => l.OrdinalIndex).ToList();
             
             return profileSetting;
+        }
+
+        internal void DeleteContact(int id)
+        {
+            _sqlEntityFramworke.DeleteContactById(id);
         }
 
         internal void EditDispatch(int idDispatch, string typeDispatcher, string login, string password)

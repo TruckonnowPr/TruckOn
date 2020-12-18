@@ -170,6 +170,11 @@ namespace WebDispacher.Dao
                 .FirstOrDefault();
         }
 
+        internal Contact GetContactById(int id)
+        {
+            return context.Contacts.FirstOrDefault(c => c.ID == id) ;
+        }
+
         internal void RefreshTokenDispatchDB(string idDispatch, string token)
         {
             Dispatcher dispatcher = context.Dispatchers.FirstOrDefault(d => d.Id.ToString() == idDispatch);
@@ -208,6 +213,18 @@ namespace WebDispacher.Dao
                 truck = await context.Trucks.FirstOrDefaultAsync(t => t.Id == inspectionDriver.IdITruck);
             }
             return truck; 
+        }
+
+        internal void EditContact(int id, string fullName, string emailAddress, string phoneNumbe)
+        {
+            Contact contact = context.Contacts.FirstOrDefault(c => c.ID == id);
+            if(contact != null)
+            {
+                contact.Email = emailAddress;
+                contact.Name = fullName;
+                contact.Phone = phoneNumbe;
+                context.SaveChanges();
+            }
         }
 
         internal void RemoveProfiledb(string idCompany, int idProfile)
@@ -258,6 +275,16 @@ namespace WebDispacher.Dao
                 dispatcher.Login = login;
                 dispatcher.Password = password;
                 dispatcher.Type = typeDispatcher;
+                context.SaveChanges();
+            }
+        }
+
+        internal void DeleteContactById(int id)
+        {
+            Contact contact = context.Contacts.FirstOrDefault(c => c.ID == id);
+            if(contact != null)
+            {
+                context.Contacts.Remove(contact);
                 context.SaveChanges();
             }
         }

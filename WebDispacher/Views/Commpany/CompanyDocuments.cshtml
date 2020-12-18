@@ -17,13 +17,13 @@
                     if (pref == "pdf")
                     {
                         <div class="col-md-12">
-                            <embed style="margin-left:30%;" src="@ViewBag.BaseUrl/Driver/GetDockPDF?docPath=@ViewBag.CompanyDoc[i].DocPath" width="900" height="1200" />
+                            <embed src="@ViewBag.BaseUrl/Driver/GetDockPDF?docPath=@ViewBag.CompanyDoc[i].DocPath" width="900" height="1200" />
                         </div>
                     }
                     else
                     {
-                        <div class="col-md-12">
-                            <img src="@ViewBag.BaseUrl/Driver/GetDock?docPath=@ViewBag.DriverDoc[i].DocPath&type=image/@pref" alt="">
+                        <div class="col-md-12" style="width: 900px">
+                            <img src="@ViewBag.BaseUrl/Driver/GetDock?docPath=@ViewBag.DriverDoc[i].DocPath&type=image/@pref" alt="" width="900">
                         </div>
                     }
                     <hr />

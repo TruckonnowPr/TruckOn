@@ -21,8 +21,8 @@
                         byte[] imageB = Convert.FromBase64String(@ViewBag.InspectionTruck.PhotosTruck[i].Base64);
                         if (imageB != null && imageB.Length != 0)
                         {
-                            <div class="col-md-3">
-                                <img src="@ViewBag.BaseUrl/Driver/Image?name=@ViewBag.InspectionTruck.PhotosTruck[i].path&type=jpg" />
+                            <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
+                                <img src="@ViewBag.BaseUrl/Driver/Image?name=@ViewBag.InspectionTruck.PhotosTruck[i].path&type=jpg" width="263" height="148" />
                             </div>
                         }
                         else
