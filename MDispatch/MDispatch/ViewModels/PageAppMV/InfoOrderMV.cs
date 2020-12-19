@@ -109,6 +109,19 @@ namespace MDispatch.ViewModels.PageAppMV
             set => SetProperty(ref isInspection, value);
         }
 
+        private bool isInstructinRead = false;
+        public bool IsInstructinRead
+        {
+            get
+            {
+                return isInstructinRead;
+            }
+            set
+            {
+                SetProperty(ref isInstructinRead, value);
+            } 
+        }
+
         private List<VehiclwInformation> GetVehiclwInformations()
         {
             return Shipping.VehiclwInformations;
@@ -209,6 +222,8 @@ namespace MDispatch.ViewModels.PageAppMV
                         IsInspection = true;
                         StatusInspectionView = "There are no vehicles in this order";
                     }
+                    IsInstructinRead = !Shipping.IsInstructinRead;
+                    IsInspection = Shipping.IsInstructinRead;
                 }
                 else if (state == 4)
                 {
@@ -479,6 +494,43 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
+                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                }
+            }
+        }
+
+        [System.Obsolete]
+        public async void SetIstractions()
+        {
+            string token = CrossSettings.Current.GetValueOrDefault("Token", "");
+            string description = null;
+            int state = 0;
+            await Task.Run(() => Utils.CheckNet());
+            if (App.isNetwork)
+            {
+                await Task.Run(() =>
+                {
+                    state = managerDispatchMob.SetInstaraction(token, Shipping.Id, ref description);
+                });
+                if (state == 1)
+                {
+                    GlobalHelper.OutAccount();
+                    await PopupNavigation.PushAsync(new Alert(description, null));
+                }
+                if (state == 2)
+                {
+                    await PopupNavigation.PushAsync(new Alert(description, null));
+                }
+                else if (state == 3)
+                {
+                    IsInstructinRead = true;
+                    if (Shipping.VehiclwInformations != null && Shipping.VehiclwInformations.Count != 0 && Shipping.CurrentStatus != "Delivered")
+                    {
+                        IsInspection = true;
+                    }
+                }
+                else if (state == 4)
+                {
                     await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
                 }
             }

@@ -228,6 +228,7 @@
     <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
     <Compile Include="NewRender\Effect\CornerRadius.cs" />
     <Compile Include="NewRender\Freme\ShadowFrame.cs" />
+    <Compile Include="NewRender\TextIn\CustomXfxEntryRendererTouch.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -363,104 +364,6 @@
     <BundleResource Include="Resources\TakeArow.png" />
     <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\BoxTruckSingleWheel1.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel2.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel3.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel4.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel5.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel6.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel7.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel8.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel9.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel10.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel11.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel12.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel13.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel14.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel15.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel16.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel17.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel18.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel19.png" />
-    <BundleResource Include="Resources\BoxTruckSingleWheel20.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually1.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually2.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually3.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually4.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually5.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually6.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually7.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually8.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually9.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually10.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually11.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually12.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually13.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually14.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually15.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually16.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually17.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually18.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually19.png" />
-    <BundleResource Include="Resources\BoxTruckWheelDually20.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel1.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel2.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel3.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel4.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel5.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel6.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel7.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel8.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel9.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel10.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel11.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel12.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel13.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel14.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel15.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel16.png" />
-    <BundleResource Include="Resources\CargiVanChasissDuallyOrSingleWheel17.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually1.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually2.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually3.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually4.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually5.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually6.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually7.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually8.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually9.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually10.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually11.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually12.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually13.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually14.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually15.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually16.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually17.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually18.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually19.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually20.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually21.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually22.png" />
-    <BundleResource Include="Resources\CargoVanMustHaveWithDually23.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave21.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave22.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave23.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave24.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave25.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave26.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave27.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave28.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave29.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave210.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave211.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave212.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave213.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave214.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave215.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave216.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave217.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave218.png" />
-    <BundleResource Include="Resources\PickUpDuallyChassisOpenFrameInTheBackMustHave219.png" />
     <BundleResource Include="Resources\Coupe40.png" />
     <BundleResource Include="Resources\Coupe41.png" />
     <BundleResource Include="Resources\Coupe42.png" />
@@ -513,6 +416,52 @@
     <BundleResource Include="Resources\timeInspection.png" />
     <BundleResource Include="Resources\descInspection.png" />
     <BundleResource Include="Resources\BackPage.png" />
+    <BundleResource Include="Resources\new.png" />
+    <BundleResource Include="Resources\pikedup.png" />
+    <BundleResource Include="Resources\newSt.png" />
+    <BundleResource Include="Resources\pikedupSt.png" />
+    <BundleResource Include="Resources\deliverySt.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door1.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door2.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door3.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door4.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door5.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door6.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door7.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door8.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door9.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door10.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door11.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door12.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door13.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door14.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door15.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door16.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door17.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door18.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door19.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door20.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door21.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door22.png" />
+    <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door23.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTrail1.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile2.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile3.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile4.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile5.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile6.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile7.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile8.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile9.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile10.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile11.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile12.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile13.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile14.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile15.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile16.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile17.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile18.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deliveredOrder.png" />
@@ -1335,192 +1284,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Tricycle16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel15.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel17.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel18.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel19.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel20.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel21.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\PickupFourWheel4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GooseneckTrailerTwoVehicles2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame19.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame15.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame17.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FourDoorTruckChassisOpenFrame18.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\EnclosedTrailerTwoVehicles1.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NewRender\AuntificationID\" />

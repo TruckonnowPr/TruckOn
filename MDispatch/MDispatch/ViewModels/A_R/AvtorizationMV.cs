@@ -118,7 +118,9 @@ namespace MDispatch.ViewModels
                     Utils.StartListening();
                     TaskManager.CommandToDo("CheckTask");
                 });
-                Application.Current.MainPage = new AnimationNavigationPage(new TabPage(managerDispatchMob));
+
+                    Application.Current.MainPage = new AnimationNavigationPage(new TabPage(managerDispatchMob));
+
             }
             else if(state == 4)
             {

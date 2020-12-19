@@ -74,6 +74,10 @@ namespace MDispatch.Models
                 {
                     color = "#2C5DEB";
                 }
+                else
+                {
+                    color = "#2C5DEB";
+                }
                 return color;
             }
         }
@@ -108,6 +112,10 @@ namespace MDispatch.Models
                     color = "#f3fdee";
                 }
                 else if (TimeOfInspection == "7 Hours")
+                {
+                    color = "#eef2fd";
+                }
+                else
                 {
                     color = "#eef2fd";
                 }

@@ -140,6 +140,7 @@
                            FontFamily="{StaticResource OpenSans-Regular}" />
                     <Label Text="I have read the instructions"
                            FontSize="16"
+                           IsVisible="{Binding IsInstructinRead}"
                            TextColor="#2C5DEB"
                            FontFamily="{StaticResource OpenSans-Bold}"
                            Margin="0, 11, 0, 0">

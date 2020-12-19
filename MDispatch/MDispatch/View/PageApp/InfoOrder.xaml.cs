@@ -124,6 +124,7 @@ namespace MDispatch.View.PageApp
 
         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
+            infoOrderMV.SetIstractions();
         }
     }
 }

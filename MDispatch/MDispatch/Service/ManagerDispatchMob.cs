@@ -425,6 +425,21 @@ namespace MDispatch.Service
             return statePay;
         }
 
+        internal int SetInstaraction(string token, string idShiping, ref string description)
+        {
+            inspection = new Inspection();
+            //WaiteNoramalReqvestCount();
+            CountReqvest++;
+            int statePay = 1;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                statePay = inspection.SetInstaraction(token, idShiping, ref description);
+            }
+            inspection = null;
+            CountReqvest--;
+            return statePay;
+        }
+
         internal int DetectPlate(string token, string image, string idDriver, string type, ref string plate)
         {
             googleApi = new GoogleApi(); 

@@ -89,6 +89,7 @@ namespace MDispatch.Models
         public AskForUserDelyveryM askForUserDelyveryM { get; set; }
         public List<DamageForUser> DamageForUsers { get; set; }
         public bool IsProblem { get; set; }
+        public bool IsInstructinRead { get; set; }
         ///////////////////////////////////////////////
 
         public string ColorCurrentStatus
@@ -226,15 +227,15 @@ namespace MDispatch.Models
                 string ico = "";
                 if (CurrentStatus == "Assigned")
                 {
-                    ico = "";
+                    ico = "newSt.png";
                 }
                 else if (CurrentStatus == "Picked up")
                 {
-                    ico = "";
+                    ico = "pikedupSt.png";
                 }
                 else if (CurrentStatus == "Delivered,Billed" || CurrentStatus == "Delivered,Paid")
                 {
-                    ico = "";
+                    ico = "deliverySt.png";
                 }
                 return ico;
             }

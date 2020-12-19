@@ -22,6 +22,11 @@ namespace MDispatch.Vidget.View
             return false;
         }
 
+        protected override bool OnBackgroundClicked()
+        {
+            return false;
+        }
+
         [System.Obsolete]
         private async void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
