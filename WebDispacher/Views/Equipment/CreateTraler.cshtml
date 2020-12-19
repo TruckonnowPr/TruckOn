@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="tabContent">
-                        <h2>Add truck</h2>
+                        <h2>Add trailer</h2>
                         <form action="" method="post" enctype="multipart/form-data">
                             <label for="">
                                 Name Trailer
@@ -14,7 +14,8 @@
                                 Type Trailer <br />
                                 <select name="typeTrailer" onchange="SelectTrailer(this.options[this.selectedIndex].value)" required style="width:500px;">
                                     <option value="">Choose a trailer type</option>
-                                    <option value="GooseneckTrailerTwoVehicles">Gooseneck trailer for two vehicles</option>
+                                    <option value="Bumperpool2CarEeclosedTraile">Bumperpool 2 Car Eeclosed Traile</option>
+                                    @*<option value="GooseneckTrailerTwoVehicles">Gooseneck trailer for two vehicles</option>
                                     <option value="EnclosedTrailerTwoVehicles">Enclosed trailer for two vehicles</option>
                                     <option value="a1CarGooseneckTrailer">1 Car Gooseneck Trailer</option>
                                     <option value="A3CarEnclosedGooseneckTrailer">3 Car Enclosed Gooseneck Trailer</option>
@@ -28,7 +29,7 @@
                                     <option value="Gooseneck3CarWedgeTrailer">Gooseneck 3 Car Wedge Trailer</option>
                                     <option value="Gooseneck5CarOpenTrailer">Gooseneck 5 Car Open Trailer</option>
                                     <option value="Gooseneck6CarOpenTrailer">Gooseneck 6 Car Open Trailer</option>
-                                    <option value="BumperPool2CarTrailer">Bumper Pool 2 Car Trailer</option>
+                                    <option value="BumperPool2CarTrailer">Bumper Pool 2 Car Trailer</option>*@
                                 </select>
                             </label>
                             <label for="">
@@ -87,46 +88,69 @@
                         </form>
                     </div>
                 </div>
-                @*<div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
+                <div class="col-md-6">
+                    <div id="Bumperpool2CarEeclosedTraile" class="row" style="display:none;">
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile1.png&type=png" alt="">
                         </div>
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile2.png&type=png" alt="">
                         </div>
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
-                            <div class="col-md-auto">
-                                <img src="img/15.svg" alt="">
-                            </div>
-                            <div class="col-md-auto">
-                            </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile3.png&type=png" alt="">
                         </div>
-                    </div>*@
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile4.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile5.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile6.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile7.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile8.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile9.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile10.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile11.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile12.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile13.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile14.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile15.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile16.png&type=png" alt="">
+                        </div>
+                        <div class="col-md-auto">
+                            <img src="@ViewBag.BaseUrl/Equipment/Image?name=../TrailerPattern/Bumperpool2CarEeclosedTraile/Bumperpool2CarEeclosedTraile17.png&type=png" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
 
 <script>
+    var curentSelectPattern;
+
     function SelectTrailer(value) {
         if (curentSelectPattern || value == "") {
             curentSelectPattern.style.display = "none";

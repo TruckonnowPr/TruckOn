@@ -14,7 +14,6 @@ namespace WebDispacher.Controellers
         private ManagerDispatch managerDispatch = new ManagerDispatch();
 
         [Route("Trucks")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult Trucks()
         {
             IActionResult actionResult = null;
@@ -51,7 +50,6 @@ namespace WebDispacher.Controellers
         }
 
         [Route("Trailers")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult Trailers()
         {
             IActionResult actionResult = null;
