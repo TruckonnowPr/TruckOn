@@ -75,7 +75,7 @@ namespace MDispatch.View.Inspection
                         {
                             Image image = new Image()
                             {
-                                Source = ImageSource.FromStream(() => new MemoryStream(ResizeImage(photo.Base64))),
+                                Source = ImageSource.FromUri(new Uri($"{Config.BaseReqvesteUrl}/Mobile/Image?name={photo.path}&type=jpg")),
                                 HeightRequest = 50,
                                 WidthRequest = 106,
                                 Margin = new Thickness(0, 0, 5, 5)
@@ -101,7 +101,7 @@ namespace MDispatch.View.Inspection
                         {
                             Image image = new Image()
                             {
-                                Source = ImageSource.FromStream(() => new MemoryStream(ResizeImage(photo.Base64))),
+                                Source = ImageSource.FromUri(new Uri($"{Config.BaseReqvesteUrl}/Mobile/Image?name={photo.path}&type=jpg")),
                                 HeightRequest = 50,
                                 WidthRequest = 106,
                                 Margin = new Thickness(0, 0, 5, 5)
@@ -235,7 +235,7 @@ namespace MDispatch.View.Inspection
                     VechInfoSt.Children.Add(new Image()
                     {
                         HeightRequest = 300,
-                        Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(VehiclwInformation.Scan.Base64)))
+                        Source = ImageSource.FromUri(new Uri($"{Config.BaseReqvesteUrl}/Mobile/Image?name=../Photo/{VehiclwInformation.Id}/scan.jpg&type=jpg"))
                     });
 
                     VechInfoSt.Children.Add(new FlexLayout()

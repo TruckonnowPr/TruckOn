@@ -103,9 +103,6 @@
     <Compile Update="View\Inspection\TempPageHint3.xaml.cs">
       <DependentUpon>TempPageHint3.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Inspection\PickedUp\TempPageHint1.xaml.cs">
-      <DependentUpon>TempPageHint1.xaml</DependentUpon>
-    </Compile>
     <Compile Update="View\TabPage\Tab\ArchivedPage.xaml.cs">
       <DependentUpon>ArchivedPage.xaml</DependentUpon>
     </Compile>

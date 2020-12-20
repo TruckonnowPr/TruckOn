@@ -61,7 +61,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
             if (vehiclwInformation1s.Count - 1 == indexCurrentVechecle)
             {
                 await Navigation.PushAsync(new ClientStart(managerDispatchMob, VehiclwInformation, IdShip, initDasbordDelegate, OnDeliveryToCarrier, TotalPaymentToCarrier));
-                await PopupNavigation.PushAsync(new TempPageHint1());
+                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client", null));
             }
             else
             {

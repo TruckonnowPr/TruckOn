@@ -299,7 +299,7 @@ namespace MDispatch.ViewModels.PageAppMV
             {
                 vehiclwInformation1 = Shipping.VehiclwInformations[0];
                 await Navigation.PushAsync(new View.Inspection.PickedUp.ClientStart(managerDispatchMob, vehiclwInformation1, Shipping.Id, initDasbordDelegate, Shipping.OnDeliveryToCarrier, Shipping.TotalPaymentToCarrier), true);
-                await PopupNavigation.PushAsync(new TempPageHint1());
+                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client" , null));
                 Navigation.RemovePage(Navigation.NavigationStack[1]);
                 return;
             }
@@ -523,7 +523,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 3)
                 {
-                    IsInstructinRead = true;
+                    IsInstructinRead = false;
                     if (Shipping.VehiclwInformations != null && Shipping.VehiclwInformations.Count != 0 && Shipping.CurrentStatus != "Delivered")
                     {
                         IsInspection = true;

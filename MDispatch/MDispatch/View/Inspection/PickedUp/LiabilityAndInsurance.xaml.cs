@@ -201,7 +201,7 @@ namespace MDispatch.View.Inspection.PickedUp
                     VechInfoSt.Children.Add(new Image()
                     {
                         HeightRequest = 300,
-                        Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(VehiclwInformation.Scan.Base64)))
+                        Source = ImageSource.FromUri(new Uri($"{Config.BaseReqvesteUrl}/Mobile/Image?name=../Photo/{VehiclwInformation.Id}/scan.jpg&type=jpg"))
                     });
 
                     VechInfoSt.Children.Add(new FlexLayout()
