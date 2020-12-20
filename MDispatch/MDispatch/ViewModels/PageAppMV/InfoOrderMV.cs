@@ -223,7 +223,10 @@ namespace MDispatch.ViewModels.PageAppMV
                         StatusInspectionView = "There are no vehicles in this order";
                     }
                     IsInstructinRead = !Shipping.IsInstructinRead;
-                    IsInspection = Shipping.IsInstructinRead;
+                    if(StatusInspection != "Delivered")
+                    {
+                        IsInspection = Shipping.IsInstructinRead;
+                    }
                 }
                 else if (state == 4)
                 {

@@ -64,7 +64,7 @@
                                             </StackLayout>
                                             <FlexLayout HeightRequest="42">
                                                 <Image Source="{Binding IcoViewStatus}" WidthRequest="17" Margin="0, 2, 0, 0"/>
-                                                <StackLayout Padding="17">
+                                                <StackLayout Padding="6, 0, 0, 0">
                                                     <FlexLayout>
                                                         <Label FontSize="14" TextColor="Black"
                                                                FontFamily="{StaticResource OpenSans-Regular}" >
