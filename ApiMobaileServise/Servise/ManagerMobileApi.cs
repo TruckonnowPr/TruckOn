@@ -487,6 +487,11 @@ namespace ApiMobaileServise.Servise
             return sqlCommandApiMobile.GetInspectionDriverIndb(token);
         }
 
+        internal void SetInstraction(string idShiping)
+        {
+            sqlCommandApiMobile.SetInstractionShipingById(idShiping);
+        }
+
         public bool GetOrdersForToken(string token, ref List<Shipping> shippings)
         {
             bool isToken = sqlCommandApiMobile.CheckToken(token);

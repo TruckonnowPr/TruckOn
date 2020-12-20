@@ -76,5 +76,6 @@ namespace DaoModels.DAO.Models
         public string DataCancelOrder { get; set; }
         public string DataFullArcive { get; set; }
         public bool IsProblem { get; set; }
-    }
+        public bool IsInstructinRead  { get; set; }
+}
 }

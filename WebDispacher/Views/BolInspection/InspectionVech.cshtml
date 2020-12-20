@@ -34,19 +34,10 @@
                         {
                             @for (int j = 0; j < ViewBag.Vehiclw.PhotoInspections[i].Photos.Count; j++)
                             {
-                                byte[] image = Convert.FromBase64String(@ViewBag.Vehiclw.PhotoInspections[i].Photos[j].Base64);
-                                if (image != null && image.Length != 0)
-                                {
                                     <div class="col-md-3" style="width: 263px;height: 148px; margin:10px">
                                         <img alt="" src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.PhotoInspections[i].Photos[j].path&type=jpg" width="263" height="148">
                                     </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-3">
-                                        <img src="~/img/57.svg" />
-                                    </div>
-                                }
+                              
                             }
                         }
                     }
@@ -66,19 +57,11 @@
                     {
                         for (int i = 0; i < ViewBag.Vehiclw.Ask.Any_personal_or_additional_items_with_or_in_vehicle.Count; i++)
                         {
-                            byte[] image = Convert.FromBase64String(ViewBag.Vehiclw.Ask.Any_personal_or_additional_items_with_or_in_vehicle[i].Base64);
-                            if (image != null && image.Length != 0)
-                            {
+                            
                                 <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                     <img alt="" src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.Ask.Any_personal_or_additional_items_with_or_in_vehicle[i].path&type=jpg" width="263" height="148">
                                 </div>
-                            }
-                            else
-                            {
-                                <div class="col-md-3">
-                                    <img src="~/img/57.svg" />
-                                </div>
-                            }
+                           
                         }
                     }
                     else
@@ -101,19 +84,10 @@
                     {
                         for (int i = 0; i < ViewBag.Vehiclw.Ask1.App_will_force_driver_to_take_pictures_of_each_strap.Count; i++)
                         {
-                            byte[] image = Convert.FromBase64String(ViewBag.Vehiclw.Ask1.App_will_force_driver_to_take_pictures_of_each_strap[i].Base64);
-                            if (image != null && image.Length != 0)
-                            {
                                 <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
-                                    <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.Ask1.App_will_force_driver_to_take_pictures_of_each_strap[i].path&type=jpg" />
+                                    <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.Ask1.App_will_force_driver_to_take_pictures_of_each_strap[i].path&type=jpg" width="263" height="148" />
                                 </div>
-                            }
-                            else
-                            {
-                                <div class="col-md-3">
-                                    <img src="~/img/57.svg" />
-                                </div>
-                            }
+                            
                         }
                     }
                     else
@@ -136,19 +110,9 @@
                     {
                         for (int i = 0; i < ViewBag.Vehiclw.Ask1.Photo_after_loading_in_the_truck.Count; i++)
                         {
-                            byte[] image = Convert.FromBase64String(ViewBag.Vehiclw.Ask1.Photo_after_loading_in_the_truck[i].Base64);
-                            if (image != null && image.Length != 0)
-                            {
                                 <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                     <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.Ask1.Photo_after_loading_in_the_truck[i].path&type=jpg" width="263" height="148" />
                                 </div>
-                            }
-                            else
-                            {
-                                <div class="col-md-3">
-                                    <img src="~/img/57.svg" />
-                                </div>
-                            }
                         }
                     }
                     else
@@ -169,19 +133,9 @@
                 {
                     @if (ViewBag.Shipp.AskFromUser.App_will_ask_for_signature_of_the_client_signature != null)
                     {
-                        byte[] image = Convert.FromBase64String(ViewBag.Shipp.AskFromUser.App_will_ask_for_signature_of_the_client_signature.Base64);
-                        if (image != null && image.Length != 0)
-                        {
                             <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                 <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Shipp.AskFromUser.App_will_ask_for_signature_of_the_client_signature.path&type=jpg" width="263" height="148" />
                             </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-3">
-                                <img src="~/img/57.svg" />
-                            </div>
-                        }
 
                     }
                     else
@@ -202,19 +156,9 @@
                 {
                     @if (ViewBag.Shipp.AskFromUser.PhotoPay != null)
                     {
-                        byte[] image = Convert.FromBase64String(ViewBag.Shipp.AskFromUser.PhotoPay.Base64);
-                        if (image != null && image.Length != 0)
-                        {
                             <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                 <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Shipp.AskFromUser.PhotoPay.path&type=jpg" width="263" height="148" />
                             </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-3">
-                                <img src="~/img/57.svg" />
-                            </div>
-                        }
                     }
                     else
                     {
@@ -241,19 +185,9 @@
                         {
                             @for (int j = 0; j < ViewBag.Vehiclw.PhotoInspections[i].Photos.Count; j++)
                             {
-                                byte[] image = Convert.FromBase64String(@ViewBag.Vehiclw.PhotoInspections[i].Photos[j].Base64);
-                                if (image != null && image.Length != 0)
-                                {
                                     <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                         <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.PhotoInspections[i].Photos[j].path&type=jpg"  width="263" height="148"/>
                                     </div>
-                                }
-                                else
-                                {
-                                    <div class="col-md-3">
-                                        <img src="~/img/57.svg" />
-                                    </div>
-                                }
                             }
 
                         }
@@ -274,19 +208,9 @@
                     {
                         for (int i = 0; i < ViewBag.Vehiclw.AskDelyvery.Please_take_a_picture_Id_of_the_person_taking_the_delivery.Count; i++)
                         {
-                            byte[] image = Convert.FromBase64String(ViewBag.Vehiclw.AskDelyvery.Please_take_a_picture_Id_of_the_person_taking_the_delivery[i].Base64);
-                            if (image != null && image.Length != 0)
-                            {
                                 <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                     <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Vehiclw.AskDelyvery.Please_take_a_picture_Id_of_the_person_taking_the_delivery[i].path&type=jpg" width="263" height="148" />
                                 </div>
-                            }
-                            else
-                            {
-                                <div class="col-md-3">
-                                    <img src="~/img/57.svg" />
-                                </div>
-                            }
                         }
                     }
                     else
@@ -309,19 +233,9 @@
                     {
                         for (int i = 0; i < ViewBag.Shipp.askForUserDelyveryM.Have_you_inspected_the_vehicle_For_any_additional_imperfections_other_than_listed_at_the_pick_up_photo.Count; i++)
                         {
-                            byte[] image = Convert.FromBase64String(ViewBag.Shipp.askForUserDelyveryM.Have_you_inspected_the_vehicle_For_any_additional_imperfections_other_than_listed_at_the_pick_up_photo[i].Base64);
-                            if (image != null && image.Length != 0)
-                            {
                                 <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                     <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Shipp.askForUserDelyveryM.Have_you_inspected_the_vehicle_For_any_additional_imperfections_other_than_listed_at_the_pick_up_photo[i].path&type=jpg" width="263" height="148" />
                                 </div>
-                            }
-                            else
-                            {
-                                <div class="col-md-3">
-                                    <img src="~/img/57.svg" />
-                                </div>
-                            }
                         }
                     }
                     else
@@ -342,19 +256,9 @@
                 {
                     @if (ViewBag.Shipp.askForUserDelyveryM.App_will_ask_for_signature_of_the_client_signature != null)
                     {
-                        byte[] image = Convert.FromBase64String(ViewBag.Shipp.askForUserDelyveryM.App_will_ask_for_signature_of_the_client_signature.Base64);
-                        if (image != null && image.Length != 0)
-                        {
                             <div class="col-md-3" style="width: 263px;height: 148px;margin-bottom:10px">
                                 <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Shipp.askForUserDelyveryM.App_will_ask_for_signature_of_the_client_signature.path&type=jpg" width="263" height="148" />
                             </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-3">
-                                <img src="~/img/57.svg" />
-                            </div>
-                        }
 
                     }
                     else
@@ -375,19 +279,9 @@
                 {
                     @if (ViewBag.Shipp.askForUserDelyveryM.PhotoPay != null)
                     {
-                        byte[] image = Convert.FromBase64String(ViewBag.Shipp.askForUserDelyveryM.PhotoPay.Base64);
-                        if (image != null && image.Length != 0)
-                        {
                             <div class="col-md-3"  style="width: 263px;height: 148px;margin-bottom:10px">
                                 <img src="@ViewBag.BaseUrl/Dashbord/Image?name=@ViewBag.Shipp.askForUserDelyveryM.PhotoPay.path&type=jpg" width="263" height="148"/>
                             </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-3">
-                                <img src="~/img/57.svg" />
-                            </div>
-                        }
 
                     }
                     else
@@ -401,7 +295,7 @@
                 }
             </div>
             <div class="col-md-12">
-                <button class="btn1">Back to Order</button>
+                <button onclick="history.back();" class="btn1">Back to Order</button>
             </div>
         </div>
     </div>

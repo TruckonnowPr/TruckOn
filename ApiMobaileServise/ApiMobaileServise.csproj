@@ -37,4 +37,7 @@
 
   <ProjectExtensions><VisualStudio><UserProperties Properties_4launchSettings_1json__JSONSchema="" appsettings_1development_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
+	<PropertyGroup>
+		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+	</PropertyGroup>
 </Project>

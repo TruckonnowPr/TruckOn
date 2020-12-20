@@ -80,6 +80,7 @@ namespace ApiMobaileServise.Controllers
 
         [HttpPost]
         [Route("Status/Inspection/Delivered")]
+        [CompressGzip(IsCompresRespons = true)]
         public string GetStatusInspectionEnd(string token, string idShipping)
         {
             string respons = null;
@@ -594,6 +595,44 @@ namespace ApiMobaileServise.Controllers
                 respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "Technical work on the service", null));
             }
             return respons;
+        }
+
+        [HttpPost]
+        [Route("Instraction")]
+        public string SetInstraction(string token, string idShiping)
+        {
+            string respons = null;
+            if (token == null || token == "")
+            {
+                return JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
+            }
+            try
+            {
+                bool isToken = managerMobileApi.CheckToken(token);
+                if (isToken)
+                {
+                    managerMobileApi.SetInstraction(idShiping);
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("success", "", null));
+                }
+                else
+                {
+                    respons = JsonConvert.SerializeObject(new ResponseAppS("NotAuthorized", "Not Authorized", null));
+                }
+            }
+            catch (Exception)
+            {
+                respons = JsonConvert.SerializeObject(new ResponseAppS("failed", "Technical work on the service", null));
+            }
+            return respons;
+        }
+
+        [HttpGet]
+        [Route("Image")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
+        public IActionResult GetShiping(string name, string type)
+        {
+            var imageFileStream = System.IO.File.OpenRead(name);
+            return File(imageFileStream, $"image/{type}");
         }
     }
 }
