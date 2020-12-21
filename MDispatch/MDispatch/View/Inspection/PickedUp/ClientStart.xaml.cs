@@ -31,7 +31,7 @@ namespace MDispatch.View.Inspection.PickedUp
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new ContactInfo());
+            //await PopupNavigation.PushAsync(new ContactInfo());
         }
 
         [Obsolete]

@@ -105,7 +105,7 @@ namespace MDispatch.View.PageApp
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new ContactInfo());
+            //await PopupNavigation.PushAsync(new ContactInfo());
         }
 
         [Obsolete]

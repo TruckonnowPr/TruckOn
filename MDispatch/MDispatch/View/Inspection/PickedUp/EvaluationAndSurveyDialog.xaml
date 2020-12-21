@@ -17,23 +17,6 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <!--<StackLayout VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"
-                 Margin="5">
-        <Frame CornerRadius="6" Padding="15" Margin="4" BorderColor="BlueViolet">
-            <StackLayout>
-                <Label Text="Thank you for using our company." TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                <Label Text="Would you like to get 10% off from next load just for giving us a good revue and  filling out a short survey?" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                <StackLayouts Orientation="Horizontal">
-                    <Button Text="Yes" BackgroundColor="BlueViolet" TextColor="White" Command="{Binding GoToFeedBackCommand}"/>
-                    <Button Text="No" BackgroundColor="BlueViolet" TextColor="White" Clicked="Button_Clicked_1"/>
-                </StackLayout>
-            </StackLayout>
-        </Frame>
-    </StackLayout>-->
-
     <StackLayout VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Margin="5">

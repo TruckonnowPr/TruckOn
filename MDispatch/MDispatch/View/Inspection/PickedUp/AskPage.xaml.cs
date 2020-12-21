@@ -416,7 +416,7 @@ namespace MDispatch.View.AskPhoto
 
         private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new ContactInfo());
+            //await PopupNavigation.PushAsync(new ContactInfo());
         }
 
         [Obsolete]

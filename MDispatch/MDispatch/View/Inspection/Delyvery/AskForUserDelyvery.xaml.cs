@@ -326,7 +326,7 @@ namespace MDispatch.View.Inspection.Delyvery
 
         private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
         {
-            await PopupNavigation.PushAsync(new ContactInfo());
+            //await PopupNavigation.PushAsync(new ContactInfo());
         }
 
         [Obsolete]

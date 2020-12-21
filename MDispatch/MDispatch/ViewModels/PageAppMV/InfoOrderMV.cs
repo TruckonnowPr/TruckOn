@@ -242,7 +242,7 @@ namespace MDispatch.ViewModels.PageAppMV
         {
             if(Shipping == null || Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
             {
-                await PopupNavigation.PushAsync(new PopUp("It is not possible to pass the inspection", "There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle."), true);
+                await PopupNavigation.PushAsync(new Alert("There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle.", null), true);
                 return;
             }
             Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
@@ -347,7 +347,7 @@ namespace MDispatch.ViewModels.PageAppMV
         {
             if (Shipping == null || Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
             {
-                await PopupNavigation.PushAsync(new PopUp("It is not possible to pass the inspection", "There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle."), true);
+                await PopupNavigation.PushAsync(new Alert("There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle.", null), true);
                 return;
             }
             Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
