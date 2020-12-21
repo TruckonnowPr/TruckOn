@@ -169,6 +169,18 @@ namespace WebDispacher.Controellers
         }
 
         [HttpGet]
+        [Route("Exsit")]
+        public IActionResult Exisit()
+        {
+            IActionResult actionResult = null;
+            actionResult = Redirect(Config.BaseReqvesteUrl);
+            Response.Cookies.Delete("KeyAvtho");
+            Response.Cookies.Delete("CommpanyId");
+            Response.Cookies.Delete("CommpanyName");
+            return actionResult;
+        }
+
+        [HttpGet]
         [Route("Avthorization/Exst")]
         public string AvthorizationExst(string Email, string Password)
         {

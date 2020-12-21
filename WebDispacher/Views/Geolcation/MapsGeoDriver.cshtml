@@ -1,8 +1,6 @@
 ﻿<body>
-    <div class="admin">
-        <div class="container">
             <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
-            <div id="map"></div>
+            <div id="map" style="overflow: visible; height: 92Vh; width: 100%;"></div>
             <div id="dataDriverGPS" style="display:none">
                 @foreach (var driver in ViewBag.Drivers)
                 {
@@ -16,8 +14,6 @@
                     }
                 }
             </div>
-        </div>
-    </div>
 </body>
 <script>
     var map;
