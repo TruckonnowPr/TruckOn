@@ -444,7 +444,7 @@
     <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door21.png" />
     <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door22.png" />
     <BundleResource Include="Resources\PickUpDually4TiresInTheBackMustHave4Door23.png" />
-    <BundleResource Include="Resources\Bumperpool2CarEeclosedTrail1.png" />
+    <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile1.png" />
     <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile2.png" />
     <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile3.png" />
     <BundleResource Include="Resources\Bumperpool2CarEeclosedTraile4.png" />

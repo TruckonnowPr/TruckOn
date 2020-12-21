@@ -19692,7 +19692,7 @@ namespace MDispatch.Droid
 			public const int BackPage = 2131165280;
 			
 			// aapt resource value: 0x7F070061
-			public const int Bumperpool2CarEeclosedTrail1 = 2131165281;
+			public const int Bumperpool2CarEeclosedTraile1 = 2131165281;
 			
 			// aapt resource value: 0x7F070062
 			public const int Bumperpool2CarEeclosedTraile10 = 2131165282;

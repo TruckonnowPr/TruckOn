@@ -20,13 +20,26 @@
     <StackLayout VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Margin="5">
-        <Frame CornerRadius="6" Padding="15" Margin="4" BorderColor="BlueViolet">
-            <StackLayout>
-                <StackLayout>
-                    <Label Text="{Binding Email, StringFormat='Password reset data sent to you by mail: {0:1}'}" FontSize="17" TextColor="BlueViolet"/>
-                    <Button Text="OK" TextColor="White" BackgroundColor="BlueViolet" Clicked="Button_Clicked"/>
-                </StackLayout>
-            </StackLayout>
+        <Frame CornerRadius="6"
+               Padding="25, 15, 25, 5"
+               Margin="20">
+            <FlexLayout  Direction="Column">
+                <Label FontSize="14"
+                       FontFamily="Open Sans"
+                       TextColor="#101010"
+                       Margin="0, 15, 0, 20"
+                       FlexLayout.AlignSelf="Center"
+                       Text="{Binding Email, StringFormat='Password reset data sent to you by mail: {0:1}'}"/>
+                <BoxView HeightRequest="1"
+                         BackgroundColor="#E6E6E6"/>
+                <Button x:Name="infoB"
+                        FontSize="16"
+                        Text="Ok"
+                        BackgroundColor="White"
+                        TextColor="#2C5DEB"
+                        Clicked="Button_Clicked"
+                        Margin="0, 5, 0, 5"/>
+            </FlexLayout>
         </Frame>
     </StackLayout>
 </pages:PopupPage>

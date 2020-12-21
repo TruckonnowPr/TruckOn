@@ -20,7 +20,9 @@
     <StackLayout VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  Margin="5">
-        <Frame CornerRadius="6" Padding="25, 15, 25, 5" Margin="20">
+        <Frame CornerRadius="6"
+               Padding="25, 15, 25, 5"
+               Margin="20">
             <FlexLayout  Direction="Column">
                 <Label x:Name="infoL"
                        FontSize="14"
