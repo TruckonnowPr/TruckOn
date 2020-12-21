@@ -3,54 +3,91 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.Inspection.Feedback"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             Title="Feedback">
+             Title="Feedback"
+             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
     <ContentPage.Content>
         <StackLayout>
         <ScrollView>
-            <StackLayout x:Name="body">
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock1">
-                    <StackLayout>
-                        <Label Text="How are you satisfied with a service?" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <input:AdvancedSlider MaxValue="10" MinValue="0" StepValue="1" ValuePrefix="Service - " PropertyChanged="AdvancedSlider_PropertyChanged" />
+            <StackLayout x:Name="body"
+                         Spacing="12"
+                         Padding="24, 20, 24, 20">
+                <shadowFrame:ShadowFrame x:Name="askBlock1"
+                                         Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="How are you satisfied with a service?"
+                               Style="{StaticResource Key=labelTitleAsk}"/>
+                        <input:AdvancedSlider
+                            MaxValue="10"
+                            MinValue="0"
+                            StepValue="1"
+                            ValuePrefix="Service - "
+                            PropertyChanged="AdvancedSlider_PropertyChanged" />
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock2">
-                    <StackLayout>
-                        <Label Text="Would you use our company again" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked" />
-                            <Button Text="Maybe" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked" />
-                            <Button Text="No" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked" />
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock2"
+                                         Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Would you use our company again"
+                               Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="13">
+                            <Button Text="Yes"
+                                    Clicked="Button_Clicked"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="Maybe"
+                                    Clicked="Button_Clicked"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="No"
+                                    Clicked="Button_Clicked"
+                                    Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock3">
-                    <StackLayout>
-                        <Label Text="Would you like to get an notification if we have any promotion" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked1" />
-                            <Button Text="No" BackgroundColor="White" TextColor="Silver" Clicked="Button_Clicked1" />
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock3"
+                                         Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Would you like to get an notification if we have any promotion"
+                               Style="{StaticResource Key=labelTitleAsk}"/>
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="13">
+                            <Button Text="Yes"
+                                    Clicked="Button_Clicked1"
+                                    Style="{StaticResource btnAsk}"/>
+                            <Button Text="No"
+                                    Clicked="Button_Clicked1"
+                                    Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock4">
-                    <StackLayout>
-                        <Label Text="How did the driver perform" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <input:AdvancedSlider MaxValue="10" MinValue="0" StepValue="1" ValuePrefix="Driver behaved on " />
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock4"
+                                         Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="How did the driver perform"
+                               Style="{StaticResource Key=labelTitleAsk}"/>
+                        <input:AdvancedSlider
+                            MaxValue="10"
+                            MinValue="0"
+                            StepValue="1"
+                            ValuePrefix="Driver behaved on" />
                     </StackLayout>
-                </Frame>
-                <Frame Padding="10" Margin="10" BorderColor="BlueViolet" CornerRadius="6" x:Name="askBlock5">
-                    <StackLayout>
-                        <Label Text="Yuo Email" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
-                        <BoxView HeightRequest="1" BackgroundColor="BlueViolet"/>
-                        <Entry Placeholder="Email" Text="{Binding Email}" />
+                </shadowFrame:ShadowFrame>
+                <shadowFrame:ShadowFrame x:Name="askBlock5"
+                                         Style="{StaticResource Key=frameAsk}">
+                    <StackLayout Spacing="10">
+                        <Label Text="Yuo Email"
+                               Style="{StaticResource Key=labelTitleAsk}"/>
+                        <Entry Placeholder="Email"
+                               Text="{Binding Email}"
+                               Style="{StaticResource entryAsk}"/>
                     </StackLayout>
-                </Frame>
-                <Button Text="Continue" BackgroundColor="BlueViolet" TextColor="White" Margin="10" Clicked="ToolbarItem_Clicked"/>
+                </shadowFrame:ShadowFrame>
+                <Button Text="Continue"
+                        Clicked="ToolbarItem_Clicked"
+                        BackgroundColor="#2C5DEB"
+                        TextColor="White"
+                        CornerRadius="23"
+                        FontSize="16"
+                        FontFamily="{StaticResource OpenSans-Bold}"/>
             </StackLayout>
         </ScrollView>
         </StackLayout>

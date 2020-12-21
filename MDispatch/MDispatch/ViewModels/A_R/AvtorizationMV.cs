@@ -139,7 +139,7 @@ namespace MDispatch.ViewModels
             int state = 3;
             await Task.Run(() =>
             {
-                state = managerDispatchMob.A_RWork("RequestPasswordChanges", email, FullName, ref description, ref token);
+                state = managerDispatchMob.A_RWork("RequestPasswordChanges", Email, FullName, ref description, ref token);
             });
             await PopupNavigation.PopAsync(true);
             if (state == 1)

@@ -87,18 +87,19 @@ namespace MDispatch.ViewModels.InspectionMV
                     }
                     else
                     {
-                        if (((LiabilityAndInsuranceMV)paymmpayMVInspactionant).What_form_of_payment_are_you_using_to_pay_for_transportation == "Cash")
-                        {
-                            await Navigation.PushAsync(new VideoCameraPage(((LiabilityAndInsuranceMV)paymmpayMVInspactionant), ""));
-                        }
-                        else if (((LiabilityAndInsuranceMV)paymmpayMVInspactionant).What_form_of_payment_are_you_using_to_pay_for_transportation == "Check")
-                        {
-                            await Navigation.PushAsync(new CameraPaymmant(((LiabilityAndInsuranceMV)paymmpayMVInspactionant), "", "CheckPaymment.png"));
-                        }
-                        else
-                        {
-                            await Navigation.PushAsync(new Ask2Page(((LiabilityAndInsuranceMV)paymmpayMVInspactionant).managerDispatchMob, ((LiabilityAndInsuranceMV)paymmpayMVInspactionant).IdVech, ((LiabilityAndInsuranceMV)paymmpayMVInspactionant).IdShip, ((LiabilityAndInsuranceMV)paymmpayMVInspactionant).initDasbordDelegate));
-                        }
+                        //if (((LiabilityAndInsuranceMV)paymmpayMVInspactionant).What_form_of_payment_are_you_using_to_pay_for_transportation == "Cash")
+                        //{
+                        //    await Navigation.PushAsync(new VideoCameraPage(((LiabilityAndInsuranceMV)paymmpayMVInspactionant), ""));
+                        //}
+                        //else if (((LiabilityAndInsuranceMV)paymmpayMVInspactionant).What_form_of_payment_are_you_using_to_pay_for_transportation == "Check")
+                        //{
+                        //    await Navigation.PushAsync(new CameraPaymmant(((LiabilityAndInsuranceMV)paymmpayMVInspactionant), "", "CheckPaymment.png"));
+                        //}
+                        //else
+                        //{
+                        //    await Navigation.PushAsync(new Ask2Page(((LiabilityAndInsuranceMV)paymmpayMVInspactionant).managerDispatchMob, ((LiabilityAndInsuranceMV)paymmpayMVInspactionant).IdVech, ((LiabilityAndInsuranceMV)paymmpayMVInspactionant).IdShip, ((LiabilityAndInsuranceMV)paymmpayMVInspactionant).initDasbordDelegate));
+                        //}
+                        await Navigation.PopAsync(true);
                     }
                 }
             }

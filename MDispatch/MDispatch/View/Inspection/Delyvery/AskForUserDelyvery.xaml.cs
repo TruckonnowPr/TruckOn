@@ -145,9 +145,9 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             askForUsersDelyveryMW.AskForUserDelyveryM.What_form_of_payment_are_you_using_to_pay_for_transportation = (string)e.NewItem;
             Paymmant = GetPaymmant((string)e.NewItem);
-            if(payBlockSelectPatment.Children.Count == 4)
+            if(payBlockSelectPatment.Children.Count == 3)
             {
-                payBlockSelectPatment.Children.RemoveAt(3);
+                payBlockSelectPatment.Children.RemoveAt(2);
             }
             payBlockSelectPatment.Children.Add(Paymmant.GetStackLayout());
             isAsk2 = false;
@@ -311,9 +311,9 @@ namespace MDispatch.View.Inspection.Delyvery
         {
             askForUsersDelyveryMW.AskForUserDelyveryM.What_form_of_payment_are_you_using_to_pay_for_transportation = (string)((Picker)sender).SelectedItem;
             Paymmant = GetPaymmant((string)((Picker)sender).SelectedItem);
-            if (payBlockSelectPatment.Children.Count == 4)
+            if (payBlockSelectPatment.Children.Count == 3)
             {
-                payBlockSelectPatment.Children.RemoveAt(3);
+                payBlockSelectPatment.Children.RemoveAt(2);
             }
             payBlockSelectPatment.Children.Add(Paymmant.GetStackLayout());
             isAsk2 = false;

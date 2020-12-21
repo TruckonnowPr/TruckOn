@@ -47,6 +47,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
             string description = null;
             int state = 0;
+            await PopupNavigation.PushAsync(new LoadPage());
             await Task.Run(() => Utils.CheckNet());
             if (App.isNetwork)
             {
@@ -57,24 +58,25 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 });
                 if (state == 1)
                 {
+                    await PopupNavigation.PopAsync();
                     GlobalHelper.OutAccount();
                     await PopupNavigation.PushAsync(new Alert(description, null));
                 }
                 if (state == 2)
                 {
-                    //await PopupNavigation.PushAsync(new Errror(description, null));
+                    await PopupNavigation.PopAsync();
                     HelpersView.CallError(description);
                 }
                 else if (state == 3)
                 {
+                    await PopupNavigation.PopAsync();
                     await Navigation.PopToRootAsync();
                     DependencyService.Get<IToast>().ShowMessage("Answers to questions saved");
                 }
                 else if (state == 4)
                 {
-                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
+                    await PopupNavigation.PopAsync();
                     HelpersView.CallError("Technical work on the service");
-
                 }
             }
         }
@@ -100,7 +102,6 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 if (state == 2)
                 {
-                    //await PopupNavigation.PushAsync(new Errror(description, Navigation));
                     HelpersView.CallError(description);
                 }
                 else if (state == 3)
@@ -109,7 +110,6 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigation));
                     HelpersView.CallError("Technical work on the service");
                 }
             }

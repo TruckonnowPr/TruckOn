@@ -1,19 +1,13 @@
 ﻿using MDispatch.Models;
 using MDispatch.NewElement;
-using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Service.RequestQueue;
-using MDispatch.Service.Tasks;
-using MDispatch.View;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.View.Inspection;
-using MDispatch.View.Inspection.Delyvery;
 using MDispatch.View.PageApp;
-using MDispatch.ViewModels.AskPhoto;
 using MDispatch.ViewModels.InspectionMV.Servise.Models;
-using Newtonsoft.Json;
 using Plugin.Settings;
 using Prism.Mvvm;
 using Rg.Plugins.Popup.Services;
@@ -248,7 +242,6 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
             //int state = 0;
             if (InderxPhotoInspektion >= Car.CountCarImg)
             {
-                DependencyService.Get<IOrientationHandler>().ForceSensor();
                 await CheckVechicleAndGoToResultPage();
             }
             else
@@ -340,6 +333,7 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
             IVehicle Car = GetTypeCar(vehiclwInformation.Ask.TypeVehicle.Replace(" ", ""));
             if (vehiclwInformation1s.Count - 1 == indexCurrentVechecle)
             {
+                DependencyService.Get<IOrientationHandler>().ForceSensor();
                 Continue();
                 await Navigation.PopToRootAsync();
             }

@@ -112,9 +112,9 @@
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <Button Text="Complete inspection"
+                        Clicked="ToolbarItem_Clicked"
                         BackgroundColor="#2C5DEB"
                         TextColor="White"
-                        Clicked="ToolbarItem_Clicked"
                         CornerRadius="23"
                         FontSize="16"
                         FontFamily="{StaticResource OpenSans-Bold}"/>

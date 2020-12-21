@@ -44,7 +44,8 @@
                     <StackLayout Spacing="10">
                         <Label Text="Did you notice any mechanical imperfections wile loading?"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <StackLayout Orientation="Horizontal" Spacing="13">
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="13">
                             <Button Text="Yes"
                                     Clicked="Button_Clicked_5"
                                     Style="{StaticResource btnAsk}"/>

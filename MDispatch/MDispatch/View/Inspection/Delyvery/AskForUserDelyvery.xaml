@@ -165,7 +165,8 @@
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="blockAskPay"
-                                         Style="{StaticResource Key=frameAsk}">
+                                         Style="{StaticResource Key=frameAsk}"
+                                         IsVisible="False">
                     <StackLayout Spacing="10">
                         <Label Text="Did the driver pay for the carriage?"
                                Style="{StaticResource Key=labelTitleAsk}"/>
