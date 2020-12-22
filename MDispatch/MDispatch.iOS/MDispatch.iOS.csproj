@@ -56,9 +56,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>Apple Development: Artsiom Buniashyn (52PD49AATM)</CodesignKey>
+    <CodesignKey>Apple Distribution: Artsiom Buniashyn (3K8963GCF8)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>VS: com.companyname.MDispatch Development</CodesignProvision>
+    <CodesignProvision>AppStore</CodesignProvision>
     <LangVersion>8.0</LangVersion>
     <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>

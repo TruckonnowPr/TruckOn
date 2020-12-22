@@ -24,7 +24,6 @@ namespace MDispatch.iOS.NewRender.ContextPage
             if (InteractivePopGestureRecognizer != null)
             {
                 InteractivePopGestureRecognizer.Enabled = false;
-
                 if (nb != null)
                 {
                     nb.BarBackgroundColor = Color.FromHex("#ffff");

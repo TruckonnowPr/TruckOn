@@ -41,9 +41,22 @@ namespace MDispatch.iOS.NewRender.ContextPage
                         customItem.CustomView.WidthAnchor.ConstraintEqualTo(23).Active = true;
                         customItem.CustomView.HeightAnchor.ConstraintEqualTo(23).Active = true;
                         items.Add(customItem);
-
+                    }
+                    else
+                    {
+                        item.SetTitleTextAttributes(new UITextAttributes()
+                        {
+                            Font = UIFont.FromName("OpenSans-SemiBold", 16),
+                        }, UIControlState.Normal);
                     }
                 }
+                //if(vc.NavigationItem.BackBarButtonItem != null)
+                //{
+                //    vc.NavigationItem.BackBarButtonItem.SetTitleTextAttributes(new UITextAttributes()
+                //    {
+                //        Font = UIFont.FromName("OpenSans-SemiBold", 16),
+                //    }, UIControlState.Normal);
+                //}
                 if (items.Count != 0)
                 {
                     vc.NavigationItem.RightBarButtonItems = items.ToArray();
