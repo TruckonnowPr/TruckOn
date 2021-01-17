@@ -193,6 +193,16 @@ namespace WebDispacher.Controellers
         }
 
         [HttpGet]
+        [Route("Root/File/{file}")]
+        public IActionResult GetRootFile(string file, string prefName)
+        {
+            IActionResult actionResult = null;
+            var stream = new FileStream($"../Root/{file}", FileMode.Open);
+            actionResult = new FileStreamResult(stream, $"application/{prefName}");
+            return actionResult;
+        }
+
+        [HttpGet]
         [Route("Root")]
         public string GetRootOnlyFile()
         {
