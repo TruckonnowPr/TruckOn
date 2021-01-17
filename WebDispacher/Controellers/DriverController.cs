@@ -96,7 +96,7 @@ namespace WebDispacher.Controellers
         public IActionResult WelcomeDriverCheckReport(string nameDriver, string driversLicense, string countDriverReports)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -121,7 +121,7 @@ namespace WebDispacher.Controellers
         public string WelcomeAddReport(string fullName, string driversLicenseNumber)
         {
             string actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -234,7 +234,7 @@ namespace WebDispacher.Controellers
         public IActionResult WelcomeAddReport()
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";
@@ -255,7 +255,7 @@ namespace WebDispacher.Controellers
             string paymentHandling , string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
             try
             {
                 ViewData["hidden"] = "hidden";

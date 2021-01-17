@@ -185,7 +185,6 @@ namespace WebDispacher.Controellers
         public string AvthorizationExst(string Email, string Password)
         {
             string actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
             try
             {
                 if (Email == null || Password == null)

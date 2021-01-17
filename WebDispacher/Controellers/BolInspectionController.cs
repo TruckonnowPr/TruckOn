@@ -56,7 +56,7 @@ namespace WebDispacher.Controellers
         public IActionResult GetWelcomePhotoInspection(int idVech)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
             Shipping shipping = managerDispatch.GetShipingCurrentVehiclwIn(idVech.ToString());
             VehiclwInformation vehiclwInformation = shipping.VehiclwInformations.FirstOrDefault(v => v.Id == idVech);
             if (shipping != null)
@@ -74,7 +74,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> GoToViewTruckDoc(string idDriver)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
 
             Truck truck = null;
             Trailer trailer = null;
@@ -103,7 +103,7 @@ namespace WebDispacher.Controellers
         public async Task<IActionResult> GoToViewTruckDoc(string truckPlate, string trailerPlate)
         {
             IActionResult actionResult = null;
-            ViewData["TypeNavBar"] = "AllUsers";
+            ViewData["TypeNavBar"] = "BaseAllUsers";
 
             Truck truck = null;
             Trailer trailer = null;
