@@ -62,6 +62,7 @@ namespace WebDispacher
             //    options.Level = CompressionLevel.Optimal;
             //});
             //services.AddMemoryCache();
+
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -74,7 +75,8 @@ namespace WebDispacher
                     template: "{controller=RA}/{action=Index}/{id?}");
                 
             });
-            app.UseStaticFiles();
+            app.UseStaticFiles(); 
+            app.UseStatusCodePagesWithRedirects("/error?code={0}");
         }
     }
 }
