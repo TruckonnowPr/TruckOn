@@ -10,6 +10,7 @@ using Firebase.Provider;
 using Plugin.Permissions;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using Xfx;
 
 namespace MDispatch.Droid
 {
@@ -24,6 +25,7 @@ namespace MDispatch.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             IntSrtatusBar();
             base.OnCreate(bundle);
+            XfxControls.Init();
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
