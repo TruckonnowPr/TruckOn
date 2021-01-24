@@ -161,20 +161,21 @@
     <Compile Include="NewrRender\Effect\CornerRadius.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\tessdata\eng.cube.bigrams" />
-    <AndroidAsset Include="Assets\tessdata\eng.cube.fold" />
-    <AndroidAsset Include="Assets\tessdata\eng.cube.lm" />
-    <AndroidAsset Include="Assets\tessdata\eng.cube.nn" />
-    <AndroidAsset Include="Assets\tessdata\eng.cube.params" />
-    <AndroidAsset Include="Assets\tessdata\eng.cube.size" />
-    <AndroidAsset Include="Assets\tessdata\eng.cube.word-freq" />
-    <AndroidAsset Include="Assets\tessdata\eng.tesseract_cube.nn" />
-    <AndroidAsset Include="Assets\tessdata\eng.traineddata" />
     <AndroidAsset Include="Assets\Truckonnow-8fb90a135d42.json" />
     <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+    <AndroidAsset Include="Assets\OpenSans-Bold.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-ExtraBold.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-ExtraBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-Italic.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-Light.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-Regular.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-SemiBold.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-SemiBoldItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
