@@ -5,15 +5,15 @@
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
 	<Application.Resources>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-Bold">
-            <On Platform="Android" Value="OpenSans-Bold.ttf#Open Sans" />
+            <On Platform="Android" Value="OpenSans-Bold.ttf#Open-Sans" />
             <On Platform="iOS" Value="OpenSans-Bold" />
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-SemiBold">
-            <On Platform="Android" Value="OpenSans-SemiBold.ttf#Open Sans" />
+            <On Platform="Android" Value="OpenSans-SemiBold.ttf#Open-Sans" />
             <On Platform="iOS" Value="OpenSans-SemiBold" />
         </OnPlatform>
         <OnPlatform x:TypeArguments="x:String" x:Key="OpenSans-Regular">
-            <On Platform="Android" Value="OpenSans-Regular.ttf#Open Sans" />
+            <On Platform="Android" Value="OpenSans-Regular.ttf#Open-Sans" />
             <On Platform="iOS" Value="OpenSans-Regular" />
         </OnPlatform>
         <Style TargetType="shadowFrame:ShadowFrame" x:Key="frameAsk">
