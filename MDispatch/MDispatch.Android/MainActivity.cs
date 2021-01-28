@@ -14,7 +14,10 @@ using Xfx;
 
 namespace MDispatch.Droid
 {
-    [Activity(Label = "Truconnow", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Truconnow",
+        Icon = "@mipmap/icon",
+        Theme = "@style/MainTheme",
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static MainActivity mainActivity = null;
