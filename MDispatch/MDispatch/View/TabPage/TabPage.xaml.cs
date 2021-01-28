@@ -26,6 +26,8 @@ namespace MDispatch.View.TabPage
             On<iOS>().SetUseSafeArea(true);
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             BindingContext = this.tablePageMV;
+            On<Android>().SetBarItemColor(Color.FromHex("#A1A1A1"));
+            On<Android>().SetBarSelectedItemColor(Color.FromHex("#2C5DEB"));
             InitActivePage(managerDispatchMob);
             InitDeiveredPage(managerDispatchMob);
             InitArchivedPage(managerDispatchMob);
