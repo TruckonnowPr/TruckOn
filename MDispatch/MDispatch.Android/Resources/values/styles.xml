@@ -6,9 +6,9 @@
   <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
-    <item name="colorPrimary">#4fd2c2</item>
-    <item name="colorPrimaryDark">#4fd2c2</item>
-    <item name="colorAccent">#4fd2c2</item>
+    <item name="colorPrimary">#ffff</item>
+    <item name="colorPrimaryDark">#2C5DEB</item>
+    <item name="colorAccent">#2C5DEB</item>
     <item name="windowActionModeOverlay">true</item>
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
