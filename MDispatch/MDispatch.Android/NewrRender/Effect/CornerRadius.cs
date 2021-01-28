@@ -8,18 +8,15 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportEffect(typeof(MDispatch.Droid.NewrRender.Effect.CornerRadius), nameof(MDispatch.Droid.NewrRender.Effect.CornerRadius))]
 namespace MDispatch.Droid.NewrRender.Effect
 {
-    public class CornerRadius : PlatformEffect
+    public class CornerRadius : PlatformEffect<FlexLayout, Android.Views.View>
     {
-        public CornerRadius()
-        {
-        }
 
         protected override void OnAttached()
         {
             try
             {
                 var effect = (NewElement.Effect.CornerRadius)Element.Effects.FirstOrDefault(e => e is NewElement.Effect.CornerRadius);
-                if (effect != null)
+                if (effect != null && Control != null)
                 {
                     Control.ClipToOutline = true;
                     Control.OutlineProvider = new RoundedOutlineProvider(effect.Radius);
