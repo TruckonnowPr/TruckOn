@@ -67,7 +67,8 @@ namespace WebDispacher
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-           // app.UseResponseCompression();
+            app.UseStatusCodePagesWithReExecute("/error", "?code={0}");
+            // app.UseResponseCompression();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -75,8 +76,8 @@ namespace WebDispacher
                     template: "{controller=RA}/{action=Index}/{id?}");
                 
             });
-            app.UseStaticFiles(); 
-            app.UseStatusCodePagesWithRedirects("/error?code={0}");
+            app.UseStaticFiles();
+            //app.UseStatusCodePagesWithRedirects("/error?code={0}"); 
         }
     }
 }

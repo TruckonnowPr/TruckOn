@@ -410,6 +410,36 @@ namespace WebDispacher.Dao
             return idPaymentNewSelect;
         }
 
+        internal void EditTruckDB(int idTruck, string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color)
+        {
+            Truck truck = context.Trucks.FirstOrDefault(t => t.Id == idTruck);
+            if(truck != null)
+            {
+                truck.NameTruk = nameTruk;
+                truck.Yera = yera;
+                truck.Make = make;
+                truck.Model = model;
+                truck.Type = typeTruk;
+                truck.Satet = state;
+                truck.Exp = exp;
+                truck.Vin = vin;
+                truck.Owner = owner;
+                truck.PlateTruk = plateTruk;
+                truck.ColorTruk = color;
+                context.SaveChanges();
+            }
+        }
+
+        internal void EditTrailerDB(int idTrailer, string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color)
+        {
+            Trailer trailer = context.Trailers.FirstOrDefault(t => t.Id == idTrailer);
+            if (trailer != null)
+            {
+
+                context.SaveChanges();
+            }
+        }
+
         internal void LayoutUPDb(int idLayout, int idTransported)
         {
             TransportVehicle transportVehicle = context.TransportVehicles

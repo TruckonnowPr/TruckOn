@@ -331,6 +331,16 @@ namespace WebDispacher.Service
             return responseStripe;
         }
 
+        internal Truck GetTruckById(int idTruck)
+        {
+            return (Truck)_sqlEntityFramworke.GetTruckById(idTruck);
+        }
+
+        internal Trailer GetTrailerById(int idTrailer)
+        {
+            return (Trailer)_sqlEntityFramworke.GetTrailerById(idTrailer);
+        }
+
         internal void InitStripeForCompany(string nameCommpany, int idCompany)
         {
             Customer_ST customer_ST = new Customer_ST();
@@ -350,6 +360,11 @@ namespace WebDispacher.Service
             subscribe_ST.Status = subscription.Status;
             _sqlEntityFramworke.SaveCustomerST(customer_ST);
             _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
+        }
+
+        internal void EditTruck(int idTruck, string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color)
+        {
+            _sqlEntityFramworke.EditTruckDB(idTruck, nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color);
         }
 
         internal void DeletePaymentMethod(string idPayment, string idCompany)
