@@ -10,7 +10,7 @@ function SelectAssining(idOrderAndIdDriver, baseUrl) {
             '&idDriver=' + encodeURIComponent(idDriver);
         xmlHttp.open("POST", url, false);
         xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        //xmlHttp.setRequestHeader('Accept-Encoding', 'br');
+        xmlHttp.setRequestHeader('Accept-Encoding', 'br');
         xmlHttp.send(body);
         statusResponse = xmlHttp.responseText;
     }
@@ -20,33 +20,33 @@ function SelectAssining(idOrderAndIdDriver, baseUrl) {
 }
 
 function SelectAssining1(idOrderAndIdDriver, baseUrl) {
-    let xmlHttp = new XMLHttpRequest();
-    var body;
+    var statusResponse;
     if (idOrderAndIdDriver.split(',')[1] == "Unassign") {
         let url = baseUrl+"/Dashbord/Unassign";
+        let xmlHttp = new XMLHttpRequest();
         let idOrder = idOrderAndIdDriver.split(',')[0];
-        body = 'idOrder=' + encodeURIComponent(idOrder);
-        xmlHttp.open("POST", url, true);
+        var body = 'idOrder=' + encodeURIComponent(idOrder);
+        xmlHttp.open("POST", url, false);
         xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xmlHttp.setRequestHeader('Accept-Encoding', 'br');
+        xmlHttp.send(body);
+        statusResponse = xmlHttp.responseText;
     }
     else if (idOrderAndIdDriver != "") {
         let idOrder = idOrderAndIdDriver.split(',')[0];
         let idDriver = idOrderAndIdDriver.split(',')[1];
-        let url = baseUrl+"/Dashbord/Assign";
-        body = 'idOrder=' + encodeURIComponent(idOrder) +
+        let url = "@ViewBag.BaseUrl/Dashbord/Assign";
+        let xmlHttp = new XMLHttpRequest();
+        var body = 'idOrder=' + encodeURIComponent(idOrder) +
             '&idDriver=' + encodeURIComponent(idDriver);
-        xmlHttp.open("POST", url, true);
+        xmlHttp.open("POST", url, false);
         xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xmlHttp.setRequestHeader('Accept-Encoding', 'br');
+        xmlHttp.send(body);
+        statusResponse = xmlHttp.responseText;
     }
-    xmlHttp.onload = function (e) {
-        if (xmlHttp.readyState === 4) {
-            if (xmlHttp.responseText == "True") {
-                window.location.reload();
-            }
-        }
-    };
-    xmlHttp.send(body);
-   
+
+    if (statusResponse == "True") {
+        window.location.reload();
+    }
 }
