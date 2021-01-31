@@ -49,7 +49,7 @@
                                         <td>@ViewBag.Trailers[i].AnnualIns</td>
                                         <td>
                                             <img src="~/img/arrow.svg" alt="" onclick="document.location.href = '@ViewBag.BaseUrl/Driver/InspactionTrucks?idDriver=0&idTruck=0&idTrailer=@ViewBag.Trailers[i].Id&date=0';" />
-                                            <img src="~/img/pen.svg" alt="">
+                                            <img src="~/img/pen.svg" alt="" onclick="document.location.href = '@ViewBag.BaseUrl/Equipment/EditTrailer?idTrailer='+@ViewBag.Trailers[i].Id;">
                                             <img src="~/img/setting.svg" alt="" onclick="window.location.href='@ViewBag.BaseUrl/Settings?idTr=@ViewBag.Trailers[i].Id&page=s&idProfile=0&typeTransport=Trailer'">
                                             <img src="~/img/doc.svg" alt="" onclick="document.location.href = '@ViewBag.BaseUrl/Equipment/Trailer/Doc?id='+@ViewBag.Trailers[i].Id;">
                                             <img src="~/img/delet.svg" alt="" onclick="document.location.href = '@ViewBag.BaseUrl/Equipment/Trailer/Remove?id='+@ViewBag.Trailers[i].Id;">

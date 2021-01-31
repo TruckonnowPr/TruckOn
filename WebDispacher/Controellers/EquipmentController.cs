@@ -366,6 +366,78 @@ namespace WebDispacher.Controellers
             return actionResult;
         }
 
+        [HttpGet]
+        [Route("EditTrailer")]
+        public IActionResult EditTrailer(int idTrailer)
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                string companyName = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                Request.Cookies.TryGetValue("CommpanyName", out companyName);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
+                {
+                    ViewBag.NameCompany = companyName;
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.Trailer = managerDispatch.GetTrailerById(idTrailer);
+                    actionResult = View("EditTrailer");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("EditTrailer")]
+        [DisableRequestSizeLimit]
+        public IActionResult EditTrailer(int idTrailer, string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns)
+        {
+            IActionResult actionResult = null;
+            try
+            {
+                string key = null;
+                string idCompany = null;
+                ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+                Request.Cookies.TryGetValue("KeyAvtho", out key);
+                Request.Cookies.TryGetValue("CommpanyId", out idCompany);
+                if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Equipment"))
+                {
+
+                    managerDispatch.EditTrailer(idTrailer, name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns);
+                    actionResult = Redirect($"{Config.BaseReqvesteUrl}/Equipment/trailers");
+                }
+                else
+                {
+                    if (Request.Cookies.ContainsKey("KeyAvtho"))
+                    {
+                        Response.Cookies.Delete("KeyAvtho");
+                    }
+                    actionResult = Redirect(Config.BaseReqvesteUrl);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return actionResult;
+        }
+
         [HttpPost]
         [Route("SaveFile")]
         public string AddFile(IFormFile uploadedFile, string id)

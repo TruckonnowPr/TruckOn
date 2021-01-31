@@ -430,12 +430,22 @@ namespace WebDispacher.Dao
             }
         }
 
-        internal void EditTrailerDB(int idTrailer, string nameTruk, string yera, string make, string model, string typeTruk, string state, string exp, string vin, string owner, string plateTruk, string color)
+        internal void EditTrailerDB(int idTrailer, string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns)
         {
             Trailer trailer = context.Trailers.FirstOrDefault(t => t.Id == idTrailer);
             if (trailer != null)
             {
-
+                trailer.Name = name;
+                trailer.Type = typeTrailer;
+                trailer.Year = year;
+                trailer.Make = make;
+                trailer.HowLong = howLong;
+                trailer.Vin = vin;
+                trailer.Owner = owner;
+                trailer.Color = color;
+                trailer.Plate = plate;
+                trailer.Exp = exp;
+                trailer.AnnualIns = annualIns;
                 context.SaveChanges();
             }
         }

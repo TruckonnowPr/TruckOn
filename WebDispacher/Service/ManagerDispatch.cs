@@ -367,6 +367,11 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.EditTruckDB(idTruck, nameTruk, yera, make, model, typeTruk, state, exp, vin, owner, plateTruk, color);
         }
 
+        internal void EditTrailer(int idTrailer, string name, string typeTrailer, string year, string make, string howLong, string vin, string owner, string color, string plate, string exp, string annualIns)
+        {
+            _sqlEntityFramworke.EditTrailerDB(idTrailer, name, typeTrailer, year, make, howLong, vin, owner, color, plate, exp, annualIns);
+        }
+
         internal void DeletePaymentMethod(string idPayment, string idCompany)
         {
             stripeApi.DeletePaymentMethod(idPayment);
