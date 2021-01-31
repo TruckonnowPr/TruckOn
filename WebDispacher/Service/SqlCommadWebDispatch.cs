@@ -1373,10 +1373,16 @@ namespace WebDispacher.Dao
 
 
 
-        public async void UpdateDriver(Driver driver)
+        public  void UpdateDriver(int id, string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
         {
-            context.Drivers.Update(driver);
-            await context.SaveChangesAsync();
+            Driver driver = context.Drivers.FirstOrDefault(d => d.Id == id);
+            driver.FullName = fullName;
+            driver.EmailAddress = emailAddress;
+            driver.Password = password;
+            driver.PhoneNumber = phoneNumbe;
+            driver.TrailerCapacity = trailerCapacity;
+            driver.DriversLicenseNumber = driversLicenseNumber;
+            context.SaveChanges();
         }
 
         public void RemoveDriveInDb(int id, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,

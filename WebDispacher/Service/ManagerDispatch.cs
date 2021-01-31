@@ -1152,16 +1152,8 @@ namespace WebDispacher.Service
         }
 
         public void EditDrive(int id, string fullName, string emailAddress, string password, string phoneNumbe, string trailerCapacity, string driversLicenseNumber)
-        {
-            Driver driver = new Driver();
-            driver.Id = id;
-            driver.FullName = fullName;
-            driver.EmailAddress = emailAddress;
-            driver.Password = password;
-            driver.PhoneNumber = phoneNumbe;
-            driver.TrailerCapacity = trailerCapacity;
-            driver.DriversLicenseNumber = driversLicenseNumber;
-            _sqlEntityFramworke.UpdateDriver(driver);
+        {;
+            _sqlEntityFramworke.UpdateDriver(id, fullName, emailAddress, password, phoneNumbe, trailerCapacity, driversLicenseNumber);
         }
 
         public async Task<List<DocumentTruckAndTrailers>> GetTruckDoc(string id)
