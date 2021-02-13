@@ -10,16 +10,19 @@ namespace MDispatch.Droid.NewrRender.Effect
 {
     public class CornerRadius : PlatformEffect
     {
+        public CornerRadius()
+        {
+        }
 
         protected override void OnAttached()
         {
             try
             {
                 var effect = (NewElement.Effect.CornerRadius)Element.Effects.FirstOrDefault(e => e is NewElement.Effect.CornerRadius);
-                if (effect != null && (Control != null || Container != null))
+                if (effect != null)
                 {
-                    (Control ?? Container).ClipToOutline = true;
-                    (Control ?? Container).OutlineProvider = new RoundedOutlineProvider(effect.Radius);
+                    Container.ClipToOutline = true;
+                    Container.OutlineProvider = new RoundedOutlineProvider(effect.Radius);
                 }
             }
             catch (System.Exception ex)
@@ -40,7 +43,6 @@ namespace MDispatch.Droid.NewrRender.Effect
             {
                 this.radius = radius;
             }
-
             public override void GetOutline(Android.Views.View view, Outline outline)
             {
                 outline?.SetRoundRect(0, 0, view.Width, view.Height, radius*2);
