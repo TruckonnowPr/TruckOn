@@ -159,6 +159,7 @@
     <Compile Include="StoreService\MyFirebaseMessagingService.cs" />
     <Compile Include="NewrRender\Effect\CornerRadius.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="NewrRender\PageRenders\NavigationPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Truckonnow-8fb90a135d42.json" />
@@ -587,6 +588,10 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\BackPageAndroid.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
@@ -594,6 +599,7 @@
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="NewrRender\Effect\" />
+    <Folder Include="NewrRender\PageRenders\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MDispatch\MDispatch.csproj">

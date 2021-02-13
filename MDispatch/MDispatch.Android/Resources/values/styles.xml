@@ -6,7 +6,7 @@
   <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
-    <item name="colorPrimary">#ffff</item>
+    <item name="colorPrimary">#fff</item>
     <item name="colorPrimaryDark">#2C5DEB</item>
     <item name="colorAccent">#2C5DEB</item>
     <item name="windowActionModeOverlay">true</item>
