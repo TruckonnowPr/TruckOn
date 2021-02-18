@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Android.App;
 using Android.Graphics;
-using Android.Graphics.Drawables;
 using FormsControls.Base;
 using MDispatch.Droid.NewrRender.PageRenders;
 using Xamarin.Forms;
@@ -53,7 +52,6 @@ namespace MDispatch.Droid.NewrRender.PageRenders
                 if (toolbar.NavigationIcon != null)
                 {
                     toolbar.NavigationIcon = Android.Support.V4.Content.ContextCompat.GetDrawable(context, Resource.Drawable.BackPageAndroid);
-                    //toolbar.SetNavigationIcon(Resource.Drawable.Back);
                 }
             }
             return retVal;

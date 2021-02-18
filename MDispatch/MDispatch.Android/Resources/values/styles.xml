@@ -15,7 +15,8 @@
     <item name="android:colorFocusedHighlight">@color/color_coloredbackground</item>
     <item name="android:colorActivatedHighlight">@color/color_coloredbackground</item>
     <item name="android:activatedBackgroundIndicator">@color/color_coloredbackground</item>
-
+    <item name="textAllCaps">false</item>
+    <item name="android:textAllCaps">false</item>
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">

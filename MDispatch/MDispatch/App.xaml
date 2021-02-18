@@ -36,6 +36,7 @@
             <Setter Property="FontFamily" Value="{StaticResource OpenSans-Regular}" />
             <Setter Property="HeightRequest" Value="19" />
             <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="Padding" Value="0" />
         </Style>
         <Style TargetType="Entry" x:Key="entryAsk">
             <Setter Property="PlaceholderColor" Value="#C1C1C1" />
