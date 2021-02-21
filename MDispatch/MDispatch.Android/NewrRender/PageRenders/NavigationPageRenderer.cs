@@ -39,22 +39,5 @@ namespace MDispatch.Droid.NewrRender.PageRenders
                 toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;
             }
         }
-
-        protected override Task<bool> OnPushAsync(Page view, bool animated)
-        {
-            var retVal = base.OnPushAsync(view, animated);
-
-            Activity context = (Activity)Xamarin.Forms.Forms.Context;
-            
-
-            if (toolbar != null)
-            {
-                if (toolbar.NavigationIcon != null)
-                {
-                    toolbar.NavigationIcon = Android.Support.V4.Content.ContextCompat.GetDrawable(context, Resource.Drawable.BackPageAndroid);
-                }
-            }
-            return retVal;
-        }
     }
 }

@@ -68,8 +68,7 @@
                         <Frame Padding="3"
                               CornerRadius="6"
                               BorderColor="#2C5DEB"
-                              HasShadow="False"
-                              HeightRequest="19">
+                              HasShadow="False" >
                             <Picker SelectedIndexChanged="Picker_SelectedIndexChanged">
                                     <Picker.ItemsSource>
                                         <x:Array Type="{x:Type x:String}">

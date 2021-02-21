@@ -38,12 +38,13 @@
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="Padding" Value="0" />
         </Style>
+        <OnPlatform x:Key="HeightRequestEntry" x:TypeArguments="x:Double" iOS="19" Android="40" />
         <Style TargetType="Entry" x:Key="entryAsk">
             <Setter Property="PlaceholderColor" Value="#C1C1C1" />
             <Setter Property="TextColor" Value="#101010" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontFamily" Value="{StaticResource OpenSans-Regular}" />
-            <Setter Property="HeightRequest" Value="19" />
+            <Setter Property="HeightRequest" Value="{StaticResource HeightRequestEntry}" />
         </Style>
 	</Application.Resources>
 </Application>

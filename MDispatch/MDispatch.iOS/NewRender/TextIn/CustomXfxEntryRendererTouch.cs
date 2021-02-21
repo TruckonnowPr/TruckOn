@@ -13,7 +13,7 @@ namespace MDispatch.iOS.NewRender.TextIn
         {
             if (disposing)
             {
-                SetElement(null); //trigger elementchange before base dispose happens https://github.com/XamFormsExtended/Xfx.Controls/issues/97
+                SetElement(null);
             }
 
             base.Dispose(disposing);

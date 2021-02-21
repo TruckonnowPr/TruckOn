@@ -160,6 +160,7 @@
     <Compile Include="NewrRender\Effect\CornerRadius.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="NewrRender\PageRenders\NavigationPageRenderer.cs" />
+    <Compile Include="NewrRender\TextInputRender\TextInputeRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Truckonnow-8fb90a135d42.json" />
@@ -600,6 +601,7 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="NewrRender\Effect\" />
     <Folder Include="NewrRender\PageRenders\" />
+    <Folder Include="NewrRender\TextInputRender\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MDispatch\MDispatch.csproj">
