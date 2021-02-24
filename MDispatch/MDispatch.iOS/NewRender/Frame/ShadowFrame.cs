@@ -3,13 +3,13 @@
 using System;
 using System.ComponentModel;
 using CoreGraphics;
-using MDispatch.iOS.NewRender.Freme;
+using MDispatch.iOS.NewRender.Frame;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(MDispatch.NewElement.FrameCusstomise.ShadowFrame), typeof(ShadowFrame))]
-namespace MDispatch.iOS.NewRender.Freme
+namespace MDispatch.iOS.NewRender.Frame
 {
     public class ShadowFrame : FrameRenderer
     {

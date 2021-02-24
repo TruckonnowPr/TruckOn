@@ -227,7 +227,7 @@
     <Compile Include="NewRender\AuntificationID\AuthenticationIDiOS.cs" />
     <Compile Include="NewRender\ContextPage\RenderContexPage.cs" />
     <Compile Include="NewRender\Effect\CornerRadius.cs" />
-    <Compile Include="NewRender\Freme\ShadowFrame.cs" />
+    <Compile Include="NewRender\Frame\ShadowFrame.cs" />
     <Compile Include="NewRender\TextIn\CustomXfxEntryRendererTouch.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1289,6 +1289,6 @@
     <Folder Include="NewRender\AuntificationID\" />
     <Folder Include="NewRender\Effect\" />
     <Folder Include="Resources\Fonts\" />
-    <Folder Include="NewRender\Freme\" />
+    <Folder Include="NewRender\Frame\" />
   </ItemGroup>
 </Project>

@@ -161,6 +161,7 @@
     <Compile Include="SplashActivity.cs" />
     <Compile Include="NewrRender\PageRenders\NavigationPageRenderer.cs" />
     <Compile Include="NewrRender\TextInputRender\TextInputeRender.cs" />
+    <Compile Include="NewrRender\Frame\ShadowFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Truckonnow-8fb90a135d42.json" />
@@ -593,6 +594,10 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\shadow.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
@@ -602,6 +607,7 @@
     <Folder Include="NewrRender\Effect\" />
     <Folder Include="NewrRender\PageRenders\" />
     <Folder Include="NewrRender\TextInputRender\" />
+    <Folder Include="NewrRender\Frame\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MDispatch\MDispatch.csproj">
