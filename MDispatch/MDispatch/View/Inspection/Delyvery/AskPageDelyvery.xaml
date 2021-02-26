@@ -21,21 +21,24 @@
                     <StackLayout Spacing="10">
                         <Label Text="Weather conditions"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <StackLayout Orientation="Horizontal"
-                                     Spacing="13">
+                        <FlexLayout Wrap="Wrap">
                             <Button Text="Clear"
                                     Clicked="Dropdown_SelectedItemChanged_2"
-                                    Style="{StaticResource btnAsk}"/>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Rain"
                                     Clicked="Dropdown_SelectedItemChanged_2"
-                                    Style="{StaticResource btnAsk}"/>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Snow"
                                     Clicked="Dropdown_SelectedItemChanged_2"
-                                    Style="{StaticResource btnAsk}"/>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Dust"
                                     Clicked="Dropdown_SelectedItemChanged_2"
-                                    Style="{StaticResource btnAsk}"/>
-                        </StackLayout>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
+                        </FlexLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <!--2-->
@@ -65,27 +68,27 @@
                             <Button Text="Parking lot"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Driveway"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Gravel"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Sidewalk"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Street"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Middle of the street"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                         </FlexLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
@@ -145,9 +148,10 @@
                         <Label Text="Please take a picture Id of the person taking the delivery"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes" HeightRequest="19"
+                            <Button Text="Yes"
                                     Clicked="Button_Clicked_5"
-                                    FontFamily="{StaticResource OpenSans-Regular}"/>
+                                    FontFamily="{StaticResource OpenSans-Regular}"
+                                    Style="{StaticResource btnAsk}" />
                             <ScrollView Orientation="Horizontal">
                                 <StackLayout x:Name="blockPhoto"
                                              Orientation="Horizontal"
@@ -208,23 +212,23 @@
                             <Button Text="Clean"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Dirty"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Wet"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Snow"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Extra dirty"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 13, 0"/>
+                                    Margin="0, 0, 0, 7"/>
                         </FlexLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
@@ -239,7 +243,14 @@
                                BorderColor="#2C5DEB"
                                HasShadow="False"
                                HeightRequest="19">
-                            <Picker SelectedIndexChanged="Picker_SelectedIndexChanged">
+                            <Frame.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double" >
+                                    <On Platform="Android" Value="35" />
+                                    <On Platform="iOS" Value="19" />
+                                </OnPlatform>
+                           </Frame.HeightRequest>
+                            <Picker SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                    Style="{StaticResource entryAsk}">
                                     <Picker.ItemsSource>
                                         <x:Array Type="{x:Type x:String}">
                                         <x:String>Door</x:String>
