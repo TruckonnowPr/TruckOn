@@ -30,7 +30,14 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Paymmant
             entry.FontSize = 14;
             entry.PlaceholderColor = Color.FromHex("#101010");
             entry.FontFamily = fontRegular;
-            entry.HeightRequest = 19;
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                entry.HeightRequest = 19;
+            }
+            else
+            {
+                entry.HeightRequest = 40;
+            }
 
             button.Text = "I am paid";
             button.BackgroundColor = Color.White;
@@ -39,6 +46,7 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Paymmant
             button.FontSize = 16;
             button.FontFamily = fontBold;
             button.HeightRequest = 19;
+            button.Padding = new Thickness(0);
 
             stackLayout = new StackLayout();
             stackLayout.Spacing = 10;

@@ -120,7 +120,14 @@
                                            BorderColor="#2C5DEB"
                                            HasShadow="False"
                                            HeightRequest="19">
-                                        <Picker SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                <Frame.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double" >
+                                        <On Platform="Android" Value="35" />
+                                        <On Platform="iOS" Value="19" />
+                                    </OnPlatform>
+                               </Frame.HeightRequest>
+                                        <Picker SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                                Style="{StaticResource entryAsk}">
                                             <Picker.ItemsSource>
                                                 <x:Array Type="{x:Type x:String}">
                                                     <x:String>Check</x:String>

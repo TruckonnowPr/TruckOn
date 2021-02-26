@@ -87,21 +87,24 @@
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="askBlock5"
                                          Style="{StaticResource Key=frameAsk}">
-                    <StackLayout Spacing="10">
+                    <FlexLayout Wrap="Wrap">
                         <Label Text="Keys location"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
                             <Button Text="Truck"
                                     Clicked="Button_Clicked"
-                                    Style="{StaticResource btnAsk}"/>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Vehicle"
                                     Clicked="Button_Clicked"
-                                    Style="{StaticResource btnAsk}"/>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
                             <Button Text="Trailer"
                                     Clicked="Button_Clicked"
-                                    Style="{StaticResource btnAsk}"/>
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 0, 7"/>
                         </StackLayout>
-                    </StackLayout>
+                    </FlexLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="askBlock6"
                                          Style="{StaticResource Key=frameAsk}">
