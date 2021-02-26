@@ -119,12 +119,12 @@ namespace MDispatch.Droid.NewrRender
                 capturePhotoInspectionButton1.LayoutParameters = captureButtonParams1;
                 mainLayout.AddView(capturePhotoInspectionButton1);
 
-                capturePhotoInspectionButton.SetBackgroundDrawable(ContextCompat.GetDrawable(Context, Resource.Drawable.NotDamage));
+                capturePhotoInspectionButton.SetBackgroundDrawable(ContextCompat.GetDrawable(Context, Resource.Drawable.Take));
                 RelativeLayout.LayoutParams captureButtonParams = new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WrapContent,
                     RelativeLayout.LayoutParams.WrapContent);
-                captureButtonParams.Height = 120;
-                captureButtonParams.Width = 120;
+                captureButtonParams.Height = 240;
+                captureButtonParams.Width = 240;
                 capturePhotoInspectionButton.LayoutParameters = captureButtonParams;
                 mainLayout.AddView(capturePhotoInspectionButton);
                 mainLayout.AddView(progressBar);
@@ -174,6 +174,12 @@ namespace MDispatch.Droid.NewrRender
                     ObjectAnimator.OfFloat(capturePhotoInspectionButton, "scaleX", 0.8f, 1f),
                     ObjectAnimator.OfFloat(capturePhotoInspectionButton, "scaleY", 0.8f, 1f));
             }
+            else if (clickNameBtn == "capturePhotoInspectionButton1")
+            {
+                animationcapturePhotoInspectionButtonSet.PlayTogether(
+                    ObjectAnimator.OfFloat(capturePhotoInspectionButton1, "scaleX", 0.8f, 1f),
+                    ObjectAnimator.OfFloat(capturePhotoInspectionButton1, "scaleY", 0.8f, 1f));
+            }
             animationcapturePhotoInspectionButtonSet.SetDuration(400);
             animationcapturePhotoInspectionButtonSet.Start();
         }
@@ -221,8 +227,11 @@ namespace MDispatch.Droid.NewrRender
                     capturePhotoButton.SetY(mainLayout.Height / 2 + tmpPr);
                     capturePhotoButton.SetX(mainLayout.Width - 200);
 
-                    capturePhotoInspectionButton.SetY((mainLayout.Height / 2 + tmpPr) - 200);
-                    capturePhotoInspectionButton.SetX(mainLayout.Width - 200);
+                    capturePhotoInspectionButton.SetY((mainLayout.Height / 2) - 120);
+                    capturePhotoInspectionButton.SetX((mainLayout.Width - 240) - 48);
+
+                    capturePhotoInspectionButton1.SetY((mainLayout.Height - 120) - 48);
+                    capturePhotoInspectionButton1.SetX((mainLayout.Width - 120) - 88);
 
                     scanPhotoButton.SetY(mainLayout.Height / 2 + tmpPr);
                     scanPhotoButton.SetX(mainLayout.Width - 200);
