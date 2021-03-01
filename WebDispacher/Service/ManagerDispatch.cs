@@ -14,7 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using WebDispacher.Dao;
-using WebDispacher.Mosels;
+using WebDispacher.Models;
 using WebDispacher.Notify;
 using WebDispacher.Service.EmailSmtp;
 using WebDispacher.Service.TransportationManager;
@@ -90,6 +90,36 @@ namespace WebDispacher.Service
         {
             ITr tr = GetTr(idTr, typeTransport);
             return tr is Truck ? TypeTransportVehikle.Truck.ToString() : TypeTransportVehikle.Trailer.ToString();
+        }
+
+        internal List<Models.Subscription.Subscription> GetSubscription()
+        {
+            List<Models.Subscription.Subscription> subscriptions = new List<Models.Subscription.Subscription>();
+            subscriptions.Add(new Models.Subscription.Subscription()
+            {
+                Id = 1,
+                IdSubscriptionST = "price_1IPTehKfezfzRoxln6JFEbgG",
+                Name = "One dollar a day",
+                PeriodDays = 1,
+                Price = "$1",
+            });
+            subscriptions.Add(new Models.Subscription.Subscription()
+            {
+                Id = 2,
+                IdSubscriptionST = "price_1IPTjVKfezfzRoxlgRaotwe3",
+                Name = "One dollar a week",
+                PeriodDays = 7,
+                Price = "$1",
+            });
+            subscriptions.Add(new Models.Subscription.Subscription()
+            {
+                Id = 3,
+                IdSubscriptionST = "price_1H3j18KfezfzRoxlJ9Of1Urs",
+                Name = "One dollar a month",
+                PeriodDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month),
+                Price = "$1",
+            });
+            return subscriptions;
         }
 
         internal List<CompanyDTO> GetCompanies()
@@ -341,17 +371,17 @@ namespace WebDispacher.Service
             return (Trailer)_sqlEntityFramworke.GetTrailerById(idTrailer);
         }
 
-        internal void InitStripeForCompany(string nameCommpany, int idCompany)
+        internal void InitStripeForCompany(string nameCommpany, string emailCommpany, int idCompany, string idSubscriptionST, int periodDays)
         {
             Customer_ST customer_ST = new Customer_ST();
             Subscribe_ST subscribe_ST = new Subscribe_ST();
-            Customer customer =  stripeApi.CreateCustomer(nameCommpany, idCompany);
+            Customer customer =  stripeApi.CreateCustomer(nameCommpany, idCompany, emailCommpany);
             customer_ST.DateCreated = customer.Created;
             customer_ST.IdCompany = idCompany;
             customer_ST.IdCustomerST = customer.Id;
             customer_ST.NameCompany = nameCommpany;
             customer_ST.NameCompanyST = customer.Name;
-            Subscription subscription =  stripeApi.CreateSupsctibe(customer.Id);
+            Subscription subscription =  stripeApi.CreateSupsctibe(customer.Id, idSubscriptionST, periodDays);
             subscribe_ST.CurrentPeriodEnd = subscription.CurrentPeriodEnd;
             subscribe_ST.CurrentPeriodStart = subscription.CurrentPeriodStart;
             subscribe_ST.DateCreated = subscription.Created;
@@ -655,7 +685,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SavevechInDb(idVech, vehiclwInformation);
         }
 
-        internal async void AddCommpany(string nameCommpany, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
+        internal async void AddCommpany(string nameCommpany, string emailCommpany, int IdSubscription, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
         {
             Commpany commpany = new Commpany()
             {
@@ -665,7 +695,8 @@ namespace WebDispacher.Service
                 Type = TypeCompany.NormalCompany
             };
             int id = _sqlEntityFramworke.AddCommpany(commpany);
-            InitStripeForCompany(nameCommpany, id);
+            Models.Subscription.Subscription subscription = GetSubscribeSTById(IdSubscription);
+            InitStripeForCompany(nameCommpany, emailCommpany, id, subscription.IdSubscriptionST, subscription.PeriodDays);
             _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
             await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
             if (IFTA != null)
@@ -677,6 +708,14 @@ namespace WebDispacher.Service
             await SaveDocCpmmpany(COI, "COI (certificate of insurance)", id.ToString());
             await SaveDocCpmmpany(permits, "Permits (optional OR, FL, NM)", id.ToString());
 
+        }
+
+        private Models.Subscription.Subscription GetSubscribeSTById(int idSubscription)
+        {
+            Models.Subscription.Subscription subscribeST = null;
+            List<Models.Subscription.Subscription> subscriptions = GetSubscription();
+            subscribeST = subscriptions.FirstOrDefault(s => s.Id == idSubscription);
+            return subscribeST;
         }
 
         internal void RemoveUserById(string idUser)

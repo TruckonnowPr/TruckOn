@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebDispacher.Mosels;
+using WebDispacher.Models;
 
 namespace WebDispacher.Service
 {
     public class StripeApi
     {
-        internal Customer CreateCustomer(string nameCommpany, int idCompany)
+        internal Customer CreateCustomer(string nameCommpany, int idCompany, string emailCommpany)
         {
             Customer customer = null;
             try
@@ -20,10 +20,11 @@ namespace WebDispacher.Service
                 {
                     Name = $"{nameCommpany}_{idCompany}",
                     Metadata = new Dictionary<string, string>()
-                {
-                    {"nameCommpany",  nameCommpany },
-                    {"idCompany", idCompany.ToString() }
-                }
+                    {
+                        {"nameCommpany",  nameCommpany },
+                        {"idCompany", idCompany.ToString() }
+                    },
+                    Email = emailCommpany,
                 };
                 customer = customerService.Create(customerOptions);
             }
@@ -34,7 +35,7 @@ namespace WebDispacher.Service
             return customer;
         }
 
-        internal Subscription CreateSupsctibe(string customer)
+        internal Subscription CreateSupsctibe(string customer, string idSubscriptionST, int periodDays)
         {
             Subscription subscription = null;
             try
@@ -46,15 +47,19 @@ namespace WebDispacher.Service
                     {
                         new SubscriptionItemOptions()
                         {
-                            Plan = "price_1H3j8FKfezfzRoxll5DR2VGl",
+                            Plan = idSubscriptionST,
                         }
                     },
-                    TrialPeriodDays = 30
+                    TrialPeriodDays = periodDays,
+                    
                 };
                 var subscriptionService = new Stripe.SubscriptionService();
                 subscription = subscriptionService.Create(subscriptionOptions);
             }
-            catch { }
+            catch (Exception eeee)
+            {
+
+            }
             return subscription;
         }
 

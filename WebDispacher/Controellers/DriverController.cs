@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using DaoModels.DAO.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebDispacher.Mosels.Driver;
+using WebDispacher.Models.Driver;
 using WebDispacher.Service;
 
 namespace WebDispacher.Controellers

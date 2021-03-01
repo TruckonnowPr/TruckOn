@@ -1,4 +1,4 @@
-﻿namespace WebDispacher.Mosels
+﻿namespace WebDispacher.Models
 {
     public class ResponseStripe
     {

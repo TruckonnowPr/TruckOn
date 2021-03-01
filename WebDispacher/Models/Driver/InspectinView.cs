@@ -1,4 +1,4 @@
-﻿namespace WebDispacher.Mosels.Driver
+﻿namespace WebDispacher.Models.Driver
 {
     public class InspectinView
     {

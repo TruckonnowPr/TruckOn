@@ -11,6 +11,20 @@
                                 <input type="text" name="nameCommpany" required>
                             </label>
                             <label for="">
+                                Email commpany
+                                <input type="email" name="emailCommpany" required>
+                            </label>
+                            <label for="">
+                                subscription <br />
+                                <select name="IdSubscription" required style="width:500px;">
+                                    <option value="">Choose a subscription</option>
+                                    @foreach (var subscription in ViewBag.Subscriptions)
+                                    {
+                                        <option value="@subscription.Id">@subscription.Name | @subscription.PeriodDays days | @subscription.Price </option>
+                                    }
+                                </select>
+                            </label>
+                            <label for="">
                                 MC number confirmation
                                 <input type="file" name="MCNumberConfirmation" accept="application/pdf, image/jpeg, image/jpg" required><p>You can upload files only in pdf, jpg and jepg</p>
                             </label>

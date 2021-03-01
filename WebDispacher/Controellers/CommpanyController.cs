@@ -69,6 +69,7 @@ namespace WebDispacher.Controellers
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
+                    ViewBag.Subscriptions = managerDispatch.GetSubscription();
                     actionResult = View("CreateCommpany");
                 }
                 else
@@ -89,8 +90,8 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("CreateCompany")]
-        public IActionResult CreateCompany(string nameCommpany, List<IFormFile> MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, 
-            IFormFile permits)
+        public IActionResult CreateCompany(string nameCommpany, string emailCommpany, int IdSubscription, List<IFormFile> MCNumberConfirmation, IFormFile IFTA, IFormFile KYU,
+            IFormFile logbookPapers, IFormFile COI, IFormFile permits)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "BaseCommpany";
@@ -103,7 +104,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
-                    managerDispatch.AddCommpany(nameCommpany, MCNumberConfirmation[0], IFTA, KYU, logbookPapers, COI, permits);
+                    managerDispatch.AddCommpany(nameCommpany, emailCommpany, IdSubscription, MCNumberConfirmation[0], IFTA, KYU, logbookPapers, COI, permits);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Companies");
                 }
                 else
