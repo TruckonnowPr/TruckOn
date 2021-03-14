@@ -60,14 +60,6 @@ namespace WebDispacher.Service
             {
 
             }
-
-            var options = new PaymentIntentCreateOptions
-            {
-                Amount = 2000,
-                Currency = "usd",
-            };
-            var service = new PaymentIntentService();
-            service.Create(options);
             return subscription;
         }
 
@@ -172,6 +164,57 @@ namespace WebDispacher.Service
                 responseStripe.IsError = true;
             }
             return responseStripe;
+        }
+
+        internal void CanceleSubscribe(string idSubscribeST)
+        {
+            var service = new SubscriptionService();
+            service.Cancel(idSubscribeST, null);
+        }
+
+        internal Subscription CreateSupsctibeNext(string idCustomerST, string idPrice, string periodDays, DateTime currentPeriodEnd)
+        {
+            Subscription subscription = null;
+            try
+            {
+                SubscriptionCreateOptions subscriptionOptions = new SubscriptionCreateOptions
+                {
+                    Customer = idCustomerST,
+                    Items = new List<SubscriptionItemOptions>()
+                    {
+                        new SubscriptionItemOptions()
+                        {
+                            Plan = idPrice,
+                        }
+                    },
+                    TrialPeriodDays = (currentPeriodEnd.Date - DateTime.Now).Days + 1,
+
+                };
+                var subscriptionService = new Stripe.SubscriptionService();
+                subscription = subscriptionService.Create(subscriptionOptions);
+            }
+            catch (Exception eeee)
+            {
+
+            }
+            return subscription;
+        }
+
+        internal void UpdateSubscribe(string idSubscribeST)
+        {
+            try
+            {
+                var options = new SubscriptionUpdateOptions
+                {
+                    CancelAtPeriodEnd = true,
+                };
+                var service = new SubscriptionService();
+                service.Update(idSubscribeST, options); 
+            }
+            catch
+            {
+
+            }
         }
 
         internal ResponseStripe AttachPayMethod(string idPaymentMethod, string idCustomerST)

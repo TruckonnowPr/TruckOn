@@ -52,6 +52,18 @@ namespace WebDispacher.Service
             if(!response.IsError)
             {
                 subscriptions = response.Content as Stripe.Subscription;
+                if(subscriptions.CancelAtPeriodEnd && subscriptions.CurrentPeriodEnd < DateTime.Now)
+                {
+                    Subscribe_ST subscribe_STNext = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany, ActiveType.NextActive);
+                    if(subscribe_STNext != null)
+                    {
+                        _sqlEntityFramworke.UpdateTypeActiveSubById(subscribe_ST.Id, ActiveType.Inactive);
+                        _sqlEntityFramworke.UpdateTypeActiveSubById(subscribe_STNext.Id, ActiveType.Active);
+                        subscribe_ST = subscribe_STNext;
+                        response = stripeApi.GetSubscriptionSTById(subscribe_ST.IdSubscribeST);
+                        subscriptions = response.Content as Stripe.Subscription;
+                    }
+                }
                 Stripe.Price price = subscriptions.Items.Data[0].Price;
                 Models.Subscription.Subscription subscriptionST = GetSubscriptions().FirstOrDefault(s => s.IdSubscriptionST == price.Id);
                 subscriptionCompanyDTO.EndPeriod = subscriptions.CurrentPeriodEnd.ToShortDateString();
@@ -83,6 +95,32 @@ namespace WebDispacher.Service
         public void ArchvedOrder(string id)
         {
             _sqlEntityFramworke.RecurentOnArchived(id);
+        }
+
+        internal void SelectSub(string idPrice, string idCompany, string priodDays)
+        {
+            Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
+            Subscribe_ST subscribe_ST = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany);
+            stripeApi.UpdateSubscribe(subscribe_ST.IdSubscribeST);
+            ResponseStripe responseStripe = stripeApi.GetSubscriptionSTById(subscribe_ST.IdSubscribeST);
+            if(!responseStripe.IsError)
+            {
+                Stripe.Subscription subscription = responseStripe.Content as Stripe.Subscription;
+                Subscribe_ST subscribe_STNext = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany, ActiveType.NextActive);
+                if (subscribe_STNext != null)
+                {
+                    stripeApi.CanceleSubscribe(subscribe_STNext.IdSubscribeST);
+                    _sqlEntityFramworke.UpdateTypeActiveSubById(subscribe_STNext.Id, ActiveType.Inactive);
+                }
+                subscribe_STNext = new Subscribe_ST();
+                Stripe.Subscription subscriptionNext = stripeApi.CreateSupsctibeNext(customer_ST.IdCustomerST, idPrice, priodDays, subscription.CurrentPeriodEnd);
+                subscribe_STNext.IdCustomerST = subscriptionNext.CustomerId;
+                subscribe_STNext.IdSubscribeST = subscriptionNext.Id;
+                subscribe_STNext.IdCompany = Convert.ToInt32(idCompany);
+                subscribe_STNext.Status = subscriptionNext.Status;
+                subscribe_STNext.ActiveType = ActiveType.NextActive;
+                _sqlEntityFramworke.SaveSubscribeST(subscribe_STNext);
+            }
         }
 
         internal List<PaymentMethod> GetpaymentMethod(string idCompany)

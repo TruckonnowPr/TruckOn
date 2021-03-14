@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DaoModels.DAO.Enum;
 
 namespace DaoModels.DAO.Models
 {
@@ -9,5 +9,6 @@ namespace DaoModels.DAO.Models
         public string IdCustomerST { get; set; }
         public string IdSubscribeST { get; set; }
         public string Status { get; set; }
+        public ActiveType ActiveType { get; set; }
     }
 }

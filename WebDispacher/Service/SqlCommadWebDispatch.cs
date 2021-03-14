@@ -48,9 +48,9 @@ namespace WebDispacher.Dao
             return context.Dispatchers.FirstOrDefault(d => d.key != null && d.key == key);
         }
 
-        internal Subscribe_ST GetSubscriptionIdCompany(string idCompany)
+        internal Subscribe_ST GetSubscriptionIdCompany(string idCompany, ActiveType activeType = ActiveType.Active)
         {
-            return context.Subscribe_STs.FirstOrDefault(s => s.IdCompany.ToString() == idCompany);
+            return context.Subscribe_STs.FirstOrDefault(s => s.IdCompany.ToString() == idCompany && s.ActiveType == activeType);
         }
 
         private async void InitUserOne()
@@ -98,6 +98,16 @@ namespace WebDispacher.Dao
             {
 
             } 
+        }
+
+        internal void UpdateTypeActiveSubById(int idSub, ActiveType activeType)
+        {
+            Subscribe_ST subscribe_ST = context.Subscribe_STs.FirstOrDefault(s => s.Id == idSub);
+            if(subscribe_ST != null)
+            {
+                subscribe_ST.ActiveType = activeType;
+                context.SaveChanges();
+            }
         }
 
         internal List<Dispatcher> GetDispatchersDB(int idCompany)
