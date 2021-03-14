@@ -1,0 +1,21 @@
+﻿<div class="admin Billing">
+    <div class="container">
+        <h1>@ViewBag.Subscription.Name</h1>
+        <div class="content">
+            <p><strong>Price: </strong>@ViewBag.Subscription.Price$</p>
+            <p><strong>Period: </strong>@ViewBag.Subscription.StartPeriod - @ViewBag.Subscription.EndPeriod</p>
+            <p><strong>Total days subscriptions: </strong>@ViewBag.Subscription.PeriodCount days</p>
+            <p><strong>Next Invoce: </strong>@ViewBag.Subscription.NextInvoce </p>
+            <p><strong>Status: </strong>@ViewBag.Subscription.Status </p>
+        </div>
+    </div>
+</div>
+
+<style>
+   .content {
+       display: flex;
+       justify-content: space-between;
+       flex-wrap: wrap;
+       flex-flow: column;
+   }
+</style>

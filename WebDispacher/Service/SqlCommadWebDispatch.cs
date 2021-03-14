@@ -48,6 +48,11 @@ namespace WebDispacher.Dao
             return context.Dispatchers.FirstOrDefault(d => d.key != null && d.key == key);
         }
 
+        internal Subscribe_ST GetSubscriptionIdCompany(string idCompany)
+        {
+            return context.Subscribe_STs.FirstOrDefault(s => s.IdCompany.ToString() == idCompany);
+        }
+
         private async void InitUserOne()
         {
             try
@@ -666,7 +671,7 @@ namespace WebDispacher.Dao
 
         internal void RemoveSubscribeST(Customer_ST customer_ST)
         {
-            Subscribe_ST subscribe_ST = context.Subscribe_STs.FirstOrDefault(s => s.IdCustomer == customer_ST.IdCustomerST);
+            Subscribe_ST subscribe_ST = context.Subscribe_STs.FirstOrDefault(s => s.IdCustomerST == customer_ST.IdCustomerST);
             if(subscribe_ST != null)
             {
                 context.Subscribe_STs.Remove(subscribe_ST);

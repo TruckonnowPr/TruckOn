@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebDispacher.Dao;
 using WebDispacher.Models;
+using WebDispacher.Models.Subscription;
 using WebDispacher.Notify;
 using WebDispacher.Service.EmailSmtp;
 using WebDispacher.Service.TransportationManager;
@@ -40,6 +41,28 @@ namespace WebDispacher.Service
         public async Task<List<Driver>> GetDrivers(string idCompany)
         {
             return await _sqlEntityFramworke.GetDriversInDb(idCompany);
+        }
+
+        internal SubscriptionCompanyDTO GetSubscription(string idCompany)
+        {
+            SubscriptionCompanyDTO subscriptionCompanyDTO = new SubscriptionCompanyDTO();
+            Subscribe_ST subscribe_ST = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany);
+            ResponseStripe response = stripeApi.GetSubscriptionSTById(subscribe_ST.IdSubscribeST);
+            Stripe.Subscription subscriptions = null;
+            if(!response.IsError)
+            {
+                subscriptions = response.Content as Stripe.Subscription;
+                Stripe.Price price = subscriptions.Items.Data[0].Price;
+                Models.Subscription.Subscription subscriptionST = GetSubscriptions().FirstOrDefault(s => s.IdSubscriptionST == price.Id);
+                subscriptionCompanyDTO.EndPeriod = subscriptions.CurrentPeriodEnd.ToShortDateString();
+                subscriptionCompanyDTO.StartPeriod = subscriptions.CurrentPeriodStart.ToShortDateString();
+                subscriptionCompanyDTO.Name = subscriptionST.Name;
+                subscriptionCompanyDTO.NextInvoce = subscriptions.CurrentPeriodEnd.ToShortDateString();
+                subscriptionCompanyDTO.PeriodCount = (subscriptions.CurrentPeriodEnd - subscriptions.CurrentPeriodStart).Days.ToString();
+                subscriptionCompanyDTO.Price = (price.UnitAmount / 100).ToString();
+                subscriptionCompanyDTO.Status = subscriptions.Status;
+            }
+            return subscriptionCompanyDTO;
         }
 
         //public async Task<List<Driver>> GetDrivers()
@@ -92,7 +115,7 @@ namespace WebDispacher.Service
             return tr is Truck ? TypeTransportVehikle.Truck.ToString() : TypeTransportVehikle.Trailer.ToString();
         }
 
-        internal List<Models.Subscription.Subscription> GetSubscription()
+        internal List<Models.Subscription.Subscription> GetSubscriptions()
         {
             List<Models.Subscription.Subscription> subscriptions = new List<Models.Subscription.Subscription>();
             subscriptions.Add(new Models.Subscription.Subscription()
@@ -381,12 +404,10 @@ namespace WebDispacher.Service
             customer_ST.IdCustomerST = customer.Id;
             customer_ST.NameCompany = nameCommpany;
             customer_ST.NameCompanyST = customer.Name;
-            Subscription subscription =  stripeApi.CreateSupsctibe(customer.Id, idSubscriptionST, periodDays);
-            subscribe_ST.CurrentPeriodEnd = subscription.CurrentPeriodEnd;
-            subscribe_ST.CurrentPeriodStart = subscription.CurrentPeriodStart;
-            subscribe_ST.DateCreated = subscription.Created;
-            subscribe_ST.IdCustomer = subscription.CustomerId;
-            subscribe_ST.IdSubscribe = subscription.Id;
+            Stripe.Subscription subscription =  stripeApi.CreateSupsctibe(customer.Id, idSubscriptionST, periodDays);
+            subscribe_ST.IdCustomerST = subscription.CustomerId;
+            subscribe_ST.IdSubscribeST = subscription.Id;
+            subscribe_ST.IdCompany = idCompany;
             subscribe_ST.Status = subscription.Status;
             _sqlEntityFramworke.SaveCustomerST(customer_ST);
             _sqlEntityFramworke.SaveSubscribeST(subscribe_ST);
@@ -713,7 +734,7 @@ namespace WebDispacher.Service
         private Models.Subscription.Subscription GetSubscribeSTById(int idSubscription)
         {
             Models.Subscription.Subscription subscribeST = null;
-            List<Models.Subscription.Subscription> subscriptions = GetSubscription();
+            List<Models.Subscription.Subscription> subscriptions = GetSubscriptions();
             subscribeST = subscriptions.FirstOrDefault(s => s.Id == idSubscription);
             return subscribeST;
         }

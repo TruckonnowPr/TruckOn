@@ -69,7 +69,7 @@ namespace WebDispacher.Controellers
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
-                    ViewBag.Subscriptions = managerDispatch.GetSubscription();
+                    ViewBag.Subscriptions = managerDispatch.GetSubscriptions();
                     actionResult = View("CreateCommpany");
                 }
                 else

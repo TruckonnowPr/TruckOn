@@ -60,7 +60,36 @@ namespace WebDispacher.Service
             {
 
             }
+
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 2000,
+                Currency = "usd",
+            };
+            var service = new PaymentIntentService();
+            service.Create(options);
             return subscription;
+        }
+
+        internal ResponseStripe GetSubscriptionSTById(string idSubscribeST)
+        {
+            ResponseStripe responseStripe = new ResponseStripe()
+            {
+                Content = null,
+                IsError = false,
+                Message = ""
+            };
+            try
+            {
+                var service = new SubscriptionService();
+                responseStripe.Content = service.Get(idSubscribeST);
+            } 
+            catch (Exception e)
+            {
+                responseStripe.Message = e.Message;
+                responseStripe.IsError = true;
+            }
+            return responseStripe;
         }
 
         internal List<PaymentMethod> GetPaymentMethodsByCustomerST(string idCustomerST)
