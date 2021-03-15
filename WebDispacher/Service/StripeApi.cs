@@ -140,7 +140,7 @@ namespace WebDispacher.Service
                         Number = number,
                         ExpMonth = expMM,
                         ExpYear = expYYYY,
-                        Cvc = cvc
+                        Cvc = cvc,
                     },
                     Metadata = new Dictionary<string, string>
                     {
@@ -149,7 +149,7 @@ namespace WebDispacher.Service
                         { "expMM", expMM.ToString() },
                         { "expYYYY", expYYYY.ToString() },
                         { "cvc", cvc },
-                        {"default_payment_method", "unchecked" }
+                        {"default_payment_method", "checked" }
                     }
 
                 };
@@ -200,13 +200,13 @@ namespace WebDispacher.Service
             return subscription;
         }
 
-        internal void UpdateSubscribe(string idSubscribeST)
+        internal void UpdateSubscribeCancelAtPeriodEnd(string idSubscribeST, bool cancelAtPeriodEnd)
         {
             try
             {
                 var options = new SubscriptionUpdateOptions
                 {
-                    CancelAtPeriodEnd = true,
+                    CancelAtPeriodEnd = cancelAtPeriodEnd,
                 };
                 var service = new SubscriptionService();
                 service.Update(idSubscribeST, options); 
@@ -215,6 +215,39 @@ namespace WebDispacher.Service
             {
 
             }
+        }
+
+        internal ResponseStripe CreateSupsctibe(string idPrice, Customer_ST customer_ST)
+        {
+            ResponseStripe responseStripe = new ResponseStripe()
+            {
+                Message = "",
+                IsError = false,
+                Content = null,
+            };
+            try
+            {
+                SubscriptionCreateOptions subscriptionOptions = new SubscriptionCreateOptions
+                {
+                    Customer = customer_ST.IdCustomerST,
+                    Items = new List<SubscriptionItemOptions>()
+                    {
+                        new SubscriptionItemOptions()
+                        {
+                            Plan = idPrice,
+                        }
+                    },
+
+                };
+                var subscriptionService = new Stripe.SubscriptionService();
+                responseStripe.Content = subscriptionService.Create(subscriptionOptions);
+            }
+            catch (Exception e)
+            {
+                responseStripe.IsError = true;
+                responseStripe.Message = e.Message;
+            }
+            return responseStripe;
         }
 
         internal ResponseStripe AttachPayMethod(string idPaymentMethod, string idCustomerST)

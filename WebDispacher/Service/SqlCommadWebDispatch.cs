@@ -200,6 +200,16 @@ namespace WebDispacher.Dao
             }
         }
 
+        internal void UpdateTypeInactiveByIdCompany(string idCompany)
+        {
+            List<Subscribe_ST> subscribe_STs = context.Subscribe_STs.Where(s => s.IdCompany.ToString() == idCompany && s.ActiveType != ActiveType.Inactive).ToList();
+            foreach(Subscribe_ST subscribe_ST in subscribe_STs)
+            {
+                subscribe_ST.ActiveType = ActiveType.Inactive;
+            }
+            context.SaveChanges();
+        }
+
         internal int AddProfileDb(ProfileSetting profileSetting)
         {
             context.ProfileSettings.Add(profileSetting);

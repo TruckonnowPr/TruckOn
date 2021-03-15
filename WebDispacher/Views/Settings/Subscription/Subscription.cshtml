@@ -1,15 +1,32 @@
 ﻿<div class="admin Billing">
     <div class="container">
-        <h1>@ViewBag.Subscription.Name</h1>
+        <p style="color: red; text-align: center; font-size: 15px">
+            @ViewData["TextErrorSub"]
+        </p>
+        <h1>Current Subscription</h1>
+        <h2>@ViewBag.Subscription.Name</h2>
         <div class="content">
             <p><strong>Price: </strong>@ViewBag.Subscription.Price$</p>
             <p><strong>Period: </strong>@ViewBag.Subscription.StartPeriod - @ViewBag.Subscription.EndPeriod</p>
             <p><strong>Total days subscriptions: </strong>@ViewBag.Subscription.PeriodCount days</p>
             <p><strong>Next Invoce: </strong>@ViewBag.Subscription.NextInvoce </p>
             <p><strong>Status: </strong>@ViewBag.Subscription.Status </p>
-            <a href="~/Settings/Subscription/All" style="color:#69eb2c;text-align: center;width: 400px" class="btn2">Choose another subscription</a>
+            <a href="~/Settings/Subscription/All" style="color:#69eb2c;text-align: center;width: 350px" class="btn2">Choose another subscription</a>
+            <hr />
             <hr />
         </div>
+        @if (ViewBag.SubscriptionNext != null)
+        {
+            <h1>Next Subscription</h1>
+            <h2>@ViewBag.SubscriptionNext.Name</h2>
+            <div class="content">
+                <p><strong>Price: </strong>@ViewBag.SubscriptionNext.Price$</p>
+                <p><strong>Period: </strong>@ViewBag.SubscriptionNext.StartPeriod - @ViewBag.SubscriptionNext.EndPeriod</p>
+                <p><strong>Total days subscriptions: </strong>@ViewBag.SubscriptionNext.PeriodCount days</p>
+                <p><strong>Next Invoce: </strong>@ViewBag.SubscriptionNext.NextInvoce </p>
+            </div>
+            <a href="~/Settings/Subscription/CancelNext" style="color:#69eb2c;text-align: center;width: 200px" class="btn2">Cancel</a>
+        }
     </div>
 </div>
 
