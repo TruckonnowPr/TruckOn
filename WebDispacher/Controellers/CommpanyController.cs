@@ -14,7 +14,6 @@ namespace WebDispacher.Controellers
 
         [HttpGet]
         [Route("Companies")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult GetCompanies()
         {
             IActionResult actionResult = null;
@@ -69,7 +68,7 @@ namespace WebDispacher.Controellers
                 {
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
-                    ViewBag.Subscriptions = managerDispatch.GetSubscriptions();
+                    //ViewBag.Subscriptions = managerDispatch.GetSubscriptions();
                     actionResult = View("CreateCommpany");
                 }
                 else
@@ -90,7 +89,7 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("CreateCompany")]
-        public IActionResult CreateCompany(string nameCommpany, string emailCommpany, int IdSubscription, List<IFormFile> MCNumberConfirmation, IFormFile IFTA, IFormFile KYU,
+        public IActionResult CreateCompany(string nameCommpany, string emailCommpany, List<IFormFile> MCNumberConfirmation, IFormFile IFTA, IFormFile KYU,
             IFormFile logbookPapers, IFormFile COI, IFormFile permits)
         {
             IActionResult actionResult = null;
@@ -104,7 +103,7 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyId", out idCompany);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Company"))
                 {
-                    managerDispatch.AddCommpany(nameCommpany, emailCommpany, IdSubscription, MCNumberConfirmation[0], IFTA, KYU, logbookPapers, COI, permits);
+                    managerDispatch.AddCommpany(nameCommpany, emailCommpany, MCNumberConfirmation[0], IFTA, KYU, logbookPapers, COI, permits);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Company/Companies");
                 }
                 else

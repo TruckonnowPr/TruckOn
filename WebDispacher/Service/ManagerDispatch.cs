@@ -31,6 +31,7 @@ namespace WebDispacher.Service
         {
             _sqlEntityFramworke = new SqlCommadWebDispatch();
             stripeApi = new StripeApi();
+            //stripeApi.UpdateSupsctibe(10, "si_JL4mcwD3l5akXr");
         }
 
         internal Dispatcher CheckKeyDispatcher(string key)
@@ -498,7 +499,7 @@ namespace WebDispacher.Service
             return (Trailer)_sqlEntityFramworke.GetTrailerById(idTrailer);
         }
 
-        internal void InitStripeForCompany(string nameCommpany, string emailCommpany, int idCompany, string idSubscriptionST, int periodDays)
+        internal void InitStripeForCompany(string nameCommpany, string emailCommpany, int idCompany)
         {
             Customer_ST customer_ST = new Customer_ST();
             Subscribe_ST subscribe_ST = new Subscribe_ST();
@@ -508,7 +509,7 @@ namespace WebDispacher.Service
             customer_ST.IdCustomerST = customer.Id;
             customer_ST.NameCompany = nameCommpany;
             customer_ST.NameCompanyST = customer.Name;
-            Stripe.Subscription subscription = stripeApi.CreateSupsctibe(customer.Id, idSubscriptionST, periodDays);
+            Stripe.Subscription subscription = stripeApi.CreateSupsctibe(customer.Id, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
             subscribe_ST.IdCustomerST = subscription.CustomerId;
             subscribe_ST.IdSubscribeST = subscription.Id;
             subscribe_ST.IdCompany = idCompany;
@@ -810,7 +811,7 @@ namespace WebDispacher.Service
             _sqlEntityFramworke.SavevechInDb(idVech, vehiclwInformation);
         }
 
-        internal async void AddCommpany(string nameCommpany, string emailCommpany, int IdSubscription, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
+        internal async void AddCommpany(string nameCommpany, string emailCommpany, IFormFile MCNumberConfirmation, IFormFile IFTA, IFormFile KYU, IFormFile logbookPapers, IFormFile COI, IFormFile permits)
         {
             Commpany commpany = new Commpany()
             {
@@ -820,8 +821,7 @@ namespace WebDispacher.Service
                 Type = TypeCompany.NormalCompany
             };
             int id = _sqlEntityFramworke.AddCommpany(commpany);
-            Models.Subscription.Subscription subscription = GetSubscribeSTById(IdSubscription);
-            InitStripeForCompany(nameCommpany, emailCommpany, id, subscription.IdSubscriptionST, subscription.PeriodDays);
+            InitStripeForCompany(nameCommpany, emailCommpany, id);
             _sqlEntityFramworke.CreateUserForCompanyId(id, nameCommpany, CreateToken(nameCommpany, new Random().Next(10, 1000).ToString()));
             await SaveDocCpmmpany(MCNumberConfirmation, "MC number confirmation", id.ToString());
             if (IFTA != null)

@@ -24,18 +24,18 @@ namespace WebDispacher.Service
                         {"nameCommpany",  nameCommpany },
                         {"idCompany", idCompany.ToString() }
                     },
-                    Email = emailCommpany,
+                    //Email = emailCommpany,
                 };
                 customer = customerService.Create(customerOptions);
             }
-            catch
+            catch(Exception e)
             {
 
             }
             return customer;
         }
 
-        internal Subscription CreateSupsctibe(string customer, string idSubscriptionST, int periodDays)
+        internal Subscription CreateSupsctibe(string customer, int periodDays)
         {
             Subscription subscription = null;
             try
@@ -47,7 +47,7 @@ namespace WebDispacher.Service
                     {
                         new SubscriptionItemOptions()
                         {
-                            Plan = idSubscriptionST,
+                            Plan = "price_1IiO1sKfezfzRoxlhqBOEajy",
                         }
                     },
                     TrialPeriodDays = periodDays,
@@ -55,6 +55,26 @@ namespace WebDispacher.Service
                 };
                 var subscriptionService = new Stripe.SubscriptionService();
                 subscription = subscriptionService.Create(subscriptionOptions);
+            }
+            catch (Exception eeee)
+            {
+
+            }
+            return subscription;
+        }
+
+        internal Subscription UpdateSupsctibe(int countDriver, string idItem)
+        {
+            Subscription subscription = null;
+            try
+            {
+                var options = new SubscriptionItemUpdateOptions
+                {
+                    Quantity = countDriver
+
+                };
+                var service = new SubscriptionItemService();
+                service.Update(idItem, options);
             }
             catch (Exception eeee)
             {
