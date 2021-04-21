@@ -392,7 +392,7 @@ namespace WebDispacher.Controellers
                     {
                         experience = experience.Remove(experience.Length - 2);
                     }
-                    managerDispatch.RemoveDrive(id, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, terminated, experience, description, dotViolations);
+                    managerDispatch.RemoveDrive(id, idCompany, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, terminated, experience, description, dotViolations);
                     actionResult = Redirect($"{Config.BaseReqvesteUrl}/Driver/Drivers");
                 }
                 else

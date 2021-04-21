@@ -28,7 +28,6 @@ namespace WebDispacher.Controellers.Settings
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewData["TextErrorSub"] = errorText;
                     ViewBag.Subscription = managerDispatch.GetSubscription(idCompany);
-                    ViewBag.SubscriptionNext = managerDispatch.GetSubscriptionNext(idCompany);
                     actionResult = View("~/Views/Settings/Subscription/Subscription.cshtml");
                 }
                 else

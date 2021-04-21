@@ -374,9 +374,9 @@ namespace WebDispacher.Dao
             return commpany.Id;
         }
 
-        internal List<Driver> GetDriversByIdCompany(string id)
+        internal List<Driver> GetDriversByIdCompany(string idCompany)
         {
-            return context.Drivers.Where(d => !d.IsFired && d.CompanyId.ToString() == id).ToList();
+            return context.Drivers.Where(d => !d.IsFired && d.CompanyId.ToString() == idCompany).ToList();
         }
 
         internal void RemoveCompanyDb(string id)

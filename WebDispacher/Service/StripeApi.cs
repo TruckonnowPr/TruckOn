@@ -24,7 +24,7 @@ namespace WebDispacher.Service
                         {"nameCommpany",  nameCommpany },
                         {"idCompany", idCompany.ToString() }
                     },
-                    //Email = emailCommpany,
+                    Email = emailCommpany,
                 };
                 customer = customerService.Create(customerOptions);
             }
@@ -47,7 +47,8 @@ namespace WebDispacher.Service
                     {
                         new SubscriptionItemOptions()
                         {
-                            Plan = "price_1IiO1sKfezfzRoxlhqBOEajy",
+                            Plan = "price_1IiO19KfezfzRoxlm1wjJ31N",
+                            Quantity = 0,
                         }
                     },
                     TrialPeriodDays = periodDays,

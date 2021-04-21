@@ -8,6 +8,7 @@ namespace DaoModels.DAO.Models
         public int IdCompany { get; set; }
         public string IdCustomerST { get; set; }
         public string IdSubscribeST { get; set; }
+        public string IdItemSubscribeST { get; set; }
         public string Status { get; set; }
         public ActiveType ActiveType { get; set; }
     }

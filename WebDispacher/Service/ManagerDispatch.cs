@@ -31,7 +31,7 @@ namespace WebDispacher.Service
         {
             _sqlEntityFramworke = new SqlCommadWebDispatch();
             stripeApi = new StripeApi();
-            //stripeApi.UpdateSupsctibe(10, "si_JL4mcwD3l5akXr");
+            //stripeApi.UpdateSupsctibe(0, "si_JL4mcwD3l5akXr");
         }
 
         internal Dispatcher CheckKeyDispatcher(string key)
@@ -53,58 +53,17 @@ namespace WebDispacher.Service
             if(!response.IsError)
             {
                 subscriptions = response.Content as Stripe.Subscription;
-                if(subscriptions.CancelAtPeriodEnd && subscriptions.CurrentPeriodEnd < DateTime.Now)
-                {
-                    Subscribe_ST subscribe_STNext = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany, ActiveType.NextActive);
-                    if(subscribe_STNext != null)
-                    {
-                        _sqlEntityFramworke.UpdateTypeActiveSubById(subscribe_ST.Id, ActiveType.Inactive);
-                        _sqlEntityFramworke.UpdateTypeActiveSubById(subscribe_STNext.Id, ActiveType.Active);
-                        subscribe_ST = subscribe_STNext;
-                        response = stripeApi.GetSubscriptionSTById(subscribe_ST.IdSubscribeST);
-                        subscriptions = response.Content as Stripe.Subscription;
-                    }
-                }
                 Stripe.Price price = subscriptions.Items.Data[0].Price;
-                Models.Subscription.Subscription subscriptionST = GetSubscriptions().FirstOrDefault(s => s.IdSubscriptionST == price.Id);
                 subscriptionCompanyDTO.EndPeriod = subscriptions.CurrentPeriodEnd.ToShortDateString();
                 subscriptionCompanyDTO.StartPeriod = subscriptions.CurrentPeriodStart.ToShortDateString();
-                subscriptionCompanyDTO.Name = subscriptionST.Name;
+                subscriptionCompanyDTO.Name = "25$ from driver";
                 subscriptionCompanyDTO.NextInvoce = subscriptions.CurrentPeriodEnd.ToShortDateString();
                 subscriptionCompanyDTO.PeriodCount = (subscriptions.CurrentPeriodEnd - subscriptions.CurrentPeriodStart).Days.ToString();
-                subscriptionCompanyDTO.Price = (price.UnitAmount / 100).ToString();
+                subscriptionCompanyDTO.Price = (price.UnitAmount * subscriptions.Items.Data[0].Quantity / 100).ToString();
                 subscriptionCompanyDTO.Status = subscriptions.Status;
             }
             return subscriptionCompanyDTO;
         }
-
-        internal SubscriptionCompanyDTO GetSubscriptionNext(string idCompany)
-        {
-            SubscriptionCompanyDTO subscriptionCompanyDTO = null;
-            Subscribe_ST subscribe_ST = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany, ActiveType.NextActive);
-            ResponseStripe response = stripeApi.GetSubscriptionSTById(subscribe_ST?.IdSubscribeST);
-            Stripe.Subscription subscriptions = null;
-            if (response != null && !response.IsError)
-            {
-                subscriptionCompanyDTO = new SubscriptionCompanyDTO();
-                subscriptions = response.Content as Stripe.Subscription;
-                Stripe.Price price = subscriptions.Items.Data[0].Price;
-                Models.Subscription.Subscription subscriptionST = GetSubscriptions().FirstOrDefault(s => s.IdSubscriptionST == price.Id);
-                subscriptionCompanyDTO.EndPeriod = subscriptions.CurrentPeriodEnd.AddDays(subscriptionST.PeriodDays).ToShortDateString();
-                subscriptionCompanyDTO.StartPeriod = subscriptions.CurrentPeriodEnd.ToShortDateString();
-                subscriptionCompanyDTO.Name = subscriptionST.Name;
-                subscriptionCompanyDTO.NextInvoce = subscriptions.CurrentPeriodEnd.ToShortDateString();
-                subscriptionCompanyDTO.PeriodCount = subscriptionST.PeriodDays.ToString();
-                subscriptionCompanyDTO.Price = (price.UnitAmount / 100).ToString();
-                subscriptionCompanyDTO.Status = subscriptions.Status;
-            }
-            return subscriptionCompanyDTO;
-        }
-
-        //public async Task<List<Driver>> GetDrivers()
-        //{
-        //    return await _sqlEntityFramworke.GetDriversInDb();
-        //}
 
         public void DeletedOrder(string id)
         {
@@ -511,6 +470,7 @@ namespace WebDispacher.Service
             customer_ST.NameCompanyST = customer.Name;
             Stripe.Subscription subscription = stripeApi.CreateSupsctibe(customer.Id, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
             subscribe_ST.IdCustomerST = subscription.CustomerId;
+            subscribe_ST.IdItemSubscribeST = subscription.Items.Data[0].Id;
             subscribe_ST.IdSubscribeST = subscription.Id;
             subscribe_ST.IdCompany = idCompany;
             subscribe_ST.Status = subscription.Status;
@@ -863,7 +823,7 @@ namespace WebDispacher.Service
                 List<Driver> drivers = _sqlEntityFramworke.GetDriversByIdCompany(idCompany);
                 foreach(Driver driver in drivers)
                 {
-                    RemoveDrive(driver.Id, "", "", "", "", "", "", "", "", "", "", "", "The site administration deleted the company in which this driver worked", "");
+                    RemoveDrive(driver.Id, idCompany, "", "", "", "", "", "", "", "", "", "", "", "The site administration deleted the company in which this driver worked", "");
                 }
             });
         }
@@ -1312,6 +1272,18 @@ namespace WebDispacher.Service
             {
                 await SaveDocDriver(drugTestResultsDo, "Drug test results", id.ToString());
             }
+            Task.Run(() => UpdatePlanSubscribe(idCompany));
+        }
+
+        private void UpdatePlanSubscribe(string idCompany)
+        {
+            TypeCompany typeCurrentCompany = _sqlEntityFramworke.GetCompanyById(idCompany).Type;
+            if(typeCurrentCompany != TypeCompany.BaseCommpany)
+            {
+                int counDriver =  _sqlEntityFramworke.GetDriversByIdCompany(idCompany).Count;
+                string idItemSubscribe = _sqlEntityFramworke.GetSubscriptionIdCompany(idCompany).IdItemSubscribeST;
+                stripeApi.UpdateSupsctibe(counDriver, idItemSubscribe);
+            }
         }
 
         internal void SavePath(string id, string path)
@@ -1324,10 +1296,11 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetInspectionTrucksDb(idDriver, idTruck, idTrailer, date);
         }
 
-        public void RemoveDrive(int id, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
+        public void RemoveDrive(int id, string idCompany, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
             string paymentHandling, string alcoholTendency, string drugTendency, string terminated, string experience, string description, string dotViolations)
         {
             _sqlEntityFramworke.RemoveDriveInDb(id, numberOfAccidents, english, returnedEquipmen, workingEfficiency, eldKnowledge, drivingSkills, paymentHandling, alcoholTendency, drugTendency, terminated, experience, description, dotViolations);
+            Task.Run(() => UpdatePlanSubscribe(idCompany));
         }
 
         internal async Task<string> GetDocument(string id)
