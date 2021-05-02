@@ -27,6 +27,11 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Extension"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     List<Dispatcher> dispatchers = managerDispatch.GetDispatchers(Convert.ToInt32(idCompany));
@@ -65,6 +70,11 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Extension"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     actionResult = View("~/Views/Settings/Extension/AddDispatch.cshtml");
@@ -173,6 +183,11 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/Extension"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     Dispatcher dispatcher = managerDispatch.GetDispatcher(idDispatch);

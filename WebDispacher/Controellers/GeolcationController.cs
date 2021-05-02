@@ -26,6 +26,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Geolcation"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.Drivers = await managerDispatch.GetDrivers(idCompany);

@@ -24,6 +24,11 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/User"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     ViewBag.Users = managerDispatch.GetUsers(Convert.ToInt32(idCompany));
@@ -62,6 +67,11 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Setings/User"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.NameCompany = companyName;
                     actionResult = View("~/Views/Settings/CreateUser.cshtml");

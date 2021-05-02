@@ -52,6 +52,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if(isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
@@ -229,6 +234,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
@@ -297,6 +307,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
@@ -349,6 +364,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
@@ -401,6 +421,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Shipping> shippings = null;
@@ -470,6 +495,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Shipping> shippings = new List<Shipping>();
@@ -530,6 +560,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
@@ -582,6 +617,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     await Task.WhenAll(
@@ -702,6 +742,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Dashbord"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     if (id != "" && id != null)

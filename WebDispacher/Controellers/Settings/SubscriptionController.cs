@@ -25,7 +25,8 @@ namespace WebDispacher.Controellers.Settings
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Subscription"))
                 {
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, isCancelSubscribe ? "Cancel" : "Settings");
                     ViewData["TextErrorSub"] = errorText;
                     ViewBag.Subscription = managerDispatch.GetSubscription(idCompany);
                     actionResult = View("~/Views/Settings/Subscription/Subscription.cshtml");

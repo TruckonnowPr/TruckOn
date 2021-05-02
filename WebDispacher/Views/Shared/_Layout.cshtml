@@ -49,6 +49,10 @@
     {
         @await Html.PartialAsync("~/Views/PartView/NavTry_for_free.cshtml");
     }
+    else if (ViewData["TypeNavBar"] == "CancelSubscribe")
+    {
+        @await Html.PartialAsync("~/Views/PartView/NavSettingsCacelSubscribe.cshtml");
+    }
     @RenderBody()
     <script>
         $(document).ready(function () {

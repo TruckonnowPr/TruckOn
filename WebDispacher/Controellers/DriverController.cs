@@ -30,6 +30,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.Drivers = managerDispatch.GetDrivers(page, idCompany);
@@ -52,7 +57,6 @@ namespace WebDispacher.Controellers
         }
 
         [Route("Driver/Check")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult CheckDriver(string nameDriver, string driversLicense, string comment)
         {
             IActionResult actionResult = null;
@@ -67,6 +71,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.DriversLicense = driversLicense;
@@ -145,7 +154,6 @@ namespace WebDispacher.Controellers
 
         [HttpGet]
         [Route("Driver/AddReport")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult AddReport()
         {
             IActionResult actionResult = null;
@@ -160,6 +168,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("ReportDriver");
@@ -250,7 +263,6 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("Welcome/AddReport")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult WelcomeAddReport(string fullName, string driversLicenseNumber, string numberOfAccidents, string english, string returnedEquipmen, string workingEfficiency, string eldKnowledge, string drivingSkills,
             string paymentHandling , string alcoholTendency, string drugTendency, string terminated, string experience, string dotViolations, string description)
         {
@@ -300,6 +312,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     actionResult = View("CreateDriver");
@@ -428,6 +445,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.Driver = managerDispatch.GetDriver(id);
@@ -501,6 +523,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Driver> drivers = await managerDispatch.GetDrivers(idCompany);
@@ -566,6 +593,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     List<Truck> trucks = managerDispatch.GetTrucks(idCompany);
@@ -651,6 +683,11 @@ namespace WebDispacher.Controellers
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "Driver"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    if (isCancelSubscribe)
+                    {
+                        return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                    }
                     ViewBag.NameCompany = companyName;
                     ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany);
                     ViewBag.DriverDoc = await managerDispatch.GetDriverDoc(id);

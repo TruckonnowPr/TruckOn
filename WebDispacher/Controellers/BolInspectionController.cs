@@ -28,6 +28,11 @@ namespace WebDispacher.Controellers
             Request.Cookies.TryGetValue("CommpanyName", out companyName);
             if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "BOL"))
             {
+                bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                if (isCancelSubscribe)
+                {
+                    return Redirect($"{Config.BaseReqvesteUrl}/Settings/Subscription/Subscriptions");
+                }
                 Shipping shipping = managerDispatch.GetShipingCurrentVehiclwIn(idVech.ToString());
                 VehiclwInformation vehiclwInformation = shipping.VehiclwInformations.FirstOrDefault(v => v.Id == idVech);
                 if (shipping != null)

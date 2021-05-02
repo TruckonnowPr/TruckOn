@@ -39,6 +39,17 @@ namespace WebDispacher.Service
             return _sqlEntityFramworke.GetDispatcherByKeyUsers(key);
         }
 
+        internal bool GetCancelSubscribe(string idCompany)
+        {
+            Commpany commpany = _sqlEntityFramworke.GetCompanyById(idCompany);
+            if(commpany.Type == TypeCompany.BaseCommpany)
+            {
+                return false;
+            }
+            SubscriptionCompanyDTO subscriptionCompanyDTO = GetSubscription(idCompany);
+            return subscriptionCompanyDTO.Status == "canceled";
+        }
+
         public async Task<List<Driver>> GetDrivers(string idCompany)
         {
             return await _sqlEntityFramworke.GetDriversInDb(idCompany);
@@ -642,7 +653,14 @@ namespace WebDispacher.Service
             Commpany commpany = _sqlEntityFramworke.GetCompanyById(idCompany);
             if (users != null && commpany != null)
             {
-                if (typeNav == "Work")
+                if (typeNav == "Cancel")
+                {
+                    if (commpany.Type == TypeCompany.NormalCompany)
+                    {
+                        typeNavBar = "CancelSubscribe";
+                    }
+                }
+                else if (typeNav == "Work")
                 {
                     if (commpany.Type == TypeCompany.BaseCommpany)
                     {

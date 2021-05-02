@@ -33,6 +33,8 @@ namespace WebDispacher.Controellers.Biling
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, isCancelSubscribe ? "Cancel" : "Settings");
                     ViewBag.NameCompany = companyName;
                     List<PaymentMethod> paymentMethods = managerDispatch.GetpaymentMethod(idCompany);
                     List<PaymentMethod_ST> paymentMethod_STs = managerDispatch.GetpaymentMethodsST(idCompany);
@@ -49,7 +51,6 @@ namespace WebDispacher.Controellers.Biling
                         IsDefault = paymentMethod_STs.FirstOrDefault(pm => pm.IdPaymentMethod_ST == z.Id) != null ? paymentMethod_STs.FirstOrDefault(pm => pm.IdPaymentMethod_ST == z.Id).IsDefault : false
                     }).ToList();
                     ViewBag.PaymentMethods = paymentMethodDTOs;
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     actionResult = View("~/Views/Settings/Biling/PaymentMethod.cshtml");
                 }
                 else
@@ -84,8 +85,9 @@ namespace WebDispacher.Controellers.Biling
                 Request.Cookies.TryGetValue("CommpanyName", out companyName);
                 if (managerDispatch.CheckKey(key) && managerDispatch.IsPermission(key, idCompany, "PaymentMethod"))
                 {
+                    bool isCancelSubscribe = managerDispatch.GetCancelSubscribe(idCompany);
+                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, isCancelSubscribe ? "Cancel" : "Settings");
                     ViewBag.NameCompany = companyName;
-                    ViewData["TypeNavBar"] = managerDispatch.GetTypeNavBar(key, idCompany, "Settings");
                     ViewBag.TxtError = "";
                     ViewBag.Numbercard = "";
                     ViewBag.FullName = "";
