@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.A_R.Avtorization"
-             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls">
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <ScrollView>
             <FlexLayout Padding="25" BackgroundColor="White" JustifyContent="Center" Direction="Column">
@@ -10,14 +11,14 @@
                        Source="logo.png" HeightRequest="100"
                        WidthRequest="100" />
                 <Label Margin="0, 15, 0, 0"
-                                     Text="Welcome Back"
+                                     Text="{x:Static helperLang:LanguageHelper.WelcomeText}"
                                      TextColor="#2C5DEB"
                                      FontSize="22"
                                      FontAttributes="Bold"
                                      FontFamily="{StaticResource OpenSans-Bold}"
                                      FlexLayout.AlignSelf="Center"/>
                 <Label Margin="0, 3, 0, 0"
-                                     Text="Log in to continue"
+                                     Text="{x:Static helperLang:LanguageHelper.WelcomeDescriptionText}"
                                      TextColor="#C1C1C1"
                                      FontSize="14"
                                      FontAttributes="Bold"
@@ -35,7 +36,7 @@
                     <FlexLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" JustifyContent="Center" AlignItems="Center">
                         <xfx:XfxEntry TextChanged="Entry_TextChanged_1"
                                       FlexLayout.Grow="1"
-                                      Placeholder="Email"
+                                      Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderEmail}"
                                       TextColor="Black"
                                       PlaceholderColor="#C1C1C1"
                                       ActivePlaceholderColor="#C1C1C1"
@@ -69,7 +70,7 @@
                     <FlexLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" JustifyContent="Center" AlignItems="Center">
                         <xfx:XfxEntry x:Name="passwordEnt"
                                       FlexLayout.Grow="1"
-                                      Placeholder="Password"
+                                      Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderPassword}"
                                       TextColor="Black"
                                       PlaceholderColor="#C1C1C1"
                                       ActivePlaceholderColor="#C1C1C1"
@@ -97,14 +98,14 @@
                  <Button Margin="11, 41, 11, 0"
                          FontSize="16"
                          FontFamily="{StaticResource OpenSans-Bold}"
-                         Text="Log in"
+                         Text="{x:Static helperLang:LanguageHelper.BtnLogInText}"
                          TextColor="White"
                          BackgroundColor="#2C5DEB"
                          HeightRequest="46"
                          Command="{Binding AvtorizationCommand}"
                          CornerRadius="26"
                          Padding="0, 12, 0, 12"/>
-                 <Label Text="Forgot password?"
+                 <Label Text="{x:Static helperLang:LanguageHelper.ForGotPasswordText}"
                         FontSize="14"
                         FlexLayout.AlignSelf="Center"
                         Margin="0, 15, 0, 0"

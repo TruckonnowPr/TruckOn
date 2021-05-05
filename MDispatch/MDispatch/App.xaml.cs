@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using FormsControls.Base;
+using MDispatch.Helpers;
 using MDispatch.Service.GeloctionGPS;
 using MDispatch.Service.Tasks;
 using MDispatch.StoreNotify;
@@ -20,7 +21,8 @@ namespace MDispatch
 
         public App ()
         {
-			InitializeComponent();
+            LanguageHelper.InitLanguage();
+            InitializeComponent();
             string token = CrossSettings.Current.GetValueOrDefault("Token", "");
             if (token == "")
             {
