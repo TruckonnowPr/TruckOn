@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.Service;
 using MDispatch.Service.Net;
 using MDispatch.View;
@@ -68,7 +69,7 @@ namespace MDispatch.ViewModels.PageAppMV.VehicleDetals
                 else if (state == 4)
                 {
                     await Navigationn.PopAsync(true);
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             else

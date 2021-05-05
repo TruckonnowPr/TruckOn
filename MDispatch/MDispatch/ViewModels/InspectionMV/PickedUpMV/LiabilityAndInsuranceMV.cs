@@ -1,3 +1,4 @@
+using MDispatch.Helpers;
 using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
@@ -124,7 +125,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                         await Navigation.PopAsync();
                     }
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
                 StataLoadShip = 1;
             }
@@ -177,11 +178,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[1]);
                     }
-                    DependencyService.Get<IToast>().ShowMessage("Paymmant method saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.PaymmantMethodSaved);
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, Navigation));
                 }
             }
             else
@@ -223,11 +224,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[1]);
                     }
-                    DependencyService.Get<IToast>().ShowMessage("Paymmant photo saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.PaymmantMethodSaved);
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, Navigation));
                 }
             }
         }
@@ -266,12 +267,12 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[1]);
                     }
-                    DependencyService.Get<IToast>().ShowMessage("Video capture saved successfully");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.VideoSavedSuccessfully);
 
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, Navigation));
                 }
                 await PopupNavigation.PopAsync();
             }
@@ -307,11 +308,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 3)
                 {
-                    DependencyService.Get<IToast>().ShowMessage($"A copy of BOL is sent to the mail {Email}");
+                    DependencyService.Get<IToast>().ShowMessage($"{LanguageHelper.BOLIsSent} {Email}");
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
         }
@@ -355,7 +356,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             return isProplem;
@@ -401,11 +402,11 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 3)
                 {
-                    DependencyService.Get<IToast>().ShowMessage($"In the near future the dispatcher see the problem");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.FutureDispatcherProblem);
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
         }

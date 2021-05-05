@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
@@ -71,12 +72,12 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 {
                     await PopupNavigation.PopAsync();
                     await Navigation.PopToRootAsync();
-                    DependencyService.Get<IToast>().ShowMessage("Answers to questions saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.AnswersSaved);
                 }
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
         }
@@ -110,7 +111,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                 }
                 else if (state == 4)
                 {
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
         }

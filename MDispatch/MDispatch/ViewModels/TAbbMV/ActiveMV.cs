@@ -1,9 +1,9 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.Vidget.VM;
-using MDispatch.View.A_R;
 using MDispatch.View.GlobalDialogView;
 using MDispatch.ViewModels.TAbbMV.DialogAsk;
 using Plugin.DeviceInfo;
@@ -113,7 +113,7 @@ namespace MDispatch.ViewModels.TAbbMV
                 else if (state == 4)
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
             IsRefr = false;
@@ -154,7 +154,7 @@ namespace MDispatch.ViewModels.TAbbMV
                     if (isInspection)
                     {
                         Init();
-                        await PopupNavigation.PushAsync(new Alert("You have already passed inspection today", null));
+                        await PopupNavigation.PushAsync(new Alert(LanguageHelper.InspectionTodayAlert, null));
                         //Add Commplet Alert
                     }
                     else
@@ -165,7 +165,7 @@ namespace MDispatch.ViewModels.TAbbMV
                 else if (state == 4)
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
             IsRefr = false;

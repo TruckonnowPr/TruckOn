@@ -1,4 +1,5 @@
-﻿using MDispatch.NewElement.ToastNotify;
+﻿using MDispatch.Helpers;
+using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.RequestQueue;
 using MDispatch.Service.Tasks;
@@ -38,7 +39,7 @@ namespace MDispatch.Service.Net
                     }
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        HelpersView.CallError("Not Network");
+                        HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                     });
                 }
                 else

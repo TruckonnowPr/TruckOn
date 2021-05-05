@@ -1,4 +1,5 @@
-﻿using MDispatch.View.GlobalDialogView;
+﻿using MDispatch.Helpers;
+using MDispatch.View.GlobalDialogView;
 using MDispatch.View.Inspection.Delyvery;
 using MDispatch.View.Inspection.PickedUp;
 using Rg.Plugins.Popup.Services;
@@ -63,12 +64,12 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Paymmant
             {
                 IsAskPaymmant = true;
                 stackLayout.IsEnabled = false;
-                await PopupNavigation.PushAsync(new Alert($"Give money for delivery to the driver {((Entry)stackLayout.Children[0]).Text}", null));
+                await PopupNavigation.PushAsync(new Alert($"{LanguageHelper.GiveMoneyAlert} {((Entry)stackLayout.Children[0]).Text}", null));
             }
             else
             {
                 IsAskPaymmant = false;
-                await PopupNavigation.PushAsync(new Alert("You must enter the amount of payment for delivery", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.PaymentForDeliveryAlert, null));
             }
         }
 

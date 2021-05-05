@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MDispatch.Helpers;
 using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
@@ -110,7 +111,7 @@ namespace MDispatch.ViewModels.InspectionMV
                         isNavigationMany = false;
                     }
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
                 IsLoad = false;
             }
@@ -142,12 +143,12 @@ namespace MDispatch.ViewModels.InspectionMV
                 }
                 else if (state == 3)
                 {
-                    DependencyService.Get<IToast>().ShowMessage($"A copy of BOL is sent to the mail {Email}");
+                    DependencyService.Get<IToast>().ShowMessage($"{LanguageHelper.BOLIsSent} {Email}");
                 }
                 else if (state == 4)
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
         }

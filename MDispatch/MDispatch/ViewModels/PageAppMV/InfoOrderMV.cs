@@ -22,6 +22,7 @@ using MDispatch.Service.Net;
 using MDispatch.View;
 using MDispatch.Service.Helpers;
 using System;
+using MDispatch.Helpers;
 
 namespace MDispatch.ViewModels.PageAppMV
 {
@@ -135,7 +136,7 @@ namespace MDispatch.ViewModels.PageAppMV
             }
             else
             {
-                HelpersView.CallError("Not Data");
+                HelpersView.CallError(LanguageHelper.NoDataAlert);
             }
         }
 
@@ -147,7 +148,7 @@ namespace MDispatch.ViewModels.PageAppMV
             }
             else
             {
-                HelpersView.CallError("Not Data");
+                HelpersView.CallError(LanguageHelper.NoDataAlert);
             }
         }
 
@@ -159,7 +160,7 @@ namespace MDispatch.ViewModels.PageAppMV
             }
             else
             {
-                HelpersView.CallError("Not Data");
+                HelpersView.CallError(LanguageHelper.NoDataAlert);
             }
         }
 
@@ -231,7 +232,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 4)
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
             await PopupNavigation.PopAsync();
@@ -242,7 +243,7 @@ namespace MDispatch.ViewModels.PageAppMV
         {
             if(Shipping == null || Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
             {
-                await PopupNavigation.PushAsync(new Alert("There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle.", null), true);
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.NoVehiclesAlert, null), true);
                 return;
             }
             Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
@@ -302,7 +303,7 @@ namespace MDispatch.ViewModels.PageAppMV
             {
                 vehiclwInformation1 = Shipping.VehiclwInformations[0];
                 await Navigation.PushAsync(new View.Inspection.PickedUp.ClientStart(managerDispatchMob, vehiclwInformation1, Shipping.Id, initDasbordDelegate, Shipping.OnDeliveryToCarrier, Shipping.TotalPaymentToCarrier), true);
-                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client" , null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.PassTheDeviceAlert, null));
                 Navigation.RemovePage(Navigation.NavigationStack[1]);
                 return;
             }
@@ -347,7 +348,7 @@ namespace MDispatch.ViewModels.PageAppMV
         {
             if (Shipping == null || Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
             {
-                await PopupNavigation.PushAsync(new Alert("There are no vehicles in the order.\n\nIn order to pass the inspection, ask the dispatcher to add a vehicle.", null), true);
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.NoVehiclesAlert, null), true);
                 return;
             }
             Shipping.VehiclwInformations.Sort((a, b) => a.Id.CompareTo(b.Id));
@@ -364,7 +365,7 @@ namespace MDispatch.ViewModels.PageAppMV
             if (Shipping.askForUserDelyveryM == null)
             {
                 await Navigation.PushAsync(new View.Inspection.Delyvery.ClientStart(managerDispatchMob, Shipping.Id, initDasbordDelegate, Shipping.OnDeliveryToCarrier, Shipping.TotalPaymentToCarrier, Shipping.VehiclwInformations[0], GetShiping, getVechicleDelegate, shipping.IsProblem), true);
-                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.PassTheDeviceAlert, null));
                 Navigation.RemovePage(Navigation.NavigationStack[1]);
                 return;
             }
@@ -448,7 +449,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             await PopupNavigation.PopAsync();
@@ -497,7 +498,7 @@ namespace MDispatch.ViewModels.PageAppMV
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
         }

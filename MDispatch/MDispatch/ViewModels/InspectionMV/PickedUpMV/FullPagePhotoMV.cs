@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
@@ -307,7 +308,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
             else
             {
                 HelpersView.ReSet();
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 //await PopupNavigation.PushAsync(new Errror("Not Network", null));
                 BackToRootPage();
             }

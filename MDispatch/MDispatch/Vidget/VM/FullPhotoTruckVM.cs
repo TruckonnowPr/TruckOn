@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
@@ -175,7 +176,7 @@ namespace MDispatch.Vidget.VM
             }
             else
             {
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 await Navigation.PopToRootAsync(true);
             }
         }
@@ -195,7 +196,7 @@ namespace MDispatch.Vidget.VM
                 });
                 if (state == 1)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.NotNetworkAlert, null));
                 }
                 else if (state == 2)
                 {
@@ -208,12 +209,12 @@ namespace MDispatch.Vidget.VM
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             else
             {
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 BackToRootPage();
             }
         }
@@ -237,7 +238,7 @@ namespace MDispatch.Vidget.VM
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.NotNetworkAlert, null));
                 }
                 else if (state == 2)
                 {
@@ -269,12 +270,12 @@ namespace MDispatch.Vidget.VM
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             else
             {
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 BackToRootPage();
             }
         }
@@ -297,7 +298,7 @@ namespace MDispatch.Vidget.VM
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.NotNetworkAlert, null));
                 }
                 else if (state == 2)
                 {
@@ -334,12 +335,12 @@ namespace MDispatch.Vidget.VM
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             else
             {
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 BackToRootPage();
             }
         }
@@ -357,7 +358,7 @@ namespace MDispatch.Vidget.VM
             await PopupNavigation.PopAsync(true);
             if (state == 1)
             {
-                await PopupNavigation.PushAsync(new Alert("Not Network", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.NotNetworkAlert, null));
             }
             else if (state == 2)
             {
@@ -369,11 +370,11 @@ namespace MDispatch.Vidget.VM
             }
             else if (state == 4)
             {
-                await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
             }
             else
             {
-                 HelpersView.CallError("Not Network");
+                 HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 BackToRootPage();
             }
         }
@@ -395,7 +396,7 @@ namespace MDispatch.Vidget.VM
                 if (state == 1)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Not Network", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.NotNetworkAlert, null));
                 }
                 else if (state == 3)
                 {
@@ -414,12 +415,12 @@ namespace MDispatch.Vidget.VM
                 else if (state == 4)
                 {
                     await PopupNavigation.PopAsync();
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service scan", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             else
             {
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 BackToRootPage();
             }
         }

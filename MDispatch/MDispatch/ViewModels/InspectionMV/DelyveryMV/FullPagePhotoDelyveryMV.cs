@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
@@ -271,7 +272,7 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
             else
             {
                 HelpersView.ReSet();
-                HelpersView.CallError("Not Network");
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
                 //await PopupNavigation.PushAsync(new Errror("Not Network", null));
                 BackToRootPage();
             }
@@ -314,13 +315,13 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
             else
             {
-                HelpersView.CallError("Not Network");
-                await PopupNavigation.PushAsync(new Alert("Not Network", null));
+                HelpersView.CallError(LanguageHelper.NotNetworkAlert);
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.NotNetworkAlert, null));
                 BackToRootPage();
             }
         }

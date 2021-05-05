@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
@@ -105,7 +106,7 @@ namespace MDispatch.ViewModels.InspectionMV
                         await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
                         isNavigationMany = false;
                     }
-                    DependencyService.Get<IToast>().ShowMessage("Answers to questions saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.AnswersSaved);
                     Navigation.RemovePage(Navigation.NavigationStack[1]);
                 }
                 else if (state == 4)
@@ -119,7 +120,7 @@ namespace MDispatch.ViewModels.InspectionMV
                     {
                         await Navigation.PopAsync();
                     }
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
             else

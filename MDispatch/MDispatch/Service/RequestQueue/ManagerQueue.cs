@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MDispatch.Helpers;
 using MDispatch.Models;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
@@ -91,8 +92,8 @@ namespace MDispatch.Service.RequestQueue
                 }
                 else if (state == 4)
                 {
-                    HelpersView.CallError("Technical work on the service");
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             });
         }
@@ -127,8 +128,8 @@ namespace MDispatch.Service.RequestQueue
                 }
                 else if (state == 4)
                 {
-                    HelpersView.CallError("Technical work on the service");
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             });
         }

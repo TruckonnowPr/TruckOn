@@ -1,4 +1,5 @@
-﻿using MDispatch.Service;
+﻿using MDispatch.Helpers;
+using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.View;
@@ -147,7 +148,7 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                     //HelpersView.CallError("Technical work on the service");
                 }
             }
@@ -191,7 +192,7 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
         }
@@ -215,7 +216,7 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 {
                     await PopupNavigation.PopAsync();
                     GlobalHelper.OutAccount();
-                    await PopupNavigation.PushAsync(new Alert("Not Authorized", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.NoAvtorisationAlert, null));
                 }
                 else if (state == 3)
                 {
@@ -233,7 +234,7 @@ namespace MDispatch.ViewModels.PageAppMV.Settings
                 {
                     await PopupNavigation.PopAsync();
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service scan", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
         }

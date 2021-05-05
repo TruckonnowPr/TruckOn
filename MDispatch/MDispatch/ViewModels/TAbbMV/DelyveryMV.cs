@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.Service.Net;
@@ -89,7 +90,7 @@ namespace MDispatch.ViewModels.TAbbMV
                 else if (state == 4)
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
             IsRefr = false;

@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Net;
@@ -61,7 +62,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
             if (vehiclwInformation1s.Count - 1 == indexCurrentVechecle)
             {
                 await Navigation.PushAsync(new ClientStart(managerDispatchMob, VehiclwInformation, IdShip, initDasbordDelegate, OnDeliveryToCarrier, TotalPaymentToCarrier));
-                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.PassTheDeviceAlert, null));
             }
             else
             {
@@ -172,7 +173,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                         await PopupNavigation.RemovePageAsync(PopupNavigation.PopupStack[0]);
                         isNavigationMany = false;
                     }
-                    DependencyService.Get<IToast>().ShowMessage("Answers to questions saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.AnswersSaved);
                     if (Navigation.NavigationStack.Count > 1)
                     {
                         Navigation.RemovePage(Navigation.NavigationStack[1]);
@@ -189,7 +190,7 @@ namespace MDispatch.ViewModels.InspectionMV.PickedUpMV
                     {
                         await Navigation.PopAsync();
                     }
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigation));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, Navigation));
                 }
             }
             else

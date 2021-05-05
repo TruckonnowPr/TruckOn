@@ -1,4 +1,5 @@
 ﻿using FormsControls.Base;
+using MDispatch.Helpers;
 using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.Service;
@@ -89,7 +90,7 @@ namespace MDispatch.View.PageApp
         {
             if(infoOrderMV.Shipping == null)
             {
-                HelpersView.CallError("Not Data");
+                HelpersView.CallError(LanguageHelper.NoDataAlert);
                 return;
             }
 

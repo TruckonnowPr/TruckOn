@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
@@ -220,7 +221,7 @@ namespace MDispatch.View.AskPhoto
             }
             else
             {
-                await PopupNavigation.PushAsync(new Alert("You did not fill in all the required fields, you can continue the inspection only when filling in the required fields !!", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.AskErrorAlert, null));
                 CheckAsk();
             }
         }

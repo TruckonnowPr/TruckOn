@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
@@ -80,7 +81,7 @@ namespace MDispatch.ViewModels.InspectionMV
                 }
                 else if (state == 3)
                 {
-                    DependencyService.Get<IToast>().ShowMessage("Feedback saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.FeedbackSaved);
                     if (paymmpayMVInspactionant is AskForUsersDelyveryMW)
                     {
                         await Navigation.PopAsync(true);
@@ -106,7 +107,7 @@ namespace MDispatch.ViewModels.InspectionMV
             else if (state == 4)
             {
                 //await PopupNavigation.PushAsync(new Errror("Technical work on the service", null));
-                HelpersView.CallError("Technical work on the service");
+                HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
             }
         }
     }

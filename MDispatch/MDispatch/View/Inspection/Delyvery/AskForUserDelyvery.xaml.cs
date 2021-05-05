@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.View.GlobalDialogView;
@@ -258,7 +259,7 @@ namespace MDispatch.View.Inspection.Delyvery
             }
             else
             {
-                await PopupNavigation.PushAsync(new Alert("You did not fill in all the required fields, you can continue the inspection only when filling in the required fields !!", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.AskErrorAlert, null));
                 CheckAsk();
             }
         }
@@ -346,7 +347,7 @@ namespace MDispatch.View.Inspection.Delyvery
                     }
                     else
                     {
-                        await PopupNavigation.PushAsync(new Alert("You did not fill in all the required fields, you can continue the inspection only when filling in the required fields !!", null));
+                        await PopupNavigation.PushAsync(new Alert(LanguageHelper.AskErrorAlert, null));
                         CheckAsk();
                     }
                 }
@@ -381,7 +382,7 @@ namespace MDispatch.View.Inspection.Delyvery
             }
             else
             {
-                await PopupNavigation.PushAsync(new Alert("You did not fill in all the required fields, you can continue the inspection only when filling in the required fields !!", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.AskErrorAlert, null));
                 CheckAsk();
             }
 

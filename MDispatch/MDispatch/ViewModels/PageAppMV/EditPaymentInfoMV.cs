@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Net;
@@ -83,11 +84,11 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 3)
                 {
-                    DependencyService.Get<IToast>().ShowMessage("Information about Paymmant saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.InformationPaymentSaved);
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", Navigationn));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, Navigationn));
                 }
             }
             else

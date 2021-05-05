@@ -1,4 +1,5 @@
-﻿using MDispatch.Models;
+﻿using MDispatch.Helpers;
+using MDispatch.Models;
 using MDispatch.NewElement.ToastNotify;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
@@ -64,12 +65,12 @@ namespace MDispatch.ViewModels.PageAppMV
                 }
                 else if (state == 3)
                 {
-                    DependencyService.Get<IToast>().ShowMessage("Information about Picked Up saved");
+                    DependencyService.Get<IToast>().ShowMessage(LanguageHelper.InformationPikedUpSaved);
                 }
                 else if (state == 4)
                 {
                     //await PopupNavigation.PushAsync(new Errror("Technical work on the service", Navigationn));
-                    HelpersView.CallError("Technical work on the service");
+                    HelpersView.CallError(LanguageHelper.TechnicalWorkServiceAlert);
                 }
             }
             else

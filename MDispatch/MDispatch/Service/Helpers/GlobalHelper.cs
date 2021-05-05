@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MDispatch.Helpers;
 using MDispatch.Service.Net;
 using MDispatch.View.A_R;
 using MDispatch.View.GlobalDialogView;
@@ -39,7 +40,7 @@ namespace MDispatch.Service
                 }
                 else if (state == 4)
                 {
-                    await PopupNavigation.PushAsync(new Alert("Technical work on the service", null));
+                    await PopupNavigation.PushAsync(new Alert(LanguageHelper.TechnicalWorkServiceAlert, null));
                 }
             }
         }
