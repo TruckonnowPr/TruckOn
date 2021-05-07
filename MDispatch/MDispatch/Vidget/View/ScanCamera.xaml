@@ -4,7 +4,8 @@
              x:Class="MDispatch.Vidget.View.ScanCamera"
              xmlns:camera="clr-namespace:MDispatch.NewElement"
              TypeCamera="DetectText"
-             OnScan="CameraPage_OnScan">
+             OnScan="CameraPage_OnScan"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <AbsoluteLayout>
             <Image x:Name="paternPhoto" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"/>
@@ -14,7 +15,7 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="Scan Plate number"
+            <Label Text="{x:Static helperLang:LanguageHelper.ScanPlateNumber}"
                    TextColor="White"
                    FontSize="21"
                    AbsoluteLayout.LayoutFlags="PositionProportional"

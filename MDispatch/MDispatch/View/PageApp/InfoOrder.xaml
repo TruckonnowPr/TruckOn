@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.PageApp.InfoOrder"
-             Title="Info"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers"
+             Title="{x:Static helperLang:LanguageHelper.TitleInfoPage}"
              BackgroundColor="White"
              x:Name="ctp">
     <ContentPage.Content>
@@ -17,7 +18,7 @@
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#E5E5E5" />
                 <StackLayout Padding="0, 8, 0, 11" x:Name="bloc2" Spacing="4" >
-                    <Label Text="Pickup information"
+                    <Label Text="{x:Static helperLang:LanguageHelper.TitlePikedUpInfo}"
                            FontSize="16"
                            TextColor="#101010"
                            FontFamily="{StaticResource OpenSans-Bold}"
@@ -42,7 +43,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Contact: "/>
+                                <Span Text="{x:Static helperLang:LanguageHelper.ContatInfo}" />
                                 <Span Text=" "/>
                                 <Span Text="{Binding Shipping.ContactNameP}"/>
                             </FormattedString>
@@ -53,7 +54,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Phone: "/>
+                                <Span Text="{x:Static helperLang:LanguageHelper.PhoneInfo}"/>
                                 <Span Text=" "/>
                                 <Span Text="{Binding Shipping.PhoneP}" TextColor="#2C5DEB"/>
                             </FormattedString>
@@ -62,7 +63,7 @@
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#E5E5E5"/>
                 <StackLayout Padding="0, 8, 0, 11" x:Name="bloc3" Spacing="4">
-                    <Label Text="Delivery Information" 
+                    <Label Text="{x:Static helperLang:LanguageHelper.TitleDeliveryInfo}" 
                            FontSize="16"
                            TextColor="#101010"
                            FontFamily="{StaticResource OpenSans-Bold}"
@@ -87,7 +88,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Contact: "/>
+                                <Span Text="{x:Static helperLang:LanguageHelper.ContatInfo}"/>
                                 <Span Text=" "/>
                                 <Span Text="{Binding Shipping.ContactNameD}"/>
                             </FormattedString>
@@ -98,7 +99,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Phone: "/>
+                                <Span Text="{x:Static helperLang:LanguageHelper.PhoneInfo}"/>
                                 <Span Text=" "/>
                                 <Span Text="{Binding Shipping.PhoneD}" TextColor="#2C5DEB"/>
                             </FormattedString>
@@ -107,7 +108,7 @@
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#E5E5E5" />
                 <StackLayout Padding="0, 8, 0, 11" x:Name="bloc4" Spacing="4">
-                    <Label Text="Payment Information"
+                    <Label Text="{x:Static helperLang:LanguageHelper.TitlePaymentInfo}"
                            FontSize="16"
                            TextColor="#101010"
                            FontFamily="{StaticResource OpenSans-Bold}"
@@ -117,7 +118,7 @@
                            FontFamily="{StaticResource OpenSans-Regular}" >
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Payment: "/>
+                                <Span Text="{x:Static helperLang:LanguageHelper.PaymentInfo}"/>
                                 <Span Text="{Binding Shipping.PriceListed}"/>
                                 <Span Text=" "/>
                                 <Span Text="{Binding Shipping.TotalPaymentToCarrier}"/>
@@ -129,7 +130,7 @@
                 </StackLayout>
                 <BoxView HeightRequest="1" BackgroundColor="#E5E5E5"/>
                 <StackLayout Padding="0, 8, 0, 11" x:Name="bloc5" Spacing="4" >
-                    <Label Text="Instructions" 
+                    <Label Text="{x:Static helperLang:LanguageHelper.Instructions}" 
                            FontSize="16"
                            TextColor="#101010"
                            FontFamily="{StaticResource OpenSans-Bold}"
@@ -138,7 +139,7 @@
                            FontSize="14"
                            TextColor="#FF2C2C"
                            FontFamily="{StaticResource OpenSans-Regular}" />
-                    <Label Text="I have read the instructions"
+                    <Label Text="{x:Static helperLang:LanguageHelper.ReedInstructionsBtnText}"
                            FontSize="16"
                            IsVisible="{Binding IsInstructinRead}"
                            TextColor="#2C5DEB"

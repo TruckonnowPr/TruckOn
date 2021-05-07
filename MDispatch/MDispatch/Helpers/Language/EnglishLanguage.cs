@@ -37,5 +37,45 @@
         public string InformationPikedUpSaved => "Information about Picked Up saved";
         public string FeedbackSaved => "Feedback saved";
         public string PaymmantMethodSaved => "Paymmant method saved";
+
+        public string ScanPlateNumber => "Scan Plate number";
+        public string TitleSetPlateTruckAlert => "Please write the number plate of the truck";
+        public string TitleSetPlateTrailerAlert => "Please write the number plate of the trailer";
+        public string PlaceholderSetPlateTruckAlert => "Enter № plate truck";
+        public string PlaceholderSetPlateTrailerkAlert => "Enter № plate trailer";
+        public string CancelBtnText => "Cancel";
+        public string SendBtnText => "Send";
+
+        public string TitleInfoPage => "Info";
+        public string TitlePikedUpInfo => "Pickup information";
+        public string TitleDeliveryInfo => "Delivery information";
+        public string TitlePaymentInfo => "Payment information";
+        public string ContatInfo => "Contact: ";
+        public string PhoneInfo => "Phone: ";
+        public string PaymentInfo => "Payment: ";
+        public string Instructions => "Instructions";
+        public string ReedInstructionsBtnText => "I have read the instructions";
+
+        public string TitleSettingsPage => "Settings";
+        public string DocumentInfo => "Documents";
+        public string ShowDocumentBtnText => "Show documents";
+        public string LastInspactionInfo => "Last inspection: ";
+        public string TruckPlateInfo => "Truck plate: ";
+        public string TrailerPalateInfo => "Trailer plate: ";
+        public string TitleDocumentsTrailerTruckNumber => "Documents by trailer and truck number";
+        public string NumberTruckPlateInfo => "№ plate truck:";
+        public string NumberTrailerPalateInfo => "№ plate trailer:";
+        public string Application => "Application";
+        public string CurrentVersion => "Current version: ";
+        public string LastUpdateAvailable => "Last update available: ";
+        public string SignOutBtnText => "Sign out";
+
+        public string NamePageTabActive => "Active";
+        public string NamePageTabDelivery => "Delivery";
+        public string NamePageTabArchived => "Archived";
+
+        public string TitleInspectionDriverAlert => "To take an order, you need to pass the inspection of the truck and the trailer, pass the inspection of the truck?";
+        public string YesBtnText => "Yes";
+        public string NoBtnText => "No";
     }
 }

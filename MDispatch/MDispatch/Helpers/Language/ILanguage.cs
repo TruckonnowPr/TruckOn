@@ -37,5 +37,46 @@
         string InformationPikedUpSaved { get; }
         string FeedbackSaved { get; }
         string PaymmantMethodSaved { get; }
+
+        string ScanPlateNumber { get; }
+
+        string TitleSetPlateTruckAlert { get; }
+        string TitleSetPlateTrailerAlert { get; }
+        string PlaceholderSetPlateTruckAlert { get; }
+        string PlaceholderSetPlateTrailerkAlert { get; }
+        string CancelBtnText { get; }
+        string SendBtnText { get; }
+
+        string TitleInfoPage { get; }
+        string TitlePikedUpInfo { get; }
+        string TitleDeliveryInfo { get; }
+        string TitlePaymentInfo { get; }
+        string ContatInfo { get; }
+        string PhoneInfo { get; }
+        string PaymentInfo { get; }
+        string Instructions { get; }
+        string ReedInstructionsBtnText { get; }
+
+        string TitleSettingsPage { get; }
+        string DocumentInfo { get; }
+        string ShowDocumentBtnText { get; }
+        string LastInspactionInfo { get; }
+        string TruckPlateInfo { get; }
+        string TrailerPalateInfo { get; }
+        string TitleDocumentsTrailerTruckNumber { get; }
+        string NumberTruckPlateInfo { get; }
+        string NumberTrailerPalateInfo { get; }
+        string Application { get; }
+        string CurrentVersion { get; }
+        string LastUpdateAvailable { get; }
+        string SignOutBtnText { get; }
+
+        string NamePageTabActive { get; }
+        string NamePageTabDelivery { get; }
+        string NamePageTabArchived { get; }
+
+        string TitleInspectionDriverAlert { get; }
+        string YesBtnText { get; }
+        string NoBtnText { get; }
     }
 }

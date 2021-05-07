@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.TabPage.Tab.ArchivedPage"
-             xmlns:effect="clr-namespace:MDispatch.NewElement.Effect"
-             Title="Archived">
+             xmlns:effect="clr-namespace:MDispatch.NewElement.Effect">
     <ContentPage.Content>
         <StackLayout x:Name="body" Padding="0, 20, 0, 20">
             <ListView ItemsSource="{Binding Shippings}" IsRefreshing="{Binding IsRefr}" IsPullToRefreshEnabled="True"

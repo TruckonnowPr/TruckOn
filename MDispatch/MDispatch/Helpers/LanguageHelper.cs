@@ -44,6 +44,46 @@ namespace MDispatch.Helpers
         public static string FeedbackSaved => Language.FeedbackSaved;
         public static string PaymmantMethodSaved => Language.PaymmantMethodSaved;
 
+        public static string ScanPlateNumber => Language.ScanPlateNumber;
+        public static string TitleSetPlateTruckAlert => Language.TitleSetPlateTruckAlert;
+        public static string TitleSetPlateTrailerAlert => Language.TitleSetPlateTrailerAlert;
+        public static string PlaceholderSetPlateTruckAlert => Language.PlaceholderSetPlateTruckAlert;
+        public static string PlaceholderSetPlateTrailerkAlert => Language.PlaceholderSetPlateTrailerkAlert;
+        public static string CancelBtnText => Language.CancelBtnText;
+        public static string SendBtnText => Language.SendBtnText;
+
+        public static string TitleInfoPage => Language.TitleInfoPage;
+        public static string TitlePikedUpInfo => Language.TitlePikedUpInfo;
+        public static string TitleDeliveryInfo => Language.TitleDeliveryInfo;
+        public static string TitlePaymentInfo => Language.TitlePaymentInfo;
+        public static string ContatInfo => Language.ContatInfo;
+        public static string PhoneInfo => Language.PhoneInfo;
+        public static string PaymentInfo => Language.PaymentInfo;
+        public static string Instructions => Language.Instructions;
+        public static string ReedInstructionsBtnText => Language.ReedInstructionsBtnText;
+
+        public static string TitleSettingsPage => Language.TitleSettingsPage;
+        public static string DocumentInfo => Language.DocumentInfo;
+        public static string ShowDocumentBtnText => Language.ShowDocumentBtnText;
+        public static string LastInspactionInfo => Language.LastInspactionInfo;
+        public static string TruckPlateInfo => Language.TruckPlateInfo;
+        public static string TrailerPalateInfo => Language.TrailerPalateInfo;
+        public static string TitleDocumentsTrailerTruckNumber => Language.TitleDocumentsTrailerTruckNumber;
+        public static string NumberTruckPlateInfo => Language.NumberTruckPlateInfo;
+        public static string NumberTrailerPalateInfo => Language.NumberTrailerPalateInfo;
+        public static string Application => Language.Application;
+        public static string CurrentVersion => Language.CurrentVersion;
+        public static string LastUpdateAvailable => Language.LastUpdateAvailable;
+        public static string SignOutBtnText => Language.SignOutBtnText;
+
+        public static string NamePageTabActive => Language.NamePageTabActive;
+        public static string NamePageTabDelivery => Language.NamePageTabDelivery;
+        public static string NamePageTabArchived => Language.NamePageTabArchived;
+
+        public static string TitleInspectionDriverAlert => Language.TitleInspectionDriverAlert;
+        public static string YesBtnText => Language.YesBtnText;
+        public static string NoBtnText => Language.NoBtnText;
+
         public static void InitLanguage()
         {
             switch(CrossSettings.Current.GetValueOrDefault("Language" , (int)LanguageType.English))

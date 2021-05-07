@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-    x:Class="MDispatch.Vidget.View.PlateTrailerWrite">
+    x:Class="MDispatch.Vidget.View.PlateTrailerWrite"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -24,14 +25,14 @@
             <StackLayout Spacing="0">
                 <Label TextColor="#101010"
                        FontSize="20"
-                       Text="Please write the number plate of the trailer"
+                       Text="{x:Static helperLang:LanguageHelper.TitleSetPlateTrailerAlert}"
                        VerticalOptions="Center"
                        HorizontalTextAlignment="Center"
                        FontFamily="{StaticResource OpenSans-Bold}"
                        Margin="20"/>
                 <FlexLayout Padding="10, 0, 10, 0"
                             JustifyContent="SpaceBetween">
-                    <Entry Placeholder="Enter № plate trailer"
+                    <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderSetPlateTrailerkAlert}"
                            FontSize="14"
                            FontFamily="{StaticResource OpenSans-Regular}"
                            Text="{Binding PlateTrailer}"/>
@@ -45,7 +46,7 @@
                          BackgroundColor="#E6E6E6"
                          Margin="10, 0, 10, 0"/>
                 <FlexLayout JustifyContent="SpaceEvenly">
-                    <Button Text="Cancel"
+                    <Button Text="{x:Static helperLang:LanguageHelper.CancelBtnText}"
                             BackgroundColor="White"
                             TextColor="#2C5DEB"
                             Clicked="TapGestureRecognizer_Tapped"
@@ -54,7 +55,7 @@
                     <BoxView WidthRequest="1"
                              BackgroundColor="#E6E6E6"
                              Margin="0, 10, 0, 00"/>
-                    <Button Text="Send"
+                    <Button Text="{x:Static helperLang:LanguageHelper.SendBtnText}"
                             BackgroundColor="White"
                             TextColor="#2C5DEB"
                             Clicked="Button_Clicked"

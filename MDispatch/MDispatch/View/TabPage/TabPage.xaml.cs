@@ -1,4 +1,5 @@
 ﻿using FormsControls.Base;
+using MDispatch.Helpers;
 using MDispatch.NewElement;
 using MDispatch.NewElement.Tabs;
 using MDispatch.Service;
@@ -42,7 +43,7 @@ namespace MDispatch.View.TabPage
         private void InitActivePage(ManagerDispatchMob managerDispatchMob)
         {
             AnimationNavigationPage navigationPage = new AnimationNavigationPage(new ActivePage(managerDispatchMob, Navigation));
-            navigationPage.Title = "Active";
+            navigationPage.Title = LanguageHelper.NamePageTabActive;
             navigationPage.IconImageSource = "Aktiv.png";
             Children.Add(navigationPage);
         }
@@ -50,7 +51,7 @@ namespace MDispatch.View.TabPage
         private void InitDeiveredPage(ManagerDispatchMob managerDispatchMob)
         {
             AnimationNavigationPage navigationPage = new AnimationNavigationPage(new DeiveredPage(managerDispatchMob, Navigation));
-            navigationPage.Title = "Delivery";
+            navigationPage.Title = LanguageHelper.NamePageTabDelivery;
             navigationPage.IconImageSource = "Delivery.png";
             Children.Add(navigationPage);
         }
@@ -58,7 +59,7 @@ namespace MDispatch.View.TabPage
         private void InitArchivedPage(ManagerDispatchMob managerDispatchMob)
         {
             AnimationNavigationPage navigationPage = new AnimationNavigationPage(new ArchivedPage(managerDispatchMob, Navigation));
-            navigationPage.Title = "Archived";
+            navigationPage.Title = LanguageHelper.NamePageTabArchived;
             navigationPage.IconImageSource = "Archive.png";
             Children.Add(navigationPage);
         }
