@@ -42,7 +42,7 @@ namespace MDispatch.View.TabPage
 
         private void InitActivePage(ManagerDispatchMob managerDispatchMob)
         {
-            AnimationNavigationPage navigationPage = new AnimationNavigationPage(new ActivePage(managerDispatchMob, Navigation));
+            AnimationNavigationPage navigationPage = new AnimationNavigationPage(new ActivePage(managerDispatchMob, Navigation) { Title = LanguageHelper.NamePageTabActive });
             navigationPage.Title = LanguageHelper.NamePageTabActive;
             navigationPage.IconImageSource = "Aktiv.png";
             Children.Add(navigationPage);
@@ -50,7 +50,7 @@ namespace MDispatch.View.TabPage
 
         private void InitDeiveredPage(ManagerDispatchMob managerDispatchMob)
         {
-            AnimationNavigationPage navigationPage = new AnimationNavigationPage(new DeiveredPage(managerDispatchMob, Navigation));
+            AnimationNavigationPage navigationPage = new AnimationNavigationPage(new DeiveredPage(managerDispatchMob, Navigation) { Title = LanguageHelper.NamePageTabDelivery } );
             navigationPage.Title = LanguageHelper.NamePageTabDelivery;
             navigationPage.IconImageSource = "Delivery.png";
             Children.Add(navigationPage);
@@ -58,7 +58,7 @@ namespace MDispatch.View.TabPage
 
         private void InitArchivedPage(ManagerDispatchMob managerDispatchMob)
         {
-            AnimationNavigationPage navigationPage = new AnimationNavigationPage(new ArchivedPage(managerDispatchMob, Navigation));
+            AnimationNavigationPage navigationPage = new AnimationNavigationPage(new ArchivedPage(managerDispatchMob, Navigation) { Title = LanguageHelper.NamePageTabArchived } );
             navigationPage.Title = LanguageHelper.NamePageTabArchived;
             navigationPage.IconImageSource = "Archive.png";
             Children.Add(navigationPage);

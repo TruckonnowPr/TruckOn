@@ -146,12 +146,12 @@ namespace MDispatch.ViewModels.InspectionMV.DelyveryMV
             int indexCurrentVechecle = vehiclwInformation1s.FindIndex(v => v == VehiclwInformation);
             if (vehiclwInformation1s.Count - 1 == indexCurrentVechecle)
             {
-                await PopupNavigation.PushAsync(new Alert("Please pass the device to the client", null));
+                await PopupNavigation.PushAsync(new Alert(LanguageHelper.PassTheDeviceAlert, null));
                 await Navigation.PushAsync(new ClientStart(managerDispatchMob, IdShip, initDasbordDelegate, OnDeliveryToCarrier, TotalPaymentToCarrier, vehiclwInformation1s[0], getShiping, getVechicleDelegate, false));
             }
             else
             {
-                await PopupNavigation.PushAsync(new HintPageVechicle("Continuing inspection Deliveri", vehiclwInformation1s[indexCurrentVechecle + 1]));
+                await PopupNavigation.PushAsync(new HintPageVechicle(LanguageHelper.ContinuingInspectionDelivery, vehiclwInformation1s[indexCurrentVechecle + 1]));
                 await Navigation.PushAsync(new AskPageDelyvery(managerDispatchMob, vehiclwInformation1s[indexCurrentVechecle + 1], IdShip, initDasbordDelegate, getVechicleDelegate, OnDeliveryToCarrier, TotalPaymentToCarrier, getShiping), true);
             }
         }

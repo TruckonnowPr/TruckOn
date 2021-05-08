@@ -78,5 +78,116 @@
         string TitleInspectionDriverAlert { get; }
         string YesBtnText { get; }
         string NoBtnText { get; }
+
+        string ContinuingInspectionDelivery { get; }
+        string ContinuingInspectionPickedUp { get; }
+        string StartInspectionDelivery { get; }
+        string StartInspectionPickedUp { get; }
+
+        string HintPhotoItemsPage { get; }
+        string HintPhotoInspactionPage { get; }
+        string HintPhotoInTruckPage { get; }
+        string HintPhotoSeatBeltsPage { get; }
+
+        string TitleAskQuestionPage { get; }
+        string ItemNextPage { get; }
+
+        string AskBlockWeatherTitle { get; }
+        string ClearAnswer { get; }
+        string RainAnswer { get; }
+        string SnowAnswer { get; }
+        string DustAnswer { get; }
+
+        string AskBlockLightBrightnessTitle { get; }
+        string HighAnswer { get; }
+        string LowAnswer { get; }
+
+        string AskBlockSafeLoctionTitle { get; }
+
+        string AskBlockFarFromTrailerTitle { get; }
+        string PlaceholderFarFromTrailerAnswer { get; }
+
+        string AskBlockGaveKeysTitle { get; }
+        string PlaceholderGaveKeysAnswer { get; }
+
+        string AskBlockEnoughSpaceTitle { get; }
+
+        string AskBlockAnyoneRushingTitle { get; }
+
+        string AskBlockNamePersonTitle { get; }
+        string PlaceholderNamePersonAnswer { get; }
+
+        string AskBlockTypeCarTitle { get; }
+
+        string AskBlockPlateTitle { get; }
+        string PlaceholderPlateAnswer { get; }
+
+        string AskBlockConditionTitle { get; }
+        string CleanAnswer { get; }
+        string DirtyAnswer { get; }
+        string WetAnswer { get; }
+        string Snow1Answer { get; }
+        string ExtraDirtyAnswer { get; }
+
+        string AskBlockAdditionalItemsTitle { get; }
+
+        string HintAddDamagePage { get; }
+        string BackMainBtnText { get; }
+        string NextInspactionBtnText { get; }
+
+        string RetakeBtnText { get; }
+        string AddDamagBtnText { get; }
+        string NextBtnText { get; }
+        string AddPhotoText { get; }
+
+        string AskBlockJumpedVehicleTitle { get; }
+
+        string AskBlockMusteMileageTitle { get; }
+        string PlaceholderMusteMileage { get; }
+
+        string AskBlockImperfectionsWileLoadingTitle { get; }
+        string PlaceholderMechanicalDefects { get; }
+
+        string AskBlockMethodExitTitle { get; }
+        string DoorAnswer { get; }
+        string WindowAnswer { get; }
+        string SunroofAnswer { get; }
+        string ConvertibleAnswer { get; }
+
+        string AskBlockHelpYouLoadTitle { get; }
+        string AskBlockLoadTheVehicleTitle { get; }
+        string PlaceholderName { get; }
+
+        string AskBlockDamageAnythingTitle { get; }
+        string PlaceholderIfAny { get; }
+
+        string AskBlockUsedWinchTitle { get; }
+
+        string TitleHelloCustomerPage { get; }
+        string ThankYouForUsingOurCompany { get; }
+        string ThankYouForUsingOurCompany1 { get; }
+        string StartBtnText { get; }
+
+        string AskBlockFullNameTitle { get; }
+        string PlaceholderFullName { get; }
+
+        string AskBlockYourPhoneTitle { get; }
+        string PlaceholderYourPhone { get; }
+
+        string AskBlockManyKesTitle { get; }
+        string PlaceholderManyKes { get; }
+
+        string AskBlockGivenToDriverTitle { get; }
+        string IDontKnowBtnText { get; }
+
+        string ContinuetnBtnText { get; }
+
+        string TitleBillOfLandingPage { get; }
+
+        string TitleOriginInfo { get; }
+        string TitleDestinatiinInfo { get; }
+        string TitleYourSignature { get; }
+
+        string SaveBtnText { get; }
     }
 }

@@ -6,6 +6,7 @@ using MDispatch.View.GlobalDialogView;
 using MDispatch.ViewModels.InspectionMV;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static MDispatch.Service.ManagerDispatchMob;
@@ -24,6 +25,13 @@ namespace MDispatch.View.Inspection
             ask1PageMV.Ask1 = new Ask1();
             InitializeComponent();
             BindingContext = ask1PageMV;
+            methodPicker.ItemsSource = new List<string>()
+            {
+                LanguageHelper.DoorAnswer,
+                LanguageHelper.WindowAnswer,
+                LanguageHelper.SunroofAnswer,
+                LanguageHelper.ConvertibleAnswer,
+            };
         }
 
         #region Ask1

@@ -4,7 +4,8 @@
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
              x:Class="MDispatch.View.Inspection.PickedUp.LiabilityAndInsurance"
-             Title="BILL OF LADING"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers"
+             Title="{x:Static helperLang:LanguageHelper.TitleBillOfLandingPage}"
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
     <ContentPage.Content>
         <StackLayout x:Name="body">
@@ -16,7 +17,7 @@
                     <StackLayout Spacing="12">
                         <shadowFrame:ShadowFrame Style="{StaticResource Key=frameAsk}">
                             <StackLayout Spacing="4">
-                                <Label Text="Origin"
+                                <Label Text="{x:Static helperLang:LanguageHelper.TitleOriginInfo}"
                                        Style="{StaticResource Key=labelTitleAsk}"/>
                                 <Label FontSize="14"
                                        TextColor="#101010"
@@ -38,7 +39,7 @@
                                        FontFamily="{StaticResource OpenSans-Regular}" >
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Contact: "/>
+                                            <Span Text="{x:Static helperLang:LanguageHelper.ContatInfo}"/>
                                             <Span Text=" "/>
                                             <Span Text="{Binding Shipping.ContactNameP}"/>
                                         </FormattedString>
@@ -49,7 +50,7 @@
                                            FontFamily="{StaticResource OpenSans-Regular}" >
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Phone: "/>
+                                            <Span Text="{x:Static helperLang:LanguageHelper.PhoneInfo}"/>
                                             <Span Text=" "/>
                                             <Span Text="{Binding Shipping.PhoneP}" TextColor="#2C5DEB"/>
                                         </FormattedString>
@@ -59,7 +60,7 @@
                         </shadowFrame:ShadowFrame>
                         <shadowFrame:ShadowFrame Style="{StaticResource Key=frameAsk}">
                             <StackLayout Spacing="4">
-                                <Label Text="Destinatiin"
+                                <Label Text="{x:Static helperLang:LanguageHelper.TitleDestinatiinInfo}"
                                        Style="{StaticResource Key=labelTitleAsk}"/>
                                 <Label FontSize="14"
                                        TextColor="#101010"
@@ -81,7 +82,7 @@
                                        FontFamily="{StaticResource OpenSans-Regular}" >
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Contact: "/>
+                                            <Span Text="{x:Static helperLang:LanguageHelper.ContatInfo}"/>
                                             <Span Text=" "/>
                                             <Span Text="{Binding Shipping.ContactNameD}"/>
                                         </FormattedString>
@@ -92,7 +93,7 @@
                                            FontFamily="{StaticResource OpenSans-Regular}" >
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Phone: "/>
+                                            <Span Text="{x:Static helperLang:LanguageHelper.PhoneInfo}"/>
                                             <Span Text=" "/>
                                             <Span Text="{Binding Shipping.PhoneD}" TextColor="#2C5DEB"/>
                                         </FormattedString>
@@ -153,7 +154,7 @@
                         <shadowFrame:ShadowFrame x:Name="askBlock3"
                                                  Style="{StaticResource Key=frameAsk}">
                             <StackLayout Spacing="10">
-                                <Label Text="Your signature"
+                                <Label Text="{x:Static helperLang:LanguageHelper.TitleYourSignature}"
                                        Style="{StaticResource Key=labelTitleAsk}"/>
                                 <sig:SignaturePadView x:Name="sign"
                                                       StrokeColor="Black"
@@ -171,7 +172,7 @@
                     </StackLayout>
                 </StackLayout>
                 <Button x:Name="btnSave"
-                        Text="Save"
+                        Text="{x:Static helperLang:LanguageHelper.SaveBtnText}"
                         TextColor="White"
                         Clicked="Button_Clicked_1"
                         HeightRequest="46"

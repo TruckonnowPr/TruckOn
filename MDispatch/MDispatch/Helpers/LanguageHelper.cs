@@ -84,6 +84,116 @@ namespace MDispatch.Helpers
         public static string YesBtnText => Language.YesBtnText;
         public static string NoBtnText => Language.NoBtnText;
 
+        public static string ContinuingInspectionDelivery => Language.ContinuingInspectionDelivery;
+        public static string ContinuingInspectionPickedUp => Language.ContinuingInspectionPickedUp;
+        public static string StartInspectionDelivery => Language.StartInspectionDelivery;
+        public static string StartInspectionPickedUp => Language.StartInspectionPickedUp;
+
+        public static string HintPhotoItemsPage => Language.HintPhotoItemsPage;
+        public static string HintPhotoInspactionPage => Language.HintPhotoInspactionPage;
+        public static string HintPhotoInTruckPage => Language.HintPhotoInTruckPage;
+        public static string HintPhotoSeatBeltsPage => Language.HintPhotoSeatBeltsPage;
+
+        public static string TitleAskQuestionPage => Language.TitleAskQuestionPage;
+        public static string ItemNextPage => Language.ItemNextPage;
+
+        public static string AskBlockWeatherTitle => Language.AskBlockWeatherTitle;
+        public static string ClearAnswer => Language.ClearAnswer;
+        public static string RainAnswer => Language.RainAnswer;
+        public static string SnowAnswer => Language.SnowAnswer;
+        public static string DustAnswer => Language.DustAnswer;
+
+        public static string AskBlockLightBrightnessTitle => Language.AskBlockLightBrightnessTitle;
+        public static string HighAnswer => Language.HighAnswer;
+        public static string LowAnswer => Language.LowAnswer;
+
+        public static string AskBlockSafeLoctionTitle => Language.AskBlockSafeLoctionTitle;
+
+        public static string AskBlockFarFromTrailerTitle => Language.AskBlockFarFromTrailerTitle;
+        public static string PlaceholderFarFromTrailerAnswer => Language.PlaceholderFarFromTrailerAnswer;
+
+        public static string AskBlockGaveKeysTitle => Language.AskBlockGaveKeysTitle;
+        public static string PlaceholderGaveKeysAnswer => Language.PlaceholderGaveKeysAnswer;
+
+        public static string AskBlockEnoughSpaceTitle => Language.AskBlockEnoughSpaceTitle;
+
+        public static string AskBlockAnyoneRushingTitle => Language.AskBlockAnyoneRushingTitle;
+
+        public static string AskBlockNamePersonTitle => Language.AskBlockNamePersonTitle;
+        public static string PlaceholderNamePersonAnswer => Language.PlaceholderNamePersonAnswer;
+
+        public static string AskBlockTypeCarTitle => Language.AskBlockTypeCarTitle;
+
+        public static string AskBlockPlateTitle => Language.AskBlockPlateTitle;
+        public static string PlaceholderPlateAnswer => Language.PlaceholderPlateAnswer;
+
+        public static string AskBlockConditionTitle => Language.AskBlockConditionTitle;
+        public static string CleanAnswer => Language.CleanAnswer;
+        public static string DirtyAnswer => Language.DirtyAnswer;
+        public static string Snow1Answer => Language.Snow1Answer;
+        public static string WetAnswer => Language.WetAnswer;
+        public static string ExtraDirtyAnswer => Language.ExtraDirtyAnswer;
+
+        public static string AskBlockAdditionalItemsTitle => Language.AskBlockAdditionalItemsTitle;
+
+        public static string HintAddDamagePage => Language.HintAddDamagePage;
+        public static string NextInspactionBtnText => Language.NextInspactionBtnText;
+        public static string BackMainBtnText => Language.BackMainBtnText;
+
+        public static string RetakeBtnText => Language.RetakeBtnText;
+        public static string NextBtnText => Language.NextBtnText;
+        public static string AddDamagBtnText => Language.AddDamagBtnText;
+        public static string AddPhotoText => Language.AddPhotoText;
+
+        public static string AskBlockJumpedVehicleTitle => Language.AskBlockJumpedVehicleTitle;
+
+        public static string AskBlockMusteMileageTitle => Language.AskBlockMusteMileageTitle;
+        public static string PlaceholderMusteMileage => Language.PlaceholderMusteMileage;
+
+        public static string AskBlockImperfectionsWileLoadingTitle => Language.AskBlockImperfectionsWileLoadingTitle;
+        public static string PlaceholderMechanicalDefects => Language.PlaceholderMechanicalDefects;
+
+        public static string AskBlockMethodExitTitle => Language.AskBlockMethodExitTitle;
+        public static string DoorAnswer => Language.DoorAnswer;
+        public static string WindowAnswer => Language.WindowAnswer;
+        public static string SunroofAnswer => Language.SunroofAnswer;
+        public static string ConvertibleAnswer => Language.ConvertibleAnswer;
+
+        public static string AskBlockHelpYouLoadTitle => Language.AskBlockHelpYouLoadTitle;
+        public static string AskBlockLoadTheVehicleTitle => Language.AskBlockLoadTheVehicleTitle;
+        public static string PlaceholderName => Language.PlaceholderName;
+
+        public static string AskBlockDamageAnythingTitle => Language.AskBlockDamageAnythingTitle;
+        public static string PlaceholderIfAny => Language.PlaceholderIfAny;
+
+        public static string AskBlockUsedWinchTitle => Language.AskBlockUsedWinchTitle;
+
+        public static string TitleHelloCustomerPage => Language.TitleHelloCustomerPage;
+        public static string ThankYouForUsingOurCompany => Language.ThankYouForUsingOurCompany;
+        public static string ThankYouForUsingOurCompany1 => Language.ThankYouForUsingOurCompany1;
+        public static string StartBtnText => Language.StartBtnText;
+
+        public static string AskBlockFullNameTitle => Language.AskBlockFullNameTitle;
+        public static string PlaceholderFullName => Language.PlaceholderFullName;
+
+        public static string AskBlockYourPhoneTitle => Language.AskBlockYourPhoneTitle;
+        public static string PlaceholderYourPhone => Language.PlaceholderYourPhone;
+
+        public static string AskBlockManyKesTitle => Language.AskBlockManyKesTitle;
+        public static string PlaceholderManyKes => Language.PlaceholderManyKes;
+
+        public static string AskBlockGivenToDriverTitle => Language.AskBlockGivenToDriverTitle;
+        public static string IDontKnowBtnText => Language.IDontKnowBtnText;
+
+        public static string ContinuetnBtnText => Language.ContinuetnBtnText;
+
+        public static string TitleBillOfLandingPage => Language.TitleBillOfLandingPage;
+
+        public static string TitleOriginInfo => Language.TitleOriginInfo;
+        public static string TitleDestinatiinInfo => Language.TitleDestinatiinInfo;
+        public static string TitleYourSignature => Language.TitleYourSignature;
+        public static string SaveBtnText => Language.SaveBtnText;
+
         public static void InitLanguage()
         {
             switch(CrossSettings.Current.GetValueOrDefault("Language" , (int)LanguageType.English))

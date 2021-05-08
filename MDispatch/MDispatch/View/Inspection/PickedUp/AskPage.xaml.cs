@@ -30,6 +30,7 @@ namespace MDispatch.View.AskPhoto
             askPageMV = new AskPageMV(managerDispatchMob, vehiclwInformation, idShip, Navigation, initDasbordDelegate, getVechicleDelegate, onDeliveryToCarrier, totalPaymentToCarrier);
             InitializeComponent();
             BindingContext = askPageMV;
+            NavigationPage.SetBackButtonTitle(this, "LOL");
         }
 
 

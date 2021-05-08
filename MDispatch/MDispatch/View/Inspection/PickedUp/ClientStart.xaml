@@ -4,26 +4,26 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Hello customer"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers"
+             Title="{x:Static helperLang:LanguageHelper.TitleHelloCustomerPage}"
              x:Class="MDispatch.View.Inspection.PickedUp.ClientStart">
     <ContentPage.Content>
         <StackLayout x:Name="body"
                      Padding="24, 20, 24, 40">
-            
             <StackLayout VerticalOptions="CenterAndExpand" 
                          HorizontalOptions="CenterAndExpand">
-                <Label Text="Thank you for using our company."
+                <Label Text="{x:Static helperLang:LanguageHelper.ThankYouForUsingOurCompany}"
                        HorizontalTextAlignment="Center"
                        FontSize="22"
                        TextColor="#2C5DEB"
                        FontFamily="{StaticResource OpenSans-Bold}"/>
-                <Label Text="Press the “Start” button to continue!"
+                <Label Text="{x:Static helperLang:LanguageHelper.ThankYouForUsingOurCompany1}"
                        HorizontalTextAlignment="Center"
                        FontSize="22"
                        TextColor="#2C5DEB"
                        FontFamily="{StaticResource OpenSans-Bold}"/>
             </StackLayout>
-            <Button Text="Start"
+            <Button Text="{x:Static helperLang:LanguageHelper.StartBtnText}"
                     Clicked="Button_Clicked"
                     BackgroundColor="#2C5DEB"
                     TextColor="White"

@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.Inspection.PickedUp.AskForUser"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers"
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise"
-             Title="Question inspection">
+             Title="{x:Static helperLang:LanguageHelper.TitleAskQuestionPage}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="BOL" Clicked="ToolbarItem_Clicked_1"/>
         <!--<ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked_2"/>-->
@@ -18,9 +17,9 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock1"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Your Full Name"
+                        <Label Text="{x:Static helperLang:LanguageHelper.TitleAskQuestionPage}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <Entry Placeholder="Enter Full Name"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderFullName}"
                                TextChanged="Entry_TextChanged"
                                Style="{StaticResource entryAsk}"/>
                     </StackLayout>
@@ -28,9 +27,9 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock2"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Your phone"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockYourPhoneTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <Entry Placeholder="Enter Your phone"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderYourPhone}"
                                TextChanged="Entry_TextChanged1"
                                Keyboard="Telephone"
                                Style="{StaticResource entryAsk}"/>
@@ -39,9 +38,9 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock3"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="How many keys are driver been given"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockManyKesTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <Entry Placeholder="Enter the number of keys you gave"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderManyKes}"
                                TextChanged="Entry_TextChanged3"
                                Keyboard="Numeric"
                                Style="{StaticResource entryAsk}"/>
@@ -50,19 +49,19 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock4"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Any titles been given to driver?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockGivenToDriverTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="I don't know"
+                            <Button Text="{x:Static helperLang:LanguageHelper.IDontKnowBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
-                <Button Text="Continue"
+                <Button Text="{x:Static helperLang:LanguageHelper.ContinuetnBtnText}"
                         Clicked="ToolbarItem_Clicked"
                         Margin="0, 10, 0, 0"
                         BackgroundColor="#2C5DEB"
