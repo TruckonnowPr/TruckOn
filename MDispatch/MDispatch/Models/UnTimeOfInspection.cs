@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using MDispatch.Helpers;
+using Prism.Mvvm;
 using System;
 
 namespace MDispatch.Models
@@ -19,7 +20,7 @@ namespace MDispatch.Models
                 string[] arrData = statusInspection.Split(',');
                 IsInspectionDriver = Convert.ToBoolean(arrData[0]);
                 IsInspectionToDayDriver = Convert.ToBoolean(arrData[1]);
-                TimeOfInspection = arrData[2] + " Hours";
+                TimeOfInspection = arrData[2] + $" {LanguageHelper.HoursText}";
                 IdDriver = arrData[3];
                 if (IsInspectionDriver)
                 {
@@ -46,31 +47,31 @@ namespace MDispatch.Models
             get
             {
                 string color = "";
-                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "0 Hours")
+                if (TimeOfInspection == $"1 {LanguageHelper.HoursText}" || TimeOfInspection == $"0 {LanguageHelper.HoursText}")
                 {
                     color = "#FF2C2C";
                 }
-                else if (TimeOfInspection == "2 Hours")
+                else if (TimeOfInspection == $"2 {LanguageHelper.HoursText}")
                 {
                     color = "#FF5C00";
                 }
-                else if (TimeOfInspection == "3 Hours")
+                else if (TimeOfInspection == $"3 {LanguageHelper.HoursText}")
                 {
                     color = "#FF9314";
                 }
-                else if (TimeOfInspection == "4 Hours")
+                else if (TimeOfInspection == $"4 {LanguageHelper.HoursText}")
                 {
                     color = "#FFE600";
                 }
-                else if (TimeOfInspection == "5 Hours")
+                else if (TimeOfInspection == $"5 {LanguageHelper.HoursText}")
                 {
                     color = "#BDFF00";
                 }
-                else if (TimeOfInspection == "6 Hours")
+                else if (TimeOfInspection == $"6 {LanguageHelper.HoursText}")
                 {
                     color = "#69EB2C";
                 }
-                else if (TimeOfInspection == "7 Hours")
+                else if (TimeOfInspection == $"7 {LanguageHelper.HoursText}")
                 {
                     color = "#2C5DEB";
                 }
@@ -87,31 +88,31 @@ namespace MDispatch.Models
             get
             {
                 string color = "";
-                if (TimeOfInspection == "1 Hours" || TimeOfInspection == "0 Hours")
+                if (TimeOfInspection == $"1 {LanguageHelper.HoursText}" || TimeOfInspection == $"0 {LanguageHelper.HoursText}")
                 {
                     color = "#ffeeee";
                 }
-                else if (TimeOfInspection == "2 Hours")
+                else if (TimeOfInspection == $"2 {LanguageHelper.HoursText}")
                 {
                     color = "#fff2eb";
                 }
-                else if (TimeOfInspection == "3 Hours")
+                else if (TimeOfInspection == $"3 {LanguageHelper.HoursText}")
                 {
                     color = "#fff6ec";
                 }
-                else if (TimeOfInspection == "4 Hours")
+                else if (TimeOfInspection == $"4 {LanguageHelper.HoursText}")
                 {
                     color = "#fffdeb";
                 }
-                else if (TimeOfInspection == "5 Hours")
+                else if (TimeOfInspection == $"5 {LanguageHelper.HoursText}")
                 {
                     color = "#faffeb";
                 }
-                else if (TimeOfInspection == "6 Hours")
+                else if (TimeOfInspection == $"6 {LanguageHelper.HoursText}")
                 {
                     color = "#f3fdee";
                 }
-                else if (TimeOfInspection == "7 Hours")
+                else if (TimeOfInspection == $"7 {LanguageHelper.HoursText}")
                 {
                     color = "#eef2fd";
                 }
@@ -129,21 +130,21 @@ namespace MDispatch.Models
             get
             {
                 string status = "";
-                if(TimeOfInspection == "7 Hours" || TimeOfInspection == "6 Hours" || TimeOfInspection == "5 Hours" || TimeOfInspection == "4 Hours")
+                if(TimeOfInspection == $"7 {LanguageHelper.HoursText}" || TimeOfInspection == $"6 {LanguageHelper.HoursText}" || TimeOfInspection == $"5 {LanguageHelper.HoursText}" || TimeOfInspection == $"4 {LanguageHelper.HoursText}")
                 {
-                    status = "You can pass the inspection after";
+                    status = LanguageHelper.CanPassText;
                 }
-                else if(TimeOfInspection == "3 Hours" || TimeOfInspection == "2 Hours")
+                else if(TimeOfInspection == $"3 {LanguageHelper.HoursText}" || TimeOfInspection == $"2 {LanguageHelper.HoursText}")
                 {
-                    status = "best time to pass inspection";
+                    status = LanguageHelper.BestTimePassText;
                 }
-                else if (TimeOfInspection == "1 Hours")
+                else if (TimeOfInspection == $"1 {LanguageHelper.HoursText}")
                 {
-                    status = "Pass inspection now";
+                    status = LanguageHelper.PassNowText;
                 }
-                else if (TimeOfInspection == "0 Hours")
+                else if (TimeOfInspection == $"0 {LanguageHelper.HoursText}")
                 {
-                    status = "Pass inspection now";
+                    status = LanguageHelper.PassNowText;
                 }
                 return status;
             }

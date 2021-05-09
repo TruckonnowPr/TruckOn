@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using MDispatch.Helpers;
 using MDispatch.Models;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
@@ -64,7 +65,7 @@ namespace MDispatch.View.Inspection
                 {
                     blockPhotoInspection.Children.Add(new Label()
                     {
-                        Text = "Photo inspection Picked Up",
+                        Text = LanguageHelper.TitlePhotoInspactionPickedUp,
                         FontSize = 14,
                         FontFamily = fontBold,
                         Margin = new Thickness(0, 0, 0, 15),
@@ -90,7 +91,7 @@ namespace MDispatch.View.Inspection
                 {
                     blockPhotoInspection.Children.Add(new Label()
                     {
-                        Text = "Photo inspection Delivery",
+                        Text = LanguageHelper.TitlePhotoInspactionDelivery,
                         FontSize = 14,
                         FontFamily = fontBold,
                         Margin = new Thickness(0, 5, 0, 15),
@@ -196,7 +197,7 @@ namespace MDispatch.View.Inspection
                         {
                             new Label()
                                     {
-                                        Text = "Type:",
+                                        Text = LanguageHelper.TypeInfo,
                                         FontSize = 14,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -217,7 +218,7 @@ namespace MDispatch.View.Inspection
                         {
                             new Label()
                             {
-                                Text = "Color:",
+                                Text = LanguageHelper.ColorInfo,
                                         FontSize = 14,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -258,7 +259,7 @@ namespace MDispatch.View.Inspection
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
-                                        Text = "Circles Yellow — pickup damages;",
+                                        Text = LanguageHelper.HintDamegePickedUp,
                                         FontSize = 12,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -279,7 +280,7 @@ namespace MDispatch.View.Inspection
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
-                                        Text = "Circles Green — delivery damages;",
+                                        Text = LanguageHelper.HintDamegeDelivery,
                                         FontSize = 12,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -328,7 +329,7 @@ namespace MDispatch.View.Inspection
         protected override  void OnDisappearing()
         {
             base.OnDisappearing();
-             HelpersView.Hidden();
+            HelpersView.Hidden();
         }
     }
 }

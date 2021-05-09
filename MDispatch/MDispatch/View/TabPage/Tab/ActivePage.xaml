@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.TabPage.Tab.ActivePage"
              xmlns:effect="clr-namespace:MDispatch.NewElement.Effect"
-             x:Name="ctp">
+             x:Name="ctp"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.ToolbarItems>
         <ToolbarItem  IconImageSource="settings.png" Clicked="ToolbarItem_Clicked_2"/>
     </ContentPage.ToolbarItems>
@@ -18,7 +19,7 @@
                     </FlexLayout.GestureRecognizers>
                     <BoxView BackgroundColor="{Binding UnTimeOfInspection.GetColorBlock}" WidthRequest="16" />
                     <StackLayout Padding="10" BackgroundColor="{Binding UnTimeOfInspection.GetColorBlockOpacity}" FlexLayout.Grow="1">
-                        <Label Text="Inspection Driver" FontSize="16" FontFamily="{StaticResource OpenSans-Bold}" />
+                        <Label Text="{x:Static helperLang:LanguageHelper.TitleBlockInspaction}" FontSize="16" FontFamily="{StaticResource OpenSans-Bold}" />
                         <StackLayout>
                             <FlexLayout FlexLayout.AlignSelf="Center" Margin="3" >
                                 <Image Source="timeInspection.png" HeightRequest="13" WidthRequest="13" Margin="0,  4, 0, 0"/>
@@ -28,7 +29,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text=" "/>
-                                            <Span Text="Time to inspection: "/>
+                                            <Span Text="{x:Static helperLang:LanguageHelper.TimeInspactionText}"/>
                                             <Span Text=" "/>
                                             <Span Text="{Binding UnTimeOfInspection.TimeOfInspection}"/>
                                          </FormattedString>
@@ -43,7 +44,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text=" "/>
-                                            <Span Text="Need for inspection:"/>
+                                            <Span Text="{x:Static helperLang:LanguageHelper.NeedInspectionText}"/>
                                             <Span Text=" "/>
                                             <Span Text="{Binding UnTimeOfInspection.TimeOfStatus}"/>
                                          </FormattedString>

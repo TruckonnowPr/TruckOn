@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.Inspection.Feedback"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             Title="Feedback"
-             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
+             Title="{x:Static helperLang:LanguageHelper.TitleFeedBackPage}"
+             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <StackLayout>
         <ScrollView>
@@ -14,30 +15,29 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock1"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="How are you satisfied with a service?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockSatisfiedServiceTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <input:AdvancedSlider
                             MaxValue="10"
                             MinValue="0"
                             StepValue="1"
-                            ValuePrefix="Service - "
                             PropertyChanged="AdvancedSlider_PropertyChanged" />
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="askBlock2"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Would you use our company again"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockUseCompanyAgainTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="Maybe"
+                            <Button Text="{x:Static helperLang:LanguageHelper.MaybeBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -46,14 +46,14 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock3"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Would you like to get an notification if we have any promotion"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockSatisfiedServiceTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked1"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked1"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -62,26 +62,25 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock4"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="How did the driver perform"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockDriverPerformTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <input:AdvancedSlider
                             MaxValue="10"
                             MinValue="0"
-                            StepValue="1"
-                            ValuePrefix="Driver behaved on" />
+                            StepValue="1" />
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame x:Name="askBlock5"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Yuo Email"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockYourTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <Entry Placeholder="Email"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderEmail}"
                                Text="{Binding Email}"
                                Style="{StaticResource entryAsk}"/>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
-                <Button Text="Continue"
+                <Button Text="{x:Static helperLang:LanguageHelper.ContinuetnBtnText}"
                         Clicked="ToolbarItem_Clicked"
                         BackgroundColor="#2C5DEB"
                         TextColor="White"

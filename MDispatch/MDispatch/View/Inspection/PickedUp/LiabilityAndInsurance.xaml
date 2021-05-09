@@ -184,7 +184,7 @@
                        x:Name="bloclThank"
                        Style="{StaticResource Key=frameAsk}">
                     <StackLayout Padding="10">
-                        <Label Text="Thank you. Please pass the device to the driver." 
+                        <Label Text="{x:Static helperLang:LanguageHelper.ThankYouInspactionText}" 
                                FontSize="14"
                                TextColor="#2C5DEB"
                                FontFamily="{StaticResource OpenSans-Regular}"/>
@@ -194,10 +194,10 @@
                                          x:Name="blockPsw"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Enter your account password to continue"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockAccountPasswordTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <Entry x:Name="entryPsw"
-                               Placeholder="Enter password"
+                               Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderAccountPassword}"
                                TextChanged="Entry_TextChanged"
                                IsPassword="True"
                                Style="{StaticResource entryAsk}"/>
@@ -207,16 +207,16 @@
                                          x:Name="blockAskPay"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Did the driver pay for the carriage?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockDriverPayTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="13">
                                 <Button x:Name="btnYesPay"
-                                        Text="Yes"
+                                        Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                         Clicked="Button_Clicked"
                                         Style="{StaticResource btnAsk}"/>
                                 <Button x:Name="btnNoPay"
-                                        Text="No"
+                                        Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                         Clicked="Button_Clicked_2"
                                         Style="{StaticResource btnAsk}"/>
                                 <Button IsVisible="False"
@@ -228,7 +228,7 @@
                             </StackLayout>
                             <Label IsVisible="False"
                                    x:Name="lReport"
-                                   Text="In the near future the dispatcher see the problem"
+                                   Text="{x:Static helperLang:LanguageHelper.DescriptionDriverPayTitle}"
                                    FontSize="14"
                                    TextColor="#FF2C2C"
                                    FontFamily="{StaticResource OpenSans-Regular}"/>

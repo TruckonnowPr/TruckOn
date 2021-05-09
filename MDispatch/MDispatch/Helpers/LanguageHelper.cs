@@ -194,6 +194,69 @@ namespace MDispatch.Helpers
         public static string TitleYourSignature => Language.TitleYourSignature;
         public static string SaveBtnText => Language.SaveBtnText;
 
+        public static string ThankYouInspactionText => Language.ThankYouInspactionText;
+
+        public static string AskBlockAccountPasswordTitle => Language.AskBlockAccountPasswordTitle;
+        public static string PlaceholderAccountPassword => Language.PlaceholderAccountPassword;
+
+        public static string AskBlockDriverPayTitle => Language.AskBlockDriverPayTitle;
+        public static string DescriptionDriverPayTitle => Language.DescriptionDriverPayTitle;
+
+        public static string TypeInfo => Language.TypeInfo;
+        public static string ColorInfo => Language.ColorInfo;
+        public static string HintDamegePickedUp => Language.HintDamegePickedUp;
+        public static string HintDamegeDelivery => Language.HintDamegeDelivery;
+        public static string SeeInspactinPhoneBtnText => Language.SeeInspactinPhoneBtnText;
+
+        public static string AskBlockSendBOLTitle => Language.AskBlockSendBOLTitle;
+        public static string SendBOLBtnText => Language.SendBOLBtnText;
+
+        public static string TitlePhotoInspactionPickedUp => Language.TitlePhotoInspactionPickedUp;
+        public static string TitlePhotoInspactionDelivery => Language.TitlePhotoInspactionDelivery;
+
+        public static string TitleAlertSendEmailBOL => Language.TitleAlertSendEmailBOL;
+
+        public static string DescriptionDiscount => Language.DescriptionDiscount;
+
+        public static string TitleFeedBackPage => Language.TitleFeedBackPage;
+
+        public static string AskBlockSatisfiedServiceTitle => Language.AskBlockSatisfiedServiceTitle;
+
+        public static string AskBlockUseCompanyAgainTitle => Language.AskBlockUseCompanyAgainTitle;
+        public static string MaybeBtnText => Language.MaybeBtnText;
+
+        public static string AskBlockPromotionTitle => Language.AskBlockPromotionTitle;
+
+        public static string AskBlockDriverPerformTitle => Language.AskBlockDriverPerformTitle;
+
+        public static string AskBlockYourTitle => Language.AskBlockYourTitle;
+
+        public static string AskBlockManyKeysTotalTitle => Language.AskBlockManyKeysTotalTitle;
+        public static string PlaceholderManyKeysTotal => Language.PlaceholderManyKeysTotal;
+
+        public static string AskBlockAdditionalDocumentationTitle => Language.AskBlockAdditionalDocumentationTitle;
+
+        public static string AskBlockAdditionalPartsTitle => Language.AskBlockAdditionalPartsTitle;
+
+        public static string AskBlockCarLokedTitle => Language.AskBlockCarLokedTitle;
+
+        public static string AskBlockKeysLocationTitle => Language.AskBlockKeysLocationTitle;
+        public static string TruckAnswer => Language.TruckAnswer;
+        public static string TrailerAnswer => Language.TrailerAnswer;
+        public static string VehicleAnswer => Language.VehicleAnswer;
+
+        public static string AskBlockRateCustomerTitle => Language.AskBlockRateCustomerTitle;
+
+        public static string ComleteInspactinBtnText => Language.ComleteInspactinBtnText;
+
+        public static string TitleBlockInspaction => Language.TitleBlockInspaction;
+        public static string TimeInspactionText => Language.TimeInspactionText;
+        public static string NeedInspectionText => Language.NeedInspectionText;
+        public static string HoursText => Language.HoursText;
+        public static string CanPassText => Language.CanPassText;
+        public static string BestTimePassText => Language.BestTimePassText;
+        public static string PassNowText => Language.PassNowText;
+
         public static void InitLanguage()
         {
             switch(CrossSettings.Current.GetValueOrDefault("Language" , (int)LanguageType.English))

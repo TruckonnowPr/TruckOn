@@ -187,5 +187,69 @@
         public string TitleDestinatiinInfo => "Destination";
         public string TitleYourSignature => "Your signature";
         public string SaveBtnText => "Save";
+
+        public string ThankYouInspactionText => "Thank you. Please pass the device to the driver.";
+
+        public string AskBlockAccountPasswordTitle => "Enter your account password to continue";
+        public string PlaceholderAccountPassword => "Enter password";
+
+        public string AskBlockDriverPayTitle => "Did the driver pay for the carriage?";
+        public string DescriptionDriverPayTitle => "In the near future the dispatcher see the problem";
+
+        public string TypeInfo => "Type: ";
+        public string ColorInfo => "Color: ";
+
+        public string HintDamegePickedUp => "Circles Yellow — pickup damages;";
+        public string HintDamegeDelivery => "Circles Green — delivery damages;";
+        public string SeeInspactinPhoneBtnText => "Click to see inpection photo";
+
+        public string AskBlockSendBOLTitle => "Send BOL on Email";
+        public string SendBOLBtnText => "Send BOL";
+
+        public string TitlePhotoInspactionPickedUp => "Photo inspection Picked Up";
+        public string TitlePhotoInspactionDelivery => "Photo inspection Delivery";
+
+        public string TitleAlertSendEmailBOL => "Do you need a copy of inspection?";
+
+        public string DescriptionDiscount => "Would you like to get 10% off from next load just for giving us a good revue and filling out a short survey?";
+
+        public string TitleFeedBackPage => "Feed Back";
+
+        public string AskBlockSatisfiedServiceTitle => "How are you satisfied with a service?";
+
+        public string AskBlockUseCompanyAgainTitle => "Would you use our company again";
+        public string MaybeBtnText => "Maybe";
+
+        public string AskBlockPromotionTitle => "Would you like to get an notification if we have any promotion";
+
+        public string AskBlockDriverPerformTitle => "How did the driver perform";
+
+        public string AskBlockYourTitle => "Your Email";
+
+        public string AskBlockManyKeysTotalTitle => "How many keys total you been given?";
+        public string PlaceholderManyKeysTotal => "Enter the number of keys";
+
+        public string AskBlockAdditionalDocumentationTitle => "Any additional documentation been given after loading";
+
+        public string AskBlockAdditionalPartsTitle => "Any additional parts been given to you";
+
+        public string AskBlockCarLokedTitle => "Car locked?";
+
+        public string AskBlockKeysLocationTitle => "Keys location";
+        public string TruckAnswer => "Truck";
+        public string VehicleAnswer => "Vehicle";
+        public string TrailerAnswer => "Trailer";
+
+        public string AskBlockRateCustomerTitle => "Rate a customer";
+
+        public string ComleteInspactinBtnText => "Complete inspection";
+
+        public string TitleBlockInspaction => "Inspection Driver";
+        public string TimeInspactionText => "Time to inspection: ";
+        public string NeedInspectionText => "Need for inspection: ";
+        public string HoursText => "Hours";
+        public string CanPassText => "You can pass the inspection after";
+        public string BestTimePassText => "best time to pass inspection";
+        public string PassNowText => "Pass inspection now";
     }
 }

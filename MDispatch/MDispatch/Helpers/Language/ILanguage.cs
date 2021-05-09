@@ -189,5 +189,68 @@
         string TitleYourSignature { get; }
 
         string SaveBtnText { get; }
+
+        string ThankYouInspactionText { get; }
+
+        string AskBlockAccountPasswordTitle { get; }
+        string PlaceholderAccountPassword { get; }
+
+        string AskBlockDriverPayTitle { get; }
+        string DescriptionDriverPayTitle { get; }
+
+        string TypeInfo { get; }
+        string ColorInfo { get; }
+        string HintDamegePickedUp { get; }
+        string HintDamegeDelivery  { get; }
+        string SeeInspactinPhoneBtnText { get; }
+
+        string AskBlockSendBOLTitle { get; }
+        string SendBOLBtnText { get; }
+
+        string TitlePhotoInspactionPickedUp { get; }
+        string TitlePhotoInspactionDelivery { get; }
+
+        string TitleAlertSendEmailBOL { get; }
+
+        string DescriptionDiscount { get; }
+
+        string TitleFeedBackPage { get; }
+
+        string AskBlockSatisfiedServiceTitle { get; }
+
+        string AskBlockUseCompanyAgainTitle { get; }
+        string MaybeBtnText { get; }
+
+        string AskBlockPromotionTitle { get; }
+
+        string AskBlockDriverPerformTitle { get; }
+
+        string AskBlockYourTitle { get; }
+
+        string AskBlockManyKeysTotalTitle { get; }
+        string PlaceholderManyKeysTotal { get; }
+
+        string AskBlockAdditionalDocumentationTitle { get; }
+
+        string AskBlockAdditionalPartsTitle { get; }
+
+        string AskBlockCarLokedTitle { get; }
+
+        string AskBlockKeysLocationTitle { get; }
+        string TruckAnswer { get; }
+        string VehicleAnswer { get; }
+        string TrailerAnswer { get; }
+
+        string AskBlockRateCustomerTitle { get; }
+
+        string ComleteInspactinBtnText { get; }
+
+        string TitleBlockInspaction { get; }
+        string TimeInspactionText { get; }
+        string NeedInspectionText { get; }
+        string HoursText { get; }
+        string CanPassText { get; }
+        string BestTimePassText { get; }
+        string PassNowText { get; }
     }
 }

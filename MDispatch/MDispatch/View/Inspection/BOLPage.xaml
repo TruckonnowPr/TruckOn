@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="MDispatch.View.Inspection.BOLPage"
              Title="BOL"
-             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
+             xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <StackLayout x:Name="body">
         <ScrollView>
@@ -18,7 +19,7 @@
                  </FlexLayout>
                 <shadowFrame:ShadowFrame Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="4">
-                        <Label Text="Origin"
+                        <Label Text="{x:Static helperLang:LanguageHelper.TitleOriginInfo}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <Label FontSize="14"
                                TextColor="#101010"
@@ -40,7 +41,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Contact: "/>
+                                    <Span Text="{x:Static helperLang:LanguageHelper.ContatInfo}"/>
                                     <Span Text=" "/>
                                     <Span Text="{Binding Shipping.ContactNameP}"/>
                                 </FormattedString>
@@ -51,7 +52,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Phone: "/>
+                                    <Span Text="{x:Static helperLang:LanguageHelper.PhoneInfo}"/>
                                     <Span Text=" "/>
                                     <Span Text="{Binding Shipping.PhoneP}" TextColor="#2C5DEB"/>
                                 </FormattedString>
@@ -61,7 +62,7 @@
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="4">
-                        <Label Text="Destinatiin"
+                        <Label Text="{x:Static helperLang:LanguageHelper.TitleDestinatiinInfo}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <Label FontSize="14"
                                TextColor="#101010"
@@ -83,7 +84,7 @@
                                FontFamily="{StaticResource OpenSans-Regular}" >
                              <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Contact: "/>
+                                    <Span Text="{x:Static helperLang:LanguageHelper.ContatInfo}"/>
                                     <Span Text=" "/>
                                     <Span Text="{Binding Shipping.ContactNameD}"/>
                                 </FormattedString>
@@ -94,7 +95,7 @@
                                 FontFamily="{StaticResource OpenSans-Regular}" >
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Phone: "/>
+                                    <Span Text="{x:Static helperLang:LanguageHelper.PhoneInfo}"/>
                                     <Span Text=" "/>
                                     <Span Text="{Binding Shipping.PhoneD}" TextColor="#2C5DEB"/>
                                 </FormattedString>
@@ -117,13 +118,13 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock14"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Send BOL on Email"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockSendBOLTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
-                        <Entry Placeholder="Enter Email"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderEmail}"
                                Keyboard="Email"
                                Text="{Binding Email}"
                                Style="{StaticResource entryAsk}"/>
-                        <Button Text="Send BOL"
+                        <Button Text="{x:Static helperLang:LanguageHelper.SendBOLBtnText}"
                                 BackgroundColor="#2C5DEB"
                                 TextColor="White"
                                 Clicked="Button_Clicked"

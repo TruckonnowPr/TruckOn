@@ -163,7 +163,7 @@ namespace MDispatch.View.Inspection.PickedUp
                         {
                             new Label()
                                     {
-                                        Text = "Type:",
+                                        Text = LanguageHelper.TypeInfo,
                                         FontSize = 14,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -184,7 +184,7 @@ namespace MDispatch.View.Inspection.PickedUp
                         {
                             new Label()
                             {
-                                Text = "Color:",
+                                Text = LanguageHelper.ColorInfo,
                                 FontSize = 14,
                                 TextColor = Color.FromHex("#101010"),
                                 FontFamily = fontRegular
@@ -225,7 +225,7 @@ namespace MDispatch.View.Inspection.PickedUp
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
-                                        Text = "Circles Yellow — pickup damages;",
+                                        Text = LanguageHelper.HintDamegePickedUp,
                                         FontSize = 12,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -246,7 +246,7 @@ namespace MDispatch.View.Inspection.PickedUp
                                     new Label()
                                     {
                                         HorizontalTextAlignment = TextAlignment.Center,
-                                        Text = "Circles Green — delivery damages;",
+                                        Text = LanguageHelper.HintDamegeDelivery,
                                         FontSize = 12,
                                         TextColor = Color.FromHex("#101010"),
                                         FontFamily = fontRegular
@@ -264,7 +264,7 @@ namespace MDispatch.View.Inspection.PickedUp
                             new Label()
                             {
                                 HorizontalTextAlignment = TextAlignment.Center,
-                                Text = "Click to see inpection photo",
+                                Text = LanguageHelper.SeeInspactinPhoneBtnText,
                                 FontSize = 16,
                                 VerticalTextAlignment = TextAlignment.Center,
                                 FontFamily = fontBold,
