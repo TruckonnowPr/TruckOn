@@ -75,6 +75,7 @@ namespace MDispatch.Helpers
         public static string CurrentVersion => Language.CurrentVersion;
         public static string LastUpdateAvailable => Language.LastUpdateAvailable;
         public static string SignOutBtnText => Language.SignOutBtnText;
+        public static string LanguageText => Language.LanguageText;
 
         public static string NamePageTabActive => Language.NamePageTabActive;
         public static string NamePageTabDelivery => Language.NamePageTabDelivery;

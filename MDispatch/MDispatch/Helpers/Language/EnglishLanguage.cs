@@ -1,4 +1,6 @@
-﻿namespace MDispatch.Helpers.Language
+﻿using MDispatch.ViewModels.InspectionMV.Servise.Models;
+
+namespace MDispatch.Helpers.Language
 {
     public class EnglishLanguage : ILanguage
     {
@@ -69,6 +71,7 @@
         public string CurrentVersion => "Current version: ";
         public string LastUpdateAvailable => "Last update available: ";
         public string SignOutBtnText => "Sign out";
+        public string LanguageText => "Language";
 
         public string NamePageTabActive => "Active";
         public string NamePageTabDelivery => "Delivery";

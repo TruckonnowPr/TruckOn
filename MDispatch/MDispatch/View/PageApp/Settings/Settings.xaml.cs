@@ -1,4 +1,6 @@
-﻿using MDispatch.NewElement;
+﻿using MDispatch.Helpers;
+using MDispatch.Models.Enum;
+using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
 using MDispatch.ViewModels.PageAppMV.Settings;
@@ -23,6 +25,7 @@ namespace MDispatch.View.PageApp.Settings
             InitializeComponent();
             On<iOS>().SetUseSafeArea(true);
             BindingContext = settingsMV;
+            piLang.SelectedIndex = CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English);
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -75,6 +78,12 @@ namespace MDispatch.View.PageApp.Settings
         {
             base.OnDisappearing();
             HelpersView.Hidden();
+        }
+
+        private void Picker_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+            CrossSettings.Current.AddOrUpdateValue("Language", piLang.SelectedIndex);
+            LanguageHelper.InitLanguage();
         }
     }
 }

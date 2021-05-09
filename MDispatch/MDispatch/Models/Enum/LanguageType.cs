@@ -2,7 +2,6 @@
 {
     public enum LanguageType
     {
-        Unknown = 0,
-        English = 1,
+        English = 0,
     }
 }

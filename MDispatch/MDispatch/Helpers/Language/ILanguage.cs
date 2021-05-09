@@ -1,4 +1,6 @@
-﻿namespace MDispatch.Helpers.Language
+﻿using MDispatch.ViewModels.InspectionMV.Servise.Models;
+
+namespace MDispatch.Helpers.Language
 {
     public interface ILanguage
     {
@@ -70,6 +72,7 @@
         string CurrentVersion { get; }
         string LastUpdateAvailable { get; }
         string SignOutBtnText { get; }
+        string LanguageText { get; }
 
         string NamePageTabActive { get; }
         string NamePageTabDelivery { get; }
