@@ -33,8 +33,6 @@ namespace MDispatch.View.Inspection.Delyvery
             InitAsk();
         }
 
-        
-
         #region Ask19
         string curentTime = null;
         string currentDate = null;
@@ -45,6 +43,13 @@ namespace MDispatch.View.Inspection.Delyvery
             currentDate = App.time.ToShortDateString();
             askDelyveryMV.AskDelyvery.Time_Of_Delivery = $"{currentDate} {curentTime}";
             time.Text = $"{currentDate} {curentTime}";
+            methodExitPik.ItemsSource = new List<string>()
+            {
+                LanguageHelper.DoorAnswer,
+                LanguageHelper.WindowAnswer,
+                LanguageHelper.SunroofAnswer,
+                LanguageHelper.ConvertibleAnswer,
+            };
         }
         #endregion
 

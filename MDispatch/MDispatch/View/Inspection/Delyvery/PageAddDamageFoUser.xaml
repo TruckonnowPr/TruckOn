@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:TouchImage="clr-namespace:MDispatch.NewElement.TouchCordinate"
-             x:Class="MDispatch.View.Inspection.PickedUp.PageAddDamageFoUser">
+             x:Class="MDispatch.View.Inspection.PickedUp.PageAddDamageFoUser"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <AbsoluteLayout x:Name="absla"
                         BackgroundColor="#bfcef9">
@@ -18,7 +19,7 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="Click on the damaged area to add damage, which would remove the touch of the damage (After adding the damage, the application will return to the camera)"
+            <Label Text="{x:Static helperLang:LanguageHelper.TitleHelloCustomerPage}"
                    TextColor="#2C5DEB"
                    FontSize="14" AbsoluteLayout.LayoutFlags="PositionProportional"
                    AbsoluteLayout.LayoutBounds=".5, .9, Autosize, Autosize"

@@ -258,6 +258,55 @@ namespace MDispatch.Helpers
         public static string BestTimePassText => Language.BestTimePassText;
         public static string PassNowText => Language.PassNowText;
 
+        public static string TakePictureProblem => Language.TakePictureProblem;
+        public static string PictureOneSafetyBelt => Language.PictureOneSafetyBelt;
+
+        public static string AskBlockSafeDeliveryLocationTitle => Language.AskBlockSafeDeliveryLocationTitle;
+        public static string ParkingLotAnswer => Language.ParkingLotAnswer;
+        public static string DrivewayAnswer => Language.DrivewayAnswer;
+        public static string GravelAnswer => Language.GravelAnswer;
+        public static string SidewalklAnswer => Language.SidewalklAnswer;
+        public static string StreetAnswer => Language.StreetAnswer;
+        public static string MiddleStreetAnswer => Language.MiddleStreetAnswer;
+
+        public static string AskBlockTruckEmergencyBrakeTitle => Language.AskBlockTruckEmergencyBrakeTitle;
+
+        public static string AskBlockMeetClientTitle => Language.AskBlockMeetClientTitle;
+
+        public static string AskBlockTruckLockedTitle => Language.AskBlockTruckLockedTitle;
+
+        public static string AskBlockPictureIdPersonTitle => Language.AskBlockPictureIdPersonTitle;
+
+        public static string AskBlockTrailerLockedTitle => Language.AskBlockTrailerLockedTitle;
+
+        public static string AskBlockAnyoneRushingPerformTitle => Language.AskBlockAnyoneRushingPerformTitle;
+
+        public static string AskBlockWhileVehicleBeingTransportedTitle => Language.AskBlockWhileVehicleBeingTransportedTitle;
+
+        public static string PlaceholderBodyFlaws => Language.PlaceholderBodyFlaws;
+
+        public static string AskBlockVehicleStartsTitle => Language.AskBlockVehicleStartsTitle;
+        public static string AskBlockVehicleStarts1Title => Language.AskBlockVehicleStarts1Title;
+        public static string JumpAnswer => Language.JumpAnswer;
+        public static string CablesAnswer => Language.CablesAnswer;
+        public static string RolledOutAnswer => Language.RolledOutAnswer;
+
+        public static string AskBlockDoesVehicleDrivesTitle => Language.AskBlockDoesVehicleDrivesTitle;
+
+        public static string AskBlockVehicleParkedSafeLocationTitle => Language.AskBlockVehicleParkedSafeLocationTitle;
+
+        public static string AskBlockAnyoneHelpingUnloadTitle => Language.AskBlockAnyoneHelpingUnloadTitle;
+
+        public static string AskBlockSomeoneElseUnloadedVehicleTitle => Language.AskBlockSomeoneElseUnloadedVehicleTitle;
+
+        public static string AskBlockTimeOfDeliveryTitle => Language.AskBlockTimeOfDeliveryTitle;
+
+        public static string InfoKeysGiveDriver => Language.InfoKeysGiveDriver;
+        public static string AskBlockDeliveryCustomerInspectCarTitle => Language.AskBlockDeliveryCustomerInspectCarTitle;
+        public static string IConfirmTheInspectionBtnText => Language.IConfirmTheInspectionBtnText;
+
+        public static string HintAddDamageForUser => Language.HintAddDamageForUser;
+
         public static void InitLanguage()
         {
             switch(CrossSettings.Current.GetValueOrDefault("Language" , (int)LanguageType.English))
@@ -265,6 +314,11 @@ namespace MDispatch.Helpers
                 case (int)LanguageType.English:
                     {
                         Language = new EnglishLanguage();
+                        break;
+                    }
+                case (int)LanguageType.Russian:
+                    {
+                        Language = new RussianLanguage();
                         break;
                     }
             }

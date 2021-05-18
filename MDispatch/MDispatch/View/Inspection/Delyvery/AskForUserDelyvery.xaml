@@ -4,7 +4,8 @@
              x:Class="MDispatch.View.Inspection.Delyvery.AskForUserDelyvery"
              xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             Title="Question inspection"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers"
+             Title="{x:Static helperLang:LanguageHelper.TitleAskQuestionPage}"
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="BOL" Clicked="ToolbarItem_Clicked_1"/>
@@ -23,7 +24,7 @@
                                    Style="{StaticResource Key=labelTitleAsk}"/>
                             <StackLayout Orientation="Horizontal"
                                          Spacing="13">
-                                <Button Text="Yes"
+                                <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                         Clicked="Button_Clicked1"
                                         Style="{StaticResource btnAsk}"/>
                                 <Button Text="Found an issue"

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="MDispatch.View.Inspection.Delyvery.AskPageDelyvery"
-             Title="Question inspection"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers"
+             Title="{x:Static helperLang:LanguageHelper.TitleAskQuestionPage}"
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="BOL" Clicked="ToolbarItem_Clicked_1"/>
-        <ToolbarItem Text="Next" Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem Text="{x:Static helperLang:LanguageHelper.NextBtnText}" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout x:Name="body">
@@ -15,29 +15,28 @@
             <StackLayout x:Name="stBody"
                          Spacing="12"
                          Padding="24, 20, 24, 20">
-                <!--1-->
                 <shadowFrame:ShadowFrame x:Name="askBlock1"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Weather conditions"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockWeatherTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <FlexLayout Wrap="Wrap">
-                            <Button Text="Clear"
+                            <Button Text="{x:Static helperLang:LanguageHelper.ClearAnswer}"
                                     Clicked="Dropdown_SelectedItemChanged_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Rain"
+                                    Margin="0, 0, 13, 0"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.RainAnswer}"
                                     Clicked="Dropdown_SelectedItemChanged_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Snow"
+                                    Margin="0, 0, 13, 0"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.SnowAnswer}"
                                     Clicked="Dropdown_SelectedItemChanged_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Dust"
+                                    Margin="0, 0, 13, 0"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.DustAnswer}"
                                     Clicked="Dropdown_SelectedItemChanged_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
+                                    Margin="0, 0, 13, 0"/>
                         </FlexLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
@@ -45,14 +44,14 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock2"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Light brightness"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockLightBrightnessTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="High"
+                            <Button Text="{x:Static helperLang:LanguageHelper.HighAnswer}"
                                     Clicked="Button_Clicked_1"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="Low"
+                            <Button Text="{x:Static helperLang:LanguageHelper.LowAnswer}"
                                     Clicked="Button_Clicked_1"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -62,33 +61,32 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock3"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Safe delivery location"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockSafeDeliveryLocationTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <FlexLayout Wrap="Wrap">
-                            <Button Text="Parking lot"
+                            <Button Text="{x:Static helperLang:LanguageHelper.ParkingLotAnswer}"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Driveway"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.DrivewayAnswer}"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Gravel"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.GravelAnswer}"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Sidewalk"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.SidewalklAnswer}"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Street"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.StreetAnswer}"
+                                    Style="{StaticResource btnAsk}"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.MiddleStreetAnswer}"
                                     Clicked="RadioButton_Clicked_1"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Middle of the street"
-                                    Clicked="RadioButton_Clicked_1"
-                                    Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
+                                    Margin="0, 0, 13, 7"/>
                         </FlexLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
@@ -96,14 +94,14 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock5"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Truck on emergency brake?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockTruckEmergencyBrakeTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -113,13 +111,13 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock4"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Did you meet the client?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockMeetClientTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_3"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_3"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -129,13 +127,13 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock6"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Truck locked?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockTruckLockedTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_4"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_4"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -145,10 +143,10 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock7"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Please take a picture Id of the person taking the delivery"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockPictureIdPersonTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_5"
                                     FontFamily="{StaticResource OpenSans-Regular}"
                                     Style="{StaticResource btnAsk}" />
@@ -165,13 +163,13 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock8"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="All locks on the trailer?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockTrailerLockedTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_8"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_8"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -181,22 +179,22 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock9"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Anyone Rushing you to perform the delivery?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockAnyoneRushingPerformTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_11"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_11"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                         <StackLayout IsVisible="False"
                                      x:Name="askBlock9v2"
                                      Spacing="10">
-                            <Label Text="Enter the name of the person"
+                            <Label Text="{x:Static helperLang:LanguageHelper.AskBlockNamePersonTitle}"
                                    Style="{StaticResource labelTitleAsk}"/>
-                            <Entry Placeholder="Enter full name"
+                            <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderNamePersonAnswer}"
                                    TextChanged="Entry_TextChanged"
                                    Style="{StaticResource entryAsk}"/>
                         </StackLayout>
@@ -206,29 +204,29 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock10"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Vehicle Condition on delivery"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockConditionTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <FlexLayout Wrap="Wrap">
-                            <Button Text="Clean"
+                            <Button Text="{x:Static helperLang:LanguageHelper.CleanAnswer}"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Dirty"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.DirtyAnswer}"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Wet"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.WetAnswer}"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Snow"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.Snow1Answer}"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
-                            <Button Text="Extra dirty"
+                                    Margin="0, 0, 13, 7"/>
+                            <Button Text="{x:Static helperLang:LanguageHelper.ExtraDirtyAnswer}"
                                     Clicked="Button_Clicked_2"
                                     Style="{StaticResource btnAsk}"
-                                    Margin="0, 0, 0, 7"/>
+                                    Margin="0, 0, 13, 7"/>
                         </FlexLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
@@ -236,7 +234,7 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock11"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="How did you get inside of the vehicle?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockMethodExitTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <Frame Padding="3"
                                CornerRadius="6"
@@ -250,16 +248,8 @@
                                 </OnPlatform>
                            </Frame.HeightRequest>
                             <Picker SelectedIndexChanged="Picker_SelectedIndexChanged"
-                                    Style="{StaticResource entryAsk}">
-                                    <Picker.ItemsSource>
-                                        <x:Array Type="{x:Type x:String}">
-                                        <x:String>Door</x:String>
-                                        <x:String>window</x:String>
-                                        <x:String>sunroof</x:String>
-                                        <x:String>convertible</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                                    Style="{StaticResource entryAsk}"
+                                    x:Name="methodExitPik" />
                         </Frame>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
@@ -267,20 +257,20 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock12"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Did you notice any imperfections on body while vehicle being transported?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockWhileVehicleBeingTransportedTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_15"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_15"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                         <Entry IsVisible="False"
                                x:Name="entFlaws"
-                               Placeholder="Enter body flaws"
+                               Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderBodyFlaws}"
                                TextChanged="Entry_TextChanged_13"
                                Style="{StaticResource entryAsk}"/>
                     </StackLayout>
@@ -289,30 +279,30 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock14"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Did the vehicle starts"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockVehicleStartsTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_7"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_7"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                         <StackLayout x:Name="startST"
                                      IsVisible="False"
                                      Spacing="10">
-                            <Label Text="How did you start the car?"
+                            <Label Text="{x:Static helperLang:LanguageHelper.AskBlockVehicleStarts1Title}"
                                    Style="{StaticResource labelTitleAsk}"/>
                             <StackLayout Orientation="Horizontal" Spacing="13">
-                                <Button Text="Jump"
+                                <Button Text="{x:Static helperLang:LanguageHelper.JumpAnswer}"
                                         Clicked="Button_Clicked_12"
                                         Style="{StaticResource btnAsk}"/>
-                                <Button Text="Cables"
+                                <Button Text="{x:Static helperLang:LanguageHelper.CablesAnswer}"
                                         Clicked="Button_Clicked_12"
                                         Style="{StaticResource btnAsk}"/>
-                                <Button Text="Rolled out"
+                                <Button Text="{x:Static helperLang:LanguageHelper.RolledOutAnswer}"
                                         Clicked="Button_Clicked_12"
                                         Style="{StaticResource btnAsk}"/>
                             </StackLayout>
@@ -323,13 +313,13 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock13"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Does the vehicle Drives?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockDoesVehicleDrivesTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_6"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_6"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -339,9 +329,9 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock15"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Exact mileage after unloading"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockMusteMileageTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
-                        <Entry Placeholder="Miles"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderMusteMileage}"
                                Keyboard="Numeric"
                                TextChanged="Entry_TextChanged_10"
                                Style="{StaticResource entryAsk}"/>
@@ -351,18 +341,18 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock16"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout>
-                        <Label Text="Anyone helping you unload?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockAnyoneHelpingUnloadTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_13"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_13"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                         <Entry x:Name="entUnload"
-                               Placeholder="Name"
+                               Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderName}"
                                IsVisible="False"
                                TextChanged="Entry_TextChanged_11"
                                Style="{StaticResource entryAsk}"/>
@@ -372,19 +362,19 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock17"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Did someone else unloaded the vehicle for you?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockSomeoneElseUnloadedVehicleTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_14"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_14"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
                         <Entry x:Name="entUnloaded"
-                               Placeholder="Name"
+                               Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderName}"
                                TextChanged="Entry_TextChanged_12"
                                IsVisible="False"
                                Style="{StaticResource entryAsk}"/>
@@ -394,14 +384,14 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock18"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Vehicle parked in the safe location?"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockVehicleParkedSafeLocationTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal"
                                      Spacing="13">
-                            <Button Text="Yes"
+                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
                                     Clicked="Button_Clicked_9"
                                     Style="{StaticResource btnAsk}"/>
-                            <Button Text="No"
+                            <Button Text="{x:Static helperLang:LanguageHelper.NoBtnText}"
                                     Clicked="Button_Clicked_9"
                                     Style="{StaticResource btnAsk}"/>
                         </StackLayout>
@@ -411,11 +401,10 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock19"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Time Of Delivery"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockTimeOfDeliveryTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal">
                             <Label x:Name="time"
-                                   Text=""
                                    FontSize="14"
                                    FontFamily="{StaticResource OpenSans-Regular}"
                                    TextColor="#2C5DEB"/>
@@ -424,7 +413,7 @@
                 </shadowFrame:ShadowFrame>
                 <shadowFrame:ShadowFrame Style="{StaticResource frameAsk}">
                     <StackLayout>
-                        <Label Text="Please remove all your delivery items and keep keys to yourself"
+                        <Label Text="{x:Static helperLang:LanguageHelper.InfoKeysGiveDriver}"
                                FontSize="14"
                                FontFamily="{StaticResource OpenSans-Regular}"
                                TextColor="#FF2C2C"/>
@@ -433,10 +422,10 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock20"
                                          Style="{StaticResource frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="Ask the delivery customer to inspect the car? After inspecting the car, press the confirm button"
+                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockDeliveryCustomerInspectCarTitle}"
                                Style="{StaticResource labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="I confirm the inspection"
+                            <Button Text="{x:Static helperLang:LanguageHelper.IConfirmTheInspectionBtnText}"
                                     Clicked="Button_Clicked_10"
                                     FontSize="16"
                                     TextColor="#2C5DEB"

@@ -4,7 +4,8 @@
              xmlns:camera="clr-namespace:MDispatch.NewElement"
              x:Class="MDispatch.View.Inspection.Delyvery.CameraPage.CameraAdditionalPhoto"
                    OnPhotoResult="CameraPage_OnPhotoResult"
-                   NavigationPage.HasBackButton ="True">
+                   NavigationPage.HasBackButton ="True"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <AbsoluteLayout>
             <Image Source="BackIconpage.png"
@@ -14,7 +15,7 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="Please take a picture of the problem areas of the vehicle"
+            <Label Text="{x:Static helperLang:LanguageHelper.TakePictureProblem}"
                    TextColor="White"
                    FontSize="14" AbsoluteLayout.LayoutFlags="PositionProportional"
                    AbsoluteLayout.LayoutBounds=".5, .9, Autosize, Autosize"

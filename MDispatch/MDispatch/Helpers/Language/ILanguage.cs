@@ -204,7 +204,7 @@ namespace MDispatch.Helpers.Language
         string TypeInfo { get; }
         string ColorInfo { get; }
         string HintDamegePickedUp { get; }
-        string HintDamegeDelivery  { get; }
+        string HintDamegeDelivery { get; }
         string SeeInspactinPhoneBtnText { get; }
 
         string AskBlockSendBOLTitle { get; }
@@ -255,5 +255,54 @@ namespace MDispatch.Helpers.Language
         string CanPassText { get; }
         string BestTimePassText { get; }
         string PassNowText { get; }
+
+        string TakePictureProblem { get; }
+        string PictureOneSafetyBelt { get; }
+
+        string AskBlockSafeDeliveryLocationTitle { get; }
+        string ParkingLotAnswer { get; }
+        string DrivewayAnswer { get; }
+        string GravelAnswer { get; }
+        string SidewalklAnswer { get; }
+        string StreetAnswer { get; }
+        string MiddleStreetAnswer { get; }
+
+        string AskBlockTruckEmergencyBrakeTitle { get; }
+
+        string AskBlockMeetClientTitle { get; }
+
+        string AskBlockTruckLockedTitle { get; }
+
+        string AskBlockPictureIdPersonTitle { get; }
+
+        string AskBlockTrailerLockedTitle { get; }
+
+        string AskBlockAnyoneRushingPerformTitle { get; }
+
+        string AskBlockWhileVehicleBeingTransportedTitle { get; }
+
+        string PlaceholderBodyFlaws { get; }
+
+        string AskBlockVehicleStartsTitle { get; }
+        string AskBlockVehicleStarts1Title { get; }
+        string JumpAnswer { get; }
+        string CablesAnswer { get; }
+        string RolledOutAnswer { get; }
+
+        string AskBlockDoesVehicleDrivesTitle { get; }
+
+        string AskBlockAnyoneHelpingUnloadTitle { get; }
+
+        string AskBlockSomeoneElseUnloadedVehicleTitle { get; }
+
+        string AskBlockVehicleParkedSafeLocationTitle { get; }
+
+        string AskBlockTimeOfDeliveryTitle { get; }
+
+        string InfoKeysGiveDriver { get; }
+        string AskBlockDeliveryCustomerInspectCarTitle { get; }
+        string IConfirmTheInspectionBtnText { get; }
+
+        string HintAddDamageForUser { get; }
     }
 }

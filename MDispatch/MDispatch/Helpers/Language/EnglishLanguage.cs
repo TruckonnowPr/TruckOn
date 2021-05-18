@@ -1,6 +1,4 @@
-﻿using MDispatch.ViewModels.InspectionMV.Servise.Models;
-
-namespace MDispatch.Helpers.Language
+﻿namespace MDispatch.Helpers.Language
 {
     public class EnglishLanguage : ILanguage
     {
@@ -133,7 +131,7 @@ namespace MDispatch.Helpers.Language
 
         public string AskBlockAdditionalItemsTitle => "Any personal or additional items with or in vehicle";
 
-        public string HintAddDamagePage => "Tap on the place with the damage to add damage, that would remove touch on the damage";
+        public string HintAddDamagePage => "Click on the damaged spot to add a damage mark";
         public string BackMainBtnText => "Back Main";
         public string NextInspactionBtnText => "Next inspection";
 
@@ -254,5 +252,54 @@ namespace MDispatch.Helpers.Language
         public string CanPassText => "You can pass the inspection after";
         public string BestTimePassText => "best time to pass inspection";
         public string PassNowText => "Pass inspection now";
+
+        public string TakePictureProblem => "Please take a picture of the problem areas of the vehicle";
+        public string PictureOneSafetyBelt => "Take a picture of one of the safety belt, but the same one that has already been photographed";
+
+        public string AskBlockSafeDeliveryLocationTitle => "Safe delivery location";
+        public string ParkingLotAnswer => "Parking lot";
+        public string DrivewayAnswer => "Driveway";
+        public string GravelAnswer => "Gravel";
+        public string SidewalklAnswer => "Sidewalk";
+        public string StreetAnswer => "Street";
+        public string MiddleStreetAnswer => "Middle of the street";
+
+        public string AskBlockTruckEmergencyBrakeTitle => "Truck on emergency brake?";
+
+        public string AskBlockMeetClientTitle => "Did you meet the client?";
+
+        public string AskBlockTruckLockedTitle => "Truck locked?";
+
+        public string AskBlockPictureIdPersonTitle => "Please take a picture Id of the person taking the delivery";
+
+        public string AskBlockTrailerLockedTitle => "All locks on the trailer?";
+
+        public string AskBlockAnyoneRushingPerformTitle => "Anyone Rushing you to perform the delivery?";
+
+        public string AskBlockWhileVehicleBeingTransportedTitle => "Did you notice any imperfections on body while vehicle being transported?";
+
+        public string PlaceholderBodyFlaws => "Enter body flaws";
+
+        public string AskBlockVehicleStartsTitle => "Did the vehicle starts?";
+        public string AskBlockVehicleStarts1Title => "How did you start the car?";
+        public string JumpAnswer => "Jump";
+        public string CablesAnswer => "Cables";
+        public string RolledOutAnswer => "Rolled out";
+
+        public string AskBlockDoesVehicleDrivesTitle => "Does the vehicle Drives?";
+
+        public string AskBlockAnyoneHelpingUnloadTitle => "Anyone helping you unload?";
+
+        public string AskBlockSomeoneElseUnloadedVehicleTitle => "Did someone else unloaded the vehicle for you?";
+
+        public string AskBlockVehicleParkedSafeLocationTitle => "Vehicle parked in the safe location?";
+
+        public string AskBlockTimeOfDeliveryTitle => "Time Of Delivery";
+
+        public string InfoKeysGiveDriver => "Please remove all your delivery items and keep keys to yourself";
+        public string AskBlockDeliveryCustomerInspectCarTitle => "Ask the delivery customer to inspect the car? After inspecting the car, press the confirm button";
+        public string IConfirmTheInspectionBtnText => "I confirm the inspection";
+
+        public string HintAddDamageForUser => "Click on the damaged area to add damage, which would remove the touch of the damage (After adding the damage, the application will return to the camera)";
     }
 }
