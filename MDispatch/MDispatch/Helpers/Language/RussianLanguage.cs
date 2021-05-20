@@ -303,5 +303,17 @@ namespace MDispatch.Helpers.Language
         public string IConfirmTheInspectionBtnText => "Подтверждаю осмотр";
 
         public string HintAddDamageForUser => "Нажмите на поврежденную область, чтобы добавить метку повреждение(после добавления повреждений приложение вернется к камере)";
+
+        public string AskBlockInspectedVehicleAdditionalImperfectionsTitle => "Have you inspected the vehicle For any additional imperfections other than listed at the pick up?";
+        public string FoundIssueBtnText => "Нашли проблему";
+
+        public string AskBlockBilingPayTitle => "Оплата биллинга";
+        public string AskBlockClientSignatureBlockTitle => "Ваше имя и подпись дорогой клиент";
+        public string AskBlockClientNameTitle => "Имя клиента";
+        public string AskBlockClientSignatureTitle => "Подпись клиента";
+
+        public string AskBlockLikeRecive20fromYourNextCarTransportTitle => "Хотите получить скидку 20% на следующий транспорт?";
+
+        public string AskBlockRateDriverTitle => "Оценить водителя";
     }
 }

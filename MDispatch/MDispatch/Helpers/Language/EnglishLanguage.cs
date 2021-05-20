@@ -301,5 +301,17 @@
         public string IConfirmTheInspectionBtnText => "I confirm the inspection";
 
         public string HintAddDamageForUser => "Click on the damaged area to add damage, which would remove the touch of the damage (After adding the damage, the application will return to the camera)";
+
+        public string AskBlockInspectedVehicleAdditionalImperfectionsTitle => "Осматривали ли вы автомобиль на предмет каких-либо дополнительных недостатков, кроме перечисленных при получении?";
+        public string FoundIssueBtnText => "Found an issue";
+
+        public string AskBlockBilingPayTitle => "Biling pay";
+        public string AskBlockClientSignatureBlockTitle => "Your name and signature dear client";
+        public string AskBlockClientNameTitle => "Customer name";
+        public string AskBlockClientSignatureTitle => "Customer signature";
+
+        public string AskBlockLikeRecive20fromYourNextCarTransportTitle => "Would you like to recive 20% off from your next car transport?";
+
+        public string AskBlockRateDriverTitle => "Rate driver";
     }
 }

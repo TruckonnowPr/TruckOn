@@ -307,6 +307,18 @@ namespace MDispatch.Helpers
 
         public static string HintAddDamageForUser => Language.HintAddDamageForUser;
 
+        public static string AskBlockInspectedVehicleAdditionalImperfectionsTitle => Language.AskBlockInspectedVehicleAdditionalImperfectionsTitle;
+        public static string FoundIssueBtnText => Language.FoundIssueBtnText;
+
+        public static string AskBlockBilingPayTitle => Language.AskBlockBilingPayTitle;
+        public static string AskBlockClientSignatureBlockTitle => Language.AskBlockClientSignatureBlockTitle;
+        public static string AskBlockClientNameTitle => Language.AskBlockClientNameTitle;
+        public static string AskBlockClientSignatureTitle => Language.AskBlockClientSignatureTitle;
+
+        public static string AskBlockLikeRecive20fromYourNextCarTransportTitle => Language.AskBlockLikeRecive20fromYourNextCarTransportTitle;
+
+        public static string AskBlockRateDriverTitle => Language.AskBlockRateDriverTitle;
+
         public static void InitLanguage()
         {
             switch(CrossSettings.Current.GetValueOrDefault("Language" , (int)LanguageType.English))

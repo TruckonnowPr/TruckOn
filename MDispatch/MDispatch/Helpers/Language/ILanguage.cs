@@ -304,5 +304,17 @@ namespace MDispatch.Helpers.Language
         string IConfirmTheInspectionBtnText { get; }
 
         string HintAddDamageForUser { get; }
+
+        string AskBlockInspectedVehicleAdditionalImperfectionsTitle { get; }
+        string FoundIssueBtnText { get; }
+
+        string AskBlockBilingPayTitle { get; }
+        string AskBlockClientSignatureBlockTitle { get; }
+        string AskBlockClientNameTitle { get; }
+        string AskBlockClientSignatureTitle { get; }
+
+        string AskBlockLikeRecive20fromYourNextCarTransportTitle { get; }
+
+        string AskBlockRateDriverTitle { get; }
     }
 }

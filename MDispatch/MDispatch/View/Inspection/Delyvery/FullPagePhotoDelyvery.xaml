@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MDispatch.View.PageApp.FullPagePhotoDelyvery"
-                   NavigationPage.HasBackButton ="True">
+                   NavigationPage.HasBackButton ="True"
+             xmlns:helperLang="clr-namespace:MDispatch.Helpers">
     <ContentPage.Content>
         <AbsoluteLayout x:Name="laAbsul">
             <Image x:Name="SelectPhoto" Source="{Binding SourseImage}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"/>
@@ -48,7 +49,7 @@
                          AbsoluteLayout.LayoutBounds="1, 0.95, 1, 43">
                 <Button x:Name="btnRetake"
                         IsVisible="False"
-                        Text="Retake"
+                        Text="{x:Static helperLang:LanguageHelper.RetakeBtnText}"
                         HorizontalOptions="Start"
                         Clicked="Button_Clicked_3"
                         FontFamily="{StaticResource OpenSans-Bold}"
@@ -60,7 +61,7 @@
                         TextColor="White"/>
                 <Button x:Name="btnDamage"
                         IsVisible="False"
-                        Text="Add Damag"
+                        Text="{x:Static helperLang:LanguageHelper.AddDamagBtnText}"
                         FontSize="16"
                         BackgroundColor="#FF2C2C"
                         TextColor="White"
@@ -71,7 +72,7 @@
                         Margin="0, 0, 24, 0" 
                         FontFamily="{StaticResource OpenSans-Bold}"/>
                 <Button x:Name="btnAddPhoto"
-                        Text="Add Photo"
+                        Text="{x:Static helperLang:LanguageHelper.AddPhotoText}"
                         FontSize="16"
                         BackgroundColor="#FF9314"
                         TextColor="White"
@@ -82,7 +83,7 @@
                         CornerRadius="23"
                         Margin="24, 0, 0, 0"/>
                 <Button x:Name="btnNext"
-                        Text="Next"
+                        Text="{x:Static helperLang:LanguageHelper.NextBtnText}"
                         FontSize="16"
                         BackgroundColor="#2C5DEB"
                         TextColor="White"
