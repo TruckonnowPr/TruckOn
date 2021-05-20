@@ -135,7 +135,7 @@ namespace MDispatch.View.AskPhoto
                 button7.TextColor = Color.FromHex("#C1C1C1");
             }
             button7 = button;
-            if(button.Text == "Yes" || button.Text == "YES")
+            if(button.Text == LanguageHelper.YesBtnText)
             {
                 askBlock7v2.IsVisible = true;
                 if (txtAnswer7 != "")

@@ -64,7 +64,7 @@ namespace MDispatch.View.Inspection
                 button3.TextColor = Color.FromHex("#C1C1C1");
             }
             button3 = button;
-            if(button.Text == "Yes" || button.Text == "YES")
+            if(button.Text == LanguageHelper.YesBtnText)
             {
                 askBlock4.IsVisible = true;
                 if(ask1PageMV.Ask1.Did_someone_load_the_vehicle_for_you != null && ask1PageMV.Ask1.Did_someone_load_the_vehicle_for_you != "")
@@ -131,7 +131,7 @@ namespace MDispatch.View.Inspection
             {
                 button5.TextColor = Color.FromHex("#C1C1C1");
             }
-            if (button.Text == "Yes" || button.Text == "YES")
+            if (button.Text == LanguageHelper.YesBtnText)
             {
                 entDamage.IsVisible = true;
                 if (isTypeText5)
@@ -330,7 +330,7 @@ namespace MDispatch.View.Inspection
             {
                 button14.TextColor = Color.FromHex("#C1C1C1");
             }
-            if(button.Text == "Yes" || button.Text == "YES")
+            if(button.Text == LanguageHelper.YesBtnText)
             {
                 if(isTypeText)
                 {

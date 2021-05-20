@@ -1,4 +1,6 @@
-﻿using MDispatch.NewElement;
+﻿using MDispatch.Models.Enum;
+using MDispatch.NewElement;
+using Plugin.Settings;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -75,15 +77,31 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             return indecCar;
         }
 
+        //CrossSettings.Current.GetValueOrDefault("Language" , (int)LanguageType.English)
+
 
         public string GetNameLayout(int inderxPhotoInspektion)
         {
             string nameLayout = "";
-            if(inderxPhotoInspektion == 1)
+            if(CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.English)
+            {
+                nameLayout = GetNameLayoutEnglish(inderxPhotoInspektion);
+            }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Russian)
+            {
+                nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutEnglish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (inderxPhotoInspektion == 1)
             {
                 nameLayout = "Vehicle dashboard";
             }
-            else if(inderxPhotoInspektion == 2)
+            else if (inderxPhotoInspektion == 2)
             {
                 nameLayout = "Driver seat";
             }
@@ -121,7 +139,7 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             }
             else if (inderxPhotoInspektion == 11)
             {
-                nameLayout = "Front front wheel driver's side";
+                nameLayout = "Front wheel driver's side";
             }
             else if (inderxPhotoInspektion == 12)
             {
@@ -250,6 +268,184 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             else if (inderxPhotoInspektion == 43)
             {
                 nameLayout = "Rear belt mount vehicle on the passenger side";
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutRussian(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (inderxPhotoInspektion == 1)
+            {
+                nameLayout = "Приборная панель автомобиля";
+            }
+            else if (inderxPhotoInspektion == 2)
+            {
+                nameLayout = "Сиденье водителя";
+            }
+            else if (inderxPhotoInspektion == 3)
+            {
+                nameLayout = "Комплект со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 4)
+            {
+                nameLayout = "Водительская дверь";
+            }
+            else if (inderxPhotoInspektion == 5)
+            {
+                nameLayout = "Комплект со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 6)
+            {
+                nameLayout = "Купе";
+            }
+            else if (inderxPhotoInspektion == 7)
+            {
+                nameLayout = "Водительская дверь";
+            }
+            else if (inderxPhotoInspektion == 8)
+            {
+                nameLayout = "Зеркало заднего вида со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 9)
+            {
+                nameLayout = "Зеркало заднего вида со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 10)
+            {
+                nameLayout = "Передняя часть отсека, сторона водителя";
+            }
+            else if (inderxPhotoInspektion == 11)
+            {
+                nameLayout = "Переднее колесо со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 12)
+            {
+                nameLayout = "Передний бампер со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 13)
+            {
+                nameLayout = "Передняя фара со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 14)
+            {
+                nameLayout = "Front headlight, driver's side";
+            }
+            else if (inderxPhotoInspektion == 15)
+            {
+                nameLayout = "Передний бампер";
+            }
+            else if (inderxPhotoInspektion == 16)
+            {
+                nameLayout = "Вся передняя часть купе";
+            }
+            else if (inderxPhotoInspektion == 17)
+            {
+                nameLayout = "Правая сторона переднего бампера";
+            }
+            else if (inderxPhotoInspektion == 18)
+            {
+                nameLayout = "Центральная сторона переднего бампера";
+            }
+            else if (inderxPhotoInspektion == 19)
+            {
+                nameLayout = "Левая сторона переднего бампера";
+            }
+            else if (inderxPhotoInspektion == 20)
+            {
+                nameLayout = "Вытяжка купе";
+            }
+            else if (inderxPhotoInspektion == 21)
+            {
+                nameLayout = "Лобовое стекло купе";
+            }
+            else if (inderxPhotoInspektion == 22)
+            {
+                nameLayout = "Передняя фара на стороне пассажира";
+            }
+            else if (inderxPhotoInspektion == 23)
+            {
+                nameLayout = "Передняя фара на стороне пассажира";
+            }
+            else if (inderxPhotoInspektion == 24)
+            {
+                nameLayout = "Передний бампер со стороны пассажира";
+            }
+            else if (inderxPhotoInspektion == 25)
+            {
+                nameLayout = "Переднее переднее колесо со стороны пассажира";
+            }
+            else if (inderxPhotoInspektion == 26)
+            {
+                nameLayout = "Передняя часть купе со стороны пассажира";
+            }
+            else if (inderxPhotoInspektion == 27)
+            {
+                nameLayout = "Пассажирская дверь";
+            }
+            else if (inderxPhotoInspektion == 28)
+            {
+                nameLayout = "Зеркало заднего вида со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 29)
+            {
+                nameLayout = "Right rear view mirror (Front part)";
+            }
+            else if (inderxPhotoInspektion == 30)
+            {
+                nameLayout = "Задняя часть салона";
+            }
+            else if (inderxPhotoInspektion == 31)
+            {
+                nameLayout = "Заднее переднее колесо со стороны пассажира";
+            }
+            else if (inderxPhotoInspektion == 32)
+            {
+                nameLayout = "Вся пассажирская часть купе";
+            }
+            else if (inderxPhotoInspektion == 33)
+            {
+                nameLayout = "Фара задняя со стороны водителя";
+            }
+            else if (inderxPhotoInspektion == 34)
+            {
+                nameLayout = "Заднее переднее колесо со стороны пассажира";
+            }
+            else if (inderxPhotoInspektion == 35)
+            {
+                nameLayout = "Вся задняя часть купе";
+            }
+            else if (inderxPhotoInspektion == 36)
+            {
+                nameLayout = "Задний фонарь на стороне пассажира";
+            }
+            else if (inderxPhotoInspektion == 37)
+            {
+                nameLayout = "Заднее стекло купе";
+            }
+            else if (inderxPhotoInspektion == 38)
+            {
+                nameLayout = "Задняя часть салона";
+            }
+            else if (inderxPhotoInspektion == 39)
+            {
+                nameLayout = "Вся водительская сторона купе";
+            }
+            else if (inderxPhotoInspektion == 40)
+            {
+                nameLayout = "Задний ремень крепления автомобиля на стороне водителя";
+            }
+            else if (inderxPhotoInspektion == 41)
+            {
+                nameLayout = "Передний ремень крепления автомобиля на стороне водителя";
+            }
+            else if (inderxPhotoInspektion == 42)
+            {
+                nameLayout = "Автомобиль с передним ремнем безопасности на стороне пассажира";
+            }
+            else if (inderxPhotoInspektion == 43)
+            {
+                nameLayout = "Автомобиль с креплением на ремне сзади на стороне пассажира";
             }
             return nameLayout;
         }

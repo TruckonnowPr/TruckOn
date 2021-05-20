@@ -110,11 +110,11 @@ namespace MDispatch.View.Inspection.Delyvery
             button.TextColor = Color.FromHex("#2C5DEB");
             askForUsersDelyveryMW.AskForUserDelyveryM.Have_you_inspected_the_vehicle_For_any_additional_imperfections_other_than_listed_at_the_pick_up = button.Text;
             button1 = button;
-            if (button1.Text == "Found an issue" || button1.Text == "FOUND AN ISSUE")
+            if (button1.Text == LanguageHelper.FoundIssueBtnText)
             {
                 await Navigation.PushAsync(new PageAddDamageFoUser(askForUsersDelyveryMW, blockAskPhoto, this));
             }
-            else if(button1.Text == "Yes")
+            else if(button1.Text == LanguageHelper.YesBtnText)
             {
                 askForUsersDelyveryMW.AskForUserDelyveryM.Have_you_inspected_the_vehicle_For_any_additional_imperfections_other_than_listed_at_the_pick_up_photo = null;
                 blockAskPhoto.Children.Clear();
@@ -227,7 +227,7 @@ namespace MDispatch.View.Inspection.Delyvery
             Button button = (Button)sender;
             button.TextColor = Color.FromHex("#2C5DEB");
             button4 = button;
-            if(button.Text == "Yes" || button.Text == "YES")
+            if(button.Text == LanguageHelper.YesBtnText)
             {
                 await Navigation.PushAsync(new View.Inspection.Feedback(askForUsersDelyveryMW.managerDispatchMob, askForUsersDelyveryMW.VehiclwInformation, askForUsersDelyveryMW));
             }

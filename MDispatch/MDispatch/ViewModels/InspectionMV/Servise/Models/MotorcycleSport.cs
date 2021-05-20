@@ -1,4 +1,6 @@
-﻿using MDispatch.NewElement;
+﻿using MDispatch.Models.Enum;
+using MDispatch.NewElement;
+using Plugin.Settings;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -81,6 +83,20 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
         }
 
         public string GetNameLayout(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.English)
+            {
+                nameLayout = GetNameLayoutEnglish(inderxPhotoInspektion);
+            }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Russian)
+            {
+                nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutEnglish(int inderxPhotoInspektion)
         {
             string nameLayout = "";
             if (inderxPhotoInspektion == 1)
@@ -174,6 +190,104 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             else if (inderxPhotoInspektion == 23)
             {
                 nameLayout = "Rear belt mount vehicle on the passenger side";
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutRussian(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (inderxPhotoInspektion == 1)
+            {
+                nameLayout = "Спортбайк приборной панели";
+            }
+            else if (inderxPhotoInspektion == 2)
+            {
+                nameLayout = "Панель приборов и лобовое стекло спортбайка";
+            }
+            else if (inderxPhotoInspektion == 3)
+            {
+                nameLayout = "Передняя часть спортбайка справа";
+            }
+            else if (inderxPhotoInspektion == 4)
+            {
+                nameLayout = "Зеркало заднего вида спортбайк справа";
+            }
+            else if (inderxPhotoInspektion == 5)
+            {
+                nameLayout = "Переднее колесо спортбайка справа";
+            }
+            else if (inderxPhotoInspektion == 6)
+            {
+                nameLayout = "Фары спортивных мотоцикла";
+            }
+            else if (inderxPhotoInspektion == 7)
+            {
+                nameLayout = "Лобовое стекло спортбайка";
+            }
+            else if (inderxPhotoInspektion == 8)
+            {
+                nameLayout = "Спортивный мотоцикл с переди";
+            }
+            else if (inderxPhotoInspektion == 9)
+            {
+                nameLayout = "Передняя правая фара спортбайка";
+            }
+            else if (inderxPhotoInspektion == 10)
+            {
+                nameLayout = "Передняя левая фара спортбайка";
+            }
+            else if (inderxPhotoInspektion == 11)
+            {
+                nameLayout = "Переднее колесо спортбайка слева";
+            }
+            else if (inderxPhotoInspektion == 12)
+            {
+                nameLayout = "Передняя часть спортбайка слева";
+            }
+            else if (inderxPhotoInspektion == 13)
+            {
+                nameLayout = "Зеркало заднего вида спортбайк слева";
+            }
+            else if (inderxPhotoInspektion == 14)
+            {
+                nameLayout = "Вся левая сторона спортбайка";
+            }
+            else if (inderxPhotoInspektion == 15)
+            {
+                nameLayout = "----------";
+            }
+            else if (inderxPhotoInspektion == 16)
+            {
+                nameLayout = "Задняя часть спортбайка слева";
+            }
+            else if (inderxPhotoInspektion == 17)
+            {
+                nameLayout = "Колесо спортбайка слева";
+            }
+            else if (inderxPhotoInspektion == 18)
+            {
+                nameLayout = "Колесо спортбайка справа";
+            }
+            else if (inderxPhotoInspektion == 19)
+            {
+                nameLayout = "Задняя часть спортбайка справа";
+            }
+            else if (inderxPhotoInspektion == 20)
+            {
+                nameLayout = "Задний ремень крепления мотоцикла на стороне водителя";
+            }
+            else if (inderxPhotoInspektion == 21)
+            {
+                nameLayout = "Передний ремень крепления мотоцикла на стороне водителя";
+            }
+            else if (inderxPhotoInspektion == 22)
+            {
+                nameLayout = "Передниый ремень крепления мотоцикла на стороне пасажира";
+            }
+            else if (inderxPhotoInspektion == 23)
+            {
+                nameLayout = "Задний ремень крепления мотоцикла на стороне пасажира";
             }
             return nameLayout;
         }

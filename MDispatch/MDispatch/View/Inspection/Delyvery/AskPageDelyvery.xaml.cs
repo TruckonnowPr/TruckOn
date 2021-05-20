@@ -218,7 +218,7 @@ namespace MDispatch.View.Inspection.Delyvery
                 button9.TextColor = Color.FromHex("#C1C1C1");
             }
             button9 = button;
-            if (button.Text == "Yes" || button.Text == "YES")
+            if (button.Text == LanguageHelper.YesBtnText)
             {
                 askBlock9v2.IsVisible = true;
                 askDelyveryMV.AskDelyvery.Anyone_Rushing_you_to_perform_the_delivery = $"{btnAnswer}, {txtAnswer}";
@@ -314,7 +314,7 @@ namespace MDispatch.View.Inspection.Delyvery
                 button14.TextColor = Color.FromHex("#C1C1C1");
             }
             button14 = button;
-            if (button.Text == "Yes" || button.Text == "YES")
+            if (button.Text == LanguageHelper.YesBtnText)
             {
                 isAsk14 = true;
                 startST.IsVisible = false;
@@ -419,7 +419,7 @@ namespace MDispatch.View.Inspection.Delyvery
                 button16.TextColor = Color.FromHex("#C1C1C1");
             }
             button16 = button;
-            if (button.Text == "Yes" || button.Text == "YES")
+            if (button.Text == LanguageHelper.YesBtnText)
             {
                 entUnload.IsVisible = true;
                 askDelyveryMV.AskDelyvery.Anyone_helping_you_unload = $"{btnAnswer16}, {txtAnswer16}";
@@ -463,7 +463,7 @@ namespace MDispatch.View.Inspection.Delyvery
                 button17.TextColor = Color.FromHex("#C1C1C1");
             }
             button17 = button;
-            if (button.Text == "Yes" || button.Text == "YES")
+            if (button.Text == LanguageHelper.YesBtnText)
             {
                 entUnloaded.IsVisible = true;
                 askDelyveryMV.AskDelyvery.Did_someone_else_unloaded_the_vehicle_for_you = $"{btnAnswer17}, {txtAnswer17}";
@@ -507,7 +507,7 @@ namespace MDispatch.View.Inspection.Delyvery
                 button12.TextColor = Color.FromHex("#C1C1C1");
             }
             button12 = button;
-            if (button.Text == "Yes" || button.Text == "YES")
+            if (button.Text == LanguageHelper.YesBtnText)
             {
                 entFlaws.IsVisible = true;
                 askDelyveryMV.AskDelyvery.Did_you_notice_any_imperfections_on_body_wile_vehicle_been_transported = $"{btnAnswer12}, {txtAnswer12}";

@@ -1,4 +1,6 @@
-﻿using MDispatch.NewElement;
+﻿using MDispatch.Models.Enum;
+using MDispatch.NewElement;
+using Plugin.Settings;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -57,7 +59,21 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
         public string GetNameLayout(int inderxPhotoInspektion)
         {
             string nameLayout = "";
-            switch(inderxPhotoInspektion)
+            if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.English)
+            {
+                nameLayout = GetNameLayoutEnglish(inderxPhotoInspektion);
+            }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Russian)
+            {
+                nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutEnglish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            switch (inderxPhotoInspektion)
             {
                 case 1: nameLayout = "Vehicle(Cruise Motorcycle) Dashboard"; break;
                 case 2: nameLayout = "Vehicle(Cruise Motorcycle) Petrol Tank "; break;
@@ -74,6 +90,30 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
                 case 13: nameLayout = "Front belt mount vehicle on the driver's side"; break;
                 case 14: nameLayout = "Front belt mount vehicle on the passenger side"; break;
                 case 15: nameLayout = "Rear belt mount vehicle on the passenger side"; break;
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutRussian(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            switch (inderxPhotoInspektion)
+            {
+                case 1: nameLayout = "Приборная панель мотоцикла(Круизный мотоцикл)"; break;
+                case 2: nameLayout = "Бензобак"; break;
+                case 3: nameLayout = "Вся правая сторона мотоцикла(Круизный мотоцикл)"; break;
+                case 4: nameLayout = "Переднее колесо справа от мотоцикла(Круизный мотоцикл)"; break;
+                case 5: nameLayout = "Центральная правая сторона мотоцикла(Круизный мотоцикл)"; break;
+                case 6: nameLayout = "Заднее колесо мотоцикла(Круизный мотоцикл) справа"; break;
+                case 7: nameLayout = "Мотоцикла(Круизный мотоцикл) сзади"; break;
+                case 8: nameLayout = "Заднее колесо мотоцикла(Круизный мотоцикл) слева"; break;
+                case 9: nameLayout = "Центральная левая сторона мотоцикла(Круизный мотоцикл)"; break;
+                case 10: nameLayout = "Переднее колесо мотоцикла(Круизный мотоцикл) слева"; break;
+                case 11: nameLayout = "Вся левая сторона мотоцикла(Круизный мотоцикл)"; break;
+                case 24: nameLayout = "Задний ремень крепления мотоцикла на стороне водителя"; break;
+                case 25: nameLayout = "Передний ремень крепления мотоцикла на стороне водителя"; break;
+                case 26: nameLayout = "Передниый ремень крепления мотоцикла на стороне пасажира"; break;
+                case 27: nameLayout = "Задний ремень крепления мотоцикла на стороне пасажира"; break;
             }
             return nameLayout;
         }
