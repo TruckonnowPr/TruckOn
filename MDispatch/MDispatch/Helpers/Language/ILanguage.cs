@@ -51,6 +51,8 @@ namespace MDispatch.Helpers.Language
 
         string TitleInfoPage { get; }
         string TitlePikedUpInfo { get; }
+        string TitleVehicleInfo { get; }
+        string AskBlockRateDriverTitle { get; }
         string TitleDeliveryInfo { get; }
         string TitlePaymentInfo { get; }
         string ContatInfo { get; }
@@ -315,6 +317,9 @@ namespace MDispatch.Helpers.Language
 
         string AskBlockLikeRecive20fromYourNextCarTransportTitle { get; }
 
-        string AskBlockRateDriverTitle { get; }
+        string VehicleInspectionPikedUp { get; }
+        string VehicleInspectionDelivery { get; }
+        string ThereAreNoVehiclesInThisOrder { get; }
+
     }
 }

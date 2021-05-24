@@ -1,16 +1,11 @@
-﻿using FormsControls.Base;
-using MDispatch.Helpers;
+﻿using MDispatch.Helpers;
 using MDispatch.Models;
 using MDispatch.NewElement;
 using MDispatch.Service;
 using MDispatch.Service.Helpers;
-using MDispatch.View.GlobalDialogView;
 using MDispatch.ViewModels.PageAppMV;
-using Rg.Plugins.Popup.Services;
 using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static MDispatch.Service.ManagerDispatchMob;
@@ -41,7 +36,7 @@ namespace MDispatch.View.PageApp
         private void CallBackVehiclwInformation()
         {
             int i = 0;
-            countVeclLbl.Text = $"Vehicle ({infoOrderMV.Shipping.VehiclwInformations.Count})";
+            countVeclLbl.Text = $"{LanguageHelper.TitleVehicleInfo} ({infoOrderMV.Shipping.VehiclwInformations.Count})";
             foreach (VehiclwInformation vehiclwInformations in infoOrderMV.Shipping.VehiclwInformations)
             {
                 StackLayout stackLayout = new StackLayout();

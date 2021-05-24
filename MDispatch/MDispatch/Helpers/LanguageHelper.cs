@@ -53,6 +53,7 @@ namespace MDispatch.Helpers
         public static string SendBtnText => Language.SendBtnText;
 
         public static string TitleInfoPage => Language.TitleInfoPage;
+        public static string TitleVehicleInfo => Language.TitleVehicleInfo;
         public static string TitlePikedUpInfo => Language.TitlePikedUpInfo;
         public static string TitleDeliveryInfo => Language.TitleDeliveryInfo;
         public static string TitlePaymentInfo => Language.TitlePaymentInfo;
@@ -318,6 +319,10 @@ namespace MDispatch.Helpers
         public static string AskBlockLikeRecive20fromYourNextCarTransportTitle => Language.AskBlockLikeRecive20fromYourNextCarTransportTitle;
 
         public static string AskBlockRateDriverTitle => Language.AskBlockRateDriverTitle;
+
+        public static string VehicleInspectionPikedUp => Language.VehicleInspectionPikedUp;
+        public static string VehicleInspectionDelivery => Language.VehicleInspectionDelivery;
+        public static string ThereAreNoVehiclesInThisOrder => Language.ThereAreNoVehiclesInThisOrder;
 
         public static void InitLanguage()
         {

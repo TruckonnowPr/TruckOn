@@ -49,6 +49,7 @@ namespace MDispatch.Helpers.Language
         public string SendBtnText => "Отправить";
 
         public string TitleInfoPage => "Информация";
+        public string TitleVehicleInfo => "Транспорное средство";
         public string TitlePikedUpInfo => "Информация о получении";
         public string TitleDeliveryInfo => "Информация о доставке";
         public string TitlePaymentInfo => "Платежная информация";
@@ -315,5 +316,9 @@ namespace MDispatch.Helpers.Language
         public string AskBlockLikeRecive20fromYourNextCarTransportTitle => "Хотите получить скидку 20% на следующий транспорт?";
 
         public string AskBlockRateDriverTitle => "Оценить водителя";
+
+        public string VehicleInspectionPikedUp => "Техосмотр автомобиля: Piked Up";
+        public string VehicleInspectionDelivery => "Техосмотр автомобил: Delivery";
+        public string ThereAreNoVehiclesInThisOrder => "В этом заказе нет транспортных средств";
     }
 }

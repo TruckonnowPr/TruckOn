@@ -47,6 +47,7 @@
         public string SendBtnText => "Send";
 
         public string TitleInfoPage => "Info";
+        public string TitleVehicleInfo => "Vehicle";
         public string TitlePikedUpInfo => "Pickup information";
         public string TitleDeliveryInfo => "Delivery information";
         public string TitlePaymentInfo => "Payment information";
@@ -313,5 +314,9 @@
         public string AskBlockLikeRecive20fromYourNextCarTransportTitle => "Would you like to recive 20% off from your next car transport?";
 
         public string AskBlockRateDriverTitle => "Rate driver";
+
+        public string VehicleInspectionPikedUp => "Vehicle inspection: Piked Up";
+        public string VehicleInspectionDelivery => "Vehicle inspection: Delivery";
+        public string ThereAreNoVehiclesInThisOrder => "There are no vehicles in this order";
     }
 }

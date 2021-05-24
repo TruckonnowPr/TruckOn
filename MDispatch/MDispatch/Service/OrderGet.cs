@@ -20,7 +20,7 @@ namespace MDispatch.Service
             {
                 RestClient client = new RestClient(Config.BaseReqvesteUrl);
                 RestRequest request = new RestRequest("Mobile/ActiveOreder", Method.POST);
-                client.Timeout = 60000;
+                client.Timeout = 100000;
                 
                 request.AddHeader("Accept", "application/json");
                 request.AddParameter("token", token);

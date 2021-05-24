@@ -184,12 +184,12 @@ namespace MDispatch.ViewModels.PageAppMV
             if (StatusInspection == "Assigned")
             {
                 IsInspection = true;
-                StatusInspectionView = "Vehicle inspection: Piked Up";
+                StatusInspectionView = LanguageHelper.VehicleInspectionPikedUp;
             }
             else if (StatusInspection == "Picked up")
             {
                 IsInspection = true;
-                StatusInspectionView = "Vehicle inspection: Delivery";
+                StatusInspectionView = LanguageHelper.VehicleInspectionDelivery;
             }
             else
             {
@@ -221,7 +221,7 @@ namespace MDispatch.ViewModels.PageAppMV
                     if (Shipping.VehiclwInformations == null || Shipping.VehiclwInformations.Count == 0)
                     {
                         IsInspection = true;
-                        StatusInspectionView = "There are no vehicles in this order";
+                        StatusInspectionView = LanguageHelper.ThereAreNoVehiclesInThisOrder;
                     }
                     IsInstructinRead = !Shipping.IsInstructinRead;
                     if(StatusInspection != "Delivered")
