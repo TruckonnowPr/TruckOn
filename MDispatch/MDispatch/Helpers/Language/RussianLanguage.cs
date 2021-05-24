@@ -305,7 +305,7 @@ namespace MDispatch.Helpers.Language
 
         public string HintAddDamageForUser => "Нажмите на поврежденную область, чтобы добавить метку повреждение(после добавления повреждений приложение вернется к камере)";
 
-        public string AskBlockInspectedVehicleAdditionalImperfectionsTitle => "Have you inspected the vehicle For any additional imperfections other than listed at the pick up?";
+        public string AskBlockInspectedVehicleAdditionalImperfectionsTitle => "Осматривали ли вы автомобиль на предмет каких-либо дополнительных недостатков, кроме перечисленных при получении?";
         public string FoundIssueBtnText => "Нашли проблему";
 
         public string AskBlockBilingPayTitle => "Оплата биллинга";

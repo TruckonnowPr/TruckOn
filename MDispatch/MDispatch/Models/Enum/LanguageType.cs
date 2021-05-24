@@ -4,5 +4,6 @@
     {
         English = 0,
         Russian = 1,
+        Spanish = 2,
     }
 }

@@ -91,6 +91,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -329,7 +333,7 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             }
             else if (inderxPhotoInspektion == 14)
             {
-                nameLayout = "Front headlight, driver's side";
+                nameLayout = "Передняя фара со стороны водителя";
             }
             else if (inderxPhotoInspektion == 15)
             {
@@ -389,7 +393,7 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             }
             else if (inderxPhotoInspektion == 29)
             {
-                nameLayout = "Right rear view mirror (Front part)";
+                nameLayout = "Зеркало заднего вида правое (передняя часть)";
             }
             else if (inderxPhotoInspektion == 30)
             {
@@ -446,6 +450,184 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             else if (inderxPhotoInspektion == 43)
             {
                 nameLayout = "Автомобиль с креплением на ремне сзади на стороне пассажира";
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutSpanish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (inderxPhotoInspektion == 1)
+            {
+                nameLayout = "Salpicadero del coche";
+            }
+            else if (inderxPhotoInspektion == 2)
+            {
+                nameLayout = "Asiento del conductor";
+            }
+            else if (inderxPhotoInspektion == 3)
+            {
+                nameLayout = "Kit del lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 4)
+            {
+                nameLayout = "Puerta del conductor";
+            }
+            else if (inderxPhotoInspektion == 5)
+            {
+                nameLayout = "Kit del lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 6)
+            {
+                nameLayout = "Cupé";
+            }
+            else if (inderxPhotoInspektion == 7)
+            {
+                nameLayout = "Puerta del conductor";
+            }
+            else if (inderxPhotoInspektion == 8)
+            {
+                nameLayout = "Espejo retrovisor, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 9)
+            {
+                nameLayout = "Espejo retrovisor, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 10)
+            {
+                nameLayout = "Compartimento delantero, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 11)
+            {
+                nameLayout = "Del lado del conductor de la rueda delantera";
+            }
+            else if (inderxPhotoInspektion == 12)
+            {
+                nameLayout = "Parachoques delantero, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 13)
+            {
+                nameLayout = "Faro delantero, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 14)
+            {
+                nameLayout = "Faro delantero, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 15)
+            {
+                nameLayout = "Parachoques delantero";
+            }
+            else if (inderxPhotoInspektion == 16)
+            {
+                nameLayout = "Todo el frente del cupé";
+            }
+            else if (inderxPhotoInspektion == 17)
+            {
+                nameLayout = "Parachoques delantero lado derecho";
+            }
+            else if (inderxPhotoInspektion == 18)
+            {
+                nameLayout = "Lado central del parachoques delantero";
+            }
+            else if (inderxPhotoInspektion == 19)
+            {
+                nameLayout = "Lado izquierdo del parachoques delantero";
+            }
+            else if (inderxPhotoInspektion == 20)
+            {
+                nameLayout = "Capó de cupé";
+            }
+            else if (inderxPhotoInspektion == 21)
+            {
+                nameLayout = "Parabrisas cupé";
+            }
+            else if (inderxPhotoInspektion == 22)
+            {
+                nameLayout = "Faro delantero, lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 23)
+            {
+                nameLayout = "Faro delantero, lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 24)
+            {
+                nameLayout = "Parachoques delantero, lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 25)
+            {
+                nameLayout = "Lado del pasajero de la rueda delantera delantera";
+            }
+            else if (inderxPhotoInspektion == 26)
+            {
+                nameLayout = "Coupe delantero, lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 27)
+            {
+                nameLayout = "Puerta del pasajero";
+            }
+            else if (inderxPhotoInspektion == 28)
+            {
+                nameLayout = "Espejo retrovisor, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 29)
+            {
+                nameLayout = "Espejo retrovisor, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 30)
+            {
+                nameLayout = "Detrás de la cabaña";
+            }
+            else if (inderxPhotoInspektion == 31)
+            {
+                nameLayout = "Lado del pasajero de la rueda delantera trasera";
+            }
+            else if (inderxPhotoInspektion == 32)
+            {
+                nameLayout = "Todo el habitáculo del habitáculo";
+            }
+            else if (inderxPhotoInspektion == 33)
+            {
+                nameLayout = "Faro trasero en el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 34)
+            {
+                nameLayout = "Lado del pasajero de la rueda delantera trasera";
+            }
+            else if (inderxPhotoInspektion == 35)
+            {
+                nameLayout = "Toda la parte trasera del cupé";
+            }
+            else if (inderxPhotoInspektion == 36)
+            {
+                nameLayout = "Luz trasera, lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 37)
+            {
+                nameLayout = "Vidrio trasero cupé";
+            }
+            else if (inderxPhotoInspektion == 38)
+            {
+                nameLayout = "Detrás de la cabaña";
+            }
+            else if (inderxPhotoInspektion == 39)
+            {
+                nameLayout = "Todo el lado del conductor del cupé.";
+            }
+            else if (inderxPhotoInspektion == 40)
+            {
+                nameLayout = "Cinturón de seguridad trasero para automóvil, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 41)
+            {
+                nameLayout = "Correa de sujeción delantera del coche en el lado del conductor.";
+            }
+            else if (inderxPhotoInspektion == 42)
+            {
+                nameLayout = "Coche con cinturón de seguridad delantero en el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 43)
+            {
+                nameLayout = "Vehículo con clip para cinturón en la parte trasera del lado del pasajero";
             }
             return nameLayout;
         }

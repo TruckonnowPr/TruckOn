@@ -338,6 +338,11 @@ namespace MDispatch.Helpers
                         Language = new RussianLanguage();
                         break;
                     }
+                case (int)LanguageType.Spanish:
+                    {
+                        Language = new SpanishLanguage();
+                        break;
+                    }
             }
         }
     }

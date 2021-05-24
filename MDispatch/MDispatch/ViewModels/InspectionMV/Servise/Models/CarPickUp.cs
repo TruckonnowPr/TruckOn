@@ -23,6 +23,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -346,6 +350,168 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             else if (inderxPhotoInspektion == 39)
             {
                 nameLayout = "Автомобиль с креплением на ремне сзади на стороне пассажира";
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutSpanish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (inderxPhotoInspektion == 1)
+            {
+                nameLayout = "Tablero de mandos pickup";
+            }
+            else if (inderxPhotoInspektion == 2)
+            {
+                nameLayout = "Salón pickup";
+            }
+            else if (inderxPhotoInspektion == 3)
+            {
+                nameLayout = "Asiento";
+            }
+            else if (inderxPhotoInspektion == 4)
+            {
+                nameLayout = "Asiento";
+            }
+            else if (inderxPhotoInspektion == 5)
+            {
+                nameLayout = "Puerta de entrada del conductor";
+            }
+            else if (inderxPhotoInspektion == 6)
+            {
+                nameLayout = "El frente de pickup desde el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 7)
+            {
+                nameLayout = "Espejo retrovisor, lado del conductor pickup";
+            }
+            else if (inderxPhotoInspektion == 8)
+            {
+                nameLayout = "Espejo retrovisor, lado del conductor pickup";
+            }
+            else if (inderxPhotoInspektion == 9)
+            {
+                nameLayout = "El frente de pickup desde el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 10)
+            {
+                nameLayout = "Rueda delantera pickup desde el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 11)
+            {
+                nameLayout = "Parachoques delantero lado derecho pickup";
+            }
+            else if (inderxPhotoInspektion == 12)
+            {
+                nameLayout = "Faro derecho pickup";
+            }
+            else if (inderxPhotoInspektion == 13)
+            {
+                nameLayout = "Lado central del parachoques delantero pickup";
+            }
+            else if (inderxPhotoInspektion == 14)
+            {
+                nameLayout = "Lado izquierdo del parachoques delantero pickup";
+            }
+            else if (inderxPhotoInspektion == 15)
+            {
+                nameLayout = "Faro delantero izquierdo pickup";
+            }
+            else if (inderxPhotoInspektion == 16)
+            {
+                nameLayout = "Capucha pickup";
+            }
+            else if (inderxPhotoInspektion == 17)
+            {
+                nameLayout = "Selección de parabrisas";
+            }
+            else if (inderxPhotoInspektion == 18)
+            {
+                nameLayout = "Techo pickup";
+            }
+            else if (inderxPhotoInspektion == 19)
+            {
+                nameLayout = "El frente de pickup desde el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 20)
+            {
+                nameLayout = "Rueda delantera pickup desde el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 21)
+            {
+                nameLayout = "El frente de pickup desde el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 22)
+            {
+                nameLayout = "Espejo retrovisor, lado del pasajero pickup";
+            }
+            else if (inderxPhotoInspektion == 23)
+            {
+                nameLayout = "Espejo retrovisor, lado del pasajero pickup";
+            }
+            else if (inderxPhotoInspektion == 24)
+            {
+                nameLayout = "Puerta del acompañante";
+            }
+            else if (inderxPhotoInspektion == 25)
+            {
+                nameLayout = "Puerta del pasajero trasero";
+            }
+            else if (inderxPhotoInspektion == 26)
+            {
+                nameLayout = "Parte trasera pickup desde el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 27)
+            {
+                nameLayout = "Заднее колесо pickup desde el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 28)
+            {
+                nameLayout = "Parte trasera pickup desde el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 29)
+            {
+                nameLayout = "Lado derecho del parachoques trasero";
+            }
+            else if (inderxPhotoInspektion == 30)
+            {
+                nameLayout = "Lado central del parachoques trasero";
+            }
+            else if (inderxPhotoInspektion == 31)
+            {
+                nameLayout = "Lado izquierdo del parachoques trasero";
+            }
+            else if (inderxPhotoInspektion == 32)
+            {
+                nameLayout = "Parte trasera pickup desde el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 33)
+            {
+                nameLayout = "Заднее колесо pickup desde el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 34)
+            {
+                nameLayout = "Parte trasera pickup desde el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 35)
+            {
+                nameLayout = "Puerta trasera del conductor";
+            }
+            else if (inderxPhotoInspektion == 36)
+            {
+                nameLayout = "Cinturón de seguridad trasero para automóvil, lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 37)
+            {
+                nameLayout = "Correa de sujeción delantera del coche en el lado del conductor.";
+            }
+            else if (inderxPhotoInspektion == 38)
+            {
+                nameLayout = "Coche con cinturón de seguridad delantero en el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 39)
+            {
+                nameLayout = "Vehículo con clip para cinturón en la parte trasera del lado del pasajero";
             }
             return nameLayout;
         }
