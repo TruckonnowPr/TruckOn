@@ -129,6 +129,37 @@ namespace WebDispacher.Controellers
             return actionResult;
         }
 
+        [HttpGet]
+        [Route("recovery-password-send-mail")]
+        public IActionResult RecoveryPasswordSendMail(string error)
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            if (Request.Cookies.ContainsKey("KeyAvtho"))
+            {
+                actionResult = Redirect("/Dashbord/Order/NewLoad");
+            }
+            else
+            {
+                ViewData["TypeNavBar"] = "NavTry_for_free";
+                ViewData["TextError"] = error;
+                actionResult = View("SendMailRecoveryPassword");
+            }
+            return actionResult;
+        }
+
+        [HttpPost]
+        [Route("recovery-password-send-mail")]
+        public IActionResult RecoveryPasswordCheckkMail(string email)
+        {
+            IActionResult actionResult = null;
+            ViewData["TextError"] = "";
+            ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+
+            return actionResult;
+        }
+
 
         [HttpPost]
         public IActionResult Avthorization(string Email, string Password, string accept)
