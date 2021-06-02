@@ -200,6 +200,34 @@ namespace WebDispacher.Dao
             }
         }
 
+        internal bool CheckEmail(string email)
+        {
+            return context.User.FirstOrDefault(u => u.Login == email) != null;
+        }
+        
+        internal int AddRecoveryPassword(string email, string token)
+        {
+            Users users = context.User.FirstOrDefault(u => u.Login == email);
+            PasswordRecovery passwordRecovery1 = context.PasswordRecoveries.FirstOrDefault(p => p.IdUser == users.Id);
+            if (passwordRecovery1 == null)
+            {
+                PasswordRecovery passwordRecovery = new PasswordRecovery()
+                {
+                    Date = DateTime.Now.ToString(),
+                    IdUser = users.Id,
+                    Token = token
+                };
+                context.PasswordRecoveries.Add(passwordRecovery);
+            }
+            else
+            {
+                passwordRecovery1.Token = token;
+                passwordRecovery1.Date = DateTime.Now.ToString();
+            }
+            context.SaveChanges();
+            return users.Id;
+        }
+
         internal void UpdateTypeInactiveByIdCompany(string idCompany)
         {
             List<Subscribe_ST> subscribe_STs = context.Subscribe_STs.Where(s => s.IdCompany.ToString() == idCompany && s.ActiveType != ActiveType.Inactive).ToList();
@@ -265,6 +293,46 @@ namespace WebDispacher.Dao
                 context.ProfileSettings.Remove(context.ProfileSettings.First(p => p.IdCompany.ToString() == idCompany && p.Id == idProfile));
                 context.SaveChanges();
             }
+        }
+
+        internal string GetEmailUserDb(string idUser)
+        {
+            string emailDriver = "";
+            Users users = context.User.FirstOrDefault(d => d.Id.ToString() == idUser);
+            if (users != null)
+            {
+                emailDriver = users.Login;
+            }
+            return emailDriver;
+        }
+
+        internal int ResetPasswordFoUser(string newPassword, string idUser, string token)
+        {
+            int isStateActual = 0;
+            PasswordRecovery passwordRecovery = context.PasswordRecoveries.ToList().FirstOrDefault(p => p.IdUser.ToString() == idUser && p.Token == token);
+            if (passwordRecovery != null && Convert.ToDateTime(passwordRecovery.Date) > DateTime.Now.AddHours(-2))
+            {
+                Users users = context.User.FirstOrDefault(d => d.Id.ToString() == idUser);
+                users.Password = newPassword;
+                isStateActual = 2;
+            }
+            if (passwordRecovery != null)
+            {
+                context.PasswordRecoveries.Remove(passwordRecovery);
+            }
+            context.SaveChanges();
+            return isStateActual;
+        }
+
+        internal int CheckTokenFoUserDb(string idUser, string token)
+        {
+            int isStateActual = 0;
+            PasswordRecovery passwordRecovery = context.PasswordRecoveries.ToList().FirstOrDefault(p => p.IdUser.ToString() == idUser && p.Token == token);
+            if (passwordRecovery != null && Convert.ToDateTime(passwordRecovery.Date) > DateTime.Now.AddHours(-2))
+            {
+                isStateActual = 1;
+            }
+            return isStateActual;
         }
 
         internal ITr GetTrailerById(int idTr)

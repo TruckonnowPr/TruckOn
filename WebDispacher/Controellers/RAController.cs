@@ -156,7 +156,16 @@ namespace WebDispacher.Controellers
             IActionResult actionResult = null;
             ViewData["TextError"] = "";
             ViewBag.BaseUrl = Config.BaseReqvesteUrl;
+            bool isEmail = managerDispatch.CheckEmail(email);
+            if(isEmail)
+            {
+                actionResult = Redirect(Config.BaseReqvesteUrl);
+            }
+            else
+            {
 
+                actionResult = Redirect($"/recovery-password-send-mail?error=No user found with this mail");
+            }
             return actionResult;
         }
 
@@ -247,8 +256,7 @@ namespace WebDispacher.Controellers
 
         [HttpGet]
         [Route("Recovery/Password")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public IActionResult RecoveryPassword(string idDriver, string token)
+        public IActionResult RecoveryPassword(string idDriver, string idUser, string token)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "AllUsers";
@@ -256,8 +264,9 @@ namespace WebDispacher.Controellers
             {
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 ViewBag.IdDriver = idDriver;
+                ViewBag.IdUser = idUser;
                 ViewBag.Token = token;
-                ViewBag.isStateActual = managerDispatch.CheckTokenFoDriver(idDriver, token);
+                ViewBag.isStateActual = idDriver != null ? managerDispatch.CheckTokenFoDriver(idDriver, token) : managerDispatch.CheckTokenFoUser(idUser, token);
                 ViewData["hidden"] = "hidden";
                 actionResult = View("RecoveryPassword");
             }
@@ -269,8 +278,7 @@ namespace WebDispacher.Controellers
 
         [HttpPost]
         [Route("Restore/Password")]
-        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
-        public async Task<IActionResult> RestorePassword(string newPassword, string idDriver, string token)
+        public async Task<IActionResult> RestorePassword(string newPassword, string idDriver, string idUser, string token)
         {
             IActionResult actionResult = null;
             ViewData["TypeNavBar"] = "AllUsers";
@@ -279,7 +287,7 @@ namespace WebDispacher.Controellers
                 ViewBag.BaseUrl = Config.BaseReqvesteUrl;
                 ViewBag.IdDriver = idDriver;
                 ViewBag.Token = token;
-                ViewBag.isStateActual = await managerDispatch.ResetPasswordFoDriver(newPassword, idDriver, token);
+                ViewBag.isStateActual = idDriver != null ? await managerDispatch.ResetPasswordFoDriver(newPassword, idDriver, token) : await managerDispatch.ResetPasswordFoUser(newPassword, idUser, token);
                 ViewData["hidden"] = "hidden";
                 actionResult = View("RecoveryPassword");
             }

@@ -156,6 +156,28 @@ namespace WebDispacher.Service
             return errorStr;
         }
 
+        internal bool CheckEmail(string email)
+        {
+            bool isEmail = _sqlEntityFramworke.CheckEmail(email);
+            if (isEmail)
+            {
+                string token = CreateToken(email);
+                int idUser = _sqlEntityFramworke.AddRecoveryPassword(email, token);
+                string patern = new PaternSourse().GetPaternRecoveryPassword($"{Config.BaseReqvesteUrl}/Recovery/Password?idUser={idUser}&token={token}");
+                Task.Run(async () => await new AuthMessageSender().Execute(email, "Password recovery", patern));
+            }
+            return isEmail;
+        }
+        private string CreateToken(string email)
+        {
+            string token = "";
+            for (int i = 0; i < email.Length; i++)
+            {
+                token += i * new Random().Next(1, 1000) + email[i];
+            }
+            return token;
+        }
+
         internal List<PaymentMethod> GetpaymentMethod(string idCompany)
         {
             Customer_ST customer_ST = _sqlEntityFramworke.GetCustomer_STByIdCompany(idCompany);
@@ -214,6 +236,29 @@ namespace WebDispacher.Service
                 Price = "$1",
             });
             return subscriptions;
+        }
+
+        internal async Task<int> ResetPasswordFoUser(string newPassword, string idUser, string token)
+        {
+            int isStateActual = _sqlEntityFramworke.ResetPasswordFoUser(newPassword, idUser, token);
+            if (isStateActual == 2)
+            {
+                string emailUser = _sqlEntityFramworke.GetEmailUserDb(idUser);
+                string patern = new PaternSourse().GetPaternDataAccountUser(emailUser, newPassword);
+                await new AuthMessageSender().Execute(emailUser, "Password changed successfully", patern);
+            }
+            else
+            {
+                string emailDriver = _sqlEntityFramworke.GetEmailUserDb(idUser);
+                string patern = new PaternSourse().GetPaternNoRestoreDataAccountUser();
+                await new AuthMessageSender().Execute(emailDriver, "Password reset attempt failed", patern);
+            }
+            return isStateActual;
+        }
+
+        internal int CheckTokenFoUser(string idUser, string token)
+        {
+            return _sqlEntityFramworke.CheckTokenFoUserDb(idUser, token);
         }
 
         internal List<CompanyDTO> GetCompanies()
