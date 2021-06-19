@@ -93,6 +93,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -288,6 +292,104 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             else if (inderxPhotoInspektion == 23)
             {
                 nameLayout = "Задний ремень крепления мотоцикла на стороне пасажира";
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutSpanish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            if (inderxPhotoInspektion == 1)
+            {
+                nameLayout = "Bicicleta deportiva para salpicadero";
+            }
+            else if (inderxPhotoInspektion == 2)
+            {
+                nameLayout = "Salpicadero y parabrisas de una moto deportiva.";
+            }
+            else if (inderxPhotoInspektion == 3)
+            {
+                nameLayout = "La parte delantera de la moto deportiva, a la derecha";
+            }
+            else if (inderxPhotoInspektion == 4)
+            {
+                nameLayout = "Bicicleta deportiva con espejo retrovisor a la derecha";
+            }
+            else if (inderxPhotoInspektion == 5)
+            {
+                nameLayout = "Rueda delantera de una moto deportiva a la derecha";
+            }
+            else if (inderxPhotoInspektion == 6)
+            {
+                nameLayout = "Rueda delantera de una moto deportiva a la derecha";
+            }
+            else if (inderxPhotoInspektion == 7)
+            {
+                nameLayout = "Parabrisas de moto deportiva";
+            }
+            else if (inderxPhotoInspektion == 8)
+            {
+                nameLayout = "Bicicleta deportiva desde el frente";
+            }
+            else if (inderxPhotoInspektion == 9)
+            {
+                nameLayout = "Moto deportiva con faro delantero derecho";
+            }
+            else if (inderxPhotoInspektion == 10)
+            {
+                nameLayout = "Moto deportiva con faro delantero izquierdo";
+            }
+            else if (inderxPhotoInspektion == 11)
+            {
+                nameLayout = "Rueda delantera de la moto deportiva a la izquierda";
+            }
+            else if (inderxPhotoInspektion == 12)
+            {
+                nameLayout = "La parte delantera de la moto deportiva a la izquierda.";
+            }
+            else if (inderxPhotoInspektion == 13)
+            {
+                nameLayout = "Espejo retrovisor moto deportiva izquierda";
+            }
+            else if (inderxPhotoInspektion == 14)
+            {
+                nameLayout = "Todo el lado izquierdo de la moto deportiva.";
+            }
+            else if (inderxPhotoInspektion == 15)
+            {
+                nameLayout = "----------";
+            }
+            else if (inderxPhotoInspektion == 16)
+            {
+                nameLayout = "La parte trasera de la moto deportiva a la izquierda";
+            }
+            else if (inderxPhotoInspektion == 17)
+            {
+                nameLayout = "Rueda de moto deportiva a la izquierda";
+            }
+            else if (inderxPhotoInspektion == 18)
+            {
+                nameLayout = "Rueda de moto deportiva a la derecha";
+            }
+            else if (inderxPhotoInspektion == 19)
+            {
+                nameLayout = "La parte trasera de la moto deportiva, a la derecha";
+            }
+            else if (inderxPhotoInspektion == 20)
+            {
+                nameLayout = "Correa trasera de motocicleta en el lado del conductor";
+            }
+            else if (inderxPhotoInspektion == 21)
+            {
+                nameLayout = "Correa de sujeción delantera de la motocicleta en el lado del conductor.";
+            }
+            else if (inderxPhotoInspektion == 22)
+            {
+                nameLayout = "Correa de motocicleta delantera en el lado del pasajero";
+            }
+            else if (inderxPhotoInspektion == 23)
+            {
+                nameLayout = "Correa trasera de motocicleta en el lado del pasajero";
             }
             return nameLayout;
         }

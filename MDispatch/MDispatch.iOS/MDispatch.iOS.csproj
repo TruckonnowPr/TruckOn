@@ -353,7 +353,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MDispatch\MDispatch.csproj">
-      <Project>{D6CD94AD-B4AF-4C31-B29D-789E2FBD7D48}</Project>
+      <Project>{ECCABC9D-2582-40BF-BC8A-5A9166219226}</Project>
       <Name>MDispatch</Name>
     </ProjectReference>
   </ItemGroup>

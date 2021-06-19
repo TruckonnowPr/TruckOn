@@ -67,6 +67,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -99,21 +103,45 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             string nameLayout = "";
             switch (inderxPhotoInspektion)
             {
-                case 1: nameLayout = "Приборная панель мотоцикла(Круизный мотоцикл)"; break;
+                case 1: nameLayout = "Приборная панель мотоцикла(Motocicleta de crucero)"; break;
                 case 2: nameLayout = "Бензобак"; break;
-                case 3: nameLayout = "Вся правая сторона мотоцикла(Круизный мотоцикл)"; break;
-                case 4: nameLayout = "Переднее колесо справа от мотоцикла(Круизный мотоцикл)"; break;
-                case 5: nameLayout = "Центральная правая сторона мотоцикла(Круизный мотоцикл)"; break;
-                case 6: nameLayout = "Заднее колесо мотоцикла(Круизный мотоцикл) справа"; break;
-                case 7: nameLayout = "Мотоцикла(Круизный мотоцикл) сзади"; break;
-                case 8: nameLayout = "Заднее колесо мотоцикла(Круизный мотоцикл) слева"; break;
-                case 9: nameLayout = "Центральная левая сторона мотоцикла(Круизный мотоцикл)"; break;
-                case 10: nameLayout = "Переднее колесо мотоцикла(Круизный мотоцикл) слева"; break;
-                case 11: nameLayout = "Вся левая сторона мотоцикла(Круизный мотоцикл)"; break;
+                case 3: nameLayout = "Вся правая сторона мотоцикла(Motocicleta de crucero)"; break;
+                case 4: nameLayout = "Переднее колесо справа от мотоцикла(Motocicleta de crucero)"; break;
+                case 5: nameLayout = "Центральная правая сторона мотоцикла(Motocicleta de crucero)"; break;
+                case 6: nameLayout = "Заднее колесо мотоцикла(Motocicleta de crucero) справа"; break;
+                case 7: nameLayout = "Мотоцикла(Motocicleta de crucero) сзади"; break;
+                case 8: nameLayout = "Заднее колесо мотоцикла(Motocicleta de crucero) слева"; break;
+                case 9: nameLayout = "Центральная левая сторона мотоцикла(Motocicleta de crucero)"; break;
+                case 10: nameLayout = "Переднее колесо мотоцикла(Motocicleta de crucero) слева"; break;
+                case 11: nameLayout = "Вся левая сторона мотоцикла(Motocicleta de crucero)"; break;
                 case 24: nameLayout = "Задний ремень крепления мотоцикла на стороне водителя"; break;
                 case 25: nameLayout = "Передний ремень крепления мотоцикла на стороне водителя"; break;
                 case 26: nameLayout = "Передниый ремень крепления мотоцикла на стороне пасажира"; break;
                 case 27: nameLayout = "Задний ремень крепления мотоцикла на стороне пасажира"; break;
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutSpanish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            switch (inderxPhotoInspektion)
+            {
+                case 1: nameLayout = "Tablero de la motocicleta(Motocicleta de crucero)"; break;
+                case 2: nameLayout = "Tanque de gas"; break;
+                case 3: nameLayout = "Todo el lado derecho de la motocicleta.(Motocicleta de crucero)"; break;
+                case 4: nameLayout = "Rueda delantera a la derecha de la motocicleta(Motocicleta de crucero)"; break;
+                case 5: nameLayout = "Lado derecho del centro de la motocicleta(Motocicleta de crucero)"; break;
+                case 6: nameLayout = "Rueda trasera de motocicleta(Motocicleta de crucero) a la derecha"; break;
+                case 7: nameLayout = "Motocicleta(Motocicleta de crucero) detrás"; break;
+                case 8: nameLayout = "Rueda trasera de motocicleta(Motocicleta de crucero) izquierda"; break;
+                case 9: nameLayout = "Lado central izquierdo de la motocicleta(Motocicleta de crucero)"; break;
+                case 10: nameLayout = "Rueda delantera de motocicleta(Motocicleta de crucero) izquierda"; break;
+                case 11: nameLayout = "Todo el lado izquierdo de la motocicleta.(Motocicleta de crucero)"; break;
+                case 24: nameLayout = "Correa trasera de motocicleta en el lado del conductor"; break;
+                case 25: nameLayout = "Correa de sujeción delantera de la motocicleta en el lado del conductor."; break;
+                case 26: nameLayout = "Correa de motocicleta delantera en el lado del pasajero"; break;
+                case 27: nameLayout = "Correa trasera de motocicleta en el lado del pasajero"; break;
             }
             return nameLayout;
         }

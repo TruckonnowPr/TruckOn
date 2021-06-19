@@ -103,6 +103,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -148,34 +152,71 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             string nameLayout = "";
             switch (inderxPhotoInspektion)
             {
-                case 1: nameLayout = "Приборная панель мотоцикла(Трехколесный мотоцикл)"; break;
-                case 2: nameLayout = "Сиденье водителя мотоцикла(Трехколесный мотоцикл)"; break;
+                case 1: nameLayout = "Приборная панель мотоцикла(Motocicleta triciclo)"; break;
+                case 2: nameLayout = "Сиденье водителя мотоцикла(Motocicleta triciclo)"; break;
                 case 3: nameLayout = "Салон"; break;
-                case 4: nameLayout = "Центральная часть мотоцикла(Трехколесный мотоцикл) со стороны водителя"; break;
-                case 5: nameLayout = "Зеркало заднего вида мотоцикла(Трехколесный мотоцикл) со стороны водителя"; break;
-                case 6: nameLayout = "Передняя часть мотоцикла(Трехколесный мотоцикл) со стороны водителя"; break;
-                case 7: nameLayout = "Переднее колесо мотоцикла(Трехколесный мотоцикл) со стороны водителя"; break;
-                case 8: nameLayout = "Правая сторона переднего бампера мотоцикла(Трехколесный мотоцикл)"; break;
-                case 9: nameLayout = "Центральная сторона переднего бампера мотоцикла(Трехколесный мотоцикл)"; break;
-                case 10: nameLayout = "Центральная сторона переднего бампера мотоцикла(Трехколесный мотоцикл)"; break;
-                case 11: nameLayout = "Левая сторона переднего бампера мотоцикла(Трехколесный мотоцикл)"; break;
-                case 12: nameLayout = "Вся нижняя часть переднего бампера мотоцикла(Трехколесный мотоцикл)"; break;
-                case 13: nameLayout = "Передняя часть мотоцикла(Трехколесный мотоцикл) со стороны пассажира"; break;
-                case 14: nameLayout = "Переднее колесо мотоцикла(Трехколесный мотоцикл) со стороны пассажира"; break;
-                case 15: nameLayout = "Переднее колесо мотоцикла(Трехколесный мотоцикл) со стороны пассажира"; break;
-                case 16: nameLayout = "Центральная часть мотоцикла(Трехколесный мотоцикл) со стороны пассажира"; break;
-                case 17: nameLayout = "адняя часть мотоцикла(Трехколесный мотоцикл) со стороны пассажира"; break;
-                case 18: nameLayout = "Заднее колесо мотоцикла(Трехколесный мотоцикл) со стороны пассажира"; break;
+                case 4: nameLayout = "Центральная часть мотоцикла(Motocicleta triciclo) со стороны водителя"; break;
+                case 5: nameLayout = "Зеркало заднего вида мотоцикла(Motocicleta triciclo) со стороны водителя"; break;
+                case 6: nameLayout = "Передняя часть мотоцикла(Motocicleta triciclo) со стороны водителя"; break;
+                case 7: nameLayout = "Переднее колесо мотоцикла(Motocicleta triciclo) со стороны водителя"; break;
+                case 8: nameLayout = "Правая сторона переднего бампера мотоцикла(Motocicleta triciclo)"; break;
+                case 9: nameLayout = "Центральная сторона переднего бампера мотоцикла(Motocicleta triciclo)"; break;
+                case 10: nameLayout = "Центральная сторона переднего бампера мотоцикла(Motocicleta triciclo)"; break;
+                case 11: nameLayout = "Левая сторона переднего бампера мотоцикла(Motocicleta triciclo)"; break;
+                case 12: nameLayout = "Вся нижняя часть переднего бампера мотоцикла(Motocicleta triciclo)"; break;
+                case 13: nameLayout = "Передняя часть мотоцикла(Motocicleta triciclo) со стороны пассажира"; break;
+                case 14: nameLayout = "Переднее колесо мотоцикла(Motocicleta triciclo) со стороны пассажира"; break;
+                case 15: nameLayout = "Переднее колесо мотоцикла(Motocicleta triciclo) со стороны пассажира"; break;
+                case 16: nameLayout = "Центральная часть мотоцикла(Motocicleta triciclo) со стороны пассажира"; break;
+                case 17: nameLayout = "адняя часть мотоцикла(Motocicleta triciclo) со стороны пассажира"; break;
+                case 18: nameLayout = "Заднее колесо мотоцикла(Motocicleta triciclo) со стороны пассажира"; break;
                 case 19: nameLayout = "---------------(Tricycle)"; break;
                 case 20: nameLayout = "Место сцепки заднего колеса"; break;
                 case 21: nameLayout = "Место сцепки заднего колеса"; break;
-                case 22: nameLayout = "Заднее колесо мотоцикла(Трехколесный мотоцикл) со стороны водителя"; break;
+                case 22: nameLayout = "Заднее колесо мотоцикла(Motocicleta triciclo) со стороны водителя"; break;
                 case 23: nameLayout = "Задняя часть мотоцикла(Трехколесный велосипед) со стороны водителя"; break;
 
                 case 24: nameLayout = "Задний ремень крепления мотоцикла на стороне водителя"; break;
                 case 25: nameLayout = "Передний ремень крепления мотоцикла на стороне водителя"; break;
                 case 26: nameLayout = "Передниый ремень крепления мотоцикла на стороне пасажира"; break;
                 case 27: nameLayout = "Задний ремень крепления мотоцикла на стороне пасажира"; break;
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutSpanish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            switch (inderxPhotoInspektion)
+            {
+                case 1: nameLayout = "Tablero de la motocicleta(Motocicleta triciclo)"; break;
+                case 2: nameLayout = "Asiento del conductor de la motocicleta(Motocicleta triciclo)"; break;
+                case 3: nameLayout = "Salón"; break;
+                case 4: nameLayout = "El centro de la motocicleta(Motocicleta triciclo) desde el lado del conductor"; break;
+                case 5: nameLayout = "Espejo retrovisor de motocicleta(Motocicleta triciclo) desde el lado del conductor"; break;
+                case 6: nameLayout = "Frente de la motocicleta(Motocicleta triciclo) desde el lado del conductor"; break;
+                case 7: nameLayout = "Rueda delantera de motocicleta(Motocicleta triciclo) desde el lado del conductor"; break;
+                case 8: nameLayout = "Parachoques delantero de motocicleta lado derecho(Motocicleta triciclo)"; break;
+                case 9: nameLayout = "Lado central del parachoques delantero de la motocicleta(Motocicleta triciclo)"; break;
+                case 10: nameLayout = "Lado central del parachoques delantero de la motocicleta(Motocicleta triciclo)"; break;
+                case 11: nameLayout = "Lado izquierdo del parachoques delantero de la motocicleta(Motocicleta triciclo)"; break;
+                case 12: nameLayout = "Toda la parte inferior del parachoques delantero de la motocicleta.(Motocicleta triciclo)"; break;
+                case 13: nameLayout = "Frente de la motocicleta(Motocicleta triciclo) desde el lado del pasajero"; break;
+                case 14: nameLayout = "Rueda delantera de motocicleta(Motocicleta triciclo) desde el lado del pasajero"; break;
+                case 15: nameLayout = "Rueda delantera de motocicleta(Motocicleta triciclo) desde el lado del pasajero"; break;
+                case 16: nameLayout = "El centro de la motocicleta(Motocicleta triciclo) desde el lado del pasajero"; break;
+                case 17: nameLayout = "Parte trasera de la motocicleta(Motocicleta triciclo) desde el lado del pasajero"; break;
+                case 18: nameLayout = "Rueda trasera de motocicleta(Motocicleta triciclo) desde el lado del pasajero"; break;
+                case 19: nameLayout = "---------------(Motocicleta triciclo)"; break;
+                case 20: nameLayout = "Punto de enganche de la rueda trasera"; break;
+                case 21: nameLayout = "Punto de enganche de la rueda trasera"; break;
+                case 22: nameLayout = "Rueda trasera de motocicleta(Motocicleta triciclo) desde el lado del conductor"; break;
+                case 23: nameLayout = "Parte trasera de la motocicleta(Motocicleta triciclo) desde el lado del conductor"; break;
+
+                case 24: nameLayout = "Correa trasera de motocicleta en el lado del conductor"; break;
+                case 25: nameLayout = "Correa de sujeción delantera de la motocicleta en el lado del conductor."; break;
+                case 26: nameLayout = "Correa de motocicleta delantera en el lado del pasajero"; break;
+                case 27: nameLayout = "Correa trasera de motocicleta en el lado del pasajero"; break;
             }
             return nameLayout;
         }

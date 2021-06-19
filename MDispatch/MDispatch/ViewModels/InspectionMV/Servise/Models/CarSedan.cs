@@ -98,10 +98,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
-            //else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
-            //{
-            //    nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
-            //}
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -434,135 +434,135 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             }
             else if (inderxPhotoInspektion == 5)
             {
-                nameLayout = "Puerta de entrada en el lado del conductor del automóvil.(Sedán)";
+                nameLayout = "Puerta de entrada en el lado del conductor del automóvil(Sedán)";
             }
             else if (inderxPhotoInspektion == 6)
             {
-                nameLayout = "Espejo retrovisor en el lado del conductor del automóvil.(Sedán)";
+                nameLayout = "Espejo retrovisor en el lado del conductor del automóvil(Sedán)";
             }
             else if (inderxPhotoInspektion == 7)
             {
-                nameLayout = "Зеркало заднего вида на стороне водителя автомобиля(Sedán)";
+                nameLayout = "Espejo retrovisor en el lado del conductor del automóvil(Sedán)";
             }
             else if (inderxPhotoInspektion == 8)
             {
-                nameLayout = "Передняя часть автомобиля(Седан) со стороны водителя";
+                nameLayout = "Delante del coche(Sedán) desde el lado del conductor";
             }
             else if (inderxPhotoInspektion == 9)
             {
-                nameLayout = "Переднее колесо автомобиля(Седан) со стороны водителя";
+                nameLayout = "Rueda delantera del coche(Sedán) desde el lado del conductor";
             }
             else if (inderxPhotoInspektion == 10)
             {
-                nameLayout = "Правая сторона переднего бампера автомобиля(Седан)";
+                nameLayout = "Lado derecho del parachoques delantero del coche(Sedán)";
             }
             else if (inderxPhotoInspektion == 11)
             {
-                nameLayout = "Правая передняя фара автомобиля(Седан)";
+                nameLayout = "Faro delantero derecho del coche(Sedán)";
             }
             else if (inderxPhotoInspektion == 12)
             {
-                nameLayout = "Центральная сторона переднего бампера автомобиля(Седан)";
+                nameLayout = "El lado central del parachoques delantero del automóvil(Sedán)";
             }
             else if (inderxPhotoInspektion == 13)
             {
-                nameLayout = "Левая сторона переднего бампера автомобиля(Седан)";
+                nameLayout = "Lado izquierdo del parachoques delantero del coche(Sedán)";
             }
             else if (inderxPhotoInspektion == 14)
             {
-                nameLayout = "Левая передняя фара автомобиля(Седан)";
+                nameLayout = "Faro delantero izquierdo del coche(Sedán)";
             }
             else if (inderxPhotoInspektion == 15)
             {
-                nameLayout = "Капот";
+                nameLayout = "Сapucha";
             }
             else if (inderxPhotoInspektion == 16)
             {
-                nameLayout = "Лобовое стекло";
+                nameLayout = "Parabrisas";
             }
             else if (inderxPhotoInspektion == 17)
             {
-                nameLayout = "----------(Седан)";
+                nameLayout = "----------(Sedán)";
             }
             else if (inderxPhotoInspektion == 18)
             {
-                nameLayout = "Передняя часть автомобиля(Седан) со стороны пассажира";
+                nameLayout = "Delante del coche(Sedán) desde el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 19)
             {
-                nameLayout = "Переднее колесо автомобиля(Седан) со стороны пассажира";
+                nameLayout = "Rueda delantera del coche(Sedán) desde el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 20)
             {
-                nameLayout = "Передняя дверь со стороны пассажира автомобиля(Седан)";
+                nameLayout = "Puerta delantera en el lado del pasajero del automóvil(Sedán)";
             }
             else if (inderxPhotoInspektion == 21)
             {
-                nameLayout = "Зеркало заднего вида на стороне пассажира автомобиля(Седан)";
+                nameLayout = "Espejo retrovisor en el lado del pasajero del automóvil(Sedán)";
             }
             else if (inderxPhotoInspektion == 22)
             {
-                nameLayout = "Rear view mirror on the passenger side of the vehicle(Sedan)";
+                nameLayout = "Espejo retrovisor en el lado del pasajero del vehículo(Sedán)";
             }
             else if (inderxPhotoInspektion == 23)
             {
-                nameLayout = "Задняя дверь автомобиля(Седан) со стороны пассажира";
+                nameLayout = "Puerta trasera del coche(Sedán) desde el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 24)
             {
-                nameLayout = "Заднее колесо автомобиля(Седан) со стороны пассажира";
+                nameLayout = "Rueda trasera de un coche(Sedán) desde el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 25)
             {
-                nameLayout = "Задняя часть автомобиля(Седан) со стороны пассажира";
+                nameLayout = "Parte trasera del coche(Sedán) desde el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 26)
             {
-                nameLayout = "Вся часть автомобиля(Седан) на стороне пассажира";
+                nameLayout = "Toda la parte del coche(Sedán) en el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 27)
             {
-                nameLayout = "Правая сторона заднего бампера автомобиля(Седан)";
+                nameLayout = "Lado derecho del parachoques trasero del coche(Sedán)";
             }
             else if (inderxPhotoInspektion == 28)
             {
-                nameLayout = "Центральная сторона заднего бампера автомобиля(Седан)";
+                nameLayout = "Центральная сторона заднего бампера автомобиля(Sedán)";
             }
             else if (inderxPhotoInspektion == 29)
             {
-                nameLayout = "Левая сторона заднего бампера автомобиля";
+                nameLayout = "Lado izquierdo del parachoques trasero del coche";
             }
             else if (inderxPhotoInspektion == 30)
             {
-                nameLayout = "Вся часть автомобиля(Седан) на стороне водителя";
+                nameLayout = "Toda la parte del coche(Sedán) en el lado del conductor";
             }
             else if (inderxPhotoInspektion == 31)
             {
-                nameLayout = "Задняя часть автомобиля(Седан) со стороны водителя";
+                nameLayout = "Parte trasera del coche(Sedán) desde el lado del conductor";
             }
             else if (inderxPhotoInspektion == 32)
             {
-                nameLayout = "Заднее колесо автомобиля(Седан) со стороны водителя";
+                nameLayout = "Rueda trasera de un coche(Sedán) desde el lado del conductor";
             }
             else if (inderxPhotoInspektion == 33)
             {
-                nameLayout = "Задняя дверь автомобиля(Седан) со стороны водителя";
+                nameLayout = "Puerta trasera del coche(Sedán) desde el lado del conductor";
             }
             else if (inderxPhotoInspektion == 34)
             {
-                nameLayout = "Задний ремень крепления автомобиля на стороне водителя";
+                nameLayout = "Correa de sujeción trasera del coche en el lado del conductor";
             }
             else if (inderxPhotoInspektion == 35)
             {
-                nameLayout = "Передний ремень крепления автомобиля на стороне водителя";
+                nameLayout = "Correa de sujeción delantera del coche en el lado del conductor";
             }
             else if (inderxPhotoInspektion == 36)
             {
-                nameLayout = "Автомобиль с передним ремнем безопасности на стороне пассажира";
+                nameLayout = "Coche con cinturón de seguridad delantero en el lado del pasajero";
             }
             else if (inderxPhotoInspektion == 37)
             {
-                nameLayout = "Автомобиль с креплением на ремне сзади на стороне пассажира";
+                nameLayout = "Coche con clip para cinturón en la parte trasera del lado del pasajero";
             }
             return nameLayout;
         }

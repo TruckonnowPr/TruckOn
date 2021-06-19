@@ -78,6 +78,10 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
             {
                 nameLayout = GetNameLayoutRussian(inderxPhotoInspektion);
             }
+            else if (CrossSettings.Current.GetValueOrDefault("Language", (int)LanguageType.English) == (int)LanguageType.Spanish)
+            {
+                nameLayout = GetNameLayoutSpanish(inderxPhotoInspektion);
+            }
             return nameLayout;
         }
 
@@ -131,6 +135,33 @@ namespace MDispatch.ViewModels.InspectionMV.Servise.Models
                 case 16: nameLayout = "Передний ремень крепления мотоцикла на стороне водителя"; break;
                 case 17: nameLayout = "Передниый ремень крепления мотоцикла на стороне пасажира"; break;
                 case 18: nameLayout = "Задний ремень крепления мотоцикла на стороне пасажира"; break;
+            }
+            return nameLayout;
+        }
+
+        public string GetNameLayoutSpanish(int inderxPhotoInspektion)
+        {
+            string nameLayout = "";
+            switch (inderxPhotoInspektion)
+            {
+                case 1: nameLayout = "Tablero de instrumentos de motocicleta(Motocicleta de turismo)"; break;
+                case 2: nameLayout = "Todo el lado derecho de la motocicleta(Motocicleta de turismo)"; break;
+                case 3: nameLayout = "Lado trasero derecho de la motocicleta(Туристический мотоцикл)"; break;
+                case 4: nameLayout = "----------(Motocicleta de turismo)"; break;
+                case 5: nameLayout = "----------(Motocicleta de turismo)"; break;
+                case 6: nameLayout = "Rueda delantera derecha de motocicleta(Motocicleta de turismo)"; break;
+                case 7: nameLayout = "Frente desde la esquina derecha de la motocicleta(Motocicleta de turismo)"; break;
+                case 8: nameLayout = "Frente desde la esquina izquierda de la motocicleta(Motocicleta de turismo)"; break;
+                case 9: nameLayout = "Rueda delantera izquierda de motocicleta(Motocicleta de turismo)"; break;
+                case 10: nameLayout = "----------(Motocicleta de turismo)"; break;
+                case 11: nameLayout = "Lado central izquierdo de la motocicleta(Motocicleta de turismo)"; break;
+                case 12: nameLayout = "Lado trasero izquierdo de la motocicleta(Motocicleta de turismo)"; break;
+                case 13: nameLayout = "Todo el lado izquierdo de la motocicleta.(Motocicleta de turismo)"; break;
+                case 14: nameLayout = "Motocicleta(Motocicleta de turismo) detrás"; break;
+                case 15: nameLayout = "Correa trasera de motocicleta en el lado del conductor"; break;
+                case 16: nameLayout = "Correa de sujeción delantera de la motocicleta en el lado del conductor."; break;
+                case 17: nameLayout = "Correa de motocicleta delantera en el lado del pasajero"; break;
+                case 18: nameLayout = "Correa trasera de motocicleta en el lado del pasajero "; break;
             }
             return nameLayout;
         }

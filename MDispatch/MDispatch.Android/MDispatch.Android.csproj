@@ -34,7 +34,6 @@
     <Debugger>Xamarin</Debugger>
     <JavaMaximumHeapSize>
     </JavaMaximumHeapSize>
-    <AndroidSupportedAbis />
     <LangVersion>8.0</LangVersion>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
@@ -100,7 +99,7 @@
     <PackageReference Include="Xamarin.Firebase.Messaging">
       <Version>121.0.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
@@ -611,7 +610,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MDispatch\MDispatch.csproj">
-      <Project>{D6CD94AD-B4AF-4C31-B29D-789E2FBD7D48}</Project>
+      <Project>{ECCABC9D-2582-40BF-BC8A-5A9166219226}</Project>
       <Name>MDispatch</Name>
     </ProjectReference>
   </ItemGroup>
