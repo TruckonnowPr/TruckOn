@@ -4,7 +4,7 @@
              x:Class="MDispatch.View.Inspection.PickedUp.AskForUser"
              xmlns:helperLang="clr-namespace:MDispatch.Helpers"
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise"
-             Title="{x:Static helperLang:LanguageHelper.TitleAskQuestionPage}">
+             Title="{x:Static helperLang:LanguageHelper.WithoutTranslationTitleAskQuestionPage}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="BOL" Clicked="ToolbarItem_Clicked_1"/>
         <!--<ToolbarItem Text="Contact" Clicked="ToolbarItem_Clicked_2"/>-->
@@ -17,9 +17,9 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock1"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="{x:Static helperLang:LanguageHelper.TitleAskQuestionPage}"
+                        <Label Text="{x:Static helperLang:LanguageHelper.WithoutTranslationAskBlockFullNameTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderFullName}"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.WithoutTranslatioPlaceholderFullName}"
                                TextChanged="Entry_TextChanged"
                                Style="{StaticResource entryAsk}"/>
                     </StackLayout>

@@ -25,7 +25,7 @@ namespace MDispatch.Helpers
 
         public static string InspectionTodayAlert => Language.InspectionTodayAlert;
         public static string AskErrorAlert => Language.AskErrorAlert;
-        public static string PassTheDeviceAlert => Language.PassTheDeviceAlert;
+        public static string PassTheDeviceAlert => WithoutTranslationLanguage.PassTheDeviceAlert;
         public static string TechnicalWorkServiceAlert => Language.TechnicalWorkServiceAlert;
         public static string GiveMoneyAlert => Language.GiveMoneyAlert;
         public static string PaymentForDeliveryAlert => Language.PaymentForDeliveryAlert;
@@ -97,7 +97,9 @@ namespace MDispatch.Helpers
         public static string HintPhotoSeatBeltsPage => Language.HintPhotoSeatBeltsPage;
 
         public static string TitleAskQuestionPage => Language.TitleAskQuestionPage;
+        public static string WithoutTranslationTitleAskQuestionPage => WithoutTranslationLanguage.TitleAskQuestionPage;
         public static string ItemNextPage => Language.ItemNextPage;
+        public static string WithoutTranslationAskBlockFullNameTitle => WithoutTranslationLanguage.AskBlockFullNameTitle;
 
         public static string AskBlockWeatherTitle => Language.AskBlockWeatherTitle;
         public static string ClearAnswer => Language.ClearAnswer;
@@ -170,13 +172,14 @@ namespace MDispatch.Helpers
 
         public static string AskBlockUsedWinchTitle => Language.AskBlockUsedWinchTitle;
 
-        public static string TitleHelloCustomerPage => Language.TitleHelloCustomerPage;
-        public static string ThankYouForUsingOurCompany => Language.ThankYouForUsingOurCompany;
-        public static string ThankYouForUsingOurCompany1 => Language.ThankYouForUsingOurCompany1;
-        public static string StartBtnText => Language.StartBtnText;
+        public static string TitleHelloCustomerPage => WithoutTranslationLanguage.TitleHelloCustomerPage;
+        public static string ThankYouForUsingOurCompany => WithoutTranslationLanguage.ThankYouForUsingOurCompany;
+        public static string ThankYouForUsingOurCompany1 => WithoutTranslationLanguage.ThankYouForUsingOurCompany1;
+        public static string StartBtnText => WithoutTranslationLanguage.StartBtnText;
 
         public static string AskBlockFullNameTitle => Language.AskBlockFullNameTitle;
         public static string PlaceholderFullName => Language.PlaceholderFullName;
+        public static string WithoutTranslatioPlaceholderFullName => WithoutTranslationLanguage.PlaceholderFullName;
 
         public static string AskBlockYourPhoneTitle => Language.AskBlockYourPhoneTitle;
         public static string PlaceholderYourPhone => Language.PlaceholderYourPhone;
