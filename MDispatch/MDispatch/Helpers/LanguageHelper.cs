@@ -183,6 +183,8 @@ namespace MDispatch.Helpers
 
         public static string AskBlockYourPhoneTitle => Language.AskBlockYourPhoneTitle;
         public static string PlaceholderYourPhone => Language.PlaceholderYourPhone;
+        public static string WithoutTranslatioAskBlockYourPhoneTitle => WithoutTranslationLanguage.AskBlockYourPhoneTitle;
+        public static string WithoutTranslatioPlaceholderYourPhone => WithoutTranslationLanguage.PlaceholderYourPhone;
 
         public static string AskBlockManyKesTitle => Language.AskBlockManyKesTitle;
         public static string PlaceholderManyKes => Language.PlaceholderManyKes;
