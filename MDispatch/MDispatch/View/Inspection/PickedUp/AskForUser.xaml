@@ -27,9 +27,9 @@
                 <shadowFrame:ShadowFrame x:Name="askBlock2"
                                          Style="{StaticResource Key=frameAsk}">
                     <StackLayout Spacing="10">
-                        <Label Text="{x:Static helperLang:LanguageHelper.AskBlockYourPhoneTitle}"
+                        <Label Text="{x:Static helperLang:LanguageHelper.WithoutTranslatioAskBlockYourPhoneTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
-                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.PlaceholderYourPhone}"
+                        <Entry Placeholder="{x:Static helperLang:LanguageHelper.WithoutTranslatioPlaceholderYourPhone}"
                                TextChanged="Entry_TextChanged1"
                                Keyboard="Telephone"
                                Style="{StaticResource entryAsk}"/>
@@ -52,7 +52,7 @@
                         <Label Text="{x:Static helperLang:LanguageHelper.AskBlockGivenToDriverTitle}"
                                Style="{StaticResource Key=labelTitleAsk}"/>
                         <StackLayout Orientation="Horizontal" Spacing="13">
-                            <Button Text="{x:Static helperLang:LanguageHelper.YesBtnText}"
+                            <Button Text="{x:Static helperLang:LanguageHelper.WithoutTranslationYesBtnText}"
                                     Clicked="Button_Clicked"
                                     Style="{StaticResource btnAsk}"/>
                             <Button Text="{x:Static helperLang:LanguageHelper.IDontKnowBtnText}"
@@ -61,7 +61,7 @@
                         </StackLayout>
                     </StackLayout>
                 </shadowFrame:ShadowFrame>
-                <Button Text="{x:Static helperLang:LanguageHelper.ContinuetnBtnText}"
+                <Button Text="{x:Static helperLang:LanguageHelper.WithoutTranslationContinuingBtnText}"
                         Clicked="ToolbarItem_Clicked"
                         Margin="0, 10, 0, 0"
                         BackgroundColor="#2C5DEB"

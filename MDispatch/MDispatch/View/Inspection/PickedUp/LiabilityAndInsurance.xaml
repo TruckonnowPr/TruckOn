@@ -5,7 +5,7 @@
              xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
              x:Class="MDispatch.View.Inspection.PickedUp.LiabilityAndInsurance"
              xmlns:helperLang="clr-namespace:MDispatch.Helpers"
-             Title="{x:Static helperLang:LanguageHelper.TitleBillOfLandingPage}"
+             Title="{x:Static helperLang:LanguageHelper.WithoutTranslatioTitleBillOfLandingPage}"
              xmlns:shadowFrame="clr-namespace:MDispatch.NewElement.FrameCusstomise">
     <ContentPage.Content>
         <StackLayout x:Name="body">
@@ -17,7 +17,7 @@
                     <StackLayout Spacing="12">
                         <shadowFrame:ShadowFrame Style="{StaticResource Key=frameAsk}">
                             <StackLayout Spacing="4">
-                                <Label Text="{x:Static helperLang:LanguageHelper.TitleOriginInfo}"
+                                <Label Text="{x:Static helperLang:LanguageHelper.WithoutTranslatioTitleOriginInfo}"
                                        Style="{StaticResource Key=labelTitleAsk}"/>
                                 <Label FontSize="14"
                                        TextColor="#101010"
@@ -60,7 +60,7 @@
                         </shadowFrame:ShadowFrame>
                         <shadowFrame:ShadowFrame Style="{StaticResource Key=frameAsk}">
                             <StackLayout Spacing="4">
-                                <Label Text="{x:Static helperLang:LanguageHelper.TitleDestinatiinInfo}"
+                                <Label Text="{x:Static helperLang:LanguageHelper.WithoutTranslatioTitleDestinatiinInfo}"
                                        Style="{StaticResource Key=labelTitleAsk}"/>
                                 <Label FontSize="14"
                                        TextColor="#101010"

@@ -175,12 +175,6 @@
         public string AskBlockYourPhoneTitle => "Your phone";
         public string PlaceholderYourPhone => "Enter Your phone";
 
-        public string AskBlockManyKesTitle => "How many keys are driver been given";
-        public string PlaceholderManyKes => "Enter the number of keys you gave";
-
-        public string AskBlockGivenToDriverTitle => "Any titles been given to driver?";
-        public string IDontKnowBtnText => "I don't know";
-
         public string ContinuetnBtnText => "Continue";
 
         public string TitleBillOfLandingPage => "BILL OF LADING";

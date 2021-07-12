@@ -85,6 +85,9 @@ namespace MDispatch.Helpers
         public static string TitleInspectionDriverAlert => Language.TitleInspectionDriverAlert;
         public static string YesBtnText => Language.YesBtnText;
         public static string NoBtnText => Language.NoBtnText;
+        public static string WithoutTranslationYesBtnText => WithoutTranslationLanguage.YesBtnText;
+        public static string WithoutTranslationNoBtnText => WithoutTranslationLanguage.NoBtnText;
+        public static string WithoutTranslationContinuingBtnText => WithoutTranslationLanguage.ContinuingBtnText;
 
         public static string ContinuingInspectionDelivery => Language.ContinuingInspectionDelivery;
         public static string ContinuingInspectionPickedUp => Language.ContinuingInspectionPickedUp;
@@ -186,16 +189,21 @@ namespace MDispatch.Helpers
         public static string WithoutTranslatioAskBlockYourPhoneTitle => WithoutTranslationLanguage.AskBlockYourPhoneTitle;
         public static string WithoutTranslatioPlaceholderYourPhone => WithoutTranslationLanguage.PlaceholderYourPhone;
 
-        public static string AskBlockManyKesTitle => Language.AskBlockManyKesTitle;
-        public static string PlaceholderManyKes => Language.PlaceholderManyKes;
+        public static string AskBlockManyKesTitle => WithoutTranslationLanguage.AskBlockManyKesTitle;
+        public static string PlaceholderManyKes => WithoutTranslationLanguage.PlaceholderManyKes;
 
-        public static string AskBlockGivenToDriverTitle => Language.AskBlockGivenToDriverTitle;
-        public static string IDontKnowBtnText => Language.IDontKnowBtnText;
+        public static string AskBlockGivenToDriverTitle => WithoutTranslationLanguage.AskBlockGivenToDriverTitle;
+        public static string IDontKnowBtnText => WithoutTranslationLanguage.IDontKnowBtnText;
 
         public static string ContinuetnBtnText => Language.ContinuetnBtnText;
 
         public static string TitleBillOfLandingPage => Language.TitleBillOfLandingPage;
+        public static string WithoutTranslatioTitleBillOfLandingPage => WithoutTranslationLanguage.TitleBillOfLandingPage;
 
+        public static string TitleOriginInfo => Language.TitleOriginInfo;
+        public static string TitleDestinatiinInfo => Language.TitleDestinatiinInfo;
+        public static string TitleYourSignature => Language.TitleYourSignature;
+        public static string SaveBtnText => Language.SaveBtnText;
         public static string TitleOriginInfo => Language.TitleOriginInfo;
         public static string TitleDestinatiinInfo => Language.TitleDestinatiinInfo;
         public static string TitleYourSignature => Language.TitleYourSignature;

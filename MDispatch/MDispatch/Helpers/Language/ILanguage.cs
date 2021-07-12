@@ -179,12 +179,6 @@ namespace MDispatch.Helpers.Language
         string AskBlockYourPhoneTitle { get; }
         string PlaceholderYourPhone { get; }
 
-        string AskBlockManyKesTitle { get; }
-        string PlaceholderManyKes { get; }
-
-        string AskBlockGivenToDriverTitle { get; }
-        string IDontKnowBtnText { get; }
-
         string ContinuetnBtnText { get; }
 
         string TitleBillOfLandingPage { get; }
